@@ -40,4 +40,17 @@ def load_persona() -> dict[str, Any]:
     return json.loads(_PERSONA_PATH.read_text(encoding="utf-8"))
 
 
-__all__ = ["load_persona", "persona_path", "__version__"]
+@lru_cache(maxsize=1)
+def persona_prompt() -> str:
+    """The canonical Jeles persona rendered to a system-prompt string.
+
+    The combine (#18): one JSON source of truth here, compiled deterministically
+    into the labeled prompt every host used to hand-carry as its own prose copy.
+    Consumers call this instead of pasting a persona string. Cached.
+    """
+    from jeles.persona.compiler import compile_persona
+
+    return compile_persona(load_persona())
+
+
+__all__ = ["load_persona", "persona_prompt", "persona_path", "__version__"]
