@@ -52,6 +52,19 @@ def _use_willow_mcp() -> bool:
     return os.environ.get("ASK_JELES_USE_WILLOW_MCP", "1").strip().lower() not in ("0", "false", "no")
 
 
+def _subprocess_env() -> dict[str, str]:
+    """A minimal environment for the spawned willow-mcp subprocess.
+
+    Forwarding the full parent environment leaks unrelated secrets (e.g. the
+    conflict-scan search adapter's ``BRAVE_API_KEY`` / ``TAVILY_API_KEY``) into a
+    ``PATH``/``WILLOW_MCP_CMD``-resolved binary this package does not control.
+    Pass only what willow-mcp needs: PATH/HOME, locale, and ``WILLOW_*`` config.
+    """
+    keep = {"PATH", "HOME", "LANG", "TERM", "TMPDIR", "USER", "LOGNAME"}
+    return {k: v for k, v in os.environ.items()
+            if k in keep or k.startswith(("LC_", "WILLOW_"))}
+
+
 def _launch() -> tuple[str, list[str]] | None:
     """Resolve how to start willow-mcp, or None if it isn't available.
 
@@ -95,7 +108,7 @@ async def _lifecycle(ready: threading.Event) -> None:
         return
 
     command, args = launch
-    params = StdioServerParameters(command=command, args=args, env=dict(os.environ))
+    params = StdioServerParameters(command=command, args=args, env=_subprocess_env())
     stop = asyncio.Event()
     _mcp_stop_event = stop
 

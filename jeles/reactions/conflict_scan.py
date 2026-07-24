@@ -15,10 +15,11 @@ Three disciplines, all deterministic, all testable network-free:
 
 2. **Two independent sources.** A finding is *corroborated* only when at least
    ``min_sources`` **distinct registrable domains** back it. Two hits from the
-   same site do not corroborate — that is Jeles' independent-witness rule
-   applied to prior art. Corroborated → propose a nugget; single-source →
-   propose a *gap* (contested; the corpus records that it looked and couldn't
-   yet verify).
+   same site do not corroborate — the independent-*source* rule (a cheap prior-
+   art heuristic, deliberately weaker than, and named apart from, the
+   constitution's Independent Witness, which requires failure-mode divergence).
+   Corroborated → propose a nugget; single-source → propose a *gap* (contested;
+   the corpus records that it looked and couldn't yet verify).
 
 3. **Propose, don't execute.** :func:`react` is pure routing: it calls an
    *injected* ``searcher`` and returns a list of proposed actions. It writes
@@ -41,9 +42,22 @@ from urllib.parse import urlparse
 # one (e.g. an adapter over a web-search tool); the reaction never imports one.
 Searcher = Callable[[str], list[dict[str, Any]]]
 
-# Jeles' independent-witness rule: a conflict is corroborated only by >= this
-# many *distinct domains*. Two pages on one site are one witness, not two.
+# The independent-SOURCE rule: a conflict is corroborated only by >= this many
+# *distinct registrable domains*. Two pages on one site are one source, not two.
+#
+# Note the name: this is a weaker bar than the constitution's *Independent
+# Witness* (CONSTITUTION.md §), which requires demonstrated failure-mode
+# divergence — two distinct domains can still be one actor who bought both. This
+# is a cheap prior-art heuristic, not the witness standard; kept deliberately
+# distinct so the reaction doesn't borrow authority it hasn't earned.
 DEFAULT_MIN_SOURCES = 2
+
+# Two-label public suffixes: without these, foo.co.uk and bar.co.uk both reduce
+# to "co.uk" and read as one source. Small, common set — not a full PSL.
+_TWO_LABEL_SUFFIXES = frozenset({
+    "co.uk", "org.uk", "ac.uk", "gov.uk", "co.jp", "or.jp", "ne.jp",
+    "com.au", "net.au", "org.au", "co.nz", "com.br", "co.in", "co.za",
+})
 
 # The scan's machine witness. A corroborated finding is not a human-signed
 # nugget; this tag says exactly what verified it — two independent sources —
@@ -91,8 +105,15 @@ def _domain(url: str) -> str:
     if host.startswith("www."):
         host = host[4:]
     labels = [x for x in host.split(".") if x]
-    # A usable witness has a dotted domain; a dotless/garbage host is no witness.
-    return ".".join(labels[-2:]) if len(labels) >= 2 else ""
+    # A usable source has a dotted domain; a dotless/garbage host is no source.
+    if len(labels) < 2:
+        return ""
+    last2 = ".".join(labels[-2:])
+    # Keep three labels when the last two are a known two-label public suffix,
+    # so foo.co.uk and bar.co.uk stay distinct sources.
+    if last2 in _TWO_LABEL_SUFFIXES and len(labels) >= 3:
+        return ".".join(labels[-3:])
+    return last2
 
 
 def _gather(queries: list[str], searcher: Searcher, max_results: int) -> list[dict[str, Any]]:
@@ -150,6 +171,12 @@ def react(
     domains = sorted({h["domain"] for h in hits if h["domain"]})
     corroborated = len(domains) >= min_sources
 
+    # Only URLs from a real (dotted) domain are sources — drop unparseable-URL
+    # hits so a human re-verifying "the sources" sees exactly what cleared the
+    # independent-domain bar, not query noise.
+    domain_set = set(domains)
+    sources = [h["url"] for h in hits if h["domain"] in domain_set]
+
     tags = ["conflict-scan", "prior-art"] + [str(t) for t in (event.get("tags") or [])]
     proposals: list[dict[str, Any]] = []
 
@@ -167,8 +194,11 @@ def react(
             "args": {
                 "question": f"Prior-art / conflict scan: {claim}",
                 "answer": answer,
-                "sources": [h["url"] for h in hits],
+                "sources": sources,
                 "verified_by": WITNESS,
+                # Machine corroboration, not a human check — the driver stamps
+                # this so the nugget can't render as human-verified (corpus B6).
+                "verification_kind": "machine",
                 "tags": tags,
             },
         })
@@ -191,7 +221,7 @@ def react(
             "event_kind": str(event.get("kind") or ""),
             "surface": str(event.get("surface") or ""),
             "corroborated": corroborated,
-            "sources": [h["url"] for h in hits],
+            "sources": sources,
             "domains": domains,
         },
     })

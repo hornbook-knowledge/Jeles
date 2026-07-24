@@ -37,13 +37,20 @@ Searcher = Callable[[str], list[dict[str, Any]]]
 _UA = "jeles-conflict-scan/1.0 (+local-first; https://github.com/rudi193-cmd/Jeles)"
 _TIMEOUT = float(os.environ.get("JELES_SEARCH_TIMEOUT", "12"))
 _MAX = int(os.environ.get("JELES_SEARCH_MAX", "8"))
+# Cap the response body: a misbehaving/redirected endpoint could otherwise
+# stream an unbounded body into memory before parse (this component is fail-soft
+# and never trusted, so a big body should fail, not OOM).
+_MAX_BYTES = int(os.environ.get("JELES_SEARCH_MAX_BYTES", str(4 * 1024 * 1024)))
 
 
 def _get_json(url: str, headers: dict[str, str] | None = None,
               data: bytes | None = None) -> Any:
     req = urllib.request.Request(url, data=data, headers={"User-Agent": _UA, **(headers or {})})
     with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:  # honors HTTPS_PROXY env
-        return json.loads(resp.read().decode("utf-8", "replace"))
+        raw = resp.read(_MAX_BYTES + 1)
+        if len(raw) > _MAX_BYTES:
+            raise ValueError(f"search response exceeds {_MAX_BYTES} bytes — refusing")
+        return json.loads(raw.decode("utf-8", "replace"))
 
 
 def _hit(title: Any, url: Any, snippet: Any) -> dict[str, Any]:
