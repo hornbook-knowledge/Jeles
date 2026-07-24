@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jeles"
+version = "0.1.0"
+description = "Jeles' verified-nugget corpus organ: pure SOIL-backed storage/ranking, a standalone MCP server, best-effort fleet gap-forwarding, and the canonical Jeles persona."
+requires-python = ">=3.10"
+# corpus.py is stdlib-only on purpose; the only runtime dep is `mcp`, which
+# corpus_server.py (FastMCP) and willow_mcp_client.py (stdio client) need.
+dependencies = [
+    "mcp>=1.6.0,<2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+jeles-corpus-mcp = "jeles.corpus_server:main"
+
+[tool.setuptools.packages.find]
+include = ["jeles*"]
+
+[tool.setuptools.package-data]
+jeles = ["persona/*.json"]
