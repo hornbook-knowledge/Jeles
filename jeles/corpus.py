@@ -35,16 +35,44 @@ from typing import Any
 NUGGETS_COLLECTION = os.environ.get("JELES_CORPUS_COLLECTION", "ask_jeles_corpus")
 GAPS_COLLECTION = os.environ.get("JELES_CORPUS_GAPS_COLLECTION", "ask_jeles_corpus_gaps")
 
+# A collection name becomes a path component (<root>/<collection>/store.db), so
+# an unvalidated one (e.g. from an env var a launcher forwards) could traverse
+# out of WILLOW_STORE_ROOT. Mirror willow-mcp's SOIL Store guard — the sibling
+# this schema is copied from already validates; this copy hadn't.
+_COLLECTION_RE = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
+
+
+def _validate_collection(collection: str) -> None:
+    if not _COLLECTION_RE.match(collection or ""):
+        raise ValueError(f"invalid collection name (must match {_COLLECTION_RE.pattern}): {collection!r}")
+
+# The `deviation`/`action` columns are willow-mcp's (SOIL Store, db.py). jeles
+# never reads them, but a jeles-created collection missing them makes a
+# willow-mcp writer pointed at the same store fail `no such column: deviation`
+# (box audit A3 — the two independently-drifted "shared" schemas). Carry them so
+# the store stays mutually usable; _migrate_records() backfills older stores.
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS records (
     id         TEXT PRIMARY KEY,
     data       TEXT NOT NULL,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL,
+    deviation  REAL NOT NULL DEFAULT 0.0,
+    action     TEXT NOT NULL DEFAULT 'work_quiet',
     deleted    INTEGER NOT NULL DEFAULT 0
 );
 CREATE INDEX IF NOT EXISTS idx_deleted ON records(deleted);
 """
+
+
+def _migrate_records(conn: sqlite3.Connection) -> None:
+    """Add willow-mcp's SOIL columns to a pre-existing jeles store that predates
+    this change, so a shared collection stays compatible either direction."""
+    have = {row[1] for row in conn.execute("PRAGMA table_info(records)")}
+    if "deviation" not in have:
+        conn.execute("ALTER TABLE records ADD COLUMN deviation REAL NOT NULL DEFAULT 0.0")
+    if "action" not in have:
+        conn.execute("ALTER TABLE records ADD COLUMN action TEXT NOT NULL DEFAULT 'work_quiet'")
 
 _lock = threading.RLock()
 _conns: dict[str, sqlite3.Connection] = {}
@@ -55,6 +83,7 @@ def _store_root() -> Path:
 
 
 def _conn(collection: str) -> sqlite3.Connection:
+    _validate_collection(collection)
     db_path = _store_root() / collection / "store.db"
     key = str(db_path)
     with _lock:
@@ -62,6 +91,7 @@ def _conn(collection: str) -> sqlite3.Connection:
             db_path.parent.mkdir(parents=True, exist_ok=True)
             conn = sqlite3.connect(str(db_path), check_same_thread=False)
             conn.executescript(_SCHEMA)
+            _migrate_records(conn)
             conn.commit()
             _conns[key] = conn
         return _conns[key]
@@ -163,13 +193,22 @@ def put_nugget(
     tags: list[str] | None = None,
     nugget_id: str | None = None,
     verified_at: str | None = None,
+    verification_kind: str = "human",
 ) -> dict[str, Any]:
-    """Add or update a verified nugget. Returns {id, action} or {error}."""
+    """Add or update a verified nugget. Returns {id, action} or {error}.
+
+    ``verification_kind`` distinguishes a human check (``"human"``, the default)
+    from machine corroboration (``"machine"`` — e.g. the conflict-scan reaction's
+    two-independent-source finding). It is meant to be set by the *driver*, not
+    passed through from untrusted caller data, so a machine finding can't render
+    as human-verified on read (see :func:`to_search_hit`).
+    """
     question = (question or "").strip()
     answer = (answer or "").strip()
     verified_by = (verified_by or "").strip()
     if not question or not answer or not verified_by:
         return {"error": "question, answer, and verified_by are required"}
+    kind = "machine" if str(verification_kind).lower() == "machine" else "human"
     record = {
         "question": question,
         "answer": answer,
@@ -178,6 +217,7 @@ def put_nugget(
         "verified_at": verified_at or datetime.now(timezone.utc).date().isoformat(),
         "tags": [str(t) for t in (tags or [])],
         "status": "verified",
+        "verification_kind": kind,
     }
     action = "updated" if (nugget_id and _get(NUGGETS_COLLECTION, nugget_id)) else "created"
     rid = _put(NUGGETS_COLLECTION, record, record_id=nugget_id)
@@ -258,6 +298,10 @@ def to_search_hit(nugget: dict[str, Any], idx: int = 0) -> dict[str, Any]:
     """Shape a nugget as a search hit compatible with a host search
     pipeline's flatten_results()/rank_hit() (source_id="corpus")."""
     sources = nugget.get("sources") or []
+    # A machine-corroborated nugget must not read as human-verified: surface the
+    # kind, and downgrade its confidence label so the two are distinguishable on
+    # read (absent kind => legacy human nugget).
+    kind = nugget.get("verification_kind") or "human"
     return {
         "title": nugget.get("question") or "Verified nugget",
         "url": sources[0] if sources else "",
@@ -266,7 +310,8 @@ def to_search_hit(nugget: dict[str, Any], idx: int = 0) -> dict[str, Any]:
         "date": nugget.get("verified_at") or "",
         "source_id": "corpus",
         "hostname": "corpus.local",
-        "confidence": "verified",
+        "confidence": "verified" if kind == "human" else "corroborated",
+        "verification_kind": kind,
         "nugget_id": nugget.get("_id") or "",
         "verified_by": nugget.get("verified_by") or "",
         "verified_at": nugget.get("verified_at") or "",
@@ -286,7 +331,15 @@ def log_gap(question: str) -> dict[str, Any]:
     if not question:
         return {"error": "question required"}
     tokens = tuple(sorted(set(_tokens(question))))
-    key = "|".join(tokens) or question.lower()
+    # _tokens drops <3-char tokens, so "drug A" and "drug B" both reduce to
+    # {"drug"} and collide, silently overwriting the earlier gap. Keep the short
+    # meaning-bearing codes (single letters, "P0", "v2" — not stopwords) as an
+    # extra key segment; rephrasings that share the main token set still merge.
+    short = tuple(sorted({
+        t for t in re.findall(r"[a-z0-9]+", (question or "").lower())
+        if len(t) < 3 and t not in _STOP
+    }))
+    key = "|".join(tokens) + "##" + "|".join(short) if (tokens or short) else question.lower()
     gap_id = uuid.uuid5(uuid.NAMESPACE_URL, key).hex[:12]
     existing = _get(GAPS_COLLECTION, gap_id)
     record = {
