@@ -48,7 +48,8 @@ def _get_json(url: str, headers: dict[str, str] | None = None,
     if not url.startswith(("https://", "http://")):
         raise ValueError(f"refusing non-HTTP(S) URL scheme: {url!r}")
     req = urllib.request.Request(url, data=data, headers={"User-Agent": _UA, **(headers or {})})
-    with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:  # nosec B310 — scheme guarded above; honors HTTPS_PROXY env
+    # Scheme is guarded above (fail-closed); urlopen honors HTTPS_PROXY env.
+    with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:  # nosec B310
         raw = resp.read(_MAX_BYTES + 1)
         if len(raw) > _MAX_BYTES:
             raise ValueError(f"search response exceeds {_MAX_BYTES} bytes — refusing")
