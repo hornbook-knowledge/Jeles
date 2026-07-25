@@ -46,16 +46,33 @@ def _validate_collection(collection: str) -> None:
     if not _COLLECTION_RE.match(collection or ""):
         raise ValueError(f"invalid collection name (must match {_COLLECTION_RE.pattern}): {collection!r}")
 
+# The `deviation`/`action` columns are willow-mcp's (SOIL Store, db.py). jeles
+# never reads them, but a jeles-created collection missing them makes a
+# willow-mcp writer pointed at the same store fail `no such column: deviation`
+# (box audit A3 — the two independently-drifted "shared" schemas). Carry them so
+# the store stays mutually usable; _migrate_records() backfills older stores.
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS records (
     id         TEXT PRIMARY KEY,
     data       TEXT NOT NULL,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL,
+    deviation  REAL NOT NULL DEFAULT 0.0,
+    action     TEXT NOT NULL DEFAULT 'work_quiet',
     deleted    INTEGER NOT NULL DEFAULT 0
 );
 CREATE INDEX IF NOT EXISTS idx_deleted ON records(deleted);
 """
+
+
+def _migrate_records(conn: sqlite3.Connection) -> None:
+    """Add willow-mcp's SOIL columns to a pre-existing jeles store that predates
+    this change, so a shared collection stays compatible either direction."""
+    have = {row[1] for row in conn.execute("PRAGMA table_info(records)")}
+    if "deviation" not in have:
+        conn.execute("ALTER TABLE records ADD COLUMN deviation REAL NOT NULL DEFAULT 0.0")
+    if "action" not in have:
+        conn.execute("ALTER TABLE records ADD COLUMN action TEXT NOT NULL DEFAULT 'work_quiet'")
 
 _lock = threading.RLock()
 _conns: dict[str, sqlite3.Connection] = {}
@@ -74,6 +91,7 @@ def _conn(collection: str) -> sqlite3.Connection:
             db_path.parent.mkdir(parents=True, exist_ok=True)
             conn = sqlite3.connect(str(db_path), check_same_thread=False)
             conn.executescript(_SCHEMA)
+            _migrate_records(conn)
             conn.commit()
             _conns[key] = conn
         return _conns[key]

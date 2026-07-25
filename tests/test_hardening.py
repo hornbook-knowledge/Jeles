@@ -24,6 +24,19 @@ def test_machine_nugget_does_not_render_as_human_verified(tmp_path, monkeypatch)
     assert hits["q2?"]["verification_kind"] == "machine"
 
 
+def test_records_table_carries_willow_mcp_columns(tmp_path, monkeypatch):
+    # A3: a jeles-created collection must not crash a willow-mcp writer that
+    # inserts deviation/action.
+    monkeypatch.setenv("WILLOW_STORE_ROOT", str(tmp_path))
+    corpus._conns.clear()
+    conn = corpus._conn("shared_soil")
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(records)")}
+    assert {"deviation", "action"} <= cols
+    # A willow-mcp-shaped insert succeeds against the jeles-created table.
+    conn.execute("INSERT INTO records (id,data,created_at,updated_at,deviation,action,deleted)"
+                 " VALUES ('x','{}','t','t',0.0,'work_quiet',0)")
+
+
 def test_collection_name_is_validated(monkeypatch):
     with pytest.raises(ValueError):
         corpus._validate_collection("../../../etc/cron.d/x")
