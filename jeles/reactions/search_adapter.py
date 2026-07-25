@@ -45,8 +45,10 @@ _MAX_BYTES = int(os.environ.get("JELES_SEARCH_MAX_BYTES", str(4 * 1024 * 1024)))
 
 def _get_json(url: str, headers: dict[str, str] | None = None,
               data: bytes | None = None) -> Any:
+    if not url.startswith(("https://", "http://")):
+        raise ValueError(f"refusing non-HTTP(S) URL scheme: {url!r}")
     req = urllib.request.Request(url, data=data, headers={"User-Agent": _UA, **(headers or {})})
-    with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:  # honors HTTPS_PROXY env
+    with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:  # nosec B310 — scheme guarded above; honors HTTPS_PROXY env
         raw = resp.read(_MAX_BYTES + 1)
         if len(raw) > _MAX_BYTES:
             raise ValueError(f"search response exceeds {_MAX_BYTES} bytes — refusing")
