@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "jeles"
 version = "0.1.0"
 description = "Jeles' verified-nugget corpus organ: pure SOIL-backed storage/ranking, a standalone MCP server, best-effort fleet gap-forwarding, and the canonical Jeles persona."
+license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
 # corpus.py is stdlib-only on purpose; the only runtime dep is `mcp`, which
 # corpus_server.py (FastMCP) and willow_mcp_client.py (stdio client) need.

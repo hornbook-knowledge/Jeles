@@ -104,4 +104,4 @@ test asserts that importing `jeles.corpus` loads no MCP or network modules.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+Apache-2.0 — see [LICENSE](LICENSE).
