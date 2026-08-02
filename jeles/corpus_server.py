@@ -26,7 +26,27 @@ from __future__ import annotations
 
 from typing import Optional
 
-from mcp.server.fastmcp import FastMCP
+try:
+    from mcp.server.fastmcp import FastMCP
+except ImportError as exc:  # pragma: no cover - exercised by install shape, not tests
+    # The MCP SDK is an optional extra: base `jeles` has zero runtime
+    # dependencies so a host can depend on it without inheriting a version
+    # constraint. Two different failures land here, and they need different
+    # answers, so say which one it is rather than leaking a bare traceback.
+    if exc.name == "mcp":
+        raise ImportError(
+            "jeles.corpus_server needs the MCP SDK, which base `jeles` does not "
+            'install. Add the extra:  pip install "jeles[mcp]"\n'
+            "(the corpus, the persona, and the reactions all work without it)"
+        ) from exc
+    raise ImportError(
+        "jeles.corpus_server requires MCP SDK 1.x — `mcp.server.fastmcp` was "
+        "removed in SDK 2.0 and this module has not been ported to "
+        "`mcp.server.mcpserver.MCPServer` yet. Install a 1.x SDK:\n"
+        '    pip install "jeles[mcp]"   # pins mcp>=1.6,<2\n'
+        "Note this means jeles[mcp] cannot currently be installed alongside "
+        "willow-mcp, which requires mcp>=2. Base `jeles` can."
+    ) from exc
 
 from jeles import corpus, willow_mcp_client
 
