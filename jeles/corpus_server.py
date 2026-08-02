@@ -1,7 +1,7 @@
 """Standalone MCP server over Jeles' verified-nugget corpus.
 
-Mirrors willow-mcp's shape — FastMCP, stdio by default, every tool takes an
-`app_id` — but scoped to one small corpus so it can run independently of
+Mirrors willow-mcp's shape — `MCPServer`, stdio by default, every tool takes
+an `app_id` — but scoped to one small corpus so it can run independently of
 any particular fleet and be MCP-agnostic: any stdio MCP client (Claude
 Code, Claude Desktop, Cursor, willow-mcp itself, a bare script) can point
 at it with `python -m jeles.corpus_server`.
@@ -27,7 +27,7 @@ from __future__ import annotations
 from typing import Optional
 
 try:
-    from mcp.server.fastmcp import FastMCP
+    from mcp.server.mcpserver import MCPServer
 except ImportError as exc:  # pragma: no cover - exercised by install shape, not tests
     # The MCP SDK is an optional extra: base `jeles` has zero runtime
     # dependencies so a host can depend on it without inheriting a version
@@ -40,18 +40,19 @@ except ImportError as exc:  # pragma: no cover - exercised by install shape, not
             "(the corpus, the persona, and the reactions all work without it)"
         ) from exc
     raise ImportError(
-        "jeles.corpus_server requires MCP SDK 1.x — `mcp.server.fastmcp` was "
-        "removed in SDK 2.0 and this module has not been ported to "
-        "`mcp.server.mcpserver.MCPServer` yet. Install a 1.x SDK:\n"
-        '    pip install "jeles[mcp]"   # pins mcp>=1.6,<2\n'
-        "Note this means jeles[mcp] cannot currently be installed alongside "
-        "willow-mcp, which requires mcp>=2. Base `jeles` can."
+        "jeles.corpus_server requires MCP SDK 2.x — `mcp.server.mcpserver` does "
+        "not exist in SDK 1.x, where the equivalent was `mcp.server.fastmcp`. "
+        "Upgrade:\n"
+        '    pip install --upgrade "jeles[mcp]"   # pins mcp>=2.0,<3\n'
+        "SDK 2.x is also what willow-mcp requires, so the two now co-install."
     ) from exc
 
+import jeles
 from jeles import corpus, willow_mcp_client
 
-mcp = FastMCP(
+mcp = MCPServer(
     "jeles-corpus",
+    version=jeles.__version__,
     instructions=(
         "Jeles' verified-nugget corpus. Ask a question to get a cited, "
         "human-verified answer if one exists, search the corpus directly, "
@@ -116,7 +117,11 @@ def corpus_gaps(app_id: str, limit: int = 50) -> list:
 
 
 def main() -> None:
-    mcp.run()
+    # Explicit transport: SDK 2.0 moved host/port off the constructor onto
+    # run(transport=, host=, port=), making "where this instance listens" a
+    # property of the run rather than of the server. stdio is the default and
+    # the only mode this server offers — it is a local organ, not a service.
+    mcp.run(transport="stdio")
 
 
 if __name__ == "__main__":

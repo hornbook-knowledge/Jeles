@@ -10,7 +10,7 @@ with no extra wiring, and the corpus stays readable by anything else that
 understands a Willow-style SOIL collection.
 
 This module has no MCP dependency and does no network I/O — see
-corpus_server.py for the FastMCP wrapper that exposes it as a standalone,
+corpus_server.py for the MCPServer wrapper that exposes it as a standalone,
 MCP-agnostic server. It imports only the standard library, on purpose:
 that is what keeps its tests fast and network-free, and lets it be reused
 as a plain library by any host.
