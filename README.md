@@ -29,16 +29,35 @@ couldn't answer.
 
 ## Install
 
+**Base `jeles` has zero runtime dependencies.** The corpus, the persona, and the
+reactions are stdlib-only, so a host can depend on this package without
+inheriting a single version constraint from it. Only the standalone MCP server
+needs the SDK, and it lives behind an extra.
+
 ```bash
-pip install -e .          # editable, from a checkout
-pip install -e ".[dev]"   # with pytest for the test suite
+pip install jeles           # corpus + persona + reactions. No dependencies.
+pip install "jeles[mcp]"    # adds the MCP SDK, for the standalone server
+pip install -e ".[dev]"     # editable, with pytest and the SDK
 ```
 
 Or as a host dependency, straight from git:
 
 ```
-jeles @ git+https://github.com/rudi193-cmd/jeles@main
+jeles @ git+https://github.com/rudi193-cmd/Jeles@main
 ```
+
+> **`jeles[mcp]` is pinned to MCP SDK 1.x.** `mcp.server.fastmcp` was removed in
+> SDK 2.0 and `corpus_server.py` has not been ported to
+> `mcp.server.mcpserver.MCPServer` yet, so the extra cannot currently be
+> installed alongside willow-mcp (which requires `mcp>=2`). Base `jeles` can be —
+> that is the whole point of it being dependency-free.
+
+### Versioning
+
+The version comes from the git tag (`hatch-vcs`), not from a literal in
+`pyproject.toml`, and `jeles.__version__` reads it back out of installed package
+metadata. There is exactly one place a release number is decided, so a tag
+cannot disagree with the artifact it builds.
 
 ## Usage
 

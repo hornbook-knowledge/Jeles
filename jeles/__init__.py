@@ -18,7 +18,28 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-__version__ = "0.1.0"
+def __getattr__(name: str) -> Any:
+    """Lazily resolve ``jeles.__version__`` from installed package metadata.
+
+    The version is no longer a literal here — it duplicated pyproject.toml's,
+    which is the pattern that had already drifted three releases apart in
+    kartikeya and one apart in willow-mcp's plugin manifest. Metadata is written
+    at build time from the git tag and cannot drift.
+
+    Resolved lazily (PEP 562) rather than at import, because
+    ``importlib.metadata`` pulls in ``socket`` — which would break design
+    principle 2 and fail ``tests/test_import_purity.py``. Reading a version
+    should not be what puts a network module in ``sys.modules``.
+    """
+    if name == "__version__":
+        from importlib.metadata import PackageNotFoundError
+        from importlib.metadata import version as _pkg_version
+
+        try:
+            return _pkg_version("jeles")
+        except PackageNotFoundError:  # source tree with no install
+            return "0.0.0+unknown"
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 _PERSONA_PATH = Path(__file__).resolve().parent / "persona" / "jeles_persona.json"
 

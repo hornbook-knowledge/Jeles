@@ -1,29 +1,72 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "jeles"
-version = "0.1.0"
+# The git tag is the single source of truth — see [tool.hatch.version]. The
+# version is deliberately not a literal here: kartikeya shipped a v0.0.8 tag
+# whose build produced 0.0.7 because a literal in this file went unbumped, and
+# willow-mcp's literal sat frozen 251 commits past its own release.
+dynamic = ["version"]
 description = "Jeles' verified-nugget corpus organ: pure SOIL-backed storage/ranking, a standalone MCP server, best-effort fleet gap-forwarding, and the canonical Jeles persona."
+readme = "README.md"
 license = { text = "Apache-2.0" }
+authors = [{ name = "Sean Campbell" }]
 requires-python = ">=3.10"
-# corpus.py is stdlib-only on purpose; the only runtime dep is `mcp`, which
-# corpus_server.py (FastMCP) and willow_mcp_client.py (stdio client) need.
-dependencies = [
-    "mcp>=1.6.0,<2.0.0",
+keywords = ["mcp", "corpus", "verified-answers", "citations", "librarian", "retrieval", "willow", "jeles"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Database",
+    "Topic :: Text Processing :: Indexing",
 ]
+# Zero runtime dependencies, on purpose. corpus.py, the persona, and the
+# reactions (including search_adapter's urllib egress) are stdlib-only, and
+# tests/test_import_purity.py enforces it. That is what lets a host — willow-mcp
+# above all — depend on `jeles` without inheriting a version constraint: pinning
+# mcp here made `pip install willow-mcp jeles` unresolvable, because willow-mcp
+# requires mcp>=2 while this package required mcp<2.
+dependencies = []
 
 [project.optional-dependencies]
-dev = [
-    "pytest>=8.0",
-]
+# Only corpus_server.py (top-level import) and willow_mcp_client.py (lazy,
+# inside a function) need the MCP SDK.
+#
+# Pinned <2.0.0 because `mcp.server.fastmcp` was REMOVED in SDK 2.0 — verified
+# against a real 2.0.0 install, corpus_server does not import there at all.
+# Until it is ported to `mcp.server.mcpserver.MCPServer`, `jeles[mcp]` cannot be
+# installed alongside willow-mcp. Base `jeles` can, and that is the lane that
+# matters for consuming this package.
+mcp = ["mcp>=1.6.0,<2.0.0"]
+dev = ["pytest>=8.0", "jeles[mcp]"]
 
 [project.scripts]
 jeles-corpus-mcp = "jeles.corpus_server:main"
 
-[tool.setuptools.packages.find]
-include = ["jeles*"]
+[project.urls]
+Homepage = "https://github.com/rudi193-cmd/Jeles"
+Repository = "https://github.com/rudi193-cmd/Jeles"
+Issues = "https://github.com/rudi193-cmd/Jeles/issues"
 
-[tool.setuptools.package-data]
-jeles = ["persona/*.json"]
+[tool.hatch.version]
+# Derived from the git tag (hatch-vcs). At an exact tag `vX.Y.Z` the version is
+# X.Y.Z; off-tag builds get a `.devN+g<sha>` suffix PyPI rejects, so a publish
+# from an untagged commit fails loudly instead of shipping something
+# mislabelled. CI must check out with `fetch-depth: 0` or no tags are present.
+#
+# This package has never been published and carries no tags yet, so the first
+# tag pushed decides the first released version — and PyPI never lets a version
+# be reused. Pick it deliberately.
+source = "vcs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["jeles"]
