@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "jeles",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "include-component-in-tag": false,
+      "changelog-sections": [
+        { "type": "feat", "section": "Added" },
+        { "type": "fix", "section": "Fixed" },
+        { "type": "security", "section": "Security" },
+        { "type": "perf", "section": "Performance" },
+        { "type": "refactor", "section": "Changed" },
+        { "type": "build", "section": "Build" },
+        { "type": "deps", "section": "Build" },
+        { "type": "docs", "section": "Docs" },
+        { "type": "test", "section": "Tests" },
+        { "type": "ci", "section": "CI" },
+        { "type": "chore", "section": "Chores", "hidden": true }
+      ]
+    }
+  },
+  "$comment-versioning": "release-type 'simple' maintains CHANGELOG.md and the tag and edits no version file — correct here because hatch-vcs derives the version from the tag, so there is no second copy to keep in step. bump-minor-pre-major with bump-patch-for-minor-pre-major false means, while below 1.0: feat -> minor, fix -> patch, and a breaking change -> minor rather than 1.0.0, so reaching 1.0 stays a deliberate decision.",
+  "$comment-sections": "Section names mirror Keep a Changelog, which willow-mcp's CHANGELOG already follows. Commit types outside this list (the fleet also uses hooks:, gate:, skills:, server:, envelopes:) are ignored for both the changelog and the version bump — only feat, fix and breaking changes move the number."
+}
