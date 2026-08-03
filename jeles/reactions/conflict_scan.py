@@ -35,6 +35,7 @@ with a fake searcher, is fast and offline. That is the same purity seam
 """
 from __future__ import annotations
 
+import re
 from typing import Any, Callable
 from urllib.parse import urlparse
 
@@ -89,6 +90,27 @@ def frame_queries(claim: str, *, extra: list[str] | None = None) -> list[str]:
     return queries
 
 
+#: Domains that cannot be an independent witness, whatever they return.
+#:
+#: The search engine itself is the important one. DuckDuckGo's Instant-Answer
+#: endpoint — the zero-config default backend — returns its `RelatedTopics` as
+#: duckduckgo.com URLs, so an unfiltered domain count reads the engine as a
+#: source about every claim, and pairs it with the one Wikipedia AbstractURL to
+#: clear a two-source bar. Verified: a claim invented on the spot was
+#: "corroborated by 2 independent sources (duckduckgo.com, wikipedia.org)".
+#:
+#: Shorteners are excluded because they are opaque — two of them can point at
+#: one page, which is the exact opposite of independence.
+_NON_WITNESS = frozenset({
+    "duckduckgo.com", "google.com", "bing.com", "yahoo.com", "baidu.com",
+    "yandex.com", "search.brave.com", "ecosia.org", "startpage.com",
+    "bit.ly", "t.co", "tinyurl.com", "goo.gl", "ow.ly", "buff.ly",
+    "is.gd", "rebrand.ly", "cutt.ly", "shorturl.at", "lnkd.in", "dlvr.it",
+})
+
+_IPV4_RE = re.compile(r"^\d{1,3}(\.\d{1,3}){3}$")
+
+
 def _domain(url: str) -> str:
     """Registrable-ish domain of a URL, for the independence test.
 
@@ -108,12 +130,60 @@ def _domain(url: str) -> str:
     # A usable source has a dotted domain; a dotless/garbage host is no source.
     if len(labels) < 2:
         return ""
+    # A bare IP is not a citable prior-art source, and taking its last two
+    # labels is actively wrong: 93.184.216.34 and 93.184.216.99 became two
+    # "independent" sources, while 1.2.3.4 and 9.9.3.4 both collapsed to "3.4".
+    # Neither reading is defensible, so an address literal witnesses nothing.
+    if _IPV4_RE.match(host):
+        return ""
     last2 = ".".join(labels[-2:])
     # Keep three labels when the last two are a known two-label public suffix,
     # so foo.co.uk and bar.co.uk stay distinct sources.
     if last2 in _TWO_LABEL_SUFFIXES and len(labels) >= 3:
         return ".".join(labels[-3:])
     return last2
+
+
+def _witnesses(hits: list[dict[str, Any]], claim: str) -> list[dict[str, Any]]:
+    """The hits that may actually count toward corroboration.
+
+    The old rule counted every returned domain. Nothing checked that a hit
+    *refuted*, *superseded*, or even *mentioned* the claim — so any two results
+    from any two sites promoted a machine-verified "prior work exists" nugget,
+    and a search engine returning its own related-topic links satisfied it about
+    every claim ever scanned.
+
+    Three filters, in increasing order of how much they matter:
+
+    * a parseable, non-address domain (see :func:`_domain`);
+    * not a known non-witness (search engines, shorteners);
+    * **shares at least one content word with the claim.**
+
+    That last one is deliberately loose — one word, not a threshold — because
+    the failure directions are not symmetric. Rejecting a genuine
+    differently-worded witness costs a contested gap, which asks a human to
+    look. Accepting an irrelevant one writes a nugget asserting prior art that
+    does not exist. Under-reporting is recoverable; the corpus asserting
+    something false is the thing this whole package exists not to do.
+
+    It does not defend against mirrors and reposts (the same article on two
+    sites is genuinely two domains), and it cannot: that needs content
+    comparison, not URL rules. Named here rather than left implied.
+    """
+    from ..corpus import _tokens  # stdlib-only; keeps this module network-free
+
+    claim_tokens = set(_tokens(claim))
+    if not claim_tokens:
+        return []
+    out = []
+    for h in hits:
+        domain = h.get("domain") or ""
+        if not domain or domain in _NON_WITNESS:
+            continue
+        text = f"{h.get('title') or ''} {h.get('snippet') or ''}"
+        if claim_tokens & set(_tokens(text)):
+            out.append(h)
+    return out
 
 
 def _gather(queries: list[str], searcher: Searcher, max_results: int) -> list[dict[str, Any]]:
@@ -168,14 +238,16 @@ def react(
 
     queries = frame_queries(claim, extra=event.get("queries"))
     hits = _gather(queries, searcher, max_results)
-    domains = sorted({h["domain"] for h in hits if h["domain"]})
+    # Corroboration counts *witnesses*, not results. A hit that never mentions
+    # the claim, or that comes from the search engine itself, is not evidence of
+    # prior art no matter which domain served it.
+    witnesses = _witnesses(hits, claim)
+    domains = sorted({h["domain"] for h in witnesses})
     corroborated = len(domains) >= min_sources
 
-    # Only URLs from a real (dotted) domain are sources — drop unparseable-URL
-    # hits so a human re-verifying "the sources" sees exactly what cleared the
-    # independent-domain bar, not query noise.
-    domain_set = set(domains)
-    sources = [h["url"] for h in hits if h["domain"] in domain_set]
+    # Sources are exactly the witnessing URLs, so a human re-verifying "the
+    # sources" sees precisely what cleared the bar — not query noise.
+    sources = [h["url"] for h in witnesses]
 
     tags = ["conflict-scan", "prior-art"] + [str(t) for t in (event.get("tags") or [])]
     proposals: list[dict[str, Any]] = []

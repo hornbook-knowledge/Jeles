@@ -68,10 +68,12 @@ def test_domain_keeps_two_label_public_suffixes_distinct():
 def test_sources_exclude_unparseable_urls_and_tag_machine():
     def searcher(q):
         if "supersedes" in q:
-            return [{"title": "ok", "url": "https://real-a.org/x"}]
+            return [{"title": "A signed registry", "url": "https://real-a.org/x",
+                     "snippet": "an existing signed registry"}]
         if "comparison" in q:
-            return [{"title": "ok", "url": "https://real-b.org/y"},
-                    {"title": "junk", "url": "not-a-url"}]   # no domain
+            return [{"title": "Signed registry designs", "url": "https://real-b.org/y",
+                     "snippet": "comparing signed registry designs"},
+                    {"title": "signed registry", "url": "not-a-url"}]   # no domain
         return []
     proposals = cs.react({"claim": "signed registry"}, searcher=searcher)
     assert proposals[0]["driver"] == "put_nugget"

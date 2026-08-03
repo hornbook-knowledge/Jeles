@@ -15,6 +15,7 @@ couldn't answer.
 | Module | Role |
 | --- | --- |
 | `jeles.corpus` | Pure storage + ranked lookup of verified nuggets and gap logging. **Stdlib-only, no MCP, no network at import.** Reuses willow-mcp's SOIL `Store` SQLite schema at `$WILLOW_STORE_ROOT/<collection>/store.db`. |
+| `jeles.reactions` | Pure `(event) -> [proposed actions]` handlers. `conflict_scan` searches for what *supersedes or refutes* a design claim rather than what resembles it, and proposes a nugget only when two **independent, relevant, non-excluded** domains corroborate it — otherwise a contested gap. `search_adapter` is its web edge. |
 | `jeles.corpus_server` | Standalone `MCPServer` (MCP SDK 2.x) over the corpus (`python -m jeles.corpus_server`). Mirrors willow-mcp's shape (`app_id` on every tool) **without depending on willow-mcp**. |
 | `jeles.sources` | **The institutional collections themselves** — ~65 source functions (arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian) plus the concurrent fan-out across them. **Stdlib-only.** |
 | `jeles.institutional` | The third hop: fans a query across `jeles.sources` in-process, and shapes results like every other hit. Optionally delegates to a hosted [`jeles-remote`](https://github.com/rudi193-cmd/jeles-remote) instead. |
