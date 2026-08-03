@@ -41,12 +41,13 @@ dependencies = []
 # Only corpus_server.py (top-level import) and willow_mcp_client.py (lazy,
 # inside a function) need the MCP SDK.
 #
-# Pinned <2.0.0 because `mcp.server.fastmcp` was REMOVED in SDK 2.0 — verified
-# against a real 2.0.0 install, corpus_server does not import there at all.
-# Until it is ported to `mcp.server.mcpserver.MCPServer`, `jeles[mcp]` cannot be
-# installed alongside willow-mcp. Base `jeles` can, and that is the lane that
-# matters for consuming this package.
-mcp = ["mcp>=1.6.0,<2.0.0"]
+# SDK 2.x: `mcp.server.fastmcp` was removed in 2.0 and corpus_server now uses
+# `mcp.server.mcpserver.MCPServer`. The floor is >=2.0 rather than a permissive
+# range because there is no shim — 1.x has no `mcp.server.mcpserver` at all, so
+# a range spanning both majors would install a broken combination half the time.
+# This is the same floor willow-mcp requires, so `jeles[mcp]` and willow-mcp
+# now co-install.
+mcp = ["mcp>=2.0.0,<3.0.0"]
 dev = ["pytest>=8.0", "jeles[mcp]"]
 
 [project.scripts]

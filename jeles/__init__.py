@@ -6,7 +6,7 @@ gap-forwarder, and the canonical Jeles persona can be consumed by any host.
 
 Public surface:
     corpus              — pure storage/ranking of verified nuggets + gaps
-    corpus_server       — standalone FastMCP server over the corpus
+    corpus_server       — standalone MCP server over the corpus (SDK 2.x)
     willow_mcp_client   — best-effort gap forwarding to willow-mcp
     load_persona()      — load the canonical Jeles persona JSON
 """
