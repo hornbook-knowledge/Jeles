@@ -1,0 +1,179 @@
+"""The release chain is four files that must agree, and every disagreement is silent.
+
+    release-please-config.json     decides the tag name and what cuts a release
+    .release-please-manifest.json  is the version it bumps from
+    .github/workflows/release-please.yml  opens and auto-merges the release PR
+    .github/workflows/release.yml  fires on a tag pattern and publishes
+
+Nothing joins them up at runtime. A mismatch does not raise — it means a
+release quietly does not happen, which this fleet has now done in four
+distinct ways: a tag pushed by a bot token that started no workflow, a
+`workflow_call` whose attestation and authentication disagreed, a `ci:` commit
+that published a version containing nothing installable, and a config that
+would have tagged `willow-mcp-v2.2.0` while the publish workflow listened for
+`v*`.
+
+This file is ported from willow-mcp, where that last one was caught by having
+auto-merge armed on the release PR. jeles happens to be configured correctly —
+so these are guards against a future edit, not a live bug.
+
+**Ported, not copied.** Two checks are deliberately inverted for this repo:
+jeles is below 1.0 and carries the pre-major bump flags that willow-mcp must
+not have, and jeles has no second version file to keep in step because nothing
+here stores a version at all. Getting those backwards is exactly the
+copy-paste failure the willow-mcp version was written after.
+"""
+from __future__ import annotations
+
+import fnmatch
+import json
+import re
+from pathlib import Path
+
+import pytest
+
+# tomllib is stdlib only from 3.11, and the matrix floor is 3.10 — where this
+# file would have failed to *collect*, taking every check in it down with it.
+# `tomli` is in the dev extra for that leg.
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover - 3.10 only
+    import tomli as tomllib
+
+yaml = pytest.importorskip("yaml", reason="PyYAML needed to read the workflows")
+
+_REPO = Path(__file__).resolve().parents[1]
+_CONFIG = _REPO / "release-please-config.json"
+_MANIFEST = _REPO / ".release-please-manifest.json"
+_RELEASE_WF = _REPO / ".github" / "workflows" / "release.yml"
+_RP_WF = _REPO / ".github" / "workflows" / "release-please.yml"
+
+
+def _json(path: Path) -> dict:
+    return json.loads(path.read_text())
+
+
+def _yaml(path: Path) -> dict:
+    return yaml.safe_load(path.read_text())
+
+
+def _package_config() -> dict:
+    return _json(_CONFIG)["packages"]["."]
+
+
+def test_the_tag_release_please_creates_matches_what_release_yml_listens_for():
+    """With `include-component-in-tag` unset it defaults to *true*, and the tag
+    becomes `<package-name>-vX.Y.Z` — which `v*` does not match, so the publish
+    workflow never runs and nothing reports an error. Observed on
+    willow-mcp#256, where the setting had been dropped when copying this repo's
+    config."""
+    cfg = _package_config()
+    version = _json(_MANIFEST)["."]
+
+    if cfg.get("include-component-in-tag", True):
+        tag = f"{cfg['package-name']}-v{version}"
+    else:
+        tag = f"v{version}"
+
+    # `on:` parses as the boolean True — PyYAML applies the YAML 1.1 rule.
+    patterns = list(_yaml(_RELEASE_WF)[True]["push"]["tags"])
+    assert any(fnmatch.fnmatch(tag, p) for p in patterns), (
+        f"release-please would create the tag {tag!r}, which matches none of "
+        f"release.yml's trigger patterns {patterns!r}. Nothing would publish, "
+        f"and nothing would report an error."
+    )
+
+
+def test_the_version_has_exactly_one_source():
+    """willow-mcp's equivalent check is that its manifest and
+    `.claude-plugin/plugin.json` agree, because that file carries a version
+    nothing derives — and it had already drifted.
+
+    jeles has no such file, and that is the property worth pinning: the tag is
+    the only place a version exists. `dynamic = ["version"]` plus hatch-vcs is
+    what makes that true, and a literal `version =` in pyproject or a hardcoded
+    `__version__` in the package would quietly become a second copy to drift.
+    """
+    pyproject = tomllib.loads((_REPO / "pyproject.toml").read_text())
+    assert "version" in (pyproject["project"].get("dynamic") or []), \
+        "project.version must stay dynamic — a literal is a second copy"
+    assert "version" not in pyproject["project"], \
+        "a literal project.version defeats the tag-derived scheme"
+    assert pyproject["tool"]["hatch"]["version"]["source"] == "vcs"
+
+    # No `extra-files` either: there is nothing for release-please to bump.
+    assert not _package_config().get("extra-files"), \
+        "nothing in this repo stores a version, so nothing needs bumping"
+
+    hardcoded = [
+        f"{p.relative_to(_REPO)}:{i}"
+        for p in (_REPO / "jeles").rglob("*.py")
+        for i, line in enumerate(p.read_text().splitlines(), 1)
+        if re.match(r"\s*__version__\s*=\s*[\"']", line)
+    ]
+    assert not hardcoded, f"hardcoded version string(s): {hardcoded}"
+
+
+def test_release_automation_uses_the_pat_everywhere():
+    """A bot token silently produces no workflow runs: the release PR merges,
+    no tag workflow fires, nothing publishes. This repo lost three releases to
+    that exact substitution — see the comment block in release-please.yml."""
+    steps = _yaml(_RP_WF)["jobs"]["release-please"]["steps"]
+
+    # Match `secrets.X` references only. A plain substring search would flag
+    # prose that names GITHUB_TOKEN while explaining why it is wrong.
+    used: set[str] = set()
+    for step in steps:
+        for value in list((step.get("env") or {}).values()) + \
+                     list((step.get("with") or {}).values()):
+            used.update(re.findall(r"secrets\.([A-Z_]+)", str(value)))
+
+    assert "RELEASE_PLEASE_TOKEN" in used, used
+    assert "GITHUB_TOKEN" not in used, (
+        "release-please and the auto-merge arming must both use the PAT — "
+        f"events generated with GITHUB_TOKEN start no workflow runs. Found: {used}"
+    )
+
+
+def test_auto_merge_waits_for_ci_rather_than_merging_directly():
+    """`--auto` is the part that makes the merge wait for the required checks.
+    A step that fell back to a plain `gh pr merge` on failure would publish off
+    an unverified commit, and a PyPI version can never be reused."""
+    steps = _yaml(_RP_WF)["jobs"]["release-please"]["steps"]
+    arming = [s for s in steps if "gh pr merge" in str(s.get("run", ""))]
+    assert arming, "no step arms auto-merge on the release PR"
+    for step in arming:
+        for line in step["run"].splitlines():
+            if "gh pr merge" in line and not line.strip().startswith("#"):
+                assert "--auto" in line, f"merge without --auto: {line.strip()}"
+                assert "--squash" not in line, "this repo does not squash-merge"
+
+
+def test_only_types_that_change_the_installed_package_cut_a_release():
+    """Every un-hidden type releases on its own — not just feat and fix. v0.4.1
+    was tagged and published for a single `ci:` commit that changed a workflow
+    file, which was survivable when a human merged the release PR and is not
+    now that auto-merge does."""
+    sections = _package_config()["changelog-sections"]
+    visible = {s["type"] for s in sections if not s.get("hidden")}
+    assert visible == {"feat", "fix", "security", "perf", "refactor",
+                       "build", "deps"}, visible
+    for t in ("docs", "test", "ci", "chore"):
+        assert next(s for s in sections if s["type"] == t).get("hidden") is True
+
+
+def test_this_package_is_below_1_0_so_it_keeps_the_pre_major_flags():
+    """**Inverted from willow-mcp deliberately.** There the same check asserts
+    these flags are *absent*, because a 2.x package needs a breaking change to
+    reach 3.0.0. Here they must be present: below 1.0 they keep `feat` at a
+    minor and a breaking change at a minor too, so reaching 1.0.0 stays a
+    decision someone makes rather than one a commit message makes."""
+    cfg = _package_config()
+    assert cfg.get("bump-minor-pre-major") is True
+    assert cfg.get("bump-patch-for-minor-pre-major") is False, \
+        "with this true, a fix would bump the minor instead of the patch"
+    version = _json(_MANIFEST)["."]
+    assert version.startswith("0."), (
+        f"manifest is {version} — at 1.0 these flags stop being correct and "
+        "should be removed, or every breaking change is capped at a minor"
+    )
