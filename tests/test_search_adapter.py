@@ -109,3 +109,98 @@ def test_end_to_end_react_with_stubbed_adapter(monkeypatch):
                          searcher=sa.make_searcher("searxng"))
     assert proposals[0]["driver"] == "put_nugget"
     assert proposals[0]["args"]["verified_by"] == cs.WITNESS
+
+
+# ── Legibility: telling "found nothing" apart from "could not look" ──────────
+#
+# Every failure used to return [] with no logging, so an unset key, an
+# unreachable host, a 403 and a genuinely empty result were one symptom with
+# four causes. These pin the difference.
+
+
+def test_describe_backend_flags_an_unconfigured_backend(monkeypatch):
+    monkeypatch.delenv("BRAVE_API_KEY", raising=False)
+    info = sa.describe_backend("brave")
+    assert info["configured"] is False
+    assert info["requires"] == "BRAVE_API_KEY"
+    assert "BRAVE_API_KEY" in info["reason"]
+
+
+def test_describe_backend_flags_ddg_as_shallow_even_though_it_works(monkeypatch):
+    """The trap: ddg needs no configuration, so it looks healthy. It is the
+    zero-config fallback and it cannot corroborate anything."""
+    info = sa.describe_backend("ddg")
+    assert info["configured"] is True
+    assert info["shallow"] is True
+    assert "shallow" in info["reason"] or "related topics" in info["reason"]
+
+
+def test_describe_backend_is_clean_when_properly_configured(monkeypatch):
+    monkeypatch.setenv("JELES_SEARXNG_URL", "http://127.0.0.1:8888")
+    info = sa.describe_backend("searxng")
+    assert (info["configured"], info["shallow"], info["reason"]) == (True, False, "")
+
+
+def test_describe_backend_makes_no_request(monkeypatch):
+    """It answers "can this even work?" — asking must not cost a round trip."""
+    def explode(*a, **k):
+        raise AssertionError("describe_backend must not touch the network")
+    monkeypatch.setattr(sa.urllib.request, "urlopen", explode)
+    monkeypatch.setenv("JELES_SEARXNG_URL", "http://127.0.0.1:8888")
+    assert sa.describe_backend("searxng")["configured"] is True
+
+
+def test_describe_backend_names_an_unknown_backend(monkeypatch):
+    info = sa.describe_backend("altavista")
+    assert info["configured"] is False and "altavista" in info["reason"]
+
+
+def test_search_with_status_separates_failure_from_emptiness(monkeypatch):
+    monkeypatch.setenv("JELES_SEARXNG_URL", "http://127.0.0.1:8888")
+
+    _stub_urlopen(monkeypatch, {"results": []})
+    empty = sa.search_with_status("q", "searxng")
+    assert (empty["ok"], empty["hits"], empty["error"]) == (True, [], "")
+
+    _stub_urlopen(monkeypatch, OSError("connection refused"))
+    broken = sa.search_with_status("q", "searxng")
+    assert broken["ok"] is False
+    assert broken["hits"] == []
+    assert "connection refused" in broken["error"]
+
+
+def test_search_with_status_explains_a_missing_key_rather_than_raising(monkeypatch):
+    monkeypatch.delenv("TAVILY_API_KEY", raising=False)
+    out = sa.search_with_status("q", "tavily")
+    assert out["ok"] is False
+    assert "TAVILY_API_KEY" in out["error"]
+
+
+def test_make_searcher_still_swallows_but_now_logs(monkeypatch, caplog):
+    """Corroboration depends on a failed search yielding no witness, so [] stays.
+    Silence does not."""
+    monkeypatch.setenv("JELES_SEARXNG_URL", "http://127.0.0.1:8888")
+    _stub_urlopen(monkeypatch, OSError("boom"))
+    with caplog.at_level("WARNING", logger="jeles.search"):
+        assert sa.make_searcher("searxng")("q") == []
+    assert "boom" in caplog.text
+    assert "q" in caplog.text, "the failing query should be identifiable"
+
+
+def test_make_searcher_warns_once_about_an_unconfigured_backend(monkeypatch, caplog):
+    """The configuration warning is per-searcher, not per-query — otherwise a
+    misconfigured backend floods the log and the signal is lost in itself."""
+    monkeypatch.delenv("BRAVE_API_KEY", raising=False)
+    search = sa.make_searcher("brave")
+    with caplog.at_level("WARNING", logger="jeles.search"):
+        search("one")
+        search("two")
+
+    config_warnings = [r for r in caplog.records if "search backend" in r.getMessage()]
+    assert len(config_warnings) == 1
+    assert "BRAVE_API_KEY" in config_warnings[0].getMessage()
+
+    # Each individual failure is still reported, so a per-query problem is not
+    # hidden by the once-only configuration notice.
+    failures = [r for r in caplog.records if "failed for" in r.getMessage()]
+    assert len(failures) == 2
