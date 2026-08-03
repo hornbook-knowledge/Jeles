@@ -28,6 +28,7 @@ import re
 import sqlite3
 import threading
 import uuid
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -89,12 +90,40 @@ def _conn(collection: str) -> sqlite3.Connection:
     with _lock:
         if key not in _conns:
             db_path.parent.mkdir(parents=True, exist_ok=True)
-            conn = sqlite3.connect(str(db_path), check_same_thread=False)
+            # isolation_level=None turns off the driver's implicit transaction
+            # handling so `_write` can take a real BEGIN IMMEDIATE. Without it,
+            # a read-modify-write is only as atomic as the in-process lock —
+            # which is nothing at all to a second process, and this store is
+            # explicitly designed to be shared with willow-mcp.
+            conn = sqlite3.connect(str(db_path), check_same_thread=False,
+                                   isolation_level=None)
+            # WAL lets readers run while a writer holds the database, and
+            # busy_timeout makes a contended write wait rather than raising
+            # `database is locked` out of put_nugget/ask_corpus — which no
+            # caller expects, since both are documented as returning dicts.
+            conn.execute("PRAGMA journal_mode=WAL")
+            conn.execute("PRAGMA busy_timeout=5000")
             conn.executescript(_SCHEMA)
             _migrate_records(conn)
-            conn.commit()
             _conns[key] = conn
         return _conns[key]
+
+
+@contextmanager
+def _write(conn: sqlite3.Connection):
+    """One atomic write, across processes as well as threads.
+
+    BEGIN IMMEDIATE takes the write lock up front, so a read inside this block
+    cannot be overtaken between the read and the write that follows it. The
+    module-level `_lock` only ever ordered threads within one interpreter.
+    """
+    conn.execute("BEGIN IMMEDIATE")
+    try:
+        yield conn
+    except BaseException:
+        conn.execute("ROLLBACK")
+        raise
+    conn.execute("COMMIT")
 
 
 def _now() -> str:
@@ -124,15 +153,34 @@ def _put(collection: str, record: dict[str, Any], record_id: str | None = None) 
     record = _clean(record)   # one chokepoint — covers nuggets and gaps alike
     with _lock:
         conn = _conn(collection)
-        existing = conn.execute("SELECT created_at FROM records WHERE id = ?", (rid,)).fetchone()
-        created = existing[0] if existing else now
-        conn.execute(
-            "INSERT OR REPLACE INTO records (id, data, created_at, updated_at, deleted) "
-            "VALUES (?, ?, ?, ?, 0)",
-            (rid, json.dumps(record), created, now),
-        )
-        conn.commit()
+        with _write(conn):
+            # `INSERT OR REPLACE` deletes the row and inserts a new one, so every
+            # column not named here reverted to its schema default. That silently
+            # reset willow-mcp's `deviation`/`action` — the very columns this
+            # module carries so the store stays mutually usable — and forced
+            # `deleted = 0`, resurrecting a soft-deleted record. An upsert that
+            # names only what jeles owns leaves the rest exactly as it found it,
+            # including `created_at`, which is why the read it used to need is
+            # gone. Same fix willow-mcp made in its own Store.put.
+            conn.execute(
+                "INSERT INTO records (id, data, created_at, updated_at, deleted) "
+                "VALUES (?, ?, ?, ?, 0) "
+                "ON CONFLICT(id) DO UPDATE SET "
+                "data = excluded.data, updated_at = excluded.updated_at",
+                (rid, json.dumps(record), now, now),
+            )
     return rid
+
+
+def _is_tombstoned(collection: str, record_id: str) -> bool:
+    """True when the row exists but is soft-deleted, so a write to it lands
+    invisibly. Nothing in jeles soft-deletes; this only occurs on a store shared
+    with willow-mcp, which is precisely the case worth not lying about."""
+    with _lock:
+        row = _conn(collection).execute(
+            "SELECT deleted FROM records WHERE id = ?", (record_id,)
+        ).fetchone()
+    return bool(row and row[0])
 
 
 def _get(collection: str, record_id: str) -> dict[str, Any] | None:
@@ -219,7 +267,16 @@ def put_nugget(
         "status": "verified",
         "verification_kind": kind,
     }
-    action = "updated" if (nugget_id and _get(NUGGETS_COLLECTION, nugget_id)) else "created"
+    # `_get` filters `deleted = 0`, so a soft-deleted id looked absent and the
+    # write reported "created" while landing on a tombstoned row that no reader
+    # will ever return. The write is not refused — refusing would let anyone who
+    # can soft-delete a record permanently deny the id — but it says so.
+    if nugget_id and _is_tombstoned(NUGGETS_COLLECTION, nugget_id):
+        action = "updated_tombstoned"
+    elif nugget_id and _get(NUGGETS_COLLECTION, nugget_id):
+        action = "updated"
+    else:
+        action = "created"
     rid = _put(NUGGETS_COLLECTION, record, record_id=nugget_id)
     return {"id": rid, "action": action}
 
@@ -404,16 +461,35 @@ def log_gap(question: str) -> dict[str, Any]:
     }))
     key = "|".join(tokens) + "##" + "|".join(short) if (tokens or short) else question.lower()
     gap_id = uuid.uuid5(uuid.NAMESPACE_URL, key).hex[:12]
-    existing = _get(GAPS_COLLECTION, gap_id)
-    record = {
-        "question": question,
-        "status": "unverified",
-        "asked_count": (existing or {}).get("asked_count", 0) + 1,
-        "first_asked_at": (existing or {}).get("first_asked_at") or _now(),
-        "last_asked_at": _now(),
-    }
-    rid = _put(GAPS_COLLECTION, record, record_id=gap_id)
-    return {"id": rid, "asked_count": record["asked_count"]}
+    now = _now()
+
+    # The read and the write are one transaction. Split across two, as they were,
+    # concurrent asks all read the same count and all write count+1: measured at
+    # 14 after 50 concurrent calls. `list_gaps` sorts by asked_count, so the
+    # corpus's growth queue was ordered by a number that quietly undercounted
+    # exactly the questions being asked most.
+    with _lock:
+        conn = _conn(GAPS_COLLECTION)
+        with _write(conn):
+            row = conn.execute(
+                "SELECT data FROM records WHERE id = ? AND deleted = 0", (gap_id,)
+            ).fetchone()
+            existing = json.loads(row[0]) if row else {}
+            record = _clean({
+                "question": question,
+                "status": "unverified",
+                "asked_count": int(existing.get("asked_count", 0)) + 1,
+                "first_asked_at": existing.get("first_asked_at") or now,
+                "last_asked_at": now,
+            })
+            conn.execute(
+                "INSERT INTO records (id, data, created_at, updated_at, deleted) "
+                "VALUES (?, ?, ?, ?, 0) "
+                "ON CONFLICT(id) DO UPDATE SET "
+                "data = excluded.data, updated_at = excluded.updated_at",
+                (gap_id, json.dumps(record), now, now),
+            )
+    return {"id": gap_id, "asked_count": record["asked_count"]}
 
 
 def list_gaps(limit: int = 50) -> list[dict[str, Any]]:

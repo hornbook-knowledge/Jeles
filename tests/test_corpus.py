@@ -236,3 +236,112 @@ def test_a_lower_ranked_but_confident_nugget_is_not_lost(corpus):
     asked = corpus.ask_corpus("What is the refund policy?")
     assert asked["found"] is True
     assert asked["nugget"]["answer"] == "Refunds within 30 days."
+
+
+# ── The write path ──────────────────────────────────────────────────────────
+#
+# `_put` used INSERT OR REPLACE, which deletes the row and inserts a new one —
+# so every column it did not name reverted to its schema default. Each case
+# below was verified broken before the fix.
+
+
+def _raw(corpus, rid, column):
+    return corpus._conn(corpus.NUGGETS_COLLECTION).execute(
+        f"SELECT {column} FROM records WHERE id = ?", (rid,)).fetchone()[0]
+
+
+def test_a_jeles_write_preserves_willow_mcp_columns(corpus):
+    """The module carries `deviation`/`action` precisely so the store stays
+    usable from both sides. Every jeles write used to reset them, making it
+    compatible in exactly one direction — which is not compatible."""
+    rid = _seed_grove(corpus)["id"]
+    corpus._conn(corpus.NUGGETS_COLLECTION).execute(
+        "UPDATE records SET deviation = 0.87, action = 'escalate' WHERE id = ?", (rid,))
+
+    corpus.put_nugget("What's the primary color in Grove?", "Updated.",
+                      ["s"], "designer", nugget_id=rid)
+
+    assert _raw(corpus, rid, "deviation") == 0.87
+    assert _raw(corpus, rid, "action") == "escalate"
+
+
+def test_a_re_put_does_not_resurrect_a_soft_deleted_record(corpus):
+    """`deleted` was hardcoded to 0 on every write, so anyone who could write
+    could undo a delete."""
+    rid = _seed_grove(corpus)["id"]
+    corpus._conn(corpus.NUGGETS_COLLECTION).execute(
+        "UPDATE records SET deleted = 1 WHERE id = ?", (rid,))
+
+    result = corpus.put_nugget("What's the primary color in Grove?", "Sneaky.",
+                               ["s"], "designer", nugget_id=rid)
+
+    assert _raw(corpus, rid, "deleted") == 1, "the tombstone must survive a write"
+    assert corpus.get_nugget(rid).get("error"), "and the record stays invisible"
+    # Not refused — refusing would let anyone who can soft-delete permanently
+    # deny an id — but not reported as a create either.
+    assert result["action"] == "updated_tombstoned"
+
+
+def test_created_at_survives_an_update(corpus):
+    rid = _seed_grove(corpus)["id"]
+    created = corpus.get_nugget(rid)["_created"]
+    corpus.put_nugget("What's the primary color in Grove?", "Updated.",
+                      ["s"], "designer", nugget_id=rid)
+    assert corpus.get_nugget(rid)["_created"] == created
+
+
+def test_concurrent_asks_do_not_lose_gap_counts(corpus):
+    """`log_gap` read the count and wrote count+1 in two separate transactions,
+    so concurrent asks all read the same number: measured 14 after 50 calls.
+    `list_gaps` sorts by this, so the growth queue was ordered by a number that
+    undercounted exactly the questions being asked most."""
+    import threading
+
+    question = "what is the accent color in Tokyo Night?"
+    threads = [threading.Thread(target=corpus.log_gap, args=(question,))
+               for _ in range(50)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    gap = [g for g in corpus.list_gaps() if "Tokyo Night" in g["question"]][0]
+    assert gap["asked_count"] == 50
+
+
+def test_concurrent_asks_produce_one_gap_not_fifty(corpus):
+    import threading
+
+    threads = [threading.Thread(target=corpus.log_gap, args=("one shared question",))
+               for _ in range(20)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert len([g for g in corpus.list_gaps() if g["question"] == "one shared question"]) == 1
+
+
+def test_the_store_is_in_wal_mode(corpus):
+    """WAL lets a reader run while a writer holds the database. Without it, a
+    willow-mcp reader and a jeles writer on the shared store raise
+    `database is locked` out of functions documented to return dicts."""
+    _seed_grove(corpus)
+    mode = corpus._conn(corpus.NUGGETS_COLLECTION).execute(
+        "PRAGMA journal_mode").fetchone()[0]
+    assert mode.lower() == "wal"
+
+
+def test_a_failed_write_rolls_back(corpus):
+    """`_write` must not leave a half-applied transaction behind."""
+    import pytest as _pytest
+
+    conn = corpus._conn(corpus.NUGGETS_COLLECTION)
+    before = conn.execute("SELECT COUNT(*) FROM records").fetchone()[0]
+    with _pytest.raises(RuntimeError):
+        with corpus._write(conn):
+            conn.execute(
+                "INSERT INTO records (id, data, created_at, updated_at, deleted) "
+                "VALUES ('x', '{}', 'n', 'n', 0)")
+            raise RuntimeError("boom")
+    assert conn.execute("SELECT COUNT(*) FROM records").fetchone()[0] == before
