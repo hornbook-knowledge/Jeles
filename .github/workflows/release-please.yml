@@ -6,10 +6,18 @@ name: Release Please
 # there. Merging that PR creates the tag AND a GitHub Release, and the Release
 # is what fires `release.yml`.
 #
-# Why the GitHub Release and not the tag: a tag pushed by GITHUB_TOKEN does not
-# trigger other workflows (GitHub's recursion guard). `release.yml` therefore
-# listens for `release: published` as well as `push: tags`, so both the
-# automated path and a human `git push origin vX.Y.Z` still publish.
+# CAVEAT — the last hop is NOT automatic yet. GitHub suppresses workflow runs
+# for any event generated with GITHUB_TOKEN, and that covers `release:
+# published`, not just `push: tags`. So merging the release PR creates the tag
+# and the Release, and `release.yml` does not run. v0.2.0 landed exactly there:
+# tagged, released, absent from PyPI.
+#
+# Until that is resolved, publish with `release.yml`'s workflow_dispatch, giving
+# it the tag release-please created. The two durable fixes are (a) run the build
+# and publish steps here, gated on this action's `release_created` output, which
+# needs a second PyPI trusted publisher registered against THIS filename, or
+# (b) give this action a PAT instead of GITHUB_TOKEN, after which the tag push
+# and the Release both trigger workflows normally.
 #
 # The version itself is not stored anywhere — hatch-vcs derives it from the tag
 # (see [tool.hatch.version]). That is why `release-type: simple` is correct
