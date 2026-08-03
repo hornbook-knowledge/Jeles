@@ -30,6 +30,7 @@ import threading
 import uuid
 from contextlib import contextmanager
 from datetime import datetime, timezone
+from itertools import pairwise
 from pathlib import Path
 from typing import Any
 
@@ -243,11 +244,70 @@ _STOP = {
 }
 
 
+# The old class was `[a-z0-9][a-z0-9_-]{2,}` — ASCII-only, minimum three
+# characters. Both halves made questions *permanently* unanswerable, because
+# `_ranked` returns [] on an empty token list and `ask_corpus` then logs a gap:
+# measured on this store, three of four nuggets stored and asked back with the
+# byte-identical string returned found=False and filed a gap each time. So the
+# growth queue filled with questions the corpus already had answers to.
+#
+#   '¿Cuál es el color primario?' -> ['color', 'primario']   ("cuál" cut at the á)
+#   '什么是主色?'                   -> []
+#   'Is it up?' / 'AI vs ML?'     -> []
+#
+# Three rules, in the order they apply:
+#
+# 1. Word characters are Unicode. `[^\W_]` is "alnum, not underscore" — the
+#    Unicode equivalent of the old `[a-z0-9]` — so accented Latin, Cyrillic and
+#    Greek words survive whole instead of being truncated at the first
+#    non-ASCII byte: 'naïve résumé' was ['sum'] and is ['naïve', 'résumé'],
+#    'Какой основной цвет?' was [] and is three tokens. This *does* change the
+#    tokens of already-stored non-ASCII text, which is the point of the fix;
+#    pure-ASCII text is untouched, since `[^\W_][\w-]{2,}` and
+#    `[a-z0-9][a-z0-9_-]{2,}` agree on every ASCII string.
+# 2. CJK is cut into character bigrams. Chinese, Japanese and Korean are not
+#    space-delimited, so a word-boundary tokenizer returns one token per run
+#    (all-or-nothing matching) or, with the ASCII class, nothing. Bigrams are
+#    the cheap standard fallback: they make the identical-string case match
+#    exactly, and give `search_nuggets` partial credit for a shared phrase.
+#    They are not segmentation — see the limit recorded on `_confidence`.
+# 3. The three-character minimum stays; a text that yields *no* token under
+#    rules 1-2 falls back to its short words instead. Deliberately conditional:
+#    lowering the minimum globally would re-tokenize every nugget and shift
+#    every ranking, and it would break `log_gap`'s short-code segment
+#    (tests/test_hardening.py). Conditional means the fallback only ever adds
+#    tokens where there were none, and never reweights an existing question.
+_CJK_RE = re.compile(
+    "[\u3040-\u30ff"    # hiragana + katakana
+    "\u3400-\u4dbf"     # CJK unified ideographs extension A
+    "\u4e00-\u9fff"     # CJK unified ideographs
+    "\uf900-\ufaff"     # CJK compatibility ideographs
+    "\uac00-\ud7af]+"   # hangul syllables
+)
+_WORD_RE = re.compile(r"[^\W_][\w-]{2,}")
+_SHORT_RE = re.compile(r"[^\W_][\w-]*")
+
+
 def _tokens(text: str) -> list[str]:
-    return [
-        t for t in re.findall(r"[a-z0-9][a-z0-9_-]{2,}", (text or "").lower())
-        if t not in _STOP
-    ]
+    """Content tokens, in the order they appear. Order is load-bearing for
+    `log_gap`, which keys on bigrams of this list."""
+    lowered = (text or "").lower()
+    raw: list[str] = []
+    pos = 0
+    for match in _CJK_RE.finditer(lowered):
+        raw.extend(_WORD_RE.findall(lowered[pos:match.start()]))
+        run = match.group(0)
+        # range(max(1, n-1)) so a one-character run yields that character
+        # rather than nothing.
+        raw.extend(run[i:i + 2] for i in range(max(1, len(run) - 1)))
+        pos = match.end()
+    raw.extend(_WORD_RE.findall(lowered[pos:]))
+    tokens = [t for t in raw if t not in _STOP]
+    if tokens:
+        return tokens
+    # Rule 3. Reached only by a question made entirely of short words — "Is it
+    # up?", "AI vs ML?" — which used to tokenize to nothing at all.
+    return [t for t in _SHORT_RE.findall(lowered) if t not in _STOP]
 
 
 # ── Nuggets ──────────────────────────────────────────────────────────────
@@ -419,6 +479,13 @@ def _confidence(nugget: dict[str, Any], query_tokens: list[str]) -> float:
        says "I don't know yet" rather than answering a question nobody asked.
 
     Returns 0.0 when the nugget cannot answer the question as asked.
+
+    A limit worth naming, since it is what CJK support here amounts to: `_tokens`
+    cuts CJK into character bigrams rather than segmenting words, so a rephrased
+    CJK question almost always carries a bigram straddling the changed words —
+    and rule 1 makes any such bigram disqualifying. In practice CJK matches
+    near-identical questions and refuses the rest. That is a real gap in recall,
+    not a wrong answer, which is the side of the tradeoff this module takes.
     """
     if not query_tokens:
         return 0.0
@@ -548,23 +615,88 @@ def to_search_hit(nugget: dict[str, Any], idx: int = 0) -> dict[str, Any]:
 # ── Gaps ("I don't know yet") ───────────────────────────────────────────
 
 
+#: How many alternative phrasings of one gap to keep. A gap record is a queue
+#: item, not an audit log: enough phrasings to see the shape of the demand,
+#: bounded so a gap asked ten thousand times cannot grow its row without limit.
+_MAX_GAP_VARIANTS = 8
+
+
+def _gap_key(question: str) -> str:
+    """The identity of a gap: content tokens, their adjacency, and short codes.
+
+    Rephrasings must merge — that is the feature this key exists for. The old
+    key was `sorted(set(_tokens(question)))`, and sorting is what made
+    rephrasings merge *and* what merged questions whose meaning is their word
+    order:
+
+        "how do I migrate from postgres to mysql?" -> d2ceaf6ce807, count 1
+        "how do I migrate from mysql to postgres?" -> d2ceaf6ce807, count 2
+
+    One gap for two opposite migrations, its stored `question` overwritten by
+    whichever was asked last.
+
+    So the key carries three segments:
+
+    * the token set — unchanged, this is what merges rephrasings;
+    * the set of adjacent token pairs, which is what "postgres to mysql" and
+      "mysql to postgres" differ in (`{migrate>postgres, postgres>mysql}` vs
+      `{migrate>mysql, mysql>postgres}`) while "Does drug A interact with X?"
+      and "With X, does drug A interact?" do not (`{drug>interact}` for both —
+      moving a whole phrase leaves the content tokens adjacent in the same
+      order);
+    * short codes, which `_tokens` drops, so "drug A" and "drug B" stay apart.
+
+    Adjacency rather than full order is a deliberate choice between two ways to
+    be wrong. Keying on the full token order would split every reordering,
+    including the rephrasings; keying on the set alone destroys a question.
+    Adjacency splits *some* genuine rephrasings — "the accent color in Nord"
+    and "the Nord accent color" now produce two gap rows — and that is the
+    error worth having, because a duplicate row is visible and mergeable while
+    an overwritten question is gone. `log_gap` also stops overwriting
+    `question`, so the phrasings survive whatever this key still merges.
+
+    Known limit: the short-code segment is an unordered set, so a question whose
+    direction is carried entirely by short codes still merges — "migrate from v1
+    to v2" and "migrate from v2 to v1" share the one content token `migrate`
+    (no pairs) and the codes {v1, v2}. Both phrasings are kept in `variants`;
+    the count is still shared.
+
+    Changing the key changes every gap id, so gap rows written by the old key
+    will never be hit again: they stay in `list_gaps` with their historical
+    counts and the next ask of the same question opens a fresh row at 1. No
+    backfill is written, because this package has never been published (see
+    pyproject's [tool.hatch.version] note — no tags, no release), so the only
+    stores affected are development ones.
+    """
+    tokens = _tokens(question)
+    unique = sorted(set(tokens))
+    pairs = sorted({f"{a}>{b}" for a, b in pairwise(tokens)})
+    short = sorted({
+        t for t in _SHORT_RE.findall(question.lower())
+        if len(t) < 3 and t not in _STOP
+    })
+    if not (unique or short):
+        # Nothing tokenized at all (punctuation, emoji): fall back to the text.
+        return question.lower()
+    return "\n".join(("|".join(unique), "|".join(pairs), "|".join(short)))
+
+
 def log_gap(question: str) -> dict[str, Any]:
     """Log an unanswered question. Repeated asks bump asked_count instead of
-    creating duplicates, keyed by the question's normalized token set."""
+    creating duplicates, keyed by :func:`_gap_key` — the question's content
+    tokens, the adjacent pairs among them, and its short codes.
+
+    The record keeps the *first* phrasing seen as `question`; later phrasings
+    that land on the same key are appended to `variants` (up to
+    ``_MAX_GAP_VARIANTS``) rather than replacing it. Overwriting it erased the
+    earlier question outright, so someone working the queue answered the
+    surviving phrasing and the other was gone, still unanswered, its count
+    folded into a number that then overstated demand for the one left.
+    """
     question = (question or "").strip()
     if not question:
         return {"error": "question required"}
-    tokens = tuple(sorted(set(_tokens(question))))
-    # _tokens drops <3-char tokens, so "drug A" and "drug B" both reduce to
-    # {"drug"} and collide, silently overwriting the earlier gap. Keep the short
-    # meaning-bearing codes (single letters, "P0", "v2" — not stopwords) as an
-    # extra key segment; rephrasings that share the main token set still merge.
-    short = tuple(sorted({
-        t for t in re.findall(r"[a-z0-9]+", (question or "").lower())
-        if len(t) < 3 and t not in _STOP
-    }))
-    key = "|".join(tokens) + "##" + "|".join(short) if (tokens or short) else question.lower()
-    gap_id = uuid.uuid5(uuid.NAMESPACE_URL, key).hex[:12]
+    gap_id = uuid.uuid5(uuid.NAMESPACE_URL, _gap_key(question)).hex[:12]
     now = _now()
 
     # The read and the write are one transaction. Split across two, as they were,
@@ -579,13 +711,19 @@ def log_gap(question: str) -> dict[str, Any]:
                 "SELECT data FROM records WHERE id = ? AND deleted = 0", (gap_id,)
             ).fetchone()
             existing = json.loads(row[0]) if row else {}
+            first = existing.get("question") or question
+            variants = list(existing.get("variants") or [])
+            if question != first and question not in variants:
+                variants = [*variants[: _MAX_GAP_VARIANTS - 1], question]
             record = _clean({
-                "question": question,
+                "question": first,
                 "status": "unverified",
                 "asked_count": int(existing.get("asked_count", 0)) + 1,
                 "first_asked_at": existing.get("first_asked_at") or now,
                 "last_asked_at": now,
             })
+            if variants:
+                record["variants"] = _clean(variants)
             conn.execute(
                 "INSERT INTO records (id, data, created_at, updated_at, deleted) "
                 "VALUES (?, ?, ?, ?, 0) "

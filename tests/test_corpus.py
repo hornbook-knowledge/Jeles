@@ -474,3 +474,152 @@ def test_a_legacy_nugget_without_a_kind_is_human(corpus):
     assert corpus.to_search_hit(corpus.get_nugget(rid))["confidence"] == "verified"
     assert corpus.put_nugget("q?", "a", ["s"], "x", nugget_id=rid,
                              verification_kind="machine")["error"] == "kind_downgrade_refused"
+
+
+# ── A question the corpus holds must be answerable in the language it is in ──
+#
+# `_tokens` was `[a-z0-9][a-z0-9_-]{2,}` minus stopwords: ASCII-only, three
+# characters minimum. `_ranked` returns [] when a query yields no tokens, so
+# `ask_corpus` could not answer such a question at all — it logged a gap
+# instead. Measured before the fix, storing four nuggets and asking each back
+# with the byte-identical string: three returned found=False and filed a gap,
+# so the growth queue collected questions the corpus already answered.
+
+
+@pytest.mark.parametrize("question", [
+    "什么是主色?",                        # Chinese — unspaced, so zero ASCII tokens
+    "主色は何ですか?",                     # Japanese
+    "주요 색상은 무엇입니까?",               # Korean
+    "¿Cuál es el color primario?",      # accented Latin — "cuál" was cut at the á
+    "Is it up?",                        # every content word under three chars
+    "AI vs ML?",
+])
+def test_a_stored_question_answers_itself(corpus, question):
+    """The headline failure: a nugget asked back with its own text returned
+    found=False and filed a gap for a question that was already in the corpus."""
+    _seed(corpus, question, "The answer.")
+
+    asked = corpus.ask_corpus(question)
+
+    assert asked["found"] is True, f"tokenized to {corpus._tokens(question)}"
+    assert corpus.list_gaps() == [], "an answerable question must not file a gap"
+
+
+def test_accented_words_are_not_truncated(corpus):
+    """`[a-z0-9]` stopped at the first non-ASCII byte, so "cuál" produced no
+    token at all (the `c`+`u` prefix is one character short of the minimum)."""
+    assert corpus._tokens("¿Cuál es el color primario?") == ["cuál", "color", "primario"]
+
+
+def test_cjk_is_cut_into_character_bigrams(corpus):
+    """CJK is not space-delimited, so there is no word boundary to tokenize on.
+    Bigrams are what let `search_nuggets` give partial credit for a shared
+    phrase rather than matching whole runs all-or-nothing."""
+    assert corpus._tokens("什么是主色?") == ["什么", "么是", "是主", "主色"]
+
+
+@pytest.mark.parametrize("text, expected", [
+    ("What's the primary color in Grove?", ["primary", "color", "grove"]),
+    ("How do I rotate the staging database password?",
+     ["rotate", "staging", "database", "password"]),
+    ("Is the flu vaccine safe during pregnancy?",
+     ["flu", "vaccine", "safe", "during", "pregnancy"]),
+])
+def test_the_short_word_fallback_only_fires_when_nothing_else_matched(corpus, text, expected):
+    """The three-character minimum is not lowered globally, only fallen back
+    from. Lowering it would re-tokenize every nugget and shift every ranking;
+    falling back means the short words are reached only where there were no
+    tokens at all, so an ASCII question that already tokenized is unchanged."""
+    assert corpus._tokens(text) == expected
+
+
+# The discrimination rule is unchanged in the newly-reachable languages:
+# answering wrongly is still worse than not answering.
+
+
+def test_a_different_cjk_question_is_still_refused(corpus):
+    """"什么是强调色" (accent colour) shares its leading bigrams with
+    "什么是主色" (primary colour) and differs in the ones carrying the subject."""
+    _seed(corpus, "什么是主色?", "白色。")
+    assert corpus.ask_corpus("什么是强调色?")["found"] is False
+
+
+def test_a_different_short_question_is_still_refused(corpus):
+    _seed(corpus, "AI vs ML?", "Different fields.")
+    assert corpus.ask_corpus("AI vs BI?")["found"] is False
+
+
+def test_reaching_short_words_did_not_soften_the_english_discrimination(corpus):
+    """The cases the repo already fixed, re-asserted against the new tokenizer:
+    a token the nugget's question lacks is still disqualifying, and a query far
+    broader than the nugget still scores under MIN_ASK_SCORE."""
+    _seed(corpus, "How do I rotate the staging database password?",
+          "Run `ops rotate --env staging`.", tags=["production", "rotate"])
+    _seed(corpus, "Is the flu vaccine safe during pregnancy?", "Yes.")
+
+    assert corpus.ask_corpus(
+        "How do I rotate the production database password?")["found"] is False
+    assert corpus.ask_corpus("Is the covid vaccine safe during pregnancy?")["found"] is False
+    assert corpus.ask_corpus("vaccine")["found"] is False
+
+
+# ── A gap's identity ────────────────────────────────────────────────────────
+#
+# `log_gap` keyed on `sorted(set(_tokens(question)))`. Sorting is what merges
+# rephrasings — the feature — and it is also what merged two opposite
+# migrations into gap d2ceaf6ce807 with asked_count 2, storing only the
+# question asked last. The first question was erased from the record entirely.
+
+
+def test_opposite_order_questions_are_separate_gaps(corpus):
+    a = corpus.log_gap("how do I migrate from postgres to mysql?")
+    b = corpus.log_gap("how do I migrate from mysql to postgres?")
+
+    assert a["id"] != b["id"]
+    assert a["asked_count"] == 1 and b["asked_count"] == 1
+    # Both question texts survive — neither was overwritten by the other.
+    assert {g["question"] for g in corpus.list_gaps()} == {
+        "how do I migrate from postgres to mysql?",
+        "how do I migrate from mysql to postgres?",
+    }
+
+
+def test_a_rephrasing_still_merges_into_one_gap(corpus):
+    """Merging rephrasings is why the key is token-based at all. Moving a whole
+    phrase leaves the content tokens adjacent in the same order, so it merges."""
+    a = corpus.log_gap("Does drug A interact with X?")
+    b = corpus.log_gap("With X, does drug A interact?")
+
+    assert a["id"] == b["id"]
+    assert b["asked_count"] == 2
+    assert len(corpus.list_gaps()) == 1
+
+
+def test_a_merged_gap_keeps_the_first_phrasing_and_records_the_rest(corpus):
+    """What the key still merges must not cost a question. "v1"/"v2" are short
+    codes, and the short-code segment is an unordered set, so these two do share
+    a gap — but both phrasings are in the record."""
+    corpus.log_gap("how do I migrate from v1 to v2?")
+    corpus.log_gap("how do I migrate from v2 to v1?")
+
+    gap = corpus.list_gaps()[0]
+    assert gap["asked_count"] == 2
+    assert gap["question"] == "how do I migrate from v1 to v2?"
+    assert gap["variants"] == ["how do I migrate from v2 to v1?"]
+
+
+def test_the_variant_list_is_bounded(corpus):
+    """A gap record is a queue item, not an audit log: a question asked with a
+    new phrasing every time must not grow its row without limit."""
+    # Every prefix is made only of stopwords, so all twelve share one gap key.
+    prefixes = ["what is", "can you show", "would you find", "did you have",
+                "how about", "which was", "please tell", "who has", "why is",
+                "when did", "where are", "should you give"]
+    for prefix in prefixes:
+        corpus.log_gap(f"{prefix} the accent color in tokyo night?")
+
+    assert len(corpus.list_gaps()) == 1
+    gap = corpus.list_gaps()[0]
+    assert gap["asked_count"] == 12
+    assert gap["question"] == "what is the accent color in tokyo night?"
+    assert len(gap["variants"]) == corpus._MAX_GAP_VARIANTS
