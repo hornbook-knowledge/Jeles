@@ -15,16 +15,13 @@ releases the way a hand-kept changelog can.
 ### Fixed
 
 * extras went to the wrong jobs — no-extras is pure again ([3006ed9](https://github.com/rudi193-cmd/Jeles/commit/3006ed94268fc9150c68b00667d64e2b54088595))
-* make the search edge say why it found nothing ([cd6faef](https://github.com/rudi193-cmd/Jeles/commit/cd6faef3baaba2d9615848f0b8748ed0a554bceb))
 * make the search edge say why it found nothing ([68b103b](https://github.com/rudi193-cmd/Jeles/commit/68b103be2c62098115c1e12509c6329a6600f8b8))
 
 
 ### CI
 
 * add a workflow_dispatch recovery path to release.yml ([9569d2a](https://github.com/rudi193-cmd/Jeles/commit/9569d2a0d9203b8f2f6647e7d183cba87d4ae800))
-* call release.yml from release-please instead of hoping to trigger it ([4177744](https://github.com/rudi193-cmd/Jeles/commit/41777445cc02b56d3f02a6aa6d8ffc58193b5a54))
 * call release.yml from release-please instead of hoping to trigger it ([ecb40d9](https://github.com/rudi193-cmd/Jeles/commit/ecb40d96f2d9b65a217af8d6a2f3f31b81bfbd6a))
-* coverage floor at 80 — measured 85.8%; tests run with the SDK ([44527fd](https://github.com/rudi193-cmd/Jeles/commit/44527fde60e7544a2944a9d4a5bbc3d46529830c))
 * coverage floor at 80 — measured 85.8%; tests run with the SDK ([e9328c9](https://github.com/rudi193-cmd/Jeles/commit/e9328c9ca88881e273764819b9cceea77cdbc86b))
 
 ## [0.2.0](https://github.com/rudi193-cmd/Jeles/compare/v0.1.0...v0.2.0) (2026-08-03)
