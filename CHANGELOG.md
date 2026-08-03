@@ -9,6 +9,21 @@ maintained by release-please, which builds each entry from the
 conventional-commit prefixes on `master` — so it cannot go stale between
 releases the way a hand-kept changelog can.
 
+## [0.2.1](https://github.com/rudi193-cmd/Jeles/compare/v0.2.0...v0.2.1) (2026-08-03)
+
+
+### Fixed
+
+* extras went to the wrong jobs — no-extras is pure again ([3006ed9](https://github.com/rudi193-cmd/Jeles/commit/3006ed94268fc9150c68b00667d64e2b54088595))
+* make the search edge say why it found nothing ([68b103b](https://github.com/rudi193-cmd/Jeles/commit/68b103be2c62098115c1e12509c6329a6600f8b8))
+
+
+### CI
+
+* add a workflow_dispatch recovery path to release.yml ([9569d2a](https://github.com/rudi193-cmd/Jeles/commit/9569d2a0d9203b8f2f6647e7d183cba87d4ae800))
+* call release.yml from release-please instead of hoping to trigger it ([ecb40d9](https://github.com/rudi193-cmd/Jeles/commit/ecb40d96f2d9b65a217af8d6a2f3f31b81bfbd6a))
+* coverage floor at 80 — measured 85.8%; tests run with the SDK ([e9328c9](https://github.com/rudi193-cmd/Jeles/commit/e9328c9ca88881e273764819b9cceea77cdbc86b))
+
 ## [0.2.0](https://github.com/rudi193-cmd/Jeles/compare/v0.1.0...v0.2.0) (2026-08-03)
 
 
