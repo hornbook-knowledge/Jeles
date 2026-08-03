@@ -59,3 +59,51 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+      # Arm auto-merge on the release PR, so a release ships when CI goes green
+      # instead of when someone remembers it is sitting there. Re-armed on every
+      # push to master, which is also the self-heal: release-please rewrites the
+      # PR as commits land, and this puts the arming back either way.
+      #
+      # `RELEASE_PLEASE_TOKEN`, and NOT `GITHUB_TOKEN`. This is point 1 of the
+      # comment block above, one step further along the chain: GitHub attributes
+      # an auto-merge to whoever armed it, so a merge armed with GITHUB_TOKEN
+      # generates no workflow runs. The release PR would merge, this workflow
+      # would not run again, and the tag that publishes to PyPI would never be
+      # created — silently, which is how the first three attempts failed.
+      - name: Arm auto-merge on the release PR
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          pr=$(gh pr list --repo "$REPO" --state open --json number,headRefName \
+                 --jq '[.[] | select(.headRefName | startswith("release-please--"))]
+                       | first | .number // empty')
+          if [ -z "$pr" ]; then
+            echo "No open release PR — nothing releasable since the last tag."
+            exit 0
+          fi
+
+          echo "Arming auto-merge on release PR #${pr}"
+          if gh pr merge --auto --merge "$pr" --repo "$REPO"; then
+            exit 0
+          fi
+
+          # Do not fall back to merging directly. `--auto` is what makes the
+          # merge wait for CI; merging here instead would publish to PyPI off an
+          # unverified commit, and a PyPI version can never be reused or
+          # replaced. Fail loudly and say what to fix.
+          cat <<'MSG'
+          ::error::Could not arm auto-merge on the release PR.
+
+          Both of these must hold, and GitHub refuses silently-ish otherwise:
+            1. Settings -> General -> "Allow auto-merge" is enabled.
+            2. master's branch protection requires at least one status check
+               (this repo's is the aggregate `test` job). With no required
+               check there is nothing for auto-merge to wait on, so GitHub
+               declines to arm it at all.
+
+          Releases will keep working — the PR is still there to merge by hand.
+          MSG
+          exit 1
