@@ -16,6 +16,14 @@ Design choices, all in the box's grain:
   best-effort HTML). Any network/parse error yields ``[]``, which conflict_scan
   already treats as "no witness → contested gap" — a failed search never forges
   corroboration.
+* **Fail-soft, not silent.** Returning ``[]`` for an unset API key, an
+  unreachable host, a 403 and a genuinely empty result gave one symptom —
+  "nothing found" — four causes, and no way to tell which. The swallowing stays
+  (corroboration depends on a failed search yielding no witness), but failures
+  now log at WARNING, an unconfigured or shallow backend says so on first use,
+  and :func:`search_with_status` returns the reason as data for callers that
+  need to act on it. :func:`describe_backend` answers "can this even work?"
+  without making a request.
 * **The perimeter is the operator's choice.** This default does *raw* egress
   (through ``HTTPS_PROXY`` if the environment sets one). In a gated deployment,
   don't use it — inject a searcher that routes through willow-mcp's three-key
@@ -27,10 +35,13 @@ Design choices, all in the box's grain:
 from __future__ import annotations
 
 import json
+import logging
 import os
 import urllib.parse
 import urllib.request
 from typing import Any, Callable
+
+log = logging.getLogger("jeles.search")
 
 Searcher = Callable[[str], list[dict[str, Any]]]
 
@@ -137,6 +148,87 @@ def _default_backend_name() -> str:
     return "searxng" if os.environ.get("JELES_SEARXNG_URL") else "ddg"
 
 
+# Which env var makes each backend usable, and whether it can answer properly
+# once it is. `ddg` is deliberately marked shallow: it needs no configuration,
+# which is why it is the zero-config fallback, but the Instant-Answer endpoint
+# returns related topics rather than a result page. It is a placeholder, not a
+# search engine, and describe_backend() says so rather than letting a caller
+# infer depth from the absence of an error.
+_REQUIRES: dict[str, str | None] = {
+    "searxng": "JELES_SEARXNG_URL",
+    "brave": "BRAVE_API_KEY",
+    "tavily": "TAVILY_API_KEY",
+    "ddg": None,
+}
+_SHALLOW = frozenset({"ddg"})
+
+
+def describe_backend(backend: str | None = None) -> dict[str, Any]:
+    """Report which backend is selected and whether it can actually answer.
+
+    The blind spot this exists for: ``make_searcher`` returns ``[]`` for an
+    unset API key, an unreachable host, a 403 and a genuinely empty result
+    alike. Downstream that is one symptom — "nothing found" — with four causes,
+    three of which are configuration. Ask this before believing a silence.
+
+    Returns ``{backend, configured, shallow, requires, reason}``. ``reason`` is
+    empty when the backend is configured and capable.
+    """
+    name = (backend or _default_backend_name()).lower()
+    if name not in _BACKENDS:
+        return {
+            "backend": name, "configured": False, "shallow": False,
+            "requires": None,
+            "reason": f"unknown backend {name!r}; choose one of {sorted(_BACKENDS)}",
+        }
+
+    needs = _REQUIRES[name]
+    configured = bool(os.environ.get(needs)) if needs else True
+    shallow = name in _SHALLOW
+
+    if not configured:
+        reason = (f"{needs} is not set, so every search returns no results — "
+                  f"which is indistinguishable from finding nothing")
+    elif shallow:
+        reason = ("the DuckDuckGo Instant-Answer endpoint returns related "
+                  "topics, not a result page. Zero-config, but too shallow to "
+                  "corroborate a claim; set JELES_SEARXNG_URL (or a "
+                  "BRAVE_API_KEY / TAVILY_API_KEY) for real depth")
+    else:
+        reason = ""
+
+    return {"backend": name, "configured": configured, "shallow": shallow,
+            "requires": needs, "reason": reason}
+
+
+def search_with_status(query: str, backend: str | None = None) -> dict[str, Any]:
+    """``search()`` that reports *why* it returned what it did.
+
+    Same network call as the searcher, but the outcome is legible:
+    ``{hits, ok, backend, shallow, error}``. ``ok`` false with an ``error``
+    means the search failed; ``ok`` true with no hits means the web genuinely
+    had nothing. Those are different facts and a caller should be able to tell
+    them apart — the whole point of this module's second pass.
+    """
+    info = describe_backend(backend)
+    name = info["backend"]
+    fn = _BACKENDS.get(name)
+    if fn is None:
+        return {"hits": [], "ok": False, "backend": name,
+                "shallow": False, "error": info["reason"]}
+    try:
+        hits = fn(query)
+    except Exception as exc:
+        # Include the configuration reason when there is one: "BRAVE_API_KEY is
+        # not set" is a far more useful error than the KeyError it produces.
+        detail = f"{type(exc).__name__}: {exc}"
+        return {"hits": [], "ok": False, "backend": name,
+                "shallow": info["shallow"],
+                "error": f"{info['reason']} ({detail})" if info["reason"] else detail}
+    return {"hits": hits, "ok": True, "backend": name,
+            "shallow": info["shallow"], "error": ""}
+
+
 def make_searcher(backend: str | None = None) -> Searcher:
     """Return a fail-soft ``(query) -> [hits]`` ready to hand to
     ``conflict_scan.react(..., searcher=make_searcher())``.
@@ -144,6 +236,12 @@ def make_searcher(backend: str | None = None) -> Searcher:
     ``backend`` overrides ``JELES_SEARCH_BACKEND``. Any error inside the backend
     (unset key, network failure, unparseable response) is swallowed to ``[]`` —
     a failed search yields no witnesses, never a false one.
+
+    The swallowing stays, because conflict_scan's corroboration rule depends on
+    it: a failed search must not be able to forge a witness. What changes is
+    that it is no longer *silent* — failures log at WARNING, and an unconfigured
+    or shallow backend logs once at first use. Use :func:`search_with_status`
+    when the caller needs the reason as data rather than as a log line.
     """
     name = (backend or _default_backend_name()).lower()
     fn = _BACKENDS.get(name)
@@ -151,10 +249,22 @@ def make_searcher(backend: str | None = None) -> Searcher:
         raise ValueError(f"unknown search backend {name!r}; "
                          f"choose one of {sorted(_BACKENDS)}")
 
+    info = describe_backend(name)
+    warned = False
+
     def search(query: str) -> list[dict[str, Any]]:
+        nonlocal warned
+        if info["reason"] and not warned:
+            warned = True
+            log.warning("jeles search backend %r: %s", name, info["reason"])
         try:
             return fn(query)
-        except Exception:
-            return []  # fail-soft: conflict_scan reads [] as "no witness"
+        except Exception as exc:
+            # fail-soft: conflict_scan reads [] as "no witness". Say so anyway —
+            # an empty result that is really a broken backend is the failure
+            # mode this module was hardest to debug for.
+            log.warning("jeles search via %r failed for %r: %s: %s",
+                        name, query, type(exc).__name__, exc)
+            return []
 
     return search
