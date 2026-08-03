@@ -252,7 +252,54 @@ def _score(nugget: dict[str, Any], query_tokens: list[str]) -> float:
     return score
 
 
-MIN_ASK_SCORE = 0.5  # below this, a "match" is too weak to answer with — treat as a gap
+def _confidence(nugget: dict[str, Any], query_tokens: list[str]) -> float:
+    """How much of *this question* the nugget's question actually is.
+
+    Separate from `_score` on purpose. `_score` ranks candidates and rewards a
+    nugget for mentioning the query anywhere — in its answer, in its tags. That
+    is right for ordering search results and wrong for deciding whether to
+    answer, because a bonus earned in the tags can carry a nugget over the
+    threshold on the strength of a word that is not in its question at all.
+
+    Two rules, both learned from cases where the old score answered confidently
+    and wrongly:
+
+    1. **An unmatched query token is disqualifying.** If the asker used a
+       content word this nugget's question does not contain, it is probably a
+       different question. "rotate the *production* database password" against a
+       nugget about *staging* shares every other word — the old recall-only
+       score made the one word that changes the answer worth 1/4 of the
+       decision. It is worth all of it.
+
+    2. **Overlap is symmetric.** Rule 1 alone still lets a one-word query match
+       any nugget containing that word ("vaccine" → a nugget about flu vaccines
+       in pregnancy). Scoring the harmonic mean of precision and recall means a
+       query far narrower than the nugget it matched scores low, so the corpus
+       says "I don't know yet" rather than answering a question nobody asked.
+
+    Returns 0.0 when the nugget cannot answer the question as asked.
+    """
+    if not query_tokens:
+        return 0.0
+    asked = set(query_tokens)
+    known = set(_tokens(nugget.get("question") or ""))
+    if not known:
+        return 0.0
+    if asked - known:
+        # Rule 1. Deliberately absolute: near-identical questions that differ by
+        # one content word are exactly the case worth refusing, and they are the
+        # case a threshold is worst at catching.
+        return 0.0
+    matched = len(asked & known)
+    precision = matched / len(known)
+    recall = matched / len(asked)
+    return 2 * precision * recall / (precision + recall)
+
+
+#: Below this confidence, a match is too weak to answer with — the corpus logs
+#: a gap and says "I don't know yet" instead. Compared against `_confidence`,
+#: not `_score`: ranking and answering are different questions.
+MIN_ASK_SCORE = 0.5
 
 
 def _ranked(query: str, limit: int) -> list[tuple[dict[str, Any], float]]:
@@ -283,15 +330,31 @@ def ask_corpus(question: str) -> dict[str, Any]:
     synthesize step), so a miss — or a match too weak to trust — is
     assumed to be a real gap worth tracking, not background search noise.
     """
+    tokens = _tokens(question)
     ranked = _ranked(question, 5)
-    if not ranked or ranked[0][1] < MIN_ASK_SCORE:
+
+    # Rank by `_score`, but decide by `_confidence`. The best candidate is not
+    # automatically an answer, and conflating the two is what let a nugget about
+    # staging answer a question about production. Confidence is checked across
+    # the candidates rather than only the top-ranked one, so a nugget that
+    # genuinely answers the question is not lost to a higher-ranked near-miss.
+    confident = [
+        (n, c) for n, c in ((n, _confidence(n, tokens)) for n, _ in ranked)
+        if c >= MIN_ASK_SCORE
+    ]
+    if not confident:
         log_gap(question)
+        # The candidates still come back: "I don't know yet, but these are
+        # close" is more useful than a bare miss, and it is the caller's cue to
+        # look at the second hop rather than to trust one of these.
         return {"found": False, "nugget": None, "candidates": [n for n, _ in ranked]}
-    tokens = set(_tokens(question))
-    top, _top_score = ranked[0]
+
+    confident.sort(key=lambda pair: pair[1], reverse=True)
+    top = confident[0][0]
     top_tokens = set(_tokens(top.get("question") or ""))
-    exact = bool(tokens) and tokens == top_tokens
-    return {"found": True, "exact": exact, "nugget": top, "candidates": [n for n, _ in ranked[1:]]}
+    exact = bool(tokens) and set(tokens) == top_tokens
+    others = [n for n, _ in ranked if n is not top]
+    return {"found": True, "exact": exact, "nugget": top, "candidates": others}
 
 
 def to_search_hit(nugget: dict[str, Any], idx: int = 0) -> dict[str, Any]:

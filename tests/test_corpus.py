@@ -140,3 +140,99 @@ def test_logged_gap_is_sanitized(corpus):
     corpus.log_gap("who is\x00 nobody?")
     g = corpus.list_gaps()[0]
     assert "\x00" not in g["question"]
+
+
+# ── Answering wrongly is worse than not answering ───────────────────────────
+#
+# The old score was `matched / len(query_tokens)` — recall only. Two questions
+# differing by the one word that changes the answer share every other word, so
+# the distinguishing token was worth 1/N of the decision and `MIN_ASK_SCORE`
+# (half overlap) waved them through. Each case below was verified returning
+# `found: True` with the wrong nugget before the fix.
+
+
+def _seed(corpus, question, answer, **kw):
+    return corpus.put_nugget(question=question, answer=answer,
+                             sources=["s"], verified_by="human", **kw)
+
+
+def test_a_different_environment_is_a_different_question(corpus):
+    """The one that would page someone: staging credentials answering a
+    production question. Old score 0.95, found=True."""
+    _seed(corpus, "How do I rotate the staging database password?",
+          "Run `ops rotate --env staging`.", tags=["production", "rotate"])
+
+    asked = corpus.ask_corpus("How do I rotate the production database password?")
+
+    assert asked["found"] is False
+    assert asked["nugget"] is None
+    # Still surfaced as a near-miss — "I don't know, but this is close" is
+    # useful; "here is your answer" is not.
+    assert asked["candidates"], "a close nugget should still come back as a candidate"
+
+
+def test_a_different_subject_is_a_different_question(corpus):
+    """Old score 0.90, found=True — answered a covid question with flu advice."""
+    _seed(corpus, "Is the flu vaccine safe during pregnancy?",
+          "Yes - the inactivated flu vaccine is recommended.")
+    assert corpus.ask_corpus("Is the covid vaccine safe during pregnancy?")["found"] is False
+
+
+def test_a_tag_cannot_carry_a_wrong_nugget_over_the_threshold(corpus):
+    """Old score 0.60, found=True. Half the overlap was the generic word
+    'policy'; the +0.1 that pushed it over came from a tag matching the very
+    word that made the questions different."""
+    _seed(corpus, "What is the privacy policy?",
+          "We keep logs for 90 days.", tags=["policy", "refund"])
+    assert corpus.ask_corpus("What is the refund policy?")["found"] is False
+
+
+def test_a_query_far_broader_than_the_nugget_is_not_confident(corpus):
+    """Rule 1 alone would pass this: every query token *is* in the nugget. The
+    symmetric measure is what refuses it — one word does not ask a specific
+    question, and answering it invents the rest."""
+    _seed(corpus, "Is the flu vaccine safe during pregnancy?", "Yes.")
+    assert corpus.ask_corpus("vaccine")["found"] is False
+
+
+@pytest.mark.parametrize("question", [
+    "What's the primary color in Grove?",          # exact
+    "primary color in Grove",                      # same tokens, no filler
+    "What is the primary color in Grove???",       # punctuation only
+])
+def test_the_questions_it_should_answer_still_answer(corpus, question):
+    """The fix must not buy correctness with uselessness."""
+    _seed_grove(corpus)
+    assert corpus.ask_corpus(question)["found"] is True
+
+
+def test_a_more_general_question_still_reaches_a_specific_nugget(corpus):
+    """Deliberate: the asker used no word the nugget lacks, and the overlap is
+    strong, so the specific nugget answers. Documented because it is a genuine
+    judgement call — the corpus knows only about staging and says so in the
+    answer text."""
+    _seed(corpus, "How do I rotate the staging database password?",
+          "Run `ops rotate --env staging`.")
+    assert corpus.ask_corpus("how do I rotate the database password?")["found"] is True
+
+
+def test_ranking_and_answering_are_separate_decisions(corpus):
+    """`search_nuggets` stays a loose ranked lookup — it should still surface a
+    near-miss that `ask_corpus` refuses to answer with."""
+    _seed(corpus, "What is the privacy policy?", "We keep logs for 90 days.",
+          tags=["policy", "refund"])
+
+    assert corpus.search_nuggets("refund policy"), "search should still find it"
+    assert corpus.ask_corpus("What is the refund policy?")["found"] is False
+
+
+def test_a_lower_ranked_but_confident_nugget_is_not_lost(corpus):
+    """Confidence is checked across candidates, not only the top-ranked one, so
+    a near-miss that ranks higher cannot hide a nugget that actually answers."""
+    _seed(corpus, "What is the refund policy?", "Refunds within 30 days.")
+    _seed(corpus, "What is the privacy policy?", "We keep logs for 90 days.",
+          tags=["refund", "refund", "refund"])
+
+    asked = corpus.ask_corpus("What is the refund policy?")
+    assert asked["found"] is True
+    assert asked["nugget"]["answer"] == "Refunds within 30 days."
