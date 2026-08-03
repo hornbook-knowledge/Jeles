@@ -241,6 +241,16 @@ _STOP = {
     "what", "who", "when", "where", "why", "how", "which", "would", "could",
     "should", "does", "did", "about", "into", "your", "you", "tell", "show",
     "find", "give", "please", "can", "will", "its", "it's",
+    # Short function words. Only `_confidence` and `log_gap`'s short-code
+    # segment ever see words this brief — `_WORD_RE` needs three characters —
+    # so listing them here costs nothing elsewhere. They are here so that
+    # `_ask_tokens` can treat *every* remaining short word as meaning-bearing:
+    # "up" and "down" change an answer, "of" and "in" do not, and without the
+    # separation either all short words are noise or none of them are.
+    # Deliberately no single letters: "drug A" vs "drug B" is exactly the case
+    # log_gap's short-code segment exists to keep apart (test_hardening.py).
+    "an", "as", "at", "be", "by", "do", "he", "if", "in", "it",
+    "me", "my", "of", "on", "or", "so", "to", "us", "we",
 }
 
 
@@ -285,7 +295,12 @@ _CJK_RE = re.compile(
     "\uac00-\ud7af]+"   # hangul syllables
 )
 _WORD_RE = re.compile(r"[^\W_][\w-]{2,}")
-_SHORT_RE = re.compile(r"[^\W_][\w-]*")
+# The apostrophe binds: "what's" is one token, not "what" plus a bare "s".
+# Without that, `_ask_tokens` reads the "s" as a content word the other
+# phrasing lacks and refuses a pure rephrasing — measured, "What's the primary
+# color in Grove?" stopped matching "What is the primary color in Grove?".
+# (`_STOP` has carried "it's" since before this, on the same assumption.)
+_SHORT_RE = re.compile(r"[^\W_][\w'\u2019-]*")
 
 
 def _tokens(text: str) -> list[str]:
@@ -308,6 +323,34 @@ def _tokens(text: str) -> list[str]:
     # Rule 3. Reached only by a question made entirely of short words — "Is it
     # up?", "AI vs ML?" — which used to tokenize to nothing at all.
     return [t for t in _SHORT_RE.findall(lowered) if t not in _STOP]
+
+
+def _ask_tokens(text: str) -> list[str]:
+    """`_tokens` plus the short content words it drops — the token set used to
+    decide whether to *answer*, as distinct from the one used to rank.
+
+    Rule 3 above is conditional: short words are a fallback, used only when a
+    question yields nothing else. That leaves a hole precisely where the short
+    word is the one that matters. Measured, before this:
+
+        stored 'Is the API down?'  ->  "outage since 14:00"
+        asked  'Is the API up?'    ->  found: True, confidence 0.667
+
+    "up" is two characters, so it never tokenized; "down" is four, so it did.
+    The asked set {api} was a subset of the known set {api, down}, rule 1 saw
+    no unmatched token, and precision 1/2 still cleared the 0.5 threshold. An
+    ongoing outage answered "is it up?" with "yes".
+
+    Only `_confidence` uses this. `_score`, `_ranked` and `log_gap` keep the
+    narrower `_tokens`, so rankings and gap keys are unchanged — the fix is to
+    the *decision*, which is the only place a short word being invisible turns
+    into a wrong answer rather than a worse ordering.
+    """
+    tokens = _tokens(text)
+    seen = set(tokens)
+    short = [t for t in _SHORT_RE.findall((text or "").lower())
+             if len(t) < 3 and t not in _STOP and t not in seen]
+    return tokens + short
 
 
 # ── Nuggets ──────────────────────────────────────────────────────────────
@@ -490,7 +533,7 @@ def _confidence(nugget: dict[str, Any], query_tokens: list[str]) -> float:
     if not query_tokens:
         return 0.0
     asked = set(query_tokens)
-    known = set(_tokens(nugget.get("question") or ""))
+    known = set(_ask_tokens(nugget.get("question") or ""))
     if not known:
         return 0.0
     if asked - known:
@@ -547,6 +590,10 @@ def ask_corpus(question: str, include_asserted: bool = False) -> dict[str, Any]:
     ``include_asserted=True`` to opt into answering from them.
     """
     tokens = _tokens(question)
+    # Ranking and deciding use different token sets on purpose: `_ranked` orders
+    # candidates with `_tokens`, `_confidence` decides with `_ask_tokens`, which
+    # also carries the short words that change an answer. See `_ask_tokens`.
+    ask_tokens = _ask_tokens(question)
     ranked = _ranked(question, 5)
 
     # Rank by `_score`, but decide by `_confidence`. The best candidate is not
@@ -555,7 +602,7 @@ def ask_corpus(question: str, include_asserted: bool = False) -> dict[str, Any]:
     # the candidates rather than only the top-ranked one, so a nugget that
     # genuinely answers the question is not lost to a higher-ranked near-miss.
     confident = [
-        (n, c) for n, c in ((n, _confidence(n, tokens)) for n, _ in ranked)
+        (n, c) for n, c in ((n, _confidence(n, ask_tokens)) for n, _ in ranked)
         if c >= MIN_ASK_SCORE
         and (include_asserted or _kind_of(n) != "asserted")
     ]

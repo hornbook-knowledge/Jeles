@@ -623,3 +623,68 @@ def test_the_variant_list_is_bounded(corpus):
     assert gap["asked_count"] == 12
     assert gap["question"] == "what is the accent color in tokyo night?"
     assert len(gap["variants"]) == corpus._MAX_GAP_VARIANTS
+
+
+# ── A short word can be the word that changes the answer ────────────────────
+#
+# `_tokens` uses short words only as a fallback, when a question yields nothing
+# else — so a short word alongside long ones stayed invisible. Measured before
+# the fix, and it is the bad direction of the pair:
+#
+#   stored 'Is the API down?'  ->  "outage since 14:00"
+#   asked  'Is the API up?'    ->  found: True, confidence 0.667
+#
+# "up" is two characters and never tokenized; "down" is four and did. The asked
+# set was a subset of the known set, so rule 1 saw nothing unmatched, and
+# precision 1/2 still cleared the 0.5 threshold. `_ask_tokens` carries the short
+# words into the *decision* only — ranking and gap keys still use `_tokens`.
+
+
+def test_an_outage_does_not_answer_is_it_up(corpus):
+    corpus.put_nugget("Is the API down?", "Yes - outage since 14:00.",
+                      ["s"], "designer")
+    asked = corpus.ask_corpus("Is the API up?")
+    assert asked["found"] is False, "an outage answered 'is it up?' with 'yes'"
+    assert asked["candidates"], "still a near-miss worth showing"
+
+
+def test_the_same_short_question_still_answers_itself(corpus):
+    corpus.put_nugget("Is the API down?", "Yes.", ["s"], "designer")
+    assert corpus.ask_corpus("Is the API down?")["found"] is True
+
+
+def test_ranking_still_uses_the_narrow_token_set(corpus):
+    """`_ask_tokens` is for deciding, not ordering. If it leaked into `_score`
+    every existing nugget would re-rank on words like 'up' and 'v2'."""
+    assert corpus._tokens("Is the API up?") == ["api"]
+    assert corpus._ask_tokens("Is the API up?") == ["api", "up"]
+
+
+def test_a_two_letter_preposition_is_not_a_content_word(corpus):
+    """The cost of counting short words is that 'of' vs 'in' would refuse a
+    pure rephrasing. They are stopped; 'up' and 'down' are not."""
+    corpus.put_nugget("What is the primary color in Grove?", "White.",
+                      ["s"], "designer")
+    assert corpus.ask_corpus("What is the primary color of Grove?")["found"] is True
+
+
+def test_an_apostrophe_does_not_split_into_a_content_word(corpus):
+    """Regression caught while fixing the above: "what's" split into "what"
+    plus a bare "s", and `_ask_tokens` read that "s" as a content word the
+    other phrasing lacked — so a contraction stopped matching its long form."""
+    assert corpus._ask_tokens("What's the primary color in Grove?") == \
+        corpus._ask_tokens("What is the primary color in Grove?")
+    corpus.put_nugget("What is the primary color in Grove?", "White.",
+                      ["s"], "designer")
+    assert corpus.ask_corpus("What's the primary color in Grove?")["found"] is True
+
+
+def test_single_letters_stay_meaning_bearing(corpus):
+    """Also caught while fixing the above: putting "a" in the stop set would
+    have broken "drug A" vs "drug B", which is the case log_gap's short-code
+    segment exists for (tests/test_hardening.py)."""
+    assert "a" not in corpus._STOP and "i" not in corpus._STOP
+    a = corpus.log_gap("Does drug A interact with X?")
+    b = corpus.log_gap("Does drug B interact with X?")
+    assert a["id"] != b["id"]
+    assert len(corpus.list_gaps()) == 2
