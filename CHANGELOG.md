@@ -15,7 +15,6 @@ releases the way a hand-kept changelog can.
 ### Added
 
 * bring the institutional collections into the package ([1d7d2bd](https://github.com/rudi193-cmd/Jeles/commit/1d7d2bd952451dc663242d44321fe837846fd696))
-* bring the institutional collections into the package, and fix what review found in them ([d96d318](https://github.com/rudi193-cmd/Jeles/commit/d96d31856b4c11f846c72ced141693358f8a765f))
 
 
 ### Fixed
