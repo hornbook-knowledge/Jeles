@@ -123,20 +123,103 @@ def _take_transport_failure() -> Optional[str]:
     return err
 
 
+# https only. Two functions here do request over plain HTTP — `search_omdb` and
+# `search_isfdb` — but neither is in SOURCES, so neither is ever dispatched:
+# they were vendored as dead code and stayed dead. Every *registered* source is
+# https already; the plain-`http://` strings in `search_arxiv`, `search_gallica`
+# and `search_ndl` are XML namespace URIs, which are identifiers and never
+# fetched. So allowing http costs a real protection — OMDb puts its API key in
+# the query string, where cleartext means the key is on the wire — and buys
+# nothing that is currently running.
+#
+# If either dead source is ever registered, confirm its host serves TLS and
+# switch it; do not widen this back. `test_no_registered_source_requests_over_
+# plain_http` fails if one is registered without that.
+_ALLOWED_SCHEMES = frozenset({"https"})
+
+
+def _scheme_ok(url: str) -> bool:
+    return urllib.parse.urlsplit(url).scheme.lower() in _ALLOWED_SCHEMES
+
+
+class _SchemeGuardedRedirects(urllib.request.HTTPRedirectHandler):
+    """Applies the scheme check to every redirect hop, not just the first.
+
+    The check in `_urlopen` only ever sees the URL a source built: urllib
+    follows 3xx inside `urlopen`, so a 302 elsewhere was never inspected.
+    Confirmed on 3.11 by pointing a redirect at a listening socket — the
+    connection arrived. stdlib's own filter (`HTTPRedirectHandler`
+    `.http_error_302`) permits http, https *and ftp*; this closes ftp, and
+    closes the silent https->http downgrade too. file: and data: stdlib
+    already rejected.
+    """
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        # newurl has already been resolved against the request URL upstream,
+        # so a relative Location arrives here absolute and keeps its scheme.
+        if not _scheme_ok(newurl):
+            raise urllib.error.HTTPError(
+                newurl, code,
+                f"refusing redirect to a non-https URL scheme: {newurl[:60]!r}",
+                headers, fp)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+_OPENER: Optional[urllib.request.OpenerDirector] = None
+_OPENER_LOCK = _threading.Lock()
+
+
+def _opener() -> urllib.request.OpenerDirector:
+    """The shared opener, built on first use like the thread pool.
+
+    Lazily because `ProxyHandler()` reads the proxy environment at the moment
+    it is constructed: building this at import would pin HTTPS_PROXY to
+    whatever was set when `jeles` was first imported. No socket is opened
+    either way, but it is state, and this module promises none at load.
+
+    Assembled by hand rather than with `build_opener`, which would also install
+    handlers for file:, ftp: and data:. `HTTPHandler` is left out for the same
+    reason now that plain http is refused — with no handler for a scheme, a URL
+    that somehow got past both checks has nothing able to open it at all:
+    `UnknownHandler` raises `unknown url type: http`. Verified that dropping it
+    does not disturb https-through-a-proxy, which tunnels via `HTTPSHandler`
+    and `ProxyHandler` and is unchanged with it absent.
+    """
+    global _OPENER
+    with _OPENER_LOCK:
+        if _OPENER is None:
+            o = urllib.request.OpenerDirector()
+            for h in (
+                urllib.request.ProxyHandler(),  # honors HTTPS_PROXY
+                urllib.request.HTTPSHandler(),
+                _SchemeGuardedRedirects(),
+                urllib.request.HTTPDefaultErrorHandler(),
+                urllib.request.HTTPErrorProcessor(),
+                urllib.request.UnknownHandler(),
+            ):
+                o.add_handler(h)
+            _OPENER = o
+    return _OPENER
+
+
 def _urlopen(req: urllib.request.Request):
-    """The single egress point for every source.
+    """The single egress point for every source, reached only through `_fetch`
+    — so no source function ever holds a response it could read unbounded.
 
     Guards the scheme fail-closed before opening. Sources build URLs from query
-    strings and API responses, so "it is always https" is a property worth
-    enforcing rather than assuming — a redirect or a malformed base could
-    otherwise reach file:// or ftp://.
+    strings and API responses, so the scheme is checked rather than assumed —
+    and checked again on every redirect hop by the opener's handler, because
+    the check here sees only the first URL.
+
+    Known gap: stdlib drains the *redirect* response with an uncapped
+    `fp.read()` before following it, so `_MAX_BYTES` bounds the final body
+    only. A 3xx with an endless body is still an endless body.
     """
     url = req.full_url if isinstance(req, urllib.request.Request) else str(req)
-    if not url.startswith(("https://", "http://")):
-        raise ValueError(f"refusing non-HTTP(S) URL scheme: {url[:60]!r}")
+    if not _scheme_ok(url):
+        raise ValueError(f"refusing non-https URL scheme: {url[:60]!r}")
     try:
-        # Scheme guarded immediately above; urlopen honors HTTPS_PROXY.
-        return urllib.request.urlopen(req, timeout=_TIMEOUT)  # nosec B310
+        return _opener().open(req, timeout=_TIMEOUT)
     except Exception as exc:
         # Leave a breadcrumb before re-raising. Most sources catch their own
         # errors and return [], so without this a source that could not be
@@ -155,11 +238,27 @@ def _read_capped(resp) -> bytes:
     return raw
 
 
+def _fetch(url: str, headers: dict | None = None) -> bytes:
+    """Open a URL and return its bounded body — opening and reading in one
+    call, so there is no moment where a caller holds an unread response.
+
+    The cap used to be a rule each source had to remember, and six of the eight
+    sites that opened a socket did not: `search_arxiv`, `search_gallica` and
+    `search_ndl` handed a full `r.read()` to `_parse_xml`, which is precisely
+    where that function's docstring claimed its input was bounded. Raises on
+    failure; `_get`/`_get_html` are the swallowing variants.
+    """
+    h = {"User-Agent": _UA, **(headers or {})}
+    with _urlopen(urllib.request.Request(url, headers=h)) as r:
+        return _read_capped(r)
+
+
 def _parse_xml(raw: bytes):
     """Parse XML from a source.
 
     stdlib ElementTree does not resolve external entities, so the classic XXE
-    file-read is not reachable here, and `_read_capped` bounds the input. What
+    file-read is not reachable here, and `_fetch` bounds the input — which it
+    genuinely did not until every XML source was moved onto that helper. What
     remains is expansion-style abuse from a compromised or spoofed endpoint,
     which stdlib does not defend against — `defusedxml` is the upgrade if that
     threat model ever matters. Deliberately not a dependency: this package
@@ -172,10 +271,8 @@ def _parse_xml(raw: bytes):
 def _get(url: str, headers: dict | None = None) -> Optional[dict | list]:
     """Fetch JSON. Returns None on any failure — a dead source is a missing
     source, never an exception that sinks the fan-out."""
-    h = {"User-Agent": _UA, **(headers or {})}
     try:
-        with _urlopen(urllib.request.Request(url, headers=h)) as r:
-            return json.loads(_read_capped(r))
+        return json.loads(_fetch(url, headers))
     except Exception as e:
         log.warning("GET %s failed: %s", url[:80], e)
         return None
@@ -183,10 +280,8 @@ def _get(url: str, headers: dict | None = None) -> Optional[dict | list]:
 
 def _get_html(url: str, headers: dict | None = None) -> Optional[str]:
     """Fetch text. Same contract as `_get`: None rather than a raise."""
-    h = {"User-Agent": _UA, **(headers or {})}
     try:
-        with _urlopen(urllib.request.Request(url, headers=h)) as r:
-            return _read_capped(r).decode("utf-8", errors="replace")
+        return _fetch(url, headers).decode("utf-8", errors="replace")
     except Exception as e:
         log.warning("GET html %s failed: %s", url[:80], e)
         return None
@@ -424,9 +519,7 @@ def search_arxiv(query: str, limit: int = 5) -> list[dict]:
         + f"&max_results={limit}&sortBy=relevance"
     )
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": _UA})
-        with _urlopen(req) as r:
-            raw = r.read()
+        raw = _fetch(url)
     except Exception as e:
         log.warning("arXiv failed: %s", e)
         return []
@@ -731,9 +824,7 @@ def search_gallica(query: str, limit: int = 5) -> list[dict]:
         + f"&maximumRecords={limit}&version=1.2"
     )
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": _UA})
-        with _urlopen(req) as r:
-            raw = r.read()
+        raw = _fetch(url)
     except Exception as e:
         log.warning("Gallica failed: %s", e)
         return []
@@ -829,9 +920,7 @@ def search_ndl(query: str, limit: int = 5) -> list[dict]:
         + f"&maximumRecords={limit}&recordSchema=dcndl"
     )
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": _UA})
-        with _urlopen(req) as r:
-            raw = r.read()
+        raw = _fetch(url)
     except Exception as e:
         log.warning("NDL failed: %s", e)
         return []
@@ -1068,11 +1157,9 @@ def search_sep(query: str, limit: int = 5) -> list[dict]:
         "https://plato.stanford.edu/search/searcher.py?query="
         + urllib.parse.quote(query)
     )
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": _UA})
-        with _urlopen(req) as r:
-            html = r.read().decode("utf-8", errors="replace")
-    except Exception:
+    # Bypassed `_get_html` only to set the User-Agent it already sets.
+    html = _get_html(url)
+    if not html:
         return []
     results = []
     import re as _re
@@ -1356,12 +1443,7 @@ def search_nominatim(query: str, limit: int = 5) -> list[dict]:
         + urllib.parse.quote(query)
         + f"&format=json&limit={limit}&addressdetails=1"
     )
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": _UA, "Accept-Language": "en"})
-        with _urlopen(req) as r:
-            items = json.loads(r.read())
-    except Exception:
-        return []
+    items = _get(url, {"Accept-Language": "en"})
     results = []
     for item in (items or [])[:limit]:
         osm_id = item.get("osm_id", "")
@@ -1516,11 +1598,8 @@ def search_uk_legislation(query: str, limit: int = 5) -> list[dict]:
         + urllib.parse.quote(query)
         + "&format=json"
     )
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": _UA, "Accept": "application/json"})
-        with _urlopen(req) as r:
-            data = json.loads(r.read())
-    except Exception:
+    data = _get(url, {"Accept": "application/json"})
+    if not data:
         return []
     results = []
     for item in (data.get("items") or [])[:limit]:

@@ -1,7 +1,7 @@
 """sources — the in-package institutional collections, tested offline.
 
-~65 source functions is too many to pin one-by-one without the suite becoming
-the thing you maintain. So the bar here is deliberate:
+Sixty-odd source functions is too many to pin one-by-one without the suite
+becoming the thing you maintain. So the bar here is deliberate:
 
   * **The fan-out machinery in full** — registry integrity, default vs opt-in
     selection, per-source failure isolation, the wall-clock cap, and the
@@ -21,6 +21,10 @@ import pytest
 
 from jeles import sources
 
+# Captured before any test can monkeypatch it — `test_the_opener_is_assembled`
+# needs the real builder, and every other test replaces `sources._opener`.
+_REAL_OPENER = sources._opener
+
 
 class _Resp(io.BytesIO):
     def __enter__(self):
@@ -36,6 +40,21 @@ def _no_network(monkeypatch):
     def explode(*a, **k):
         raise AssertionError("tests must not make real requests")
     monkeypatch.setattr(sources.urllib.request, "urlopen", explode)
+
+
+@pytest.fixture(autouse=True)
+def _opener_delegates_to_urlopen(monkeypatch):
+    """`_urlopen` goes through a shared OpenerDirector so the scheme guard can
+    run on redirect hops too. Every stub in this file replaces
+    `urllib.request.urlopen`, which the opener does not consult — without this
+    the stubs would be silently bypassed and the tests would hit the network.
+    """
+    class _Delegating:
+        @staticmethod
+        def open(req, timeout=None):
+            return sources.urllib.request.urlopen(req, timeout=timeout)
+
+    monkeypatch.setattr(sources, "_opener", lambda: _Delegating)
 
 
 def _stub_json(monkeypatch, payload, capture=None):
@@ -287,22 +306,173 @@ def test_polite_pool_identity_is_overridable(monkeypatch):
 # ── The egress path (added when vendoring; not inherited) ───────────────────
 
 
-def test_every_source_goes_through_the_guarded_opener():
-    """`_urlopen` is the single egress point. A source calling
-    urllib.request.urlopen directly would skip the scheme guard and the size
-    cap, so there should be none left."""
+def test_no_source_function_opens_or_reads_a_response_itself():
+    """The size cap was a rule each source had to remember, and six of the
+    eight sites that opened a socket did not — including all three XML
+    sources. Now the only way to a body is `_fetch`, which opens and reads in
+    one call, and this is what stops the seventh from being added.
+    """
+    import ast
     import pathlib
-    src = pathlib.Path(sources.__file__).read_text()
-    direct = src.count("urllib.request.urlopen(")
-    assert direct == 1, "only _urlopen itself may call urlopen directly"
+
+    egress = {"_fetch", "_get", "_get_html", "_read_capped", "_urlopen"}
+    tree = ast.parse(pathlib.Path(sources.__file__).read_text())
+    offenders = []
+    for fn in ast.walk(tree):
+        if not isinstance(fn, ast.FunctionDef) or fn.name in egress:
+            continue
+        for node in ast.walk(fn):
+            if not isinstance(node, ast.Call):
+                continue
+            f = node.func
+            if isinstance(f, ast.Name) and f.id in {"_urlopen", "urlopen"}:
+                offenders.append(f"{fn.name} opens its own response")
+            elif isinstance(f, ast.Attribute) and f.attr in {"read", "urlopen"}:
+                offenders.append(f"{fn.name} calls .{f.attr}() directly")
+    assert not offenders, offenders
 
 
 def test_the_opener_refuses_a_non_http_scheme():
-    """URLs are built from queries and API responses, so 'it is always https'
-    is worth enforcing rather than assuming."""
+    """URLs are built from queries and API responses, so the scheme is
+    enforced rather than assumed."""
     req = sources.urllib.request.Request("file:///etc/passwd")
-    with pytest.raises(ValueError, match="refusing non-HTTP"):
+    with pytest.raises(ValueError, match="refusing non-https"):
         sources._urlopen(req)
+
+
+@pytest.mark.parametrize("url, allowed", [
+    ("https://example.org/x", True),
+    # Plain http is refused. The only two functions that request over it —
+    # search_omdb, search_isfdb — are not in SOURCES and never dispatched; the
+    # `http://` strings in the registered XML sources are namespace URIs, which
+    # are identifiers, not addresses.
+    ("http://example.org/x", False),
+    ("HTTPS://example.org/x", True),
+    ("ftp://example.org/x", False),
+    ("file:///etc/passwd", False),
+    ("data:text/plain,hello", False),
+    ("gopher://example.org/x", False),
+])
+def test_the_allowed_schemes_are_what_the_docstring_says(url, allowed):
+    """An allowed scheme reaches the network stub — which the no-network
+    fixture turns into an AssertionError, so getting that far is the proof it
+    passed the guard."""
+    req = sources.urllib.request.Request(url)
+    if allowed:
+        with pytest.raises(AssertionError, match="must not make real requests"):
+            sources._urlopen(req)
+    else:
+        with pytest.raises(ValueError, match="refusing non-https"):
+            sources._urlopen(req)
+
+
+@pytest.mark.parametrize("newurl, allowed", [
+    ("https://example.org/b", True),
+    # A 302 downgrading https -> http is a real attack shape, not a typo.
+    ("http://example.org/b", False),
+    # stdlib's own filter permits http, https *and* ftp — this is the hop it
+    # let through, verified against 3.11 by watching the connection arrive.
+    ("ftp://evil.example/x", False),
+    ("file:///etc/passwd", False),
+])
+def test_a_redirect_to_a_disallowed_scheme_is_refused(newurl, allowed):
+    """The guard in `_urlopen` sees only the URL a source built; urllib
+    follows 3xx internally. Before this handler a 302 to ftp:// was followed
+    without the guard ever seeing it."""
+    handler = sources._SchemeGuardedRedirects()
+    req = sources.urllib.request.Request("https://example.org/a")
+    args = (req, io.BytesIO(b""), 302, "Found", {}, newurl)
+    if allowed:
+        assert handler.redirect_request(*args).full_url == newurl
+    else:
+        with pytest.raises(sources.urllib.error.HTTPError,
+                           match="refusing redirect to a non-https"):
+            handler.redirect_request(*args)
+
+
+def test_the_opener_is_assembled_with_the_guard_and_without_local_schemes():
+    names = {type(h).__name__ for h in _REAL_OPENER().handlers}
+    assert "_SchemeGuardedRedirects" in names
+    assert "HTTPRedirectHandler" not in names, "the unguarded default must not also be in"
+    assert not (names & {"FileHandler", "FTPHandler", "DataHandler"}), \
+        "a scheme past both checks should have nothing able to open it"
+
+
+def test_the_opener_is_not_built_at_import():
+    """Same promise as the thread pool: importing jeles builds no state."""
+    import subprocess
+    import sys
+    probe = (
+        "import jeles.sources as s\n"
+        "assert s._OPENER is None, 'opener built at import'\n"
+    )
+    assert subprocess.run([sys.executable, "-c", probe]).returncode == 0
+
+
+# One oversized-but-otherwise-valid body per egress site. Each parses into
+# exactly one hit when it fits under the cap, so "returns []" means refused
+# rather than merely unparseable.
+_PAD = "z" * 4096
+
+_OVERSIZED = [
+    ("search_arxiv",
+     '<feed xmlns="http://www.w3.org/2005/Atom"><entry>'
+     '<id>http://arxiv.org/abs/2601.1</id><title>T</title>'
+     f'</entry><!--{_PAD}--></feed>'),
+    ("search_gallica",
+     '<r xmlns:srw="http://www.loc.gov/zing/srw/" '
+     'xmlns:dc="http://purl.org/dc/elements/1.1/"><srw:recordData>'
+     '<dc:title>T</dc:title><dc:identifier>https://gallica.bnf.fr/ark:/1</dc:identifier>'
+     f'</srw:recordData><!--{_PAD}--></r>'),
+    ("search_ndl",
+     '<r xmlns:srw="http://www.loc.gov/zing/srw/" '
+     'xmlns:dc="http://purl.org/dc/elements/1.1/"><srw:recordData>'
+     '<dc:title>T</dc:title><dc:identifier>https://iss.ndl.go.jp/books/1</dc:identifier>'
+     f'</srw:recordData><!--{_PAD}--></r>'),
+    ("search_sep",
+     '<html><a href="?entry=/entries/kant/"><b>Kant</b></a>'
+     f'<!--{_PAD}--></html>'),
+    ("search_nominatim",
+     json.dumps([{"display_name": "Paris", "osm_id": 1, "osm_type": "node",
+                  "pad": _PAD}])),
+    ("search_uk_legislation",
+     json.dumps({"items": [{"title": "An Act", "href": "/ukpga/1", "year": 2020}],
+                 "pad": _PAD})),
+    # Control: this already went through the capped helpers. (`search_isfdb`
+    # used to serve as the `_get_html` control; it requests over plain http, is
+    # not registered, and is now refused by the scheme guard — `search_sep`
+    # above covers the same helper.)
+    ("search_openalex",
+     json.dumps({"results": [{"display_name": "W", "id": "https://openalex.org/W1"}],
+                 "pad": _PAD})),
+]
+
+
+@pytest.mark.parametrize("fn_name, body", _OVERSIZED, ids=[n for n, _ in _OVERSIZED])
+def test_an_oversized_response_is_refused_at_every_egress_site(
+        monkeypatch, fn_name, body):
+    """A source that streams without end must fail, not exhaust memory — at
+    every site, not only the two that remembered to call `_read_capped`."""
+    served = []
+
+    class _Counting(_Resp):
+        def read(self, amt=-1):
+            out = super().read(amt)
+            served.append(len(out))
+            return out
+
+    monkeypatch.setattr(sources.urllib.request, "urlopen",
+                        lambda req, timeout=None: _Counting(body.encode()))
+    fn = getattr(sources, fn_name)
+
+    monkeypatch.setattr(sources, "_MAX_BYTES", 10_000_000)
+    assert len(fn("q", limit=1)) == 1, "the fixture body must parse when it fits"
+
+    served.clear()
+    monkeypatch.setattr(sources, "_MAX_BYTES", 512)
+    assert fn("q", limit=1) == []
+    assert sum(served) <= 513, \
+        f"{fn_name} pulled {sum(served)} bytes past a 512-byte cap"
 
 
 def test_bodies_are_capped(monkeypatch):
@@ -371,3 +541,44 @@ def test_an_empty_but_reachable_source_is_not_marked_failed(monkeypatch):
     monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: []))
     out = sources.search("q", sources=["arxiv"])
     assert out["failed"] == {}, "reached it, it had nothing — that is not a failure"
+
+
+def test_no_registered_source_requests_over_plain_http():
+    """The scheme guard is https-only, so a registered source pointing at
+    `http://` would fail at runtime rather than at review.
+
+    Two functions here do use plain http — `search_omdb` and `search_isfdb` —
+    and both are absent from SOURCES, vendored as dead code and never
+    dispatched. That is the only reason https-only is free. If either is ever
+    registered, this fails: confirm the host serves TLS and switch the URL,
+    rather than widening `_ALLOWED_SCHEMES` back.
+
+    The `http://` strings inside `search_arxiv`, `search_gallica` and
+    `search_ndl` are XML namespace URIs — identifiers, never fetched — which is
+    why matching on request URLs and not on the literal is the point.
+    """
+    import inspect
+    import re as _re
+
+    registered = {cfg.get("fn_name") or f"search_{sid}"
+                  for sid, cfg in sources.SOURCES.items()}
+    # A plain-http string that is *assigned to a url* or passed to a fetch
+    # helper, as opposed to bound as a namespace constant.
+    requesting = _re.compile(r'(?:url\s*=\s*|_get\w*\(|_fetch\()\s*\(?\s*f?["\']http://')
+
+    offenders = sorted(
+        name for name in registered
+        if (fn := getattr(sources, name, None))
+        and requesting.search(inspect.getsource(fn))
+    )
+    assert not offenders, (
+        f"registered source(s) request over plain http: {offenders} — the "
+        "guard refuses these at runtime")
+
+
+def test_the_two_plain_http_functions_are_still_unregistered():
+    """Pins the premise the test above depends on, from the other side."""
+    registered = {cfg.get("fn_name") or f"search_{sid}"
+                  for sid, cfg in sources.SOURCES.items()}
+    assert "search_omdb" not in registered
+    assert "search_isfdb" not in registered
