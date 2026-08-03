@@ -14,7 +14,6 @@ releases the way a hand-kept changelog can.
 
 ### Added
 
-* give the corpus server its second hop — the open web ([dd187e4](https://github.com/rudi193-cmd/Jeles/commit/dd187e4641a1bf5c4c2d59048e7a3122d94735df))
 * give the corpus server its second hop — the open web ([79342ed](https://github.com/rudi193-cmd/Jeles/commit/79342ed0c8905431b3819f440c3be9ffefa46013))
 
 ## [0.2.1](https://github.com/rudi193-cmd/Jeles/compare/v0.2.0...v0.2.1) (2026-08-03)
