@@ -23,6 +23,7 @@ overridden via env for a differently-scoped host.
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import json
 import logging
 import os
@@ -129,15 +130,97 @@ async def _lifecycle(ready: threading.Event) -> None:
         ready.set()
 
 
+def _close_loop(loop: asyncio.AbstractEventLoop) -> None:
+    """Close a finished attempt's loop, cancelling anything still pending.
+
+    Retries used to drop the previous loop on the floor without close(). An
+    unclosed loop keeps its epoll fd and its self-pipe pair — measured at 2.97
+    fds per retry (100 forced retries: +297 open fds, 100/100 loops still
+    open). Against a willow-mcp that stays down that is ~360 fds/hour at the
+    30s cooldown, i.e. a soft-limit breach within a day on a host whose only
+    symptom is a module that is supposed to fail invisibly.
+
+    Not a bare close(): a stalled attempt is retired with loop.stop() (see
+    _abandon), which leaves its lifecycle task suspended, and a loop closed
+    with pending tasks prints "Task was destroyed but it is pending!" to
+    stderr. The wait is bounded because a task wedged in a non-cancellable
+    await must not strand this thread — the fd is worth less than the thread.
+    """
+    try:
+        pending = [t for t in asyncio.all_tasks(loop) if not t.done()]
+        for task in pending:
+            task.cancel()
+        if pending:
+            loop.run_until_complete(asyncio.wait(pending, timeout=1.0))
+        loop.run_until_complete(loop.shutdown_asyncgens())
+    except Exception as exc:
+        log.debug("willow-mcp loop teardown: %s", exc)
+    finally:
+        loop.close()
+
+
+def _abandon(loop: asyncio.AbstractEventLoop) -> None:
+    """Retire a stale in-flight attempt so its own thread closes its loop.
+
+    A retry displaces the previous attempt. Without this, an attempt still
+    wedged before initialize (willow-mcp spawned but never answering) would go
+    on running with nothing left to hand a session to, and its loop would never
+    be closed — the fd leak in _close_loop, on exactly the attempts that never
+    finish on their own. stop() makes run_until_complete return so _run_session
+    reaches its teardown.
+    """
+    # RuntimeError == already closed: the attempt's own thread got there first.
+    with contextlib.suppress(RuntimeError):
+        loop.call_soon_threadsafe(loop.stop)
+
+
+def _run_session(loop: asyncio.AbstractEventLoop, ready: threading.Event) -> None:
+    """Own one attempt end to end: run its loop, then tear the attempt down.
+
+    Teardown lives here rather than in _lifecycle because it has to run on
+    every exit path, including the ones _lifecycle cannot see: a BaseException
+    (the CancelledError delivered when the willow-mcp child dies mid-await
+    never reaches an `except Exception`), and a loop retired by _abandon.
+    """
+    global _mcp_session, _mcp_loop, _mcp_stop_event, _mcp_ready, _mcp_error
+    try:
+        loop.run_until_complete(_lifecycle(ready))
+    except BaseException as exc:
+        _mcp_error = str(exc) or exc.__class__.__name__
+        log.debug("willow-mcp session thread ended: %r", exc)
+    finally:
+        # Unblock ensure_started() *before* taking _start_lock: it holds that
+        # lock while waiting on `ready`, so grabbing the lock first would stall
+        # this thread for the whole ensure_started timeout.
+        ready.set()
+        with _start_lock:
+            # Only disown the globals if a later retry has not already claimed
+            # them — a slow-dying attempt must not blank out its successor.
+            if _mcp_loop is loop:
+                _mcp_session = None
+                _mcp_ready = False
+                _mcp_stop_event = None
+                _mcp_loop = None
+        _close_loop(loop)
+
+
 def ensure_started(timeout: float = 5) -> bool:
     """Lazy-start a background willow-mcp session. Short default timeout —
     this is a best-effort forward, not a feature anything blocks on.
 
-    Retries after RETRY_COOLDOWN if the previous attempt failed. A session
+    Retries after RETRY_COOLDOWN if there is no usable session. A session
     that never started (willow-mcp not running yet at host boot, a
     transient spawn failure, ...) must not permanently disable forwarding
     for the rest of a long-running session — that would make "best
     effort" mean "one effort."
+
+    That covers a session that started and then *died* too, which is the
+    case this retry was written for and long did not reach: _mcp_ready was
+    only ever set True, so a willow-mcp that crashed or was upgraded
+    mid-session left _mcp_session bound to a dead session, ensure_started
+    returning True off the fast path, and every later forward timing out for
+    the life of the process. _run_session now clears that state on every exit
+    path, which is what makes the retry below reachable.
     """
     global _mcp_loop, _last_attempt_at
     if not _use_willow_mcp():
@@ -146,28 +229,30 @@ def ensure_started(timeout: float = 5) -> bool:
         return True
 
     with _start_lock:
+        if _mcp_ready and _mcp_session is not None:
+            return True  # re-check: a concurrent attempt may have just landed
         now = time.monotonic()
-        failed_and_coolable = (
-            _mcp_loop is not None
-            and not _mcp_ready
-            and _last_attempt_at is not None
-            and now - _last_attempt_at >= RETRY_COOLDOWN
-        )
-        if _mcp_loop is None or failed_and_coolable:
-            loop = asyncio.new_event_loop()
-            _mcp_loop = loop
-            _last_attempt_at = now
-            ready = threading.Event()
-            threading.Thread(
-                target=lambda: loop.run_until_complete(_lifecycle(ready)),
-                daemon=True,
-                name="jeles-willow-mcp",
-            ).start()
-            if not ready.wait(timeout=timeout):
-                return False
-            return _mcp_ready
-
-    return _mcp_ready
+        # _last_attempt_at, not _mcp_loop, is the "we have tried" marker.
+        # _mcp_loop is cleared when an attempt ends, so keying the cooldown off
+        # it would respawn willow-mcp on every single forward while it is down.
+        cooled = _last_attempt_at is None or now - _last_attempt_at >= RETRY_COOLDOWN
+        if not cooled:
+            return False
+        if _mcp_loop is not None:
+            _abandon(_mcp_loop)  # a stale attempt still in flight
+        loop = asyncio.new_event_loop()
+        _mcp_loop = loop
+        _last_attempt_at = now
+        ready = threading.Event()
+        threading.Thread(
+            target=_run_session,
+            args=(loop, ready),
+            daemon=True,
+            name="jeles-willow-mcp",
+        ).start()
+        if not ready.wait(timeout=timeout):
+            return False
+        return _mcp_ready
 
 
 def _parse_tool_payload(result: Any) -> Any:
@@ -191,11 +276,23 @@ def _parse_tool_payload(result: Any) -> Any:
 def call_tool(name: str, inputs: dict[str, Any], timeout: float = 10) -> Any:
     if not ensure_started():
         raise RuntimeError(_mcp_error or "willow-mcp unavailable")
-    assert _mcp_loop is not None and _mcp_session is not None
+    # Snapshot both globals together: the session thread clears them the moment
+    # the willow-mcp child dies, which can land between ensure_started()
+    # returning and the submit below. A raise here is the correct outcome —
+    # forward_gap() catches it — but it must be a real exception, not the bare
+    # `assert` that used to sit here (gone under `python -O`, and it read as a
+    # guarantee that the state could not change).
+    loop, session = _mcp_loop, _mcp_session
+    if loop is None or session is None:
+        raise RuntimeError(_mcp_error or "willow-mcp session ended")
     payload = {"app_id": APP_ID, **inputs}
-    coro = _mcp_session.call_tool(name, payload)
-    result = asyncio.run_coroutine_threadsafe(coro, _mcp_loop).result(timeout=timeout)
-    return _parse_tool_payload(result)
+    coro = session.call_tool(name, payload)
+    try:
+        future = asyncio.run_coroutine_threadsafe(coro, loop)
+    except RuntimeError as exc:  # loop closed in that same window
+        coro.close()  # or Python warns about a coroutine that was never awaited
+        raise RuntimeError(f"willow-mcp session ended: {exc}") from exc
+    return _parse_tool_payload(future.result(timeout=timeout))
 
 
 def forward_gap(question: str, topic: str = DEFAULT_TOPIC) -> None:
@@ -215,5 +312,13 @@ def forward_gap(question: str, topic: str = DEFAULT_TOPIC) -> None:
 
 
 def shutdown() -> None:
-    if _mcp_stop_event is not None and _mcp_loop is not None:
-        _mcp_loop.call_soon_threadsafe(_mcp_stop_event.set)
+    # Snapshot, and tolerate a closed loop: loops are now closed when their
+    # attempt ends, so an unguarded call_soon_threadsafe here would raise
+    # RuntimeError into a host that is only trying to shut down tidily.
+    loop, stop = _mcp_loop, _mcp_stop_event
+    if loop is None or stop is None:
+        return
+    try:
+        loop.call_soon_threadsafe(stop.set)
+    except RuntimeError as exc:
+        log.debug("willow-mcp already stopped: %s", exc)
