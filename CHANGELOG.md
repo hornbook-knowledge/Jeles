@@ -9,6 +9,13 @@ maintained by release-please, which builds each entry from the
 conventional-commit prefixes on `master` — so it cannot go stale between
 releases the way a hand-kept changelog can.
 
+## [0.4.1](https://github.com/rudi193-cmd/Jeles/compare/v0.4.0...v0.4.1) (2026-08-03)
+
+
+### CI
+
+* arm auto-merge on the release PR so releases ship without a reminder ([1ebe9d1](https://github.com/rudi193-cmd/Jeles/commit/1ebe9d1f976c8a5b48dd0596cd1da2ad67a91a72))
+
 ## [0.4.0](https://github.com/rudi193-cmd/Jeles/compare/v0.3.1...v0.4.0) (2026-08-03)
 
 
