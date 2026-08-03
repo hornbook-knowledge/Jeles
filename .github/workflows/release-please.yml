@@ -1,0 +1,40 @@
+name: Release Please
+
+# Keeps an open "chore: release X.Y.Z" pull request that accumulates every
+# merge to master — bumping the proposed version from conventional-commit
+# prefixes and appending the CHANGELOG entry. Nothing publishes while it sits
+# there. Merging that PR creates the tag AND a GitHub Release, and the Release
+# is what fires `release.yml`.
+#
+# Why the GitHub Release and not the tag: a tag pushed by GITHUB_TOKEN does not
+# trigger other workflows (GitHub's recursion guard). `release.yml` therefore
+# listens for `release: published` as well as `push: tags`, so both the
+# automated path and a human `git push origin vX.Y.Z` still publish.
+#
+# The version itself is not stored anywhere — hatch-vcs derives it from the tag
+# (see [tool.hatch.version]). That is why `release-type: simple` is correct
+# here: it maintains the changelog and the tag and edits no version file, so
+# there is no second copy to drift.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false   # never cancel a run that may be cutting a release
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

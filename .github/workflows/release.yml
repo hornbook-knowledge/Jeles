@@ -15,11 +15,22 @@ name: Release
 #   2. Create a GitHub environment named `pypi` (Settings -> Environments).
 # Until that is configured, this workflow is inert — nothing publishes without a tag.
 #
-# NOTE: `jeles` has never been published, so the FIRST tag pushed sets the first
-# released version, and PyPI never allows a version to be reused. Choose it
-# deliberately.
+# Two triggers, one path:
+#   * `release: published` — the automated route. release-please merges its
+#     "chore: release X.Y.Z" PR, creates the tag AND a GitHub Release, and the
+#     Release fires this. It has to be the Release rather than the tag: a tag
+#     pushed by GITHUB_TOKEN does not trigger other workflows (GitHub's
+#     recursion guard), so a `push: tags`-only workflow would silently never run.
+#   * `push: tags` — a human running `git push origin vX.Y.Z`. Still works, and
+#     still the right move when you want to ship without a release PR.
+#
+# Both cannot fire for the same version in practice (release-please's tag is
+# bot-pushed, and a hand-pushed tag creates no Release), but `skip-existing` on
+# the publish step makes a double-run a no-op rather than a red X either way.
 
 on:
+  release:
+    types: [published]
   push:
     tags:
       - "v*"
@@ -31,9 +42,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      # One name for the tag across both triggers. On `release: published` the
+      # authoritative value is the Release's own tag_name; on `push: tags` it is
+      # the ref. Deriving it once here keeps the assertion below honest whichever
+      # way the run started.
+      TAG: ${{ github.event.release.tag_name || github.ref_name }}
     steps:
       - uses: actions/checkout@v7
         with:
+          # Check out the tag itself, not the branch head it may sit behind.
+          ref: ${{ github.event.release.tag_name || github.ref_name }}
           # hatch-vcs derives the version from the git tag, so the tags must be
           # present. The default shallow checkout fetches none of them.
           fetch-depth: 0
@@ -52,7 +71,7 @@ jobs:
         # thing that caught it was PyPI refusing the duplicate upload. Fail here
         # instead, where the error says what is actually wrong.
         run: |
-          tag="${GITHUB_REF_NAME#v}"
+          tag="${TAG#v}"
           built="$(ls dist/*.tar.gz | sed -E 's|.*/jeles-(.+)\.tar\.gz|\1|')"
           echo "tag=${tag}  built=${built}"
           if [ "$tag" != "$built" ]; then
