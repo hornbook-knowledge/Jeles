@@ -397,7 +397,8 @@ def test_corpus_sources_lists_the_collections_without_searching(monkeypatch):
     out = corpus_server.corpus_sources("app")
     assert out["total"] >= 50
     assert out["default_count"] <= out["total"], "opt-in sources sit out by default"
-    assert set(out["sources"][0]) == {"id", "name", "key_required", "opt_in"}
+    assert set(out["sources"][0]) == {"id", "name", "key_required", "key_env",
+                                      "opt_in"}
 
 
 def test_search_status_covers_both_outward_hops(monkeypatch):

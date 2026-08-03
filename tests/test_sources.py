@@ -14,8 +14,11 @@ Every test stubs the network. Nothing here makes a request.
 """
 from __future__ import annotations
 
+import copy
 import io
 import json
+import threading
+import time
 
 import pytest
 
@@ -76,6 +79,7 @@ def test_the_registry_is_populated_and_well_formed():
         assert cfg["name"], f"{sid} has no display name"
         assert isinstance(cfg["key_required"], bool)
         assert isinstance(cfg["opt_in"], bool)
+        assert isinstance(cfg["key_env"], str), f"{sid} key_env must be a string"
 
 
 def test_every_registered_source_resolves_to_a_real_function():
@@ -121,10 +125,27 @@ def test_narrowing_queries_only_the_named_sources(monkeypatch):
     assert out["sources_queried"] == ["arxiv"]
 
 
-def test_an_unknown_source_id_is_skipped_not_fatal(monkeypatch):
+def test_an_unknown_source_id_is_reported_not_fatal(monkeypatch):
+    """It must not raise — and it must not be counted as queried either.
+    `sources_queried` used to echo the request, so `search(sources=["typo"])`
+    reported one source queried and zero failed, and any consumer computing a
+    failure ratio from that saw a healthy search that never happened."""
     monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: []))
     out = sources.search("q", sources=["arxiv", "not-a-real-source"])
+
     assert out["total"] == 0  # and no exception
+    assert out["unknown"] == ["not-a-real-source"]
+    assert out["sources_queried"] == ["arxiv"], "nothing was dispatched for a typo"
+
+
+def test_a_registered_source_with_no_function_is_unknown_not_silent(monkeypatch):
+    """`_resolve_fn` is a getattr, so a registry fn_name typo resolves to None.
+    That used to `continue` while still counting the source as queried."""
+    monkeypatch.setattr(sources, "_resolve_fn",
+                        lambda fn: None if fn == "search_arxiv" else (lambda q, n: []))
+    out = sources.search("q", sources=["arxiv", "loc"])
+    assert out["unknown"] == ["arxiv"]
+    assert out["sources_queried"] == ["loc"]
 
 
 # ── Failure isolation: one bad source must not sink the fan-out ─────────────
@@ -148,12 +169,16 @@ def test_one_failing_source_does_not_lose_the_others(monkeypatch):
     assert "loc" in out["results"]
 
 
-def test_sources_returning_nothing_are_omitted_from_results(monkeypatch):
+def test_a_reached_but_empty_source_is_recorded_as_empty_not_absent(monkeypatch):
+    """Was `results == {}`. An empty dict cannot say whether a source was
+    reached and had nothing or was never heard from, and that ambiguity is the
+    whole bug this file's last section is about. `results[sid] == []` is the
+    positive statement: asked, answered, nothing there."""
     monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: []))
     out = sources.search("q", sources=["arxiv", "loc"])
-    assert out["results"] == {}
-    assert out["sources_queried"] == ["arxiv", "loc"], \
-        "queried is what we asked, not what answered"
+    assert out["results"] == {"arxiv": [], "loc": []}
+    assert out["total"] == 0
+    assert sorted(out["sources_queried"]) == ["arxiv", "loc"]
 
 
 def test_the_response_is_grouped_by_source_id(monkeypatch):
@@ -198,14 +223,18 @@ def test_the_wall_clock_cap_drops_stragglers_rather_than_hanging(monkeypatch):
     assert "loc" in out["results"]
 
 
-def test_the_executor_is_not_created_at_import():
-    """A module-level thread pool would be a side effect in every process that
-    merely imports jeles."""
+def test_no_thread_pool_is_created_at_import():
+    """A thread pool at import would be a side effect in every process that
+    merely imports jeles. There is no module-level pool to inspect any more —
+    `_executor` builds one per `search` call — so this checks the property
+    directly: importing must start no worker threads."""
     import subprocess
     import sys
     probe = (
-        "import jeles.sources as s\n"
-        "assert s._SEARCH_EXECUTOR is None, 'pool built at import'\n"
+        "import threading, jeles.sources\n"
+        "extra = [t.name for t in threading.enumerate()\n"
+        "         if t is not threading.current_thread()]\n"
+        "assert not extra, f'import started threads: {extra}'\n"
     )
     assert subprocess.run([sys.executable, "-c", probe]).returncode == 0
 
@@ -541,7 +570,305 @@ def test_an_empty_but_reachable_source_is_not_marked_failed(monkeypatch):
     monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: []))
     out = sources.search("q", sources=["arxiv"])
     assert out["failed"] == {}, "reached it, it had nothing — that is not a failure"
+    assert out["results"] == {"arxiv": []}, "and it is still accounted for"
 
+
+def test_a_read_phase_failure_is_recorded_not_read_as_empty(monkeypatch):
+    """The breadcrumb used to be left only by `_urlopen`, so it covered the
+    connect and nothing after it. `_get` wraps the connect, the read and the
+    JSON decode in one `try`, and a body that arrived and then failed to parse
+    returned None with no trace — the source reported as merely empty.
+
+    A captive portal or a proxy answering 200 with an HTML error page where
+    JSON was expected is exactly this shape. Reproduced before the fix:
+    `failed == {}`.
+    """
+    connected = []
+
+    def html_error_page(req, timeout=None):
+        connected.append(req.full_url)
+        return _Resp(b"<html><body>407 Proxy Authentication Required</body></html>")
+
+    monkeypatch.setattr(sources.urllib.request, "urlopen", html_error_page)
+    out = sources.search("q", sources=["openalex"])
+
+    assert connected, "the connect must have succeeded — this is not a connect failure"
+    assert "openalex" in out["failed"]
+    assert "JSONDecodeError" in out["failed"]["openalex"]
+    assert "openalex" not in out["results"]
+
+
+def test_a_body_that_dies_mid_read_is_recorded(monkeypatch):
+    """The other half of the same gap: the connect succeeds and the socket dies
+    while the body is being read."""
+    class _Truncated(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            self.close()
+
+        def read(self, n=-1):
+            raise OSError("Connection reset by peer during read")
+
+    monkeypatch.setattr(sources.urllib.request,
+                        "urlopen", lambda req, timeout=None: _Truncated(b""))
+    out = sources.search("q", sources=["openalex"])
+    assert "Connection reset by peer" in out["failed"].get("openalex", "")
+
+
+# ── Every dispatched source lands in exactly one bucket ─────────────────────
+#
+# The invariant behind the whole response shape. Each of the four findings this
+# section covers was an instance of it breaking: a source that produced no hits
+# disappeared from the response rather than saying why, and a consumer deciding
+# "outage or empty shelf?" from the remainder got a healthy-looking answer.
+
+BUCKETS = ("results", "skipped", "failed", "timed_out")
+
+
+def _assert_one_bucket_each(out):
+    for sid in out["sources_queried"]:
+        hit = [b for b in BUCKETS if sid in out[b]]
+        assert len(hit) == 1, f"{sid} is in {hit or 'no bucket'}, want exactly one"
+    for sid in out["unknown"]:
+        assert sid not in out["sources_queried"], "unknown was never dispatched"
+
+
+def _fake_sources(monkeypatch, fns: dict):
+    """Register `{sid: fn}` as the whole registry, so a test can build a
+    fan-out with the exact mix of outcomes it wants."""
+    reg = {sid: {"name": sid, "fn_name": f"search_{sid}", "key_required": False,
+                 "key_env": "", "opt_in": False, "enabled": True} for sid in fns}
+    monkeypatch.setattr(sources, "_load_registry", lambda: dict(reg))
+    monkeypatch.setattr(sources, "_resolve_fn",
+                        lambda fn_name: fns.get(fn_name[len("search_"):]))
+    return reg
+
+
+def test_every_dispatched_source_lands_in_exactly_one_bucket(monkeypatch):
+    """One fan-out with every outcome at once."""
+    release = threading.Event()
+
+    def _hits(q, n):
+        return [sources._result(title="t", url="https://e.org/1", source="s",
+                                institution="I")]
+
+    def _empty(q, n):
+        return []
+
+    def _boom(q, n):
+        raise RuntimeError("down")
+
+    def _slow(q, n):
+        release.wait(30)
+        return []
+
+    def _never(q, n):
+        raise AssertionError("a source missing its key must not be dispatched")
+
+    fns = {"withhits": _hits, "empty": _empty, "broken": _boom, "slow": _slow,
+           "keyed": _never}
+    reg = _fake_sources(monkeypatch, fns)
+    reg["keyed"] = {"name": "keyed", "fn_name": "search_keyed", "key_required": True,
+                    "key_env": "TEST_ONLY_KEY", "opt_in": False, "enabled": True}
+    monkeypatch.delenv("TEST_ONLY_KEY", raising=False)
+
+    try:
+        out = sources.search("q", sources=["withhits", "empty", "broken", "slow",
+                                           "keyed", "typo"],
+                             wall_clock_limit=0.5)
+    finally:
+        release.set()
+
+    _assert_one_bucket_each(out)
+    assert sorted(out["sources_queried"]) == sorted(reg)
+    assert out["unknown"] == ["typo"]
+    assert list(out["results"]["withhits"]) and out["results"]["empty"] == []
+    assert set(out["results"]) == {"withhits", "empty"}
+    assert set(out["failed"]) == {"broken"}
+    assert out["skipped"] == {"keyed": "TEST_ONLY_KEY is not set"}
+    assert out["timed_out"] == ["slow"]
+    assert out["total"] == 1
+
+
+def test_a_blocked_egress_leaves_nothing_looking_healthy(monkeypatch):
+    """The finding, end to end, over the real default fan-out. With every
+    request refused, five key_required sources abstained with a bare `return []`
+    and entered neither `results` nor `failed` — measured 60 queried, 55 failed
+    — so a consumer's `len(failed) >= len(queried)` never fired and a wholly
+    blocked egress reported as a successful empty search."""
+    for var in ("RIJKSMUSEUM_API_KEY", "DPLA_API_KEY", "SMITHSONIAN_API_KEY",
+                "EUROPEANA_API_KEY", "BHL_API_KEY"):
+        monkeypatch.delenv(var, raising=False)
+
+    def refuse(req, timeout=None):
+        raise OSError("Tunnel connection failed: 403 Forbidden")
+
+    monkeypatch.setattr(sources.urllib.request, "urlopen", refuse)
+    out = sources.search("obscure", wall_clock_limit=60.0)
+
+    _assert_one_bucket_each(out)
+    assert not out["results"], "nothing was reachable, so nothing was reached"
+    looked = (set(out["sources_queried"]) - set(out["failed"])
+              - set(out["skipped"]) - set(out["timed_out"]))
+    assert looked == set(), "no source actually looked — that must be visible"
+    assert set(out["skipped"]) == {"rijksmuseum", "dpla", "smithsonian",
+                                   "europeana", "bhl"}
+
+
+def test_a_missing_key_is_reported_with_the_variable_named(monkeypatch):
+    """`skipped` has to say *which* key, or a caller cannot act on it."""
+    monkeypatch.delenv("SMITHSONIAN_API_KEY", raising=False)
+    out = sources.search("q", sources=["smithsonian"])
+
+    assert out["skipped"] == {"smithsonian": "SMITHSONIAN_API_KEY is not set"}
+    assert out["sources_queried"] == ["smithsonian"], "abstaining is not vanishing"
+    assert out["failed"] == {} and out["results"] == {}
+
+
+def test_a_keyed_source_with_its_key_present_is_dispatched(monkeypatch):
+    """The abstention check must gate on the variable, not on `key_required` —
+    otherwise setting the key would not buy you the source."""
+    monkeypatch.setenv("SMITHSONIAN_API_KEY", "sekret")
+    monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: []))
+    out = sources.search("q", sources=["smithsonian"])
+    assert out["skipped"] == {}
+    assert out["results"] == {"smithsonian": []}
+
+
+def test_key_env_declarations_match_what_the_functions_actually_do(monkeypatch):
+    """The registry now claims a source abstains without a named variable, and
+    `search` acts on that claim before dispatching. Pin the claim to the code:
+    with the variable unset, the function must return [] without touching the
+    network."""
+    def explode(req, timeout=None):
+        raise AssertionError("a key_env source must not reach the network unkeyed")
+
+    monkeypatch.setattr(sources.urllib.request, "urlopen", explode)
+    for sid, cfg in sources._load_registry().items():
+        if not cfg["key_env"]:
+            continue
+        monkeypatch.delenv(cfg["key_env"], raising=False)
+        fn = sources._resolve_fn(cfg["fn_name"])
+        assert fn("q", 1) == [], f"{sid} does not abstain on {cfg['key_env']}"
+
+
+def test_semantic_scholar_is_not_declared_as_abstaining(monkeypatch):
+    """It has no `key_env` because it does not abstain: without
+    SEMANTIC_SCHOLAR_API_KEY it queries anonymously and the key only lifts rate
+    limits. Declaring one would skip a source that works. The registry said
+    `key_required: True`, which `list_sources()` reported to callers."""
+    monkeypatch.delenv("SEMANTIC_SCHOLAR_API_KEY", raising=False)
+    reached = []
+    monkeypatch.setattr(sources.urllib.request, "urlopen",
+                        lambda req, timeout=None: reached.append(req.full_url)
+                        or _Resp(b'{"data": []}'))
+
+    assert sources._load_registry()["semantic_scholar"]["key_env"] == ""
+    sources.search_semantic_scholar("q", limit=1)
+    assert reached, "it queries without a key, so it must not be marked as needing one"
+
+
+# ── The wall clock: dropped is not vanished, and not the next call's problem ─
+
+
+def test_a_timed_out_source_is_recorded_not_dropped(monkeypatch):
+    """It used to be logged as "still pending" and forgotten — in neither
+    `results` nor `failed`. Asked and unanswered is its own outcome."""
+    release = threading.Event()
+
+    def _slow(q, n):
+        release.wait(30)
+        return []
+
+    def _fast(q, n):
+        return [sources._result(title="t", url="https://e.org/1", source="s",
+                                institution="I")]
+
+    _fake_sources(monkeypatch, {"slow": _slow, "fast": _fast})
+    try:
+        out = sources.search("q", sources=["slow", "fast"], wall_clock_limit=0.4)
+    finally:
+        release.set()
+
+    assert out["timed_out"] == ["slow"]
+    assert set(out["results"]) == {"fast"}
+    _assert_one_bucket_each(out)
+
+
+def test_a_slow_call_does_not_starve_the_next_one(monkeypatch):
+    """`_SEARCH_EXECUTOR` was one pool of 16 workers shared by every call. A
+    straggler cannot be killed, so it kept its worker after `search` returned
+    and the next call queued behind it. Measured on the shared pool: after 16
+    sources were left sleeping past a 0.4s cap, a following call whose single
+    source returned instantly produced no results at all in 3.0s."""
+    release = threading.Event()
+
+    def _blocked(q, n):
+        release.wait(30)
+        return []
+
+    def _instant(q, n):
+        return [sources._result(title="t", url="https://e.org/1", source="s",
+                                institution="I")]
+
+    try:
+        hogs = {f"hog{i}": _blocked for i in range(sources._MAX_WORKERS)}
+        _fake_sources(monkeypatch, hogs)
+        first = sources.search("q", sources=list(hogs), wall_clock_limit=0.3)
+        assert len(first["timed_out"]) == sources._MAX_WORKERS
+
+        _fake_sources(monkeypatch, {"instant": _instant})
+        started = time.monotonic()
+        out = sources.search("q", sources=["instant"], wall_clock_limit=3.0)
+        elapsed = time.monotonic() - started
+    finally:
+        release.set()
+
+    assert out["results"].get("instant"), \
+        "the previous call's abandoned work must not own this call's workers"
+    assert elapsed < 1.0, f"queued behind the stragglers ({elapsed:.2f}s)"
+
+
+def test_the_returned_buckets_are_a_snapshot(monkeypatch):
+    """`_call` used to write into the `failed` dict from its worker. After the
+    wall clock fired, `search` returned while stragglers were still running and
+    still writing, so a consumer iterating the result could hit
+    `RuntimeError: dictionary changed size during iteration` — reproduced, with
+    the dict growing from 3 to 15 entries after the return. Dict writes are
+    individually atomic under the GIL, so nothing was corrupted; the returned
+    value simply described no single moment. Workers now return their outcome
+    and only the calling thread records it."""
+    release = threading.Event()
+
+    def _late_failure(q, n):
+        release.wait(30)
+        raise RuntimeError("late boom")
+
+    def _now_failure(q, n):
+        raise RuntimeError("immediate boom")
+
+    fns = {f"late{i}": _late_failure for i in range(8)}
+    fns.update({f"now{i}": _now_failure for i in range(3)})
+    _fake_sources(monkeypatch, fns)
+
+    try:
+        out = sources.search("q", sources=list(fns), wall_clock_limit=0.4)
+        snapshot = {b: copy.deepcopy(out[b]) for b in BUCKETS}
+        assert len(out["failed"]) == 3, "the three immediate failures"
+        release.set()
+        # Let every straggler finish and raise, then check nothing moved.
+        deadline = time.monotonic() + 3
+        while time.monotonic() < deadline:
+            for _ in list(out["failed"]):
+                pass
+            time.sleep(0.01)
+    finally:
+        release.set()
+
+    assert {b: out[b] for b in BUCKETS} == snapshot, \
+        "a straggler wrote into a dict the caller already holds"
 
 def test_no_registered_source_requests_over_plain_http():
     """The scheme guard is https-only, so a registered source pointing at

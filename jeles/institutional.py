@@ -278,6 +278,9 @@ def list_sources() -> list[dict[str, Any]]:
     return [
         {"id": sid, "name": cfg.get("name", sid),
          "key_required": bool(cfg.get("key_required", False)),
+         # Naming the variable is the actionable half. "this source needs a key"
+         # sends a caller reading source code; "set EUROPEANA_KEY" does not.
+         "key_env": cfg.get("key_env") or "",
          "opt_in": bool(cfg.get("opt_in", False))}
         for sid, cfg in sorted(sources.SOURCES.items())
     ]

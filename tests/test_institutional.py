@@ -122,7 +122,10 @@ def test_list_sources_is_local_knowledge(monkeypatch):
 
     listed = inst.list_sources()
     assert len(listed) >= 50
-    assert set(listed[0]) == {"id", "name", "key_required", "opt_in"}
+    assert set(listed[0]) == {"id", "name", "key_required", "key_env", "opt_in"}
+    keyed = [s for s in listed if s["key_required"]]
+    assert keyed and all(s["key_env"] for s in keyed), \
+        "a source that needs a key must name the variable, not just say it needs one"
     assert any(s["key_required"] for s in listed), "some sources need keys"
 
 
@@ -457,14 +460,24 @@ def test_the_documented_source_count_matches_the_registry():
 
 
 def test_the_key_required_sources_are_in_the_default_fan_out():
-    """Not a detail: these six abstain when their key is unset, which is what
-    made the outage check unreachable. Any source added with key_required must
-    either stay out of the default fan-out or report its abstention."""
+    """Not a detail: these abstain when their key is unset, which is what made
+    the outage check unreachable. Any source added with key_required must
+    either stay out of the default fan-out or report its abstention.
+
+    `semantic_scholar` is deliberately absent. Its registry entry claimed
+    `key_required: True`, but it queries anonymously and
+    SEMANTIC_SCHOLAR_API_KEY only lifts rate limits — so `list_sources()` was
+    telling callers they needed a key they do not, and this test asserted the
+    same wrong fact. Five sources abstain, not six.
+    """
     keyed = {sid for sid, cfg in inst.sources.SOURCES.items()
              if cfg.get("key_required")}
-    assert keyed == {"semantic_scholar", "rijksmuseum", "dpla", "smithsonian",
-                     "europeana", "bhl"}
+    assert keyed == {"rijksmuseum", "dpla", "smithsonian", "europeana", "bhl"}
+    assert "semantic_scholar" not in keyed
     assert not any(inst.sources.SOURCES[sid].get("opt_in") for sid in keyed)
+    # Every source that abstains must name the variable it is waiting on,
+    # otherwise `skipped` says a key is missing without saying which.
+    assert all(inst.sources.SOURCES[sid].get("key_env") for sid in keyed)
 
 
 def test_a_partial_outage_still_succeeds(monkeypatch):

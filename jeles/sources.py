@@ -25,17 +25,21 @@ default result here can appear in an academic bibliography.
 
 Stdlib only (urllib, json, xml.etree, concurrent.futures) so the package keeps
 its zero-runtime-dependency promise, and **no network at import**: the thread
-pool is built on first use, not on load.
+pool is built by `search`, per call, not on load.
 
-Sources needing an API key read a plain environment variable and are skipped
-when it is absent — an unkeyed source is missing, never a failure:
+Sources needing an API key read a plain environment variable and abstain when
+it is absent — an unkeyed source is missing, never a failure. `search` reports
+each one in `skipped` with the variable named, because silently contributing
+zero results is indistinguishable from the collection being empty:
     RIJKSMUSEUM_API_KEY      — register at data.rijksmuseum.nl
     DPLA_API_KEY             — free instant key at dp.la/info/developers/codex/
     SMITHSONIAN_API_KEY      — register at api.si.edu
     EUROPEANA_API_KEY        — register at apis.europeana.eu
-    SEMANTIC_SCHOLAR_API_KEY — free at semanticscholar.org (lifts rate limits)
     BHL_API_KEY              — Biodiversity Heritage Library
-    OMDB_API_KEY             — Open Movie Database
+    OMDB_API_KEY             — Open Movie Database (not in the registry; plugin)
+    SEMANTIC_SCHOLAR_API_KEY — free at semanticscholar.org. Optional, unlike the
+                               rest: the source queries anonymously without it
+                               and the key only lifts rate limits.
 """
 from __future__ import annotations
 
@@ -107,12 +111,19 @@ _TRANSPORT_ERRORS = _threading.local()
 
 
 def _note_transport_failure(exc: Exception) -> None:
-    """Record a transport error that `_get`/`_get_html` swallowed.
+    """Record a fetch failure that `_get`/`_get_html` swallowed.
 
     Those helpers return None so one dead source cannot sink the fan-out — but
     that means the source function returns [] and looks merely empty. This
     breadcrumb is per-thread (each source runs on its own worker) so `search`
     can tell "reached it, nothing there" from "never reached it".
+
+    Noted for the whole fetch-and-decode path, not just the connect. It was
+    once only called from `_urlopen`, which meant a body that arrived and then
+    failed to read or parse left no trace: a captive portal answering 200 with
+    an HTML page where JSON was expected reported as an empty collection.
+    Reproduced — `search("q", sources=["openalex"])` against such a page
+    returned `failed == {}`.
     """
     _TRANSPORT_ERRORS.last = f"{type(exc).__name__}: {exc}"
 
@@ -274,6 +285,12 @@ def _get(url: str, headers: dict | None = None) -> Optional[dict | list]:
     try:
         return json.loads(_fetch(url, headers))
     except Exception as e:
+        # Covers the read and the JSON decode as well as the connect. `_urlopen`
+        # leaves its own breadcrumb, but the read and the decode are inside this
+        # `try` too, and a truncated body or an HTML error page in place of JSON
+        # is exactly the kind of failure that used to read as "nothing here".
+        # Re-noting a connect error already noted is harmless: same exception.
+        _note_transport_failure(e)
         log.warning("GET %s failed: %s", url[:80], e)
         return None
 
@@ -283,6 +300,7 @@ def _get_html(url: str, headers: dict | None = None) -> Optional[str]:
     try:
         return _fetch(url, headers).decode("utf-8", errors="replace")
     except Exception as e:
+        _note_transport_failure(e)  # same reason as `_get`: read counts too
         log.warning("GET html %s failed: %s", url[:80], e)
         return None
 
@@ -2429,6 +2447,20 @@ def search_frankfurter(query: str, limit: int = 5) -> list[dict]:
 
 
 # ── Source registry ────────────────────────────────────────────────────────────
+#
+# `key_env` names the environment variable a source abstains without. It is
+# here, rather than only inside the function body, so `search` can put the
+# abstention in `skipped` with a reason before dispatching: the five registered
+# functions that abstain do it with a bare `return []`, which is
+# indistinguishable from an empty collection once it reaches the fan-out.
+# (`search_omdb` abstains the same way but is not registered.) Measured: a
+# default fan-out on a machine with no keys reported 60 queried, 55 failed, and
+# five sources — rijksmuseum, dpla, smithsonian, europeana, bhl — in no bucket
+# at all, which is what kept `institutional`'s outage check from ever firing.
+#
+# Only declare `key_env` for a source whose function really does return before
+# any egress. `tests/test_sources.py` pins each declaration against the actual
+# behaviour, so the two cannot drift apart silently.
 
 SOURCES: dict[str, dict] = {
     # Academic
@@ -2436,7 +2468,11 @@ SOURCES: dict[str, dict] = {
     "core":             {"name": "CORE",                    "domain": ["academic", "science"],             "key_required": False},
     "doaj":             {"name": "DOAJ",                    "domain": ["academic", "open_access"],           "key_required": False},
     "europepmc":        {"name": "Europe PMC",              "domain": ["biology", "medicine", "health"],     "key_required": False},
-    "semantic_scholar": {"name": "Semantic Scholar",        "domain": ["academic", "cs", "science"],         "key_required": True},
+    # key_required is False because `search_semantic_scholar` does not abstain
+    # without SEMANTIC_SCHOLAR_API_KEY — it queries anonymously and the key only
+    # lifts rate limits. This entry said True, which made `list_sources()` claim
+    # a key that is not needed; the fan-out reached it keyless in every run.
+    "semantic_scholar": {"name": "Semantic Scholar",        "domain": ["academic", "cs", "science"],         "key_required": False},
     "crossref":         {"name": "Crossref",                "domain": ["academic", "general"],               "key_required": False},
     "pubmed":           {"name": "PubMed",                  "domain": ["biology", "medicine"],               "key_required": False},
     "arxiv":            {"name": "arXiv",                   "domain": ["science", "cs", "math", "physics"],  "key_required": False},
@@ -2451,16 +2487,16 @@ SOURCES: dict[str, dict] = {
     "met":              {"name": "Met Museum",              "domain": ["art", "culture", "history"],         "key_required": False},
     "cleveland":        {"name": "Cleveland Museum of Art", "domain": ["art", "culture"],                    "key_required": False},
     "vam":              {"name": "V&A Museum",              "domain": ["art", "design", "culture"],          "key_required": False},
-    "rijksmuseum":      {"name": "Rijksmuseum",             "domain": ["art", "history"],                    "key_required": True},
+    "rijksmuseum":      {"name": "Rijksmuseum",             "domain": ["art", "history"],                    "key_required": True, "key_env": "RIJKSMUSEUM_API_KEY"},
     # Libraries & Archives
     "loc":              {"name": "Library of Congress",     "domain": ["humanities", "history", "general"],  "key_required": False},
     "openlibrary":      {"name": "Open Library",            "domain": ["books", "humanities"],               "key_required": False},
     "chronicling_america": {"name": "Chronicling America", "domain": ["history", "journalism"],             "key_required": False},
     "internet_archive": {"name": "Internet Archive",        "domain": ["general", "books", "media"],         "key_required": False},
-    "dpla":             {"name": "DPLA",                    "domain": ["humanities", "history", "general"],  "key_required": True},
+    "dpla":             {"name": "DPLA",                    "domain": ["humanities", "history", "general"],  "key_required": True, "key_env": "DPLA_API_KEY"},
     # Heritage
-    "smithsonian":      {"name": "Smithsonian",             "domain": ["art", "history", "science"],         "key_required": True},
-    "europeana":        {"name": "Europeana",               "domain": ["art", "culture", "history"],         "key_required": True},
+    "smithsonian":      {"name": "Smithsonian",             "domain": ["art", "history", "science"],         "key_required": True, "key_env": "SMITHSONIAN_API_KEY"},
+    "europeana":        {"name": "Europeana",               "domain": ["art", "culture", "history"],         "key_required": True, "key_env": "EUROPEANA_API_KEY"},
     # International
     "gallica":          {"name": "Gallica (BnF)",           "domain": ["humanities", "history", "france"],   "key_required": False},
     "hal":              {"name": "HAL Open Access",         "domain": ["academic", "science", "france"],     "key_required": False},
@@ -2473,7 +2509,7 @@ SOURCES: dict[str, dict] = {
     # Literature — public domain
     "gutenberg":        {"name": "Project Gutenberg",       "domain": ["literature", "books", "humanities"], "key_required": False},
     # Natural history
-    "bhl":              {"name": "Biodiversity Heritage Library", "domain": ["biology", "ecology", "natural_history"], "key_required": True},
+    "bhl":              {"name": "Biodiversity Heritage Library", "domain": ["biology", "ecology", "natural_history"], "key_required": True, "key_env": "BHL_API_KEY"},
     # Law
     "courtlistener":    {"name": "CourtListener",           "domain": ["law", "legal"],                      "key_required": False},
     # Broad academic open access
@@ -2531,31 +2567,49 @@ SOURCES: dict[str, dict] = {
 # No Postgres in this service — SOURCES above is the single source of truth.
 # Dispatch resolves fn_name strings via getattr — no function pointers needed.
 
-# Shared executor for concurrent source dispatch, built on first use. Creating
-# it at import would be a side effect in a module that promises none — and an
-# idle pool in every process that merely imports jeles.
-_SEARCH_EXECUTOR: Optional[_cf.ThreadPoolExecutor] = None
-_EXECUTOR_LOCK = _threading.Lock()
+# Upper bound on sockets a single fan-out opens at once. A default search asks
+# ~60 sources; opening 60 connections in parallel is not politeness.
+_MAX_WORKERS = 16
 
 
-def _executor() -> _cf.ThreadPoolExecutor:
-    global _SEARCH_EXECUTOR
-    if _SEARCH_EXECUTOR is None:
-        with _EXECUTOR_LOCK:
-            if _SEARCH_EXECUTOR is None:
-                _SEARCH_EXECUTOR = _cf.ThreadPoolExecutor(
-                    max_workers=16, thread_name_prefix="jeles-src")
-    return _SEARCH_EXECUTOR
+def _executor(workers: int) -> _cf.ThreadPoolExecutor:
+    """A pool for one `search` call, disposed of by that call.
+
+    This was a module-level pool shared across every call, and that starved
+    later calls. A source that outlives `wall_clock_limit` cannot be killed —
+    Python threads never are — so its worker stayed occupied after `search`
+    returned and the next call queued behind abandoned work. Measured on the
+    shared pool: 16 sources still sleeping past a 0.4s cap made the *next*
+    call, whose single source returned instantly, produce no results at all
+    within a 3.0s limit. A per-call pool keeps that cost inside the call that
+    incurred it.
+
+    What this does not do is stop the straggler. Nothing here can; the thread
+    runs until its own work finishes, bounded in practice by the per-request
+    socket timeout (`_TIMEOUT`) times however many requests the source makes.
+    `concurrent.futures` joins any such thread at interpreter exit, so a
+    process that exits mid-straggler waits for it — true of the shared pool
+    too, and unchanged by this.
+
+    Still built on demand, never at import: an idle pool in every process that
+    merely imports jeles would be a side effect this module promises not to have.
+    """
+    return _cf.ThreadPoolExecutor(
+        max_workers=max(1, min(_MAX_WORKERS, workers)),
+        thread_name_prefix="jeles-src",
+    )
 
 
 def _load_registry() -> dict[str, dict]:
-    """Static {source_id: {name, fn_name, key_required, opt_in, enabled}} from SOURCES."""
+    """Static {source_id: {name, fn_name, key_required, key_env, opt_in, enabled}}
+    from SOURCES. `key_env` is "" for a source that needs no key."""
     registry: dict[str, dict] = {}
     for sid, cfg in SOURCES.items():
         registry[sid] = {
             "name":         cfg.get("name", sid),
             "fn_name":      cfg.get("fn_name") or f"search_{sid}",
             "key_required": cfg.get("key_required", False),
+            "key_env":      cfg.get("key_env", ""),
             "opt_in":       cfg.get("opt_in", False),
             "enabled":      True,
         }
@@ -2735,11 +2789,16 @@ def question_to_query(question: str) -> str:
 
 
 def list_sources() -> list[dict]:
-    """Return source registry metadata."""
+    """Return source registry metadata.
+
+    `key_env` names the variable a source abstains without, so a caller can see
+    *which* key is missing rather than only that one is — the same string
+    `search` puts in `skipped`."""
     registry = _load_registry()
     return [
         {"id": sid, "name": cfg["name"], "fn_name": cfg["fn_name"],
-         "key_required": cfg["key_required"], "opt_in": cfg.get("opt_in", False)}
+         "key_required": cfg["key_required"], "key_env": cfg.get("key_env", ""),
+         "opt_in": cfg.get("opt_in", False)}
         for sid, cfg in registry.items()
     ]
 
@@ -2753,72 +2812,161 @@ def search(
     """Search across trusted sources. Static-registry dispatch via fn_name strings.
     sources=None → all non-opt-in sources. Pass a list to target specific ones.
 
-    Concurrent: up to 16 sources run in parallel via _SEARCH_EXECUTOR (module-level,
-    shared across requests). wall_clock_limit caps total wait time; per-source urllib
-    timeout (_TIMEOUT) handles individual hangs. Sources not done within
-    wall_clock_limit are dropped."""
+    Concurrent: up to `_MAX_WORKERS` sources run in parallel in a pool belonging
+    to this call. `wall_clock_limit` caps the total wait; the per-request socket
+    timeout (`_TIMEOUT`) bounds an individual request but not a source function,
+    which may issue several in sequence.
+
+    Returns::
+
+        {
+          "query":           str,
+          "sources_queried": [sid, ...],   # dispatched — not merely requested
+          "unknown":         [sid, ...],   # requested, no registry entry / no function
+          "skipped":         {sid: reason},# abstained before any egress (missing key)
+          "failed":          {sid: error}, # attempted egress and failed
+          "timed_out":       [sid, ...],   # unfinished at wall_clock_limit
+          "results":         {sid: [hit, ...]},   # [] means reached, had nothing
+          "total":           int,
+          "note":            str,
+        }
+
+    **Every sid in `sources_queried` appears in exactly one of `results`,
+    `skipped`, `failed`, `timed_out`.** That is the point of the four buckets:
+    a caller deciding "outage or empty shelf?" needs the ones that produced no
+    hits to say *why*, and previously they could vanish from the response
+    entirely. `unknown` is deliberately outside `sources_queried` — nothing was
+    dispatched for it, so counting it as queried let a single typo disarm a
+    consumer's `len(failed) >= len(queried)` check.
+
+    `results[sid] == []` is a real answer: that source was reached and had
+    nothing. Absence from `results` is not.
+    """
     registry = _load_registry()
     if sources:
-        active = sources
+        requested = list(sources)
     else:
-        active = [sid for sid, cfg in registry.items()
-                  if not cfg.get("opt_in") and cfg.get("enabled", True)]
+        requested = [sid for sid, cfg in registry.items()
+                     if not cfg.get("opt_in") and cfg.get("enabled", True)]
 
+    unknown: list[str] = []
+    skipped: dict[str, str] = {}
     resolved: list[tuple[str, object]] = []
-    for sid in active:
+    for sid in requested:
         cfg = registry.get(sid)
         if not cfg:
             log.warning("Unknown source: %s", sid)
+            unknown.append(sid)
             continue
         fn = _resolve_fn(cfg["fn_name"])
         if not fn:
             log.warning("No function found for source %s (fn_name=%s)", sid, cfg["fn_name"])
+            unknown.append(sid)
+            continue
+        # Checked here rather than inside the source function, which signals the
+        # same condition with a bare `return []` that the fan-out cannot tell
+        # from an empty collection. Naming the variable is the useful part: a
+        # caller can act on "SMITHSONIAN_API_KEY is not set".
+        key_env = cfg.get("key_env") or ""
+        if key_env and not os.environ.get(key_env):
+            skipped[sid] = f"{key_env} is not set"
             continue
         resolved.append((sid, fn))
 
-    out: dict[str, list] = {}
-    failed: dict[str, str] = {}
+    # Dispatched, so `skipped` sources belong here — they were selected and
+    # accounted for, just never asked anything of the network. `unknown` does
+    # not: nothing was dispatched for it. Kept in the caller's order.
+    _dispatched = {sid for sid, _ in resolved} | set(skipped)
+    queried = [sid for sid in requested if sid in _dispatched]
 
-    def _call(sid: str, fn) -> tuple[str, list]:
+    results: dict[str, list] = {}
+    failed: dict[str, str] = {}
+    timed_out: list[str] = []
+
+    def _call(sid: str, fn) -> tuple[str, Optional[list], Optional[str]]:
+        """Run one source on a worker and *return* its outcome.
+
+        Returns (sid, hits, error) with exactly one of hits/error set. It writes
+        nothing the caller can see: a straggler that finishes after
+        `wall_clock_limit` used to keep mutating the `failed` dict `search` had
+        already returned, so a consumer iterating it could get
+        `RuntimeError: dictionary changed size during iteration` — reproduced,
+        with the dict growing 3 → 15 entries after the return. Individual dict
+        writes are atomic under the GIL, so that was a snapshot bug rather than
+        a corruption one; either way the returned value described no moment in
+        time. Recording only in the calling thread makes it a snapshot by
+        construction.
+        """
         _take_transport_failure()  # clear anything left on this worker
         try:
-            hits = fn(query, limit_per_source)
+            hits = list(fn(query, limit_per_source) or [])
             if not hits:
+                # A source that could not be reached and one that genuinely had
+                # nothing both return []; the breadcrumb is what keeps them apart.
                 err = _take_transport_failure()
                 if err:
-                    failed[sid] = err
-            return sid, hits
+                    return sid, None, err
+            return sid, hits, None
         except Exception as e:
-            # Recorded, not just logged. A source that could not be reached and
-            # a source that genuinely had nothing both contribute zero results,
-            # and a caller that cannot tell them apart will report "nothing
-            # found" for an outage. `failed` is how the difference survives.
             log.warning("Source %s failed: %s", sid, e)
-            failed[sid] = f"{type(e).__name__}: {e}"
-            return sid, []
+            return sid, None, f"{type(e).__name__}: {e}"
 
-    futures = {_executor().submit(_call, sid, fn): sid for sid, fn in resolved}
-    try:
-        for fut in _cf.as_completed(futures, timeout=wall_clock_limit):
+    def _record(sid: str, hits: Optional[list], err: Optional[str]) -> None:
+        if err is not None:
+            failed[sid] = err
+        else:
+            results[sid] = hits or []
+
+    if resolved:
+        pool = _executor(len(resolved))
+        try:
+            futures = {pool.submit(_call, sid, fn): sid for sid, fn in resolved}
             try:
-                sid, hits = fut.result()
-                if hits:
-                    out[sid] = hits
-            except Exception as e:
-                log.warning("Source %s result error: %s", futures[fut], e)
-    except _cf.TimeoutError:
-        pending = sum(1 for f in futures if not f.done())
-        log.warning(
-            "jeles.search wall-clock limit %.1fs reached — %d source(s) still pending",
-            wall_clock_limit, pending,
-        )
+                for fut in _cf.as_completed(futures, timeout=wall_clock_limit):
+                    try:
+                        _record(*fut.result())
+                    except Exception as e:  # _call catches Exception; belt and braces
+                        log.warning("Source %s result error: %s", futures[fut], e)
+                        failed[futures[fut]] = f"{type(e).__name__}: {e}"
+            except _cf.TimeoutError:
+                # Recorded, not just logged. These sources were asked and did not
+                # answer in time, which is neither "had nothing" nor "failed" —
+                # and dropping them silently was the same vanishing act as an
+                # unreported abstention.
+                for fut, sid in futures.items():
+                    if sid in results or sid in failed:
+                        continue
+                    # `as_completed` stops yielding at the timeout, so a source
+                    # that did finish may simply not have been read yet. Keep
+                    # that work rather than calling it a timeout.
+                    if fut.done() and not fut.cancelled():
+                        try:
+                            _record(*fut.result())
+                            continue
+                        except Exception as e:
+                            log.warning("Source %s result error: %s", sid, e)
+                            failed[sid] = f"{type(e).__name__}: {e}"
+                            continue
+                    timed_out.append(sid)
+                log.warning(
+                    "jeles.search wall-clock limit %.1fs reached — %d source(s) "
+                    "timed out", wall_clock_limit, len(timed_out),
+                )
+        finally:
+            # Never `wait=True`: the whole point is that this call does not hold
+            # the caller past its wall clock. `cancel_futures` reclaims the ones
+            # still queued; the ones already running cannot be cancelled, but
+            # they are this pool's problem now and not the next call's.
+            pool.shutdown(wait=False, cancel_futures=True)
 
-    total = sum(len(v) for v in out.values())
     return {
         "query": query,
-        "sources_queried": active,
-        "total": total,
-        "results": out,
+        "sources_queried": queried,
+        "unknown": unknown,
+        "skipped": skipped,
         "failed": failed,
+        "timed_out": timed_out,
+        "total": sum(len(v) for v in results.values()),
+        "results": results,
         "note": NO_WIKIPEDIA_NOTE,
     }
