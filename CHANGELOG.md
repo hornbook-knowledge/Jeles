@@ -9,6 +9,34 @@ maintained by release-please, which builds each entry from the
 conventional-commit prefixes on `master` — so it cannot go stale between
 releases the way a hand-kept changelog can.
 
+## [0.4.0](https://github.com/rudi193-cmd/Jeles/compare/v0.3.1...v0.4.0) (2026-08-03)
+
+
+### Added
+
+* bring the institutional collections into the package ([1d7d2bd](https://github.com/rudi193-cmd/Jeles/commit/1d7d2bd952451dc663242d44321fe837846fd696))
+
+
+### Fixed
+
+* **conflict_scan:** apply() validates proposals instead of splatting them ([98ee4b3](https://github.com/rudi193-cmd/Jeles/commit/98ee4b365b0cad4a0fca708decaed34c4b886d16))
+* **corpus:** a short word can be the word that changes the answer ([1407e53](https://github.com/rudi193-cmd/Jeles/commit/1407e53768889ca2b107382b75d23d39084f3ea1))
+* **corpus:** a tool call cannot mint a verified nugget ([c0f7941](https://github.com/rudi193-cmd/Jeles/commit/c0f79411aa4709dc51cdbea5d9c2b921fc413ee8))
+* **corpus:** make non-Latin and short questions answerable, and stop merging opposites ([bb70dfd](https://github.com/rudi193-cmd/Jeles/commit/bb70dfdb32f7853cd67976348b89ae753563b7d2))
+* **corpus:** stop clobbering the shared store on every write ([50e08e5](https://github.com/rudi193-cmd/Jeles/commit/50e08e559e5b7960665b3ffc94c968e645f7ee7e))
+* **egress:** one scheme guard for all three lanes, checked on every hop ([d36aa76](https://github.com/rudi193-cmd/Jeles/commit/d36aa76d5279ffe9076f276a6fb3f277c7788877))
+* **institutional:** decide "could not look" from what was actually looked at ([5b56d11](https://github.com/rudi193-cmd/Jeles/commit/5b56d11cd1c79d688c6392763660c82188ed89d4))
+* **sources:** account for every source the fan-out dispatched ([e60f26d](https://github.com/rudi193-cmd/Jeles/commit/e60f26d92c79a1eef9e3a5d46c1af26d7fa2a3c8))
+* **sources:** make the size cap and the scheme guard structural ([508d0a5](https://github.com/rudi193-cmd/Jeles/commit/508d0a5d1385ed51cdf2c7a4c0c359db24718d48))
+* stop answering confidently with the wrong nugget ([4c5d8d1](https://github.com/rudi193-cmd/Jeles/commit/4c5d8d198ce01538af9bc95a794826811d2344a4))
+* stop corroborating prior art from non-witnesses ([8cc6ae0](https://github.com/rudi193-cmd/Jeles/commit/8cc6ae0c73e1975d8f544adde3e243c91fea68cd))
+* **willow_mcp_client:** recover from a session that died, and stop leaking loops ([2f4f6cd](https://github.com/rudi193-cmd/Jeles/commit/2f4f6cd1cc71c68703a0fda54da8b1251a6610d7))
+
+
+### Docs
+
+* **sources:** correct the last "~65 sources" claim ([7198dcd](https://github.com/rudi193-cmd/Jeles/commit/7198dcd38ff52011ab2cf087f126b6b0aa31a7dc))
+
 ## [0.3.1](https://github.com/rudi193-cmd/Jeles/compare/v0.3.0...v0.3.1) (2026-08-03)
 
 
