@@ -29,8 +29,9 @@ Tools:
 The outward hops, for what the verified layer could not answer:
 
   corpus_web_search           — the open web; results are always `unverified`
-  corpus_institutional_search — ~65 institutional/academic collections, run
-                                in-process; results are `institutional`
+  corpus_institutional_search — every registered institutional/academic
+                                collection, run in-process; results are
+                                `institutional`
   corpus_sources              — which collections exist, and which need a key
   corpus_search_status        — can either outward hop work? (asks nothing of
                                 the network)
@@ -308,15 +309,20 @@ def corpus_institutional_search(
     """Search named institutional and academic collections — the persona's
     third hop, and the one that produces citable answers.
 
-    One query fans out across ~65 registered sources (arXiv, PubMed, Crossref,
+    One query fans out across every registered source (arXiv, PubMed, Crossref,
     OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian,
     ...), **in this process** — no service to deploy and no secret to hold.
     ``sources`` narrows the fan-out to specific registered ids; omit it for
-    every non-opt-in source, and call ``corpus_sources`` to see what those are.
+    every non-opt-in source, and call ``corpus_sources`` for the current list
+    rather than trusting a count written down here, which drifts.
 
-    Returns ``{hits, ok, lane, sources_queried, total, error}``. Read `ok`
-    before reading `hits`: ``ok: false`` means the collections were never
-    reached. ``lane`` is ``local`` unless a remote deployment is configured.
+    Returns ``{hits, ok, lane, sources_queried, failed, skipped, timed_out,
+    unknown, total, error}``. Read `ok` before reading `hits`: ``ok: false``
+    means no source completed a look — an outage, a blocked egress, or every
+    key-required source abstaining — as distinct from the shelves being empty.
+    Each dispatched source appears in exactly one of the accounting lists, so
+    "nobody had it" and "nobody was asked" stay different answers. ``lane`` is
+    ``local`` unless a remote deployment is configured.
 
     Every hit is ``confidence: "institutional"`` — its own rung between a
     corpus nugget's ``verified``/``corroborated`` and the open web's

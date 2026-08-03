@@ -38,9 +38,13 @@ def _clean_env(monkeypatch):
 
 
 def _stub_local(monkeypatch, results=None, **kw):
+    # The full accounting contract by default — every dispatched source lands in
+    # exactly one of results/skipped/failed/timed_out. `_legacy_payload` below
+    # builds the older shape on purpose, for the version-skew cases.
     payload = {"query": "q", "sources_queried": ["arxiv", "loc"],
                "total": sum(len(v) for v in (results or {}).values()),
-               "results": results or {}}
+               "results": results or {},
+               "failed": {}, "skipped": {}, "timed_out": [], "unknown": []}
     payload.update(kw)
     calls = []
 
@@ -294,8 +298,173 @@ def test_all_sources_failing_is_reported_as_a_failure(monkeypatch):
 
     assert out["ok"] is False
     assert out["failed"] == ["arxiv", "crossref"]
-    assert "every source failed (2/2)" in out["error"]
+    assert "not one of 2 sources completed a look" in out["error"]
     assert "not an empty result" in out["error"]
+
+
+# ── The bug that made the check above unreachable ────────────────────────────
+#
+# The test above passed, and the code it tested never fired in production. It
+# asked `len(failed) >= len(sources_queried)`, and six key-required sources sit
+# in the DEFAULT fan-out and abstained with a bare `return []` — entering
+# neither `results` nor `failed`, so the count could not reach the total.
+# Measured with all egress blocked: 60 queried, 55 failed, 5 vanished,
+# `ok: true, total: 0, error: ""`. The fixture above only ever exercised the
+# case where nothing abstains.
+#
+# `ok` now means "did at least one source complete a look?", which is decidable
+# only because every dispatched source lands in exactly one bucket.
+
+
+def test_the_default_configuration_outage_is_caught(monkeypatch):
+    """The real shape of a blocked-egress run: most sources fail, and the
+    key-required ones abstain without ever reaching the network."""
+    _stub_local(
+        monkeypatch, results={},
+        sources_queried=[f"s{i}" for i in range(60)],
+        failed={f"s{i}": "URLError: tunnel 403" for i in range(55)},
+        skipped={f"s{i}": "no EUROPEANA_KEY" for i in range(55, 60)})
+    out = inst.search_institutional("q")
+
+    assert out["ok"] is False, (
+        "55 failed + 5 abstained of 60 is an outage; the old ratio test read "
+        "55 >= 60 as False and called it an empty shelf")
+    assert "55 could not be reached" in out["error"]
+    assert "5 abstained" in out["error"]
+    assert out["skipped"], "an abstention is reported, not swallowed"
+
+
+def test_an_abstention_alone_is_not_a_successful_look(monkeypatch):
+    """Every source needing a key nobody has set is a configuration problem
+    that reads exactly like an empty library."""
+    _stub_local(monkeypatch, results={}, sources_queried=["europeana", "dpla"],
+                skipped={"europeana": "no EUROPEANA_KEY", "dpla": "no DPLA_KEY"})
+    out = inst.search_institutional("q")
+    assert out["ok"] is False
+    assert "2 abstained" in out["error"]
+    assert "EUROPEANA_KEY" in out["error"], "name the key, so it is fixable"
+
+
+def test_a_timed_out_source_is_not_a_source_that_looked(monkeypatch):
+    _stub_local(monkeypatch, results={}, sources_queried=["a", "b"],
+                timed_out=["a", "b"])
+    out = inst.search_institutional("q")
+    assert out["ok"] is False and "2 timed out" in out["error"]
+    assert out["timed_out"] == ["a", "b"]
+
+
+def test_one_source_that_looked_is_enough(monkeypatch):
+    """`ok` is "were we able to look", not "did we find anything". One source
+    that reached an empty shelf makes the empty answer trustworthy."""
+    _stub_local(monkeypatch, results={}, sources_queried=["a", "b", "c"],
+                failed={"b": "URLError"}, skipped={"c": "no KEY"})
+    out = inst.search_institutional("q")
+    assert (out["ok"], out["error"]) == (True, "")
+
+
+def test_a_typo_in_every_source_id_is_not_an_empty_library(monkeypatch):
+    """An unrecognised id was logged and dropped while still being counted as
+    queried, so a single typo disarmed the ratio the outage check depended on.
+    Nothing dispatched is a configuration answer, not a search result."""
+    _stub_local(monkeypatch, results={}, sources_queried=[],
+                unknown=["arxvi", "crosref"])
+    out = inst.search_institutional("q", sources_filter=["arxvi", "crosref"])
+    assert out["ok"] is False
+    assert "no source was dispatched" in out["error"]
+    assert out["unknown"] == ["arxvi", "crosref"]
+
+
+# ── The two lanes are separately deployed and will drift ─────────────────────
+
+
+def _legacy_payload(**kw):
+    """A `sources.search` response from before per-source accounting existed —
+    what a `jeles-remote` deployment returns until it is redeployed."""
+    payload = {"query": "q", "sources_queried": [], "total": 0, "results": {}}
+    payload.update(kw)
+    assert not {"skipped", "unknown", "timed_out"} & set(payload)
+    return payload
+
+
+def test_an_older_remote_is_read_conservatively(monkeypatch):
+    """No `skipped` key means abstentions are invisible, so "looked and found
+    nothing" cannot be told from "never got out of the process". Resolve toward
+    not claiming an empty shelf — that is the error this module exists to avoid
+    — and name the skew, because the fix is a redeploy, not a retry."""
+    monkeypatch.setenv("JELES_REMOTE_URL", "https://remote.example")
+    monkeypatch.setenv("JELES_REMOTE_SECRET", SECRET)
+    _stub_remote(monkeypatch, _legacy_payload(
+        sources_queried=["a", "b"], failed={"a": "URLError", "b": "URLError"}))
+
+    out = inst.search_institutional("q")
+    assert out["ok"] is False
+    assert "predates per-source accounting" in out["error"]
+
+
+def test_an_older_remote_that_answers_is_still_believed(monkeypatch):
+    """Conservative, not paranoid: hits are hits whatever shape they arrive in."""
+    monkeypatch.setenv("JELES_REMOTE_URL", "https://remote.example")
+    monkeypatch.setenv("JELES_REMOTE_SECRET", SECRET)
+    _stub_remote(monkeypatch, _legacy_payload(
+        sources_queried=["a", "b"], failed={"b": "URLError"},
+        results={"a": [{"title": "t", "url": "https://a.org/1"}]}, total=1))
+
+    out = inst.search_institutional("q")
+    assert (out["ok"], out["error"]) == (True, "")
+    assert len(out["hits"]) == 1
+
+
+def test_the_source_listing_does_not_claim_to_know_the_remote(monkeypatch):
+    """`describe_remote` promises to make no request, so a registry listing is
+    the one thing it cannot get from the remote. It used to return the local
+    list unlabelled — local knowledge presented as fact about a service it has
+    never spoken to, and the two are separately deployed copies that drift."""
+    monkeypatch.setenv("JELES_REMOTE_URL", "https://remote.example")
+    monkeypatch.setenv("JELES_REMOTE_SECRET", SECRET)
+    info = inst.describe_remote()
+
+    assert info["lane"] == "remote"
+    assert info["sources_lane"] == "local"
+    assert "can drift" in info["reason"]
+    assert "sources_queried" in info["reason"], "point at the answer that is real"
+
+
+def test_the_local_lane_has_nothing_to_disclaim(monkeypatch):
+    info = inst.describe_remote()
+    assert (info["lane"], info["sources_lane"], info["reason"]) == (
+        "local", "local", "")
+
+
+# ── The count in the prose ───────────────────────────────────────────────────
+
+
+def test_the_documented_source_count_matches_the_registry():
+    """Four files said "~65 sources". The registry holds 61, one of them opt-in,
+    so the default fan-out is 60 — and a number retyped into four docstrings
+    drifts from the thing it describes the moment anyone edits the registry.
+    This is the only place the number is checked, so if it changes, this test is
+    what tells you which prose to update."""
+    from pathlib import Path
+
+    registered = len(inst.sources.SOURCES)
+    default = sum(1 for c in inst.sources.SOURCES.values() if not c.get("opt_in"))
+    assert (registered, default) == (61, 60)
+
+    readme = (Path(__file__).parent.parent / "README.md").read_text()
+    assert f"{registered} registered source functions" in readme
+    assert f"{default} of them in the default fan-out" in readme
+    assert "~65" not in readme, "the old drifted count"
+
+
+def test_the_key_required_sources_are_in_the_default_fan_out():
+    """Not a detail: these six abstain when their key is unset, which is what
+    made the outage check unreachable. Any source added with key_required must
+    either stay out of the default fan-out or report its abstention."""
+    keyed = {sid for sid, cfg in inst.sources.SOURCES.items()
+             if cfg.get("key_required")}
+    assert keyed == {"semantic_scholar", "rijksmuseum", "dpla", "smithsonian",
+                     "europeana", "bhl"}
+    assert not any(inst.sources.SOURCES[sid].get("opt_in") for sid in keyed)
 
 
 def test_a_partial_outage_still_succeeds(monkeypatch):
