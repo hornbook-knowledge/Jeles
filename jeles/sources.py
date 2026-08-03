@@ -1,10 +1,11 @@
 """sources — the institutional and academic collections themselves.
 
 The third hop of the persona's mandate ("local KB → open web → special
-collections"), and it lives *here* rather than behind a service. ~65 registered
-sources — arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana,
-CourtListener, the Smithsonian — each a small function that queries one public
-API and returns citable results.
+collections"), and it lives *here* rather than behind a service. 61 registered
+sources, 60 of them in the default fan-out — arXiv, PubMed, Crossref, OpenAlex,
+Library of Congress, Europeana, CourtListener, the Smithsonian — each a small
+function that queries one public API and returns citable results. (Read the
+count off `SOURCES`; four files said "~65" and none of them was right.)
 
 Originally `jeles-remote/sources.py`, itself ported from willow-2.0's
 `core/jeles_sources.py`. Moving it into the package puts it in the same
