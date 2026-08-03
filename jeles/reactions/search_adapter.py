@@ -39,7 +39,10 @@ import logging
 import os
 import urllib.parse
 import urllib.request
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
+
+from jeles import _egress
 
 log = logging.getLogger("jeles.search")
 
@@ -54,17 +57,30 @@ _MAX = int(os.environ.get("JELES_SEARCH_MAX", "8"))
 _MAX_BYTES = int(os.environ.get("JELES_SEARCH_MAX_BYTES", str(4 * 1024 * 1024)))
 
 
+#: http stays allowed here, unlike `jeles.sources`, which is https-only. The
+#: sovereign default this module is built around is a SearXNG instance the
+#: operator runs themselves — `JELES_SEARXNG_URL=http://127.0.0.1:8888` is the
+#: documented zero-config setup — and refusing plain http would break exactly
+#: the self-hosted case. The cost is real and worth naming: on this lane a
+#: hostile redirect can still downgrade https -> http. Set the backend to a
+#: keyed API over TLS if a deployment cannot afford that.
+_ALLOWED_SCHEMES = _egress.HTTP_OR_HTTPS
+
+
 def _get_json(url: str, headers: dict[str, str] | None = None,
               data: bytes | None = None) -> Any:
-    if not url.startswith(("https://", "http://")):
-        raise ValueError(f"refusing non-HTTP(S) URL scheme: {url!r}")
-    req = urllib.request.Request(url, data=data, headers={"User-Agent": _UA, **(headers or {})})
-    # Scheme is guarded above (fail-closed); urlopen honors HTTPS_PROXY env.
-    with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:  # nosec B310
-        raw = resp.read(_MAX_BYTES + 1)
-        if len(raw) > _MAX_BYTES:
-            raise ValueError(f"search response exceeds {_MAX_BYTES} bytes — refusing")
-        return json.loads(raw.decode("utf-8", "replace"))
+    """Fetch and decode JSON through the shared egress guard.
+
+    The guard was previously a one-shot `url.startswith(("https://", "http://"))`
+    here, which urllib then walked straight past: it follows 3xx *inside*
+    `urlopen`, so a redirect to `ftp://` was never inspected — reproduced
+    against a listening socket, the connection arrived. `jeles._egress` re-checks
+    the scheme on every hop and gives file:/ftp:/data: no transport at all.
+    """
+    raw = _egress.fetch(url, allowed=_ALLOWED_SCHEMES, timeout=_TIMEOUT,
+                        max_bytes=_MAX_BYTES, data=data,
+                        headers={"User-Agent": _UA, **(headers or {})})
+    return json.loads(raw.decode("utf-8", "replace"))
 
 
 def _hit(title: Any, url: Any, snippet: Any) -> dict[str, Any]:

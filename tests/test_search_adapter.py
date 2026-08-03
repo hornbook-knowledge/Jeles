@@ -102,8 +102,10 @@ def test_end_to_end_react_with_stubbed_adapter(monkeypatch):
     from jeles.reactions import conflict_scan as cs
     monkeypatch.setenv("JELES_SEARXNG_URL", "http://127.0.0.1:8888")
     _stub_urlopen(monkeypatch, {"results": [
-        {"title": "OPA", "url": "https://openpolicyagent.org/a", "content": "x"},
-        {"title": "Oso", "url": "https://osohq.com/b", "content": "y"},
+        {"title": "OPA signed bundles", "url": "https://openpolicyagent.org/a",
+         "content": "a signed registry of reaction bundles"},
+        {"title": "Oso policy registry", "url": "https://osohq.com/b",
+         "content": "signed reaction registry prior art"},
     ]})
     proposals = cs.react({"claim": "signed reaction registry"},
                          searcher=sa.make_searcher("searxng"))

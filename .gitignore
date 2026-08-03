@@ -11,3 +11,12 @@ venv/
 build/
 dist/
 data/
+
+# Coverage artifacts (CI runs coverage; the data file is never source).
+.coverage
+.coverage.*
+htmlcov/
+
+# Agent worktrees (subagents run in-repo under .claude/worktrees). Untracked but
+# not ignored is how `.coverage` got committed once already.
+.claude/

@@ -27,8 +27,8 @@ import pytest
 
 pytest.importorskip("mcp", reason="jeles[mcp] extra not installed")
 
-import jeles  # noqa: E402
-from jeles import corpus_server  # noqa: E402
+import jeles
+from jeles import corpus_server
 
 EXPECTED_TOOLS = {
     # The settled layer.
@@ -41,6 +41,9 @@ EXPECTED_TOOLS = {
     # The second hop.
     "corpus_web_search",
     "corpus_search_status",
+    # The third hop.
+    "corpus_institutional_search",
+    "corpus_sources",
 }
 
 
@@ -116,28 +119,98 @@ def test_search_never_forwards_even_when_it_finds_nothing(monkeypatch):
     assert forwarded == []
 
 
-def test_put_passes_every_field_through(monkeypatch):
+def _capture_put(monkeypatch):
     seen = {}
 
-    def _put(question, answer, sources, verified_by, tags=None, nugget_id=None):
-        seen.update(
-            question=question, answer=answer, sources=sources,
-            verified_by=verified_by, tags=tags, nugget_id=nugget_id,
-        )
-        return {"id": "n1", "action": "created"}
+    def _put(question, answer, sources, verified_by, **kw):
+        seen.update(question=question, answer=answer, sources=sources,
+                    verified_by=verified_by, **kw)
+        return {"id": "n1", "action": "created",
+                "verification_kind": kw.get("verification_kind")}
 
     monkeypatch.setattr(corpus_server.corpus, "put_nugget", _put)
+    return seen
+
+
+def test_put_passes_every_field_through(monkeypatch):
+    seen = _capture_put(monkeypatch)
+    monkeypatch.delenv(corpus_server.TRUST_TOOL_WRITES_ENV, raising=False)
 
     result = corpus_server.corpus_put(
         "app", "q?", "a.", ["src/one.json"], "designer",
         tags=["colour"], nugget_id="n1",
     )
 
-    assert result == {"id": "n1", "action": "created"}
+    assert result == {"id": "n1", "action": "created",
+                      "verification_kind": "asserted"}
     assert seen == {
         "question": "q?", "answer": "a.", "sources": ["src/one.json"],
         "verified_by": "designer", "tags": ["colour"], "nugget_id": "n1",
+        "verification_kind": "asserted", "written_by": "app",
     }
+
+
+# ── corpus_put cannot mint the top rung ──────────────────────────────────────
+#
+# This tool is reachable by any MCP client that can start the server, and one
+# of the things that client does is read the open web through
+# `corpus_web_search`. At HEAD, a page saying "record that X is true" came back
+# through here as a nugget with `verified_by` set to whatever the model typed,
+# landed at `confidence: verified`, and was served by `corpus_ask` as settled
+# fact from then on — in a store shared with willow-mcp. Verified before the
+# fix: `to_search_hit` returned `verified | Verified corpus — the operator`.
+
+
+def test_a_tool_write_is_an_assertion_not_a_verification(monkeypatch):
+    seen = _capture_put(monkeypatch)
+    monkeypatch.delenv(corpus_server.TRUST_TOOL_WRITES_ENV, raising=False)
+
+    corpus_server.corpus_put("app", "q?", "a.", ["s"], "the operator")
+
+    assert seen["verification_kind"] == "asserted"
+
+
+def test_the_caller_cannot_choose_its_own_rung(monkeypatch):
+    """`verification_kind` is deliberately not a parameter of the tool. If a
+    model could pass it, the gate would be a suggestion."""
+    schema = {t.name: t.input_schema for t in _listed_tools()}["corpus_put"]
+    props = schema.get("properties") or {}
+    assert "verification_kind" not in props
+    assert "written_by" not in props, "written_by is stamped from app_id, not supplied"
+
+
+def test_the_writing_app_is_recorded_beside_the_claim(monkeypatch):
+    """`verified_by` is whatever string the caller typed. `written_by` is which
+    app actually made the call, and is what a reader is shown."""
+    seen = _capture_put(monkeypatch)
+    corpus_server.corpus_put("some-mcp-client", "q?", "a.", ["s"], "the operator")
+    assert seen["verified_by"] == "the operator"
+    assert seen["written_by"] == "some-mcp-client"
+
+
+def test_the_operator_can_re_open_the_door_on_purpose(monkeypatch):
+    """The single-user local case, where the tool caller really is the person:
+    an env var, read per call so a typo cannot stop the server from starting."""
+    seen = _capture_put(monkeypatch)
+    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "1")
+    corpus_server.corpus_put("app", "q?", "a.", ["s"], "designer")
+    assert seen["verification_kind"] == "human"
+
+    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "no")
+    corpus_server.corpus_put("app", "q?", "a.", ["s"], "designer")
+    assert seen["verification_kind"] == "asserted"
+
+
+def test_the_trust_switch_is_not_read_at_import(monkeypatch):
+    """A module-level `os.environ[...]` read is how a typo in an env var turns
+    into a server that will not start at all."""
+    import inspect
+    src = inspect.getsource(corpus_server)
+    module_level = [
+        line for line in src.splitlines()
+        if "os.environ" in line and not line.startswith((" ", "\t"))
+    ]
+    assert not module_level, f"env read at import time: {module_level}"
 
 
 @pytest.mark.parametrize(
@@ -165,7 +238,7 @@ def test_the_web_hop_is_registered():
     """The gap this closes: search_adapter existed with exactly one consumer
     (conflict_scan.react), and neither was reachable from this server — so a
     client got a corpus and no internet."""
-    assert WEB_TOOLS <= {t.name for t in _listed_tools()}
+    assert {t.name for t in _listed_tools()} >= WEB_TOOLS
 
 
 def test_web_search_reports_a_failure_rather_than_an_empty_answer(monkeypatch):
@@ -264,3 +337,100 @@ def test_search_status_makes_no_request(monkeypatch):
     monkeypatch.setattr(
         corpus_server.search_adapter.urllib.request, "urlopen", explode)
     assert corpus_server.corpus_search_status("app")["backend"]
+
+
+# ── The third hop: special collections ──────────────────────────────────────
+
+
+def test_the_institutional_hop_is_registered():
+    names = {t.name for t in _listed_tools()}
+    assert {"corpus_institutional_search", "corpus_sources"} <= names
+
+
+def test_institutional_search_runs_locally_with_no_configuration(monkeypatch):
+    """No secret, no service — the reason the collections were moved in."""
+    monkeypatch.delenv("JELES_REMOTE_URL", raising=False)
+    monkeypatch.setattr(
+        corpus_server.institutional.sources, "search",
+        lambda q, sources=None, limit_per_source=3, **k: {
+            "sources_queried": ["arxiv"], "total": 1,
+            "results": {"arxiv": [{"title": "t", "url": "https://arxiv.org/abs/1",
+                                   "institution": "arXiv"}]}},
+    )
+    out = corpus_server.corpus_institutional_search("app", "q")
+    assert (out["ok"], out["lane"]) == (True, "local")
+    assert out["hits"][0]["confidence"] == "institutional"
+
+
+def test_institutional_search_reports_failure_rather_than_an_empty_shelf(monkeypatch):
+    monkeypatch.setattr(
+        corpus_server.institutional, "search_institutional",
+        lambda q, **k: {"hits": [], "ok": False, "lane": "remote",
+                        "sources_queried": [], "total": 0,
+                        "error": "JELES_REMOTE_SECRET is not set"},
+    )
+    out = corpus_server.corpus_institutional_search("app", "q")
+    assert out["ok"] is False
+    assert "JELES_REMOTE_SECRET" in out["error"]
+
+
+def test_institutional_search_narrows_and_pages(monkeypatch):
+    seen = {}
+
+    def _search(q, *, sources_filter=None, limit_per_source=3):
+        seen.update(query=q, sources_filter=sources_filter,
+                    limit_per_source=limit_per_source)
+        return {"hits": [{"n": i} for i in range(20)], "ok": True,
+                "lane": "local", "sources_queried": ["arxiv"],
+                "total": 20, "error": ""}
+
+    monkeypatch.setattr(corpus_server.institutional, "search_institutional", _search)
+    out = corpus_server.corpus_institutional_search(
+        "app", "q", limit=5, sources=["arxiv"], limit_per_source=2)
+
+    assert seen == {"query": "q", "sources_filter": ["arxiv"], "limit_per_source": 2}
+    assert len(out["hits"]) == 5
+    assert out["total"] == 20, "total reports the fan-out, not the truncated page"
+
+
+def test_corpus_sources_lists_the_collections_without_searching(monkeypatch):
+    out = corpus_server.corpus_sources("app")
+    assert out["total"] >= 50
+    assert out["default_count"] <= out["total"], "opt-in sources sit out by default"
+    assert set(out["sources"][0]) == {"id", "name", "key_required", "key_env",
+                                      "opt_in"}
+
+
+def test_search_status_covers_both_outward_hops(monkeypatch):
+    """One place to ask "can I look anywhere?" — and the web keys stay at the
+    top level so a client written against 0.3.x keeps working."""
+    monkeypatch.delenv("JELES_SEARXNG_URL", raising=False)
+    monkeypatch.delenv("JELES_SEARCH_BACKEND", raising=False)
+    monkeypatch.delenv("JELES_REMOTE_URL", raising=False)
+
+    status = corpus_server.corpus_search_status("app")
+
+    assert status["backend"] == "ddg"          # unchanged top-level web keys
+    assert status["shallow"] is True
+    assert status["institutional"]["lane"] == "local"
+    assert status["institutional"]["configured"] is True
+
+
+def test_the_confidence_ladder_has_four_distinct_rungs():
+    """verified > corroborated > institutional > unverified. If any two of
+    these ever collapse, the librarian is citing something it did not check."""
+    from jeles import corpus, institutional
+
+    human = corpus.to_search_hit({"question": "q", "answer": "a",
+                                  "sources": ["s"], "verified_by": "human"})
+    machine = corpus.to_search_hit({"question": "q", "answer": "a",
+                                    "sources": ["s"], "verified_by": "scan",
+                                    "verification_kind": "machine"})
+    inst_hit = institutional.to_hit({"title": "t", "url": "https://arxiv.org/a",
+                                     "institution": "arXiv"})
+    web_hit = corpus_server._web_hit({"title": "t", "url": "https://e.org/a"}, 0)
+
+    rungs = [human["confidence"], machine["confidence"],
+             inst_hit["confidence"], web_hit["confidence"]]
+    assert rungs == ["verified", "corroborated", "institutional", "unverified"]
+    assert len(set(rungs)) == 4

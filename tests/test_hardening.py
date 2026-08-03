@@ -8,13 +8,12 @@ from jeles import corpus, willow_mcp_client
 from jeles.reactions import conflict_scan as cs
 from jeles.reactions import search_adapter as sa
 
-
 # ── corpus ────────────────────────────────────────────────────────────────
 
 def test_machine_nugget_does_not_render_as_human_verified(tmp_path, monkeypatch):
     monkeypatch.setenv("WILLOW_STORE_ROOT", str(tmp_path))
     corpus._conns.clear()
-    corpus.put_nugget("q1?", "a", ["https://x.org/1"], "designer")                  # human (default)
+    corpus.put_nugget("q1?", "a", ["https://x.org/1"], "designer")   # human (default)
     corpus.put_nugget("q2?", "a", ["https://x.org/2"], cs.WITNESS,
                       verification_kind="machine")
     hits = {n["question"]: corpus.to_search_hit(n) for n in corpus.list_nuggets()}
@@ -68,10 +67,12 @@ def test_domain_keeps_two_label_public_suffixes_distinct():
 def test_sources_exclude_unparseable_urls_and_tag_machine():
     def searcher(q):
         if "supersedes" in q:
-            return [{"title": "ok", "url": "https://real-a.org/x"}]
+            return [{"title": "A signed registry", "url": "https://real-a.org/x",
+                     "snippet": "an existing signed registry"}]
         if "comparison" in q:
-            return [{"title": "ok", "url": "https://real-b.org/y"},
-                    {"title": "junk", "url": "not-a-url"}]   # no domain
+            return [{"title": "Signed registry designs", "url": "https://real-b.org/y",
+                     "snippet": "comparing signed registry designs"},
+                    {"title": "signed registry", "url": "not-a-url"}]   # no domain
         return []
     proposals = cs.react({"claim": "signed registry"}, searcher=searcher)
     assert proposals[0]["driver"] == "put_nugget"

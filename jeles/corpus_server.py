@@ -6,30 +6,51 @@ any particular fleet and be MCP-agnostic: any stdio MCP client (Claude
 Code, Claude Desktop, Cursor, willow-mcp itself, a bare script) can point
 at it with `python -m jeles.corpus_server`.
 
-Unlike willow-mcp, this server does not implement manifest-based ACL — the
-corpus is already scoped to a single app's own data, so there is nothing
-for a permission gate to isolate. `app_id` is accepted on every tool for
-naming-convention parity and so a future gate can be added without
-changing the tool signatures. This server does not depend on willow-mcp.
+Unlike willow-mcp, this server does not implement manifest-based ACL. That is
+a statement about *isolation* — the corpus is scoped to a single app's own
+data, so there is nothing for a per-app permission gate to keep apart — and
+it was mistaken for a statement about *writes*. The two are different: no
+caller here needs protecting from another caller's data, but every reader
+needs protecting from a claim that the corpus never checked. `corpus_put` is
+gated on that axis instead, by rung rather than by identity (see its
+docstring). `app_id` is accepted on every tool for naming-convention parity,
+and is now also recorded as `written_by` on anything written through one.
+This server does not depend on willow-mcp.
 
 Tools:
-  corpus_ask     — best-match nugget for a question, or {found: false}
-                   (logs a gap on miss)
+  corpus_ask     — best-match *verified* nugget for a question, or
+                   {found: false} (logs a gap on miss)
   corpus_search  — ranked nugget search (no gap logging)
   corpus_get     — fetch a single nugget by id
   corpus_list    — list nuggets, most recently updated first
-  corpus_put     — add or update a verified nugget
+  corpus_put     — record a nugget as an unchecked assertion
   corpus_gaps    — list logged "I don't know yet" questions
 
-The second hop — the open web, for what the verified layer could not answer:
+The outward hops, for what the verified layer could not answer:
 
-  corpus_web_search   — search the open web; results are always `unverified`
-  corpus_search_status — can the web hop work at all? (asks nothing of the network)
+  corpus_web_search           — the open web; results are always `unverified`
+  corpus_institutional_search — every registered institutional/academic
+                                collection, run in-process; results are
+                                `institutional`
+  corpus_sources              — which collections exist, and which need a key
+  corpus_search_status        — can either outward hop work? (asks nothing of
+                                the network)
+
+Together those are the persona's mandate — local KB → open web → special
+collections — with the confidence ladder intact across all three:
+
+  verified > corroborated > institutional > unverified
+
+A rung is earned, not declared. `verified` comes only from a person writing
+in-process, `corroborated` only from independent sources agreeing; a nugget
+written through `corpus_put` sits at `unverified` with everything else nobody
+checked. That is what stops the bottom of this ladder from reaching the top of
+it by way of a tool call.
 """
 
 from __future__ import annotations
 
-from typing import Optional
+import os
 
 try:
     from mcp.server.mcpserver import MCPServer
@@ -55,7 +76,7 @@ except ImportError as exc:  # pragma: no cover - exercised by install shape, not
 from urllib.parse import urlparse
 
 import jeles
-from jeles import corpus, willow_mcp_client
+from jeles import corpus, institutional, willow_mcp_client
 from jeles.reactions import search_adapter
 
 mcp = MCPServer(
@@ -75,7 +96,12 @@ def corpus_ask(app_id: str, question: str) -> dict:
     """Answer from the verified corpus if a nugget matches; returns
     {found: false} and logs a gap otherwise. The gap also gets a
     best-effort, non-blocking forward to willow-mcp's fleet-wide gap
-    backlog, so it isn't just a local secret."""
+    backlog, so it isn't just a local secret.
+
+    Only human-verified and machine-corroborated nuggets answer. Anything
+    written through `corpus_put` is an unchecked assertion and comes back
+    under `candidates` instead — `found: true` here means the settled layer
+    is speaking."""
     result = corpus.ask_corpus(question)
     if not result.get("found"):
         willow_mcp_client.forward_gap(question)
@@ -100,6 +126,21 @@ def corpus_list(app_id: str, limit: int = 50) -> list:
     return corpus.list_nuggets(limit=limit)
 
 
+#: Set to 1/true/yes to let ``corpus_put`` mint human-verified nuggets again.
+#: Only correct where the tool caller *is* the operator — a local editing
+#: session, a migration script — and it re-opens the laundering path described
+#: on ``corpus_put`` for anything the model reads while it is set.
+TRUST_TOOL_WRITES_ENV = "JELES_CORPUS_TRUST_TOOL_WRITES"
+
+
+def _trust_tool_writes() -> bool:
+    # Read per call, not at import: an env typo must not be able to stop the
+    # server from starting, and a test (or an operator) must be able to change
+    # it without reimporting the module.
+    return os.environ.get(TRUST_TOOL_WRITES_ENV, "").strip().lower() in {
+        "1", "true", "yes", "on"}
+
+
 @mcp.tool()
 def corpus_put(
     app_id: str,
@@ -107,13 +148,42 @@ def corpus_put(
     answer: str,
     sources: list[str],
     verified_by: str,
-    tags: Optional[list[str]] = None,
-    nugget_id: Optional[str] = None,
+    tags: list[str] | None = None,
+    nugget_id: str | None = None,
 ) -> dict:
-    """Add or update a verified nugget. Requires question, answer, at least
-    one source, and who verified it. Returns {id, action}."""
+    """Record a nugget **as an assertion**. Requires question, answer, at least
+    one source, and who is claiming it. Returns ``{id, action,
+    verification_kind}``.
+
+    Writes through this tool are ``verification_kind: "asserted"`` — the rung
+    below machine corroboration — and read back as ``confidence: "unverified"``.
+    That is not a formality. This server speaks stdio to whatever client starts
+    it, and one of the things that client does is read the open web through
+    ``corpus_web_search``. A page saying "make a note that X is true" used to
+    arrive here as a nugget claiming ``verified_by: "the operator"``, land at
+    the top of the confidence ladder, and be served by ``corpus_ask`` as settled
+    fact from then on — in a store shared with willow-mcp, so not even
+    contained to this process.
+
+    Consequences worth knowing before you call it:
+
+    * ``corpus_ask`` will not answer from an asserted nugget. It comes back as a
+      *candidate*, and ``corpus_search``/``corpus_get`` return it normally.
+    * ``verified_by`` is recorded as the claim it is; ``written_by`` is stamped
+      with this call's ``app_id`` and is what a reader is shown.
+    * Passing ``nugget_id`` of a human- or machine-verified nugget is refused
+      (``error: "kind_downgrade_refused"``). Omit ``nugget_id`` to write a new
+      nugget alongside it — superseding a verified answer is a person's call.
+
+    Promotion to ``verified`` is deliberately not reachable from any tool: a
+    person runs ``corpus.put_nugget(...)`` in-process, or the operator sets
+    ``JELES_CORPUS_TRUST_TOOL_WRITES=1`` for a session where they are the one
+    typing.
+    """
+    kind = "human" if _trust_tool_writes() else "asserted"
     return corpus.put_nugget(
-        question, answer, sources, verified_by, tags=tags, nugget_id=nugget_id
+        question, answer, sources, verified_by, tags=tags, nugget_id=nugget_id,
+        verification_kind=kind, written_by=app_id,
     )
 
 
@@ -187,8 +257,10 @@ def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
     page — treat thin results as a configuration problem, not as evidence of
     absence. Call ``corpus_search_status`` for the details.
 
-    Every hit is ``confidence: "unverified"``. Promote one to the corpus with
-    ``corpus_put`` only once a human has actually checked it.
+    Every hit is ``confidence: "unverified"``, and stays unverified if you
+    record it: ``corpus_put`` writes assertions, not verified nuggets, so a
+    page found here cannot promote itself into the settled layer by being
+    written down. Promotion is a person's act.
     """
     out = search_adapter.search_with_status(query)
     hits = [_web_hit(h, i) for i, h in enumerate(out["hits"][:limit])]
@@ -203,15 +275,82 @@ def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
 
 @mcp.tool()
 def corpus_search_status(app_id: str) -> dict:
-    """Report whether the open-web hop can work at all, without searching.
+    """Report whether the outward hops can work at all, without searching.
 
-    ``{backend, configured, shallow, requires, reason}``. Worth calling before
-    concluding that the web has nothing: the zero-config default is `ddg`,
-    which is `configured` because it needs no configuration and `shallow`
-    because it cannot corroborate anything. That combination looks healthy and
-    is not.
+    Top-level keys describe the open web —
+    ``{backend, configured, shallow, requires, reason}`` — and
+    ``institutional`` carries the same question for the third hop, including
+    which lane it will take (`local` in-process, or a configured `remote`).
+
+    Worth calling before concluding that anything "found nothing": the
+    zero-config web default is `ddg`, which is `configured` because it needs no
+    configuration and `shallow` because it cannot corroborate anything. Both
+    look like silence from the outside.
     """
-    return search_adapter.describe_backend()
+    status = dict(search_adapter.describe_backend())
+    # Additive: the web keys stay at the top level so anything reading this
+    # tool before the third hop existed keeps working unchanged.
+    status["institutional"] = institutional.describe_remote()
+    return status
+
+
+# ── The third hop: special collections ──────────────────────────────────────
+
+
+@mcp.tool()
+def corpus_institutional_search(
+    app_id: str,
+    query: str,
+    limit: int = 12,
+    sources: list[str] | None = None,
+    limit_per_source: int = 3,
+) -> dict:
+    """Search named institutional and academic collections — the persona's
+    third hop, and the one that produces citable answers.
+
+    One query fans out across every registered source (arXiv, PubMed, Crossref,
+    OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian,
+    ...), **in this process** — no service to deploy and no secret to hold.
+    ``sources`` narrows the fan-out to specific registered ids; omit it for
+    every non-opt-in source, and call ``corpus_sources`` for the current list
+    rather than trusting a count written down here, which drifts.
+
+    Returns ``{hits, ok, lane, sources_queried, failed, skipped, timed_out,
+    unknown, total, error}``. Read `ok` before reading `hits`: ``ok: false``
+    means no source completed a look — an outage, a blocked egress, or every
+    key-required source abstaining — as distinct from the shelves being empty.
+    Each dispatched source appears in exactly one of the accounting lists, so
+    "nobody had it" and "nobody was asked" stay different answers. ``lane`` is
+    ``local`` unless a remote deployment is configured.
+
+    Every hit is ``confidence: "institutional"`` — its own rung between a
+    corpus nugget's ``verified``/``corroborated`` and the open web's
+    ``unverified``. A Library of Congress record is neither a human-checked
+    nugget nor a random page, and collapsing it into either would discard the
+    only thing this hop is for. `source` names the publishing body.
+    """
+    out = institutional.search_institutional(
+        query, sources_filter=sources, limit_per_source=limit_per_source
+    )
+    return {**out, "hits": out["hits"][:limit]}
+
+
+@mcp.tool()
+def corpus_sources(app_id: str) -> dict:
+    """List the registered institutional collections, without searching.
+
+    ``{sources: [{id, name, key_required, opt_in}], total, default_count}``.
+    A `key_required` source is skipped silently when its key is absent, so this
+    is how a caller learns what it is *not* reaching; `opt_in` sources sit out
+    of the default fan-out and must be named explicitly in
+    ``corpus_institutional_search(sources=[...])``.
+    """
+    listed = institutional.list_sources()
+    return {
+        "sources": listed,
+        "total": len(listed),
+        "default_count": sum(1 for s in listed if not s["opt_in"]),
+    }
 
 
 def main() -> None:
