@@ -20,6 +20,11 @@ Tools:
   corpus_list    — list nuggets, most recently updated first
   corpus_put     — add or update a verified nugget
   corpus_gaps    — list logged "I don't know yet" questions
+
+The second hop — the open web, for what the verified layer could not answer:
+
+  corpus_web_search   — search the open web; results are always `unverified`
+  corpus_search_status — can the web hop work at all? (asks nothing of the network)
 """
 
 from __future__ import annotations
@@ -47,8 +52,11 @@ except ImportError as exc:  # pragma: no cover - exercised by install shape, not
         "SDK 2.x is also what willow-mcp requires, so the two now co-install."
     ) from exc
 
+from urllib.parse import urlparse
+
 import jeles
 from jeles import corpus, willow_mcp_client
+from jeles.reactions import search_adapter
 
 mcp = MCPServer(
     "jeles-corpus",
@@ -114,6 +122,96 @@ def corpus_gaps(app_id: str, limit: int = 50) -> list:
     """List logged 'I don't know yet' questions, most-asked first — the
     corpus's growth queue."""
     return corpus.list_gaps(limit=limit)
+
+
+# ── The second hop: the open web ────────────────────────────────────────────
+#
+# The persona's mandate is "local KB → open web → special collections", and
+# until now this server implemented only the first. `search_adapter` existed
+# but had exactly one consumer — conflict_scan.react — which was not exposed as
+# a tool, so a client running this server got a corpus and no internet at all.
+#
+# These do not change what `corpus_ask` does. The corpus sits *in front of*
+# live search rather than replacing it (design principle 1), so the second hop
+# is a separate, explicit call: the caller decides to leave the settled layer,
+# and can see that it did.
+
+
+def _web_hit(hit: dict, idx: int) -> dict:
+    """Shape a raw searcher result like `corpus.to_search_hit` shapes a nugget,
+    so corpus and web results merge into one ranked list without translation.
+
+    The fields that must never collapse are `source_id` and `confidence`: a
+    human-verified nugget and a page someone found on the internet can sit in
+    the same list, but they cannot be allowed to *read* the same. Everything
+    here is `unverified` — the librarian's no-unsourced-output rule expressed
+    as data rather than as a warning in prose.
+    """
+    url = str(hit.get("url") or "")
+    try:
+        host = urlparse(url).netloc or "web"
+    except ValueError:
+        host = "web"
+    return {
+        "title": hit.get("title") or "",
+        "url": url,
+        "snippet": hit.get("snippet") or "",
+        "source": f"Open web — {host}",
+        "date": "",
+        "source_id": "web",
+        "hostname": host,
+        "confidence": "unverified",
+        "verification_kind": "none",
+        "nugget_id": "",
+        "verified_by": "",
+        "verified_at": "",
+        "extra_sources": [],
+        "tags": [],
+        "n": idx,
+    }
+
+
+@mcp.tool()
+def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
+    """Search the open web — the corpus's second hop, for questions the
+    verified layer could not answer.
+
+    Returns ``{hits, ok, backend, shallow, error}``. Read `ok` before reading
+    `hits`: an empty list with ``ok: true`` means the web had nothing, and an
+    empty list with ``ok: false`` means the search never happened (unset key,
+    unreachable host, wrong backend). Those are different facts and answering
+    "I don't know" on the second is a lie.
+
+    ``shallow: true`` means the backend is the zero-config DuckDuckGo
+    Instant-Answer endpoint, which returns related topics rather than a result
+    page — treat thin results as a configuration problem, not as evidence of
+    absence. Call ``corpus_search_status`` for the details.
+
+    Every hit is ``confidence: "unverified"``. Promote one to the corpus with
+    ``corpus_put`` only once a human has actually checked it.
+    """
+    out = search_adapter.search_with_status(query)
+    hits = [_web_hit(h, i) for i, h in enumerate(out["hits"][:limit])]
+    return {
+        "hits": hits,
+        "ok": out["ok"],
+        "backend": out["backend"],
+        "shallow": out["shallow"],
+        "error": out["error"],
+    }
+
+
+@mcp.tool()
+def corpus_search_status(app_id: str) -> dict:
+    """Report whether the open-web hop can work at all, without searching.
+
+    ``{backend, configured, shallow, requires, reason}``. Worth calling before
+    concluding that the web has nothing: the zero-config default is `ddg`,
+    which is `configured` because it needs no configuration and `shallow`
+    because it cannot corroborate anything. That combination looks healthy and
+    is not.
+    """
+    return search_adapter.describe_backend()
 
 
 def main() -> None:

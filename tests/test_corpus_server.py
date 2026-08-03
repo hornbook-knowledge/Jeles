@@ -12,6 +12,8 @@ easy to get wrong and impossible to see from a signature:
 
   * `corpus_ask` forwards a gap on a miss, and does *not* on a hit.
   * `corpus_search` never forwards, whatever it finds.
+  * `corpus_web_search` reports a failed search as a failure, never as an
+    empty answer, and never labels a web page as verified.
 
 Skipped wholesale when the SDK is absent — base `jeles` has no runtime
 dependencies, and the `no-extras` CI leg installs exactly that shape.
@@ -29,12 +31,16 @@ import jeles  # noqa: E402
 from jeles import corpus_server  # noqa: E402
 
 EXPECTED_TOOLS = {
+    # The settled layer.
     "corpus_ask",
     "corpus_search",
     "corpus_get",
     "corpus_list",
     "corpus_put",
     "corpus_gaps",
+    # The second hop.
+    "corpus_web_search",
+    "corpus_search_status",
 }
 
 
@@ -148,3 +154,113 @@ def test_read_tools_delegate_to_corpus(monkeypatch, tool, corpus_fn, args):
         corpus_server.corpus, corpus_fn, lambda *a, **k: sentinel
     )
     assert getattr(corpus_server, tool)(*args) == sentinel
+
+
+# ── The second hop: the open web ────────────────────────────────────────────
+
+WEB_TOOLS = {"corpus_web_search", "corpus_search_status"}
+
+
+def test_the_web_hop_is_registered():
+    """The gap this closes: search_adapter existed with exactly one consumer
+    (conflict_scan.react), and neither was reachable from this server — so a
+    client got a corpus and no internet."""
+    assert WEB_TOOLS <= {t.name for t in _listed_tools()}
+
+
+def test_web_search_reports_a_failure_rather_than_an_empty_answer(monkeypatch):
+    """`ok: false` with no hits must not be mistakable for "the web had
+    nothing" — answering "I don't know" to a search that never ran is a lie."""
+    monkeypatch.setattr(
+        corpus_server.search_adapter, "search_with_status",
+        lambda q: {"hits": [], "ok": False, "backend": "brave",
+                   "shallow": False, "error": "BRAVE_API_KEY is not set"},
+    )
+    out = corpus_server.corpus_web_search("app", "anything")
+    assert out["ok"] is False
+    assert out["hits"] == []
+    assert "BRAVE_API_KEY" in out["error"]
+
+
+def test_web_search_distinguishes_a_genuinely_empty_result(monkeypatch):
+    monkeypatch.setattr(
+        corpus_server.search_adapter, "search_with_status",
+        lambda q: {"hits": [], "ok": True, "backend": "searxng",
+                   "shallow": False, "error": ""},
+    )
+    out = corpus_server.corpus_web_search("app", "nothing matches")
+    assert (out["ok"], out["hits"], out["error"]) == (True, [], "")
+
+
+def test_web_hits_are_never_labelled_verified(monkeypatch):
+    """Corpus hits and web hits share a shape so they can merge into one ranked
+    list. They must not share a confidence: a human-verified nugget and a page
+    off the internet cannot be allowed to read the same."""
+    monkeypatch.setattr(
+        corpus_server.search_adapter, "search_with_status",
+        lambda q: {"hits": [
+            {"title": "A", "url": "https://example.org/a", "snippet": "s"},
+            {"title": "B", "url": "https://sub.example.com/b", "snippet": "t"},
+        ], "ok": True, "backend": "searxng", "shallow": False, "error": ""},
+    )
+    hits = corpus_server.corpus_web_search("app", "q")["hits"]
+
+    assert [h["confidence"] for h in hits] == ["unverified", "unverified"]
+    assert [h["source_id"] for h in hits] == ["web", "web"]
+    assert [h["hostname"] for h in hits] == ["example.org", "sub.example.com"]
+    assert [h["n"] for h in hits] == [0, 1]
+
+
+def test_web_hits_carry_the_same_keys_as_corpus_hits(monkeypatch):
+    """The merge contract for the layering work: same keys, so a host can rank
+    corpus and web results together without translating either."""
+    monkeypatch.setattr(
+        corpus_server.search_adapter, "search_with_status",
+        lambda q: {"hits": [{"title": "A", "url": "https://example.org/a", "snippet": "s"}],
+                   "ok": True, "backend": "searxng", "shallow": False, "error": ""},
+    )
+    web = corpus_server.corpus_web_search("app", "q")["hits"][0]
+    nugget = corpus_server.corpus.to_search_hit(
+        {"question": "q?", "answer": "a", "sources": ["s"], "verified_by": "human"}
+    )
+    assert set(web) == set(nugget)
+
+
+def test_web_search_respects_limit(monkeypatch):
+    monkeypatch.setattr(
+        corpus_server.search_adapter, "search_with_status",
+        lambda q: {"hits": [{"title": str(i), "url": f"https://e.org/{i}", "snippet": ""}
+                            for i in range(10)],
+                   "ok": True, "backend": "searxng", "shallow": False, "error": ""},
+    )
+    assert len(corpus_server.corpus_web_search("app", "q", limit=3)["hits"]) == 3
+
+
+def test_web_hit_survives_a_junk_url(monkeypatch):
+    """Backends are untrusted input; a malformed url must not take the tool
+    down, and the hit must still be shaped."""
+    monkeypatch.setattr(
+        corpus_server.search_adapter, "search_with_status",
+        lambda q: {"hits": [{"title": "x", "url": "not a url", "snippet": ""}],
+                   "ok": True, "backend": "ddg", "shallow": True, "error": ""},
+    )
+    hit = corpus_server.corpus_web_search("app", "q")["hits"][0]
+    assert hit["confidence"] == "unverified"
+    assert hit["hostname"] in ("web", "")
+
+
+def test_search_status_passes_the_backend_diagnosis_through(monkeypatch):
+    monkeypatch.delenv("JELES_SEARXNG_URL", raising=False)
+    monkeypatch.delenv("JELES_SEARCH_BACKEND", raising=False)
+    status = corpus_server.corpus_search_status("app")
+    assert status["backend"] == "ddg"
+    assert (status["configured"], status["shallow"]) == (True, True), \
+        "the zero-config default looks healthy and cannot corroborate anything"
+
+
+def test_search_status_makes_no_request(monkeypatch):
+    def explode(*a, **k):
+        raise AssertionError("corpus_search_status must not touch the network")
+    monkeypatch.setattr(
+        corpus_server.search_adapter.urllib.request, "urlopen", explode)
+    assert corpus_server.corpus_search_status("app")["backend"]
