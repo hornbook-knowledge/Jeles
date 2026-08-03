@@ -9,6 +9,22 @@ maintained by release-please, which builds each entry from the
 conventional-commit prefixes on `master` — so it cannot go stale between
 releases the way a hand-kept changelog can.
 
+## [0.2.0](https://github.com/rudi193-cmd/Jeles/compare/v0.1.0...v0.2.0) (2026-08-03)
+
+
+### Added
+
+* port corpus_server to MCP SDK 2.0, and give it tests ([58469b1](https://github.com/rudi193-cmd/Jeles/commit/58469b1917381d57792d545e110263432e6a9bf3))
+* port corpus_server to MCP SDK 2.0, and give it tests ([b8486a5](https://github.com/rudi193-cmd/Jeles/commit/b8486a5a9161616072531ac355a02ccbd6401e6a))
+
+
+### CI
+
+* automate releases with release-please ([a8e65a4](https://github.com/rudi193-cmd/Jeles/commit/a8e65a459817486a8fc0de95aea70982120907b9))
+* automate releases with release-please ([0e7fa76](https://github.com/rudi193-cmd/Jeles/commit/0e7fa768e1666ee89fd5540161c709adccf57efc))
+* fleet hardening — concurrency, lint cache, automerge fix ([baea6f3](https://github.com/rudi193-cmd/Jeles/commit/baea6f36fb18cde499293cf1952261e51538a320))
+* fleet hardening — concurrency, lint cache, automerge fix ([fe6f3d2](https://github.com/rudi193-cmd/Jeles/commit/fe6f3d2cf147817efdf389d5bfd2cc9c2cdaf0b8))
+
 ## [0.1.0] — 2026-08-02
 
 First published release. The verified-corpus organ extracted from the Ask Jeles
