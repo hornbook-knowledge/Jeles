@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import io
 import json
+import urllib.request
 
 import pytest
 
@@ -68,7 +69,7 @@ def _stub_remote(monkeypatch, payload, capture=None):
         if isinstance(payload, Exception):
             raise payload
         return _Resp(json.dumps(payload).encode())
-    monkeypatch.setattr(inst.urllib.request, "urlopen", fake)
+    monkeypatch.setattr(urllib.request, "urlopen", fake)
 
 
 # ── Which lane, and can it work ─────────────────────────────────────────────
@@ -111,14 +112,14 @@ def test_describe_remote_never_leaks_the_secret(monkeypatch):
 def test_describe_remote_makes_no_request(monkeypatch):
     def explode(*a, **k):
         raise AssertionError("describe_remote must not touch the network")
-    monkeypatch.setattr(inst.urllib.request, "urlopen", explode)
+    monkeypatch.setattr(urllib.request, "urlopen", explode)
     assert inst.describe_remote()["lane"] == "local"
 
 
 def test_list_sources_is_local_knowledge(monkeypatch):
     def explode(*a, **k):
         raise AssertionError("listing sources must not touch the network")
-    monkeypatch.setattr(inst.urllib.request, "urlopen", explode)
+    monkeypatch.setattr(urllib.request, "urlopen", explode)
 
     listed = inst.list_sources()
     assert len(listed) >= 50
@@ -216,7 +217,7 @@ def test_a_misconfigured_remote_never_calls_out(monkeypatch):
 
     def explode(*a, **k):
         raise AssertionError("must not call a remote with no secret")
-    monkeypatch.setattr(inst.urllib.request, "urlopen", explode)
+    monkeypatch.setattr(urllib.request, "urlopen", explode)
 
     out = inst.search_institutional("q")
     assert out["ok"] is False

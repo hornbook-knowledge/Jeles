@@ -43,11 +43,10 @@ from __future__ import annotations
 import json
 import logging
 import os
-import urllib.request
 from typing import Any
 from urllib.parse import urlparse
 
-from jeles import sources
+from jeles import _egress, sources
 
 log = logging.getLogger("jeles.institutional")
 
@@ -171,12 +170,31 @@ def _flatten(grouped: dict[str, list]) -> list[dict[str, Any]]:
     return flat
 
 
+#: http stays allowed, as in `reactions.search_adapter` and unlike
+#: `jeles.sources`, which is https-only. `JELES_REMOTE_URL` points wherever the
+#: operator deployed jeles-remote, and a private-network or localhost
+#: deployment over plain http is a legitimate one. The cost is named rather
+#: than hidden: this request carries `X-Jeles-Secret`, so on a plain-http URL
+#: — or after a hostile https -> http redirect, which this set cannot refuse —
+#: the shared secret is on the wire in clear. Point `JELES_REMOTE_URL` at https
+#: for anything off the host.
+_ALLOWED_SCHEMES = _egress.HTTP_OR_HTTPS
+
+
 def _post_remote(base: str, payload: dict, secret: str) -> Any:
-    url = f"{base}/search"
-    if not url.startswith(("https://", "http://")):
-        raise ValueError(f"refusing non-HTTP(S) URL scheme: {url!r}")
-    req = urllib.request.Request(
-        url, data=json.dumps(payload).encode(),
+    """POST to the remote delegate through the shared egress guard.
+
+    The check here was a one-shot `url.startswith(...)` on the URL built from
+    `JELES_REMOTE_URL`, which urllib walked straight past — it follows 3xx
+    inside `urlopen`, so a redirect was never inspected, and a 302 to `ftp://`
+    landed a TCP connection on the target (reproduced against a listening
+    socket). `jeles._egress` re-checks every hop and installs no transport for
+    file:/ftp:/data:. It matters more here than anywhere else in the package:
+    this is the one request that carries a credential.
+    """
+    raw = _egress.fetch(
+        f"{base}/search", allowed=_ALLOWED_SCHEMES, timeout=_TIMEOUT,
+        max_bytes=_MAX_BYTES, data=json.dumps(payload).encode(),
         headers={
             "User-Agent": _UA,
             "Content-Type": "application/json",
@@ -185,12 +203,7 @@ def _post_remote(base: str, payload: dict, secret: str) -> Any:
             "X-Jeles-Secret": secret,
         },
     )
-    # Scheme is guarded above (fail-closed); urlopen honors HTTPS_PROXY.
-    with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:  # nosec B310
-        raw = resp.read(_MAX_BYTES + 1)
-        if len(raw) > _MAX_BYTES:
-            raise ValueError(f"response exceeds {_MAX_BYTES} bytes — refusing")
-        return json.loads(raw.decode("utf-8", "replace"))
+    return json.loads(raw.decode("utf-8", "replace"))
 
 
 # The keys `sources.search` grew when it learned to account for every source it

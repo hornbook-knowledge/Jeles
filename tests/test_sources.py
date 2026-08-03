@@ -24,9 +24,10 @@ import pytest
 
 from jeles import sources
 
-# Captured before any test can monkeypatch it — `test_the_opener_is_assembled`
-# needs the real builder, and every other test replaces `sources._opener`.
-_REAL_OPENER = sources._opener
+# The genuine builder, from conftest, which captured it before any fixture could
+# replace it. `sources._opener` is not it: that delegates to `_egress.opener`,
+# which the autouse seam patches.
+from conftest import real_opener as _REAL_OPENER  # noqa: E402
 
 
 class _Resp(io.BytesIO):
@@ -365,7 +366,7 @@ def test_the_opener_refuses_a_non_http_scheme():
     """URLs are built from queries and API responses, so the scheme is
     enforced rather than assumed."""
     req = sources.urllib.request.Request("file:///etc/passwd")
-    with pytest.raises(ValueError, match="refusing non-https"):
+    with pytest.raises(ValueError, match=r"refusing URL scheme outside \['https'\]"):
         sources._urlopen(req)
 
 
@@ -391,7 +392,7 @@ def test_the_allowed_schemes_are_what_the_docstring_says(url, allowed):
         with pytest.raises(AssertionError, match="must not make real requests"):
             sources._urlopen(req)
     else:
-        with pytest.raises(ValueError, match="refusing non-https"):
+        with pytest.raises(ValueError, match=r"refusing URL scheme outside \['https'\]"):
             sources._urlopen(req)
 
 
@@ -415,14 +416,15 @@ def test_a_redirect_to_a_disallowed_scheme_is_refused(newurl, allowed):
         assert handler.redirect_request(*args).full_url == newurl
     else:
         with pytest.raises(sources.urllib.error.HTTPError,
-                           match="refusing redirect to a non-https"):
+                           match=r"refusing redirect to a scheme outside \['https'\]"):
             handler.redirect_request(*args)
 
 
 def test_the_opener_is_assembled_with_the_guard_and_without_local_schemes():
-    names = {type(h).__name__ for h in _REAL_OPENER().handlers}
-    assert "_SchemeGuardedRedirects" in names
+    names = {type(h).__name__ for h in _REAL_OPENER(sources._ALLOWED_SCHEMES).handlers}
+    assert "SchemeGuardedRedirects" in names
     assert "HTTPRedirectHandler" not in names, "the unguarded default must not also be in"
+    assert "HTTPHandler" not in names, "https-only: plain http gets no transport either"
     assert not (names & {"FileHandler", "FTPHandler", "DataHandler"}), \
         "a scheme past both checks should have nothing able to open it"
 
@@ -432,8 +434,9 @@ def test_the_opener_is_not_built_at_import():
     import subprocess
     import sys
     probe = (
-        "import jeles.sources as s\n"
-        "assert s._OPENER is None, 'opener built at import'\n"
+        "import jeles.sources  # noqa: F401\n"
+        "from jeles import _egress\n"
+        "assert not _egress._OPENERS, 'opener built at import'\n"
     )
     assert subprocess.run([sys.executable, "-c", probe]).returncode == 0
 

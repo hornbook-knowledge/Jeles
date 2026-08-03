@@ -57,6 +57,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from typing import Optional
 
+from jeles import _egress
+
 log = logging.getLogger("jeles.sources")
 
 _TIMEOUT = 15
@@ -135,119 +137,61 @@ def _take_transport_failure() -> Optional[str]:
     return err
 
 
-# https only. Two functions here do request over plain HTTP — `search_omdb` and
-# `search_isfdb` — but neither is in SOURCES, so neither is ever dispatched:
-# they were vendored as dead code and stayed dead. Every *registered* source is
-# https already; the plain-`http://` strings in `search_arxiv`, `search_gallica`
-# and `search_ndl` are XML namespace URIs, which are identifiers and never
-# fetched. So allowing http costs a real protection — OMDb puts its API key in
-# the query string, where cleartext means the key is on the wire — and buys
-# nothing that is currently running.
+# https only, which is stricter than the other two egress lanes. Two functions
+# here do request over plain HTTP — `search_omdb` and `search_isfdb` — but
+# neither is in SOURCES, so neither is ever dispatched: they were vendored as
+# dead code and stayed dead. Every *registered* source is https already; the
+# plain-`http://` strings in `search_arxiv`, `search_gallica` and `search_ndl`
+# are XML namespace URIs, which are identifiers and never fetched. So allowing
+# http costs a real protection — OMDb puts its API key in the query string,
+# where cleartext means the key is on the wire — and buys nothing running.
 #
 # If either dead source is ever registered, confirm its host serves TLS and
 # switch it; do not widen this back. `test_no_registered_source_requests_over_
 # plain_http` fails if one is registered without that.
-_ALLOWED_SCHEMES = frozenset({"https"})
+_ALLOWED_SCHEMES = _egress.HTTPS_ONLY
+
+# Re-exported so the scheme/redirect tests in tests/test_sources.py keep naming
+# this module. The definitions live in `jeles._egress`, shared with
+# `institutional` and `reactions.search_adapter` — each of the three had written
+# its own copy of this guard, and each had the same two bugs in it.
+_scheme_ok = _egress.scheme_ok
+_read_capped_impl = _egress.read_capped
 
 
-def _scheme_ok(url: str) -> bool:
-    return urllib.parse.urlsplit(url).scheme.lower() in _ALLOWED_SCHEMES
-
-
-class _SchemeGuardedRedirects(urllib.request.HTTPRedirectHandler):
-    """Applies the scheme check to every redirect hop, not just the first.
-
-    The check in `_urlopen` only ever sees the URL a source built: urllib
-    follows 3xx inside `urlopen`, so a 302 elsewhere was never inspected.
-    Confirmed on 3.11 by pointing a redirect at a listening socket — the
-    connection arrived. stdlib's own filter (`HTTPRedirectHandler`
-    `.http_error_302`) permits http, https *and ftp*; this closes ftp, and
-    closes the silent https->http downgrade too. file: and data: stdlib
-    already rejected.
-    """
-
-    def redirect_request(self, req, fp, code, msg, headers, newurl):
-        # newurl has already been resolved against the request URL upstream,
-        # so a relative Location arrives here absolute and keeps its scheme.
-        if not _scheme_ok(newurl):
-            raise urllib.error.HTTPError(
-                newurl, code,
-                f"refusing redirect to a non-https URL scheme: {newurl[:60]!r}",
-                headers, fp)
-        return super().redirect_request(req, fp, code, msg, headers, newurl)
-
-
-_OPENER: Optional[urllib.request.OpenerDirector] = None
-_OPENER_LOCK = _threading.Lock()
+def _SchemeGuardedRedirects() -> _egress.SchemeGuardedRedirects:
+    return _egress.SchemeGuardedRedirects(_ALLOWED_SCHEMES)
 
 
 def _opener() -> urllib.request.OpenerDirector:
-    """The shared opener, built on first use like the thread pool.
-
-    Lazily because `ProxyHandler()` reads the proxy environment at the moment
-    it is constructed: building this at import would pin HTTPS_PROXY to
-    whatever was set when `jeles` was first imported. No socket is opened
-    either way, but it is state, and this module promises none at load.
-
-    Assembled by hand rather than with `build_opener`, which would also install
-    handlers for file:, ftp: and data:. `HTTPHandler` is left out for the same
-    reason now that plain http is refused — with no handler for a scheme, a URL
-    that somehow got past both checks has nothing able to open it at all:
-    `UnknownHandler` raises `unknown url type: http`. Verified that dropping it
-    does not disturb https-through-a-proxy, which tunnels via `HTTPSHandler`
-    and `ProxyHandler` and is unchanged with it absent.
-    """
-    global _OPENER
-    with _OPENER_LOCK:
-        if _OPENER is None:
-            o = urllib.request.OpenerDirector()
-            for h in (
-                urllib.request.ProxyHandler(),  # honors HTTPS_PROXY
-                urllib.request.HTTPSHandler(),
-                _SchemeGuardedRedirects(),
-                urllib.request.HTTPDefaultErrorHandler(),
-                urllib.request.HTTPErrorProcessor(),
-                urllib.request.UnknownHandler(),
-            ):
-                o.add_handler(h)
-            _OPENER = o
-    return _OPENER
+    return _egress.opener(_ALLOWED_SCHEMES)
 
 
 def _urlopen(req: urllib.request.Request):
     """The single egress point for every source, reached only through `_fetch`
     — so no source function ever holds a response it could read unbounded.
 
-    Guards the scheme fail-closed before opening. Sources build URLs from query
-    strings and API responses, so the scheme is checked rather than assumed —
-    and checked again on every redirect hop by the opener's handler, because
-    the check here sees only the first URL.
-
-    Known gap: stdlib drains the *redirect* response with an uncapped
-    `fp.read()` before following it, so `_MAX_BYTES` bounds the final body
-    only. A 3xx with an endless body is still an endless body.
+    Composed from `_egress` rather than calling `_egress.urlopen`, for two
+    local reasons: the breadcrumb below, and keeping `_opener` a name on *this*
+    module so the test suite can substitute it. Most sources catch their own
+    errors and return [], so without the breadcrumb a source that could not be
+    reached is indistinguishable from one that had nothing, and a whole blocked
+    egress reports as a successful empty search.
     """
     url = req.full_url if isinstance(req, urllib.request.Request) else str(req)
-    if not _scheme_ok(url):
-        raise ValueError(f"refusing non-https URL scheme: {url[:60]!r}")
+    if not _scheme_ok(url, _ALLOWED_SCHEMES):
+        raise ValueError(
+            f"refusing URL scheme outside {sorted(_ALLOWED_SCHEMES)}: {url[:60]!r}")
     try:
         return _opener().open(req, timeout=_TIMEOUT)
     except Exception as exc:
-        # Leave a breadcrumb before re-raising. Most sources catch their own
-        # errors and return [], so without this a source that could not be
-        # reached is indistinguishable from one that had nothing — and a whole
-        # blocked egress reports as a successful empty search.
         _note_transport_failure(exc)
         raise
 
 
 def _read_capped(resp) -> bytes:
-    """Read a bounded body. Every response here is untrusted input, and a
-    source that starts streaming without end should fail, not exhaust memory."""
-    raw = resp.read(_MAX_BYTES + 1)
-    if len(raw) > _MAX_BYTES:
-        raise ValueError(f"response exceeds {_MAX_BYTES} bytes — refusing")
-    return raw
+    """Read a bounded body, at this module's configured cap."""
+    return _egress.read_capped(resp, _MAX_BYTES)
 
 
 def _fetch(url: str, headers: dict | None = None) -> bytes:
