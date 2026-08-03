@@ -16,6 +16,7 @@ couldn't answer.
 | --- | --- |
 | `jeles.corpus` | Pure storage + ranked lookup of verified nuggets and gap logging. **Stdlib-only, no MCP, no network at import.** Reuses willow-mcp's SOIL `Store` SQLite schema at `$WILLOW_STORE_ROOT/<collection>/store.db`. |
 | `jeles.corpus_server` | Standalone `MCPServer` (MCP SDK 2.x) over the corpus (`python -m jeles.corpus_server`). Mirrors willow-mcp's shape (`app_id` on every tool) **without depending on willow-mcp**. |
+| `jeles.institutional` | The third hop: named institutional/academic collections via a [`jeles-remote`](https://github.com/rudi193-cmd/jeles-remote) deployment (~65 sources — arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian). **Stdlib-only, no network at import.** |
 | `jeles.willow_mcp_client` | Best-effort, fire-and-forget forwarding of gaps into willow-mcp's fleet-wide backlog. Never blocks, never raises; 30s retry cooldown so a single failed connect doesn't permanently disable forwarding. |
 | `jeles.load_persona()` | Loads the canonical Jeles persona JSON (this package is its canonical home). |
 
@@ -86,7 +87,29 @@ miss = corpus.ask_corpus("What is the accent color in Tokyo Night?")
 python -m jeles.corpus_server      # stdio; or use the `jeles-corpus-mcp` console script
 ```
 
-Tools: `corpus_ask`, `corpus_search`, `corpus_get`, `corpus_list`, `corpus_put`, `corpus_gaps` — each takes an `app_id` for naming-convention parity with willow-mcp.
+Tools — each takes an `app_id` for naming-convention parity with willow-mcp:
+
+| Hop | Tools |
+| --- | --- |
+| The settled layer | `corpus_ask`, `corpus_search`, `corpus_get`, `corpus_list`, `corpus_put`, `corpus_gaps` |
+| Open web | `corpus_web_search` |
+| Special collections | `corpus_institutional_search` |
+| Diagnosis | `corpus_search_status` — can either outward hop work? Asks nothing of the network. |
+
+### The confidence ladder
+
+All three hops return the **same hit shape**, so a host can rank them in one
+list without translating any of them. What never merges is the labelling:
+
+| `confidence` | `source_id` | Means |
+| --- | --- | --- |
+| `verified` | `corpus` | A human checked it. |
+| `corroborated` | `corpus` | Two independent domains agreed; no human yet. |
+| `institutional` | `institutional` | A named body published it — arXiv, the Library of Congress. Nobody checked it *for you*. |
+| `unverified` | `web` | Someone put it on the internet. |
+
+If any two of those ever collapse, the librarian is citing something it did not
+check — so a test asserts all four stay distinct.
 
 ### The persona
 
@@ -105,6 +128,10 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `JELES_CORPUS_APP_ID` | `ask-jeles` | `app_id` used when forwarding gaps to willow-mcp. |
 | `JELES_CORPUS_TOPIC` | `ask-jeles-corpus` | Backlog topic gaps are forwarded under. |
 | `WILLOW_MCP_CMD` | — | Explicit command to launch willow-mcp (else `willow-mcp` on PATH, else `python -m willow_mcp`). |
+| `JELES_REMOTE_URL` | `https://jeles-remote.fly.dev` | Base URL of the `jeles-remote` deployment backing the third hop. |
+| `JELES_REMOTE_SECRET` | — | Shared secret sent as `X-Jeles-Secret`. **Without it every institutional search is refused with 401**, which would otherwise look exactly like an empty shelf. |
+| `JELES_REMOTE_TIMEOUT` | `30` | Seconds to wait on the institutional fan-out. |
+| `JELES_SEARCH_BACKEND` | `searxng` if `JELES_SEARXNG_URL` is set, else `ddg` | Open-web backend: `searxng`, `brave`, `tavily`, `ddg`. The `ddg` fallback is zero-config and **shallow** — it returns related topics, not a result page. `corpus_search_status` says so rather than letting you infer depth from the absence of an error. |
 | `ASK_JELES_USE_WILLOW_MCP` | `1` | Set to `0`/`false`/`no` to disable fleet gap-forwarding entirely. |
 
 The Ask Jeles-flavored defaults are preserved so an existing store and its
