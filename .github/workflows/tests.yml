@@ -32,6 +32,10 @@ jobs:
       - name: Install lint tools
         run: pip install ruff==0.15.0 bandit
 
+      # Rules and line length come from [tool.ruff] in pyproject.toml. Until
+      # that section existed this ran ruff's defaults — E4/E7/E9 + F — so there
+      # was no line-length check, no import ordering, no bugbear, and every
+      # `# noqa` in the tree for a non-default rule was a dead directive.
       - name: Ruff (enforced)
         run: ruff check jeles tests
 
@@ -71,7 +75,7 @@ jobs:
           # Floor, not target: measured 85.8% when set. Ratchet up, never down.
           #
           # jeles/sources.py is omitted from the FLOOR, not from the tests. It is
-          # ~65 thin adapters over external APIs, and line-covering each one means
+          # ~60 thin adapters over external APIs, and line-covering each one means
           # stubbing each one — which proves the stub matches the stub, not that
           # arXiv still returns what we parse. What is genuinely ours in that
           # module — the registry, the fan-out, failure isolation, the wall-clock
@@ -122,8 +126,33 @@ jobs:
 
   # Aggregate gate: branch protection requires a single check named "test"
   # across the whole fleet. Green only when lint and every matrix leg are.
+  #
+  # `if: always()` is load-bearing, not boilerplate. Without it, a failing
+  # dependency does not fail this job — it *skips* it, because that is what
+  # `needs:` means. A skipped job reports the "skipped" conclusion, and a
+  # required check that never reports a failure does not block a merge. So the
+  # one check branch protection is configured to trust would have gone quiet at
+  # exactly the moment it mattered, and quiet reads as fine.
+  #
+  # Same shape as the bugs this repo keeps finding: absence of a failure being
+  # mistaken for evidence of success. So the result is asserted explicitly
+  # rather than inferred from this job having run at all.
   test:
     needs: [test-matrix, lint, no-extras]
+    if: always()
     runs-on: ubuntu-latest
     steps:
+      - name: Assert every dependency actually succeeded
+        # 'skipped' and 'cancelled' are failures here too: a leg that did not
+        # run has not told us anything, and this gate speaks for all of them.
+        if: ${{ contains(needs.*.result, 'failure')
+                || contains(needs.*.result, 'cancelled')
+                || contains(needs.*.result, 'skipped') }}
+        run: |
+          echo "lint=${{ needs.lint.result }}"
+          echo "test-matrix=${{ needs.test-matrix.result }}"
+          echo "no-extras=${{ needs.no-extras.result }}"
+          echo "::error::a required job did not succeed — see the results above"
+          exit 1
+
       - run: echo "lint, all matrix legs, and the no-extras install are green"

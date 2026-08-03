@@ -26,7 +26,8 @@ import threading
 import urllib.error
 import urllib.parse
 import urllib.request
-from typing import Any, Iterable, Optional
+from collections.abc import Iterable
+from typing import Any
 
 #: What `sources` allows: TLS or nothing.
 HTTPS_ONLY = frozenset({"https"})
@@ -129,7 +130,7 @@ def read_capped(resp: Any, max_bytes: int) -> bytes:
 
 
 def fetch(url: str, *, allowed: frozenset[str], timeout: float, max_bytes: int,
-          headers: Optional[dict] = None, data: Optional[bytes] = None) -> bytes:
+          headers: dict | None = None, data: bytes | None = None) -> bytes:
     """Open and read in one call, so no caller ever holds a response it could
     read unbounded. This is the only shape that makes the cap structural rather
     than remembered — six of eight egress sites in `sources` had skipped it."""

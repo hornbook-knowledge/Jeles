@@ -36,7 +36,8 @@ with a fake searcher, is fast and offline. That is the same purity seam
 from __future__ import annotations
 
 import re
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 from urllib.parse import urlparse
 
 # A searcher is any ``(query) -> [ {title, url, snippet}, ... ]``. The host wires
@@ -227,7 +228,7 @@ def react(
     * ``put_nugget`` — emitted only when the conflict is corroborated by
       ``>= min_sources`` independent domains. Records the *fact of corroborated
       prior art*, with the URLs as sources for a human to verify.
-    * ``log_gap`` — emitted when the finding is contested (0–1 sources): the
+    * ``log_gap`` — emitted when the finding is contested (0—1 sources): the
       corpus remembers it looked and couldn't yet verify.
     * ``frank_append`` — always emitted last, so every firing leaves one legible
       line regardless of outcome (the reaction-engine legibility rule).

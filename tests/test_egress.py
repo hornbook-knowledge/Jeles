@@ -20,7 +20,6 @@ from conftest import real_opener
 
 from jeles import _egress
 
-
 # ── The scheme check ────────────────────────────────────────────────────────
 
 

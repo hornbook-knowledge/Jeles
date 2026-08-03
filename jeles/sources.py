@@ -37,7 +37,6 @@ zero results is indistinguishable from the collection being empty:
     SMITHSONIAN_API_KEY      — register at api.si.edu
     EUROPEANA_API_KEY        — register at apis.europeana.eu
     BHL_API_KEY              — Biodiversity Heritage Library
-    OMDB_API_KEY             — Open Movie Database (not in the registry; plugin)
     SEMANTIC_SCHOLAR_API_KEY — free at semanticscholar.org. Optional, unlike the
                                rest: the source queries anonymously without it
                                and the key only lifts rate limits.
@@ -55,7 +54,6 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from typing import Optional
 
 from jeles import _egress
 
@@ -131,24 +129,22 @@ def _note_transport_failure(exc: Exception) -> None:
     _TRANSPORT_ERRORS.last = f"{type(exc).__name__}: {exc}"
 
 
-def _take_transport_failure() -> Optional[str]:
+def _take_transport_failure() -> str | None:
     err = getattr(_TRANSPORT_ERRORS, "last", None)
     _TRANSPORT_ERRORS.last = None
     return err
 
 
-# https only, which is stricter than the other two egress lanes. Two functions
-# here do request over plain HTTP — `search_omdb` and `search_isfdb` — but
-# neither is in SOURCES, so neither is ever dispatched: they were vendored as
-# dead code and stayed dead. Every *registered* source is https already; the
-# plain-`http://` strings in `search_arxiv`, `search_gallica` and `search_ndl`
-# are XML namespace URIs, which are identifiers and never fetched. So allowing
-# http costs a real protection — OMDb puts its API key in the query string,
-# where cleartext means the key is on the wire — and buys nothing running.
+# https only, which is stricter than the other two egress lanes — those are
+# aimed at an address the operator chose, this one at sixty public APIs.
 #
-# If either dead source is ever registered, confirm its host serves TLS and
-# switch it; do not widen this back. `test_no_registered_source_requests_over_
-# plain_http` fails if one is registered without that.
+# Nothing here needs plain http. The two functions that used it (`search_omdb`,
+# `search_isfdb`) were vendored dead, never registered, and have been deleted;
+# the remaining plain-`http://` strings, in `search_arxiv`, `search_gallica`
+# and `search_ndl`, are XML namespace URIs — identifiers, never fetched.
+# `test_no_registered_source_requests_over_plain_http` fails if a source is
+# added that does request over http: confirm the host serves TLS and use it,
+# rather than widening this back.
 _ALLOWED_SCHEMES = _egress.HTTPS_ONLY
 
 # Re-exported so the scheme/redirect tests in tests/test_sources.py keep naming
@@ -224,7 +220,7 @@ def _parse_xml(raw: bytes):
     return ET.fromstring(raw)  # nosec B314
 
 
-def _get(url: str, headers: dict | None = None) -> Optional[dict | list]:
+def _get(url: str, headers: dict | None = None) -> dict | list | None:
     """Fetch JSON. Returns None on any failure — a dead source is a missing
     source, never an exception that sinks the fan-out."""
     try:
@@ -240,7 +236,7 @@ def _get(url: str, headers: dict | None = None) -> Optional[dict | list]:
         return None
 
 
-def _get_html(url: str, headers: dict | None = None) -> Optional[str]:
+def _get_html(url: str, headers: dict | None = None) -> str | None:
     """Fetch text. Same contract as `_get`: None rather than a raise."""
     try:
         return _fetch(url, headers).decode("utf-8", errors="replace")
@@ -1717,141 +1713,6 @@ def search_europeana(query: str, limit: int = 5) -> list[dict]:
     return results
 
 
-# ── Plugin sources ─────────────────────────────────────────────────────────────
-
-def search_omdb(query: str, limit: int = 5) -> list[dict]:
-    """OMDb — Open Movie Database. Movies, B-movies, horror, cult cinema. Key required."""
-    api_key = os.environ.get("OMDB_API_KEY", "")
-    if not api_key:
-        return []
-    url = (
-        "http://www.omdbapi.com/?s=" + urllib.parse.quote(query)
-        + f"&type=movie&apikey={api_key}"
-    )
-    data = _get(url)
-    if not data:
-        return []
-    results = []
-    for item in (data.get("Search") or [])[:limit]:
-        imdb_id = item.get("imdbID", "")
-        results.append(_result(
-            title=item.get("Title", ""),
-            url=f"https://www.imdb.com/title/{imdb_id}/" if imdb_id else "",
-            source="omdb",
-            institution="OMDb / IMDb",
-            snippet=f"{item.get('Type','').title()} · {item.get('Year','')}",
-            date=item.get("Year", ""),
-            rid=imdb_id,
-        ))
-    return results
-
-
-def search_isfdb(query: str, limit: int = 5) -> list[dict]:
-    """ISFDB — Internet Speculative Fiction Database. Sci-fi, horror, fantasy, pulp."""
-    import re as _re
-    url = (
-        "http://www.isfdb.org/cgi-bin/se.cgi?arg="
-        + urllib.parse.quote(query)
-        + "&type=Fiction+Titles"
-    )
-    html = _get_html(url)
-    if not html:
-        return []
-    results = []
-    title_re  = _re.compile(r'title\.cgi\?(\d+)">([^<]{3,120})</a>')
-    author_re = _re.compile(r'author\.cgi\?[^"]+">([^<]+)</a>')
-    year_re   = _re.compile(r'<td[^>]*class="[^"]*year[^"]*"[^>]*>(\d{4})</td>')
-    titles  = title_re.findall(html)
-    authors = author_re.findall(html)
-    years   = year_re.findall(html)
-    for i, (tid, title) in enumerate(titles[:limit]):
-        author  = authors[i] if i < len(authors) else ""
-        year    = years[i]   if i < len(years)   else ""
-        results.append(_result(
-            title=title.strip(),
-            url=f"http://www.isfdb.org/cgi-bin/title.cgi?{tid}",
-            source="isfdb",
-            institution="Internet Speculative Fiction Database",
-            snippet=author,
-            date=year,
-            rid=tid,
-        ))
-    return results
-
-
-def search_fbi_vault(query: str, limit: int = 5) -> list[dict]:
-    """FBI Records Vault — declassified FBI files on persons, events, organizations."""
-    import re as _re
-    # Try Plone JSON API first
-    url = (
-        "https://vault.fbi.gov/@search?SearchableText="
-        + urllib.parse.quote(query)
-        + f"&portal_type:list=File&b_size={limit}"
-    )
-    data = _get(url)
-    items = []
-    if isinstance(data, dict):
-        items = data.get("items") or data.get("@components", {}).get("items", [])
-    elif isinstance(data, list):
-        items = data
-    results = []
-    for item in items[:limit]:
-        results.append(_result(
-            title=item.get("title", ""),
-            url=item.get("@id", ""),
-            source="fbi_vault",
-            institution="FBI Records Vault (Declassified)",
-            snippet=(item.get("description") or "")[:200],
-            date=(item.get("effective") or "")[:10],
-            rid=item.get("@id", ""),
-        ))
-    if results:
-        return results
-    # HTML fallback
-    html = _get_html(
-        "https://vault.fbi.gov/search?SearchableText=" + urllib.parse.quote(query)
-    )
-    if not html:
-        return []
-    links = _re.findall(r'href="(https://vault\.fbi\.gov/[^"#]{5,200})"[^>]*>([^<]{5,120})</a>', html)
-    for url_found, title in links[:limit]:
-        results.append(_result(
-            title=title.strip(),
-            url=url_found,
-            source="fbi_vault",
-            institution="FBI Records Vault (Declassified)",
-            snippet="",
-            date="",
-            rid=url_found,
-        ))
-    return results
-
-
-def search_ig_nobel(query: str, limit: int = 5) -> list[dict]:
-    """Ig Nobel Prize archive — unusual research that makes you laugh then think."""
-    import re as _re
-    url = "https://www.improbable.com/?s=" + urllib.parse.quote(query)
-    html = _get_html(url)
-    if not html:
-        return []
-    title_re   = _re.compile(r'class="entry-title[^"]*">\s*<a href="([^"]+)"[^>]*>([^<]+)</a>', _re.S)
-    excerpt_re = _re.compile(r'class="entry-summary[^"]*">\s*<p>([^<]{10,400})</p>', _re.S)
-    titles   = title_re.findall(html)
-    excerpts = [e.strip() for e in excerpt_re.findall(html)]
-    results  = []
-    for i, (link, title) in enumerate(titles[:limit]):
-        results.append(_result(
-            title=title.strip(),
-            url=link,
-            source="ig_nobel",
-            institution="Improbable Research (Ig Nobel)",
-            snippet=excerpts[i] if i < len(excerpts) else "",
-            date="",
-            rid=link,
-        ))
-    return results
-
-
 def search_psychiatric_times(query: str, limit: int = 5) -> list[dict]:
     """Psychiatric Times — clinical psychiatry news, case reports, and review articles.
     HTML scraper (no API key). Press tier — trade press, not peer-reviewed."""
@@ -1948,7 +1809,8 @@ def search_worldbank(query: str, limit: int = 5) -> list[dict]:
     indicators = data[1] or []
     q_terms = [t for t in query.lower().split() if len(t) > 2]
     def _words(s: str) -> set:
-        return {w for w in "".join(c if c.isalnum() else " " for c in (s or "").lower()).split()}
+        return set("".join(c if c.isalnum() else " "
+                           for c in (s or "").lower()).split())
     if q_terms:
         # Whole-word match (so "product" does not hit "production"), ranked by
         # relevance — alphabetical order otherwise buries the real match under AG.*.
@@ -2202,10 +2064,15 @@ def search_open_meteo(query: str, limit: int = 5) -> list[dict]:
     temp = current.get("temperature_2m", "")
     humid = current.get("relative_humidity_2m", "")
     wind = current.get("wind_speed_10m", "")
+    # strict: these three arrays are parallel by contract. A bare zip() would
+    # truncate to the shortest and hand back a short forecast that reads as a
+    # complete one; ragged here means the response is malformed, and the source
+    # should land in `failed` rather than quietly answer with less.
     days = list(zip(
         (daily.get("time") or [])[:3],
         (daily.get("temperature_2m_max") or [])[:3],
         (daily.get("temperature_2m_min") or [])[:3],
+        strict=True,
     ))
     forecast = " | ".join(f"{d}: {hi}/{lo}°C" for d, hi, lo in days)
     snippet = f"Current: {temp}°C, humidity {humid}%, wind {wind} km/h | Forecast: {forecast}"
@@ -2325,7 +2192,7 @@ def search_osf(query: str, limit: int = 5) -> list[dict]:
 def search_thesportsdb(query: str, limit: int = 5) -> list[dict]:
     """TheSportsDB — teams, players, leagues, and events. No key required (demo tier)."""
     results = []
-    for kind, key, endpoint in [
+    for kind, _key, endpoint in [
         ("teams",   "teams",   f"https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t={urllib.parse.quote(query)}"),
         ("players", "players", f"https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p={urllib.parse.quote(query)}"),
     ]:
@@ -2398,10 +2265,10 @@ def search_frankfurter(query: str, limit: int = 5) -> list[dict]:
 # abstention in `skipped` with a reason before dispatching: the five registered
 # functions that abstain do it with a bare `return []`, which is
 # indistinguishable from an empty collection once it reaches the fan-out.
-# (`search_omdb` abstains the same way but is not registered.) Measured: a
-# default fan-out on a machine with no keys reported 60 queried, 55 failed, and
-# five sources — rijksmuseum, dpla, smithsonian, europeana, bhl — in no bucket
-# at all, which is what kept `institutional`'s outage check from ever firing.
+# Measured: a default fan-out on a machine with no keys reported 60 queried,
+# 55 failed, and five sources — rijksmuseum, dpla, smithsonian, europeana,
+# bhl — in no bucket at all, which is what kept `institutional`'s outage check
+# from ever firing.
 #
 # Only declare `key_env` for a source whose function really does return before
 # any egress. `tests/test_sources.py` pins each declaration against the actual
@@ -2828,7 +2695,7 @@ def search(
     failed: dict[str, str] = {}
     timed_out: list[str] = []
 
-    def _call(sid: str, fn) -> tuple[str, Optional[list], Optional[str]]:
+    def _call(sid: str, fn) -> tuple[str, list | None, str | None]:
         """Run one source on a worker and *return* its outcome.
 
         Returns (sid, hits, error) with exactly one of hits/error set. It writes
@@ -2856,7 +2723,7 @@ def search(
             log.warning("Source %s failed: %s", sid, e)
             return sid, None, f"{type(e).__name__}: {e}"
 
-    def _record(sid: str, hits: Optional[list], err: Optional[str]) -> None:
+    def _record(sid: str, hits: list | None, err: str | None) -> None:
         if err is not None:
             failed[sid] = err
         else:

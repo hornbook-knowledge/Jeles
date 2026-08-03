@@ -305,7 +305,7 @@ def test_concurrent_asks_do_not_lose_gap_counts(corpus):
     for t in threads:
         t.join()
 
-    gap = [g for g in corpus.list_gaps() if "Tokyo Night" in g["question"]][0]
+    gap = next(g for g in corpus.list_gaps() if "Tokyo Night" in g["question"])
     assert gap["asked_count"] == 50
 
 
@@ -338,12 +338,11 @@ def test_a_failed_write_rolls_back(corpus):
 
     conn = corpus._conn(corpus.NUGGETS_COLLECTION)
     before = conn.execute("SELECT COUNT(*) FROM records").fetchone()[0]
-    with _pytest.raises(RuntimeError):
-        with corpus._write(conn):
-            conn.execute(
-                "INSERT INTO records (id, data, created_at, updated_at, deleted) "
-                "VALUES ('x', '{}', 'n', 'n', 0)")
-            raise RuntimeError("boom")
+    with _pytest.raises(RuntimeError), corpus._write(conn):
+        conn.execute(
+            "INSERT INTO records (id, data, created_at, updated_at, deleted) "
+            "VALUES ('x', '{}', 'n', 'n', 0)")
+        raise RuntimeError("boom")
     assert conn.execute("SELECT COUNT(*) FROM records").fetchone()[0] == before
 
 

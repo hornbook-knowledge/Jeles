@@ -51,7 +51,6 @@ it by way of a tool call.
 from __future__ import annotations
 
 import os
-from typing import Optional
 
 try:
     from mcp.server.mcpserver import MCPServer
@@ -149,8 +148,8 @@ def corpus_put(
     answer: str,
     sources: list[str],
     verified_by: str,
-    tags: Optional[list[str]] = None,
-    nugget_id: Optional[str] = None,
+    tags: list[str] | None = None,
+    nugget_id: str | None = None,
 ) -> dict:
     """Record a nugget **as an assertion**. Requires question, answer, at least
     one source, and who is claiming it. Returns ``{id, action,
@@ -303,7 +302,7 @@ def corpus_institutional_search(
     app_id: str,
     query: str,
     limit: int = 12,
-    sources: Optional[list[str]] = None,
+    sources: list[str] | None = None,
     limit_per_source: int = 3,
 ) -> dict:
     """Search named institutional and academic collections — the persona's

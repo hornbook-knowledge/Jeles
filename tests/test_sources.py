@@ -22,12 +22,12 @@ import time
 
 import pytest
 
-from jeles import sources
-
 # The genuine builder, from conftest, which captured it before any fixture could
 # replace it. `sources._opener` is not it: that delegates to `_egress.opener`,
 # which the autouse seam patches.
-from conftest import real_opener as _REAL_OPENER  # noqa: E402
+from conftest import real_opener as _REAL_OPENER
+
+from jeles import sources
 
 
 class _Resp(io.BytesIO):
@@ -313,9 +313,13 @@ def test_arxiv_parses_xml_into_the_contract(monkeypatch):
 
 def test_a_keyed_source_is_skipped_without_its_key(monkeypatch):
     """Missing key means the source is absent, never an exception — that is
-    what lets the default fan-out run unconfigured."""
-    monkeypatch.delenv("OMDB_API_KEY", raising=False)
-    assert sources.search_omdb("dune", limit=1) == []
+    what lets the default fan-out run unconfigured.
+
+    Uses a *registered* source: this used to exercise `search_omdb`, a plugin
+    function that was never in SOURCES, so it proved the behaviour on a code
+    path the fan-out never took."""
+    monkeypatch.delenv("EUROPEANA_API_KEY", raising=False)
+    assert sources.search_europeana("vermeer", limit=1) == []
 
 
 def test_a_malformed_response_yields_no_hits_rather_than_raising(monkeypatch):
@@ -372,8 +376,8 @@ def test_the_opener_refuses_a_non_http_scheme():
 
 @pytest.mark.parametrize("url, allowed", [
     ("https://example.org/x", True),
-    # Plain http is refused. The only two functions that request over it —
-    # search_omdb, search_isfdb — are not in SOURCES and never dispatched; the
+    # Plain http is refused. Nothing here needs it: the two functions that
+    # requested over http were never registered and have been deleted, and the
     # `http://` strings in the registered XML sources are namespace URIs, which
     # are identifiers, not addresses.
     ("http://example.org/x", False),
@@ -470,10 +474,8 @@ _OVERSIZED = [
     ("search_uk_legislation",
      json.dumps({"items": [{"title": "An Act", "href": "/ukpga/1", "year": 2020}],
                  "pad": _PAD})),
-    # Control: this already went through the capped helpers. (`search_isfdb`
-    # used to serve as the `_get_html` control; it requests over plain http, is
-    # not registered, and is now refused by the scheme guard — `search_sep`
-    # above covers the same helper.)
+    # Control: this already went through the capped helpers. (`search_sep`
+    # above covers the `_get_html` side.)
     ("search_openalex",
      json.dumps({"results": [{"display_name": "W", "id": "https://openalex.org/W1"}],
                  "pad": _PAD})),
@@ -874,18 +876,12 @@ def test_the_returned_buckets_are_a_snapshot(monkeypatch):
         "a straggler wrote into a dict the caller already holds"
 
 def test_no_registered_source_requests_over_plain_http():
-    """The scheme guard is https-only, so a registered source pointing at
-    `http://` would fail at runtime rather than at review.
+    """The scheme guard is https-only, so a source pointing at `http://` fails
+    at runtime rather than at review. This is what makes https-only free.
 
-    Two functions here do use plain http — `search_omdb` and `search_isfdb` —
-    and both are absent from SOURCES, vendored as dead code and never
-    dispatched. That is the only reason https-only is free. If either is ever
-    registered, this fails: confirm the host serves TLS and switch the URL,
-    rather than widening `_ALLOWED_SCHEMES` back.
-
-    The `http://` strings inside `search_arxiv`, `search_gallica` and
-    `search_ndl` are XML namespace URIs — identifiers, never fetched — which is
-    why matching on request URLs and not on the literal is the point.
+    Matches on request URLs rather than on the literal, because the `http://`
+    strings inside `search_arxiv`, `search_gallica` and `search_ndl` are XML
+    namespace URIs — identifiers, never fetched.
     """
     import inspect
     import re as _re
@@ -906,9 +902,19 @@ def test_no_registered_source_requests_over_plain_http():
         "guard refuses these at runtime")
 
 
-def test_the_two_plain_http_functions_are_still_unregistered():
-    """Pins the premise the test above depends on, from the other side."""
+def test_the_module_defines_no_function_the_registry_does_not_use():
+    """Four functions were vendored and never registered — `search_omdb`,
+    `search_isfdb`, `search_fbi_vault`, `search_ig_nobel`. Dead code that reads
+    as capability: `list_sources` never showed them, no fan-out ever called
+    them, and two of them shaped the https-only decision by looking like live
+    sources that needed plain http. Deleted; this keeps the next one out."""
+    import re as _re
+    from pathlib import Path
+
+    defined = set(_re.findall(r"^def (search_[a-z0-9_]+)",
+                              Path(sources.__file__).read_text(), _re.M))
     registered = {cfg.get("fn_name") or f"search_{sid}"
                   for sid, cfg in sources.SOURCES.items()}
-    assert "search_omdb" not in registered
-    assert "search_isfdb" not in registered
+    assert defined - registered == set(), \
+        "defined but unreachable — register it or delete it"
+    assert registered - defined == set(), "registered with no function"

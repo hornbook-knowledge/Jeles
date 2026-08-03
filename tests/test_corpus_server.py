@@ -27,8 +27,8 @@ import pytest
 
 pytest.importorskip("mcp", reason="jeles[mcp] extra not installed")
 
-import jeles  # noqa: E402
-from jeles import corpus_server  # noqa: E402
+import jeles
+from jeles import corpus_server
 
 EXPECTED_TOOLS = {
     # The settled layer.
@@ -238,7 +238,7 @@ def test_the_web_hop_is_registered():
     """The gap this closes: search_adapter existed with exactly one consumer
     (conflict_scan.react), and neither was reachable from this server — so a
     client got a corpus and no internet."""
-    assert WEB_TOOLS <= {t.name for t in _listed_tools()}
+    assert {t.name for t in _listed_tools()} >= WEB_TOOLS
 
 
 def test_web_search_reports_a_failure_rather_than_an_empty_answer(monkeypatch):

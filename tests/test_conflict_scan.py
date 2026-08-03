@@ -251,5 +251,5 @@ def test_sources_are_exactly_the_witnesses():
          "snippet": "a signed reaction registry"},
     ]
     proposals = cs.react({"claim": _INVENTED}, searcher=mixed)
-    nugget = [p for p in proposals if p["driver"] == "put_nugget"][0]["args"]
+    nugget = next(p for p in proposals if p["driver"] == "put_nugget")["args"]
     assert sorted(nugget["sources"]) == ["https://other.org/b", "https://real.org/a"]

@@ -45,7 +45,8 @@ _COLLECTION_RE = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
 
 def _validate_collection(collection: str) -> None:
     if not _COLLECTION_RE.match(collection or ""):
-        raise ValueError(f"invalid collection name (must match {_COLLECTION_RE.pattern}): {collection!r}")
+        raise ValueError(f"invalid collection name (must match "
+                         f"{_COLLECTION_RE.pattern}): {collection!r}")
 
 # The `deviation`/`action` columns are willow-mcp's (SOIL Store, db.py). jeles
 # never reads them, but a jeles-created collection missing them makes a
@@ -80,7 +81,8 @@ _conns: dict[str, sqlite3.Connection] = {}
 
 
 def _store_root() -> Path:
-    return Path(os.environ.get("WILLOW_STORE_ROOT", str(Path.home() / ".willow" / "store"))).expanduser()
+    default = str(Path.home() / ".willow" / "store")
+    return Path(os.environ.get("WILLOW_STORE_ROOT", default)).expanduser()
 
 
 def _conn(collection: str) -> sqlite3.Connection:

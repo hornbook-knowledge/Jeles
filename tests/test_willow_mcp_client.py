@@ -50,7 +50,9 @@ def test_launch_prefers_explicit_override(monkeypatch):
 
 def test_launch_falls_back_to_path_binary(monkeypatch):
     monkeypatch.delenv("WILLOW_MCP_CMD", raising=False)
-    monkeypatch.setattr(wmc.shutil, "which", lambda name: "/usr/local/bin/willow-mcp" if name == "willow-mcp" else None)
+    monkeypatch.setattr(
+        wmc.shutil, "which",
+        lambda name: "/usr/local/bin/willow-mcp" if name == "willow-mcp" else None)
     assert wmc._launch() == ("/usr/local/bin/willow-mcp", [])
 
 

@@ -39,7 +39,8 @@ import logging
 import os
 import urllib.parse
 import urllib.request
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 from jeles import _egress
 

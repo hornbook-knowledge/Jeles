@@ -8,13 +8,12 @@ from jeles import corpus, willow_mcp_client
 from jeles.reactions import conflict_scan as cs
 from jeles.reactions import search_adapter as sa
 
-
 # ── corpus ────────────────────────────────────────────────────────────────
 
 def test_machine_nugget_does_not_render_as_human_verified(tmp_path, monkeypatch):
     monkeypatch.setenv("WILLOW_STORE_ROOT", str(tmp_path))
     corpus._conns.clear()
-    corpus.put_nugget("q1?", "a", ["https://x.org/1"], "designer")                  # human (default)
+    corpus.put_nugget("q1?", "a", ["https://x.org/1"], "designer")   # human (default)
     corpus.put_nugget("q2?", "a", ["https://x.org/2"], cs.WITNESS,
                       verification_kind="machine")
     hits = {n["question"]: corpus.to_search_hit(n) for n in corpus.list_nuggets()}

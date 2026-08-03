@@ -18,6 +18,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+
 def __getattr__(name: str) -> Any:
     """Lazily resolve ``jeles.__version__`` from installed package metadata.
 
@@ -74,4 +75,4 @@ def persona_prompt() -> str:
     return compile_persona(load_persona())
 
 
-__all__ = ["load_persona", "persona_prompt", "persona_path", "__version__"]
+__all__ = ["__version__", "load_persona", "persona_path", "persona_prompt"]

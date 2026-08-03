@@ -49,7 +49,8 @@ _start_lock = threading.Lock()
 
 
 def _use_willow_mcp() -> bool:
-    return os.environ.get("ASK_JELES_USE_WILLOW_MCP", "1").strip().lower() not in ("0", "false", "no")
+    return (os.environ.get("ASK_JELES_USE_WILLOW_MCP", "1").strip().lower()
+            not in ("0", "false", "no"))
 
 
 def _subprocess_env() -> dict[str, str]:
@@ -100,8 +101,8 @@ async def _lifecycle(ready: threading.Event) -> None:
         return
 
     try:
-        from mcp.client.stdio import StdioServerParameters, stdio_client
         from mcp import ClientSession
+        from mcp.client.stdio import StdioServerParameters, stdio_client
     except ImportError as exc:
         _mcp_error = f"mcp package missing: {exc}"
         ready.set()
@@ -113,13 +114,15 @@ async def _lifecycle(ready: threading.Event) -> None:
     _mcp_stop_event = stop
 
     try:
-        async with stdio_client(params) as (read, write):
-            async with ClientSession(read, write) as session:
-                await session.initialize()
-                _mcp_session = session
-                _mcp_ready = True
-                ready.set()
-                await stop.wait()
+        async with (
+            stdio_client(params) as (read, write),
+            ClientSession(read, write) as session,
+        ):
+            await session.initialize()
+            _mcp_session = session
+            _mcp_ready = True
+            ready.set()
+            await stop.wait()
     except Exception as exc:
         _mcp_error = str(exc)
         log.debug("willow-mcp session failed: %s", exc)

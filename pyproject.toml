@@ -71,3 +71,39 @@ source = "vcs"
 
 [tool.hatch.build.targets.wheel]
 packages = ["jeles"]
+
+[tool.ruff]
+# 100, not ruff's default 88. Every hand-maintained file in this tree already
+# fits under it (measured: 0 violations outside `jeles/sources.py`), so it is a
+# real bound on new code rather than a number picked to make the linter quiet.
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# CI enforced ruff with no config at all, which meant ruff's defaults: E4, E7,
+# E9 and F. That is pyflakes plus a handful of syntax-adjacent checks — no line
+# length, no import ordering, no bugbear. It also silently made every
+# `# noqa: E402` and `# noqa: E731` in the tree a dead directive suppressing a
+# rule that was never on, which is the same shape as the bugs this repo keeps
+# finding: a comment asserting a protection that is not running. RUF100 catches
+# exactly that, and is the reason it is in this list.
+select = [
+    "E", "W",   # pycodestyle — including E501, which the defaults leave off
+    "F",        # pyflakes
+    "I",        # import ordering
+    "B",        # bugbear: mutable defaults, zip() without strict, unused loop vars
+    "C4",       # comprehension shape
+    "UP",       # py310+ idiom (matches target-version, so it cannot drift)
+    "SIM",      # a few real ones — an unclosed file handle, a Yoda comparison
+    "RUF",      # ruff's own, incl. RUF100 (dead noqa)
+]
+
+[tool.ruff.lint.per-file-ignores]
+# `jeles/sources.py` is vendored: ~60 thin adapters over external APIs, ported
+# rather than written here, and not hand-edited except at the fan-out. 71 of its
+# lines exceed 100 — long f-string snippet assembly and XML namespace lookups,
+# not URLs (only 3 are). Reflowing them is mechanical churn on code we did not
+# write, for no reading benefit, and leaving E501 on would put 71 permanent
+# warnings in front of every real finding. Every other rule above still applies
+# to it. Revisit if this file ever becomes hand-maintained.
+"jeles/sources.py" = ["E501"]
