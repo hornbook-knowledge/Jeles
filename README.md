@@ -16,6 +16,8 @@ couldn't answer.
 | --- | --- |
 | `jeles.corpus` | Pure storage + ranked lookup of verified nuggets and gap logging. **Stdlib-only, no MCP, no network at import.** Reuses willow-mcp's SOIL `Store` SQLite schema at `$WILLOW_STORE_ROOT/<collection>/store.db`. |
 | `jeles.corpus_server` | Standalone `MCPServer` (MCP SDK 2.x) over the corpus (`python -m jeles.corpus_server`). Mirrors willow-mcp's shape (`app_id` on every tool) **without depending on willow-mcp**. |
+| `jeles.sources` | **The institutional collections themselves** — ~65 source functions (arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian) plus the concurrent fan-out across them. **Stdlib-only.** |
+| `jeles.institutional` | The third hop: fans a query across `jeles.sources` in-process, and shapes results like every other hit. Optionally delegates to a hosted [`jeles-remote`](https://github.com/rudi193-cmd/jeles-remote) instead. |
 | `jeles.willow_mcp_client` | Best-effort, fire-and-forget forwarding of gaps into willow-mcp's fleet-wide backlog. Never blocks, never raises; 30s retry cooldown so a single failed connect doesn't permanently disable forwarding. |
 | `jeles.load_persona()` | Loads the canonical Jeles persona JSON (this package is its canonical home). |
 
@@ -25,7 +27,8 @@ couldn't answer.
 2. **`corpus.py` stays pure.** Storage and ranking have no MCP, no network, no side effects beyond SQLite. Everything MCP-shaped wraps it; it never depends on anything MCP-shaped itself. This is what keeps its tests fast and network-free.
 3. **The corpus is its own standalone MCP server, on purpose.** `corpus_server.py` is a small `MCPServer` any stdio client can run directly, mirroring willow-mcp's shape without depending on it.
 4. **Two kinds of "ask," two gap-logging rules.** `search_nuggets()` (passive/background) checks the corpus but never logs a gap on a miss. `ask_corpus()` (deliberate) treats a miss — or a match below `MIN_ASK_SCORE` — as a real gap worth tracking, and logs it.
-5. **Local is the source of truth; the fleet backlog is additive.** `corpus.log_gap()` (synchronous, local SQLite) always runs first and makes the host fully functional offline. `willow_mcp_client.forward_gap()` is a *best-effort* copy into willow-mcp's shared backlog.
+5. **The collections live here, not behind a service.** `sources.py` is the same relationship `corpus.py` has with `corpus_server.py`: a pure core that something thin wraps. `jeles-remote` is a 74-line FastAPI shim over this module, so a hosted deployment is a convenience — never a prerequisite, never a secret you must hold, never a second repository in the test loop.
+6. **Local is the source of truth; the fleet backlog is additive.** `corpus.log_gap()` (synchronous, local SQLite) always runs first and makes the host fully functional offline. `willow_mcp_client.forward_gap()` is a *best-effort* copy into willow-mcp's shared backlog.
 
 ## Install
 

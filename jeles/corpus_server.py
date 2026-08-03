@@ -21,10 +21,19 @@ Tools:
   corpus_put     — add or update a verified nugget
   corpus_gaps    — list logged "I don't know yet" questions
 
-The second hop — the open web, for what the verified layer could not answer:
+The outward hops, for what the verified layer could not answer:
 
-  corpus_web_search   — search the open web; results are always `unverified`
-  corpus_search_status — can the web hop work at all? (asks nothing of the network)
+  corpus_web_search           — the open web; results are always `unverified`
+  corpus_institutional_search — ~65 institutional/academic collections, run
+                                in-process; results are `institutional`
+  corpus_sources              — which collections exist, and which need a key
+  corpus_search_status        — can either outward hop work? (asks nothing of
+                                the network)
+
+Together those are the persona's mandate — local KB → open web → special
+collections — with the confidence ladder intact across all three:
+
+  verified > corroborated > institutional > unverified
 """
 
 from __future__ import annotations
@@ -55,7 +64,7 @@ except ImportError as exc:  # pragma: no cover - exercised by install shape, not
 from urllib.parse import urlparse
 
 import jeles
-from jeles import corpus, willow_mcp_client
+from jeles import corpus, institutional, willow_mcp_client
 from jeles.reactions import search_adapter
 
 mcp = MCPServer(
@@ -203,15 +212,77 @@ def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
 
 @mcp.tool()
 def corpus_search_status(app_id: str) -> dict:
-    """Report whether the open-web hop can work at all, without searching.
+    """Report whether the outward hops can work at all, without searching.
 
-    ``{backend, configured, shallow, requires, reason}``. Worth calling before
-    concluding that the web has nothing: the zero-config default is `ddg`,
-    which is `configured` because it needs no configuration and `shallow`
-    because it cannot corroborate anything. That combination looks healthy and
-    is not.
+    Top-level keys describe the open web —
+    ``{backend, configured, shallow, requires, reason}`` — and
+    ``institutional`` carries the same question for the third hop, including
+    which lane it will take (`local` in-process, or a configured `remote`).
+
+    Worth calling before concluding that anything "found nothing": the
+    zero-config web default is `ddg`, which is `configured` because it needs no
+    configuration and `shallow` because it cannot corroborate anything. Both
+    look like silence from the outside.
     """
-    return search_adapter.describe_backend()
+    status = dict(search_adapter.describe_backend())
+    # Additive: the web keys stay at the top level so anything reading this
+    # tool before the third hop existed keeps working unchanged.
+    status["institutional"] = institutional.describe_remote()
+    return status
+
+
+# ── The third hop: special collections ──────────────────────────────────────
+
+
+@mcp.tool()
+def corpus_institutional_search(
+    app_id: str,
+    query: str,
+    limit: int = 12,
+    sources: Optional[list[str]] = None,
+    limit_per_source: int = 3,
+) -> dict:
+    """Search named institutional and academic collections — the persona's
+    third hop, and the one that produces citable answers.
+
+    One query fans out across ~65 registered sources (arXiv, PubMed, Crossref,
+    OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian,
+    ...), **in this process** — no service to deploy and no secret to hold.
+    ``sources`` narrows the fan-out to specific registered ids; omit it for
+    every non-opt-in source, and call ``corpus_sources`` to see what those are.
+
+    Returns ``{hits, ok, lane, sources_queried, total, error}``. Read `ok`
+    before reading `hits`: ``ok: false`` means the collections were never
+    reached. ``lane`` is ``local`` unless a remote deployment is configured.
+
+    Every hit is ``confidence: "institutional"`` — its own rung between a
+    corpus nugget's ``verified``/``corroborated`` and the open web's
+    ``unverified``. A Library of Congress record is neither a human-checked
+    nugget nor a random page, and collapsing it into either would discard the
+    only thing this hop is for. `source` names the publishing body.
+    """
+    out = institutional.search_institutional(
+        query, sources_filter=sources, limit_per_source=limit_per_source
+    )
+    return {**out, "hits": out["hits"][:limit]}
+
+
+@mcp.tool()
+def corpus_sources(app_id: str) -> dict:
+    """List the registered institutional collections, without searching.
+
+    ``{sources: [{id, name, key_required, opt_in}], total, default_count}``.
+    A `key_required` source is skipped silently when its key is absent, so this
+    is how a caller learns what it is *not* reaching; `opt_in` sources sit out
+    of the default fan-out and must be named explicitly in
+    ``corpus_institutional_search(sources=[...])``.
+    """
+    listed = institutional.list_sources()
+    return {
+        "sources": listed,
+        "total": len(listed),
+        "default_count": sum(1 for s in listed if not s["opt_in"]),
+    }
 
 
 def main() -> None:

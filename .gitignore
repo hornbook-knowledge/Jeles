@@ -11,3 +11,8 @@ venv/
 build/
 dist/
 data/
+
+# Coverage artifacts (CI runs coverage; the data file is never source).
+.coverage
+.coverage.*
+htmlcov/
