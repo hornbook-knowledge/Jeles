@@ -253,3 +253,157 @@ def test_sources_are_exactly_the_witnesses():
     proposals = cs.react({"claim": _INVENTED}, searcher=mixed)
     nugget = next(p for p in proposals if p["driver"] == "put_nugget")["args"]
     assert sorted(nugget["sources"]) == ["https://other.org/b", "https://real.org/a"]
+
+
+# ── A proposal is data, not a call ──────────────────────────────────────────
+#
+# `apply` splatted `p["args"]` into the driver, so `corpus.put_nugget`'s
+# signature was the boundary — and the proposals being splatted are built out of
+# web-search titles, URLs and snippets. Reproduced against a temp store at
+# 933d91a: a hand-built proposal with `verification_kind="human"` wrote a nugget
+# storing `status: verified` that `ask_corpus` then answered from, and the same
+# proposal plus `nugget_id=` overwrote a human-verified nugget's answer.
+# `put_nugget`'s own downgrade guard did not catch the second one: it refuses a
+# *lower* rung overwriting a higher, and "human" over "human" is not lower.
+
+_GOOD_ARGS = {
+    "question": "Prior-art / conflict scan: widget cache",
+    "answer": "Corroborated by 2 independent sources.",
+    "sources": ["https://one.com/a"],
+    "verified_by": cs.WITNESS,
+}
+
+
+def _recording_apply(proposals):
+    """Run apply with drivers that record rather than write. Returns
+    (receipts, calls) — nothing touches a store."""
+    calls = {"nuggets": [], "gaps": []}
+    receipts = cs.apply(
+        proposals,
+        put_nugget=lambda **kw: calls["nuggets"].append(kw) or {"id": "n1", "action": "created"},
+        log_gap=lambda **kw: calls["gaps"].append(kw) or {"id": "g1"},
+    )
+    return receipts, calls
+
+
+def test_a_proposal_cannot_claim_a_rung_it_is_not_entitled_to():
+    """The escalation that worked: "human" reads back as `status: verified` and
+    `ask_corpus` answers from it as settled fact."""
+    receipts, calls = _recording_apply([
+        {"driver": "put_nugget", "args": {**_GOOD_ARGS, "verification_kind": "human"}},
+    ])
+    assert calls["nuggets"] == [], "the escalating proposal must never reach the driver"
+    assert receipts[0]["result"]["error"] == "proposal_args_refused"
+    assert receipts[0]["result"]["rejected"] == ["verification_kind"]
+    assert "human" in receipts[0]["result"]["detail"]
+
+
+def test_the_rung_is_pinned_by_the_driver_not_carried_by_the_proposal():
+    """Omitting it does not fall back to `put_nugget`'s "human" default, and
+    supplying the pinned value is not a rejection (that is what `react` emits)."""
+    _, calls = _recording_apply([{"driver": "put_nugget", "args": dict(_GOOD_ARGS)}])
+    assert calls["nuggets"][0]["verification_kind"] == "machine"
+
+    _, calls = _recording_apply([
+        {"driver": "put_nugget", "args": {**_GOOD_ARGS, "verification_kind": "machine"}},
+    ])
+    assert calls["nuggets"][0]["verification_kind"] == "machine"
+
+
+def test_a_proposal_cannot_overwrite_a_nugget_by_id():
+    """Refused here, before `put_nugget`'s guard has to catch it — and it would
+    not have: equal-rung overwrite is not a downgrade, so `verification_kind`
+    plus `nugget_id` walked past that guard and updated the record in place."""
+    receipts, calls = _recording_apply([
+        {"driver": "put_nugget", "args": {**_GOOD_ARGS, "nugget_id": "272872c6"}},
+    ])
+    assert calls["nuggets"] == []
+    assert receipts[0]["result"]["rejected"] == ["nugget_id"]
+    assert "never replace one by id" in receipts[0]["result"]["detail"]
+
+
+def test_spoofable_provenance_fields_are_refused():
+    """`written_by` is meant to be the fact beside `verified_by`'s claim — which
+    app actually made the write. A proposal that can set it erases the
+    distinction, and `verified_at` backdates the check."""
+    receipts, calls = _recording_apply([
+        {"driver": "put_nugget",
+         "args": {**_GOOD_ARGS, "written_by": "the-operator", "verified_at": "2026-01-01"}},
+    ])
+    assert calls["nuggets"] == []
+    assert receipts[0]["result"]["rejected"] == ["verified_at", "written_by"]
+
+
+def test_an_unknown_key_is_refused_visibly_not_dropped():
+    """Silence is the bug this repo keeps finding: an argument the driver was
+    never going to honour must show up in the receipt, not vanish."""
+    receipts, calls = _recording_apply([
+        {"driver": "log_gap", "args": {"question": "q", "bogus": 1}},
+    ])
+    assert calls["gaps"] == []
+    assert receipts[0]["result"]["error"] == "proposal_args_refused"
+    assert receipts[0]["result"]["rejected"] == ["bogus"]
+    assert receipts[0]["result"]["allowed"] == ["question"]
+
+
+def test_a_missing_required_argument_is_a_receipt_not_an_exception():
+    """It used to raise TypeError out of `apply`, which lost every later
+    proposal — including the FRANK line that makes the firing legible."""
+    receipts, calls = _recording_apply([{"driver": "put_nugget", "args": {"question": "q"}}])
+    assert calls["nuggets"] == []
+    assert receipts[0]["result"]["error"] == "proposal_args_incomplete"
+    assert receipts[0]["result"]["missing"] == ["answer", "sources", "verified_by"]
+
+
+def test_one_bad_proposal_does_not_stop_the_others():
+    """`apply` processes a list; a refusal is a per-proposal receipt, so a
+    partial failure must not become a total one."""
+    calls = {"nuggets": [], "gaps": [], "frank": []}
+    receipts = cs.apply(
+        [
+            {"driver": "put_nugget", "args": {**_GOOD_ARGS, "nugget_id": "x"}},
+            {"driver": "log_gap", "args": {"question": "a real gap"}},
+            {"driver": "frank_append", "args": {"kind": "conflict_scan"}},
+        ],
+        put_nugget=lambda **kw: calls["nuggets"].append(kw) or {"id": "n1"},
+        log_gap=lambda **kw: calls["gaps"].append(kw) or {"id": "g1"},
+        frank=lambda entry: calls["frank"].append(entry) or {"appended": True},
+    )
+    assert receipts[0]["result"]["error"] == "proposal_args_refused"
+    assert len(calls["nuggets"]) == 0
+    assert len(calls["gaps"]) == 1, "the good proposal after the bad one still ran"
+    assert len(calls["frank"]) == 1, "and the firing still left its legible line"
+    assert receipts[2]["result"] == {"appended": True}
+
+
+def test_reacts_own_output_still_applies_unchanged():
+    """The end-to-end requirement: what `react` emits must still produce exactly
+    the store writes it did before the allowlist, on both branches."""
+    corroborating = lambda q: [  # noqa: E731
+        {"title": "Widget cache prior art", "url": "https://one.com/a",
+         "snippet": "an existing widget cache"},
+        {"title": "Widget caches compared", "url": "https://two.com/b",
+         "snippet": "widget cache designs compared"},
+    ]
+    receipts, calls = _recording_apply(
+        cs.react({"claim": "widget cache"}, searcher=corroborating))
+    assert [r["driver"] for r in receipts] == ["put_nugget", "frank_append"]
+    assert not any("error" in r["result"] for r in receipts)
+    written = calls["nuggets"][0]
+    assert written["verification_kind"] == "machine"
+    assert written["verified_by"] == cs.WITNESS
+    assert sorted(written) == ["answer", "question", "sources", "tags", "verification_kind",
+                               "verified_by"], "the allowlist must pass react's keys through"
+
+    receipts, calls = _recording_apply(
+        cs.react({"claim": "widget cache"}, searcher=lambda q: []))
+    assert [r["driver"] for r in receipts] == ["log_gap", "frank_append"]
+    assert not any("error" in r["result"] for r in receipts)
+    assert calls["gaps"][0] == {"question": "Prior-art / conflict scan: widget cache"}
+
+
+def test_non_mapping_args_are_refused_rather_than_splatted():
+    receipts, calls = _recording_apply([{"driver": "put_nugget", "args": ["question", "answer"]}])
+    assert calls["nuggets"] == []
+    assert receipts[0]["result"]["error"] == "proposal_args_refused"
+    assert "must be a mapping" in receipts[0]["result"]["detail"]
