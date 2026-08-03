@@ -61,10 +61,15 @@ jobs:
           cache-dependency-path: pyproject.toml
 
       - name: Install package
-        run: pip install -e ".[dev]"
+        # dev brings pytest; mcp brings the SDK 2.x so corpus_server tests
+        # run instead of skipping (the no-extras job below covers the other half).
+        run: pip install -e ".[dev,mcp]" coverage
 
-      - name: Run tests
-        run: python -m pytest tests/ -q
+      - name: Run tests (under coverage)
+        run: |
+          coverage run --include='jeles/*' -m pytest tests/ -q
+          # Floor, not target: measured 85.8% on master. Ratchet up, never down.
+          coverage report --fail-under=80
 
   # Base `jeles` must install and pass with NO extras — that is the promise that
   # lets willow-mcp depend on this package without inheriting a version
