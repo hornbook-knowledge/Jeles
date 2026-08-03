@@ -28,6 +28,11 @@ name: Release
 #     generated with GITHUB_TOKEN, `release: published` included. The trigger is
 #     kept because it costs nothing and does fire for a Release published by a
 #     human or a PAT-backed action, but it is not the automated path.
+#   * `workflow_call` — THE automated path. release-please.yml calls this
+#     workflow directly once it has cut a release. A workflow cannot be started
+#     by a bot-generated event, but it can be *called*, which avoids the guard
+#     rather than trying to work around it. One publishing implementation, used
+#     by every path.
 #   * `push: tags` — a human running `git push origin vX.Y.Z`. Works, and is
 #     still the right move when you want to ship without a release PR.
 #   * `workflow_dispatch` — publish an existing tag from the Actions UI. This is
@@ -38,6 +43,16 @@ name: Release
 # a red X, whichever trigger started it.
 
 on:
+  # Called by release-please.yml once it has cut a release. This is the
+  # automated path: release-please cannot trigger this workflow by creating a
+  # tag or a Release (GITHUB_TOKEN events are suppressed), but it CAN call it
+  # directly, which sidesteps the guard entirely instead of working around it.
+  workflow_call:
+    inputs:
+      tag:
+        description: "Tag to build and publish"
+        required: true
+        type: string
   release:
     types: [published]
   push:

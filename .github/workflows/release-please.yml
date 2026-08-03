@@ -6,18 +6,15 @@ name: Release Please
 # there. Merging that PR creates the tag AND a GitHub Release, and the Release
 # is what fires `release.yml`.
 #
-# CAVEAT — the last hop is NOT automatic yet. GitHub suppresses workflow runs
-# for any event generated with GITHUB_TOKEN, and that covers `release:
-# published`, not just `push: tags`. So merging the release PR creates the tag
-# and the Release, and `release.yml` does not run. v0.2.0 landed exactly there:
-# tagged, released, absent from PyPI.
+# Publishing is NOT triggered by the tag or the Release. GitHub suppresses
+# workflow runs for any event generated with GITHUB_TOKEN — `release: published`
+# included, not just `push: tags` — so a workflow waiting on either would
+# silently never run. v0.2.0 proved it: tagged, released, absent from PyPI.
 #
-# Until that is resolved, publish with `release.yml`'s workflow_dispatch, giving
-# it the tag release-please created. The two durable fixes are (a) run the build
-# and publish steps here, gated on this action's `release_created` output, which
-# needs a second PyPI trusted publisher registered against THIS filename, or
-# (b) give this action a PAT instead of GITHUB_TOKEN, after which the tag push
-# and the Release both trigger workflows normally.
+# So this workflow *calls* release.yml instead of hoping to trigger it. A bot
+# event cannot start a workflow, but a job can call one, which sidesteps the
+# guard rather than working around it — and keeps a single publishing
+# implementation shared by the automated, manual and recovery paths.
 #
 # The version itself is not stored anywhere — hatch-vcs derives it from the tag
 # (see [tool.hatch.version]). That is why `release-type: simple` is correct
@@ -41,8 +38,25 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: googleapis/release-please-action@v4
+        id: release
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+  # Only after the release PR is merged and a release actually exists. On every
+  # other push to master release_created is false and this is skipped, so
+  # ordinary merges still publish nothing.
+  publish:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.release-please.outputs.tag_name }}
+    permissions:
+      contents: read
+      id-token: write   # Trusted Publishing; must be granted by the CALLER too
