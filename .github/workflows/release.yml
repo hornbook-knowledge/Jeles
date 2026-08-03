@@ -15,46 +15,34 @@ name: Release
 #   2. Create a GitHub environment named `pypi` (Settings -> Environments).
 # Until that is configured, this workflow is inert — nothing publishes without a tag.
 #
-# Two triggers, one path:
-#   * `release: published` — the automated route. release-please merges its
-#     "chore: release X.Y.Z" PR, creates the tag AND a GitHub Release, and the
-#     Release fires this. It has to be the Release rather than the tag: a tag
-#     pushed by GITHUB_TOKEN does not trigger other workflows (GitHub's
-#     recursion guard).
+# Two triggers, one implementation:
+#   * `push: tags` — every real release, automated or not. release-please cuts
+#     the tag with a PAT (see release-please.yml), and a PAT is not a bot token,
+#     so the push triggers this normally. A human running
+#     `git push origin vX.Y.Z` lands in exactly the same place.
+#   * `workflow_dispatch` — publish an existing tag from the Actions UI. The
+#     recovery path for a tag that exists but never published, which is where
+#     v0.2.0, v0.2.1 and v0.3.0 each ended up while the automated route was
+#     being worked out. Also just a convenient release button.
 #
-#     THAT DOES NOT WORK, and v0.2.0 proved it: release-please created the tag
-#     and published the Release, and this workflow did not run. The guard is not
-#     specific to `push` — GitHub suppresses workflow runs for *any* event
-#     generated with GITHUB_TOKEN, `release: published` included. The trigger is
-#     kept because it costs nothing and does fire for a Release published by a
-#     human or a PAT-backed action, but it is not the automated path.
-#   * `workflow_call` — THE automated path. release-please.yml calls this
-#     workflow directly once it has cut a release. A workflow cannot be started
-#     by a bot-generated event, but it can be *called*, which avoids the guard
-#     rather than trying to work around it. One publishing implementation, used
-#     by every path.
-#   * `push: tags` — a human running `git push origin vX.Y.Z`. Works, and is
-#     still the right move when you want to ship without a release PR.
-#   * `workflow_dispatch` — publish an existing tag from the Actions UI. This is
-#     the recovery path when a tag exists but nothing published, which is
-#     exactly where v0.2.0 landed. Also just a convenient release button.
+# Two triggers this deliberately does NOT have, both tried and both wrong:
+#   * `release: published` — GitHub suppresses workflow runs for any event
+#     generated with GITHUB_TOKEN, releases included, so it never fired for a
+#     bot-cut release. With the PAT the tag push already covers it, and keeping
+#     it would just double-run every release.
+#   * `workflow_call` — release-please called this workflow directly, which did
+#     start it, but PyPI authenticates a called workflow against
+#     `job_workflow_ref` (this file) while the PEP 740 attestation certificate
+#     records `workflow_ref` (the caller). PyPI verifies the attestation against
+#     the publisher that authenticated, so the two claims disagree by
+#     construction — no extra publisher row can reconcile them, and every upload
+#     was rejected. Running as a top-level workflow makes both claims name this
+#     file, which is what a verifiable attestation requires.
 #
 # `skip-existing` on the publish step makes any double-run a no-op rather than
 # a red X, whichever trigger started it.
 
 on:
-  # Called by release-please.yml once it has cut a release. This is the
-  # automated path: release-please cannot trigger this workflow by creating a
-  # tag or a Release (GITHUB_TOKEN events are suppressed), but it CAN call it
-  # directly, which sidesteps the guard entirely instead of working around it.
-  workflow_call:
-    inputs:
-      tag:
-        description: "Tag to build and publish"
-        required: true
-        type: string
-  release:
-    types: [published]
   push:
     tags:
       - "v*"
@@ -73,17 +61,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      # One name for the tag across all three triggers, in priority order: the
-      # dispatch input, then the Release's own tag_name, then the pushed ref.
-      # Deriving it once here keeps the assertion below honest whichever way the
-      # run started. On workflow_dispatch github.ref_name is the *branch*, so
-      # the input has to win or the assertion would compare against "master".
-      TAG: ${{ inputs.tag || github.event.release.tag_name || github.ref_name }}
+      # One name for the tag across both triggers: the dispatch input if there
+      # is one, else the pushed ref. The input must win — on workflow_dispatch
+      # github.ref_name is the *branch*, so without the priority the assertion
+      # below would compare the build against "master" and fail confusingly.
+      TAG: ${{ inputs.tag || github.ref_name }}
     steps:
       - uses: actions/checkout@v7
         with:
           # Check out the tag itself, not the branch head it may sit behind.
-          ref: ${{ inputs.tag || github.event.release.tag_name || github.ref_name }}
+          ref: ${{ inputs.tag || github.ref_name }}
           # hatch-vcs derives the version from the git tag, so the tags must be
           # present. The default shallow checkout fetches none of them.
           fetch-depth: 0

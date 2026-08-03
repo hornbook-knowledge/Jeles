@@ -3,18 +3,33 @@ name: Release Please
 # Keeps an open "chore: release X.Y.Z" pull request that accumulates every
 # merge to master — bumping the proposed version from conventional-commit
 # prefixes and appending the CHANGELOG entry. Nothing publishes while it sits
-# there. Merging that PR creates the tag AND a GitHub Release, and the Release
-# is what fires `release.yml`.
+# there. Merging that PR creates the tag, and the tag push fires `release.yml`.
 #
-# Publishing is NOT triggered by the tag or the Release. GitHub suppresses
-# workflow runs for any event generated with GITHUB_TOKEN — `release: published`
-# included, not just `push: tags` — so a workflow waiting on either would
-# silently never run. v0.2.0 proved it: tagged, released, absent from PyPI.
+# That last sentence only works because of `token:` below, and the reason is
+# worth keeping written down — it cost three releases to learn.
 #
-# So this workflow *calls* release.yml instead of hoping to trigger it. A bot
-# event cannot start a workflow, but a job can call one, which sidesteps the
-# guard rather than working around it — and keeps a single publishing
-# implementation shared by the automated, manual and recovery paths.
+#   1. GitHub suppresses workflow runs for any event generated with
+#      GITHUB_TOKEN. Not just `push: tags` — `release: published` too. A
+#      workflow waiting on either simply never runs, with no error anywhere.
+#      v0.2.0: tagged, released, absent from PyPI.
+#   2. So this workflow *called* release.yml instead, which does start it. But
+#      on a `workflow_call`, PyPI authenticates against `job_workflow_ref` (the
+#      callee, release.yml) while the PEP 740 attestation certificate records
+#      `workflow_ref` (the caller, this file). PyPI then verifies the
+#      attestation against the publisher that authenticated, so the two claims
+#      disagree by construction and no extra publisher row can reconcile them.
+#      v0.2.1 and v0.3.0: built fine, rejected at upload.
+#   3. A PAT is not a bot token, so the tag it pushes triggers workflows
+#      normally. release.yml runs as an ordinary top-level workflow, caller and
+#      callee are the same file, and both the trusted publisher and the
+#      attestation agree. One publishing implementation, provenance intact, no
+#      duplicated release procedure.
+#
+# SETUP: `RELEASE_PLEASE_TOKEN` must exist as a repository secret — a
+# fine-grained PAT scoped to this repo with Contents: read/write and Pull
+# requests: read/write (classic equivalent: `repo`). Without it the action
+# falls back to GITHUB_TOKEN, the release PR still works, and publishing
+# silently stops happening again.
 #
 # The version itself is not stored anywhere — hatch-vcs derives it from the tag
 # (see [tool.hatch.version]). That is why `release-type: simple` is correct
@@ -38,25 +53,9 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: googleapis/release-please-action@v4
-        id: release
         with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-
-  # Only after the release PR is merged and a release actually exists. On every
-  # other push to master release_created is false and this is skipped, so
-  # ordinary merges still publish nothing.
-  publish:
-    needs: release-please
-    if: needs.release-please.outputs.release_created == 'true'
-    uses: ./.github/workflows/release.yml
-    with:
-      tag: ${{ needs.release-please.outputs.tag_name }}
-    permissions:
-      contents: read
-      id-token: write   # Trusted Publishing; must be granted by the CALLER too
