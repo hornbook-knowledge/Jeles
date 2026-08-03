@@ -9,6 +9,13 @@ maintained by release-please, which builds each entry from the
 conventional-commit prefixes on `master` — so it cannot go stale between
 releases the way a hand-kept changelog can.
 
+## [0.3.1](https://github.com/rudi193-cmd/Jeles/compare/v0.3.0...v0.3.1) (2026-08-03)
+
+
+### CI
+
+* cut releases with a PAT so the tag push actually triggers publishing ([7399757](https://github.com/rudi193-cmd/Jeles/commit/7399757b7cb562b5876b732a363b1f8800a63d96))
+
 ## [0.3.0](https://github.com/rudi193-cmd/Jeles/compare/v0.2.1...v0.3.0) (2026-08-03)
 
 
