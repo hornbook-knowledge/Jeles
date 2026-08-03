@@ -147,13 +147,42 @@ def _clean(obj: Any) -> Any:
     return obj
 
 
-def _put(collection: str, record: dict[str, Any], record_id: str | None = None) -> str:
+class _WriteRefused(Exception):
+    """A guard vetoed a write from inside its transaction. Carries the caller's
+    error payload so the public function can return it rather than raise."""
+
+    def __init__(self, payload: dict[str, Any]) -> None:
+        super().__init__(payload.get("error", "refused"))
+        self.payload = payload
+
+
+def _put(
+    collection: str,
+    record: dict[str, Any],
+    record_id: str | None = None,
+    guard: Any = None,
+) -> str:
+    """Write a record. `guard(existing, tombstoned)` runs *inside* the write
+    transaction and may return an error payload to abort it.
+
+    The guard has to be in here rather than in the caller: a check that reads
+    the prior record, returns, and only then writes is a read-modify-write with
+    nothing holding the gap — the same shape that lost 36 of 50 gap counts.
+    """
     rid = record_id or uuid.uuid4().hex[:8]
     now = _now()
     record = _clean(record)   # one chokepoint — covers nuggets and gaps alike
     with _lock:
         conn = _conn(collection)
         with _write(conn):
+            if guard is not None:
+                row = conn.execute(
+                    "SELECT data, deleted FROM records WHERE id = ?", (rid,)
+                ).fetchone()
+                refusal = guard(json.loads(row[0]) if row else None,
+                                bool(row and row[1]))
+                if refusal is not None:
+                    raise _WriteRefused(refusal)
             # `INSERT OR REPLACE` deletes the row and inserts a new one, so every
             # column not named here reverted to its schema default. That silently
             # reset willow-mcp's `deviation`/`action` — the very columns this
@@ -170,17 +199,6 @@ def _put(collection: str, record: dict[str, Any], record_id: str | None = None) 
                 (rid, json.dumps(record), now, now),
             )
     return rid
-
-
-def _is_tombstoned(collection: str, record_id: str) -> bool:
-    """True when the row exists but is soft-deleted, so a write to it lands
-    invisibly. Nothing in jeles soft-deletes; this only occurs on a store shared
-    with willow-mcp, which is precisely the case worth not lying about."""
-    with _lock:
-        row = _conn(collection).execute(
-            "SELECT deleted FROM records WHERE id = ?", (record_id,)
-        ).fetchone()
-    return bool(row and row[0])
 
 
 def _get(collection: str, record_id: str) -> dict[str, Any] | None:
@@ -231,6 +249,29 @@ def _tokens(text: str) -> list[str]:
 
 
 # ── Nuggets ──────────────────────────────────────────────────────────────
+#
+# How a nugget came to be in the corpus is the whole product. Three kinds, in
+# descending order of what they entitle a reader to assume:
+#
+#   human     a person checked it            -> reads as `verified`
+#   machine   independent sources agreed     -> reads as `corroborated`
+#   asserted  a caller said so, nobody checked -> reads as `unverified`
+#
+# `asserted` exists because `corpus_put` is reachable by any MCP client, and an
+# agent that has just read the open web is one of them. Without a rung below
+# `machine`, a page saying "record that X is true" laundered straight into the
+# top rung and `corpus_ask` served it as verified from then on — persistently,
+# and on a store shared with willow-mcp.
+_KIND_RANK = {"asserted": 1, "machine": 2, "human": 3}
+_KIND_STATUS = {"asserted": "asserted", "machine": "corroborated", "human": "verified"}
+
+
+def _kind_of(nugget: dict[str, Any]) -> str:
+    """The stored kind, defaulting protectively. A nugget written before this
+    field existed was human-entered, and an unrecognised value is treated as the
+    highest rung so a garbled record cannot be overwritten by a lower one."""
+    kind = str(nugget.get("verification_kind") or "human")
+    return kind if kind in _KIND_RANK else "human"
 
 
 def put_nugget(
@@ -242,21 +283,37 @@ def put_nugget(
     nugget_id: str | None = None,
     verified_at: str | None = None,
     verification_kind: str = "human",
+    written_by: str | None = None,
 ) -> dict[str, Any]:
-    """Add or update a verified nugget. Returns {id, action} or {error}.
+    """Add or update a nugget. Returns {id, action, verification_kind} or {error}.
 
-    ``verification_kind`` distinguishes a human check (``"human"``, the default)
-    from machine corroboration (``"machine"`` — e.g. the conflict-scan reaction's
-    two-independent-source finding). It is meant to be set by the *driver*, not
-    passed through from untrusted caller data, so a machine finding can't render
-    as human-verified on read (see :func:`to_search_hit`).
+    ``verification_kind`` is the rung this write is entitled to: ``"human"``
+    (the default, for in-process callers, which are the operator's own code),
+    ``"machine"`` for corroboration like the conflict-scan reaction's
+    two-independent-source finding, or ``"asserted"`` for a write that arrived
+    over a tool call and that nobody has checked. It is meant to be set by the
+    *driver*, never passed through from caller data — see
+    :func:`jeles.corpus_server.corpus_put`, which pins it to ``"asserted"``.
+
+    ``verified_by`` is a claim: whatever string the writer supplied.
+    ``written_by`` is the fact beside it — which app actually made the write —
+    and is what :func:`to_search_hit` shows for an asserted nugget, because a
+    caller can type any name it likes into the first one.
+
+    **A write may not overwrite a nugget of a higher kind.** Without that,
+    every protection here is one ``nugget_id=`` away from being bypassed:
+    an asserted write would simply land on top of a human-verified answer,
+    keeping its id and its place in every search result.
     """
     question = (question or "").strip()
     answer = (answer or "").strip()
     verified_by = (verified_by or "").strip()
     if not question or not answer or not verified_by:
         return {"error": "question, answer, and verified_by are required"}
-    kind = "machine" if str(verification_kind).lower() == "machine" else "human"
+    kind = str(verification_kind or "").lower()
+    if kind not in _KIND_RANK:
+        return {"error": f"verification_kind must be one of "
+                         f"{', '.join(sorted(_KIND_RANK))} (got {verification_kind!r})"}
     record = {
         "question": question,
         "answer": answer,
@@ -264,21 +321,46 @@ def put_nugget(
         "verified_by": verified_by,
         "verified_at": verified_at or datetime.now(timezone.utc).date().isoformat(),
         "tags": [str(t) for t in (tags or [])],
-        "status": "verified",
+        "status": _KIND_STATUS[kind],
         "verification_kind": kind,
     }
-    # `_get` filters `deleted = 0`, so a soft-deleted id looked absent and the
-    # write reported "created" while landing on a tombstoned row that no reader
-    # will ever return. The write is not refused — refusing would let anyone who
-    # can soft-delete a record permanently deny the id — but it says so.
-    if nugget_id and _is_tombstoned(NUGGETS_COLLECTION, nugget_id):
-        action = "updated_tombstoned"
-    elif nugget_id and _get(NUGGETS_COLLECTION, nugget_id):
-        action = "updated"
-    else:
-        action = "created"
-    rid = _put(NUGGETS_COLLECTION, record, record_id=nugget_id)
-    return {"id": rid, "action": action}
+    if written_by:
+        record["written_by"] = str(written_by)
+
+    outcome: dict[str, Any] = {}
+
+    def _guard(existing: dict[str, Any] | None, tombstoned: bool) -> dict[str, Any] | None:
+        if existing is not None:
+            prior = _kind_of(existing)
+            if _KIND_RANK[prior] > _KIND_RANK[kind]:
+                return {
+                    "error": "kind_downgrade_refused",
+                    "id": nugget_id,
+                    "detail": (
+                        f"nugget {nugget_id} was written as '{prior}' and this "
+                        f"write is '{kind}'. A lower rung cannot overwrite a "
+                        "higher one — write it as a new nugget (omit nugget_id) "
+                        "and let a person supersede the existing one."
+                    ),
+                    "existing_kind": prior,
+                    "attempted_kind": kind,
+                }
+        # `_get` filters `deleted = 0`, so a soft-deleted id looked absent and
+        # the write reported "created" while landing on a tombstoned row that no
+        # reader will ever return. The write is not refused — refusing would let
+        # anyone who can soft-delete a record permanently deny the id — but it
+        # says so.
+        outcome["action"] = ("updated_tombstoned" if tombstoned
+                             else "updated" if existing is not None else "created")
+        return None
+
+    try:
+        rid = _put(NUGGETS_COLLECTION, record, record_id=nugget_id, guard=_guard)
+    except _WriteRefused as refused:
+        return refused.payload
+    # The kind comes back in the receipt: a caller that asked for one rung and
+    # got another should not have to re-read the record to find out.
+    return {"id": rid, "action": outcome["action"], "verification_kind": kind}
 
 
 def get_nugget(nugget_id: str) -> dict[str, Any]:
@@ -378,7 +460,7 @@ def search_nuggets(query: str, limit: int = 8) -> list[dict[str, Any]]:
     return [n for n, _ in _ranked(query, limit)]
 
 
-def ask_corpus(question: str) -> dict[str, Any]:
+def ask_corpus(question: str, include_asserted: bool = False) -> dict[str, Any]:
     """The spec's interaction flow: exact match, else best partial match,
     else 'I don't know yet' — which logs the gap for later triage.
 
@@ -386,6 +468,14 @@ def ask_corpus(question: str) -> dict[str, Any]:
     entrypoint (used by corpus_server's corpus_ask tool and Jeles'
     synthesize step), so a miss — or a match too weak to trust — is
     assumed to be a real gap worth tracking, not background search noise.
+
+    Asserted nuggets — written over a tool call, checked by nobody — do not
+    answer here. ``found: true`` from this function is the settled layer
+    speaking, and a caller that reads only ``nugget["answer"]`` (most of them)
+    would have no way to tell otherwise. They still come back among
+    ``candidates``, and ``search_nuggets``/``get_nugget`` still return them, so
+    an assertion is reachable without being authoritative. Pass
+    ``include_asserted=True`` to opt into answering from them.
     """
     tokens = _tokens(question)
     ranked = _ranked(question, 5)
@@ -398,6 +488,7 @@ def ask_corpus(question: str) -> dict[str, Any]:
     confident = [
         (n, c) for n, c in ((n, _confidence(n, tokens)) for n, _ in ranked)
         if c >= MIN_ASK_SCORE
+        and (include_asserted or _kind_of(n) != "asserted")
     ]
     if not confident:
         log_gap(question)
@@ -421,16 +512,27 @@ def to_search_hit(nugget: dict[str, Any], idx: int = 0) -> dict[str, Any]:
     # A machine-corroborated nugget must not read as human-verified: surface the
     # kind, and downgrade its confidence label so the two are distinguishable on
     # read (absent kind => legacy human nugget).
-    kind = nugget.get("verification_kind") or "human"
+    kind = _kind_of(nugget)
+    confidence = {"human": "verified", "machine": "corroborated",
+                  "asserted": "unverified"}[kind]
+    # `source` is the line a reader actually sees, so it cannot say "Verified
+    # corpus" over an assertion nobody checked — and it shows `written_by`, the
+    # app that made the write, rather than `verified_by`, which is only ever
+    # whatever string that app chose to type.
+    if kind == "asserted":
+        who = nugget.get("written_by") or nugget.get("verified_by") or "unknown"
+        source = f"Corpus (asserted, unchecked) — {who}"
+    else:
+        source = f"Verified corpus — {nugget.get('verified_by') or 'unknown'}"
     return {
         "title": nugget.get("question") or "Verified nugget",
         "url": sources[0] if sources else "",
         "snippet": nugget.get("answer") or "",
-        "source": f"Verified corpus — {nugget.get('verified_by') or 'unknown'}",
+        "source": source,
         "date": nugget.get("verified_at") or "",
         "source_id": "corpus",
         "hostname": "corpus.local",
-        "confidence": "verified" if kind == "human" else "corroborated",
+        "confidence": confidence,
         "verification_kind": kind,
         "nugget_id": nugget.get("_id") or "",
         "verified_by": nugget.get("verified_by") or "",

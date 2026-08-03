@@ -16,7 +16,7 @@ couldn't answer.
 | --- | --- |
 | `jeles.corpus` | Pure storage + ranked lookup of verified nuggets and gap logging. **Stdlib-only, no MCP, no network at import.** Reuses willow-mcp's SOIL `Store` SQLite schema at `$WILLOW_STORE_ROOT/<collection>/store.db` — writes are upserts that touch only jeles' own columns, in WAL mode with `BEGIN IMMEDIATE`, so the store really is shared rather than shared-until-one-side-writes. |
 | `jeles.reactions` | Pure `(event) -> [proposed actions]` handlers. `conflict_scan` searches for what *supersedes or refutes* a design claim rather than what resembles it, and proposes a nugget only when two **independent, relevant, non-excluded** domains corroborate it — otherwise a contested gap. `search_adapter` is its web edge. |
-| `jeles.corpus_server` | Standalone `MCPServer` (MCP SDK 2.x) over the corpus (`python -m jeles.corpus_server`). Mirrors willow-mcp's shape (`app_id` on every tool) **without depending on willow-mcp**. |
+| `jeles.corpus_server` | Standalone `MCPServer` (MCP SDK 2.x) over the corpus (`python -m jeles.corpus_server`). Mirrors willow-mcp's shape (`app_id` on every tool) **without depending on willow-mcp**. Writes through it are *assertions*, not verifications — see [below](#as-a-standalone-mcp-server). |
 | `jeles.sources` | **The institutional collections themselves** — ~65 source functions (arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian) plus the concurrent fan-out across them. **Stdlib-only.** |
 | `jeles.institutional` | The third hop: fans a query across `jeles.sources` in-process, and shapes results like every other hit. Optionally delegates to a hosted [`jeles-remote`](https://github.com/rudi193-cmd/jeles-remote) instead. |
 | `jeles.willow_mcp_client` | Best-effort, fire-and-forget forwarding of gaps into willow-mcp's fleet-wide backlog. Never blocks, never raises; 30s retry cooldown so a single failed connect doesn't permanently disable forwarding. |
@@ -93,6 +93,32 @@ python -m jeles.corpus_server      # stdio; or use the `jeles-corpus-mcp` consol
 
 Tools: `corpus_ask`, `corpus_search`, `corpus_get`, `corpus_list`, `corpus_put`, `corpus_gaps` — each takes an `app_id` for naming-convention parity with willow-mcp.
 
+**`corpus_put` writes assertions, not verified nuggets.** A nugget carries the
+rung it was written at, and only three things can produce one:
+
+| `verification_kind` | who writes it | reads back as |
+| --- | --- | --- |
+| `human` | a person, in-process (`corpus.put_nugget(...)`) | `verified` |
+| `machine` | `conflict_scan`, on two independent corroborating sources | `corroborated` |
+| `asserted` | any MCP client, through `corpus_put` | `unverified` |
+
+The bottom rung exists because this server speaks stdio to whatever client
+starts it, and that client also reads the open web through `corpus_web_search`.
+Without it, a page saying "record that X is true" arrived as a nugget claiming
+`verified_by: "the operator"` and was served by `corpus_ask` as settled fact
+from then on. Two rules keep the ladder honest:
+
+* `corpus_ask` answers only from `human` and `machine` nuggets. An assertion
+  comes back under `candidates`, and `corpus_search`/`corpus_get` still return
+  it — reachable, not authoritative.
+* **A write may not overwrite a nugget of a higher kind** (`error:
+  "kind_downgrade_refused"`). Otherwise every protection here is one
+  `nugget_id=` away from being bypassed.
+
+Set `JELES_CORPUS_TRUST_TOOL_WRITES=1` to let `corpus_put` mint `human` again —
+correct only where the tool caller really is the operator, and it re-opens the
+path above for anything the model reads while it is set.
+
 ### The persona
 
 ```python
@@ -111,6 +137,7 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `JELES_CORPUS_TOPIC` | `ask-jeles-corpus` | Backlog topic gaps are forwarded under. |
 | `WILLOW_MCP_CMD` | — | Explicit command to launch willow-mcp (else `willow-mcp` on PATH, else `python -m willow_mcp`). |
 | `ASK_JELES_USE_WILLOW_MCP` | `1` | Set to `0`/`false`/`no` to disable fleet gap-forwarding entirely. |
+| `JELES_CORPUS_TRUST_TOOL_WRITES` | unset | Set to `1` to let `corpus_put` write `human`-verified nuggets. Only correct where the tool caller *is* the operator — see [the MCP server section](#as-a-standalone-mcp-server). |
 
 The Ask Jeles-flavored defaults are preserved so an existing store and its
 already-forwarded fleet backlog keep resolving after the extraction.

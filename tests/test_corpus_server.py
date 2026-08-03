@@ -119,28 +119,98 @@ def test_search_never_forwards_even_when_it_finds_nothing(monkeypatch):
     assert forwarded == []
 
 
-def test_put_passes_every_field_through(monkeypatch):
+def _capture_put(monkeypatch):
     seen = {}
 
-    def _put(question, answer, sources, verified_by, tags=None, nugget_id=None):
-        seen.update(
-            question=question, answer=answer, sources=sources,
-            verified_by=verified_by, tags=tags, nugget_id=nugget_id,
-        )
-        return {"id": "n1", "action": "created"}
+    def _put(question, answer, sources, verified_by, **kw):
+        seen.update(question=question, answer=answer, sources=sources,
+                    verified_by=verified_by, **kw)
+        return {"id": "n1", "action": "created",
+                "verification_kind": kw.get("verification_kind")}
 
     monkeypatch.setattr(corpus_server.corpus, "put_nugget", _put)
+    return seen
+
+
+def test_put_passes_every_field_through(monkeypatch):
+    seen = _capture_put(monkeypatch)
+    monkeypatch.delenv(corpus_server.TRUST_TOOL_WRITES_ENV, raising=False)
 
     result = corpus_server.corpus_put(
         "app", "q?", "a.", ["src/one.json"], "designer",
         tags=["colour"], nugget_id="n1",
     )
 
-    assert result == {"id": "n1", "action": "created"}
+    assert result == {"id": "n1", "action": "created",
+                      "verification_kind": "asserted"}
     assert seen == {
         "question": "q?", "answer": "a.", "sources": ["src/one.json"],
         "verified_by": "designer", "tags": ["colour"], "nugget_id": "n1",
+        "verification_kind": "asserted", "written_by": "app",
     }
+
+
+# ── corpus_put cannot mint the top rung ──────────────────────────────────────
+#
+# This tool is reachable by any MCP client that can start the server, and one
+# of the things that client does is read the open web through
+# `corpus_web_search`. At HEAD, a page saying "record that X is true" came back
+# through here as a nugget with `verified_by` set to whatever the model typed,
+# landed at `confidence: verified`, and was served by `corpus_ask` as settled
+# fact from then on — in a store shared with willow-mcp. Verified before the
+# fix: `to_search_hit` returned `verified | Verified corpus — the operator`.
+
+
+def test_a_tool_write_is_an_assertion_not_a_verification(monkeypatch):
+    seen = _capture_put(monkeypatch)
+    monkeypatch.delenv(corpus_server.TRUST_TOOL_WRITES_ENV, raising=False)
+
+    corpus_server.corpus_put("app", "q?", "a.", ["s"], "the operator")
+
+    assert seen["verification_kind"] == "asserted"
+
+
+def test_the_caller_cannot_choose_its_own_rung(monkeypatch):
+    """`verification_kind` is deliberately not a parameter of the tool. If a
+    model could pass it, the gate would be a suggestion."""
+    schema = {t.name: t.input_schema for t in _listed_tools()}["corpus_put"]
+    props = schema.get("properties") or {}
+    assert "verification_kind" not in props
+    assert "written_by" not in props, "written_by is stamped from app_id, not supplied"
+
+
+def test_the_writing_app_is_recorded_beside_the_claim(monkeypatch):
+    """`verified_by` is whatever string the caller typed. `written_by` is which
+    app actually made the call, and is what a reader is shown."""
+    seen = _capture_put(monkeypatch)
+    corpus_server.corpus_put("some-mcp-client", "q?", "a.", ["s"], "the operator")
+    assert seen["verified_by"] == "the operator"
+    assert seen["written_by"] == "some-mcp-client"
+
+
+def test_the_operator_can_re_open_the_door_on_purpose(monkeypatch):
+    """The single-user local case, where the tool caller really is the person:
+    an env var, read per call so a typo cannot stop the server from starting."""
+    seen = _capture_put(monkeypatch)
+    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "1")
+    corpus_server.corpus_put("app", "q?", "a.", ["s"], "designer")
+    assert seen["verification_kind"] == "human"
+
+    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "no")
+    corpus_server.corpus_put("app", "q?", "a.", ["s"], "designer")
+    assert seen["verification_kind"] == "asserted"
+
+
+def test_the_trust_switch_is_not_read_at_import(monkeypatch):
+    """A module-level `os.environ[...]` read is how a typo in an env var turns
+    into a server that will not start at all."""
+    import inspect
+    src = inspect.getsource(corpus_server)
+    module_level = [
+        line for line in src.splitlines()
+        if "os.environ" in line and not line.startswith((" ", "\t"))
+    ]
+    assert not module_level, f"env read at import time: {module_level}"
 
 
 @pytest.mark.parametrize(

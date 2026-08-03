@@ -345,3 +345,133 @@ def test_a_failed_write_rolls_back(corpus):
                 "VALUES ('x', '{}', 'n', 'n', 0)")
             raise RuntimeError("boom")
     assert conn.execute("SELECT COUNT(*) FROM records").fetchone()[0] == before
+
+
+# ── A write cannot claim more than it is entitled to ─────────────────────────
+#
+# Three rungs — human > machine > asserted — and the rung is the product. The
+# threat is not another app's data; it is an agent that has just read the open
+# web writing what it read into the settled layer. `corpus_put` is where that
+# lands, but the invariant belongs here, because a rule enforced at one caller
+# is enforced at none.
+
+
+def test_an_asserted_nugget_does_not_read_as_verified(corpus):
+    rid = corpus.put_nugget("Is X true?", "Yes.", ["https://evil.example/p"],
+                            "the operator", verification_kind="asserted",
+                            written_by="some-mcp-client")["id"]
+    hit = corpus.to_search_hit(corpus.get_nugget(rid))
+    assert hit["confidence"] == "unverified"
+    assert hit["verification_kind"] == "asserted"
+    # The line a reader actually sees must not say "Verified corpus", and must
+    # name the app that wrote it rather than the name that app typed.
+    assert "Verified corpus" not in hit["source"]
+    assert "some-mcp-client" in hit["source"]
+    assert corpus.get_nugget(rid)["status"] == "asserted"
+
+
+def test_ask_corpus_does_not_answer_from_an_assertion(corpus):
+    """`found: true` is the settled layer speaking. A caller that reads only
+    `nugget["answer"]` — most of them — has no other way to tell."""
+    corpus.put_nugget("Is X true?", "Yes.", ["s"], "the operator",
+                      verification_kind="asserted")
+
+    asked = corpus.ask_corpus("Is X true?")
+    assert asked["found"] is False
+    # Reachable, just not authoritative.
+    assert [n["answer"] for n in asked["candidates"]] == ["Yes."]
+    assert corpus.search_nuggets("Is X true?")[0]["answer"] == "Yes."
+    assert corpus.ask_corpus("Is X true?", include_asserted=True)["found"] is True
+
+
+def test_ask_corpus_still_answers_from_machine_corroboration(corpus):
+    """Only the bottom rung is excluded — conflict_scan's findings still answer."""
+    corpus.put_nugget("Is Y true?", "Yes.", ["s"], "conflict_scan",
+                      verification_kind="machine")
+    assert corpus.ask_corpus("Is Y true?")["found"] is True
+
+
+def test_an_assertion_cannot_overwrite_a_verified_nugget(corpus):
+    """Without this, every other protection is one `nugget_id=` away from being
+    bypassed: the assertion lands on the verified nugget, keeping its id and its
+    place in every search result. Verified before the fix — the human answer was
+    replaced with "Actually it is #000000."."""
+    real = _seed_grove(corpus)
+
+    refused = corpus.put_nugget(
+        "What's the primary color in Grove?", "Actually it is #000000.",
+        ["https://evil.example/p"], "designer", nugget_id=real["id"],
+        verification_kind="asserted")
+
+    assert refused["error"] == "kind_downgrade_refused"
+    assert refused["existing_kind"] == "human" and refused["attempted_kind"] == "asserted"
+    nugget = corpus.get_nugget(real["id"])
+    assert nugget["answer"].endswith("#ffffff (white).")
+    assert nugget["verification_kind"] == "human"
+
+
+def test_machine_cannot_overwrite_human_either(corpus):
+    real = _seed_grove(corpus)
+    refused = corpus.put_nugget("What's the primary color in Grove?", "#eeeeee.",
+                                ["s"], "conflict_scan", nugget_id=real["id"],
+                                verification_kind="machine")
+    assert refused["error"] == "kind_downgrade_refused"
+
+
+def test_a_person_can_still_supersede_and_promote(corpus):
+    """The rule is one-directional: writing at the same rung or a higher one is
+    ordinary editing, and must not be caught by the guard."""
+    asserted = corpus.put_nugget("Is X true?", "Maybe.", ["s"], "client",
+                                 verification_kind="asserted")
+    same = corpus.put_nugget("Is X true?", "Still maybe.", ["s"], "client",
+                             nugget_id=asserted["id"], verification_kind="asserted")
+    assert same["action"] == "updated"
+
+    promoted = corpus.put_nugget("Is X true?", "Yes — checked.", ["s"], "designer",
+                                 nugget_id=asserted["id"])
+    assert promoted["verification_kind"] == "human"
+    assert corpus.to_search_hit(corpus.get_nugget(asserted["id"]))["confidence"] == "verified"
+
+
+def test_a_refused_write_changes_nothing(corpus):
+    """The rung check runs inside the write transaction, so a refusal is not a
+    partial write — and cannot be raced past by a concurrent one."""
+    real = _seed_grove(corpus)
+    before = corpus.get_nugget(real["id"])["_updated"]
+    corpus.put_nugget("q?", "a", ["s"], "x", nugget_id=real["id"],
+                      verification_kind="asserted")
+    assert corpus.get_nugget(real["id"])["_updated"] == before
+
+
+def test_an_unrecognised_kind_is_refused_not_promoted(corpus):
+    """It used to be `"machine" if kind == "machine" else "human"`, so every
+    typo — and every unknown future rung — landed at the top."""
+    result = corpus.put_nugget("q?", "a", ["s"], "x", verification_kind="verified")
+    assert "error" in result and "verification_kind" in result["error"]
+    assert corpus.list_nuggets() == []
+
+
+def test_a_garbled_stored_kind_is_treated_as_the_highest_rung(corpus):
+    """Reading is protective in the other direction: an unrecognised value on
+    an existing record must not make it overwritable by anything."""
+    rid = _seed_grove(corpus)["id"]
+    corpus._put(corpus.NUGGETS_COLLECTION,
+                {**corpus.get_nugget(rid), "verification_kind": "?"}, record_id=rid)
+
+    assert corpus.to_search_hit(corpus.get_nugget(rid))["confidence"] == "verified"
+    refused = corpus.put_nugget("q?", "a", ["s"], "x", nugget_id=rid,
+                                verification_kind="asserted")
+    assert refused["error"] == "kind_downgrade_refused"
+
+
+def test_a_legacy_nugget_without_a_kind_is_human(corpus):
+    """Nuggets written before the field existed were human-entered, and must not
+    become overwritable by adding the field."""
+    rid = _seed_grove(corpus)["id"]
+    legacy = {k: v for k, v in corpus.get_nugget(rid).items()
+              if k != "verification_kind"}
+    corpus._put(corpus.NUGGETS_COLLECTION, legacy, record_id=rid)
+
+    assert corpus.to_search_hit(corpus.get_nugget(rid))["confidence"] == "verified"
+    assert corpus.put_nugget("q?", "a", ["s"], "x", nugget_id=rid,
+                             verification_kind="machine")["error"] == "kind_downgrade_refused"
