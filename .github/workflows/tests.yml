@@ -63,8 +63,11 @@ jobs:
       - name: Install package
         run: pip install -e ".[dev]"
 
-      - name: Run tests
-        run: python -m pytest tests/ -q
+      - name: Run tests (under coverage)
+        run: |
+          coverage run --include='jeles/*' -m pytest tests/ -q
+          # Floor, not target: measured 85.8% on master. Ratchet up, never down.
+          coverage report --fail-under=80
 
   # Base `jeles` must install and pass with NO extras — that is the promise that
   # lets willow-mcp depend on this package without inheriting a version
@@ -83,7 +86,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install with no extras
-        run: pip install -e . pytest
+        run: pip install -e ".[mcp]" pytest coverage
 
       - name: Assert the base install is dependency-free
         run: |
