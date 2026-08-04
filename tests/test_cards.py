@@ -139,6 +139,35 @@ def test_the_namespace_role_is_carried_where_the_code_shows_one():
     assert C.hosts_with_role("namespace"), "no namespace role survived the migration"
 
 
+def test_a_namespace_only_host_owes_no_citability_verdict(tmp_path, monkeypatch):
+    """The operative half of the §7.1 decision, and the reason `namespace` is a
+    role rather than a deleted row.
+
+    Keeping the host is only useful if the value *does* something. A card whose
+    roles are `["namespace"]` alone describes a schema identifier: nothing
+    contacts it and nothing links to it, so it must not appear in the set a
+    consumer's trust policy has to decide. If it leaked into `citation`, keeping
+    these rows would be strictly worse than dropping them — it would manufacture
+    the exact obligation this catalog exists to remove.
+
+    Checked against a synthetic card because no real host is namespace-only
+    today (`www.loc.gov` is `namespace` *and* `query`). Untested-until-it-
+    happens is how the `w3.org` class survived its first fix.
+    """
+    monkeypatch.setattr(C, "_DIR", tmp_path)
+    C.cards.cache_clear()
+    (tmp_path / "schema.example.org.json").write_text(json.dumps({
+        "host": "schema.example.org", "roles": ["namespace"],
+        "publisher": "Example Standards Body", "custody": "institutional",
+        "status": "live"}))
+    try:
+        assert C.hosts_with_role("namespace") == ["schema.example.org"]
+        assert C.hosts_with_role("citation") == []
+        assert C.hosts_with_role("query") == []
+    finally:
+        C.cards.cache_clear()
+
+
 # ── Schema ───────────────────────────────────────────────────────────────────
 
 def test_every_card_validates_and_the_filename_matches_its_host():

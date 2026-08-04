@@ -2,8 +2,8 @@
 
 *Status: **DRAFT, shape agreed** — 2026-08-04. No code. Supersedes nothing yet;
 `SOURCES[*].hosts` stays authoritative until a migration lands. The five
-questions this draft opened are answered in §6, and the two §7 raised are
-settled there too; one remains.*
+questions this draft opened are answered in §6, and the three §7 raised are
+settled in §7. Nothing in this document is open.*
 
 *Companions: `jeles/sources.py` (the registry) · `tests/test_source_hosts.py` (which
 checks `hosts` against the code) · willow-mcp `src/willow_mcp/web_search.py`
@@ -175,9 +175,8 @@ package data so it is present in the wheel.
 | `namespace` | an XML namespace URI | **not a network relationship**; excluded from egress reasoning and from trust reasoning alike |
 
 `namespace` exists solely so the `w3.org`/`loc.gov` class becomes a value rather
-than an accident. A host whose only role is `namespace` should arguably not be in
-`hosts` at all — but recording it is honest and catches it; deleting it silently
-re-opens the question the next time someone parses SRW.
+than an accident. Hosts that are *only* a namespace stay in `hosts` and carry the
+role rather than being deleted — decided, with the reasoning in §7.1.
 
 ### 3.2 `custody` — the trust-relevant fact
 
@@ -397,7 +396,7 @@ a gap: a DOI arrives attached to the source that emitted it.
 
 ## 7. Still open
 
-Both of §7's original questions are settled; one new one is not.
+All three questions §7 raised are settled. Nothing here is open.
 
 - ~~**Card file layout.**~~ **Decided: one file per host**, `jeles/cards/<host>.json`,
   matching `almanac-template`'s `catalog/<id>.yaml`. A bot proposing a change to
@@ -406,11 +405,42 @@ Both of §7's original questions are settled; one new one is not.
 - ~~**Whether `observed` is a card field.**~~ **Decided: no**, §6.2. Raised here
   because removing a field later is a breaking card change under §6.1, and
   settling it before anything depends on the schema is the whole point of §7.
+- ~~**Whether `namespace`-only hosts stay in `hosts`.**~~ **Decided: they stay.**
+  See below.
 
-Still genuinely open:
+### 7.1 `namespace` hosts are kept, and recorded as such
 
-- **Whether `namespace`-only hosts stay in `hosts` at all.** §3.1 keeps them and
-  records the role. Dropping them is cleaner and silently re-opens the question
-  the next time someone parses SRW. No host is `namespace`-only today —
-  `www.loc.gov` is `namespace` *and* `query` — so nothing forces the answer yet,
-  which is exactly when it is cheap to decide.
+A host declared only because its name appears in an XML namespace URI stays in
+`hosts` and carries the `namespace` role. It is not deleted.
+
+The alternative — drop it, since jeles never contacts it — is cleaner in the
+file and worse everywhere else. Three reasons, and the first is the one that
+decided it:
+
+1. **Deleting the entry deletes the evidence.** `www.w3.org` was removed from
+   willow-mcp's trusted list once already, as an instance. The mechanism came
+   back under `www.loc.gov` and nobody noticed for months, because there was
+   nothing in the tree that had ever *named* the mechanism — only a fixed
+   symptom. A card that says `roles: ["namespace", "query"]` names it. An absent
+   card says nothing at all, and says it silently.
+2. **`hosts` is checked against the code, and the code contains the string.**
+   `tests/test_source_hosts.py` asserts every declared host appears in its
+   source function. Dropping `www.loc.gov` from `gallica` and `ndl` would either
+   fail that check or require an exemption list — a second place to keep in step,
+   which is the failure this whole document is about.
+3. **Absence is not a decision anyone can review.** The catalog's job is to make
+   each host's relationship explicit. "This host is here because of a schema
+   identifier, not a request" is a fact worth stating; deleting the row states
+   nothing and leaves the next reader to re-derive it from an XML namespace
+   constant three files away.
+
+The cost of keeping them is one enum value and one honest row. The cost of
+dropping them is re-learning §1.1 the next time someone parses SRW, DIDL, OAI-PMH
+or any other standard that identifies its schema with a URL at a real
+institution.
+
+**What `namespace` must never do** is imply a network relationship. A host whose
+roles are `["namespace"]` alone is contacted by nothing and is not a citation
+destination — it owes no trust verdict and belongs in no egress reasoning. That
+is the entire reason it is a role rather than an omission: the value carries the
+"ignore me for both purposes" instruction that a deleted row could not.
