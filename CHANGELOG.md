@@ -20,6 +20,15 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.5.1](https://github.com/rudi193-cmd/Jeles/compare/v0.5.0...v0.5.1) (2026-08-04)
+
+
+### Fixed
+
+* **egress:** a percent-encoded host walked straight past the destination guard ([e0ed18f](https://github.com/rudi193-cmd/Jeles/commit/e0ed18f2f02c3d0419c565e1d0a2a097cf5aaa66))
+* **egress:** a source redirect could reach any address, including localhost ([5229dfa](https://github.com/rudi193-cmd/Jeles/commit/5229dfa7f5af37da63ce59d6fc0887516becaa97))
+* **egress:** a source redirect could reach any address, including localhost ([7d22acb](https://github.com/rudi193-cmd/Jeles/commit/7d22acbb49a69adf54bb2aaadf842b5fc7cf6567))
+
 ## [0.5.0](https://github.com/rudi193-cmd/Jeles/compare/v0.4.1...v0.5.0) (2026-08-04)
 
 
