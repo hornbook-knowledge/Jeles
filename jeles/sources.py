@@ -21,6 +21,16 @@ loop to work.
 Each source function returns list[dict] with standard citation fields:
     title, url, source, institution, snippet, date, id
 
+Each registry entry also declares `hosts` — the hostnames that source contacts —
+reachable in aggregate via `registered_hosts()` and checked against the code by
+`tests/test_source_hosts.py`, so it is data rather than a second list to keep in
+step. Note what it is not: 46 of the 61 sources build their citation URL out of
+the API response, so where a *result* points is not knowable from here at all.
+OpenAlex or Crossref can legitimately hand back a link to any publisher on
+earth. `hosts` answers "which institutions does jeles query", never "should this
+arbitrary web result be believed" — willow-mcp's trusted-domain list conflated
+the two, and inherited `www.w3.org` from arXiv's Atom namespace as a result.
+
 Wikipedia is excluded from the default (non opt-in) set on purpose — every
 default result here can appear in an academic bibliography.
 
@@ -2276,103 +2286,103 @@ def search_frankfurter(query: str, limit: int = 5) -> list[dict]:
 
 SOURCES: dict[str, dict] = {
     # Academic
-    "openalex":         {"name": "OpenAlex",                "domain": ["academic", "science", "humanities"], "key_required": False},
-    "core":             {"name": "CORE",                    "domain": ["academic", "science"],             "key_required": False},
-    "doaj":             {"name": "DOAJ",                    "domain": ["academic", "open_access"],           "key_required": False},
-    "europepmc":        {"name": "Europe PMC",              "domain": ["biology", "medicine", "health"],     "key_required": False},
+    "openalex":         {"name": "OpenAlex",                "domain": ["academic", "science", "humanities"], "key_required": False, "hosts": ["api.openalex.org"]},
+    "core":             {"name": "CORE",                    "domain": ["academic", "science"],             "key_required": False, "hosts": ["api.core.ac.uk"]},
+    "doaj":             {"name": "DOAJ",                    "domain": ["academic", "open_access"],           "key_required": False, "hosts": ["doaj.org", "doi.org"]},
+    "europepmc":        {"name": "Europe PMC",              "domain": ["biology", "medicine", "health"],     "key_required": False, "hosts": ["doi.org", "europepmc.org", "www.ebi.ac.uk"]},
     # key_required is False because `search_semantic_scholar` does not abstain
     # without SEMANTIC_SCHOLAR_API_KEY — it queries anonymously and the key only
     # lifts rate limits. This entry said True, which made `list_sources()` claim
     # a key that is not needed; the fan-out reached it keyless in every run.
-    "semantic_scholar": {"name": "Semantic Scholar",        "domain": ["academic", "cs", "science"],         "key_required": False},
-    "crossref":         {"name": "Crossref",                "domain": ["academic", "general"],               "key_required": False},
-    "pubmed":           {"name": "PubMed",                  "domain": ["biology", "medicine"],               "key_required": False},
-    "arxiv":            {"name": "arXiv",                   "domain": ["science", "cs", "math", "physics"],  "key_required": False},
+    "semantic_scholar": {"name": "Semantic Scholar",        "domain": ["academic", "cs", "science"],         "key_required": False, "hosts": ["api.semanticscholar.org", "doi.org"]},
+    "crossref":         {"name": "Crossref",                "domain": ["academic", "general"],               "key_required": False, "hosts": ["api.crossref.org", "doi.org"]},
+    "pubmed":           {"name": "PubMed",                  "domain": ["biology", "medicine"],               "key_required": False, "hosts": ["eutils.ncbi.nlm.nih.gov", "pubmed.ncbi.nlm.nih.gov"]},
+    "arxiv":            {"name": "arXiv",                   "domain": ["science", "cs", "math", "physics"],  "key_required": False, "hosts": ["export.arxiv.org"]},
     # Data / Science
-    "zenodo":           {"name": "Zenodo",                  "domain": ["science", "data", "general"],        "key_required": False},
-    "datacite":         {"name": "DataCite",                "domain": ["science", "data"],                   "key_required": False},
-    "wikidata":         {"name": "Wikidata",                "domain": ["general", "reference"],              "key_required": False},
-    "pubchem":          {"name": "PubChem",                 "domain": ["chemistry", "science"],              "key_required": False},
-    "usgs":             {"name": "USGS Publications",       "domain": ["geology", "earth_science"],          "key_required": False},
-    "nasa":             {"name": "NASA",                    "domain": ["space", "science"],                  "key_required": False},
+    "zenodo":           {"name": "Zenodo",                  "domain": ["science", "data", "general"],        "key_required": False, "hosts": ["doi.org", "zenodo.org"]},
+    "datacite":         {"name": "DataCite",                "domain": ["science", "data"],                   "key_required": False, "hosts": ["api.datacite.org", "doi.org"]},
+    "wikidata":         {"name": "Wikidata",                "domain": ["general", "reference"],              "key_required": False, "hosts": ["www.wikidata.org"]},
+    "pubchem":          {"name": "PubChem",                 "domain": ["chemistry", "science"],              "key_required": False, "hosts": ["pubchem.ncbi.nlm.nih.gov"]},
+    "usgs":             {"name": "USGS Publications",       "domain": ["geology", "earth_science"],          "key_required": False, "hosts": ["doi.org", "pubs.er.usgs.gov"]},
+    "nasa":             {"name": "NASA",                    "domain": ["space", "science"],                  "key_required": False, "hosts": ["images-api.nasa.gov"]},
     # Museums
-    "met":              {"name": "Met Museum",              "domain": ["art", "culture", "history"],         "key_required": False},
-    "cleveland":        {"name": "Cleveland Museum of Art", "domain": ["art", "culture"],                    "key_required": False},
-    "vam":              {"name": "V&A Museum",              "domain": ["art", "design", "culture"],          "key_required": False},
-    "rijksmuseum":      {"name": "Rijksmuseum",             "domain": ["art", "history"],                    "key_required": True, "key_env": "RIJKSMUSEUM_API_KEY"},
+    "met":              {"name": "Met Museum",              "domain": ["art", "culture", "history"],         "key_required": False, "hosts": ["collectionapi.metmuseum.org"]},
+    "cleveland":        {"name": "Cleveland Museum of Art", "domain": ["art", "culture"],                    "key_required": False, "hosts": ["openaccess-api.clevelandart.org"]},
+    "vam":              {"name": "V&A Museum",              "domain": ["art", "design", "culture"],          "key_required": False, "hosts": ["api.vam.ac.uk", "collections.vam.ac.uk"]},
+    "rijksmuseum":      {"name": "Rijksmuseum",             "domain": ["art", "history"],                    "key_required": True, "key_env": "RIJKSMUSEUM_API_KEY", "hosts": ["www.rijksmuseum.nl"]},
     # Libraries & Archives
-    "loc":              {"name": "Library of Congress",     "domain": ["humanities", "history", "general"],  "key_required": False},
-    "openlibrary":      {"name": "Open Library",            "domain": ["books", "humanities"],               "key_required": False},
-    "chronicling_america": {"name": "Chronicling America", "domain": ["history", "journalism"],             "key_required": False},
-    "internet_archive": {"name": "Internet Archive",        "domain": ["general", "books", "media"],         "key_required": False},
-    "dpla":             {"name": "DPLA",                    "domain": ["humanities", "history", "general"],  "key_required": True, "key_env": "DPLA_API_KEY"},
+    "loc":              {"name": "Library of Congress",     "domain": ["humanities", "history", "general"],  "key_required": False, "hosts": ["www.loc.gov"]},
+    "openlibrary":      {"name": "Open Library",            "domain": ["books", "humanities"],               "key_required": False, "hosts": ["openlibrary.org"]},
+    "chronicling_america": {"name": "Chronicling America", "domain": ["history", "journalism"],             "key_required": False, "hosts": ["chroniclingamerica.loc.gov"]},
+    "internet_archive": {"name": "Internet Archive",        "domain": ["general", "books", "media"],         "key_required": False, "hosts": ["archive.org"]},
+    "dpla":             {"name": "DPLA",                    "domain": ["humanities", "history", "general"],  "key_required": True, "key_env": "DPLA_API_KEY", "hosts": ["api.dp.la"]},
     # Heritage
-    "smithsonian":      {"name": "Smithsonian",             "domain": ["art", "history", "science"],         "key_required": True, "key_env": "SMITHSONIAN_API_KEY"},
-    "europeana":        {"name": "Europeana",               "domain": ["art", "culture", "history"],         "key_required": True, "key_env": "EUROPEANA_API_KEY"},
+    "smithsonian":      {"name": "Smithsonian",             "domain": ["art", "history", "science"],         "key_required": True, "key_env": "SMITHSONIAN_API_KEY", "hosts": ["api.si.edu"]},
+    "europeana":        {"name": "Europeana",               "domain": ["art", "culture", "history"],         "key_required": True, "key_env": "EUROPEANA_API_KEY", "hosts": ["api.europeana.eu"]},
     # International
-    "gallica":          {"name": "Gallica (BnF)",           "domain": ["humanities", "history", "france"],   "key_required": False},
-    "hal":              {"name": "HAL Open Access",         "domain": ["academic", "science", "france"],     "key_required": False},
-    "scielo":           {"name": "SciELO",                  "domain": ["science", "latin_america", "iberia"],"key_required": False},
-    "ndl":              {"name": "National Diet Library",   "domain": ["general", "japan", "asia"],          "key_required": False},
+    "gallica":          {"name": "Gallica (BnF)",           "domain": ["humanities", "history", "france"],   "key_required": False, "hosts": ["gallica.bnf.fr", "www.loc.gov"]},
+    "hal":              {"name": "HAL Open Access",         "domain": ["academic", "science", "france"],     "key_required": False, "hosts": ["api.archives-ouvertes.fr"]},
+    "scielo":           {"name": "SciELO",                  "domain": ["science", "latin_america", "iberia"],"key_required": False, "hosts": ["articlemeta.scielo.org", "www.scielo.br"]},
+    "ndl":              {"name": "National Diet Library",   "domain": ["general", "japan", "asia"],          "key_required": False, "hosts": ["iss.ndl.go.jp", "www.loc.gov"]},
     # Music
-    "musicbrainz":      {"name": "MusicBrainz",             "domain": ["music", "art", "culture"],           "key_required": False},
+    "musicbrainz":      {"name": "MusicBrainz",             "domain": ["music", "art", "culture"],           "key_required": False, "hosts": ["musicbrainz.org"]},
     # Philosophy & humanities
-    "sep":              {"name": "Stanford Encyclopedia of Philosophy", "domain": ["philosophy", "humanities"], "key_required": False},
+    "sep":              {"name": "Stanford Encyclopedia of Philosophy", "domain": ["philosophy", "humanities"], "key_required": False, "hosts": ["plato.stanford.edu"]},
     # Literature — public domain
-    "gutenberg":        {"name": "Project Gutenberg",       "domain": ["literature", "books", "humanities"], "key_required": False},
+    "gutenberg":        {"name": "Project Gutenberg",       "domain": ["literature", "books", "humanities"], "key_required": False, "hosts": ["gutendex.com", "www.gutenberg.org"]},
     # Natural history
-    "bhl":              {"name": "Biodiversity Heritage Library", "domain": ["biology", "ecology", "natural_history"], "key_required": True, "key_env": "BHL_API_KEY"},
+    "bhl":              {"name": "Biodiversity Heritage Library", "domain": ["biology", "ecology", "natural_history"], "key_required": True, "key_env": "BHL_API_KEY", "hosts": ["www.biodiversitylibrary.org"]},
     # Law
-    "courtlistener":    {"name": "CourtListener",           "domain": ["law", "legal"],                      "key_required": False},
+    "courtlistener":    {"name": "CourtListener",           "domain": ["law", "legal"],                      "key_required": False, "hosts": ["www.courtlistener.com"]},
     # Broad academic open access
-    "base":             {"name": "BASE (Bielefeld)",         "domain": ["academic", "general", "open_access"],"key_required": False},
+    "base":             {"name": "BASE (Bielefeld)",         "domain": ["academic", "general", "open_access"],"key_required": False, "hosts": ["api.base-search.net"]},
     # Computer science
-    "dblp":             {"name": "DBLP",                    "domain": ["computer_science", "academic"],      "key_required": False},
+    "dblp":             {"name": "DBLP",                    "domain": ["computer_science", "academic"],      "key_required": False, "hosts": ["dblp.org"]},
     # Drug / medical safety
-    "openfda":          {"name": "OpenFDA",                 "domain": ["medicine", "drug", "safety"],        "key_required": False},
+    "openfda":          {"name": "OpenFDA",                 "domain": ["medicine", "drug", "safety"],        "key_required": False, "hosts": ["api.fda.gov", "www.accessdata.fda.gov"]},
     # Species / ecology
-    "eol":              {"name": "Encyclopedia of Life",    "domain": ["biology", "ecology", "species"],     "key_required": False},
-    "gbif":             {"name": "GBIF",                    "domain": ["biology", "ecology", "biodiversity"],"key_required": False},
-    "inaturalist":      {"name": "iNaturalist",             "domain": ["biology", "ecology", "species"],     "key_required": False},
+    "eol":              {"name": "Encyclopedia of Life",    "domain": ["biology", "ecology", "species"],     "key_required": False, "hosts": ["eol.org"]},
+    "gbif":             {"name": "GBIF",                    "domain": ["biology", "ecology", "biodiversity"],"key_required": False, "hosts": ["api.gbif.org", "www.gbif.org"]},
+    "inaturalist":      {"name": "iNaturalist",             "domain": ["biology", "ecology", "species"],     "key_required": False, "hosts": ["api.inaturalist.org", "www.inaturalist.org"]},
     # Geography
-    "nominatim":        {"name": "OpenStreetMap Nominatim", "domain": ["geography", "places"],               "key_required": False},
+    "nominatim":        {"name": "OpenStreetMap Nominatim", "domain": ["geography", "places"],               "key_required": False, "hosts": ["nominatim.openstreetmap.org", "www.openstreetmap.org"]},
     # European open research
-    "openaire":         {"name": "OpenAIRE",                "domain": ["academic", "europe", "open_access"], "key_required": False},
+    "openaire":         {"name": "OpenAIRE",                "domain": ["academic", "europe", "open_access"], "key_required": False, "hosts": ["api.openaire.eu", "doi.org"]},
     # Government open data
-    "federal_register": {"name": "U.S. Federal Register",  "domain": ["law", "government", "us"],           "key_required": False},
-    "datagov":          {"name": "data.gov",                "domain": ["government", "data", "us"],          "key_required": False},
-    "uk_legislation":   {"name": "legislation.gov.uk",      "domain": ["law", "government", "uk"],           "key_required": False},
-    "eu_data":          {"name": "data.europa.eu",          "domain": ["government", "data", "europe"],      "key_required": False},
+    "federal_register": {"name": "U.S. Federal Register",  "domain": ["law", "government", "us"],           "key_required": False, "hosts": ["www.federalregister.gov"]},
+    "datagov":          {"name": "data.gov",                "domain": ["government", "data", "us"],          "key_required": False, "hosts": ["catalog.data.gov"]},
+    "uk_legislation":   {"name": "legislation.gov.uk",      "domain": ["law", "government", "uk"],           "key_required": False, "hosts": ["www.legislation.gov.uk"]},
+    "eu_data":          {"name": "data.europa.eu",          "domain": ["government", "data", "europe"],      "key_required": False, "hosts": ["data.europa.eu"]},
     # Clinical trade press
-    "psychiatric_times": {"name": "Psychiatric Times",      "domain": ["psychiatry", "mental_health", "medicine"], "key_required": False},
+    "psychiatric_times": {"name": "Psychiatric Times",      "domain": ["psychiatry", "mental_health", "medicine"], "key_required": False, "hosts": ["www.psychiatrictimes.com"]},
     # High-energy physics
-    "inspirehep":       {"name": "INSPIRE-HEP",             "domain": ["physics", "high_energy_physics", "science"], "key_required": False},
+    "inspirehep":       {"name": "INSPIRE-HEP",             "domain": ["physics", "high_energy_physics", "science"], "key_required": False, "hosts": ["arxiv.org", "doi.org", "inspirehep.net"]},
     # Economics / macroeconomics
-    "worldbank":        {"name": "World Bank Open Data",    "domain": ["economics", "finance", "government"],  "key_required": False},
+    "worldbank":        {"name": "World Bank Open Data",    "domain": ["economics", "finance", "government"],  "key_required": False, "hosts": ["api.worldbank.org", "data.worldbank.org"]},
     # Food & nutrition
-    "openfoodfacts":    {"name": "Open Food Facts",         "domain": ["food", "nutrition", "science"],        "key_required": False},
+    "openfoodfacts":    {"name": "Open Food Facts",         "domain": ["food", "nutrition", "science"],        "key_required": False, "hosts": ["world.openfoodfacts.org"]},
     # Environment / energy
-    "carbon_intensity": {"name": "UK Carbon Intensity",     "domain": ["environment", "energy", "climate"],    "key_required": False},
+    "carbon_intensity": {"name": "UK Carbon Intensity",     "domain": ["environment", "energy", "climate"],    "key_required": False, "hosts": ["api.carbonintensity.org.uk", "carbonintensity.org.uk"]},
     # Weather
-    "nws":              {"name": "National Weather Service", "domain": ["weather", "government", "science"],    "key_required": False},
+    "nws":              {"name": "National Weather Service", "domain": ["weather", "government", "science"],    "key_required": False, "hosts": ["api.weather.gov", "www.weather.gov"]},
     # News
-    "gdelt":            {"name": "GDELT",                   "domain": ["news", "current_events"],               "key_required": False},
+    "gdelt":            {"name": "GDELT",                   "domain": ["news", "current_events"],               "key_required": False, "hosts": ["api.gdeltproject.org"]},
     # Public health
-    "who_gho":          {"name": "WHO Global Health Observatory", "domain": ["public_health", "medicine"],      "key_required": False},
+    "who_gho":          {"name": "WHO Global Health Observatory", "domain": ["public_health", "medicine"],      "key_required": False, "hosts": ["ghoapi.azureedge.net", "www.who.int"]},
     # Global weather/climate
-    "open_meteo":       {"name": "Open-Meteo",              "domain": ["climate", "weather"],                   "key_required": False},
+    "open_meteo":       {"name": "Open-Meteo",              "domain": ["climate", "weather"],                   "key_required": False, "hosts": ["api.open-meteo.com", "geocoding-api.open-meteo.com", "open-meteo.com"]},
     # Patents
-    "patentsview":      {"name": "USPTO PatentsView",       "domain": ["patents", "technology", "science"],     "key_required": False},
+    "patentsview":      {"name": "USPTO PatentsView",       "domain": ["patents", "technology", "science"],     "key_required": False, "hosts": ["patents.google.com", "search.patentsview.org"]},
     # Macroeconomics
-    "imf":              {"name": "IMF DataMapper",          "domain": ["macroeconomics", "economics"],          "key_required": False},
+    "imf":              {"name": "IMF DataMapper",          "domain": ["macroeconomics", "economics"],          "key_required": False, "hosts": ["www.imf.org"]},
     # Social science preprints
-    "osf":              {"name": "Open Science Framework",  "domain": ["social_science", "psychology", "medicine"], "key_required": False},
+    "osf":              {"name": "Open Science Framework",  "domain": ["social_science", "psychology", "medicine"], "key_required": False, "hosts": ["api.osf.io"]},
     # Sports
-    "thesportsdb":      {"name": "TheSportsDB",             "domain": ["sports"],                               "key_required": False},
+    "thesportsdb":      {"name": "TheSportsDB",             "domain": ["sports"],                               "key_required": False, "hosts": ["www.thesportsdb.com"]},
     # Finance / FX
-    "frankfurter":      {"name": "ECB via Frankfurter",     "domain": ["finance", "economics"],                 "key_required": False},
+    "frankfurter":      {"name": "ECB via Frankfurter",     "domain": ["finance", "economics"],                 "key_required": False, "hosts": ["api.frankfurter.app", "www.ecb.europa.eu"]},
     # Opt-in only — general reference, not suitable for academic citation
-    "wikipedia":        {"name": "Wikipedia",               "domain": ["general", "reference"],              "fn_name": "search_wikipedia",        "key_required": False, "opt_in": True},
+    "wikipedia":        {"name": "Wikipedia",               "domain": ["general", "reference"],              "fn_name": "search_wikipedia",        "key_required": False, "opt_in": True, "hosts": ["en.wikipedia.org"]},
 }
 
 # ── Static source registry ────────────────────────────────────────────────────
@@ -2413,8 +2423,8 @@ def _executor(workers: int) -> _cf.ThreadPoolExecutor:
 
 
 def _load_registry() -> dict[str, dict]:
-    """Static {source_id: {name, fn_name, key_required, key_env, opt_in, enabled}}
-    from SOURCES. `key_env` is "" for a source that needs no key."""
+    """Static {source_id: {name, fn_name, key_required, key_env, opt_in, hosts,
+    enabled}} from SOURCES. `key_env` is "" for a source that needs no key."""
     registry: dict[str, dict] = {}
     for sid, cfg in SOURCES.items():
         registry[sid] = {
@@ -2423,6 +2433,9 @@ def _load_registry() -> dict[str, dict]:
             "key_required": cfg.get("key_required", False),
             "key_env":      cfg.get("key_env", ""),
             "opt_in":       cfg.get("opt_in", False),
+            # Rebuilt key by key, so anything not listed here is dropped —
+            # which is how `hosts` read as empty everywhere the first time.
+            "hosts":        tuple(cfg.get("hosts", ())),
             "enabled":      True,
         }
     return registry
@@ -2610,9 +2623,40 @@ def list_sources() -> list[dict]:
     return [
         {"id": sid, "name": cfg["name"], "fn_name": cfg["fn_name"],
          "key_required": cfg["key_required"], "key_env": cfg.get("key_env", ""),
-         "opt_in": cfg.get("opt_in", False)}
+         "opt_in": cfg.get("opt_in", False), "hosts": list(cfg.get("hosts", ()))}
         for sid, cfg in registry.items()
     ]
+
+
+# Hosts that appear as strings inside a source function but are never contacted:
+# XML/RDF namespace *identifiers*, which look like URLs and are not. They are
+# named here rather than filtered by guesswork, because a consumer treating them
+# as "somewhere jeles talks to" would draw a real conclusion from a fiction —
+# willow-mcp's trust list did exactly that with `www.w3.org`, picked up from
+# arXiv's Atom namespace.
+NAMESPACE_URI_HOSTS = frozenset({"www.w3.org", "purl.org"})
+
+
+def registered_hosts(*, include_opt_in: bool = True) -> set[str]:
+    """Every hostname the registered sources contact.
+
+    Declared per source in :data:`SOURCES` under ``hosts`` and checked against
+    the code by ``tests/test_source_hosts.py``, so this is data rather than a
+    second list to maintain.
+
+    This is what the sources *query*, which is not the same as where their
+    results *point*: 46 of the 61 build the citation URL out of the API
+    response, so OpenAlex or Crossref can legitimately return a link to any
+    publisher on earth. A consumer wanting "is this hostname an institution
+    this fleet queries?" is answered here; "should I believe this arbitrary
+    web result?" is not a question this set can answer.
+    """
+    return {
+        host
+        for cfg in _load_registry().values()
+        if include_opt_in or not cfg.get("opt_in", False)
+        for host in cfg.get("hosts", ())
+    }
 
 
 def search(
