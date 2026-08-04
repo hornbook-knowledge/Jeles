@@ -68,6 +68,7 @@ _ALLOWED_SCHEMES = _egress.HTTP_OR_HTTPS
 
 
 def _get_json(url: str, headers: dict[str, str] | None = None,
+              *, allow_private: bool = False,
               data: bytes | None = None) -> Any:
     """Fetch and decode JSON through the shared egress guard.
 
@@ -76,12 +77,18 @@ def _get_json(url: str, headers: dict[str, str] | None = None,
     `urlopen`, so a redirect to `ftp://` was never inspected — reproduced
     against a listening socket, the connection arrived. `jeles._egress` re-checks
     the scheme on every hop and gives file:/ftp:/data: no transport at all.
+
+    `allow_private` is a PER-CALL argument, not a property of this function.
+    It used to be hardcoded True here, justified by the SearXNG default — but
+    this is also the fetch path for Brave, Tavily and DuckDuckGo, three
+    hardcoded public APIs with no claim to a private address. Measured: with it
+    on, a 302 from `api.duckduckgo.com` to
+    `http://169.254.169.254/latest/meta-data/` was followed. One operator-chosen
+    backend was buying every other backend an exemption.
     """
-    # `allow_private=True` deliberately: the documented zero-config default is a
-    # SearXNG instance on http://127.0.0.1:8888, so refusing private addresses
-    # here would break the out-of-the-box case rather than protect it.
     raw = _egress.fetch(url, allowed=_ALLOWED_SCHEMES, timeout=_TIMEOUT,
-                        max_bytes=_MAX_BYTES, data=data, allow_private=True,
+                        max_bytes=_MAX_BYTES, data=data,
+                        allow_private=allow_private,
                         headers={"User-Agent": _UA, **(headers or {})})
     return json.loads(raw.decode("utf-8", "replace"))
 
@@ -105,7 +112,10 @@ def _searxng(query: str) -> list[dict[str, Any]]:
     if not base:
         raise RuntimeError("JELES_SEARXNG_URL not set")
     qs = urllib.parse.urlencode({"q": query, "format": "json", "safesearch": "0"})
-    data = _get_json(f"{base}/search?{qs}")
+    # The one lane with a claim to a private address: the operator set
+    # JELES_SEARXNG_URL themselves, and http://127.0.0.1:8888 is the
+    # documented zero-config default.
+    data = _get_json(f"{base}/search?{qs}", allow_private=True)
     return [_hit(r.get("title"), r.get("url"), r.get("content"))
             for r in (data.get("results") or [])[:_MAX]]
 
