@@ -234,20 +234,32 @@ def test_only_types_that_change_the_installed_package_cut_a_release():
         assert next(s for s in sections if s["type"] == t).get("hidden") is True
 
 
-def test_this_package_is_below_1_0_so_it_keeps_the_pre_major_flags():
-    """**Inverted from willow-mcp deliberately.** There the same check asserts
-    these flags are *absent*, because a 2.x package needs a breaking change to
-    reach 3.0.0. Here they must be present: below 1.0 they keep `feat` at a
-    minor and a breaking change at a minor too, so reaching 1.0.0 stays a
-    decision someone makes rather than one a commit message makes."""
+def test_a_breaking_change_below_1_0_cuts_1_0_0_rather_than_a_minor():
+    """`bump-minor-pre-major` was true here and is now false, which is a policy
+    change rather than a tidy-up — so this test flipped with it.
+
+    True meant a breaking change stayed at a minor, keeping 1.0 a decision
+    someone makes rather than one a commit message makes. The price was paid
+    downstream: a `<1.0.0` cap accepted every version this config could produce,
+    so it was not a compatibility range. willow-mcp tried to fix that at its own
+    end with `jeles>=0.5.1,<0.6.0` and withdrew it — a tight cap also blocks
+    *this* package's security patches from reaching its users, and this package
+    is where willow_institutional_search's SSRF defence lives.
+
+    So the range means something now, and 1.0 arrives when compatibility breaks
+    rather than when someone declares it. `bump-patch-for-minor-pre-major` stays
+    false, which is what keeps `feat` at a minor and `fix` at a patch.
+    """
     cfg = _package_config()
-    assert cfg.get("bump-minor-pre-major") is True
+    assert cfg.get("bump-minor-pre-major") is False, (
+        "true caps a breaking change at a minor, which makes a downstream "
+        "`<1.0.0` cap meaningless. See willow-mcp docs/design/fleet-versioning.md")
     assert cfg.get("bump-patch-for-minor-pre-major") is False, \
-        "with this true, a fix would bump the minor instead of the patch"
+        "with this true, a feat would bump the patch instead of the minor"
     version = _json(_MANIFEST)["."]
     assert version.startswith("0."), (
-        f"manifest is {version} — at 1.0 these flags stop being correct and "
-        "should be removed, or every breaking change is capped at a minor"
+        f"manifest is {version} — past 1.0 both flags are dead weight, because "
+        "`isPreMajor` gates them and it is false from 1.0.0 on. Remove them."
     )
 
 
