@@ -149,6 +149,78 @@ def test_auto_merge_waits_for_ci_rather_than_merging_directly():
                 assert "--squash" not in line, "this repo does not squash-merge"
 
 
+def test_the_changelog_is_rebuilt_before_auto_merge_is_armed():
+    """Order is the whole point. The correction must land on the release PR
+    *before* auto-merge can take it, or the release ships with the wrong section
+    and gets fixed afterwards — which is what it replaces.
+
+    0.5.0 listed its single change twice, from `bbc8258` (the merge of #27) and
+    `455be56` (the commit it merged), and was corrected by hand in #29.
+    """
+    steps = _yaml(_RP_WF)["jobs"]["release-please"]["steps"]
+    names = [s.get("name") or str(s.get("uses", "")) for s in steps]
+
+    def index_of(needle: str) -> int:
+        hits = [i for i, n in enumerate(names) if needle in n]
+        assert hits, f"no step matching {needle!r} in {names}"
+        return hits[0]
+
+    assert (index_of("actions/checkout") < index_of("release-please-action")
+            < index_of("Rebuild the changelog") < index_of("Arm auto-merge")), names
+
+    # The tool derives entries from `git log <previous tag>..<this release>`, so
+    # a shallow clone or missing tags silently changes what it computes.
+    checkout = next(s for s in steps
+                    if str(s.get("uses", "")).startswith("actions/checkout"))
+    assert checkout["with"]["fetch-depth"] == 0, "needs full history for the range"
+    assert checkout["with"]["fetch-tags"] is True, "needs tags to find the previous release"
+
+
+def test_a_changelog_bail_does_not_block_the_release():
+    """**The bug willow-mcp shipped, carried here as a guard rather than as a
+    repeat.** There the step ran under `set -e`, so exit 2 — the tool correctly
+    refusing a section it cannot model — skipped the auto-merge arming below it
+    and stopped the release entirely. Its very first real run did exactly that.
+
+    Failing closed is wrong here: the worst case this tool guards against is a
+    wrong *changelog*, and trading that for "no release at all" is a bad deal."""
+    steps = _yaml(_RP_WF)["jobs"]["release-please"]["steps"]
+    step = next(s for s in steps if "Rebuild the changelog" in (s.get("name") or ""))
+    run = step["run"]
+    assert "::warning::" in run, "a bail must warn"
+    assert 'status" = "2"' in run, "exit 2 must be handled explicitly, not by set -e"
+    assert "RELEASE_PLEASE_TOKEN" in str(step.get("env")), "pushes need the PAT"
+    assert "GITHUB_TOKEN" not in str(step.get("env"))
+
+
+def test_the_changelog_tool_exists_and_the_workflow_calls_it():
+    """A workflow step invoking a script nobody ships is a silent no-op, on a
+    path nobody watches."""
+    assert (_REPO / "tools" / "changelog_dedup.py").exists()
+    steps = _yaml(_RP_WF)["jobs"]["release-please"]["steps"]
+    runs = " ".join(str(s.get("run", "")) for s in steps)
+    assert "tools/changelog_dedup.py" in runs
+
+
+def test_the_pr_title_check_guards_both_directions():
+    """One direction stops a title inventing a release; the other stops a commit
+    releasing something nobody installs. v0.4.1 shipped for a single `ci:`
+    commit, and willow-mcp's 2.1.5 shipped for edits to tools/ and .github/.
+
+    The packaged path must be **this** repo's. `src/willow_mcp/` is willow-mcp's
+    layout; here the wheel packages `jeles`, so a copied constant would make the
+    check pass on everything."""
+    wf = _REPO / ".github" / "workflows" / "pr-title.yml"
+    body = _yaml(wf)["jobs"]["title"]["steps"][-1]["run"]
+    assert 'PACKAGED = ("jeles/", "pyproject.toml")' in body, \
+        "packaged path is wrong or was copied from another repo"
+    assert "src/willow_mcp" not in body, "willow-mcp's path leaked into this port"
+
+    # And it really is what the wheel ships.
+    pyproject = tomllib.loads((_REPO / "pyproject.toml").read_text())
+    assert pyproject["tool"]["hatch"]["build"]["targets"]["wheel"]["packages"] == ["jeles"]
+
+
 def test_only_types_that_change_the_installed_package_cut_a_release():
     """Every un-hidden type releases on its own — not just feat and fix. v0.4.1
     was tagged and published for a single `ci:` commit that changed a workflow
