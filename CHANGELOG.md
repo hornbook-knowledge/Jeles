@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Added
 
-* **sources:** recover the four sources stranded in the archived fork ([7ee5974](https://github.com/rudi193-cmd/Jeles/commit/7ee5974bb32cd531e4649177b65fb30dc793fd58))
 * **sources:** recover the four sources stranded in the archived fork ([e72889c](https://github.com/rudi193-cmd/Jeles/commit/e72889c31f96e20e2ae4f968cb51e9d3617b692d))
 
 ## [0.5.2](https://github.com/rudi193-cmd/Jeles/compare/v0.5.1...v0.5.2) (2026-08-04)
