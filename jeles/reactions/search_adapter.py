@@ -77,8 +77,11 @@ def _get_json(url: str, headers: dict[str, str] | None = None,
     against a listening socket, the connection arrived. `jeles._egress` re-checks
     the scheme on every hop and gives file:/ftp:/data: no transport at all.
     """
+    # `allow_private=True` deliberately: the documented zero-config default is a
+    # SearXNG instance on http://127.0.0.1:8888, so refusing private addresses
+    # here would break the out-of-the-box case rather than protect it.
     raw = _egress.fetch(url, allowed=_ALLOWED_SCHEMES, timeout=_TIMEOUT,
-                        max_bytes=_MAX_BYTES, data=data,
+                        max_bytes=_MAX_BYTES, data=data, allow_private=True,
                         headers={"User-Agent": _UA, **(headers or {})})
     return json.loads(raw.decode("utf-8", "replace"))
 

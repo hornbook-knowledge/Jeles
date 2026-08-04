@@ -183,11 +183,15 @@ def _urlopen(req: urllib.request.Request):
     errors and return [], so without the breadcrumb a source that could not be
     reached is indistinguishable from one that had nothing, and a whole blocked
     egress reports as a successful empty search.
+
+    The pre-flight is `_egress.check_url`, not a local copy of it. This module
+    used to restate the scheme check inline — and, having restated one of the
+    two checks, silently did not have the other: a private *initial* URL was
+    refused by `_egress.urlopen` and connected to here. On the one lane the
+    destination guard is written for.
     """
     url = req.full_url if isinstance(req, urllib.request.Request) else str(req)
-    if not _scheme_ok(url, _ALLOWED_SCHEMES):
-        raise ValueError(
-            f"refusing URL scheme outside {sorted(_ALLOWED_SCHEMES)}: {url[:60]!r}")
+    _egress.check_url(url, _ALLOWED_SCHEMES)
     try:
         return _opener().open(req, timeout=_TIMEOUT)
     except Exception as exc:
