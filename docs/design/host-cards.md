@@ -2,7 +2,8 @@
 
 *Status: **DRAFT, shape agreed** — 2026-08-04. No code. Supersedes nothing yet;
 `SOURCES[*].hosts` stays authoritative until a migration lands. The five
-questions this draft opened are answered in §6; two smaller ones remain in §7.*
+questions this draft opened are answered in §6, and the two §7 raised are
+settled there too; one remains.*
 
 *Companions: `jeles/sources.py` (the registry) · `tests/test_source_hosts.py` (which
 checks `hosts` against the code) · willow-mcp `src/willow_mcp/web_search.py`
@@ -118,8 +119,10 @@ Fields worth borrowing outright:
   structurally. That is exactly the separation argued for above.
 - **`jurisdiction.scope`** — `national` / `regional-bloc` / `multilateral` /
   `international-ngo`.
-- **`observed`** — machine facts, written by a probe rather than a curator. Here
-  that probe is `willow-bot`, out of jeles' process entirely (§6.2).
+- **`observed`** — machine facts, written by a probe rather than a curator.
+  Borrowed in the first draft and then **dropped**. The almanac's own workflows
+  never write it back into an entry either; copying the field without copying
+  that rule was the mistake. See §6.2.
 
 Borrow the shape, not the dependency: an Almanac entry describes a *dataset*, a
 host card describes a *host*. Different entities, same discipline.
@@ -134,9 +137,9 @@ jeles 0.6.1 hand-fixed two dead endpoints:
   full timeout on a name that does not resolve.
 
 Both were found by reading willow-2.0's issue log, not by anything in this repo.
-An `observed` block plus a probe finds them the week they break. **The catalog is
-not only a trust substrate — it is the thing that tells us the sources are
-broken.**
+A scheduled probe finds them the week they break — and raises an issue, which is
+how a person comes to flip a card's `status` to `retired`. **The catalog is not
+only a trust substrate; it is the thing that tells us the sources are broken.**
 
 ---
 
@@ -156,13 +159,9 @@ package data so it is present in the wheel.
   "publisher": "IMDb.com, Inc.",   // who runs it. reference-piece only
   "custody": "community",          // institutional | community | commercial | aggregator
   "jurisdiction": {"scope": "national", "country": "US"},   // optional
-  "status": "live",                // live | degraded | retired
-  "observed": {                    // written by willow-bot, never by jeles (§6.2)
-    "checked": "2026-08-04",
-    "reachable": true,
-    "http_status": 200,
-    "note": null
-  },
+  "status": "live",                // live | degraded | retired — a DECISION set
+                                   // by a human merging a PR. There is no
+                                   // measured-reachability field; see §6.2.
   "notes": "Community-editable film database."
 }
 ```
@@ -263,12 +262,15 @@ Consequences worth stating rather than discovering:
 
 ### 6.2 The probe is willow-bot's, not jeles' — **out of process entirely**
 
-`observed.reachable` is filled out of process, by `willow-bot`. jeles **reads**
-`observed` and never writes it: the cards ship with whatever the last curated
-pass recorded and are refreshed out of band. That keeps a scheduled 84-request
-outbound job out of a package whose egress is otherwise guarded and whose CI
-makes no network calls at all — which is the right call regardless of what
-follows.
+Reachability is measured out of jeles' process. jeles never probes: a scheduled
+84-request outbound job does not belong in a package whose egress is otherwise
+guarded and whose CI makes no network calls at all.
+
+**And it never lands in a card as a measurement.** `status` is the only
+reachability state a card carries, and it is a *decision* — set by a human
+merging a PR, never by a probe writing to the file. §6.2 originally specified an
+`observed` block for a prober to fill; that field is **dropped**, for the reasons
+in "What that pattern implies" below.
 
 **Corrected after reading the repo.** An earlier revision of this section said
 willow-bot "already does this class of work". It does not. `rudi193-cmd/willow-bot`
@@ -323,9 +325,9 @@ hosts are JSON APIs that answer a bare `curl` with a 403 — a prober without th
 rule would report half the institutional set dead on its first run, and the
 catalog would be less trustworthy than the flat host list it replaced.
 
-### What that pattern implies for `observed`
+### What that pattern implies — `observed` is dropped
 
-The almanac's discipline is stricter than this draft assumed, and worth copying
+The almanac's discipline is stricter than this draft assumed, and is copied
 exactly:
 
 - `check_links.py` is **read-only**. It emits a JSON report and edits nothing.
@@ -335,17 +337,29 @@ exactly:
   branch (`recovery-bot/<entry_id>`) with a **pull request**, checking for an
   existing PR first so it cannot spam.
 
-Nothing writes reachability back into an entry automatically. That is the
-"human-reviewed, machine-validated" rule from `almanac-template`'s own AGENTS.md,
-enforced by construction.
+Nothing writes reachability back into an entry automatically. That is
+`almanac-template`'s "human-reviewed, machine-validated" rule, enforced by
+construction rather than by convention.
 
-Which raises a question this draft got wrong and §7 now carries: **if the probe
-never writes the record, should `observed` be a card field at all?** The almanac's
-answer would be no — reachability lives in a report and an issue, and only a
-*decision* (live → retired) reaches the file, through a PR. `search.patentsview.org`
-is already carrying `status: retired` on exactly that basis, set by hand.
+So the `observed` block is gone from the schema. Three reasons, in order of how
+much they cost if ignored:
 
-Until that is settled, `observed` stays as jeles ships it: present and empty.
+1. **A transient block is not an outage.** `check_links.py`'s hardest-won rule is
+   that *blocked is not dead* — 401/403/406/429 behind CDN bot protection is
+   unverifiable, not a 404. A large share of the 84 hosts are JSON APIs that
+   answer a bare `curl` with 403. A field storing the last probe result would
+   turn that into a durable claim on the record.
+2. **A machine-written field makes the history unreadable.** `git log` on a card
+   should show decisions, not a daily heartbeat. The almanac keeps its cards
+   quiet for the same reason.
+3. **It was borrowed without its rule.** The field came from the almanac schema;
+   the almanac's own workflows never write it into an entry. Copying the field
+   and not the discipline is what made it look load-bearing.
+
+What replaces it is the pipeline that already exists: probe → report → issue →
+a person decides → PR flips `status`. `search.patentsview.org` already carries
+`status: retired` set exactly that way, by hand, and that is the intended shape
+rather than a stopgap.
 
 ### 6.3 `custody` keeps four values — **`commercial` and `aggregator` stay apart**
 
@@ -383,23 +397,20 @@ a gap: a DOI arrives attached to the source that emitted it.
 
 ## 7. Still open
 
-Nothing blocking. Three things this draft does not decide:
+Both of §7's original questions are settled; one new one is not.
 
-- **Whether `observed` should be a card field at all.** §6.2 assumed a probe
-  writes reachability back into each card. The almanac's four running workflows
-  do the opposite: the probe is read-only, a report becomes an *issue*, and only
-  a decision reaches the file through a PR. If jeles copies that — and it should,
-  since it is the same job — then `observed` is a report artifact, not a card
-  field, and the only reachability state on a card is `status`, set by a human
-  merging a PR. `search.patentsview.org` already carries `status: retired` set
-  exactly that way. Removing `observed` later is a **breaking card change**
-  (§6.1), so this is worth settling before the schema is depended on.
+- ~~**Card file layout.**~~ **Decided: one file per host**, `jeles/cards/<host>.json`,
+  matching `almanac-template`'s `catalog/<id>.yaml`. A bot proposing a change to
+  one card must not rewrite a file holding the other 83 — and under §6.2 that
+  change arrives as a PR, which is exactly the diff that wants to be one file.
+- ~~**Whether `observed` is a card field.**~~ **Decided: no**, §6.2. Raised here
+  because removing a field later is a breaking card change under §6.1, and
+  settling it before anything depends on the schema is the whole point of §7.
 
-- **Card file layout.** One JSON file with 84 entries, or one file per host like
-  `almanac-template`'s `catalog/<id>.yaml`? Per-file is friendlier to review
-  diffs and to willow-bot writing single cards back; one file is simpler to load
-  and cheaper in a wheel. Leaning per-file *because* of §6.2 — a bot writing one
-  card should not rewrite a file holding 83 others.
+Still genuinely open:
+
 - **Whether `namespace`-only hosts stay in `hosts` at all.** §3.1 keeps them and
-  records the role. The alternative is dropping them, which is cleaner and
-  silently re-opens the question the next time someone parses SRW.
+  records the role. Dropping them is cleaner and silently re-opens the question
+  the next time someone parses SRW. No host is `namespace`-only today —
+  `www.loc.gov` is `namespace` *and* `query` — so nothing forces the answer yet,
+  which is exactly when it is cheap to decide.

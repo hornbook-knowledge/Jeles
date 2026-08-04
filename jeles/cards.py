@@ -12,9 +12,17 @@ Whether `custody: community` disqualifies a link is the caller's policy, and
 stays with the caller — willow-mcp is not jeles' only consumer, and a second one
 should not inherit willow-mcp's opinions along with its data.
 
-One file per host rather than one file of 84, because the `observed` block is
-written out of process (by willow-bot) and a writer refreshing one card should
-not rewrite a file holding the other 83.
+One file per host rather than one file of 84, so a bot proposing a change to one
+card does not rewrite a file holding the other 83.
+
+**There is no reachability field here, and that is deliberate.** An earlier draft
+carried an `observed` block for a prober to fill. `almanac-template` already runs
+this job — `link-check.yml`, daily — and its discipline is stricter: the probe is
+read-only, its report becomes an *issue*, and only a decision reaches the record
+through a pull request. So the only reachability state a card carries is
+`status`, and `status` is set by a human merging that PR. A field a machine
+silently overwrites would make every card's history unreadable and turn a
+transient 403 behind CDN bot protection into a permanent claim.
 
 Stdlib only, and no I/O at import: cards are read on first use and cached. The
 package is `jeles`, whose whole point is that importing it costs nothing.
@@ -40,6 +48,8 @@ ROLES = frozenset({"query", "citation", "namespace"})
 #: belongs here and a trust verdict does not.
 CUSTODY = frozenset({"institutional", "community", "commercial", "aggregator"})
 
+#: Reachability, as a *decision* rather than a measurement. Set by a human
+#: merging a PR — never by a probe writing to the file. See the module docstring.
 STATUS = frozenset({"live", "degraded", "retired"})
 
 _DIR = Path(__file__).parent / "cards"

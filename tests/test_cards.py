@@ -165,14 +165,28 @@ def test_no_card_is_missing_a_publisher():
     assert not blank, f"cards with no publisher: {blank}"
 
 
-def test_observed_is_present_and_unfilled():
-    """`observed` is written out of process by willow-bot (host-cards.md §6.2),
-    so jeles ships the block empty rather than absent. Absent would make a
-    consumer's `card["observed"]` a KeyError; filled-in-repo would be jeles
-    claiming a probe it never ran."""
+def test_no_card_carries_a_measured_reachability_field():
+    """Reachability is a decision on a card, not a measurement in one.
+
+    An earlier draft gave every card an `observed` block for a prober to fill.
+    `almanac-template` already runs that job (`link-check.yml`, daily) under a
+    stricter rule: the probe is read-only, its report becomes an issue, and only
+    a decision reaches the record through a PR. Two reasons that rule wins here
+    too — a field a machine silently overwrites makes a card's git history
+    unreadable, and `check_links.py`'s hardest-won lesson is that *blocked is not
+    dead*, so a transient 403 behind CDN bot protection must never become a
+    stored claim.
+
+    `status` carries the decision. This test keeps the measurement out.
+    """
+    banned = {"observed", "reachable", "http_status", "last_checked", "checked",
+              "etag", "fingerprint"}
     for host, c in C.cards().items():
-        assert "observed" in c, f"{host}: no observed block"
-        assert set(c["observed"]) == {"checked", "reachable", "http_status", "note"}
+        leaked = banned & set(c)
+        assert not leaked, (
+            f"{host}: {sorted(leaked)} is a probe measurement. Reachability "
+            "belongs in a report and an issue; only `status` lands on the card, "
+            "set by a human merging a PR. See docs/design/host-cards.md §6.2.")
 
 
 def test_a_bad_card_is_refused_rather_than_half_read(tmp_path, monkeypatch):

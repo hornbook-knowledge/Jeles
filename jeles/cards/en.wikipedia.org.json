@@ -6,11 +6,5 @@
   ],
   "publisher": "Wikimedia Foundation",
   "custody": "community",
-  "status": "live",
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  }
+  "status": "live"
 }

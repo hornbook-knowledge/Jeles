@@ -10,11 +10,5 @@
     "scope": "national",
     "country": "US"
   },
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "DNS-dead since 2026 (willow-2.0 #648); the `patentsview` source is opt_in because of it. Retired here rather than deleted — patents.google.com is the half that still answers."
 }

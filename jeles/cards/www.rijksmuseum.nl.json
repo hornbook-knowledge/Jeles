@@ -9,11 +9,5 @@
   "jurisdiction": {
     "scope": "national",
     "country": "NL"
-  },
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
   }
 }

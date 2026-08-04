@@ -7,11 +7,5 @@
   "publisher": "Internet Speculative Fiction Database",
   "custody": "community",
   "status": "live",
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Wiki-shaped editorial model. Excellent bibliographic coverage, no institutional custody of the record."
 }

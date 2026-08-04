@@ -11,11 +11,5 @@
     "scope": "national",
     "country": "US"
   },
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "A non-profit republishing primary court records; custody of the opinion stays with the court."
 }

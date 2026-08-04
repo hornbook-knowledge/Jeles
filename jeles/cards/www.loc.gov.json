@@ -11,11 +11,5 @@
     "scope": "national",
     "country": "US"
   },
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Also appears as the SRW/Zing XML namespace URI in `gallica` and `ndl`, which is a schema identifier and not a network relationship — hence the `namespace` role. See host-cards.md §1.1."
 }

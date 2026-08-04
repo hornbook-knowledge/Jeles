@@ -7,11 +7,5 @@
   "publisher": "Open Library (Internet Archive)",
   "custody": "community",
   "status": "live",
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "The catalogue records are openly editable, unlike archive.org's holdings."
 }

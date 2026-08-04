@@ -10,11 +10,5 @@
     "scope": "national",
     "country": "US"
   },
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Moderated, not peer-reviewed. Institutional custody of the record; the record is a preprint."
 }

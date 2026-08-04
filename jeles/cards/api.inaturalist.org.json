@@ -6,11 +6,5 @@
   "publisher": "iNaturalist (California Academy of Sciences / National Geographic)",
   "custody": "community",
   "status": "live",
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Observations are user-submitted; identifications are community-verified."
 }

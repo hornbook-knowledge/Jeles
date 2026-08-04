@@ -6,11 +6,5 @@
   "publisher": "Google LLC",
   "custody": "aggregator",
   "status": "live",
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Republishes patent-office records. Custody stays with the issuing office."
 }

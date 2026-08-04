@@ -6,11 +6,5 @@
   "publisher": "Improbable Research",
   "custody": "commercial",
   "status": "live",
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Publisher of the Annals of Improbable Research and the Ig Nobel Prizes."
 }

@@ -10,11 +10,5 @@
     "scope": "international-ngo",
     "country": null
   },
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Registration agency: records are deposited by publishers, not authored here."
 }

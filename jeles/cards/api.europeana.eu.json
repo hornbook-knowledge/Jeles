@@ -9,11 +9,5 @@
   "jurisdiction": {
     "scope": "regional-bloc",
     "country": null
-  },
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
   }
 }

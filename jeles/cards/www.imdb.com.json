@@ -6,11 +6,5 @@
   "publisher": "IMDb.com, Inc.",
   "custody": "community",
   "status": "live",
-  "observed": {
-    "checked": null,
-    "reachable": null,
-    "http_status": null,
-    "note": null
-  },
   "notes": "Community-editable film database. Usually accurate and still not evidence: an entry any account can revise cannot be cited as a record."
 }
