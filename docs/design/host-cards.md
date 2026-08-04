@@ -1,7 +1,8 @@
 # Host cards — a preloaded catalog of the sites and APIs jeles touches
 
-*Status: **DRAFT** — 2026-08-04. No code. Supersedes nothing yet; `SOURCES[*].hosts`
-stays authoritative until a migration lands.*
+*Status: **DRAFT, shape agreed** — 2026-08-04. No code. Supersedes nothing yet;
+`SOURCES[*].hosts` stays authoritative until a migration lands. The five
+questions this draft opened are answered in §6; two smaller ones remain in §7.*
 
 *Companions: `jeles/sources.py` (the registry) · `tests/test_source_hosts.py` (which
 checks `hosts` against the code) · willow-mcp `src/willow_mcp/web_search.py`
@@ -117,7 +118,8 @@ Fields worth borrowing outright:
   structurally. That is exactly the separation argued for above.
 - **`jurisdiction.scope`** — `national` / `regional-bloc` / `multilateral` /
   `international-ngo`.
-- **`observed`** — machine facts, curator sets `checked`, a probe fills the rest.
+- **`observed`** — machine facts, written by a probe rather than a curator. Here
+  that probe is `willow-bot`, out of jeles' process entirely (§6.2).
 
 Borrow the shape, not the dependency: an Almanac entry describes a *dataset*, a
 host card describes a *host*. Different entities, same discipline.
@@ -155,7 +157,7 @@ package data so it is present in the wheel.
   "custody": "community",          // institutional | community | commercial | aggregator
   "jurisdiction": {"scope": "national", "country": "US"},   // optional
   "status": "live",                // live | degraded | retired
-  "observed": {                    // curator sets `checked`; a probe fills the rest
+  "observed": {                    // written by willow-bot, never by jeles (§6.2)
     "checked": "2026-08-04",
     "reachable": true,
     "http_status": 200,
@@ -190,6 +192,9 @@ re-opens the question the next time someone parses SRW.
 This is a judgement, and it belongs in the card anyway, because it is a judgement
 about *the site* and it does not vary by consumer. Whether `community` is
 disqualifying is the consumer's call, and stays downstream.
+
+Four values, decided — `commercial` and `aggregator` are not merged even though
+they usually land on the same side of a policy. See §6.3.
 
 ---
 
@@ -232,30 +237,89 @@ change, gated on a jeles floor bump.
 
 ---
 
-## 6. Open questions
+## 6. Decisions
 
-1. **Does this make jeles a catalog *and* a client?** Fleet-versioning Rule 2
-   says jeles' public surface is its importable API. A card schema joins that
-   surface, and a breaking card change becomes a jeles major. That is acceptable
-   but it should be a decision, not a discovery.
+Five questions were left open in the first draft. All five were answered by the
+repository owner on commit `6a08553`
+([commitcomment-194973774](https://github.com/rudi193-cmd/Jeles/commit/6a08553d7ed8f9619aa77b896bef5fc581cd5f52#commitcomment-194973774),
+2026-08-04). Recorded here with what each one settles, so the reasoning is not
+re-derived.
 
-2. **Who probes?** `observed.reachable` needs something to fill it. jeles is
-   stdlib-only and its egress is guarded — a probe script under `tools/` run in
-   CI on a schedule is the cheap answer, but a CI job that makes 84 outbound
-   requests on a cron is a posture change worth stating out loud.
+### 6.1 The card schema is part of jeles' public surface — **yes**
 
-3. **Is `custody` four values or three?** `commercial` and `aggregator` differ in
-   provenance but usually land on the same side of any policy. Splitting them is
-   cheap now and expensive later; merging them is the reverse.
+Fleet-versioning Rule 2 gives each package a public surface whose breakage forces
+a major, and jeles' is its importable API. **The card schema joins it.** A
+breaking card change — removing a field, narrowing an enum, changing what a
+`role` means — is a jeles major, on the same line as deleting a function.
 
-4. **What about hosts jeles does not touch?** 46 of 65 sources emit URLs built
-   from API responses, pointing anywhere. Cards do not solve that, and should not
-   pretend to. The durable answer is that jeles results already carry `source`
-   and `institution`, so a consumer never needs the hostname heuristic for
-   them — `trusted_only` stays a heuristic for the genuinely open web, labelled
-   as one. That is a separate change and it is the larger half of the problem.
+Consequences worth stating rather than discovering:
 
-5. **`doi.org` is `aggregator` but resolves to publishers.** A DOI link is a
-   redirect to wherever the publisher put it. Does the card describe the resolver
-   or the destination? Proposed: the resolver, with `notes` saying so — because
-   the destination is unknowable, which is question 4 again.
+- Adding a field or an enum value is a minor; removing or redefining one is not.
+- `roles` and `custody` are enums a consumer branches on, so they carry the
+  strongest compatibility promise in the file.
+- willow-mcp's `docs/design/fleet-versioning.md` Rule 2 table names jeles'
+  surface as "importable API". That row needs the card schema added to it, in
+  willow-mcp, when cards land. **Follow-up, not done here.**
+
+### 6.2 The probe is willow-bot's, not jeles' — **out of process entirely**
+
+`observed.reachable` is filled by `willow-bot`, which already does this class of
+work. That is a better answer than the one this draft proposed: it keeps jeles
+free of a scheduled 84-request outbound job, which would have been a real posture
+change for a package whose egress is otherwise guarded and whose CI makes no
+network calls at all.
+
+jeles therefore **reads** `observed` and never writes it. The cards ship with
+whatever the last curated pass recorded; willow-bot refreshes them out of band.
+
+*Unverified here:* `rudi193-cmd/willow-bot` exists (private, last pushed
+2026-07-24) but is not attached to this session, so the wiring — how it writes
+cards back, and on what cadence — is owner-asserted rather than read. Whoever
+wires it owns that half.
+
+### 6.3 `custody` keeps four values — **`commercial` and `aggregator` stay apart**
+
+They usually land on the same side of any policy today, which is exactly why
+merging them is tempting and wrong: the distinction is about *provenance*, and
+provenance is the thing a future policy will want. `doi.org` indexing someone
+else's record and `api.frankfurter.app` publishing its own rate are not the same
+claim, and a consumer that only cares about "not institutional" can collapse them
+in one line. The reverse — recovering a distinction thrown away in the schema —
+costs a major (§6.1).
+
+### 6.4 Provenance replaces the hostname heuristic — **agreed**
+
+46 of the 65 sources build their citation URL out of the API response, so where a
+result points is unknowable from the registry. Cards do not fix that and must not
+pretend to.
+
+The agreed direction: **jeles results already carry `source` and `institution`,
+so a consumer never needs to infer trust from their hostname.** A Crossref hit is
+citable because Crossref returned it, not because of what its URL looks like.
+`trusted_only` stays a heuristic for the *genuinely* open web — a DuckDuckGo
+result with no provenance attached — and is labelled as one.
+
+This is the larger half of the problem and a separate change from cards. Cards
+make the small half exact; this makes the big half unnecessary.
+
+### 6.5 A `doi.org` card describes the resolver — **not the destination**
+
+A DOI link is a redirect to wherever the publisher put it. The card describes the
+resolver, `custody: aggregator`, with `notes` saying so. The destination is
+unknowable, which is §6.4 again — and §6.4 is why that is acceptable rather than
+a gap: a DOI arrives attached to the source that emitted it.
+
+---
+
+## 7. Still open
+
+Nothing blocking. Two things this draft does not decide:
+
+- **Card file layout.** One JSON file with 84 entries, or one file per host like
+  `almanac-template`'s `catalog/<id>.yaml`? Per-file is friendlier to review
+  diffs and to willow-bot writing single cards back; one file is simpler to load
+  and cheaper in a wheel. Leaning per-file *because* of §6.2 — a bot writing one
+  card should not rewrite a file holding 83 others.
+- **Whether `namespace`-only hosts stay in `hosts` at all.** §3.1 keeps them and
+  records the role. The alternative is dropping them, which is cleaner and
+  silently re-opens the question the next time someone parses SRW.
