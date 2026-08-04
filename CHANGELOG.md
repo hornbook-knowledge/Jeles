@@ -9,6 +9,14 @@ maintained by release-please, which builds each entry from the
 conventional-commit prefixes on `master` — so it cannot go stale between
 releases the way a hand-kept changelog can.
 
+## [0.5.0](https://github.com/rudi193-cmd/Jeles/compare/v0.4.1...v0.5.0) (2026-08-04)
+
+
+### Added
+
+* **sources:** declare the hosts each source contacts ([bbc8258](https://github.com/rudi193-cmd/Jeles/commit/bbc8258e9620c1e39630f47357fbd82379ea3479))
+* **sources:** declare the hosts each source contacts ([455be56](https://github.com/rudi193-cmd/Jeles/commit/455be56673f62c42d097ca3bcf5819c64268bfe9))
+
 ## [0.4.1](https://github.com/rudi193-cmd/Jeles/compare/v0.4.0...v0.4.1) (2026-08-03)
 
 
