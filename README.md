@@ -29,7 +29,7 @@ couldn't answer.
 3. **The corpus is its own standalone MCP server, on purpose.** `corpus_server.py` is a small `MCPServer` any stdio client can run directly, mirroring willow-mcp's shape without depending on it.
 4. **Two kinds of "ask," two gap-logging rules.** `search_nuggets()` (passive/background) checks the corpus but never logs a gap on a miss. `ask_corpus()` (deliberate) treats a miss — or a match below `MIN_ASK_SCORE` — as a real gap worth tracking, and logs it.
 5. **Ranking and answering are different decisions.** `search_nuggets()` ranks loosely and will happily surface a near-miss. `ask_corpus()` answers only when the nugget's question contains *every* content word the asker used, and the two questions overlap symmetrically — so a nugget about *staging* cannot answer a question about *production*, and one word cannot pull an answer out of a nugget it barely resembles. Saying "I don't know yet" and logging the gap is the correct output far more often than it looks.
-6. **The collections live here, not behind a service.** `sources.py` is the same relationship `corpus.py` has with `corpus_server.py`: a pure core that something thin wraps. `jeles-remote` is a 74-line FastAPI shim over this module, so a hosted deployment is a convenience — never a prerequisite, never a secret you must hold, never a second repository in the test loop.
+6. **The collections live here, not behind a service.** `sources.py` is the same relationship `corpus.py` has with `corpus_server.py`: a pure core that something thin wraps. A hosted deployment is a convenience — never a prerequisite, never a secret you must hold, never a second repository in the test loop. Stated precisely, because the short version was wrong: `jeles-remote`'s `main.py` is a 74-line FastAPI shim, but it wraps its **own vendored copy** of `sources.py` (`import sources`, a file in that repo), not this module. That copy was forked from the same origin and has drifted — 833 differing lines, ~200 fewer, six fewer source functions, and *zero* references to `_egress`, so the SSRF/key-leak fix that landed here is simply absent from it. Treat jeles-remote as a downstream fork due a re-vendor, not as a thin wrapper that inherits this package's fixes.
 7. **Local is the source of truth; the fleet backlog is additive.** `corpus.log_gap()` (synchronous, local SQLite) always runs first and makes the host fully functional offline. `willow_mcp_client.forward_gap()` is a *best-effort* copy into willow-mcp's shared backlog.
 
 ## Install
@@ -45,11 +45,16 @@ pip install "jeles[mcp]"    # adds the MCP SDK, for the standalone server
 pip install -e ".[dev]"     # editable, with pytest and the SDK
 ```
 
-Or as a host dependency, straight from git:
+Or as a host dependency, straight from git — the default branch is `master`,
+and `@main` resolves to nothing here:
 
 ```
-jeles @ git+https://github.com/rudi193-cmd/Jeles@main
+jeles @ git+https://github.com/rudi193-cmd/Jeles@master
 ```
+
+Prefer a released version over a branch for anything you deploy: a branch ref
+re-resolves on every install, so two machines built a week apart get different
+code under the same requirement line.
 
 `jeles[mcp]` requires **MCP SDK 2.x** (`corpus_server.py` uses
 `mcp.server.mcpserver.MCPServer`; `mcp.server.fastmcp` was removed in SDK 2.0).
@@ -91,7 +96,13 @@ miss = corpus.ask_corpus("What is the accent color in Tokyo Night?")
 python -m jeles.corpus_server      # stdio; or use the `jeles-corpus-mcp` console script
 ```
 
-Tools: `corpus_ask`, `corpus_search`, `corpus_get`, `corpus_list`, `corpus_put`, `corpus_gaps` — each takes an `app_id` for naming-convention parity with willow-mcp.
+Tools: `corpus_ask`, `corpus_search`, `corpus_get`, `corpus_list`, `corpus_put`,
+`corpus_gaps`, `corpus_web_search`, `corpus_search_status`,
+`corpus_institutional_search`, `corpus_sources` — each takes an `app_id` for
+naming-convention parity with willow-mcp. The last four are the outward hops:
+the open web, why a search returned what it did, the ~60 institutional and
+academic collections, and what those collections are. They were added without
+this list being updated, so it said six for as long as there were ten.
 
 **`corpus_put` writes assertions, not verified nuggets.** A nugget carries the
 rung it was written at, and only three things can produce one:
@@ -101,6 +112,12 @@ rung it was written at, and only three things can produce one:
 | `human` | a person, in-process (`corpus.put_nugget(...)`) | `verified` |
 | `machine` | `conflict_scan`, on two independent corroborating sources | `corroborated` |
 | `asserted` | any MCP client, through `corpus_put` | `unverified` |
+
+A fourth rung sits above `asserted` and is not a `verification_kind`: hits from
+`corpus_institutional_search` read back as `institutional` — a named collection
+vouched for the text, which is weaker than two corroborating sources and
+stronger than an unverified assertion. `tests/test_corpus_server.py` asserts all
+four stay distinct.
 
 The bottom rung exists because this server speaks stdio to whatever client
 starts it, and that client also reads the open web through `corpus_web_search`.
@@ -139,6 +156,10 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `ASK_JELES_USE_WILLOW_MCP` | `1` | Set to `0`/`false`/`no` to disable fleet gap-forwarding entirely. |
 | `JELES_CORPUS_TRUST_TOOL_WRITES` | unset | Set to `1` to let `corpus_put` write `human`-verified nuggets. Only correct where the tool caller *is* the operator — see [the MCP server section](#as-a-standalone-mcp-server). |
 
+| `JELES_REMOTE_URL` | unset | Base URL of a `jeles-remote` delegate. **Unset means the in-process fan-out is the only lane** — remote is opt-in, not a default. |
+| `JELES_REMOTE_SECRET` | unset | Shared secret sent as `X-Jeles-Secret`. Dropped if a redirect changes host — see `_egress.SchemeGuardedRedirects`. |
+| `JELES_REMOTE_TIMEOUT` | `20` | Seconds before the remote delegate is given up on. |
+| `JELES_SEARCH_BACKEND` | `ddg` | Open-web backend: `searxng`, `brave`, `tavily` or `ddg`. Only `searxng` may reach a private address, because only it is an address the operator chose. |
 The Ask Jeles-flavored defaults are preserved so an existing store and its
 already-forwarded fleet backlog keep resolving after the extraction.
 
@@ -148,10 +169,21 @@ already-forwarded fleet backlog keep resolving after the extraction.
 pytest -q
 ```
 
-`corpus.py`'s tests are fast and network-free by construction; the
-willow-mcp client tests never spin up a real subprocess. An import-purity
-test asserts that importing `jeles.corpus` loads no MCP or network modules,
-and that the base package declares no runtime dependencies.
+`corpus.py`'s tests are fast and network-free by construction. The willow-mcp
+client tests do not spin up a real subprocess — but that is now enforced rather
+than assumed. `_launch()` resolves a launcher from three independent probes
+(`$WILLOW_MCP_CMD`, a `willow-mcp` console script on `PATH`, an importable
+`willow_mcp` package) and any one of them succeeding produces a launcher, so
+stubbing only `shutil.which` left the third probe answering from whatever the
+venv happened to contain. The dependency edge runs willow-mcp → jeles, so the
+normal deployment of this module has `willow_mcp` importable beside it, and
+there those tests really did spawn one. CI never noticed, because it installs
+`jeles[dev,mcp]` and nothing else — the probe failed by accident of the install
+set. The `no_willow_mcp` fixture (`tests/test_willow_mcp_client.py`) shuts all
+three, `None` in `sys.modules` being the import system's own "this import must
+fail" sentinel. An import-purity test asserts that importing `jeles.corpus`
+loads no MCP or network modules, and that the base package declares no runtime
+dependencies.
 
 `tests/test_corpus_server.py` needs the `[mcp]` extra and skips without it, so
 the suite passes on a bare `pip install jeles` too — the install shape CI's

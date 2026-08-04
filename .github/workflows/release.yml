@@ -8,12 +8,14 @@ name: Release
 # than circular: it re-derives from the built artifact and compares.
 #
 # Uses PyPI Trusted Publishing (OIDC) — no API token is stored in the repo,
-# matching willow-mcp. One-time setup before the first release:
-#   1. On PyPI: add a *pending publisher* for project `jeles`, this repo,
-#      workflow `release.yml`, environment `pypi`. (Pending, because the project
-#      does not exist on PyPI until the first upload.)
-#   2. Create a GitHub environment named `pypi` (Settings -> Environments).
-# Until that is configured, this workflow is inert — nothing publishes without a tag.
+# matching willow-mcp. The one-time setup is **done**: the PyPI publisher for
+# project `jeles` is live (it started as a *pending* publisher, which is the
+# only kind you can create before a project exists) and the GitHub `pypi`
+# environment exists. `jeles` has published through this workflow since v0.1.0;
+# 0.5.1 is the current release. Nothing here needs configuring — if a publish
+# fails, it is the trusted-publisher binding (repo, workflow filename,
+# environment name — all three must match) that has drifted, not a missing
+# first-time step.
 #
 # Two triggers, one implementation:
 #   * `push: tags` — every real release, automated or not. release-please cuts
