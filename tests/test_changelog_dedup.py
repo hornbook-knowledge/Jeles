@@ -154,3 +154,28 @@ def test_hidden_types_come_from_this_repo_s_config():
         assert hidden not in visible, hidden
     assert visible["feat"] == "Added" and visible["fix"] == "Fixed"
     assert order.index("Added") < order.index("Fixed")
+
+
+def test_print_section_emits_exactly_what_a_release_body_should_be():
+    """`--print-section` feeds the GitHub Release body, which release-please
+    generates from its own parse rather than from CHANGELOG.md — so correcting
+    the file leaves the release *page* wrong. This repo's live v0.5.0 page still
+    carried the `bbc8258` duplicate after #29 fixed the file.
+
+    The shape matters: release-please's body starts with the `## [x.y.z](…)`
+    header, so the extracted section must include it."""
+    text = (_REPO / "CHANGELOG.md").read_text()
+    section = changelog_dedup.section_for(text, "0.5.0")
+    assert section is not None
+    assert section.splitlines()[0].startswith("## [0.5.0]("), section.splitlines()[0]
+    assert "### Added" in section
+    assert "455be56" in section
+    assert "bbc8258" not in section, "the merge commit is back in the changelog"
+    assert "## [0.4.1]" not in section, "swallowed the next release"
+    assert not section.endswith("\n"), "trailing whitespace stripped for comparison"
+
+
+def test_print_section_is_none_for_an_unknown_version():
+    """The workflow warns and leaves the release alone rather than blanking it."""
+    text = (_REPO / "CHANGELOG.md").read_text()
+    assert changelog_dedup.section_for(text, "99.99.99") is None
