@@ -1,0 +1,19 @@
+{
+  "host": "dblp.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Schloss Dagstuhl — Leibniz-Zentrum für Informatik",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "DE"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

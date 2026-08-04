@@ -1,0 +1,19 @@
+{
+  "host": "gallica.bnf.fr",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Bibliothèque nationale de France",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "FR"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

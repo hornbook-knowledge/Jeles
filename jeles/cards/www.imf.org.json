@@ -1,0 +1,20 @@
+{
+  "host": "www.imf.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "International Monetary Fund",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

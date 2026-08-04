@@ -1,0 +1,19 @@
+{
+  "host": "api.openaire.eu",
+  "roles": [
+    "query"
+  ],
+  "publisher": "OpenAIRE",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "regional-bloc",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

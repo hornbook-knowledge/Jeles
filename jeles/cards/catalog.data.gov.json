@@ -1,0 +1,20 @@
+{
+  "host": "catalog.data.gov",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "U.S. General Services Administration",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

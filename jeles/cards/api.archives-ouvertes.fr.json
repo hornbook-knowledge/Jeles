@@ -1,0 +1,19 @@
+{
+  "host": "api.archives-ouvertes.fr",
+  "roles": [
+    "query"
+  ],
+  "publisher": "CCSD (CNRS)",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "FR"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

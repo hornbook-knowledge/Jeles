@@ -1,0 +1,21 @@
+{
+  "host": "archive.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Internet Archive",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  },
+  "notes": "A recognised library, but much of the collection is user-uploaded — custody of the archive is institutional, custody of any given item may not be."
+}

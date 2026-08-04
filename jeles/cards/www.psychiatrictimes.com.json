@@ -1,0 +1,17 @@
+{
+  "host": "www.psychiatrictimes.com",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "MJH Life Sciences",
+  "custody": "commercial",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  },
+  "notes": "Clinical trade press."
+}

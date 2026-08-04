@@ -1,0 +1,19 @@
+{
+  "host": "api.worldbank.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "The World Bank",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

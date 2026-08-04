@@ -1,0 +1,15 @@
+{
+  "host": "api.openalex.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "OurResearch",
+  "custody": "aggregator",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

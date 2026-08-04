@@ -1,0 +1,19 @@
+{
+  "host": "images-api.nasa.gov",
+  "roles": [
+    "query"
+  ],
+  "publisher": "NASA",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

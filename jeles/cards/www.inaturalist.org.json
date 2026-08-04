@@ -1,0 +1,15 @@
+{
+  "host": "www.inaturalist.org",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "iNaturalist",
+  "custody": "community",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

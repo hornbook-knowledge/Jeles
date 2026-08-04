@@ -1,0 +1,19 @@
+{
+  "host": "api.fda.gov",
+  "roles": [
+    "query"
+  ],
+  "publisher": "U.S. Food and Drug Administration (openFDA)",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

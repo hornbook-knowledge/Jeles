@@ -1,0 +1,19 @@
+{
+  "host": "eutils.ncbi.nlm.nih.gov",
+  "roles": [
+    "query"
+  ],
+  "publisher": "NCBI, U.S. National Library of Medicine",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "host": "doi.org",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "International DOI Foundation",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "international-ngo",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  },
+  "notes": "A resolver. This card describes the resolver, never the publisher it redirects to — that destination is not knowable here. See host-cards.md §6.5."
+}

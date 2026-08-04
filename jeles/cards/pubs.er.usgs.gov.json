@@ -1,0 +1,19 @@
+{
+  "host": "pubs.er.usgs.gov",
+  "roles": [
+    "query"
+  ],
+  "publisher": "U.S. Geological Survey",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

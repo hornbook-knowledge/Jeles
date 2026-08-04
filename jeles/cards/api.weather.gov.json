@@ -1,0 +1,19 @@
+{
+  "host": "api.weather.gov",
+  "roles": [
+    "query"
+  ],
+  "publisher": "NOAA National Weather Service",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

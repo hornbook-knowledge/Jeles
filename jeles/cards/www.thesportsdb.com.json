@@ -1,0 +1,17 @@
+{
+  "host": "www.thesportsdb.com",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "TheSportsDB",
+  "custody": "community",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  },
+  "notes": "Community-edited sports database on the demo tier. Explicitly not an authority."
+}

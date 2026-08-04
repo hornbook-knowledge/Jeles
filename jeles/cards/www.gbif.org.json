@@ -1,0 +1,19 @@
+{
+  "host": "www.gbif.org",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "Global Biodiversity Information Facility",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

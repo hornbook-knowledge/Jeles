@@ -1,0 +1,19 @@
+{
+  "host": "api.core.ac.uk",
+  "roles": [
+    "query"
+  ],
+  "publisher": "CORE, The Open University",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "GB"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

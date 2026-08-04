@@ -1,0 +1,20 @@
+{
+  "host": "www.legislation.gov.uk",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "The National Archives (UK)",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "GB"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

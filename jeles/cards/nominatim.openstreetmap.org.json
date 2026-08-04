@@ -1,0 +1,15 @@
+{
+  "host": "nominatim.openstreetmap.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "OpenStreetMap Foundation",
+  "custody": "community",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

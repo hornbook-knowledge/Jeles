@@ -1,0 +1,19 @@
+{
+  "host": "www.ebi.ac.uk",
+  "roles": [
+    "query"
+  ],
+  "publisher": "EMBL-EBI",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

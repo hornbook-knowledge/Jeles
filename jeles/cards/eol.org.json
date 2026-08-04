@@ -1,0 +1,17 @@
+{
+  "host": "eol.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Encyclopedia of Life",
+  "custody": "aggregator",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  },
+  "notes": "Aggregates partner-institution content under community curation; the custodian of any page is upstream, not EOL."
+}

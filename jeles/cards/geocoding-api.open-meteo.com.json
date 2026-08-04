@@ -1,0 +1,15 @@
+{
+  "host": "geocoding-api.open-meteo.com",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Open-Meteo",
+  "custody": "commercial",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

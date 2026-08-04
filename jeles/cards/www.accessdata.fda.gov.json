@@ -1,0 +1,19 @@
+{
+  "host": "www.accessdata.fda.gov",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "U.S. Food and Drug Administration",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

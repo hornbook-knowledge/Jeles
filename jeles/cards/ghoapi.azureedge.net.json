@@ -1,0 +1,20 @@
+{
+  "host": "ghoapi.azureedge.net",
+  "roles": [
+    "query"
+  ],
+  "publisher": "World Health Organization (via Azure CDN)",
+  "custody": "commercial",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  },
+  "notes": "WHO's Global Health Observatory API on a shared CDN. Anyone can host on azureedge.net, so the hostname carries no authority — the authority is who.int, which the results point at."
+}

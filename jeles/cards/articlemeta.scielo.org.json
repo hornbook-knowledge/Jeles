@@ -1,0 +1,19 @@
+{
+  "host": "articlemeta.scielo.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "SciELO",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "international-ngo",
+    "country": null
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

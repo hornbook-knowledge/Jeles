@@ -1,0 +1,16 @@
+{
+  "host": "en.wikipedia.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Wikimedia Foundation",
+  "custody": "community",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

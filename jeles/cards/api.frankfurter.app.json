@@ -1,0 +1,16 @@
+{
+  "host": "api.frankfurter.app",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Frankfurter",
+  "custody": "commercial",
+  "status": "live",
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  },
+  "notes": "Exchange-rate API. A rate quoted here is not a citable record."
+}

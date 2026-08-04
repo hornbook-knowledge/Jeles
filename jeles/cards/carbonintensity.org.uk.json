@@ -1,0 +1,20 @@
+{
+  "host": "carbonintensity.org.uk",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "National Grid ESO",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "GB"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}

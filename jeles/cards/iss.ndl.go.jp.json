@@ -1,0 +1,19 @@
+{
+  "host": "iss.ndl.go.jp",
+  "roles": [
+    "query"
+  ],
+  "publisher": "National Diet Library, Japan",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "JP"
+  },
+  "observed": {
+    "checked": null,
+    "reachable": null,
+    "http_status": null,
+    "note": null
+  }
+}
