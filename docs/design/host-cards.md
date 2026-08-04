@@ -284,25 +284,68 @@ Measured against what a card probe needs:
 | writing results back to a repo | **No.** Its sole GitHub write is `github_app.post_comment` — issue and PR comments. No commit, no push, no contents API. |
 | reachability semantics (status, etag, hash) | **No.** Nothing of the kind. |
 
-So the *seat* is right and the *machinery* is absent. What willow-bot does bring
-is the two hard parts of the substrate: a real GitHub App identity with
-installation tokens (`github_app.py`), which is what writing cards back would
-authenticate as; and the `fleet_bridge` pattern of "the bot notices, a different
-service acts" — it drops a `gitsync/trigger-<owner>-<repo>.flag` rather than
-doing the work itself, which maps cleanly onto *probe, then open a PR against
-jeles*.
+So the *seat* is right and the *machinery* is absent — and putting it there would
+be the wrong move anyway. A prober that requests 84 arbitrary hosts, inside a
+process holding the GitHub App private key and reachable from public ingress, is
+the original posture concern relocated somewhere with more to lose, not resolved.
 
-Three pieces have to be built, and none of them is in this repo's scope:
+### The answer already exists, on a GitHub cron
 
-1. A scheduled arm — a systemd timer, or a network arm on `loki.watcher`.
-2. A prober that requests 84 arbitrary hosts. **This is the posture question,
-   not a detail:** it puts general outbound egress inside a process that holds
-   the GitHub App private key and is reachable from public ingress. Moving the
-   job out of jeles did not dissolve that concern, it relocated it — and it
-   lands somewhere with more to lose.
-3. A write-back path, extending beyond `post_comment` to a PR against jeles.
+`almanac-template` runs **four** scheduled probe workflows today:
 
-Until those exist, `observed` stays as jeles ships it: present and empty.
+| Workflow | Cadence | What it does |
+|---|---|---|
+| `link-check.yml` | daily 12:00 UTC | reachability sentinel over every entry's `canonical_url` |
+| `recovery-bot.yml` | weekly Mon 13:00 | discovers recovery candidates, **opens PRs** |
+| `recovery-rot-check.yml` | weekly Mon 13:00 | re-checks recovery candidates |
+| `revision-drift-check.yml` | weekly Mon 14:00 | probes entries with a fingerprint baseline |
+
+This is the same job, already built, already running, on a disposable runner with
+no credentials beyond `github.token` and no long-lived process to compromise. It
+does not touch any package's runtime egress posture, only its CI.
+
+**And it already knows what a naive prober gets wrong.** `scripts/check_links.py`
+carries three refinements that only come from operating one:
+
+1. **Browser-UA retry.** A block code (401/403/406/429) triggers one retry with a
+   common browser User-Agent, because some hosts only sniff the UA.
+2. **Headless fallback, opt-in.** Hosts behind CDN bot protection (JS challenge +
+   TLS fingerprinting) cannot be satisfied by any curl. A real headless Chromium
+   is tried for blocked URLs, and degrades gracefully when Playwright is absent.
+3. **Blocked is not dead.** If every rung still hits a block code, the source is
+   reported *blocked / unverifiable* and **not** flagged as an outage. The
+   headless rung only ever *upgrades* a blocked source to ok; it never newly
+   flags one as dead. Only 404, 5xx, connection failure or timeout flags an
+   entry.
+
+Refinement 3 is decisive for this catalog specifically. A large share of the 84
+hosts are JSON APIs that answer a bare `curl` with a 403 — a prober without that
+rule would report half the institutional set dead on its first run, and the
+catalog would be less trustworthy than the flat host list it replaced.
+
+### What that pattern implies for `observed`
+
+The almanac's discipline is stricter than this draft assumed, and worth copying
+exactly:
+
+- `check_links.py` is **read-only**. It emits a JSON report and edits nothing.
+- `alert_on_dead_links.py` turns that report into **issues** — opened, refreshed,
+  and closed — and still edits no record.
+- `recovery_bot.py` is the only thing that changes an entry, and it does so on a
+  branch (`recovery-bot/<entry_id>`) with a **pull request**, checking for an
+  existing PR first so it cannot spam.
+
+Nothing writes reachability back into an entry automatically. That is the
+"human-reviewed, machine-validated" rule from `almanac-template`'s own AGENTS.md,
+enforced by construction.
+
+Which raises a question this draft got wrong and §7 now carries: **if the probe
+never writes the record, should `observed` be a card field at all?** The almanac's
+answer would be no — reachability lives in a report and an issue, and only a
+*decision* (live → retired) reaches the file, through a PR. `search.patentsview.org`
+is already carrying `status: retired` on exactly that basis, set by hand.
+
+Until that is settled, `observed` stays as jeles ships it: present and empty.
 
 ### 6.3 `custody` keeps four values — **`commercial` and `aggregator` stay apart**
 
@@ -340,7 +383,17 @@ a gap: a DOI arrives attached to the source that emitted it.
 
 ## 7. Still open
 
-Nothing blocking. Two things this draft does not decide:
+Nothing blocking. Three things this draft does not decide:
+
+- **Whether `observed` should be a card field at all.** §6.2 assumed a probe
+  writes reachability back into each card. The almanac's four running workflows
+  do the opposite: the probe is read-only, a report becomes an *issue*, and only
+  a decision reaches the file through a PR. If jeles copies that — and it should,
+  since it is the same job — then `observed` is a report artifact, not a card
+  field, and the only reachability state on a card is `status`, set by a human
+  merging a PR. `search.patentsview.org` already carries `status: retired` set
+  exactly that way. Removing `observed` later is a **breaking card change**
+  (§6.1), so this is worth settling before the schema is depended on.
 
 - **Card file layout.** One JSON file with 84 entries, or one file per host like
   `almanac-template`'s `catalog/<id>.yaml`? Per-file is friendlier to review
