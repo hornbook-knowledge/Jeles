@@ -56,6 +56,40 @@ def _reset_client_state():
     _clear()
 
 
+@pytest.fixture
+def no_willow_mcp(monkeypatch):
+    """Make every _launch() probe report "willow-mcp is not installed".
+
+    _launch() resolves a launcher from three independent probes — the
+    WILLOW_MCP_CMD override, a `willow-mcp` console script on PATH, and an
+    importable `willow_mcp` package — and ANY ONE of them succeeding produces
+    a launcher. So a test that stubs only `shutil.which` is not asserting
+    "willow-mcp is unavailable"; it is asserting "the console script is
+    absent" and leaving the third probe to answer from whatever the venv
+    happens to contain.
+
+    That gap is not hypothetical, and it is not an unlucky venv either: the
+    dependency edge runs willow-mcp -> jeles, so every environment where
+    willow-mcp is installed necessarily has jeles installed beside it. An
+    environment with both is the *normal* deployment of this module, and
+    there `import willow_mcp` succeeds, `_launch()` returns
+    (sys.executable, ["-m", "willow_mcp"]), and these tests spawn a real
+    willow-mcp subprocess instead of exercising the unavailable path.
+
+    CI never notices because it installs `jeles[dev,mcp]` and nothing else —
+    willow-mcp is deliberately not a dependency of this package — so the
+    third probe fails there by accident of the install set rather than by
+    anything the tests do. This fixture makes it fail on purpose.
+
+    `None` in sys.modules is the import system's own "this import must fail"
+    sentinel: it raises ImportError before consulting any finder, so no
+    willow_mcp code is imported and nothing on disk is touched.
+    """
+    monkeypatch.delenv("WILLOW_MCP_CMD", raising=False)
+    monkeypatch.setattr(wmc.shutil, "which", lambda name: None)
+    monkeypatch.setitem(sys.modules, "willow_mcp", None)
+
+
 class _FakeSession:
     """A willow-mcp session that initializes, serves calls, and can be killed.
 
@@ -155,11 +189,24 @@ def test_launch_falls_back_to_path_binary(monkeypatch):
     assert wmc._launch() == ("/usr/local/bin/willow-mcp", [])
 
 
-def test_launch_returns_none_when_nothing_available(monkeypatch):
+def test_launch_falls_back_to_python_m_when_only_the_package_is_importable(monkeypatch):
+    """The third probe, pinned down rather than left to the ambient venv.
+
+    No console script on PATH but `willow_mcp` importable is the shape a
+    `pip install willow-mcp` into a venv whose bin/ is not on PATH produces —
+    and, because willow-mcp depends on jeles, it is the shape a willow-mcp
+    host itself runs in. Running it as `-m` against *this* interpreter is the
+    point: it is the same environment the package was resolved from.
+    """
     monkeypatch.delenv("WILLOW_MCP_CMD", raising=False)
     monkeypatch.setattr(wmc.shutil, "which", lambda name: None)
-    # willow_mcp package genuinely isn't installed in this test environment,
-    # so the import-fallback branch naturally fails too.
+    monkeypatch.setitem(sys.modules, "willow_mcp", types.ModuleType("willow_mcp"))
+    assert wmc._launch() == (sys.executable, ["-m", "willow_mcp"])
+
+
+def test_launch_returns_none_when_nothing_available(no_willow_mcp):
+    # All three probes are stubbed to "absent" by the fixture — including the
+    # `import willow_mcp` fallback, which this test used to leave to chance.
     assert wmc._launch() is None
 
 
@@ -170,10 +217,8 @@ def test_forward_gap_disabled_is_a_true_noop(monkeypatch):
     assert time.monotonic() - before < 0.05  # no thread spawned at all
 
 
-def test_forward_gap_does_not_raise_or_block_when_unavailable(monkeypatch):
+def test_forward_gap_does_not_raise_or_block_when_unavailable(monkeypatch, no_willow_mcp):
     monkeypatch.delenv("ASK_JELES_USE_WILLOW_MCP", raising=False)
-    monkeypatch.delenv("WILLOW_MCP_CMD", raising=False)
-    monkeypatch.setattr(wmc.shutil, "which", lambda name: None)
 
     before = time.monotonic()
     wmc.forward_gap("What is the accent color in Nord?")
@@ -203,9 +248,7 @@ def attempts(monkeypatch):
     return started
 
 
-def test_ensure_started_retries_after_cooldown(monkeypatch, attempts):
-    monkeypatch.delenv("WILLOW_MCP_CMD", raising=False)
-    monkeypatch.setattr(wmc.shutil, "which", lambda name: None)
+def test_ensure_started_retries_after_cooldown(monkeypatch, attempts, no_willow_mcp):
     monkeypatch.setattr(wmc, "RETRY_COOLDOWN", 0.05)
 
     assert wmc.ensure_started(timeout=1) is False
@@ -276,12 +319,10 @@ def test_forward_gap_after_a_death_never_raises_into_the_caller(fake_willow, mon
     assert time.monotonic() - before < 0.5
 
 
-def test_retries_do_not_accumulate_event_loops(monkeypatch, attempts):
+def test_retries_do_not_accumulate_event_loops(monkeypatch, attempts, no_willow_mcp):
     """The F2 regression: each retry allocated a fresh event loop and dropped
     the previous one without close(), holding its epoll fd and self-pipe pair
     (measured at ~3 fds per retry, on a 30s cooldown)."""
-    monkeypatch.delenv("WILLOW_MCP_CMD", raising=False)
-    monkeypatch.setattr(wmc.shutil, "which", lambda name: None)
     monkeypatch.setattr(wmc, "RETRY_COOLDOWN", 0.0)
 
     fd_dir = "/proc/self/fd"
