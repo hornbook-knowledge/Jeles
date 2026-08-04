@@ -20,6 +20,13 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.6.0](https://github.com/rudi193-cmd/Jeles/compare/v0.5.2...v0.6.0) (2026-08-04)
+
+
+### Added
+
+* **sources:** recover the four sources stranded in the archived fork ([e72889c](https://github.com/rudi193-cmd/Jeles/commit/e72889c31f96e20e2ae4f968cb51e9d3617b692d))
+
 ## [0.5.2](https://github.com/rudi193-cmd/Jeles/compare/v0.5.1...v0.5.2) (2026-08-04)
 
 
