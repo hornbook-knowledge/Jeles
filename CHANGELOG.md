@@ -20,6 +20,13 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.5.2](https://github.com/rudi193-cmd/Jeles/compare/v0.5.1...v0.5.2) (2026-08-04)
+
+
+### Fixed
+
+* **egress:** the open-web lane exempted every backend, and leaked its keys ([91c2788](https://github.com/rudi193-cmd/Jeles/commit/91c2788c5fa7f016133725692562637456909d4f))
+
 ## [0.5.1](https://github.com/rudi193-cmd/Jeles/compare/v0.5.0...v0.5.1) (2026-08-04)
 
 
