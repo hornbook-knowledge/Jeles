@@ -263,19 +263,46 @@ Consequences worth stating rather than discovering:
 
 ### 6.2 The probe is willow-bot's, not jeles' — **out of process entirely**
 
-`observed.reachable` is filled by `willow-bot`, which already does this class of
-work. That is a better answer than the one this draft proposed: it keeps jeles
-free of a scheduled 84-request outbound job, which would have been a real posture
-change for a package whose egress is otherwise guarded and whose CI makes no
-network calls at all.
+`observed.reachable` is filled out of process, by `willow-bot`. jeles **reads**
+`observed` and never writes it: the cards ship with whatever the last curated
+pass recorded and are refreshed out of band. That keeps a scheduled 84-request
+outbound job out of a package whose egress is otherwise guarded and whose CI
+makes no network calls at all — which is the right call regardless of what
+follows.
 
-jeles therefore **reads** `observed` and never writes it. The cards ship with
-whatever the last curated pass recorded; willow-bot refreshes them out of band.
+**Corrected after reading the repo.** An earlier revision of this section said
+willow-bot "already does this class of work". It does not. `rudi193-cmd/willow-bot`
+at `26acee3` is a 65-line FastAPI **webhook receiver** for a GitHub App, plus
+`loki/` (a watcher over local disk, git and Postgres), `losc/` (a fork-event
+heuristic), and `integrations/fleet_bridge.py` (routes webhooks to local files).
+Measured against what a card probe needs:
 
-*Unverified here:* `rudi193-cmd/willow-bot` exists (private, last pushed
-2026-07-24) but is not attached to this session, so the wiring — how it writes
-cards back, and on what cadence — is owner-asserted rather than read. Whoever
-wires it owns that half.
+| Needed | Present |
+|---|---|
+| periodic execution | **No.** Event-driven. One systemd unit, `uvicorn bot:app`. `loki.watcher` has 15/30-min intervals but is a hand-run `python3 -m loki.watcher` loop over local disk and Postgres, not a unit and not network-facing. |
+| outbound HTTP to arbitrary hosts | **No.** Every URL literal in the repo: `api.github.com` ×11, `github.com` ×3, `raw.githubusercontent.com`, `api.groq.com`, `api.cerebras.ai`, localhost. `losc/checker.py` uses `requests`, only against GitHub. |
+| writing results back to a repo | **No.** Its sole GitHub write is `github_app.post_comment` — issue and PR comments. No commit, no push, no contents API. |
+| reachability semantics (status, etag, hash) | **No.** Nothing of the kind. |
+
+So the *seat* is right and the *machinery* is absent. What willow-bot does bring
+is the two hard parts of the substrate: a real GitHub App identity with
+installation tokens (`github_app.py`), which is what writing cards back would
+authenticate as; and the `fleet_bridge` pattern of "the bot notices, a different
+service acts" — it drops a `gitsync/trigger-<owner>-<repo>.flag` rather than
+doing the work itself, which maps cleanly onto *probe, then open a PR against
+jeles*.
+
+Three pieces have to be built, and none of them is in this repo's scope:
+
+1. A scheduled arm — a systemd timer, or a network arm on `loki.watcher`.
+2. A prober that requests 84 arbitrary hosts. **This is the posture question,
+   not a detail:** it puts general outbound egress inside a process that holds
+   the GitHub App private key and is reachable from public ingress. Moving the
+   job out of jeles did not dissolve that concern, it relocated it — and it
+   lands somewhere with more to lose.
+3. A write-back path, extending beyond `post_comment` to a PR against jeles.
+
+Until those exist, `observed` stays as jeles ships it: present and empty.
 
 ### 6.3 `custody` keeps four values — **`commercial` and `aggregator` stay apart**
 
