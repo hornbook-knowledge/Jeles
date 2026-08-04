@@ -1,7 +1,7 @@
 """sources — the institutional and academic collections themselves.
 
 The third hop of the persona's mandate ("local KB → open web → special
-collections"), and it lives *here* rather than behind a service. 61 registered
+collections"), and it lives *here* rather than behind a service. 65 registered
 sources, 60 of them in the default fan-out — arXiv, PubMed, Crossref, OpenAlex,
 Library of Congress, Europeana, CourtListener, the Smithsonian — each a small
 function that queries one public API and returns citable results. (Read the
@@ -24,7 +24,7 @@ Each source function returns list[dict] with standard citation fields:
 Each registry entry also declares `hosts` — the hostnames that source contacts —
 reachable in aggregate via `registered_hosts()` and checked against the code by
 `tests/test_source_hosts.py`, so it is data rather than a second list to keep in
-step. Note what it is not: 46 of the 61 sources build their citation URL out of
+step. Note what it is not: 46 of the 65 sources build their citation URL out of
 the API response, so where a *result* points is not knowable from here at all.
 OpenAlex or Crossref can legitimately hand back a link to any publisher on
 earth. `hosts` answers "which institutions does jeles query", never "should this
@@ -2272,6 +2272,116 @@ def search_frankfurter(query: str, limit: int = 5) -> list[dict]:
     return results
 
 
+# ── Recovered from the jeles-remote fork ───────────────────────────────────────
+#
+# These four were written in that service's vendored copy of this file and never
+# registered there, so `search()` could not reach them — dead code in a repo that
+# is now archived and private. They are the only thing the fork had that this
+# package did not, and "unreachable" is not the same as "not worth keeping".
+#
+# Two changes were needed to bring them in. Every URL is https: `isfdb` and
+# `omdb` were plain http upstream, which is why they could not simply be pasted
+# onto a lane that is `HTTPS_ONLY`. And both of those are `opt_in`, because TLS
+# on those two hosts is *unverified* — it could not be checked from the
+# environment this port was written in, and a source that silently fails is
+# worse than one you have to ask for. If they answer over https, drop the flag;
+# if they do not, `search()` reports them under `failed` with the transport
+# error, which is the mechanism that tells you.
+
+
+#: Written out once and reused in the fallback regex below. A pattern spelled
+#: `vault\.fbi\.gov` parses as the host `vault` to the AST reader in
+#: `tests/test_source_hosts.py`, which exists to check that a source declares
+#: every host it contacts — so the literal has to be the host.
+_FBI_VAULT_HOST = "vault.fbi.gov"
+
+
+def search_fbi_vault(query: str, limit: int = 5) -> list[dict]:
+    """FBI Records Vault — declassified FBI files on persons, events, organizations."""
+    url = ("https://vault.fbi.gov/@search?SearchableText="
+           + urllib.parse.quote(query) + f"&portal_type:list=File&b_size={limit}")
+    data = _get(url)
+    items: list = []
+    if isinstance(data, dict):
+        items = data.get("items") or data.get("@components", {}).get("items", [])
+    elif isinstance(data, list):
+        items = data
+    results = [_result(
+        title=item.get("title", ""), url=item.get("@id", ""), source="fbi_vault",
+        institution="FBI Records Vault (Declassified)",
+        snippet=(item.get("description") or "")[:200],
+        date=(item.get("effective") or "")[:10], rid=item.get("@id", ""),
+    ) for item in items[:limit]]
+    if results:
+        return results
+    # The JSON endpoint is a Plone @search view and has changed shape before, so
+    # the HTML listing is the fallback rather than the primary.
+    html = _get_html("https://vault.fbi.gov/search?SearchableText="
+                     + urllib.parse.quote(query))
+    if not html:
+        return []
+    links = re.findall(
+        rf'href="(https://{re.escape(_FBI_VAULT_HOST)}/[^"#]{{5,200}})"'
+        r'[^>]*>([^<]{5,120})</a>', html)
+    return [_result(title=title.strip(), url=found, source="fbi_vault",
+                    institution="FBI Records Vault (Declassified)", rid=found)
+            for found, title in links[:limit]]
+
+
+def search_ig_nobel(query: str, limit: int = 5) -> list[dict]:
+    """Ig Nobel Prize archive — research that makes you laugh, then think."""
+    html = _get_html("https://www.improbable.com/?s=" + urllib.parse.quote(query))
+    if not html:
+        return []
+    titles = re.findall(
+        r'class="entry-title[^"]*">\s*<a href="([^"]+)"[^>]*>([^<]+)</a>', html, re.S)
+    excerpts = [e.strip() for e in re.findall(
+        r'class="entry-summary[^"]*">\s*<p>([^<]{10,400})</p>', html, re.S)]
+    return [_result(
+        title=title.strip(), url=link, source="ig_nobel",
+        institution="Improbable Research (Ig Nobel)",
+        snippet=excerpts[i] if i < len(excerpts) else "", rid=link,
+    ) for i, (link, title) in enumerate(titles[:limit])]
+
+
+def search_isfdb(query: str, limit: int = 5) -> list[dict]:
+    """ISFDB — Internet Speculative Fiction Database. Sci-fi, horror, fantasy, pulp."""
+    html = _get_html("https://www.isfdb.org/cgi-bin/se.cgi?arg="
+                     + urllib.parse.quote(query) + "&type=Fiction+Titles")
+    if not html:
+        return []
+    titles = re.findall(r'title\.cgi\?(\d+)">([^<]{3,120})</a>', html)
+    authors = re.findall(r'author\.cgi\?[^"]+">([^<]+)</a>', html)
+    years = re.findall(r'<td[^>]*class="[^"]*year[^"]*"[^>]*>(\d{4})</td>', html)
+    return [_result(
+        title=title.strip(), url=f"https://www.isfdb.org/cgi-bin/title.cgi?{tid}",
+        source="isfdb", institution="Internet Speculative Fiction Database",
+        snippet=authors[i] if i < len(authors) else "",
+        date=years[i] if i < len(years) else "", rid=tid,
+    ) for i, (tid, title) in enumerate(titles[:limit])]
+
+
+def search_omdb(query: str, limit: int = 5) -> list[dict]:
+    """OMDb — Open Movie Database. Movies, B-movies, horror, cult cinema."""
+    api_key = os.environ.get("OMDB_API_KEY", "")
+    if not api_key:
+        return []
+    data = _get("https://www.omdbapi.com/?s=" + urllib.parse.quote(query)
+                + f"&type=movie&apikey={api_key}")
+    if not data:
+        return []
+    results = []
+    for item in (data.get("Search") or [])[:limit]:
+        imdb_id = item.get("imdbID", "")
+        results.append(_result(
+            title=item.get("Title", ""),
+            url=f"https://www.imdb.com/title/{imdb_id}/" if imdb_id else "",
+            source="omdb", institution="OMDb / IMDb",
+            snippet=f"{item.get('Type', '').title()} · {item.get('Year', '')}",
+            date=item.get("Year", ""), rid=imdb_id))
+    return results
+
+
 # ── Source registry ────────────────────────────────────────────────────────────
 #
 # `key_env` names the environment variable a source abstains without. It is
@@ -2337,6 +2447,13 @@ SOURCES: dict[str, dict] = {
     # Natural history
     "bhl":              {"name": "Biodiversity Heritage Library", "domain": ["biology", "ecology", "natural_history"], "key_required": True, "key_env": "BHL_API_KEY", "hosts": ["www.biodiversitylibrary.org"]},
     # Law
+    # Declassified records, prize archives, genre bibliography — recovered from
+    # the archived jeles-remote fork, where they were written but never registered.
+    "fbi_vault":        {"name": "FBI Records Vault",       "domain": ["history", "government", "records"],  "key_required": False, "hosts": ["vault.fbi.gov"]},
+    "ig_nobel":         {"name": "Improbable Research",     "domain": ["science", "humor"],                  "key_required": False, "hosts": ["www.improbable.com"]},
+    # opt_in: these two were plain http in the fork and their TLS is unverified.
+    "isfdb":            {"name": "ISFDB",                   "domain": ["literature", "science_fiction"],     "key_required": False, "opt_in": True, "hosts": ["www.isfdb.org"]},
+    "omdb":             {"name": "OMDb / IMDb",             "domain": ["film", "media"],                     "key_required": True, "key_env": "OMDB_API_KEY", "opt_in": True, "hosts": ["www.omdbapi.com", "www.imdb.com"]},
     "courtlistener":    {"name": "CourtListener",           "domain": ["law", "legal"],                      "key_required": False, "hosts": ["www.courtlistener.com"]},
     # Broad academic open access
     "base":             {"name": "BASE (Bielefeld)",         "domain": ["academic", "general", "open_access"],"key_required": False, "hosts": ["api.base-search.net"]},
