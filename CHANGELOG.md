@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Fixed
 
-* **sources:** coerce list-valued API fields, and move Chronicling America off its retired endpoint ([7ef825a](https://github.com/rudi193-cmd/Jeles/commit/7ef825aad90cdd7be089353622c9e419b96a605e))
 * **sources:** coerce list-valued API fields, and move Chronicling America off its retired endpoint ([2e86f82](https://github.com/rudi193-cmd/Jeles/commit/2e86f82ba40e7d88e0289267ded1af5f8a5cce53))
 
 ## [0.6.0](https://github.com/rudi193-cmd/Jeles/compare/v0.5.2...v0.6.0) (2026-08-04)
