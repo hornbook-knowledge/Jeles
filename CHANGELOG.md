@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Fixed
 
-* **egress:** the open-web lane exempted every backend, and leaked its keys ([1101c4b](https://github.com/rudi193-cmd/Jeles/commit/1101c4bcc9c5f0257c6f0ed077c19a0e5a566ecb))
 * **egress:** the open-web lane exempted every backend, and leaked its keys ([91c2788](https://github.com/rudi193-cmd/Jeles/commit/91c2788c5fa7f016133725692562637456909d4f))
 
 ## [0.5.1](https://github.com/rudi193-cmd/Jeles/compare/v0.5.0...v0.5.1) (2026-08-04)
