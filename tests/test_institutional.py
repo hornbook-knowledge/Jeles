@@ -443,8 +443,10 @@ def test_the_local_lane_has_nothing_to_disclaim(monkeypatch):
 
 
 def test_the_documented_source_count_matches_the_registry():
-    """Four files said "~65 sources". The registry holds 61, one of them opt-in,
-    so the default fan-out is 60 — and a number retyped into four docstrings
+    """Four files said "~65 sources". The registry now really does hold 65,
+    after four functions were recovered from the archived jeles-remote fork —
+    three of them opt-in, so the default fan-out is 62. A number retyped into
+    four docstrings
     drifts from the thing it describes the moment anyone edits the registry.
     This is the only place the number is checked, so if it changes, this test is
     what tells you which prose to update."""
@@ -452,7 +454,7 @@ def test_the_documented_source_count_matches_the_registry():
 
     registered = len(inst.sources.SOURCES)
     default = sum(1 for c in inst.sources.SOURCES.values() if not c.get("opt_in"))
-    assert (registered, default) == (61, 60)
+    assert (registered, default) == (65, 62)
 
     readme = (Path(__file__).parent.parent / "README.md").read_text()
     assert f"{registered} registered source functions" in readme
@@ -460,10 +462,19 @@ def test_the_documented_source_count_matches_the_registry():
     assert "~65" not in readme, "the old drifted count"
 
 
-def test_the_key_required_sources_are_in_the_default_fan_out():
+def test_every_key_required_source_reports_its_abstention(monkeypatch):
     """Not a detail: these abstain when their key is unset, which is what made
     the outage check unreachable. Any source added with key_required must
     either stay out of the default fan-out or report its abstention.
+
+    This used to assert `not any(opt_in)` — a *proxy* for that rule, and one
+    that was only ever true by accident of no keyed source being opt-in yet.
+    `omdb`, recovered from the archived jeles-remote fork, is both: it needs a
+    key, and it is opt-in because it was plain http upstream and its TLS is
+    unverified. It satisfies the rule by the first branch. So the proxy is
+    replaced by the property, checked by running it — which is strictly
+    stronger, since it would also catch a keyed source that abstains with a
+    bare `return []` and never reaches `skipped` at all.
 
     `semantic_scholar` is deliberately absent. Its registry entry claimed
     `key_required: True`, but it queries anonymously and
@@ -473,12 +484,22 @@ def test_the_key_required_sources_are_in_the_default_fan_out():
     """
     keyed = {sid for sid, cfg in inst.sources.SOURCES.items()
              if cfg.get("key_required")}
-    assert keyed == {"rijksmuseum", "dpla", "smithsonian", "europeana", "bhl"}
+    assert keyed == {"rijksmuseum", "dpla", "smithsonian", "europeana", "bhl",
+                     "omdb"}
     assert "semantic_scholar" not in keyed
-    assert not any(inst.sources.SOURCES[sid].get("opt_in") for sid in keyed)
     # Every source that abstains must name the variable it is waiting on,
     # otherwise `skipped` says a key is missing without saying which.
     assert all(inst.sources.SOURCES[sid].get("key_env") for sid in keyed)
+
+    # The property, exercised. With its key unset, naming the source explicitly
+    # must put it in `skipped` with the variable named — not return an empty
+    # result set that reads like "this source had nothing".
+    for sid in sorted(keyed):
+        monkeypatch.delenv(inst.sources.SOURCES[sid]["key_env"], raising=False)
+        out = inst.sources.search("anything", sources=[sid], limit_per_source=1)
+        assert out["skipped"].get(sid), f"{sid} abstained without saying so"
+        assert inst.sources.SOURCES[sid]["key_env"] in out["skipped"][sid]
+        assert not out["results"].get(sid)
 
 
 def test_a_partial_outage_still_succeeds(monkeypatch):

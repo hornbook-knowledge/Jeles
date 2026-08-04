@@ -123,3 +123,72 @@ def test_list_sources_exposes_hosts():
     listed = {entry["id"]: entry for entry in sources.list_sources()}
     assert listed["arxiv"]["hosts"] == sources.SOURCES["arxiv"]["hosts"]
     assert all(isinstance(entry["hosts"], list) for entry in listed.values())
+
+
+def test_no_source_reaches_for_plain_http():
+    """The sources lane is `_egress.HTTPS_ONLY`, so an `http://` literal in a
+    source function is a request that cannot be made — it fails at the guard,
+    at runtime, as a transport error rather than as anything legible.
+
+    This exists because two of the four functions recovered from the archived
+    jeles-remote fork (`isfdb`, `omdb`) were plain http there, and that was the
+    single thing that stopped them being pasted straight in. Nothing checked it;
+    the fork had no such lane and no such test, which is part of how they sat
+    unregistered and unnoticed. A `http://` added here now fails at review.
+    """
+    import ast
+
+    # XML namespace URIs are identifiers, not addresses — nothing dereferences
+    # them, and they are `http://` because the specs that minted them are.
+    # Exempted at URI level rather than host level (unlike
+    # `NAMESPACE_URI_HOSTS`) because `www.loc.gov` is *also* a host this package
+    # really fetches, so exempting the host would blind the check to a genuine
+    # plain-http call to the Library of Congress.
+    namespace_uris = {
+        "http://www.w3.org/2005/Atom",
+        "http://purl.org/dc/elements/1.1/",
+        "http://purl.org/dc/terms/",
+        "http://www.loc.gov/zing/srw/",
+    }
+
+    offenders = {}
+    for name, fn in _FUNCS.items():
+        bad = sorted({
+            m.group(0) for node in ast.walk(fn)
+            if isinstance(node, ast.Constant) and isinstance(node.value, str)
+            for m in [_URL_RE.match(node.value)]
+            if m and m.group(0).startswith("http://")
+            and m.group(0) not in namespace_uris
+        })
+        if bad:
+            offenders[name] = bad
+    assert not offenders, (
+        f"these source functions use plain http on an https-only lane: "
+        f"{offenders}")
+
+
+def test_the_sources_recovered_from_the_archived_fork_are_reachable():
+    """They were written in jeles-remote's vendored copy and never registered
+    there, so `search()` could not dispatch them — dead code in a repo that is
+    now archived and private. Being *in* this package is not the point; being
+    reachable is, which is exactly what they were not before.
+
+    `isfdb` and `omdb` are opt-in on purpose: both were plain http upstream and
+    their TLS is unverified, so they stay out of the default fan-out until
+    someone confirms it. That is a deliberate state, not an oversight, so it is
+    pinned here rather than left to be "tidied up" later.
+    """
+    recovered = {"fbi_vault", "ig_nobel", "isfdb", "omdb"}
+    assert recovered <= set(sources.SOURCES), "a recovered source lost its registry entry"
+    for sid in recovered:
+        assert callable(getattr(sources, f"search_{sid}")), f"search_{sid} is gone"
+        assert sources.SOURCES[sid]["hosts"], f"{sid} declares no hosts"
+
+    unverified_tls = {"isfdb", "omdb"}
+    for sid in unverified_tls:
+        assert sources.SOURCES[sid].get("opt_in") is True, (
+            f"{sid} was plain http in the fork; it stays opt-in until its TLS "
+            f"is confirmed")
+    for sid in recovered - unverified_tls:
+        assert not sources.SOURCES[sid].get("opt_in"), (
+            f"{sid} was already https upstream — no reason to hold it back")
