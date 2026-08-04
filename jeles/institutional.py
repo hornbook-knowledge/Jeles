@@ -192,8 +192,14 @@ def _post_remote(base: str, payload: dict, secret: str) -> Any:
     file:/ftp:/data:. It matters more here than anywhere else in the package:
     this is the one request that carries a credential.
     """
+    # `allow_private=True` for the same reason this lane allows plain http:
+    # JELES_REMOTE_URL is an address the operator chose, and a deployment on a
+    # private network is the sovereign case this package exists for. The
+    # sources lane gets the opposite default, because nothing it queries has a
+    # legitimate private address.
     raw = _egress.fetch(
         f"{base}/search", allowed=_ALLOWED_SCHEMES, timeout=_TIMEOUT,
+        allow_private=True,
         max_bytes=_MAX_BYTES, data=json.dumps(payload).encode(),
         headers={
             "User-Agent": _UA,

@@ -33,4 +33,8 @@ def _egress_opener_delegates_to_urlopen(monkeypatch):
         def open(req, timeout=None):
             return urllib.request.urlopen(req, timeout=timeout)
 
-    monkeypatch.setattr(_egress, "opener", lambda allowed: _Delegating)
+    # Accepts `allow_private` because the real `opener` takes it — a shim with
+    # a narrower signature turns a real call into a TypeError that the caller
+    # swallows, and every hit disappears with only a warning to say why.
+    monkeypatch.setattr(_egress, "opener",
+                        lambda allowed, *, allow_private=False: _Delegating)
