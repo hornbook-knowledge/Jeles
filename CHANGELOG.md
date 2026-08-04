@@ -9,12 +9,22 @@ maintained by release-please, which builds each entry from the
 conventional-commit prefixes on `master` — so it cannot go stale between
 releases the way a hand-kept changelog can.
 
+**Generated entries are sometimes corrected by hand, and this is why.** This
+repo merges with merge commits rather than squashing, and GitHub writes the PR
+title into the merge commit body. release-please parses that merge commit
+*alongside* the commits it merges, so one change can produce two identical
+entries — 0.5.0 listed its single change twice, once from merge commit
+`bbc8258` and once from the commit it merged, `455be56`. The same thing hit
+willow-mcp, in a worse form: there it also *dropped* a real commit in favour of
+the merge commit that swallowed it, so a shipped fix went undocumented. The
+tags and version numbers are unaffected either way — only the prose. Fixes go
+in a `docs:` commit, which is hidden and cuts no release of its own.
+
 ## [0.5.0](https://github.com/rudi193-cmd/Jeles/compare/v0.4.1...v0.5.0) (2026-08-04)
 
 
 ### Added
 
-* **sources:** declare the hosts each source contacts ([bbc8258](https://github.com/rudi193-cmd/Jeles/commit/bbc8258e9620c1e39630f47357fbd82379ea3479))
 * **sources:** declare the hosts each source contacts ([455be56](https://github.com/rudi193-cmd/Jeles/commit/455be56673f62c42d097ca3bcf5819c64268bfe9))
 
 ## [0.4.1](https://github.com/rudi193-cmd/Jeles/compare/v0.4.0...v0.4.1) (2026-08-03)
