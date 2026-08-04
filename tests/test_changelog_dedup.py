@@ -116,9 +116,13 @@ def test_it_refuses_a_section_it_cannot_regenerate():
     not model. Rewriting a release note it had misread is worse than the bug it
     fixes, so it stops.
 
-    This matters more here than in willow-mcp: jeles is below 1.0 with
-    `bump-minor-pre-major`, so a breaking change is an ordinary minor bump rather
-    than a rare major one."""
+    The reason it matters here is the opposite of what this docstring used to
+    say. It claimed `bump-minor-pre-major` made a breaking change an ordinary
+    minor bump — cheap and frequent. That flag is now **false**
+    (`release-please-config.json`), so at 0.5.1 a breaking change cuts **1.0.0**:
+    rare, one-way, and the single release nobody wants a changelog tool
+    rewriting by hand. The refusal is worth more under the new policy, not
+    less."""
     text = f"""## [0.6.0]({_BASE}/compare/v0.5.0...v0.6.0) (2026-08-04)
 
 

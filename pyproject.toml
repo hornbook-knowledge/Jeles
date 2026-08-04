@@ -68,9 +68,12 @@ Issues = "https://github.com/rudi193-cmd/Jeles/issues"
 # from an untagged commit fails loudly instead of shipping something
 # mislabelled. CI must check out with `fetch-depth: 0` or no tags are present.
 #
-# This package has never been published and carries no tags yet, so the first
-# tag pushed decides the first released version — and PyPI never lets a version
-# be reused. Pick it deliberately.
+# Published on PyPI as `jeles`, latest 0.5.1, across 9 tags (v0.1.0 … v0.5.1).
+# The tags are now the release history, not a blank slate: PyPI never lets a
+# version be reused, so a tag pushed by hand out of order is unrecoverable.
+# Cutting a release is release-please's job (`release-please-config.json`,
+# `release-type: simple`) — let it pick the number from the commits rather than
+# tagging by hand.
 source = "vcs"
 
 [tool.hatch.build.targets.wheel]
