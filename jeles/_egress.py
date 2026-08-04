@@ -107,7 +107,14 @@ def _dialled_hosts(url: str) -> list[str] | None:
     def add(host: str | None) -> None:
         if not host:
             return
-        h = host.strip().strip("[]").lower()
+        # `.rstrip(".")` — a trailing dot is a fully-qualified name and every
+        # resolver strips it, but `inet_aton` rejects `127.0.0.1.`, so the
+        # literal took the resolver path and was waved through wherever no
+        # resolution happens. Behind a proxy that meant urllib emitted
+        # `CONNECT 169.254.169.254.:443` and the proxy resolved it — breaking
+        # this module's own stated invariant that a literal is refused either
+        # way. willow-mcp's copy had the rstrip; this one did not.
+        h = host.strip().strip("[]").rstrip(".").lower()
         if h and h not in seen:
             seen.append(h)
 
@@ -222,7 +229,12 @@ def private_destination(url: str) -> str | None:
             how = "resolved from"
             try:
                 candidates = [info[4][0] for info in socket.getaddrinfo(host, None)]
-            except OSError:
+            except (OSError, UnicodeError):
+                # UnicodeError, not just OSError: `a..b`, an over-long label, or
+                # a non-IDNA-encodable name makes getaddrinfo raise from the
+                # idna codec, which is not an OSError. Uncaught it escaped
+                # `redirect_request` as a bare codec error rather than a
+                # refusal — from a `Location:` header the far end controls.
                 continue
         else:
             continue
@@ -273,7 +285,52 @@ class SchemeGuardedRedirects(urllib.request.HTTPRedirectHandler):
                     f"refusing redirect to a private destination — {reason}: "
                     f"{newurl[:60]!r}",
                     headers, fp)
-        return super().redirect_request(req, fp, code, msg, headers, newurl)
+        new = super().redirect_request(req, fp, code, msg, headers, newurl)
+        return self._strip_credentials_across_hosts(req, new)
+
+    #: Headers that authenticate the caller rather than describe the body.
+    #: stdlib strips only `content-length`/`content-type`, so everything here
+    #: rode along to whatever answered the redirect.
+    CREDENTIAL_HEADERS = frozenset({
+        "authorization", "proxy-authorization", "cookie",
+        "x-jeles-secret",           # institutional._post_remote's shared secret
+        "x-subscription-token",     # Brave
+        "x-api-key", "api-key",
+    })
+
+    @classmethod
+    def _strip_credentials_across_hosts(cls, old, new):
+        """Drop authenticating headers when a redirect changes host.
+
+        urllib carries every non-content header to the redirect target. Measured
+        before this: a 302 from a `JELES_REMOTE_URL` to `http://attacker.example`
+        produced a request still holding `X-Jeles-Secret: <the shared secret>` —
+        cross-host, over plaintext, and on the one lane that opts out of the
+        destination check. The Brave key leaks the same way.
+
+        requests does this in `Session.rebuild_auth`; urllib has no equivalent,
+        so it has to happen here. Same host, same credential — only a change of
+        host drops it.
+        """
+        if new is None:
+            return new
+        def host_of(u):
+            try:
+                return (urllib.parse.urlsplit(u).hostname or "").rstrip(".").lower()
+            except ValueError:
+                return None
+        old_host, new_host = host_of(old.full_url), host_of(new.full_url)
+        # `None` means unparseable on either side: treat as a change, not as a
+        # match, so an unreadable URL does not inherit the credential.
+        if old_host is not None and old_host == new_host:
+            return new
+        for name in list(new.headers):
+            if name.lower() in cls.CREDENTIAL_HEADERS:
+                del new.headers[name]
+        for name in list(getattr(new, "unredirected_hdrs", {})):
+            if name.lower() in cls.CREDENTIAL_HEADERS:
+                del new.unredirected_hdrs[name]
+        return new
 
 
 _OPENERS: dict[tuple[frozenset[str], bool], urllib.request.OpenerDirector] = {}

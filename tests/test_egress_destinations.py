@@ -152,8 +152,27 @@ class _Req:
         return "GET"
 
 
-def _redirect(handler, url):
-    return handler.redirect_request(_Req(), io.BytesIO(b""), 302, "Found", {}, url)
+def _redirect(handler, url, req=None):
+    return handler.redirect_request(req or _Req(), io.BytesIO(b""), 302,
+                                    "Found", {}, url)
+
+
+def _lower(req):
+    """urllib's `Request.add_header` capitalizes keys — `X-Api-Key` becomes
+    `X-api-key`. Asserting `"X-Api-Key" not in headers` therefore passes whether
+    or not anything was stripped, which is a vacuous test wearing the shape of a
+    real one. Compare on normalised keys."""
+    return {k.lower(): v for k, v in req.headers.items()}
+
+
+def _req(url, **headers):
+    """A request with its own header dict — `_Req.headers` is a ClassVar, so
+    mutating it would leak into every other test in the file."""
+    r = _Req()
+    r.full_url = url
+    r.headers = dict(headers)
+    r.unredirected_hdrs = {}
+    return r
 
 
 @pytest.mark.parametrize(("label", "url"), _PRIVATE, ids=[p[0] for p in _PRIVATE])
@@ -339,15 +358,20 @@ def test_the_remote_delegate_lane_opts_out(monkeypatch):
     assert seen["allow_private"] is True
 
 
-def test_the_open_web_lane_opts_out(monkeypatch):
-    """SearXNG on http://127.0.0.1:8888 is the documented zero-config default."""
+def test_the_open_web_lane_no_longer_opts_out_for_every_backend(monkeypatch):
+    """This test used to assert that `_get_json` always passed
+    `allow_private=True`, which is the defect an audit later found: that
+    function is also the fetch path for Brave, Tavily and DuckDuckGo. The
+    per-backend behaviour it should have been pinning is asserted at the bottom
+    of this file; here we only hold the line that the shared helper takes the
+    secure default."""
     from jeles.reactions import search_adapter
 
     seen = {}
     monkeypatch.setattr(_egress, "fetch",
                         lambda url, **kw: seen.update(kw) or b"{}")
-    search_adapter._get_json("http://127.0.0.1:8888/search")
-    assert seen["allow_private"] is True
+    search_adapter._get_json("https://api.duckduckgo.com/?q=x")
+    assert seen["allow_private"] is False
 
 
 def test_fetch_forwards_the_destination_policy(monkeypatch):
@@ -390,3 +414,78 @@ def test_behind_a_proxy_a_literal_private_address_is_still_refused(proxied):
     """The half that stays meaningful: the proxy will CONNECT to whatever it is
     named, so naming `169.254.169.254` is still a request to reach it."""
     assert _egress.private_destination("https://169.254.169.254/latest/") is not None
+
+
+# --- found by audit after 0.5.1 shipped ---------------------------------------
+
+
+def test_a_trailing_dot_does_not_launder_a_literal_address(proxied):
+    """`127.0.0.1.` is the same host to every resolver, but `inet_aton` rejects
+    it — so the literal took the resolver path and was waved through wherever
+    no resolution happens. Behind a proxy urllib emitted
+    `CONNECT 169.254.169.254.:443` and the proxy resolved it, breaking this
+    module's stated invariant that a literal is refused proxy or not.
+    Run on the proxied path deliberately: that is where it was reachable."""
+    for url in ("https://127.0.0.1./x", "https://169.254.169.254./latest/",
+                "https://127.0.0.1%2e/x"):
+        assert _egress.private_destination(url) is not None, url
+
+
+def test_a_credential_header_is_dropped_when_a_redirect_changes_host():
+    """urllib carries every non-content header to the redirect target. A 302
+    from a JELES_REMOTE_URL to an attacker produced a request still holding
+    `X-Jeles-Secret` — cross-host, over plaintext, on the one lane that opts
+    out of the destination check. requests does this in `rebuild_auth`;
+    urllib has no equivalent."""
+    handler = _egress.SchemeGuardedRedirects(_egress.HTTP_OR_HTTPS,
+                                             allow_private=True)
+    req = _req("https://remote.operator.example/search",
+               **{"X-Jeles-Secret": "SECRET", "X-Subscription-Token": "BRAVE",
+                  "User-Agent": "jeles"})
+    out = _redirect(handler, "http://attacker.example/collect", req)
+    got = _lower(out)
+    assert "x-jeles-secret" not in got
+    assert "x-subscription-token" not in got
+    assert got.get("user-agent") == "jeles", "only credentials go"
+
+
+def test_a_credential_header_survives_a_same_host_redirect():
+    """The other half. Stripping unconditionally would break every ordinary
+    redirect an authenticated API performs on itself."""
+    handler = _egress.SchemeGuardedRedirects(_egress.HTTP_OR_HTTPS,
+                                             allow_private=True)
+    req = _req("https://api.crossref.org/works",
+               **{"X-Api-Key": "K", "User-Agent": "jeles"})
+    out = _redirect(handler, "https://api.crossref.org/works/v2", req)
+    assert _lower(out).get("x-api-key") == "K"
+
+
+def test_a_name_that_breaks_the_idna_codec_is_refused_not_raised(unproxied):
+    """`getaddrinfo` raises UnicodeError — not OSError — on an empty internal
+    label or an over-long one, so `except OSError` did not catch it and a bare
+    codec error escaped `redirect_request`, from a Location the far end
+    controls. It must come back as a refusal or an allow, never as a raise."""
+    for host in ("a..b", "x" * 64 + ".com"):
+        assert _egress.private_destination(f"https://{host}/x") is None
+
+
+def test_the_open_web_lane_only_opts_out_for_the_operators_own_backend(monkeypatch):
+    """`_get_json` hardcoded `allow_private=True`, justified by the SearXNG
+    default — but it is also the fetch path for Brave, Tavily and DuckDuckGo,
+    three hardcoded public APIs with no claim to a private address. One
+    operator-chosen backend was buying every other backend an exemption."""
+    from jeles.reactions import search_adapter
+
+    seen: list[bool] = []
+    monkeypatch.setattr(_egress, "fetch",
+                        lambda url, **kw: seen.append(kw["allow_private"]) or b"{}")
+
+    monkeypatch.setenv("JELES_SEARXNG_URL", "http://127.0.0.1:8888")
+    search_adapter._searxng("q")
+    assert seen == [True], "the operator's own address stays reachable"
+
+    seen.clear()
+    monkeypatch.setenv("BRAVE_API_KEY", "k")
+    search_adapter._brave("q")
+    search_adapter._ddg("q")
+    assert seen == [False, False], "public APIs get the secure default"
