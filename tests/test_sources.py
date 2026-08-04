@@ -270,6 +270,165 @@ def test_result_shape_is_the_citation_contract():
     assert r["id"] == "7"
 
 
+# ── Sources do not honour their own documented types ────────────────────────
+#
+# `_result` used to do `(value or "").strip()`, which is only correct if every
+# API returns a string or a null. They do not, and the failure is silent rather
+# than loud: `search()`'s `_call` catches the AttributeError, so the source
+# lands in `failed` and contributes nothing on every query.
+
+
+@pytest.mark.parametrize(("value", "want"), [
+    ("plain", "plain"),
+    (None, ""),
+    ([], ""),
+    (["one", "two"], "one two"),
+    (["kept", None, "also"], "kept also"),      # nulls inside the list drop out
+    (("a", "b"), "a b"),                        # tuples too — same JSON shape
+    (2026, "2026"),                             # a bare int is not a null
+    (0, "0"),                                   # ...and falsy is not absent
+    ([["deep"], "flat"], "deep flat"),          # nested, because IA does that
+])
+def test_text_coerces_what_the_apis_actually_return(value, want):
+    assert sources._text(value) == want
+
+
+def test_a_list_valued_field_reaches_the_citation_contract_as_a_string():
+    """The regression, at the layer that broke. Against 0.6.0 this raises
+    `AttributeError: 'list' object has no attribute 'strip'` on the title."""
+    r = sources._result(title=["Title", "Subtitle"], url="u", source="s",
+                        institution=["Cornell", "Ithaca"], snippet=["a", "b"],
+                        date="", rid="")
+    assert set(r) == CITATION_KEYS
+    assert r["title"] == "Title Subtitle"
+    assert r["snippet"] == "a b"
+    # All three coerced fields, not just the two the first version checked:
+    # `institution=None` alone left the old `(v or "").strip()` spelling passing,
+    # because on a null the two are the same. A list is what tells them apart.
+    assert r["institution"] == "Cornell Ithaca"
+    assert all(isinstance(r[k], str) for k in ("title", "institution", "snippet"))
+
+    n = sources._result(title=None, url="u", source="s", institution=None,
+                        snippet=None, date="", rid="")
+    assert (n["title"], n["institution"], n["snippet"]) == ("", "", ""), \
+        "a null field is empty, never the string 'None'"
+
+
+def test_internet_archive_survives_the_list_description_it_really_sends(monkeypatch):
+    """End to end, because the layer above is where the damage showed. IA
+    returns `description` as a list often enough that this source contributed
+    nothing to any query that reached it."""
+    _stub_json(monkeypatch, {"response": {"docs": [{
+        "identifier": "moby-dick",
+        "title": ["Moby Dick", "or, The Whale"],
+        "description": ["A voyage.", "With a whale."],
+        "date": "1851",
+    }]}})
+    hits = sources.search_internet_archive("whale", limit=1)
+    assert hits and set(hits[0]) == CITATION_KEYS
+    assert hits[0]["title"] == "Moby Dick or, The Whale"
+    assert hits[0]["snippet"] == "A voyage. With a whale."
+    assert hits[0]["url"] == "https://archive.org/details/moby-dick"
+
+
+def test_a_list_valued_field_does_not_land_the_source_in_failed(monkeypatch):
+    """The symptom, named. `search` catches the AttributeError, so the only
+    outward sign was a source that was permanently in `failed` — which reads
+    as an outage rather than a bug in this file."""
+    _stub_json(monkeypatch, {"response": {"docs": [
+        {"identifier": "x", "title": ["A", "B"], "description": ["c"]}]}})
+    out = sources.search(
+        "q", sources=["internet_archive"], limit_per_source=1,
+        wall_clock_limit=5)
+    assert out["failed"] == {}, "a list-valued field must not read as an outage"
+    assert out["results"]["internet_archive"], "and it must actually contribute"
+
+
+def test_chronicling_america_parses_the_loc_collections_shape(monkeypatch):
+    """The legacy `chroniclingamerica.loc.gov` JSON API was retired: it
+    308-redirects to a 404, so this source returned nothing at all. The
+    replacement changes every field this parser reads — `results` not `items`,
+    an absolute `url` rather than an id to concatenate, and a `description`
+    that is a list."""
+    payload = json.dumps({"results": [{
+        "title": "The Evening Star",
+        "url": "https://www.loc.gov/item/sn83045462/1900-01-01/ed-1/",
+        "description": ["Washington, D.C.", "Chronicling America"],
+        "date": "1900-01-01",
+        "id": "sn83045462",
+    }]}).encode()
+
+    # Not `_stub_json`: that captures the url only, and the raised timeout is
+    # half of what makes this source work — 15s is not enough for the
+    # collections API under fan-out load, and losing it looks like an outage.
+    captured: list[tuple[str, float | None]] = []
+
+    class _Recording:
+        @staticmethod
+        def open(req, timeout=None):
+            captured.append((req.full_url, timeout))
+            return _Resp(payload)
+
+    monkeypatch.setattr(sources, "_opener", lambda: _Recording)
+
+    hits = sources.search_chronicling_america("star", limit=1)
+    assert hits and set(hits[0]) == CITATION_KEYS
+    assert hits[0]["title"] == "The Evening Star"
+    assert hits[0]["url"].startswith("https://www.loc.gov/item/"), \
+        "the absolute url is used, not concatenated onto the retired host"
+    assert hits[0]["snippet"] == "Washington, D.C. Chronicling America"
+    assert hits[0]["institution"] == "Chronicling America (Library of Congress)"
+
+    assert len(captured) == 1
+    url, timeout = captured[0]
+    assert "chroniclingamerica.loc.gov" not in url, \
+        "the retired host must not be requested"
+    assert url.startswith("https://www.loc.gov/collections/chronicling-america/")
+    assert "fo=json" in url, "the collections API answers html without fo=json"
+    assert timeout == 25, \
+        "the raised timeout is part of the fix, not decoration"
+
+
+def test_the_registry_host_matches_where_chronicling_america_now_goes():
+    """`hosts` is what `registered_hosts()` reports and what the egress guard is
+    reasoned about from. Moving the request without moving the entry leaves the
+    retired host on the allowed list and the live one off it."""
+    hosts = sources.SOURCES["chronicling_america"]["hosts"]
+    assert "www.loc.gov" in hosts
+    assert "chroniclingamerica.loc.gov" not in hosts
+
+
+def test_patentsview_is_opt_in_while_half_its_api_is_dns_dead():
+    """`search.patentsview.org` stopped resolving, so every default fan-out
+    spent a full timeout on it. Opt-in rather than deleted: `patents.google.com`
+    still answers, and the id stays addressable by name."""
+    assert sources.SOURCES["patentsview"].get("opt_in") is True
+
+
+def test_a_slow_source_can_raise_its_own_timeout_above_the_default(monkeypatch):
+    """`_TIMEOUT` bounds a normal request; loc.gov's collections API is slow
+    enough to trip it under fan-out load. The override has to survive four
+    frames — `_get` → `_fetch` → `_urlopen` → the opener — and dropping it in
+    any of them leaves the source dead in exactly the way that is hardest to
+    tell from an outage."""
+    seen: list[float | None] = []
+
+    class _Recording:
+        @staticmethod
+        def open(req, timeout=None):
+            seen.append(timeout)
+            return _Resp(b"{}")
+
+    monkeypatch.setattr(sources, "_opener", lambda: _Recording)
+
+    sources._get("https://www.loc.gov/collections/x/?fo=json", timeout=25)
+    assert seen == [25]
+
+    seen.clear()
+    sources._get("https://www.loc.gov/collections/x/?fo=json")
+    assert seen == [sources._TIMEOUT], "an unset timeout still means the default"
+
+
 def test_openalex_parses_json_into_the_contract(monkeypatch):
     _stub_json(monkeypatch, {"results": [{
         "display_name": "Signed policy bundles",

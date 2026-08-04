@@ -17,7 +17,7 @@ couldn't answer.
 | `jeles.corpus` | Pure storage + ranked lookup of verified nuggets and gap logging. **Stdlib-only, no MCP, no network at import.** Reuses willow-mcp's SOIL `Store` SQLite schema at `$WILLOW_STORE_ROOT/<collection>/store.db` — writes are upserts that touch only jeles' own columns, in WAL mode with `BEGIN IMMEDIATE`, so the store really is shared rather than shared-until-one-side-writes. |
 | `jeles.reactions` | Pure `(event) -> [proposed actions]` handlers. `conflict_scan` searches for what *supersedes or refutes* a design claim rather than what resembles it, and proposes a nugget only when two **independent, relevant, non-excluded** domains corroborate it — otherwise a contested gap. `search_adapter` is its web edge. |
 | `jeles.corpus_server` | Standalone `MCPServer` (MCP SDK 2.x) over the corpus (`python -m jeles.corpus_server`). Mirrors willow-mcp's shape (`app_id` on every tool) **without depending on willow-mcp**. Writes through it are *assertions*, not verifications — see [below](#as-a-standalone-mcp-server). |
-| `jeles.sources` | **The institutional collections themselves** — 65 registered source functions, 62 of them in the default fan-out (arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian), plus the concurrent fan-out across them. **Stdlib-only.** |
+| `jeles.sources` | **The institutional collections themselves** — 65 registered source functions, 61 of them in the default fan-out (arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian), plus the concurrent fan-out across them. **Stdlib-only.** |
 | `jeles.institutional` | The third hop: fans a query across `jeles.sources` in-process, and shapes results like every other hit. Optionally delegates to a hosted [`jeles-remote`](https://github.com/rudi193-cmd/jeles-remote) instead. |
 | `jeles.willow_mcp_client` | Best-effort, fire-and-forget forwarding of gaps into willow-mcp's fleet-wide backlog. Never blocks, never raises; 30s retry cooldown so a single failed connect doesn't permanently disable forwarding. |
 | `jeles.load_persona()` | Loads the canonical Jeles persona JSON (this package is its canonical home). |
@@ -100,7 +100,7 @@ Tools: `corpus_ask`, `corpus_search`, `corpus_get`, `corpus_list`, `corpus_put`,
 `corpus_gaps`, `corpus_web_search`, `corpus_search_status`,
 `corpus_institutional_search`, `corpus_sources` — each takes an `app_id` for
 naming-convention parity with willow-mcp. The last four are the outward hops:
-the open web, why a search returned what it did, the ~62 institutional and
+the open web, why a search returned what it did, the 61 institutional and
 academic collections, and what those collections are. They were added without
 this list being updated, so it said six for as long as there were ten.
 

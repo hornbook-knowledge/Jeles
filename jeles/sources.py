@@ -2,7 +2,7 @@
 
 The third hop of the persona's mandate ("local KB → open web → special
 collections"), and it lives *here* rather than behind a service. 65 registered
-sources, 60 of them in the default fan-out — arXiv, PubMed, Crossref, OpenAlex,
+sources, 61 of them in the default fan-out — arXiv, PubMed, Crossref, OpenAlex,
 Library of Congress, Europeana, CourtListener, the Smithsonian — each a small
 function that queries one public API and returns citable results. (Read the
 count off `SOURCES`; four files said "~65" and none of them was right.)
@@ -173,7 +173,7 @@ def _opener() -> urllib.request.OpenerDirector:
     return _egress.opener(_ALLOWED_SCHEMES)
 
 
-def _urlopen(req: urllib.request.Request):
+def _urlopen(req: urllib.request.Request, timeout: float | None = None):
     """The single egress point for every source, reached only through `_fetch`
     — so no source function ever holds a response it could read unbounded.
 
@@ -193,7 +193,7 @@ def _urlopen(req: urllib.request.Request):
     url = req.full_url if isinstance(req, urllib.request.Request) else str(req)
     _egress.check_url(url, _ALLOWED_SCHEMES)
     try:
-        return _opener().open(req, timeout=_TIMEOUT)
+        return _opener().open(req, timeout=_TIMEOUT if timeout is None else timeout)
     except Exception as exc:
         _note_transport_failure(exc)
         raise
@@ -204,7 +204,8 @@ def _read_capped(resp) -> bytes:
     return _egress.read_capped(resp, _MAX_BYTES)
 
 
-def _fetch(url: str, headers: dict | None = None) -> bytes:
+def _fetch(url: str, headers: dict | None = None,
+           timeout: float | None = None) -> bytes:
     """Open a URL and return its bounded body — opening and reading in one
     call, so there is no moment where a caller holds an unread response.
 
@@ -215,7 +216,7 @@ def _fetch(url: str, headers: dict | None = None) -> bytes:
     failure; `_get`/`_get_html` are the swallowing variants.
     """
     h = {"User-Agent": _UA, **(headers or {})}
-    with _urlopen(urllib.request.Request(url, headers=h)) as r:
+    with _urlopen(urllib.request.Request(url, headers=h), timeout=timeout) as r:
         return _read_capped(r)
 
 
@@ -234,11 +235,12 @@ def _parse_xml(raw: bytes):
     return ET.fromstring(raw)  # nosec B314
 
 
-def _get(url: str, headers: dict | None = None) -> dict | list | None:
+def _get(url: str, headers: dict | None = None,
+         timeout: float | None = None) -> dict | list | None:
     """Fetch JSON. Returns None on any failure — a dead source is a missing
     source, never an exception that sinks the fan-out."""
     try:
-        return json.loads(_fetch(url, headers))
+        return json.loads(_fetch(url, headers, timeout))
     except Exception as e:
         # Covers the read and the JSON decode as well as the connect. `_urlopen`
         # leaves its own breadcrumb, but the read and the decode are inside this
@@ -250,24 +252,40 @@ def _get(url: str, headers: dict | None = None) -> dict | list | None:
         return None
 
 
-def _get_html(url: str, headers: dict | None = None) -> str | None:
+def _get_html(url: str, headers: dict | None = None,
+              timeout: float | None = None) -> str | None:
     """Fetch text. Same contract as `_get`: None rather than a raise."""
     try:
-        return _fetch(url, headers).decode("utf-8", errors="replace")
+        return _fetch(url, headers, timeout).decode("utf-8", errors="replace")
     except Exception as e:
         _note_transport_failure(e)  # same reason as `_get`: read counts too
         log.warning("GET html %s failed: %s", url[:80], e)
         return None
 
 
+def _text(value) -> str:
+    """Coerce an API field to a string.
+
+    Sources do not honour their own documented types. Internet Archive returns
+    `description` as a *list*; CORE returns a null journal title. `(value or
+    "").strip()` raises AttributeError on the first and the exception is caught
+    by `search()`'s `_call`, so the symptom is not a crash — the source lands in
+    `failed` and contributes nothing, quietly, on every query. Ported from
+    willow-2.0, which tracked it as #646/#647.
+    """
+    if isinstance(value, (list, tuple)):
+        return " ".join(_text(v) for v in value if v is not None)
+    return str(value) if value is not None else ""
+
+
 def _result(title: str, url: str, source: str, institution: str,
             snippet: str = "", date: str = "", rid: str = "") -> dict:
     return {
-        "title": (title or "").strip(),
+        "title": _text(title).strip(),
         "url": url,
         "source": source,
-        "institution": institution,
-        "snippet": (snippet or "").strip()[:400],
+        "institution": _text(institution).strip(),
+        "snippet": _text(snippet).strip()[:400],
         "date": date,
         "id": rid,
     }
@@ -978,23 +996,32 @@ def search_openlibrary(query: str, limit: int = 5) -> list[dict]:
 
 
 def search_chronicling_america(query: str, limit: int = 5) -> list[dict]:
-    """Chronicling America — historic US newspapers 1770-1963. No key required."""
+    """Chronicling America — historic US newspapers 1770-1963. No key required.
+
+    The legacy `chroniclingamerica.loc.gov` JSON API was retired in 2026 and
+    308-redirects to a 404, so this source returned nothing at all until the
+    move to the loc.gov collections API. The response shape changed with it:
+    `results` rather than `items`, an absolute `url`, and a `description` that
+    can be a list — which is why `_text()` above is not optional here. 25s
+    because the endpoint is slow enough to trip the 15s default under fan-out
+    load. Ported from willow-2.0 (#649).
+    """
     url = (
-        "https://chroniclingamerica.loc.gov/search/pages/results/?andtext="
+        "https://www.loc.gov/collections/chronicling-america/?q="
         + urllib.parse.quote(query)
-        + f"&format=json&rows={limit}"
+        + f"&fo=json&c={limit}"
     )
-    data = _get(url)
+    data = _get(url, timeout=25)
     if not data:
         return []
     results = []
-    for item in (data.get("items") or [])[:limit]:
+    for item in (data.get("results") or [])[:limit]:
         results.append(_result(
             title=item.get("title", ""),
-            url="https://chroniclingamerica.loc.gov" + (item.get("id") or ""),
+            url=item.get("url") or item.get("id") or "",
             source="chronicling_america",
-            institution=f"Chronicling America — {item.get('title_normal', '')}",
-            snippet=item.get("ocr_eng", "")[:300] or "",
+            institution="Chronicling America (Library of Congress)",
+            snippet=item.get("description", "") or "",
             date=item.get("date", ""),
             rid=item.get("id", ""),
         ))
@@ -2427,7 +2454,7 @@ SOURCES: dict[str, dict] = {
     # Libraries & Archives
     "loc":              {"name": "Library of Congress",     "domain": ["humanities", "history", "general"],  "key_required": False, "hosts": ["www.loc.gov"]},
     "openlibrary":      {"name": "Open Library",            "domain": ["books", "humanities"],               "key_required": False, "hosts": ["openlibrary.org"]},
-    "chronicling_america": {"name": "Chronicling America", "domain": ["history", "journalism"],             "key_required": False, "hosts": ["chroniclingamerica.loc.gov"]},
+    "chronicling_america": {"name": "Chronicling America", "domain": ["history", "journalism"],             "key_required": False, "hosts": ["www.loc.gov"]},
     "internet_archive": {"name": "Internet Archive",        "domain": ["general", "books", "media"],         "key_required": False, "hosts": ["archive.org"]},
     "dpla":             {"name": "DPLA",                    "domain": ["humanities", "history", "general"],  "key_required": True, "key_env": "DPLA_API_KEY", "hosts": ["api.dp.la"]},
     # Heritage
@@ -2493,7 +2520,11 @@ SOURCES: dict[str, dict] = {
     # Global weather/climate
     "open_meteo":       {"name": "Open-Meteo",              "domain": ["climate", "weather"],                   "key_required": False, "hosts": ["api.open-meteo.com", "geocoding-api.open-meteo.com", "open-meteo.com"]},
     # Patents
-    "patentsview":      {"name": "USPTO PatentsView",       "domain": ["patents", "technology", "science"],     "key_required": False, "hosts": ["patents.google.com", "search.patentsview.org"]},
+    # opt_in because search.patentsview.org has been DNS-dead since 2026
+    # (willow-2.0 #648): every default fan-out spent a full timeout on a name
+    # that does not resolve. `patents.google.com` is the half that still works,
+    # so the entry stays registered and reachable by name rather than deleted.
+    "patentsview":      {"name": "USPTO PatentsView",       "domain": ["patents", "technology", "science"],     "key_required": False, "opt_in": True, "hosts": ["patents.google.com", "search.patentsview.org"]},
     # Macroeconomics
     "imf":              {"name": "IMF DataMapper",          "domain": ["macroeconomics", "economics"],          "key_required": False, "hosts": ["www.imf.org"]},
     # Social science preprints

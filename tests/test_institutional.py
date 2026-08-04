@@ -445,21 +445,35 @@ def test_the_local_lane_has_nothing_to_disclaim(monkeypatch):
 def test_the_documented_source_count_matches_the_registry():
     """Four files said "~65 sources". The registry now really does hold 65,
     after four functions were recovered from the archived jeles-remote fork —
-    three of them opt-in, so the default fan-out is 62. A number retyped into
-    four docstrings
-    drifts from the thing it describes the moment anyone edits the registry.
-    This is the only place the number is checked, so if it changes, this test is
-    what tells you which prose to update."""
+    three of them opt-in, so the default fan-out is 61. (Four opt-in among the
+    recovered set now: `patentsview` joined them when search.patentsview.org
+    turned out to have been DNS-dead since 2026.) A number retyped into four
+    docstrings drifts from the thing it describes the moment anyone edits the
+    registry. This is the only place the number is checked, so if it changes,
+    this test is what tells you which prose to update — and the module
+    docstring is checked here too, because it was the one that drifted: it
+    still said 60 after the default set had moved twice."""
     from pathlib import Path
 
     registered = len(inst.sources.SOURCES)
     default = sum(1 for c in inst.sources.SOURCES.values() if not c.get("opt_in"))
-    assert (registered, default) == (65, 62)
+    assert (registered, default) == (65, 61)
 
     readme = (Path(__file__).parent.parent / "README.md").read_text()
     assert f"{registered} registered source functions" in readme
     assert f"{default} of them in the default fan-out" in readme
-    assert "~65" not in readme, "the old drifted count"
+    # Not `"~65" not in readme`: that pinned one drifted spelling, and the
+    # README carried a *second* approximate count ("the ~62 institutional and
+    # academic collections") that the literal check walked straight past. Any
+    # tilde'd count in this range is the same mistake wearing a different
+    # number, so refuse the shape rather than the instance.
+    import re as _re
+    approx = _re.findall(r"~\d{2}\b", readme)
+    assert not approx, f"approximate source counts drift; say the number: {approx}"
+
+    doc = inst.sources.__doc__ or ""
+    assert f"{registered} registered" in doc
+    assert f"{default} of them in the default fan-out" in doc
 
 
 def test_every_key_required_source_reports_its_abstention(monkeypatch):
