@@ -25,9 +25,9 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Added
 
+* **verify:** per-claim corroboration — "six sources" is not "every sentence is backed" ([77e497e](https://github.com/rudi193-cmd/Jeles/commit/77e497e8c19c7248e5d96b94e145d192bf2e9937))
 * **cards:** drop `observed` — reachability is a decision, not a stored measurement ([3f3415e](https://github.com/rudi193-cmd/Jeles/commit/3f3415ee094ddab05f4ea73ae2a4965efa7c6720))
 * **cards:** the 84-host catalog, one file per host ([cddede6](https://github.com/rudi193-cmd/Jeles/commit/cddede60507d115d4d3c93d25ed1037a01785740))
-* **verify:** per-claim corroboration — "six sources" is not "every sentence is backed" ([77e497e](https://github.com/rudi193-cmd/Jeles/commit/77e497e8c19c7248e5d96b94e145d192bf2e9937))
 
 ## [0.6.1](https://github.com/rudi193-cmd/Jeles/compare/v0.6.0...v0.6.1) (2026-08-04)
 
