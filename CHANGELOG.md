@@ -20,6 +20,13 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.6.1](https://github.com/rudi193-cmd/Jeles/compare/v0.6.0...v0.6.1) (2026-08-04)
+
+
+### Fixed
+
+* **sources:** coerce list-valued API fields, and move Chronicling America off its retired endpoint ([2e86f82](https://github.com/rudi193-cmd/Jeles/commit/2e86f82ba40e7d88e0289267ded1af5f8a5cce53))
+
 ## [0.6.0](https://github.com/rudi193-cmd/Jeles/compare/v0.5.2...v0.6.0) (2026-08-04)
 
 
