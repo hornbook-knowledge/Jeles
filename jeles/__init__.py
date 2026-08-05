@@ -7,8 +7,13 @@ gap-forwarder, and the canonical Jeles persona can be consumed by any host.
 Public surface:
     corpus              — pure storage/ranking of verified nuggets + gaps
     corpus_server       — standalone MCP server over the corpus (SDK 2.x)
+    verify              — per-claim cross-source corroboration of an answer
     willow_mcp_client   — best-effort gap forwarding to willow-mcp
     load_persona()      — load the canonical Jeles persona JSON
+
+Submodules are not imported here. Importing `jeles` must stay free of I/O and of
+the network stack (`tests/test_import_purity.py`), so a consumer imports the one
+it wants.
 """
 
 from __future__ import annotations
