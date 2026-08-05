@@ -199,22 +199,53 @@ they usually land on the same side of a policy. See §6.3.
 ## 4. What changes downstream
 
 willow-mcp's `_TRUSTED_SUFFIXES` today is ~50 hand-typed registrable domains plus
-an 8-entry `_NOT_TRUST_EVIDENCE` dict with prose reasons. With cards it becomes a
-policy over fields, roughly:
-
-> citable if `citation` in `roles` and `custody` in `{institutional}`, plus a
-> named override list.
+an 8-entry `_NOT_TRUST_EVIDENCE` dict with prose reasons. Cards give it a
+substrate to write a policy against, and two of the wins are unconditional:
 
 - The 48 non-citation hosts stop generating obligations entirely.
-- IMDb and ISFDB answer themselves as `custody: community`. No paragraph needed.
 - `www.w3.org` becomes structurally impossible: it was never a card, and if it
-  were one it would be `roles: [namespace]`.
-- The override list stays, and stays short — that is where a genuinely contested
-  call lives, visibly, instead of being spread across a 50-entry tuple.
+  were one it would be `roles: ["namespace"]`.
+
+### 4.1 What the policy is NOT — a correction
+
+An earlier revision of this section proposed:
+
+> ~~citable if `citation` in `roles` and `custody` in `{institutional}`~~
+
+**That is wrong, and measurably so.** Run against willow-mcp's real list, it
+flips **11 of the 12** `custody: community` hosts from trusted to untrusted:
+
+    en.wikipedia.org · www.wikidata.org · musicbrainz.org · openlibrary.org
+    www.openstreetmap.org · nominatim.openstreetmap.org · www.inaturalist.org
+    api.inaturalist.org · world.openfoodfacts.org · www.imdb.com · www.isfdb.org
+
+Only `www.thesportsdb.com` is excluded there today, and its stated reason is the
+*demo tier*, not its editorial model.
+
+So **`custody` does not predict citability, and never did.** The same draft
+argued IMDb should be excluded because "an entry any account can revise cannot
+be cited as a record" — a rule the list has never applied, and one that would
+have required dropping Wikipedia, Wikidata, MusicBrainz and OpenStreetMap
+alongside it. willow-mcp's own comment states the operative test plainly: IMDb
+is *"community-fed but editorially vetted and the de-facto filmography
+authority — the same standing wikipedia.org and musicbrainz.org already have
+here."*
+
+What the list actually distinguishes is **system-of-record versus wrapper**: it
+trusts the reference work of a domain whoever may edit it (Wikipedia, MusicBrainz,
+OSM, IMDb, ISFDb), and refuses wrappers over someone else's record (`gutendex`,
+`omdbapi`, `ghoapi`) and utilities that are not authorities at all
+(`frankfurter`, `open-meteo`). That axis is much closer to `roles`' query /
+citation split and to `custody: aggregator` than to `community`.
+
+`custody` stays in the schema — it is a true fact about a host and a consumer
+may well want it. It is simply not the field a trust policy keys on, and this
+document should not have implied otherwise before anyone measured it.
 
 **willow-mcp does not lose authority.** It gains a substrate and keeps the
-verdict. The bridge test survives, narrowed: *every card with `citation` in its
-roles must be decided here.*
+verdict — including the verdict about which fields its policy reads. The bridge
+test survives, narrowed: *every card with `citation` in its roles must be
+decided there.*
 
 ---
 
