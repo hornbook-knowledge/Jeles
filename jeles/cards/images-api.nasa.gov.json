@@ -1,0 +1,13 @@
+{
+  "host": "images-api.nasa.gov",
+  "roles": [
+    "query"
+  ],
+  "publisher": "NASA",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  }
+}

@@ -21,6 +21,13 @@ Three disciplines, all deterministic, all testable network-free:
    Corroborated → propose a nugget; single-source → propose a *gap* (contested;
    the corpus records that it looked and couldn't yet verify).
 
+   The same bar is applied at the far end of the pipeline by :mod:`jeles.verify`,
+   which asks it of an answer that already exists: not "did a search find two
+   sites for this claim" but "does every claim in this answer have two
+   institutions behind it". Different evidence, so a different independence
+   test; the bar itself, and the domain identity underneath it, are shared from
+   :mod:`jeles._independence` rather than written out twice.
+
 3. **Propose, don't execute.** :func:`react` is pure routing: it calls an
    *injected* ``searcher`` and returns a list of proposed actions. It writes
    nothing — not the corpus, not FRANK. :func:`apply` executes proposals
@@ -38,10 +45,11 @@ with a fake searcher, is fast and offline. That is the same purity seam
 """
 from __future__ import annotations
 
-import re
 from collections.abc import Callable
 from typing import Any
-from urllib.parse import urlparse
+
+from .._independence import MIN_INDEPENDENT_SOURCES
+from .._independence import registrable_domain as _domain
 
 # A searcher is any ``(query) -> [ {title, url, snippet}, ... ]``. The host wires
 # one (e.g. an adapter over a web-search tool); the reaction never imports one.
@@ -50,19 +58,12 @@ Searcher = Callable[[str], list[dict[str, Any]]]
 # The independent-SOURCE rule: a conflict is corroborated only by >= this many
 # *distinct registrable domains*. Two pages on one site are one source, not two.
 #
-# Note the name: this is a weaker bar than the constitution's *Independent
-# Witness* (CONSTITUTION.md §), which requires demonstrated failure-mode
-# divergence — two distinct domains can still be one actor who bought both. This
-# is a cheap prior-art heuristic, not the witness standard; kept deliberately
-# distinct so the reaction doesn't borrow authority it hasn't earned.
-DEFAULT_MIN_SOURCES = 2
-
-# Two-label public suffixes: without these, foo.co.uk and bar.co.uk both reduce
-# to "co.uk" and read as one source. Small, common set — not a full PSL.
-_TWO_LABEL_SUFFIXES = frozenset({
-    "co.uk", "org.uk", "ac.uk", "gov.uk", "co.jp", "or.jp", "ne.jp",
-    "com.au", "net.au", "org.au", "co.nz", "com.br", "co.in", "co.za",
-})
+# The number, the domain identity behind it, and the reason it is not the
+# constitution's Independent Witness all live in :mod:`jeles._independence` now,
+# because `jeles.verify` asks the same question of different evidence and a
+# second copy of these rules would have been a second set of the same bugs. This
+# name stays as the reaction's own vocabulary for the bar it applies.
+DEFAULT_MIN_SOURCES = MIN_INDEPENDENT_SOURCES
 
 # The scan's machine witness. A corroborated finding is not a human-signed
 # nugget; this tag says exactly what verified it — two independent sources —
@@ -111,42 +112,6 @@ _NON_WITNESS = frozenset({
     "bit.ly", "t.co", "tinyurl.com", "goo.gl", "ow.ly", "buff.ly",
     "is.gd", "rebrand.ly", "cutt.ly", "shorturl.at", "lnkd.in", "dlvr.it",
 })
-
-_IPV4_RE = re.compile(r"^\d{1,3}(\.\d{1,3}){3}$")
-
-
-def _domain(url: str) -> str:
-    """Registrable-ish domain of a URL, for the independence test.
-
-    Coarse on purpose: strip scheme, ``www.``, and path; keep the last two
-    labels (``foo.github.io`` -> ``github.io``). Good enough to tell "two
-    different sites" from "two pages on one site," which is all the two-source
-    rule needs. It never raises — an unparseable URL yields ``""``.
-    """
-    try:
-        host = urlparse(url if "://" in url else f"//{url}", scheme="https").netloc.lower()
-    except Exception:
-        return ""
-    host = host.split("@")[-1].split(":")[0]
-    if host.startswith("www."):
-        host = host[4:]
-    labels = [x for x in host.split(".") if x]
-    # A usable source has a dotted domain; a dotless/garbage host is no source.
-    if len(labels) < 2:
-        return ""
-    # A bare IP is not a citable prior-art source, and taking its last two
-    # labels is actively wrong: 93.184.216.34 and 93.184.216.99 became two
-    # "independent" sources, while 1.2.3.4 and 9.9.3.4 both collapsed to "3.4".
-    # Neither reading is defensible, so an address literal witnesses nothing.
-    if _IPV4_RE.match(host):
-        return ""
-    last2 = ".".join(labels[-2:])
-    # Keep three labels when the last two are a known two-label public suffix,
-    # so foo.co.uk and bar.co.uk stay distinct sources.
-    if last2 in _TWO_LABEL_SUFFIXES and len(labels) >= 3:
-        return ".".join(labels[-3:])
-    return last2
-
 
 def _witnesses(hits: list[dict[str, Any]], claim: str) -> list[dict[str, Any]]:
     """The hits that may actually count toward corroboration.

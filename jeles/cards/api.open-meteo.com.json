@@ -1,0 +1,9 @@
+{
+  "host": "api.open-meteo.com",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Open-Meteo",
+  "custody": "commercial",
+  "status": "live"
+}

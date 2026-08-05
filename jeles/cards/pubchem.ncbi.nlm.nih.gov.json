@@ -1,0 +1,14 @@
+{
+  "host": "pubchem.ncbi.nlm.nih.gov",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "NCBI, U.S. National Library of Medicine",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  }
+}

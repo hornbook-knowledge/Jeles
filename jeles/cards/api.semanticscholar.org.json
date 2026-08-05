@@ -1,0 +1,9 @@
+{
+  "host": "api.semanticscholar.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Allen Institute for AI",
+  "custody": "aggregator",
+  "status": "live"
+}

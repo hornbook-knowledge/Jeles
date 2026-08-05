@@ -1,0 +1,13 @@
+{
+  "host": "inspirehep.net",
+  "roles": [
+    "query"
+  ],
+  "publisher": "CERN and partner laboratories",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "host": "api.si.edu",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Smithsonian Institution",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  }
+}

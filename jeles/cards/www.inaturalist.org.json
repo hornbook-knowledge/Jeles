@@ -1,0 +1,9 @@
+{
+  "host": "www.inaturalist.org",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "iNaturalist",
+  "custody": "community",
+  "status": "live"
+}

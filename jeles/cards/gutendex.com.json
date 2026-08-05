@@ -1,0 +1,10 @@
+{
+  "host": "gutendex.com",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Gutendex",
+  "custody": "aggregator",
+  "status": "live",
+  "notes": "A third-party API over Project Gutenberg's catalogue, not the publisher. Its results point at gutenberg.org."
+}

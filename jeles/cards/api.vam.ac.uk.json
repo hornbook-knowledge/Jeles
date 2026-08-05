@@ -1,0 +1,13 @@
+{
+  "host": "api.vam.ac.uk",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Victoria and Albert Museum",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "GB"
+  }
+}

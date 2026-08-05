@@ -1,0 +1,10 @@
+{
+  "host": "musicbrainz.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "MetaBrainz Foundation",
+  "custody": "community",
+  "status": "live"
+}

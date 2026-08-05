@@ -1,0 +1,13 @@
+{
+  "host": "collections.vam.ac.uk",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "Victoria and Albert Museum",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "GB"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "host": "openaccess-api.clevelandart.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "The Cleveland Museum of Art",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  }
+}

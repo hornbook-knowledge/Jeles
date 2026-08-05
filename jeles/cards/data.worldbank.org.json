@@ -1,0 +1,13 @@
+{
+  "host": "data.worldbank.org",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "The World Bank",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  }
+}

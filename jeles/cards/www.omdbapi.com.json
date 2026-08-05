@@ -1,0 +1,10 @@
+{
+  "host": "www.omdbapi.com",
+  "roles": [
+    "query"
+  ],
+  "publisher": "OMDb API",
+  "custody": "commercial",
+  "status": "live",
+  "notes": "A third-party JSON API over IMDb, not a rights-holder or an archive."
+}

@@ -1,0 +1,10 @@
+{
+  "host": "api.inaturalist.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "iNaturalist (California Academy of Sciences / National Geographic)",
+  "custody": "community",
+  "status": "live",
+  "notes": "Observations are user-submitted; identifications are community-verified."
+}

@@ -1,0 +1,10 @@
+{
+  "host": "api.frankfurter.app",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Frankfurter",
+  "custody": "commercial",
+  "status": "live",
+  "notes": "Exchange-rate API. A rate quoted here is not a citable record."
+}

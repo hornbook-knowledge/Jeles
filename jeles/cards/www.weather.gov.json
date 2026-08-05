@@ -1,0 +1,13 @@
+{
+  "host": "www.weather.gov",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "NOAA National Weather Service",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  }
+}

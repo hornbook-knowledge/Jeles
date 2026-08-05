@@ -1,0 +1,9 @@
+{
+  "host": "api.gdeltproject.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "The GDELT Project",
+  "custody": "aggregator",
+  "status": "live"
+}

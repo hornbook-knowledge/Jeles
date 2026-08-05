@@ -1,0 +1,14 @@
+{
+  "host": "api.base-search.net",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Bielefeld University Library",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "DE"
+  },
+  "notes": "BASE indexes repositories; custody of each record stays with the repository."
+}

@@ -1,0 +1,10 @@
+{
+  "host": "world.openfoodfacts.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Open Food Facts",
+  "custody": "community",
+  "status": "live"
+}

@@ -1,0 +1,13 @@
+{
+  "host": "api.europeana.eu",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Europeana Foundation",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "regional-bloc",
+    "country": null
+  }
+}

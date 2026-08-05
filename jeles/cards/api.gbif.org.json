@@ -1,0 +1,13 @@
+{
+  "host": "api.gbif.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Global Biodiversity Information Facility",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  }
+}

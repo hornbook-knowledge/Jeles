@@ -1,0 +1,10 @@
+{
+  "host": "www.wikidata.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Wikimedia Foundation",
+  "custody": "community",
+  "status": "live"
+}

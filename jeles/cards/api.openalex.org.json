@@ -1,0 +1,9 @@
+{
+  "host": "api.openalex.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "OurResearch",
+  "custody": "aggregator",
+  "status": "live"
+}

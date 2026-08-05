@@ -1,0 +1,13 @@
+{
+  "host": "doaj.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Directory of Open Access Journals",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "international-ngo",
+    "country": null
+  }
+}

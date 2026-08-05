@@ -1,0 +1,14 @@
+{
+  "host": "api.crossref.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Crossref",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "international-ngo",
+    "country": null
+  },
+  "notes": "Registration agency: records are deposited by publishers, not authored here."
+}

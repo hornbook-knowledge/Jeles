@@ -1,0 +1,11 @@
+{
+  "host": "www.biodiversitylibrary.org",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Biodiversity Heritage Library",
+  "custody": "institutional",
+  "status": "live",
+  "notes": "A consortium of natural-history libraries."
+}

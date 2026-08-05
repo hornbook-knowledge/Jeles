@@ -1,0 +1,10 @@
+{
+  "host": "patents.google.com",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "Google LLC",
+  "custody": "aggregator",
+  "status": "live",
+  "notes": "Republishes patent-office records. Custody stays with the issuing office."
+}

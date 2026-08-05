@@ -1,0 +1,13 @@
+{
+  "host": "api.datacite.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "DataCite",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "international-ngo",
+    "country": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "host": "api.dp.la",
+  "roles": [
+    "query"
+  ],
+  "publisher": "Digital Public Library of America",
+  "custody": "aggregator",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "host": "europepmc.org",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "EMBL-EBI",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "multilateral",
+    "country": null
+  }
+}

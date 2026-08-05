@@ -1,0 +1,15 @@
+{
+  "host": "plato.stanford.edu",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Stanford University",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "notes": "Peer-reviewed and editorially maintained — among the strongest institutional custody in this set."
+}

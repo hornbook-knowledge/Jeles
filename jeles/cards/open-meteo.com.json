@@ -1,0 +1,10 @@
+{
+  "host": "open-meteo.com",
+  "roles": [
+    "citation",
+    "query"
+  ],
+  "publisher": "Open-Meteo",
+  "custody": "commercial",
+  "status": "live"
+}

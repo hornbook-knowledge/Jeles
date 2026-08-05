@@ -1,0 +1,13 @@
+{
+  "host": "vault.fbi.gov",
+  "roles": [
+    "query"
+  ],
+  "publisher": "U.S. Federal Bureau of Investigation",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  }
+}

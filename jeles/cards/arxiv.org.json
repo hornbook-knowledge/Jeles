@@ -1,0 +1,14 @@
+{
+  "host": "arxiv.org",
+  "roles": [
+    "citation"
+  ],
+  "publisher": "Cornell University",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "notes": "Moderated, not peer-reviewed. Institutional custody of the record; the record is a preprint."
+}

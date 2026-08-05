@@ -1,0 +1,14 @@
+{
+  "host": "search.patentsview.org",
+  "roles": [
+    "query"
+  ],
+  "publisher": "USPTO PatentsView",
+  "custody": "institutional",
+  "status": "retired",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "notes": "DNS-dead since 2026 (willow-2.0 #648); the `patentsview` source is opt_in because of it. Retired here rather than deleted — patents.google.com is the half that still answers."
+}

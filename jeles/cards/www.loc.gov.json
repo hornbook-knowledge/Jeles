@@ -1,0 +1,15 @@
+{
+  "host": "www.loc.gov",
+  "roles": [
+    "namespace",
+    "query"
+  ],
+  "publisher": "Library of Congress",
+  "custody": "institutional",
+  "status": "live",
+  "jurisdiction": {
+    "scope": "national",
+    "country": "US"
+  },
+  "notes": "Also appears as the SRW/Zing XML namespace URI in `gallica` and `ndl`, which is a schema identifier and not a network relationship — hence the `namespace` role. See host-cards.md §1.1."
+}
