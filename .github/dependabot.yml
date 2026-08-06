@@ -1,11 +1,26 @@
 version: 2
 updates:
+  # `dependencies = []` here, deliberately — jeles is stdlib-only. A pip bump
+  # would touch pyproject.toml's dev extras, which are packaged metadata, so
+  # dependabot's default `build(deps):` stays correct for this ecosystem.
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
 
+  # Action versions are NOT packaged. Dependabot's default prefix is
+  # `build(deps):`, and `build` is release-cutting in release-please-config.json
+  # — so a workflow-only bump arrives claiming a release that contains nothing
+  # installable, and `pr-title.yml`'s packaged-files guard fails it. That guard
+  # is right; the prefix was wrong. `ci` is hidden, so these ride along with the
+  # next real release instead of cutting an empty one of their own.
+  #
+  # Carried from willow-mcp, which hit this on its actions/checkout bump. This
+  # repo has the identical pr-title.yml and the identical hidden/releasing type
+  # split, so it was one github-actions update away from the same red.
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    commit-message:
+      prefix: "ci"
