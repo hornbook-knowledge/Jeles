@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Fixed
 
-* **willow_mcp_client:** stop discarding failed gap forwards ([2667d74](https://github.com/rudi193-cmd/Jeles/commit/2667d7486ed70d8a4fc4fc1ed21c9b3f385ef838))
 * **willow_mcp_client:** stop discarding failed gap forwards ([1dbd984](https://github.com/rudi193-cmd/Jeles/commit/1dbd98421f5f82960b7e95f10958e65728812d91))
 
 ## [0.7.0](https://github.com/rudi193-cmd/Jeles/compare/v0.6.1...v0.7.0) (2026-08-05)
