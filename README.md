@@ -150,7 +150,7 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `WILLOW_STORE_ROOT` | `~/.willow/store` | Root under which `<collection>/store.db` lives. |
 | `JELES_CORPUS_COLLECTION` | `ask_jeles_corpus` | Nugget collection name (back-compat with Ask Jeles). |
 | `JELES_CORPUS_GAPS_COLLECTION` | `ask_jeles_corpus_gaps` | Local gap-log collection name. |
-| `JELES_CORPUS_APP_ID` | `ask-jeles` | `app_id` used when forwarding gaps to willow-mcp. |
+| `JELES_CORPUS_APP_ID` | `ask-jeles` | `app_id` used when forwarding gaps to willow-mcp. **Set this to `jeles` on a willow-mcp fleet** — see below. |
 | `JELES_CORPUS_TOPIC` | `ask-jeles-corpus` | Backlog topic gaps are forwarded under. |
 | `WILLOW_MCP_CMD` | — | Explicit command to launch willow-mcp (else `willow-mcp` on PATH, else `python -m willow_mcp`). |
 | `ASK_JELES_USE_WILLOW_MCP` | `1` | Set to `0`/`false`/`no` to disable fleet gap-forwarding entirely. |
@@ -162,6 +162,34 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `JELES_SEARCH_BACKEND` | `ddg` | Open-web backend: `searxng`, `brave`, `tavily` or `ddg`. Only `searxng` may reach a private address, because only it is an address the operator chose. |
 The Ask Jeles-flavored defaults are preserved so an existing store and its
 already-forwarded fleet backlog keep resolving after the extraction.
+
+### Forwarding gaps to a willow-mcp fleet
+
+Two settings decide whether `forward_gap()` lands anything, and until recently
+neither said so when it was wrong:
+
+- **`JELES_CORPUS_APP_ID`.** willow-mcp authorizes every tool call against
+  `$WILLOW_HOME/mcp_apps/<app_id>/manifest.json`, and the back-compat default
+  `ask-jeles` is not a seat it seeds — so out of the box a forward is denied
+  with `no manifest for 'ask-jeles'`. Set it to `jeles`, the librarian seat
+  willow-mcp does seed (and which carries `gap_write` as of willow-mcp 2.4).
+  The *topic* is independent: gaps still land under `ask-jeles-corpus` unless
+  `JELES_CORPUS_TOPIC` says otherwise, so an existing backlog keys the same.
+- **`WILLOW_STORE_ROOT`.** Unset, this package writes under `~/.willow/store`
+  while willow-mcp serves `$WILLOW_HOME/store` — both work perfectly, on two
+  different databases, with no error on either side.
+
+`willow_mcp_client.forward_status()` reports which seat is in use, how many
+forwards have landed, and why the last one failed. It exists because the
+failures used to be unobservable: `forward_gap()` caught everything, logged at
+DEBUG, and dropped it, so a misconfigured fleet looked exactly like a working
+one. It still never raises and never blocks — a host asking a question must not
+fail because a fleet backlog is unreachable — it just no longer stays quiet
+about it.
+
+To stand this package up against real willow-mcp and nestor checkouts in one
+command (one venv, one store, one gate, then six seam checks), use willow-mcp's
+`scripts/fleet-standup.sh`.
 
 ## Tests
 
