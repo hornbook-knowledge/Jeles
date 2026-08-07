@@ -50,6 +50,9 @@ def _reset_client_state():
         wmc._mcp_ready = False
         wmc._mcp_error = None
         wmc._last_attempt_at = None
+        wmc._last_forward_error = None
+        wmc._forward_ok = 0
+        wmc._forward_failed = 0
 
     _clear()
     yield
@@ -346,3 +349,80 @@ def test_shutdown_is_safe_after_the_session_ended(fake_willow):
     assert wmc.ensure_started(timeout=3) is True
     fake_willow.kill()
     wmc.shutdown()  # must not raise on a loop that is already closed
+
+
+# ── forward_status: failures are recorded, not discarded ─────────────────────
+#
+# forward_gap() swallowed every failure into a DEBUG line, so the most common
+# one in practice — willow-mcp's gate denying the call because `ask-jeles` has
+# no manifest, or the seat has no gap_write — was indistinguishable from a
+# successful forward at every surface a caller could reach. It stays
+# non-raising; it no longer stays silent.
+
+def test_forward_status_records_a_failed_forward(no_willow_mcp):
+    wmc.forward_gap("Which seat is this host forwarding as?")
+    assert _wait_until(lambda: wmc.last_forward_error() is not None), \
+        "a failed forward left no trace"
+
+    status = wmc.forward_status()
+    assert status["failed"] == 1
+    assert status["forwarded"] == 0
+    assert status["last_error"]
+    assert status["app_id"] == wmc.APP_ID
+
+
+def test_forward_status_records_a_successful_forward(monkeypatch):
+    calls = []
+    monkeypatch.setattr(wmc, "call_tool",
+                        lambda name, inputs, **kw: calls.append((name, inputs)))
+
+    wmc.forward_gap("Did this one land?", topic="t")
+    assert _wait_until(lambda: wmc.forward_status()["forwarded"] == 1)
+    assert wmc.last_forward_error() is None
+    assert calls == [("gap_log", {"topic": "t", "question": "Did this one land?"})]
+
+
+def test_a_recovered_forward_clears_the_previous_error(monkeypatch):
+    outcomes = iter([RuntimeError("gate denied: no manifest for 'ask-jeles'"), None])
+
+    def flaky(name, inputs, **kw):
+        exc = next(outcomes)
+        if exc:
+            raise exc
+
+    monkeypatch.setattr(wmc, "call_tool", flaky)
+
+    wmc.forward_gap("first")
+    assert _wait_until(lambda: wmc.last_forward_error() is not None)
+    assert "no manifest" in wmc.last_forward_error()
+
+    wmc.forward_gap("second")
+    assert _wait_until(lambda: wmc.forward_status()["forwarded"] == 1)
+    assert wmc.last_forward_error() is None, \
+        "a later success must not leave a stale error on the status"
+
+
+def test_forward_gap_still_never_raises_into_its_caller(no_willow_mcp):
+    """The whole point of the module: a host asking a question must not fail
+    because a fleet backlog is unreachable. Recording the failure must not
+    have changed that."""
+    before = time.monotonic()
+    wmc.forward_gap("Does recording a failure make this blocking?")
+    assert time.monotonic() - before < 0.5
+    assert _wait_until(lambda: wmc.forward_status()["failed"] == 1)
+
+
+def test_repeated_identical_failures_warn_once(no_willow_mcp, caplog):
+    """A willow-mcp that is down for an hour must not write one WARNING per
+    question asked — but a *changed* failure is news and warns again."""
+    import logging
+
+    with caplog.at_level(logging.DEBUG, logger="jeles.willow_mcp"):
+        wmc._record_forward("gate denied")
+        wmc._record_forward("gate denied")
+        wmc._record_forward("connection refused")
+
+    warnings = [r for r in caplog.records if r.levelno == logging.WARNING]
+    assert len(warnings) == 2
+    assert "gate denied" in warnings[0].message
+    assert "connection refused" in warnings[1].message
