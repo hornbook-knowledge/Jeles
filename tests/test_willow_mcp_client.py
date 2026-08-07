@@ -11,8 +11,10 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import json
 import os
 import sys
+import threading
 import time
 import types
 
@@ -426,3 +428,73 @@ def test_repeated_identical_failures_warn_once(no_willow_mcp, caplog):
     assert len(warnings) == 2
     assert "gate denied" in warnings[0].message
     assert "connection refused" in warnings[1].message
+
+
+# ── an in-band {"error": ...} is a failure, not a payload ───────────────────
+#
+# willow-mcp reports a gate denial as a SUCCESSFUL MCP call whose payload is
+# {"error": "gate denied: ..."} — isError is not set. Checking isError alone
+# therefore counted the single most common forwarding failure as a forward that
+# landed. Found by a cross-repo seam check reporting "no error reported" beside
+# a gate denial in the server's own log.
+
+class _Result:
+    """Minimal stand-in for an MCP CallToolResult."""
+
+    def __init__(self, text, is_error=False):
+        self.isError = is_error
+        self.content = [types.SimpleNamespace(text=text)]
+
+
+def test_gate_denial_in_the_payload_raises():
+    denial = ("gate denied: 'jeles' not permitted for 'gap_log'. Ensure a manifest "
+              "exists at $WILLOW_HOME/mcp_apps/jeles/manifest.json")
+    with pytest.raises(RuntimeError, match="not permitted for 'gap_log'"):
+        wmc._parse_tool_payload(_Result(json.dumps({"error": denial})))
+
+
+def test_transport_level_is_error_still_raises():
+    with pytest.raises(RuntimeError, match="boom"):
+        wmc._parse_tool_payload(_Result("boom", is_error=True))
+
+
+def test_a_normal_payload_is_returned_unchanged():
+    ok = {"id": "abc123", "status": "open", "asked_count": 1}
+    assert wmc._parse_tool_payload(_Result(json.dumps(ok))) == ok
+
+
+def test_an_empty_error_is_not_a_failure():
+    """Only a truthy `error` means refused. `{"error": ""}` is a tool that
+    answered, and a payload is not a failure for carrying the key."""
+    payload = {"error": "", "id": "abc123"}
+    assert wmc._parse_tool_payload(_Result(json.dumps(payload))) == payload
+
+
+def test_a_string_payload_mentioning_error_is_not_a_failure():
+    assert wmc._parse_tool_payload(_Result("no error occurred")) == "no error occurred"
+
+
+def test_a_denied_forward_reaches_forward_status(monkeypatch):
+    """The whole point: the denial has to arrive where an operator can see it,
+    through the real parse path rather than a stubbed call_tool."""
+    denial = "gate denied: 'ask-jeles' not permitted for 'gap_log'"
+
+    class _Session:
+        async def call_tool(self, name, payload):
+            return _Result(json.dumps({"error": denial}))
+
+    monkeypatch.setattr(wmc, "ensure_started", lambda *a, **k: True)
+    monkeypatch.setattr(wmc, "_mcp_session", _Session())
+    loop = asyncio.new_event_loop()
+    threading.Thread(target=loop.run_forever, daemon=True).start()
+    monkeypatch.setattr(wmc, "_mcp_loop", loop)
+    try:
+        wmc.forward_gap("what does the fleet not know?")
+        assert _wait_until(lambda: wmc.last_forward_error() is not None), \
+            "a gate denial was recorded as a successful forward"
+        status = wmc.forward_status()
+        assert status["failed"] == 1
+        assert status["forwarded"] == 0
+        assert "not permitted" in status["last_error"]
+    finally:
+        loop.call_soon_threadsafe(loop.stop)

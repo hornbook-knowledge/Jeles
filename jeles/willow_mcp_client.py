@@ -276,9 +276,37 @@ def ensure_started(timeout: float = 5) -> bool:
 
 
 def _parse_tool_payload(result: Any) -> Any:
+    """The tool's return value, or a raise if the call did not succeed.
+
+    Two different things can mean failure, and only one of them looks like one:
+
+    ``isError``          transport/protocol level — the tool blew up.
+    ``{"error": ...}``   in-band — the call completed and the tool is telling
+                         you it refused.
+
+    willow-mcp reports a **gate denial** the second way. It is a successful MCP
+    call carrying ``{"error": "gate denied: ... not permitted for 'gap_log'"}``,
+    so checking ``isError`` alone treats the single most common forwarding
+    failure as a forward that landed: ``forward_status()`` counted it under
+    ``forwarded``, ``last_error`` stayed ``None``, and the gap was never
+    written. That is the exact silence this module's status API exists to end,
+    reappearing one layer down — found by a cross-repo seam check reporting
+    "no error reported" beside a gate denial in the server's own log.
+    """
     if getattr(result, "isError", False):
         parts = [getattr(c, "text", str(c)) for c in (getattr(result, "content", None) or [])]
         raise RuntimeError("; ".join(parts) or "willow-mcp tool error")
+    payload = _decode_content(result)
+    # Only a dict, and only a truthy `error`: willow-mcp's convention is that
+    # this key is present exactly when the call did not do what was asked. A
+    # string payload that happens to contain the word is not a failure, and
+    # `{"error": ""}` is not one either.
+    if isinstance(payload, dict) and payload.get("error"):
+        raise RuntimeError(str(payload["error"]))
+    return payload
+
+
+def _decode_content(result: Any) -> Any:
     for block in getattr(result, "content", None) or []:
         text = getattr(block, "text", None)
         if not text:
