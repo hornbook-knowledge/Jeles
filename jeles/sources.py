@@ -280,6 +280,29 @@ def _text(value) -> str:
 
 def _result(title: str, url: str, source: str, institution: str,
             snippet: str = "", date: str = "", rid: str = "") -> dict:
+    """Shape one hit into this module's citation dict.
+
+    ``source`` here is the **registry key** — the adapter's own slug, e.g.
+    ``"openalex"`` or ``"pubmed"`` (see ``SOURCES``/the module docstring's
+    ``search_*`` list) — never the institution. ``institution`` is the
+    per-record institution string each adapter assembles, which is the field
+    that answers "who backs this" and can vary hit-to-hit even within one
+    call to a single adapter (``search_openalex`` pulls a different author
+    institution per paper).
+
+    This is a *different* precedence from ``jeles.verify._identity``, which
+    reads a citation's ``source`` field first and treats ``institution`` only
+    as a fallback — correct for ``jeles.institutional``'s citations, where
+    ``source`` genuinely *is* the institution, but wrong for a ``_result()``
+    record passed through unchanged: every registry adapter fills ``source``
+    with its own constant key, so ``institution`` — the one field that
+    actually varies per record — is never read, and corroboration counting
+    ends up counting *adapters*, not institutions. A host that hands
+    ``search()``'s results to ``verify.verify_claims`` must re-label each
+    citation first, e.g. ``{**hit, "source": hit["institution"] or
+    hit["source"]}``, so the institution — not the registry key — is what
+    ``_identity`` compares.
+    """
     return {
         "title": _text(title).strip(),
         "url": url,

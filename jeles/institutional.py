@@ -153,6 +153,10 @@ def to_hit(raw: dict[str, Any], idx: int = 0) -> dict[str, Any]:
         "verified_at": "",
         "extra_sources": [],
         "tags": [t for t in [raw.get("source")] if t],
+        # Kept in the merge contract with `corpus.to_search_hit` — see the
+        # comment above `_KIND_RANK` in corpus.py. An institutional record
+        # never carries evidence of this kind, so it is always empty here.
+        "evidence": {},
         "n": idx,
     }
 

@@ -51,6 +51,24 @@ builder in this package numbers from **zero** (``enumerate(...)`` in
 ``corpus_server._web_hit``'s), so a block a host renders as "1. …, 2. …"
 attributes every claim to the institution one slot over. Both sides are
 well-formed and the report looks entirely normal. Render the block from ``n``.
+
+**The labelling hazard, which nothing here can detect either.** ``_identity``
+reads a citation's ``source`` field first and falls back to ``institution``
+only when ``source`` is empty. That is exactly right for
+``jeles.institutional``'s citations, where ``source`` *is* the institution
+name. It is exactly wrong for ``jeles.sources``' raw ``_result()`` records:
+there, ``source`` is the **registry key** (``"openalex"``, ``"pubmed"``, …,
+a constant per adapter) and ``institution`` is the per-record institution —
+the field that actually varies and the one this module exists to count. Feed
+those records into :func:`verify_claims` unchanged and every claim they back
+gets attributed to *adapters*, not institutions: two institutions reached
+through one adapter read as one source (under-counted), and one institution
+reached through two adapters reads as two (over-counted — the worse
+direction, since it manufactures a false ``corroborated``). A host sitting
+between ``jeles.sources.search`` and this module must re-label each citation
+first — ``{**hit, "source": hit["institution"] or hit["source"]}`` — before
+calling :func:`verify_claims`. See ``sources._result``'s docstring for the
+other half of this.
 """
 from __future__ import annotations
 
@@ -169,6 +187,17 @@ def _identity(citation: dict[str, Any]) -> tuple[str, str]:
     the strongest available denial. Empty institution strings are not
     hypothetical here — ``tests/test_sources.py`` pins that an absent
     institution stays empty rather than being invented.
+
+    This precedence — ``source`` over ``institution`` — is a contract, pinned by
+    every citation in this module's tests (``{"n": 1, "source": "NASA"}``: the
+    label *is* the institution there). It matches ``jeles.institutional``'s
+    citations for the same reason. It does **not** match a raw
+    ``jeles.sources._result()`` record, whose ``source`` is a constant registry
+    key rather than an institution — see the module docstring's "labelling
+    hazard" and ``sources._result``'s docstring. Inverting this precedence to
+    accommodate that other shape would break every citation this module already
+    documents itself against; the fix belongs on the caller, re-labelling
+    ``sources.py`` output before it reaches here.
     """
     label = str(citation.get("source") or citation.get("institution") or "").strip()
     key = _fold(label)
@@ -219,6 +248,15 @@ def verify_claims(
     or "institution": str, "url": str, …}`` — this package's standard citation
     shape. ``n`` maps a supporting source number back to an institution; see the
     module docstring on why that numbering must match the block.
+
+    ``source``, if present, is read as the institution name — see
+    :func:`_identity`. That holds for ``jeles.institutional``'s citations
+    as-is. It does **not** hold for a ``jeles.sources._result()`` record passed
+    through unchanged, whose ``source`` is a registry key, not an institution:
+    a host built on ``jeles.sources.search`` must re-label each citation —
+    ``{**hit, "source": hit["institution"] or hit["source"]}`` — before calling
+    this function, or corroboration ends up counted over adapters instead of
+    institutions. See the module docstring's "labelling hazard".
 
     ``llm_respond`` is ``callable(system, history, user) -> str``. It is called
     once. Anything it raises is caught and reported in the summary's ``error``
