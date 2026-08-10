@@ -106,6 +106,43 @@ def test_to_search_hit_shape(corpus):
     assert hit["url"] == "safe-library/themes/grove.json"
 
 
+def test_evidence_is_stored_and_surfaced(corpus):
+    """A verification done outside jeles — the strongest form of it — must not
+    be flattened to a bare 'asserted' on the way in. `evidence` carries it
+    through untouched, for a reader who does hold the key to check."""
+    seal = {"mechanism": "seal_sig", "sig": "deadbeef", "chain": "nestor",
+            "signer": "a-human-who-read-it"}
+    rid = corpus.put_nugget(
+        "Is X true?", "Yes.", ["s"], "the operator",
+        verification_kind="asserted", evidence=seal,
+    )["id"]
+
+    nugget = corpus.get_nugget(rid)
+    assert nugget["evidence"] == seal
+
+    hit = corpus.to_search_hit(nugget)
+    assert hit["evidence"] == seal
+    # jeles never checks it — it is asserted/unverified either way.
+    assert hit["confidence"] == "unverified"
+
+
+def test_a_nugget_without_evidence_is_unchanged(corpus):
+    """Optional and backward compatible: a write that never mentions evidence
+    must behave exactly as it did before this field existed."""
+    result = _seed_grove(corpus)
+    nugget = corpus.get_nugget(result["id"])
+    assert "evidence" not in nugget
+
+    hit = corpus.to_search_hit(nugget)
+    assert hit["evidence"] == {}
+
+
+def test_evidence_must_be_a_dict(corpus):
+    result = corpus.put_nugget("Is X true?", "Yes.", ["s"], "the operator",
+                               evidence="not-a-dict")
+    assert "error" in result and "evidence" in result["error"]
+
+
 def test_list_nuggets_most_recent_first(corpus):
     first = _seed_grove(corpus)
     second = corpus.put_nugget(

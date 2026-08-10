@@ -237,6 +237,10 @@ def _web_hit(hit: dict, idx: int) -> dict:
         "verified_at": "",
         "extra_sources": [],
         "tags": [],
+        # Kept in the merge contract with `corpus.to_search_hit` — see the
+        # comment above `_KIND_RANK` in corpus.py. A page from the open web
+        # never carries evidence of this kind, so it is always empty here.
+        "evidence": {},
         "n": idx,
     }
 

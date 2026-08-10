@@ -370,6 +370,28 @@ def _ask_tokens(text: str) -> list[str]:
 _KIND_RANK = {"asserted": 1, "machine": 2, "human": 3}
 _KIND_STATUS = {"asserted": "asserted", "machine": "corroborated", "human": "verified"}
 
+# `evidence` is where the ladder above grows without a new rung. The three
+# kinds are jeles' own judgments about a write it can see happen; they say
+# nothing about a verification that happened somewhere else and arrived as a
+# claim, the way a write into an "asserted" nugget already can. Without this
+# field the strongest evidence a remote host could offer — an HMAC over the
+# answer, signed under a key jeles will never hold — has nowhere to land, and
+# a nugget that says "asserted, and here is a-human-who-read-it's signature
+# under nestor's chain" is indistinguishable from one that says only
+# "asserted".
+#
+# A dict, not a single `seal_sig` string: the mechanism is deliberately
+# unnamed in the schema. A string field spells one mechanism (HMAC, most
+# likely, from the issue that asked for this) into every store that carries
+# it forever; a dict lets a caller put a signature, a signer, a chain id,
+# a timestamp, or some other scheme entirely under keys of its own choosing,
+# and lets a nugget that predates all of this stay silent rather than carry
+# an empty string. jeles does not interpret any of it — it has no way to
+# check an HMAC whose key belongs to the other side, and checking is not the
+# point. The point is that a reader, including one that cannot verify a
+# single byte, can see that evidence exists and where it claims to come
+# from, and a host that does hold the key can check it itself.
+
 
 def _kind_of(nugget: dict[str, Any]) -> str:
     """The stored kind, defaulting protectively. A nugget written before this
@@ -389,6 +411,7 @@ def put_nugget(
     verified_at: str | None = None,
     verification_kind: str = "human",
     written_by: str | None = None,
+    evidence: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Add or update a nugget. Returns {id, action, verification_kind} or {error}.
 
@@ -409,6 +432,14 @@ def put_nugget(
     every protection here is one ``nugget_id=`` away from being bypassed:
     an asserted write would simply land on top of a human-verified answer,
     keeping its id and its place in every search result.
+
+    ``evidence`` is optional and jeles never checks it — see the comment
+    above ``_KIND_RANK``. It rides alongside ``verification_kind`` rather
+    than replacing it: a nugget can be "asserted" *and* carry a signature
+    jeles cannot check, and the two say different things to a reader who can
+    check it. Omit it and a nugget behaves exactly as it did before this
+    parameter existed — nothing is written, and :func:`to_search_hit` shows
+    an empty ``evidence``.
     """
     question = (question or "").strip()
     answer = (answer or "").strip()
@@ -419,6 +450,8 @@ def put_nugget(
     if kind not in _KIND_RANK:
         return {"error": f"verification_kind must be one of "
                          f"{', '.join(sorted(_KIND_RANK))} (got {verification_kind!r})"}
+    if evidence is not None and not isinstance(evidence, dict):
+        return {"error": f"evidence must be a dict (got {type(evidence).__name__})"}
     record = {
         "question": question,
         "answer": answer,
@@ -431,6 +464,8 @@ def put_nugget(
     }
     if written_by:
         record["written_by"] = str(written_by)
+    if evidence:
+        record["evidence"] = dict(evidence)
 
     outcome: dict[str, Any] = {}
 
@@ -655,6 +690,10 @@ def to_search_hit(nugget: dict[str, Any], idx: int = 0) -> dict[str, Any]:
         "verified_at": nugget.get("verified_at") or "",
         "extra_sources": sources,
         "tags": nugget.get("tags") or [],
+        # Carried, never interpreted — see the comment above `_KIND_RANK`. A
+        # nugget written before this field existed, or with none supplied,
+        # renders {} here: identical to today's shape for every existing hit.
+        "evidence": nugget.get("evidence") or {},
         "n": idx,
     }
 
