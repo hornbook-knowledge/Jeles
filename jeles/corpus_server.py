@@ -256,10 +256,12 @@ def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
     unreachable host, wrong backend). Those are different facts and answering
     "I don't know" on the second is a lie.
 
-    ``shallow: true`` means the backend is the zero-config DuckDuckGo
-    Instant-Answer endpoint, which returns related topics rather than a result
-    page — treat thin results as a configuration problem, not as evidence of
-    absence. Call ``corpus_search_status`` for the details.
+    ``shallow: true`` means the selected backend is a placeholder that cannot
+    corroborate a claim even when it "works" — treat thin results as a
+    configuration problem, not as evidence of absence. (The zero-config
+    ``ddg`` default is a real DuckDuckGo HTML-SERP scrape, not shallow; it can
+    still return ``ok: false`` if its circuit breaker is open after repeated
+    failures.) Call ``corpus_search_status`` for the details.
 
     Every hit is ``confidence: "unverified"``, and stays unverified if you
     record it: ``corpus_put`` writes assertions, not verified nuggets, so a
@@ -287,9 +289,11 @@ def corpus_search_status(app_id: str) -> dict:
     which lane it will take (`local` in-process, or a configured `remote`).
 
     Worth calling before concluding that anything "found nothing": the
-    zero-config web default is `ddg`, which is `configured` because it needs no
-    configuration and `shallow` because it cannot corroborate anything. Both
-    look like silence from the outside.
+    zero-config web default is `ddg`, a DuckDuckGo HTML-SERP scrape that needs
+    no configuration and is `configured` for that reason — but it scrapes an
+    unofficial page DuckDuckGo can block without notice, so it is guarded by a
+    circuit breaker. A silent `[]` after repeated failures and an open breaker
+    look the same from `corpus_search`; call this first to tell them apart.
     """
     status = dict(search_adapter.describe_backend())
     # Additive: the web keys stay at the top level so anything reading this

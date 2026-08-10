@@ -327,8 +327,8 @@ def test_search_status_passes_the_backend_diagnosis_through(monkeypatch):
     monkeypatch.delenv("JELES_SEARCH_BACKEND", raising=False)
     status = corpus_server.corpus_search_status("app")
     assert status["backend"] == "ddg"
-    assert (status["configured"], status["shallow"]) == (True, True), \
-        "the zero-config default looks healthy and cannot corroborate anything"
+    assert (status["configured"], status["shallow"]) == (True, False), \
+        "the zero-config default is a real HTML-SERP scrape, not a placeholder"
 
 
 def test_search_status_makes_no_request(monkeypatch):
@@ -411,7 +411,7 @@ def test_search_status_covers_both_outward_hops(monkeypatch):
     status = corpus_server.corpus_search_status("app")
 
     assert status["backend"] == "ddg"          # unchanged top-level web keys
-    assert status["shallow"] is True
+    assert status["shallow"] is False
     assert status["institutional"]["lane"] == "local"
     assert status["institutional"]["configured"] is True
 
