@@ -8,6 +8,7 @@ Public surface:
     corpus              — pure storage/ranking of verified nuggets + gaps
     corpus_server       — standalone MCP server over the corpus (SDK 2.x)
     verify              — per-claim cross-source corroboration of an answer
+    source_trail        — per-claim verification of raw, uncited prose
     willow_mcp_client   — best-effort gap forwarding to willow-mcp
     load_persona()      — load the canonical Jeles persona JSON
 
