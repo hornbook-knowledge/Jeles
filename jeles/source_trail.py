@@ -1,0 +1,213 @@
+"""source_trail — single-source claim verification against the jeles registry.
+
+Ported from willow-2.0's ``core/source_trail.py`` (b20: SRCTL1). Takes a block
+of prose nobody has cited yet — a draft, a pasted article, a chat message —
+finds its verifiable factual claims, and checks each one against
+:mod:`jeles.sources`, the same source registry :mod:`jeles.institutional`
+fans out to and whose citations :mod:`jeles.verify` corroborates.
+
+Two-tier verification, upstream's own vocabulary:
+
+* **academic** — peer-reviewed and institutional sources (OpenAlex, PubMed,
+  the Library of Congress, …): everything in ``sources.SOURCES`` not listed
+  in :data:`PRESS_SOURCES`.
+* **press** — HTML/API adapters over trade press and specialty databases
+  (Psychiatric Times, the FBI Vault, Ig Nobel, …): corroborating, not
+  peer-reviewed, and marked as such in the output.
+
+**How this differs from `jeles.verify`, which also checks claims against
+sources.** The two sit on opposite sides of the same answer and read
+different inputs — see `jeles.verify`'s own module docstring for the
+`conflict_scan` half of this comparison:
+
+* `verify.verify_claims` runs *after* an answer already carries numbered
+  citations someone else retrieved and tagged with an institution. It counts
+  *distinct institutions* per claim and asks "is this corroborated" — never
+  touching the network itself.
+* `source_trail.verify_text` runs *before* any citation exists. Given raw,
+  uncited prose, it finds the claims itself and, for each one, searches
+  `jeles.sources` live, keeping only the single highest-confidence hit. It
+  asks "is anything backing this claim at all", not "how many institutions
+  agree" — the two-institution bar `verify.py` applies would round a lone FBI
+  Vault or Ig Nobel hit down to nothing, and this module exists for the case
+  where that lone hit is exactly what a reader wants to see.
+
+Claim extraction is an injected `llm_respond` callable —
+``callable(system, history, input_text) -> str`` — the same seam
+`jeles.verify.verify_claims` uses, and for the same reason: it keeps this
+module itself off any model client or network stack. The only network this
+module reaches is indirect, through `verify_claim`/`verify_text` calling
+`jeles.sources.search`, which is already routed through `jeles._egress`;
+nothing in this file opens a socket or an LLM connection directly. Upstream's
+``core/llm_edge.respond`` carried a provider-agnostic router (Ollama → Gemini
+→ Groq → fleet) baked into its import — porting that would have meant either
+vendoring a fleet-specific router or adding an HTTP client dependency this
+package promises not to have, so the call becomes a parameter here instead.
+
+Public API:
+    extract_claims(text, llm_respond) -> list[str]
+    verify_claim(claim, sources=None, limit=2) -> dict
+    verify_text(text, llm_respond, sources=None, limit=2) -> dict
+
+Output schema per claim:
+    {claim, matched, title, url, date, source, tier, confidence, institution}
+"""
+from __future__ import annotations
+
+import logging
+from collections.abc import Callable, Sequence
+from typing import Any
+
+from jeles import sources as _sources
+
+log = logging.getLogger("jeles.source_trail")
+
+__all__ = ["PRESS_SOURCES", "extract_claims", "verify_claim", "verify_text"]
+
+# Registry keys treated as trade press / specialty databases rather than
+# peer-reviewed or institutional sources, for the `tier` field below. Ported
+# verbatim from upstream's `_PRESS_SOURCES` (core/source_trail.py). Not every
+# key here has a live adapter in this package yet — `stat_news` and
+# `medscape` were willow-2.0 scrapers this package never vendored — which is
+# harmless: membership is only ever checked against source IDs
+# `sources.search` actually returned, so an unregistered key simply never
+# matches.
+PRESS_SOURCES: frozenset[str] = frozenset({
+    "psychiatric_times",
+    "stat_news",
+    "medscape",
+    "ig_nobel",
+    "fbi_vault",
+    "isfdb",
+    "omdb",
+})
+
+_EXTRACT_SYSTEM = (
+    "Extract the distinct verifiable factual claims from the passage below. "
+    "A verifiable claim is a specific, checkable statement: a statistic, a named event, "
+    "a study result, a direct quote with attribution, or a stated fact. "
+    "Return one claim per line. No bullets, numbers, or preamble. "
+    "Skip vague opinions, metaphors, and normative judgements. "
+    "Maximum 10 claims. If fewer than 3 verifiable claims exist, return only those."
+)
+
+
+def extract_claims(text: str, llm_respond: Callable[..., str]) -> list[str]:
+    """Extract verifiable factual claims from `text` via the injected model call.
+
+    `text` is truncated to 4000 characters before it reaches the model —
+    upstream's own bound, kept as-is rather than re-derived, since it is
+    sized to one edge-model call rather than to anything this module itself
+    computes.
+
+    Anything `llm_respond` raises is caught and turned into an empty list
+    rather than propagated: a model outage should degrade "no claims found"
+    for the caller, not take down whatever pipeline called this. `verify_text`
+    already treats an empty claim list as its own short-circuit for the same
+    reason a raise would be the wrong shape here — the two cases (nothing to
+    extract; extraction failed) are deliberately indistinguishable from the
+    caller's side, since a corpus of raw prose neither one should ever throw.
+    """
+    try:
+        raw = llm_respond(_EXTRACT_SYSTEM, [], text[:4000])
+        lines = [ln.strip() for ln in raw.strip().splitlines() if ln.strip()]
+        return lines[:10]
+    except Exception as exc:
+        log.warning("extract_claims failed: %s", exc)
+        return []
+
+
+def verify_claim(
+    claim: str,
+    sources: Sequence[str] | None = None,
+    limit: int = 2,
+) -> dict[str, Any]:
+    """Verify a single claim against `jeles.sources`.
+
+    `sources=None` (or an empty sequence — matching upstream's `if sources`
+    check bug-for-bug) auto-routes via `sources.route_sources(claim)`;
+    passing an explicit, non-empty list searches only those.
+
+    Every hit `sources.search` returns is a candidate, and the **single**
+    highest-confidence one wins — this is not a corroboration count (that is
+    `jeles.verify`'s job). Confidence is looked up per source ID from
+    `sources._SOURCE_CONFIDENCE`, the same table `sources.py` itself ranks
+    adapters by, so "highest confidence" here means the same thing it means
+    everywhere else in this package: primary institutions over peer-reviewed
+    aggregators over community-maintained catalogs. An ID absent from that
+    table (a press adapter added without a confidence entry) falls back to
+    0.70 rather than being skipped, matching upstream.
+
+    Returns the output schema dict — `matched=False` and empty fields if
+    nothing in the fan-out backs the claim.
+    """
+    routed = list(sources) if sources else _sources.route_sources(claim)
+
+    raw = _sources.search(claim, routed, limit)
+    hits = raw.get("results", {})
+
+    best: dict[str, Any] | None = None
+    best_conf = 0.0
+
+    for source_id, source_hits in hits.items():
+        conf = _sources._SOURCE_CONFIDENCE.get(source_id, 0.70)
+        for hit in source_hits:
+            if conf > best_conf:
+                best_conf = conf
+                best = {
+                    "claim":       claim,
+                    "matched":     True,
+                    "title":       (hit.get("title") or "").strip(),
+                    "url":         hit.get("url", ""),
+                    "date":        hit.get("date", ""),
+                    "source":      source_id,
+                    "institution": hit.get("institution", source_id),
+                    "tier":        "press" if source_id in PRESS_SOURCES else "academic",
+                    "confidence":  conf,
+                }
+
+    if best:
+        return best
+
+    return {
+        "claim":       claim,
+        "matched":     False,
+        "title":       "",
+        "url":         "",
+        "date":        "",
+        "source":      "",
+        "institution": "",
+        "tier":        "",
+        "confidence":  0.0,
+    }
+
+
+def verify_text(
+    text: str,
+    llm_respond: Callable[..., str],
+    sources: Sequence[str] | None = None,
+    limit: int = 2,
+) -> dict[str, Any]:
+    """Extract factual claims from `text` and verify each against `jeles.sources`.
+
+    Returns::
+
+        {
+          "claims":  [verify_claim(...) result, ...],
+          "total":   int,
+          "matched": int,
+        }
+
+    An empty extraction short-circuits to that shape with an added `"note"`
+    key rather than calling `verify_claim` zero times silently — a caller
+    reading `total == 0` should be able to tell "nothing to check" from "text
+    with no output at all" without inspecting `claims`.
+    """
+    claims = extract_claims(text, llm_respond)
+    if not claims:
+        return {"claims": [], "total": 0, "matched": 0,
+                "note": "No verifiable claims found."}
+
+    results = [verify_claim(c, sources, limit) for c in claims]
+    matched = sum(1 for r in results if r.get("matched"))
+    return {"claims": results, "total": len(results), "matched": matched}

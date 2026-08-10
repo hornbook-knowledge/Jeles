@@ -487,5 +487,5 @@ def test_the_open_web_lane_only_opts_out_for_the_operators_own_backend(monkeypat
     seen.clear()
     monkeypatch.setenv("BRAVE_API_KEY", "k")
     search_adapter._brave("q")
-    search_adapter._ddg("q")
+    search_adapter._ddg_fetch("q")
     assert seen == [False, False], "public APIs get the secure default"
