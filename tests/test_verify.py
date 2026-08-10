@@ -126,6 +126,35 @@ def test_a_citation_with_neither_name_nor_site_backs_without_corroborating():
     assert claim["institutions"] == []
 
 
+def test_source_over_institution_is_a_contract_a_registry_caller_must_honor():
+    """``jeles.sources._result`` puts the *registry key* ("openalex", "arxiv",
+    …) in ``source`` and the per-record institution in ``institution`` — the
+    opposite of what `_identity` reads first. Feeding those records into
+    `verify_claims` unchanged corroborates over adapters, not institutions:
+    two real institutions routed through one adapter collapse into a single
+    source here. This is not a bug in `_identity` — it is the documented
+    precedence every other test in this file pins, and the one
+    `institutional.py` citations actually need. It locks the current, correct
+    behaviour for un-relabelled registry citations, and shows the fix belongs
+    on the caller: re-label `source` to the institution before verifying.
+    """
+    citations = [
+        {"n": 1, "source": "openalex", "institution": "MIT"},
+        {"n": 2, "source": "openalex", "institution": "Stanford"},
+    ]
+    out = verify_claims("ans", "block", citations, _stub("CLAIM: x || SOURCES: 1,2"))
+    claim = out["claims"][0]
+    assert claim["verdict"] == "single_source"
+    assert claim["institutions"] == ["openalex"]
+
+    # What a host must do before calling verify_claims with sources.py output.
+    relabelled = [{**c, "source": c["institution"] or c["source"]} for c in citations]
+    out2 = verify_claims("ans", "block", relabelled, _stub("CLAIM: x || SOURCES: 1,2"))
+    claim2 = out2["claims"][0]
+    assert claim2["verdict"] == "corroborated"
+    assert claim2["institutions"] == ["MIT", "Stanford"]
+
+
 def test_the_label_outranks_the_site_so_one_resolver_is_not_one_institution():
     """18 source adapters build a doi.org citation URL. Leading with the domain
     would fold every publisher behind the resolver into a single source."""
