@@ -20,6 +20,16 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.9.0](https://github.com/rudi193-cmd/Jeles/compare/v0.8.0...v0.9.0) (2026-08-10)
+
+
+### Added
+
+* add courtlistener_verify_citations (legal_citations module) ([9e3ff17](https://github.com/rudi193-cmd/Jeles/commit/9e3ff171b2a1bf694e26c6cbac7ee4ef053f8550))
+* **search_adapter:** rewrite ddg onto a real DuckDuckGo HTML SERP + circuit breaker ([68fd2b5](https://github.com/rudi193-cmd/Jeles/commit/68fd2b584e2da836df04e7e1e57c24e66628e080))
+* **sources:** port question_to_intent, the prose gate, and the results cache ([444136c](https://github.com/rudi193-cmd/Jeles/commit/444136c95d9522eb16418f75dda501faca18fe5d))
+* **source_trail:** port willow-2.0's core/source_trail.py claim verifier ([e3aad67](https://github.com/rudi193-cmd/Jeles/commit/e3aad675a56d6168c5c1edf3fa386b41616d5038))
+
 ## [0.8.0](https://github.com/rudi193-cmd/Jeles/compare/v0.7.2...v0.8.0) (2026-08-10)
 
 
