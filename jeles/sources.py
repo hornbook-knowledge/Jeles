@@ -54,6 +54,7 @@ zero results is indistinguishable from the collection being empty:
 from __future__ import annotations
 
 import concurrent.futures as _cf
+import hashlib
 import json
 import logging
 import os
@@ -64,6 +65,9 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from collections.abc import Callable
+from datetime import datetime, timezone
+from pathlib import Path
 
 from jeles import _egress
 
@@ -2788,6 +2792,74 @@ def question_to_query(question: str) -> str:
     return q or question.rstrip("?")
 
 
+# The verbatim system message willow-2.0's `question_to_intent` sends its LLM
+# (jeles_sources.py:3305-3330) — kept as a public constant so a `respond`
+# passed in below reproduces the exact few-shot framing upstream tuned,
+# rather than a paraphrase that quietly routes differently.
+_INTENT_SYSTEM_PROMPT = (
+    "Extract the core factual query from this question as a search phrase. "
+    "Output ONLY 4-8 domain-specific keywords — NO filler words like "
+    "'description', 'information', 'facts', 'overview', 'details', 'history'. "
+    "Keep proper nouns, technical terms, and subject-matter context. "
+    "No punctuation. No explanation. Examples:\n"
+    "Q: Why do ships painted red on the bottom last longer? "
+    "→ antifouling copper paint ship hull protection\n"
+    "Q: What albums did The Streets release? "
+    "→ The Streets discography albums UK rap\n"
+    "Q: Who invented the telephone? "
+    "→ telephone invention Bell Gray patent\n"
+    "Q: What is the International Space Station? "
+    "→ International Space Station NASA orbital laboratory crew\n"
+    "Q: What is habeas corpus? "
+    "→ habeas corpus writ legal custody court"
+)
+
+
+def question_to_intent(
+    question: str, *, respond: Callable[[str, str], str] | None = None,
+) -> str:
+    """Extract the factual core of a natural-language question as a search phrase.
+
+    Converts trivia framing ("Why do ships painted red on the bottom last
+    longer?") into a clean, keyword-only phrase ("antifouling copper paint
+    ship hull protection") via an LLM call — one step ahead of
+    `question_to_query`'s regex heuristic in the pipeline willow-2.0 runs
+    (`sap/sap_mcp.py`'s `mem_jeles_ask`: `question_to_intent` first, then
+    `route_sources_semantic`/`route_sources` on the intent, then
+    `question_to_query(intent)` for the actual search string). Ported from
+    willow-2.0's `question_to_intent` (jeles_sources.py:3305-3330), which is
+    itself never called *inside* `search()` there — it is a preprocessing step
+    the caller runs on the question before calling search, exactly like
+    `question_to_query` already is in this module. This function is that same
+    kind of standalone helper, not something `search()` below calls itself.
+
+    jeles promises zero runtime dependencies and no network beyond the source
+    APIs (`_egress`) — see the module docstring — so it cannot bundle the LLM
+    client (`core.llm_edge`) upstream imports inline. `respond`, if given, is
+    called as `respond(_INTENT_SYSTEM_PROMPT, question)` and must return the
+    keyword phrase as a bare string: the shape of one LLM chat completion,
+    left unopinionated about which provider answers it, so a host wires in
+    whatever it already has rather than this module choosing for it.
+
+    Without `respond` — the default, and upstream's own fallback whenever its
+    LLM call raises, since the whole thing there sits inside one `try: ...
+    except Exception: return question` — this returns `question` unchanged.
+    jeles has no LLM dependency at all, so that fallback is this function's
+    only behaviour until a host supplies one; it is not a degraded case, it is
+    the normal one. Never raises: a `respond` that throws, times out, or hands
+    back garbage is treated the same as not having one, because this is a
+    search-quality nicety and no fan-out result should depend on it.
+    """
+    if respond is not None:
+        try:
+            result = (respond(_INTENT_SYSTEM_PROMPT, question) or "").strip()[:200]
+            if result:
+                return result
+        except Exception as e:
+            log.debug("question_to_intent: respond() failed, falling back: %s", e)
+    return question
+
+
 def list_sources() -> list[dict]:
     """Return source registry metadata.
 
@@ -2834,6 +2906,167 @@ def registered_hosts(*, include_opt_in: bool = True) -> set[str]:
     }
 
 
+# ── Prose gate ─────────────────────────────────────────────────────────────────
+# Structured-lookup APIs 4xx or return nonsense on prose queries: a
+# compound/drug/dataset/rate/weather/sports lookup wants an entity or a bare
+# keyword, never a sentence. `search_pubchem("aspirin")` finds the compound;
+# `search_pubchem("what pain reliever did Bayer patent in 1899")` 4xxs, and the
+# only visible effect is one more entry in `failed` that reads exactly like an
+# outage — indistinguishable, from `search()`'s return value alone, from
+# PubChem actually being down. Ported from willow-2.0's PROSE_UNSAFE_SOURCES /
+# `_is_prose` (jeles_sources.py:3421-3435, willow-2.0 #650) — a deliberately
+# dumb, cheap gate ahead of the real fix upstream planned (a router step that
+# runs the query through `question_to_query`/`question_to_intent` before these
+# sources are even considered, willow-2.0 ADR-20260702). `search` below applies
+# it to every dispatched source, an explicit `sources=[...]` list included, so
+# naming a structured source directly does not bypass the gate — the mismatch
+# is the same either way.
+PROSE_UNSAFE_SOURCES = frozenset({
+    "pubchem", "openfda", "datagov", "eu_data",          # named in willow-2.0 #650
+    "frankfurter", "imf", "worldbank",                    # rates / macro indicators
+    "open_meteo", "nws", "carbon_intensity",              # weather / grid
+    "thesportsdb", "who_gho", "nominatim",                # sports / health stats / geocoding
+})
+
+_PROSE_WORD_THRESHOLD = 6
+
+
+def _is_prose(query: str) -> bool:
+    """Dumb prose test: 6+ words reads as a sentence, not an entity lookup.
+
+    ``"aspirin"`` or ``"USD EUR rate"`` pass through; ``"what pain reliever did
+    Bayer patent in 1899"`` gets gated. Word count only, no punctuation or
+    question-mark check — deliberately, per willow-2.0: a keyword list a
+    caller pastes in ("aspirin ibuprofen acetaminophen naproxen paracetamol
+    codeine") is exactly as long as a real sentence and reads as prose here
+    too. That false positive is the cost of a test that needs no NLP and runs
+    on every dispatched source with no measurable overhead.
+    """
+    return len(query.split()) >= _PROSE_WORD_THRESHOLD
+
+
+# ── Cache ──────────────────────────────────────────────────────────────────────
+# Opt-in, append-only JSONL log of everything `search` finds: one line per hit,
+# annotated with the source's confidence tier and a set of keyword/domain tags.
+# Ported from willow-2.0's `_write_cache` (jeles_sources.py:180-213, called from
+# `search()` at jeles_sources.py:3538).
+#
+# Its read-side counterpart there is not another function in the same module —
+# `jeles_sources.py` never reads its own cache back. The reader is a separate
+# offline pass, `scripts/promote_jeles_cache.py`: it globs every `*.jsonl` file
+# this writes, groups hits by URL, and promotes the ones that clear a hit-count
+# or confidence bar into willow-mcp's corpus over Postgres. That promotion step
+# is infrastructure this package does not have and, per its zero-runtime-
+# dependency promise (`pyproject.toml`'s `dependencies = []`), cannot bundle.
+# `_read_cache` below is that reader's load step only — glob + parse
+# (`promote_jeles_cache.py:75-89`, `_load_cache`) — without the Postgres write:
+# the offline-testable, dependency-free half of the mechanism a host embedding
+# jeles can build its own promotion pass on top of, using the same record shape
+# `_write_cache` produces.
+#
+# Disabled unless `JELES_SOURCES_CACHE_DIR` is set, unlike everything upstream
+# of it in this module: writing to disk on every call is a side effect the rest
+# of this file goes out of its way not to have — no thread pool, no opener,
+# nothing at import (see `_executor`'s docstring). A host that wants the audit
+# trail turns it on; one that does not gets exactly today's behaviour.
+_CACHE_DIR = os.environ.get("JELES_SOURCES_CACHE_DIR", "")
+
+
+def _write_cache(query: str, results: dict[str, list]) -> None:
+    """Append one JSONL record per hit to today's UTC-dated cache file.
+
+    Each record is the hit's own citation dict (`_result`'s shape) plus: a
+    per-URL ``id`` (an 8-char, non-security md5 of the url — distinct from the
+    citation's own ``id`` field, which is per-source and not stable across a
+    rerun), the ``query`` that found it, ``keywords`` (query words over 3
+    chars, deduped against the source id and its registry ``domain`` tags),
+    ``tags`` (the source id, a hash of the query, and those same domain tags),
+    a ``tier`` of ``"fetched"``, the source's ``_SOURCE_CONFIDENCE`` (0.80 if
+    untiered — the same default the rest of this module uses for "reputable
+    but not scored"), a UTC ``fetched_at``, and ``promoted: False`` — the flag
+    a downstream promotion pass flips once a record is folded into a corpus,
+    so re-running that pass stays idempotent.
+
+    No-ops with a logged warning on any failure (unwritable directory, full
+    disk, ...): called for its side effect only, after `search` has already
+    built the value it is about to return, so nothing here may turn a
+    successful search into a failed one.
+    """
+    if not _CACHE_DIR:
+        return
+    try:
+        cache_dir = Path(_CACHE_DIR).expanduser()
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        cache_file = cache_dir / f"{today}.jsonl"
+        fetched_at = datetime.now(timezone.utc).isoformat()
+        query_words = [w.lower() for w in query.split() if len(w) > 3]
+        query_hash = hashlib.md5(query.encode(), usedforsecurity=False).hexdigest()[:8]
+        with cache_file.open("a", encoding="utf-8") as fh:
+            for source_id, hits in results.items():
+                confidence = _SOURCE_CONFIDENCE.get(source_id, 0.80)
+                domain_tags = SOURCES.get(source_id, {}).get("domain", [])
+                for hit in hits:
+                    url = hit.get("url", "")
+                    cache_id = (
+                        hashlib.md5(url.encode(), usedforsecurity=False).hexdigest()[:8]
+                        if url else ""
+                    )
+                    keywords = list(dict.fromkeys([*query_words, source_id, *domain_tags]))[:10]
+                    tags = [source_id, f"query:{query_hash}", *domain_tags]
+                    record = {
+                        **hit,
+                        "id": cache_id,
+                        "query": query,
+                        "keywords": keywords,
+                        "tags": tags,
+                        "tier": "fetched",
+                        "confidence": confidence,
+                        "fetched_at": fetched_at,
+                        "promoted": False,
+                    }
+                    fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+    except Exception as e:
+        log.warning("jeles cache write failed: %s", e)
+
+
+def _read_cache() -> list[dict]:
+    """Load every record `_write_cache` has appended, across every dated file.
+
+    Mirrors `promote_jeles_cache.py`'s `_load_cache()`: glob ``*.jsonl`` in
+    filename (date) order, parse each line as its own JSON object, and skip a
+    line that fails to parse rather than aborting the file it is in — a
+    promotion pass or an audit query over a partially-written or hand-edited
+    cache file should see every good record, not zero of them because one
+    line near the top is truncated.
+
+    Returns ``[]``, with a warning logged rather than raised, when caching is
+    disabled (``JELES_SOURCES_CACHE_DIR`` unset) or the directory cannot be
+    read — the same "absence is not an error" contract `_get`/`_get_html` use
+    for a source that cannot be reached.
+    """
+    if not _CACHE_DIR:
+        return []
+    records: list[dict] = []
+    try:
+        cache_dir = Path(_CACHE_DIR).expanduser()
+        for jsonl_file in sorted(cache_dir.glob("*.jsonl")):
+            try:
+                for line in jsonl_file.read_text(encoding="utf-8").splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        records.append(json.loads(line))
+                    except json.JSONDecodeError:
+                        continue
+            except OSError as e:
+                log.warning("jeles cache read failed for %s: %s", jsonl_file.name, e)
+    except OSError as e:
+        log.warning("jeles cache read failed: %s", e)
+    return records
+
+
 def search(
     query: str,
     sources: list[str] | None = None,
@@ -2854,7 +3087,9 @@ def search(
           "query":           str,
           "sources_queried": [sid, ...],   # dispatched — not merely requested
           "unknown":         [sid, ...],   # requested, no registry entry / no function
-          "skipped":         {sid: reason},# abstained before any egress (missing key)
+          "skipped":         {sid: reason},# abstained before any egress (missing key,
+                                            # or a prose query vs a PROSE_UNSAFE_SOURCES
+                                            # entry — see `_is_prose`)
           "failed":          {sid: error}, # attempted egress and failed
           "timed_out":       [sid, ...],   # unfinished at wall_clock_limit
           "results":         {sid: [hit, ...]},   # [] means reached, had nothing
@@ -2872,6 +3107,16 @@ def search(
 
     `results[sid] == []` is a real answer: that source was reached and had
     nothing. Absence from `results` is not.
+
+    A query that reads as prose (`_is_prose`, 6+ words) gates any requested
+    source in `PROSE_UNSAFE_SOURCES` into `skipped` before it is dispatched —
+    those APIs 4xx or return nonsense on a sentence, and letting them through
+    only relabels that as a `failed` entry that looks exactly like an outage.
+    The gate runs on an explicit `sources=[...]` list too, so asking for
+    `pubchem` by name does not bypass it.
+
+    On success (`total > 0`), results are appended to the on-disk cache via
+    `_write_cache` — a no-op unless `JELES_SOURCES_CACHE_DIR` is set.
     """
     registry = _load_registry()
     if sources:
@@ -2880,10 +3125,15 @@ def search(
         requested = [sid for sid, cfg in registry.items()
                      if not cfg.get("opt_in") and cfg.get("enabled", True)]
 
+    prose = _is_prose(query)
+
     unknown: list[str] = []
     skipped: dict[str, str] = {}
     resolved: list[tuple[str, object]] = []
     for sid in requested:
+        if prose and sid in PROSE_UNSAFE_SOURCES:
+            skipped[sid] = "prose query vs structured-only source (willow-2.0 #650)"
+            continue
         cfg = registry.get(sid)
         if not cfg:
             log.warning("Unknown source: %s", sid)
@@ -2990,6 +3240,10 @@ def search(
             # they are this pool's problem now and not the next call's.
             pool.shutdown(wait=False, cancel_futures=True)
 
+    total = sum(len(v) for v in results.values())
+    if total:
+        _write_cache(query, results)
+
     return {
         "query": query,
         "sources_queried": queried,
@@ -2997,7 +3251,7 @@ def search(
         "skipped": skipped,
         "failed": failed,
         "timed_out": timed_out,
-        "total": sum(len(v) for v in results.values()),
+        "total": total,
         "results": results,
         "note": NO_WIKIPEDIA_NOTE,
     }
