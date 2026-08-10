@@ -9,6 +9,7 @@ Public surface:
     corpus_server       — standalone MCP server over the corpus (SDK 2.x)
     verify              — per-claim cross-source corroboration of an answer
     source_trail        — per-claim verification of raw, uncited prose
+    legal_citations     — verify prose citations against CourtListener
     willow_mcp_client   — best-effort gap forwarding to willow-mcp
     load_persona()      — load the canonical Jeles persona JSON
 
