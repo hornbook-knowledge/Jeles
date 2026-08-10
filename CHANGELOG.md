@@ -20,6 +20,27 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.8.0](https://github.com/rudi193-cmd/Jeles/compare/v0.7.2...v0.8.0) (2026-08-10)
+
+
+### Added
+
+* **corpus:** add optional evidence field so a verification can cross a repo boundary intact ([4a541eb](https://github.com/rudi193-cmd/Jeles/commit/4a541ebc6cda41d1f1f099d2ca13bdeb2f469a10))
+
+## [0.7.2](https://github.com/rudi193-cmd/Jeles/compare/v0.7.1...v0.7.2) (2026-08-07)
+
+
+### Fixed
+
+* **willow_mcp_client:** treat an in-band {"error": ...} as a failed forward ([e6e1937](https://github.com/rudi193-cmd/Jeles/commit/e6e193720e0a6fdee8858225d5d2897722cf64de))
+
+## [0.7.1](https://github.com/rudi193-cmd/Jeles/compare/v0.7.0...v0.7.1) (2026-08-07)
+
+
+### Fixed
+
+* **willow_mcp_client:** stop discarding failed gap forwards ([1dbd984](https://github.com/rudi193-cmd/Jeles/commit/1dbd98421f5f82960b7e95f10958e65728812d91))
+
 ## [0.7.0](https://github.com/rudi193-cmd/Jeles/compare/v0.6.1...v0.7.0) (2026-08-05)
 
 

@@ -1077,3 +1077,221 @@ def test_the_module_defines_no_function_the_registry_does_not_use():
     assert defined - registered == set(), \
         "defined but unreachable — register it or delete it"
     assert registered - defined == set(), "registered with no function"
+
+
+# ── question_to_intent: LLM-shaped intent extraction, ported from willow-2.0 ─
+#
+# jeles bundles no LLM client (zero-dependency promise), so `respond` is
+# dependency-injected rather than imported — these tests cover both the
+# injected path and the no-`respond` fallback, which is this function's only
+# behaviour until a host supplies one.
+
+
+def test_question_to_intent_without_a_responder_returns_the_question_unchanged():
+    """The default, and upstream's own fallback whenever its LLM call raises —
+    jeles simply has no other mode."""
+    q = "Why do ships painted red on the bottom last longer?"
+    assert sources.question_to_intent(q) == q
+
+
+def test_question_to_intent_uses_the_responder_when_one_is_supplied():
+    seen = []
+
+    def fake_respond(system, question):
+        seen.append((system, question))
+        return "  antifouling copper paint ship hull protection  "
+
+    out = sources.question_to_intent(
+        "Why do ships painted red on the bottom last longer?",
+        respond=fake_respond,
+    )
+    assert out == "antifouling copper paint ship hull protection", \
+        "the responder's answer is stripped"
+    assert seen == [(sources._INTENT_SYSTEM_PROMPT,
+                     "Why do ships painted red on the bottom last longer?")], \
+        "respond(system, question) — the exact upstream call shape"
+
+
+def test_question_to_intent_caps_the_responder_at_200_chars():
+    out = sources.question_to_intent("q", respond=lambda s, q: "x" * 500)
+    assert len(out) == 200
+
+
+def test_question_to_intent_falls_back_when_the_responder_raises():
+    def boom(system, question):
+        raise RuntimeError("llm edge unreachable")
+
+    q = "What is habeas corpus?"
+    assert sources.question_to_intent(q, respond=boom) == q
+
+
+def test_question_to_intent_falls_back_when_the_responder_returns_nothing():
+    q = "Who invented the telephone?"
+    assert sources.question_to_intent(q, respond=lambda s, q: "") == q
+    assert sources.question_to_intent(q, respond=lambda s, q: None) == q
+
+
+# ── The prose gate: PROSE_UNSAFE_SOURCES / _is_prose ────────────────────────
+
+
+@pytest.mark.parametrize(("query", "prose"), [
+    ("aspirin", False),
+    ("USD EUR rate", False),
+    ("one two three four five", False),          # 5 words — under threshold
+    ("one two three four five six", True),        # 6 words — at threshold
+    ("what pain reliever did Bayer patent in 1899", True),
+])
+def test_is_prose_is_a_word_count_threshold(query, prose):
+    assert sources._is_prose(query) is prose
+
+
+def test_prose_unsafe_sources_are_all_real_registered_sources():
+    """A stale id here would silently gate nothing — pin every entry to the
+    live registry so a rename on one side cannot drift from the other."""
+    assert set(sources.SOURCES) >= sources.PROSE_UNSAFE_SOURCES
+
+
+def test_a_prose_query_gates_structured_sources_before_dispatch(monkeypatch):
+    called = []
+    monkeypatch.setattr(sources, "_resolve_fn",
+                        lambda fn: (lambda q, n: called.append(fn) or []))
+    out = sources.search(
+        "what pain reliever did Bayer patent in 1899",
+        sources=["pubchem", "openalex"],
+    )
+    assert called == ["search_openalex"], \
+        "pubchem must never reach `_resolve_fn` at all — gated pre-dispatch"
+    assert out["skipped"]["pubchem"] == \
+        "prose query vs structured-only source (willow-2.0 #650)"
+    assert out["sources_queried"] == ["pubchem", "openalex"], \
+        "gated is not vanished — it is accounted for, same as a missing key"
+    assert "pubchem" not in out["results"] and "pubchem" not in out["failed"]
+
+
+def test_a_short_query_does_not_gate_structured_sources(monkeypatch):
+    monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: []))
+    out = sources.search("aspirin", sources=["pubchem"])
+    assert out["skipped"] == {}
+    assert out["results"] == {"pubchem": []}
+
+
+def test_naming_a_prose_unsafe_source_explicitly_does_not_bypass_the_gate(monkeypatch):
+    """`sources=[...]` targets a source by id; it must not be a way around a
+    gate that exists precisely because the query and the source disagree."""
+    monkeypatch.setattr(sources, "_resolve_fn",
+                        lambda fn: (lambda q, n: (_ for _ in ()).throw(
+                            AssertionError("a gated source must not be dispatched"))))
+    out = sources.search(
+        "the constitutional rights of a sentient cheese republic",
+        sources=["pubchem"],
+    )
+    assert out["results"] == {} and out["failed"] == {}
+    assert "pubchem" in out["skipped"]
+
+
+# ── The cache: _write_cache / _read_cache ────────────────────────────────────
+#
+# Ported from willow-2.0's `_write_cache` (append-only JSONL log) plus the
+# load step of its read-side counterpart, `promote_jeles_cache.py`'s
+# `_load_cache()`. Disabled unless `JELES_SOURCES_CACHE_DIR` is set — these
+# tests point it at `tmp_path`, never a real path on the machine running them.
+
+
+def test_caching_is_disabled_by_default():
+    assert sources._CACHE_DIR == "", \
+        "no JELES_SOURCES_CACHE_DIR in the test environment means off"
+
+
+def test_write_cache_is_a_noop_when_disabled(monkeypatch):
+    monkeypatch.setattr(sources, "_CACHE_DIR", "")
+    sources._write_cache("q", {"loc": [sources._result(
+        title="t", url="https://loc.gov/1", source="loc", institution="LoC")]})
+    assert sources._read_cache() == [], "disabled means nothing was written or read"
+
+
+def test_read_cache_is_empty_when_disabled(monkeypatch):
+    monkeypatch.setattr(sources, "_CACHE_DIR", "")
+    assert sources._read_cache() == []
+
+
+def test_write_then_read_cache_round_trips_the_hit(tmp_path, monkeypatch):
+    monkeypatch.setattr(sources, "_CACHE_DIR", str(tmp_path))
+    hit = sources._result(
+        title="Signed policy bundles", url="https://doi.org/10.1/x",
+        source="openalex", institution="Cornell University",
+        snippet="An abstract.", date="2026", rid="W1")
+
+    sources._write_cache("policy bundle signing", {"openalex": [hit]})
+
+    files = list(tmp_path.glob("*.jsonl"))
+    assert len(files) == 1, "one file per UTC day"
+
+    records = sources._read_cache()
+    assert len(records) == 1
+    rec = records[0]
+    assert rec["title"] == "Signed policy bundles"
+    assert rec["url"] == hit["url"]
+    assert rec["query"] == "policy bundle signing"
+    assert rec["tier"] == "fetched"
+    assert rec["promoted"] is False
+    assert rec["confidence"] == sources._SOURCE_CONFIDENCE["openalex"]
+    assert "openalex" in rec["tags"]
+    assert rec["id"] and rec["id"] != hit["id"], \
+        "the cache id is a hash of the url, distinct from the citation's own id"
+    assert rec["fetched_at"]
+
+
+def test_write_cache_dedupes_and_caps_keywords(tmp_path, monkeypatch):
+    monkeypatch.setattr(sources, "_CACHE_DIR", str(tmp_path))
+    hit = sources._result(title="t", url="https://loc.gov/1", source="loc",
+                          institution="LoC")
+    sources._write_cache("history history history archive", {"loc": [hit]})
+    rec = sources._read_cache()[0]
+    assert rec["keywords"].count("history") == 1, "deduped, not repeated"
+    assert len(rec["keywords"]) <= 10
+
+
+def test_write_cache_falls_back_to_default_confidence_for_an_untiered_source(
+        tmp_path, monkeypatch):
+    monkeypatch.setattr(sources, "_CACHE_DIR", str(tmp_path))
+    hit = sources._result(title="t", url="https://e.org/1", source="not-a-real-source",
+                          institution="I")
+    sources._write_cache("q", {"not-a-real-source": [hit]})
+    assert sources._read_cache()[0]["confidence"] == 0.80
+
+
+def test_read_cache_skips_a_malformed_line_rather_than_failing_the_file(
+        tmp_path, monkeypatch):
+    monkeypatch.setattr(sources, "_CACHE_DIR", str(tmp_path))
+    good = json.dumps({"title": "good", "url": "https://e.org/1"})
+    (tmp_path / "2026-08-10.jsonl").write_text(
+        good + "\nnot json at all\n\n" + good + "\n", encoding="utf-8")
+    records = sources._read_cache()
+    assert len(records) == 2
+    assert all(r["title"] == "good" for r in records)
+
+
+def test_write_cache_swallows_a_directory_it_cannot_create(tmp_path, monkeypatch, caplog):
+    """A full disk or an unwritable path must not turn a successful search
+    into a failed one — the same contract `_get`/`_get_html` hold for the
+    network side of this module."""
+    blocked = tmp_path / "blocked"
+    blocked.write_text("not a directory")
+    monkeypatch.setattr(sources, "_CACHE_DIR", str(blocked / "cache"))
+    hit = sources._result(title="t", url="https://e.org/1", source="loc", institution="LoC")
+    sources._write_cache("q", {"loc": [hit]})  # must not raise
+    assert sources._read_cache() == [], "nothing was written"
+
+
+def test_search_writes_the_cache_only_when_there_are_hits(tmp_path, monkeypatch):
+    monkeypatch.setattr(sources, "_CACHE_DIR", str(tmp_path))
+    monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: []))
+    sources.search("q", sources=["arxiv"])
+    assert sources._read_cache() == [], "reached, nothing found — nothing to cache"
+
+    monkeypatch.setattr(sources, "_resolve_fn", lambda fn: (lambda q, n: [
+        sources._result(title="t", url="https://loc.gov/1", source="loc",
+                        institution="LoC")]))
+    sources.search("q", sources=["loc"])
+    records = sources._read_cache()
+    assert len(records) == 1 and records[0]["source"] == "loc"

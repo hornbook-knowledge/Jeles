@@ -18,6 +18,16 @@ other discovered server. This module has no hard dependency on it.
 APP_ID / DEFAULT_TOPIC default to Ask Jeles' original values for back-compat
 (the fleet backlog already keys gaps under `ask-jeles-corpus`) and can be
 overridden via env for a differently-scoped host.
+
+**The app_id has to exist on the other side.** willow-mcp authorizes every
+tool call against `$WILLOW_HOME/mcp_apps/<app_id>/manifest.json`, and the
+default `ask-jeles` is not one of the seats it seeds — so out of the box a
+forward is denied with `no manifest for 'ask-jeles'`. On a fleet whose hub is
+willow-mcp, set `JELES_CORPUS_APP_ID=jeles` to call as the librarian seat it
+does seed (which carries `gap_write` as of willow-mcp 2.4). The topic is
+independent of the seat: gaps still land under `ask-jeles-corpus` unless
+`JELES_CORPUS_TOPIC` says otherwise. `forward_status()` reports which seat is
+in use and why the last forward failed.
 """
 
 from __future__ import annotations
@@ -47,6 +57,16 @@ _last_attempt_at: float | None = None
 _mcp_ready = False
 _mcp_error: str | None = None
 _start_lock = threading.Lock()
+
+# Outcome of the most recent forward attempt. `_mcp_error` is about the
+# *session* (willow-mcp missing, spawn failed, child died); these are about the
+# *call* — the far more common failure being a gate denial, which is a live
+# session refusing one tool. Kept separate because they need different fixes:
+# one is "start willow-mcp", the other is "grant this app_id gap_write".
+_forward_lock = threading.Lock()
+_last_forward_error: str | None = None
+_forward_ok = 0
+_forward_failed = 0
 
 
 def _use_willow_mcp() -> bool:
@@ -256,9 +276,37 @@ def ensure_started(timeout: float = 5) -> bool:
 
 
 def _parse_tool_payload(result: Any) -> Any:
+    """The tool's return value, or a raise if the call did not succeed.
+
+    Two different things can mean failure, and only one of them looks like one:
+
+    ``isError``          transport/protocol level — the tool blew up.
+    ``{"error": ...}``   in-band — the call completed and the tool is telling
+                         you it refused.
+
+    willow-mcp reports a **gate denial** the second way. It is a successful MCP
+    call carrying ``{"error": "gate denied: ... not permitted for 'gap_log'"}``,
+    so checking ``isError`` alone treats the single most common forwarding
+    failure as a forward that landed: ``forward_status()`` counted it under
+    ``forwarded``, ``last_error`` stayed ``None``, and the gap was never
+    written. That is the exact silence this module's status API exists to end,
+    reappearing one layer down — found by a cross-repo seam check reporting
+    "no error reported" beside a gate denial in the server's own log.
+    """
     if getattr(result, "isError", False):
         parts = [getattr(c, "text", str(c)) for c in (getattr(result, "content", None) or [])]
         raise RuntimeError("; ".join(parts) or "willow-mcp tool error")
+    payload = _decode_content(result)
+    # Only a dict, and only a truthy `error`: willow-mcp's convention is that
+    # this key is present exactly when the call did not do what was asked. A
+    # string payload that happens to contain the word is not a failure, and
+    # `{"error": ""}` is not one either.
+    if isinstance(payload, dict) and payload.get("error"):
+        raise RuntimeError(str(payload["error"]))
+    return payload
+
+
+def _decode_content(result: Any) -> Any:
     for block in getattr(result, "content", None) or []:
         text = getattr(block, "text", None)
         if not text:
@@ -295,10 +343,67 @@ def call_tool(name: str, inputs: dict[str, Any], timeout: float = 10) -> Any:
     return _parse_tool_payload(future.result(timeout=timeout))
 
 
+def _record_forward(error: str | None) -> None:
+    """Remember how the last forward went, and say so at a level an operator
+    will actually see the *first* time a new failure appears.
+
+    Repeats stay at DEBUG so a willow-mcp that is down for an hour does not
+    fill a host's log with one identical line per question asked; a *changed*
+    message is news and gets WARNING again.
+    """
+    global _last_forward_error, _forward_ok, _forward_failed
+    with _forward_lock:
+        if error is None:
+            _forward_ok += 1
+            _last_forward_error = None
+            return
+        first = error != _last_forward_error
+        _last_forward_error = error
+        _forward_failed += 1
+    if first:
+        log.warning("gap forward to willow-mcp failed: %s", error)
+    else:
+        log.debug("gap forward to willow-mcp failed again: %s", error)
+
+
+def forward_status() -> dict[str, Any]:
+    """What has actually happened to forwarded gaps, for a host that wants to
+    show it (or a stand-up check that wants to assert it).
+
+    Forwarding is best-effort by design, and for a long time that meant its
+    failures were unobservable: a gate denial — `no manifest for 'ask-jeles'`,
+    or an app_id without `gap_write` — was caught, logged at DEBUG, and
+    dropped, so a misconfigured fleet looked exactly like a working one from
+    every surface a caller could reach. `session_error` is why no session
+    exists; `last_error` is why the last call failed on a session that does.
+    """
+    with _forward_lock:
+        return {
+            "enabled": _use_willow_mcp(),
+            "app_id": APP_ID,
+            "session_ready": _mcp_ready,
+            "session_error": _mcp_error,
+            "forwarded": _forward_ok,
+            "failed": _forward_failed,
+            "last_error": _last_forward_error,
+        }
+
+
+def last_forward_error() -> str | None:
+    """The most recent forward failure, or None if the last one succeeded."""
+    with _forward_lock:
+        return _last_forward_error
+
+
 def forward_gap(question: str, topic: str = DEFAULT_TOPIC) -> None:
     """Fire-and-forget: runs in a daemon thread, never blocks the caller,
     never raises. This is the one function the rest of a host should call
-    — everything above is plumbing for it."""
+    — everything above is plumbing for it.
+
+    Failures are recorded rather than discarded — see :func:`forward_status`.
+    Still never raised: a host asking a question must not fail because a
+    fleet backlog is unreachable.
+    """
     if not _use_willow_mcp():
         return
 
@@ -306,7 +411,9 @@ def forward_gap(question: str, topic: str = DEFAULT_TOPIC) -> None:
         try:
             call_tool("gap_log", {"topic": topic, "question": question})
         except Exception as exc:
-            log.debug("gap forward to willow-mcp failed: %s", exc)
+            _record_forward(str(exc) or exc.__class__.__name__)
+        else:
+            _record_forward(None)
 
     threading.Thread(target=_run, daemon=True, name="jeles-gap-forward").start()
 
