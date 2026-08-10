@@ -20,6 +20,13 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.8.0](https://github.com/rudi193-cmd/Jeles/compare/v0.7.2...v0.8.0) (2026-08-10)
+
+
+### Added
+
+* **corpus:** add optional evidence field so a verification can cross a repo boundary intact ([4a541eb](https://github.com/rudi193-cmd/Jeles/commit/4a541ebc6cda41d1f1f099d2ca13bdeb2f469a10))
+
 ## [0.7.2](https://github.com/rudi193-cmd/Jeles/compare/v0.7.1...v0.7.2) (2026-08-07)
 
 
