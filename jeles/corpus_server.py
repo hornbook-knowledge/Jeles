@@ -76,7 +76,7 @@ except ImportError as exc:  # pragma: no cover - exercised by install shape, not
 from urllib.parse import urlparse
 
 import jeles
-from jeles import corpus, institutional, willow_mcp_client
+from jeles import _nestor_seal, corpus, institutional, willow_mcp_client
 from jeles.reactions import search_adapter
 
 mcp = MCPServer(
@@ -150,6 +150,7 @@ def corpus_put(
     verified_by: str,
     tags: list[str] | None = None,
     nugget_id: str | None = None,
+    evidence: dict | None = None,
 ) -> dict:
     """Record a nugget **as an assertion**. Requires question, answer, at least
     one source, and who is claiming it. Returns ``{id, action,
@@ -175,16 +176,36 @@ def corpus_put(
       (``error: "kind_downgrade_refused"``). Omit ``nugget_id`` to write a new
       nugget alongside it — superseding a verified answer is a person's call.
 
-    Promotion to ``verified`` is deliberately not reachable from any tool: a
-    person runs ``corpus.put_nugget(...)`` in-process, or the operator sets
-    ``JELES_CORPUS_TRUST_TOOL_WRITES=1`` for a session where they are the one
-    typing.
+    Promotion to ``verified`` is deliberately not reachable from any tool by
+    typing alone. Two things have to both be true:
+
+    * the operator has set ``JELES_CORPUS_TRUST_TOOL_WRITES=1`` for a session
+      where they are the one typing (unchanged from before); **and**
+    * ``evidence`` carries a real Nestor seal — ``{"scheme": "nestor-seal-v1",
+      "seal_sig": ...}`` — that verifies ``(question, answer, verified_by)``
+      against a keyring this instance trusts (`jeles._nestor_seal`, the
+      `nestor` give-back: see its module docstring). Without a valid seal the
+      write still lands, but at ``verification_kind: "asserted"`` — the trust
+      switch alone no longer mints ``human``; a caller that only *types*
+      ``verified_by="a human"`` is refused the rung, not trusted for it. A
+      person still has the direct route: run ``corpus.put_nugget(...)``
+      in-process, which this tool does not gate at all.
     """
-    kind = "human" if _trust_tool_writes() else "asserted"
-    return corpus.put_nugget(
-        question, answer, sources, verified_by, tags=tags, nugget_id=nugget_id,
-        verification_kind=kind, written_by=app_id,
-    )
+    kind = "asserted"
+    if _trust_tool_writes():
+        ok, _reason = _nestor_seal.verify_human_write(
+            question, answer, verified_by, evidence)
+        if ok:
+            kind = "human"
+    kwargs: dict = {"tags": tags, "nugget_id": nugget_id,
+                    "verification_kind": kind, "written_by": app_id}
+    if evidence:
+        # Carried regardless of whether it verified: an asserted nugget with a
+        # signature that failed to check is still worth a reviewer's eyes, and
+        # `corpus.py` never interprets `evidence` itself either way (see its
+        # comment above `_KIND_RANK`).
+        kwargs["evidence"] = evidence
+    return corpus.put_nugget(question, answer, sources, verified_by, **kwargs)
 
 
 @mcp.tool()

@@ -48,11 +48,20 @@ dependencies = []
 # This is the same floor willow-mcp requires, so `jeles[mcp]` and willow-mcp
 # now co-install.
 mcp = ["mcp>=2.0.0,<3.0.0"]
+# The `human` rung's cryptographic gate (jeles._nestor_seal — the Nestor
+# give-back). Pinned to a tag, not a branch: this repo's own README warns that
+# a branch ref re-resolves on every install, so two machines built a week
+# apart would otherwise verify signatures against two different copies of
+# nestor.signing. `jeles._nestor_seal` imports `nestor` lazily (inside the one
+# function that needs it), so installing `jeles[mcp]` alone — without this
+# extra — still runs the server; it just always refuses the `human` rung
+# instead of granting it, exactly as if no evidence had verified.
+nestor = ["nestor @ git+https://github.com/rudi193-cmd/Nestor@v0.2.0"]
 # pyyaml is for tests/test_release_wiring.py, which reads the release
 # workflows. It importorskips, so leaving it out would turn those checks
 # into a silent skip — the exact failure mode they exist to catch. It is a
 # dev extra, so the zero-runtime-dependency promise is untouched.
-dev = ["pytest>=8.0", "pyyaml", "tomli; python_version<'3.11'", "jeles[mcp]"]
+dev = ["pytest>=8.0", "pyyaml", "tomli; python_version<'3.11'", "jeles[mcp]", "jeles[nestor]"]
 
 [project.scripts]
 jeles-corpus-mcp = "jeles.corpus_server:main"
@@ -75,6 +84,14 @@ Issues = "https://github.com/rudi193-cmd/Jeles/issues"
 # `release-type: simple`) — let it pick the number from the commits rather than
 # tagging by hand.
 source = "vcs"
+
+[tool.hatch.metadata]
+# hatchling refuses a direct reference (`name @ url`) in optional-dependencies
+# unless this is set — PyPI itself never accepts one, so the guard is right;
+# this package's `[nestor]` extra is exactly that kind of reference (a tag
+# pin, not a PyPI release — see the extra's own comment on why), and the
+# extra is a dev/give-back seam, not something meant to publish standalone.
+allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["jeles"]

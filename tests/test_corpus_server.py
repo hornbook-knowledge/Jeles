@@ -188,17 +188,96 @@ def test_the_writing_app_is_recorded_beside_the_claim(monkeypatch):
     assert seen["written_by"] == "some-mcp-client"
 
 
-def test_the_operator_can_re_open_the_door_on_purpose(monkeypatch):
-    """The single-user local case, where the tool caller really is the person:
-    an env var, read per call so a typo cannot stop the server from starting."""
+def test_the_trust_switch_alone_no_longer_mints_human(monkeypatch):
+    """`JELES_CORPUS_TRUST_TOOL_WRITES=1` used to be sufficient by itself —
+    exactly the forgery `jeles._nestor_seal` (the Nestor give-back) closes:
+    a tool caller that knows the switch is set, and types a plausible
+    `verified_by`, must still be refused the `human` rung without a
+    verifying Nestor seal in `evidence`. No `evidence` at all is the
+    simplest such caller."""
     seen = _capture_put(monkeypatch)
     monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "1")
-    corpus_server.corpus_put("app", "q?", "a.", ["s"], "designer")
-    assert seen["verification_kind"] == "human"
 
-    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "no")
     corpus_server.corpus_put("app", "q?", "a.", ["s"], "designer")
+
     assert seen["verification_kind"] == "asserted"
+
+
+def test_the_trust_switch_alone_refuses_even_a_typed_evidence_dict(monkeypatch):
+    """A caller that also fabricates an evidence-shaped dict — the scheme
+    name, a made-up hex string — is refused exactly the same way. Only a
+    signature that actually verifies is different from typing nothing."""
+    seen = _capture_put(monkeypatch)
+    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "1")
+
+    corpus_server.corpus_put(
+        "app", "q?", "a.", ["s"], "designer",
+        evidence={"scheme": "nestor-seal-v1", "seal_sig": "0" * 64},
+    )
+
+    assert seen["verification_kind"] == "asserted"
+
+
+def test_the_trust_switch_off_refuses_even_with_valid_evidence(monkeypatch):
+    """Both gates are required, not either: with the trust switch off, a
+    valid-looking (here: unchecked, since _nestor_seal.verify_human_write is
+    stubbed to say yes) seal still does not reach `human` — corpus_put must
+    not even ask the question unless the operator opened the door first."""
+    seen = _capture_put(monkeypatch)
+    monkeypatch.delenv(corpus_server.TRUST_TOOL_WRITES_ENV, raising=False)
+    monkeypatch.setattr(
+        corpus_server._nestor_seal, "verify_human_write",
+        lambda *a, **k: (True, "ok"),
+    )
+
+    corpus_server.corpus_put(
+        "app", "q?", "a.", ["s"], "designer",
+        evidence={"scheme": "nestor-seal-v1", "seal_sig": "irrelevant-here"},
+    )
+
+    assert seen["verification_kind"] == "asserted"
+
+
+def test_a_verifying_seal_promotes_the_write_to_human(monkeypatch):
+    """With the trust switch on AND a seal that actually verifies —
+    `_nestor_seal.verify_human_write` stubbed here to isolate this tool from
+    the real cryptography, which `test_nestor_seal_signing.py` covers end to
+    end — the write reaches `human`, and the evidence rides along on the
+    record."""
+    seen = _capture_put(monkeypatch)
+    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "1")
+    monkeypatch.setattr(
+        corpus_server._nestor_seal, "verify_human_write",
+        lambda *a, **k: (True, "ok"),
+    )
+    evidence = {"scheme": "nestor-seal-v1", "seal_sig": "a-real-signature"}
+
+    result = corpus_server.corpus_put(
+        "app", "q?", "a.", ["s"], "designer", evidence=evidence)
+
+    assert seen["verification_kind"] == "human"
+    assert seen["evidence"] == evidence
+    assert result["verification_kind"] == "human"
+
+
+def test_a_failing_seal_is_carried_on_the_asserted_write_for_a_reviewer(monkeypatch):
+    """A refused seal still lands — as `asserted`, not lost — and the
+    evidence that failed to verify is kept on the record rather than
+    discarded, so a person triaging gaps/assertions can see what was tried.
+    `corpus.py` never interprets `evidence` either way (see its comment
+    above `_KIND_RANK`)."""
+    seen = _capture_put(monkeypatch)
+    monkeypatch.setenv(corpus_server.TRUST_TOOL_WRITES_ENV, "1")
+    monkeypatch.setattr(
+        corpus_server._nestor_seal, "verify_human_write",
+        lambda *a, **k: (False, "signature does not verify under verified_by's key"),
+    )
+    evidence = {"scheme": "nestor-seal-v1", "seal_sig": "forged-or-transplanted"}
+
+    corpus_server.corpus_put("app", "q?", "a.", ["s"], "designer", evidence=evidence)
+
+    assert seen["verification_kind"] == "asserted"
+    assert seen["evidence"] == evidence
 
 
 def test_the_trust_switch_is_not_read_at_import(monkeypatch):

@@ -42,6 +42,7 @@ needs the SDK, and it lives behind an extra.
 ```bash
 pip install jeles           # corpus + persona + reactions. No dependencies.
 pip install "jeles[mcp]"    # adds the MCP SDK, for the standalone server
+pip install "jeles[nestor]" # adds Nestor, to check human-rung seals (below)
 pip install -e ".[dev]"     # editable, with pytest and the SDK
 ```
 
@@ -136,6 +137,36 @@ Set `JELES_CORPUS_TRUST_TOOL_WRITES=1` to let `corpus_put` mint `human` again �
 correct only where the tool caller really is the operator, and it re-opens the
 path above for anything the model reads while it is set.
 
+**The trust switch alone is no longer enough.** Even with it set, `corpus_put`
+also requires `evidence` carrying a real [Nestor](https://github.com/rudi193-cmd/Nestor)
+seal — a cryptographic signature over `(question, answer, verified_by)`,
+checked against a keyring, not a string anyone can type:
+
+```python
+evidence = {"scheme": "nestor-seal-v1", "seal_sig": "<hex signature>"}
+```
+
+The signature is produced *outside* Jeles, by a human with `nestor`'s own
+signing tools (`nestor.signing.sign_seal(question, answer, verified_by)`, or
+Nestor's client-signed-seal flow — Jeles never holds a private key and never
+signs anything itself). `jeles._nestor_seal.verify_human_write` checks it with
+`nestor.signing.seal_is_valid`, and only calls that when this instance
+actually has something configured to verify against (`NESTOR_SEAL_KEY` or a
+`NESTOR_KEYRING`) — an *unconfigured* instance refuses rather than falling
+back to Nestor's own "no key set" legacy default, which is to accept every
+signature. Without a valid seal the write still succeeds, just at
+`verification_kind: "asserted"` — refused the rung, not trusted for it. Needs
+the `[nestor]` extra; without it, `corpus_put` behaves exactly as if no
+evidence had verified, whatever the trust switch says.
+
+This closes a specific, previously-forgeable path (box scan
+`design/box-scan-2026-07-24.md` B6): the trust switch used to be sufficient by
+itself, so any tool caller that knew it was set could type `verified_by="a
+human"` and land on the top rung. The direct in-process route —
+`corpus.put_nugget(...)`, called from a person's own script — is unaffected;
+it was never reachable from a tool in the first place, and this module does
+not gate it.
+
 ### The persona
 
 ```python
@@ -154,7 +185,8 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `JELES_CORPUS_TOPIC` | `ask-jeles-corpus` | Backlog topic gaps are forwarded under. |
 | `WILLOW_MCP_CMD` | — | Explicit command to launch willow-mcp (else `willow-mcp` on PATH, else `python -m willow_mcp`). |
 | `ASK_JELES_USE_WILLOW_MCP` | `1` | Set to `0`/`false`/`no` to disable fleet gap-forwarding entirely. |
-| `JELES_CORPUS_TRUST_TOOL_WRITES` | unset | Set to `1` to let `corpus_put` write `human`-verified nuggets. Only correct where the tool caller *is* the operator — see [the MCP server section](#as-a-standalone-mcp-server). |
+| `JELES_CORPUS_TRUST_TOOL_WRITES` | unset | Set to `1` to let `corpus_put` write `human`-verified nuggets — but only when the write also carries a verifying Nestor seal; see [the MCP server section](#as-a-standalone-mcp-server). |
+| `NESTOR_SEAL_KEY` / `NESTOR_KEYRING` | unset | Read by `nestor.signing` (via the `[nestor]` extra), not by this package directly — what a `human`-rung seal is checked against. Neither set means `corpus_put` refuses the `human` rung outright, whatever `JELES_CORPUS_TRUST_TOOL_WRITES` says. |
 
 | `JELES_REMOTE_URL` | unset | Base URL of a `jeles-remote` delegate. **Unset means the in-process fan-out is the only lane** — remote is opt-in, not a default. |
 | `JELES_REMOTE_SECRET` | unset | Shared secret sent as `X-Jeles-Secret`. Dropped if a redirect changes host — see `_egress.SchemeGuardedRedirects`. |
