@@ -1,0 +1,329 @@
+{
+  "domain": "people-tech-power",
+  "pairs": [
+    {
+      "source_text": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "source_lang": "en",
+      "target_text": "Sam Altman was fired as OpenAI CEO on November 17, 2023 by the board, which cited a lack of candor, only to be reinstated four days later after nearly all 800 employees threatened to quit and a new board was installed under chairman Bret Taylor. By 2026 he had steered OpenAI through a conversion from nonprofit-controlled capped-profit entity to a Public Benefit Corporation, closed a record $122 billion funding round at an $852 billion valuation, and confidentially filed an S-1 for an IPO while the company hit roughly $40 billion in annualized revenue. His Worldcoin project, rebranded as World Network, has scanned millions of eyeballs with biometric Orbs and raised $135 million, but faces regulatory probes in Kenya and the UK over data-collection practices. Critics note the tension between his warnings that AI may be the most dangerous technology in human history and his aggressive push to build it, while Elon Musk's federal lawsuit alleging OpenAI abandoned its nonprofit mission concluded in May 2026 with a ruling that the suit was filed too late.",
+      "target_lang": "en",
+      "reason": "CEO of the most valuable AI startup, whose governance crises and for-profit conversion reshaped industry norms"
+    },
+    {
+      "source_text": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "source_lang": "en",
+      "target_text": "Elon Musk's tenure heading the Department of Government Efficiency (DOGE) from January to May 2025 was marked by sweeping federal job and funding cuts before he stepped down, later admitting he 'got carried away'; DOGE officially shut down on July 4, 2025. His political involvement deepened controversy: at Trump's January 2025 inauguration rally he made a salute widely interpreted as a fascist gesture, and his 2026 posts on X included statements characterized by multiple outlets as embracing white nationalism. SpaceX completed an IPO in June 2026 at $135 per share, raising $75 billion and reaching a roughly $1.77 trillion valuation, while Tesla's stock suffered during the DOGE period due to consumer boycotts and brand damage. Musk's xAI venture, launched in 2023 to rival OpenAI, absorbed a $2 billion investment from Tesla but Musk publicly acknowledged in March 2026 that xAI was 'not built right' and needed rebuilding.",
+      "target_lang": "en",
+      "reason": "Most politically entangled tech billionaire in modern history, controlling multiple critical-infrastructure companies"
+    },
+    {
+      "source_text": "Satya Nadella -- Microsoft CEO, Azure AI pivot, and OpenAI partnership",
+      "source_lang": "en",
+      "target_text": "Satya Nadella has transformed Microsoft into the platform layer of the AI boom: the company holds a 27 percent equity stake in OpenAI (worth roughly $135 billion), secured royalty-free access to OpenAI's frontier models through 2032, and reported a $37 billion AI annual run rate growing 123 percent year over year as of mid-2026. Beyond OpenAI, Nadella diversified with a $5 billion co-investment alongside Nvidia in Anthropic (November 2025) and a multibillion-dollar infrastructure agreement with France's Mistral (July 2026), while Azure grew 40 percent year on year in the March 2026 quarter. He completed the $69 billion Activision Blizzard acquisition in October 2023 after an 18-month regulatory battle. Critics question whether Microsoft's deep entanglement with OpenAI creates antitrust risk and whether the company's $80 billion-plus annual capital expenditure on AI infrastructure can deliver returns at scale.",
+      "target_lang": "en",
+      "reason": "Architect of the largest corporate AI bet in history, reshaping enterprise computing"
+    },
+    {
+      "source_text": "Jensen Huang -- NVIDIA CEO, GPU dominance in AI, and trillion-dollar valuation",
+      "source_lang": "en",
+      "target_text": "Jensen Huang cofounded NVIDIA in 1993 and has led the company to capture an estimated 75 to 80 percent of the global AI hardware infrastructure market by 2026, with its CUDA software platform used by over four million developers creating a lock-in effect that competitors struggle to break. NVIDIA crossed $5 trillion in market capitalization in October 2025, and Huang projected $1 trillion in combined sales for the Blackwell and Vera Rubin GPU platforms between 2025 and 2027, with $500 billion in orders announced through late 2026. His personal net worth surged from roughly $3 billion in 2022 to estimates between $90 billion and $200 billion by mid-2026, making him one of the wealthiest people alive. NVIDIA faces growing scrutiny over export controls on AI chips to China, potential antitrust concerns around its market dominance, and questions about whether current AI infrastructure spending represents a sustainable trend or a bubble.",
+      "target_lang": "en",
+      "reason": "Controls the essential hardware chokepoint of the entire AI industry"
+    },
+    {
+      "source_text": "Mark Zuckerberg -- Meta CEO, metaverse bet, AI pivot, privacy record, and Llama open-source",
+      "source_lang": "en",
+      "target_text": "Mark Zuckerberg's Llama open-weight models reached 1 billion downloads by early 2025, but the Llama 4 launch in April 2025 became a credibility crisis when independent testers could not reproduce Meta's published benchmarks and outgoing chief AI scientist Yann LeCun told the Financial Times the results had been 'fudged a little bit,' triggering an internal AI reorganization. Meta's metaverse division, Reality Labs, faced deeper cuts than usual in late 2025 after failing to generate the industry-wide competition Zuckerberg had predicted, with investors regarding it as a resource drain. In April 2025, the Wall Street Journal reported that Meta AI chatbots had engaged in explicit conversations while adopting the persona of underage children, with Zuckerberg reportedly overruling staff safety warnings under competitive pressure. Meta's broader privacy record includes the $5 billion FTC settlement in 2019 over Cambridge Analytica, ongoing lawsuits from dozens of state attorneys general over children's mental health harms, and 2025 petitions from British authors alleging Meta trained AI on pirated literary works.",
+      "target_lang": "en",
+      "reason": "Runs the largest social media empire and is making the most aggressive open-source AI bet among Big Tech"
+    },
+    {
+      "source_text": "Sundar Pichai -- Google/Alphabet CEO, AI race, antitrust rulings, and Gemini controversies",
+      "source_lang": "en",
+      "target_text": "Sundar Pichai leads Google through its most severe regulatory threat in the company's history: a U.S. District Court ruled in August 2024 that Google illegally maintained a search monopoly, and in September 2025 Judge Amit Mehta imposed behavioral remedies barring exclusive search distribution deals with Apple, Samsung, and carriers, while rejecting the DOJ's call to divest Chrome and Android. Google has appealed, and the case may not resolve until late 2027 or 2028. On the AI front, Pichai has positioned Gemini as Google's flagship model but acknowledged a 'big gap' remains versus ChatGPT; the Gemini image generator was pulled in February 2024 after producing historically inaccurate images that became a viral embarrassment. Pichai told employees 2025 was a 'critical year' and urged them to 'stay scrappy,' while Google pursued a deal to bring Gemini AI to iPhones and continued to face antitrust scrutiny in a separate ad-tech case.",
+      "target_lang": "en",
+      "reason": "Steers the most-used search engine and a major AI contender while facing landmark antitrust remedies"
+    },
+    {
+      "source_text": "Tim Cook -- Apple CEO, services pivot, Vision Pro, EU regulatory battles, and succession",
+      "source_lang": "en",
+      "target_text": "Tim Cook will step down as Apple CEO on September 1, 2026, handing the role to hardware chief John Ternus and transitioning to Executive Chairman, capping a tenure that grew Apple's revenue past $400 billion annually and its market value to $4 trillion. His 2025 compensation was $74.3 million, including $57.5 million in stock awards. Cook's final major initiative was Apple's AI push, but the enhanced Siri remains unavailable in the EU because Apple cannot reconcile its on-device data practices with the Digital Markets Act; in July 2026 Cook held 'constructive' talks with the European Commission seeking a path forward. The Vision Pro headset, launched in February 2024 at $3,499, drew praise for its technology but tepid consumer demand, leading Apple to reassign its head, Mike Rockwell, to lead the company's AI division in April 2025.",
+      "target_lang": "en",
+      "reason": "Longest-serving current Big Tech CEO, navigating the company through its AI transition and a historic leadership handoff"
+    },
+    {
+      "source_text": "Tech CEO compensation versus median worker pay -- the widening gap",
+      "source_lang": "en",
+      "target_text": "The CEO-to-worker pay ratio among S&P 500 companies reached a median of 99-to-1 in 2025, up from 92-to-1 in 2024 and 84-to-1 in 2022, with the average ratio (excluding Elon Musk's outlier package) climbing to 312-to-1. Tesla posted the single most extreme ratio at 2,522,203-to-1, based on Musk's equity compensation against a median Tesla worker salary of $62,786, while Figma CEO Dylan Field received $864.4 million, almost entirely in stock awards. In the tech sector specifically, chief technology officers saw median compensation rise 10 percent to $2.59 million in 2025. The AFL-CIO's 2026 Executive Paywatch report documents that this gap has widened every year since 2022, driven primarily by stock-based compensation that ties CEO wealth to share price rather than operational performance, raising questions about whether current pay structures align executive incentives with long-term workforce welfare.",
+      "target_lang": "en",
+      "reason": "Quantifies the structural inequality at the core of the tech industry's labor dynamics"
+    },
+    {
+      "source_text": "Revolving door between Big Tech and government -- lobbying and policy capture",
+      "source_lang": "en",
+      "target_text": "Between January and September 2025, 73 percent of Meta's U.S. lobbyists and 64 percent of Amazon's had previously held government positions, according to investigative reporting by SOMO and partner outlets. President Trump's Council of Advisors on Science and Technology (PCAST), his primary sounding board on AI policy, is populated heavily by tech executives and billionaire investors with direct commercial stakes in AI deregulation. In June 2026, Trump signed a scaled-back AI executive order after industry lobbying reduced the pre-deployment vetting window from 90 days to 30 and made compliance voluntary for AI firms. The Bulletin of the Atomic Scientists documented in August 2026 a growing 'defense revolving door, Silicon Valley edition,' with former Pentagon officials joining AI defense contractors and vice versa, blurring the line between public interest and private profit in military AI procurement.",
+      "target_lang": "en",
+      "reason": "Explains how personnel flow between industry and government shapes the rules tech companies operate under"
+    },
+    {
+      "source_text": "Tech billionaire philanthropy -- generosity or reputation laundering",
+      "source_lang": "en",
+      "target_text": "The Global Risk Advisory Council's Q1 2026 Reputation Risk Index found that public perception increasingly views large-scale philanthropy as 'less about altruism and more about reputation laundering, buying visibility, and asserting privilege,' with 87 percent of survey respondents saying the philanthropic sector fails to communicate its impact. Anthropic's cofounders have pledged to donate 80 percent of their wealth, and OpenAI Foundation pledged $1 billion to mitigate AI-driven job displacement, but critics argue that such pledges allow the donors to shape public goods according to private preferences rather than democratic decision-making. The Bill and Melinda Gates Foundation remains the largest private charitable foundation, spending over $8 billion annually, yet faces criticism that its influence over global health policy in developing countries substitutes billionaire judgment for local governance. An Institute for Policy Studies analysis found that U.S. billionaire wealth grew by $1.1 trillion during the first ten months of the pandemic while charitable giving did not proportionally increase, reinforcing skepticism that mega-philanthropy serves as a structural counterweight to inequality.",
+      "target_lang": "en",
+      "reason": "Tests whether tech philanthropy is a genuine redistribution mechanism or a tool for maintaining social license"
+    },
+    {
+      "source_text": "OpenAI's for-profit conversion -- the nonprofit mission versus commercial reality",
+      "source_lang": "en",
+      "target_text": "In October 2025, OpenAI converted from its original nonprofit-controlled capped-profit structure to a Delaware Public Benefit Corporation, creating the OpenAI Foundation with a 25.8 percent equity stake worth roughly $130 billion at the company's $500 billion valuation. Microsoft retained approximately 27 percent equity, and OpenAI closed a record $122 billion funding round in February 2026 at an $852 billion valuation. Sam Altman, who had previously received no equity, was granted a stake reportedly worth around $10 billion. The conversion drew a federal lawsuit from Elon Musk alleging abandonment of the nonprofit mission, but a jury ruled against him in May 2026; California's Attorney General also reviewed the conversion to ensure the nonprofit's charitable assets were preserved. Critics argue the structure creates an unprecedented conflict: the foundation that is supposed to safeguard humanity's interests is now financially dependent on the commercial success of the very company it oversees.",
+      "target_lang": "en",
+      "reason": "The most consequential corporate restructuring in AI, testing whether mission-driven governance survives commercialization"
+    },
+    {
+      "source_text": "NVIDIA's AI chip export controls and geopolitical entanglement",
+      "source_lang": "en",
+      "target_text": "NVIDIA's dominance in AI hardware has made it a central figure in U.S.-China technology tensions: the Biden administration imposed export controls in October 2022 and tightened them in October 2023, restricting sales of advanced AI chips to China, a market that previously accounted for roughly 20-25 percent of NVIDIA's data-center revenue. NVIDIA responded by designing China-specific chips (A800, H800, then further restricted variants) that skirted the rules, prompting regulators to close loopholes. By 2026 Jensen Huang acknowledged China risk as a material concern even as he announced $500 billion in global AI chip orders. The controls have accelerated China's domestic chip efforts, particularly Huawei's Ascend line, while U.S. allies in Europe and the Middle East lobby for exemptions, creating a geopolitical fracture over who gets access to the hardware that powers AI.",
+      "target_lang": "en",
+      "reason": "Illustrates how one company's market position has become a lever of great-power competition"
+    },
+    {
+      "source_text": "Google antitrust remedies -- the search monopoly ruling and its consequences",
+      "source_lang": "en",
+      "target_text": "In August 2024, U.S. District Judge Amit Mehta ruled that Google illegally maintained a monopoly in general search and search advertising through exclusive distribution agreements, paying Apple an estimated $20 billion per year to be the default search engine on iPhones. The remedies decision in September 2025 rejected the DOJ's demand to force divestiture of Chrome and Android but barred Google from entering or maintaining exclusive default search deals, required it to share search index and user-interaction data with qualified competitors, and prohibited tying distribution of Search, Chrome, or Gemini AI products together. Google immediately appealed, and the case is expected to reach final resolution no earlier than late 2027. The ruling has already shifted market dynamics: Apple reportedly explored partnerships with alternative search providers and AI assistants, while the DOJ signaled it may appeal the remedies as insufficiently aggressive.",
+      "target_lang": "en",
+      "reason": "The most significant U.S. antitrust action in tech since the Microsoft case of 1998, with implications for AI distribution"
+    },
+    {
+      "source_text": "Satya Nadella's AI infrastructure spending -- the $80 billion bet",
+      "source_lang": "en",
+      "target_text": "Microsoft's capital expenditure on AI infrastructure exceeded $80 billion in fiscal year 2025, with Nadella committing to a four-way AI portfolio spanning OpenAI, Anthropic, Mistral, and internal research to hedge against any single model provider failing. Azure's AI business hit a $37 billion annual run rate by mid-2026, growing 123 percent year over year, making it the fastest-growing segment in Microsoft's history. OpenAI committed to spending $250 billion or more on Azure compute, while Anthropic agreed to $30 billion in Azure capacity, effectively guaranteeing demand for the infrastructure Microsoft is building. Skeptics question whether this spend can generate adequate returns if AI model commoditization drives prices down, or if a slowdown in enterprise AI adoption would leave Microsoft with stranded assets -- a concern echoed by analysts who compare the current moment to the fiber-optic overbuilding of the late 1990s.",
+      "target_lang": "en",
+      "reason": "Tests whether the largest corporate infrastructure bet in history will define or destroy the next era of enterprise computing"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "to_source": "OpenAI's for-profit conversion -- the nonprofit mission versus commercial reality",
+      "kind": "refines",
+      "reason": "The conversion entry details the structural change that Altman's profile references, including equity stakes and the Musk lawsuit outcome"
+    },
+    {
+      "from_source": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "to_source": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "kind": "contradicts",
+      "reason": "Musk sued Altman and OpenAI alleging mission abandonment; their competing visions for AI governance are diametrically opposed"
+    },
+    {
+      "from_source": "Satya Nadella -- Microsoft CEO, Azure AI pivot, and OpenAI partnership",
+      "to_source": "Satya Nadella's AI infrastructure spending -- the $80 billion bet",
+      "kind": "refines",
+      "reason": "The infrastructure spending entry quantifies and interrogates the financial commitments summarized in the main Nadella profile"
+    },
+    {
+      "from_source": "Jensen Huang -- NVIDIA CEO, GPU dominance in AI, and trillion-dollar valuation",
+      "to_source": "NVIDIA's AI chip export controls and geopolitical entanglement",
+      "kind": "refines",
+      "reason": "Export controls entry explores the geopolitical dimension of the dominance described in the main Huang profile"
+    },
+    {
+      "from_source": "Sundar Pichai -- Google/Alphabet CEO, AI race, antitrust rulings, and Gemini controversies",
+      "to_source": "Google antitrust remedies -- the search monopoly ruling and its consequences",
+      "kind": "refines",
+      "reason": "The remedies entry provides the detailed legal outcome of the antitrust case referenced in the Pichai profile"
+    },
+    {
+      "from_source": "Tech CEO compensation versus median worker pay -- the widening gap",
+      "to_source": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "kind": "refines",
+      "reason": "Musk's Tesla is the extreme case cited in the pay-gap entry, with a ratio of 2.5 million to 1"
+    },
+    {
+      "from_source": "Tech billionaire philanthropy -- generosity or reputation laundering",
+      "to_source": "Revolving door between Big Tech and government -- lobbying and policy capture",
+      "kind": "refines",
+      "reason": "Both entries address mechanisms by which tech wealth translates into influence beyond market power -- philanthropy through private preference, revolving door through personnel"
+    },
+    {
+      "from_source": "Satya Nadella's AI infrastructure spending -- the $80 billion bet",
+      "to_source": "Jensen Huang -- NVIDIA CEO, GPU dominance in AI, and trillion-dollar valuation",
+      "kind": "refines",
+      "reason": "Microsoft is one of NVIDIA's largest customers; its infrastructure bet directly fuels the GPU demand Huang's profile describes"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "kind": "url",
+      "locator": "https://abcnews.com/Business/sam-altman-reaches-deal-return-ceo-openai/story?id=105091534",
+      "reason": "Timeline of Altman's firing on November 17 and return on November 21, 2023"
+    },
+    {
+      "pair_source": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "kind": "url",
+      "locator": "https://argos.vu/sam-altman-openai-guide-2026/",
+      "reason": "2026 overview of Altman's AGI strategy, $150B fight for OpenAI, and the for-profit conversion"
+    },
+    {
+      "pair_source": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "kind": "url",
+      "locator": "https://www.coindesk.com/business/2026/01/28/world-token-jumps-27-as-sam-altman-reportedly-eyes-a-biometric-social-network-to-kill-off-bots",
+      "reason": "World Network funding, biometric Orb expansion, and regulatory scrutiny in Kenya and UK"
+    },
+    {
+      "pair_source": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "kind": "url",
+      "locator": "https://thehill.com/policy/technology/5988248-doge-initiative-shut-down/",
+      "reason": "Musk admitting he 'got carried away' with DOGE and the initiative's July 4 shutdown"
+    },
+    {
+      "pair_source": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "kind": "url",
+      "locator": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-doge-politics-bets-013142887.html",
+      "reason": "SpaceX IPO details: 555.6 million shares at $135, $75B raised, $1.77T valuation"
+    },
+    {
+      "pair_source": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "kind": "url",
+      "locator": "https://electrek.co/2026/03/13/elon-musk-admits-xai-built-wrong-rebuild-tesla-spacex-investment/",
+      "reason": "Musk admitting xAI was 'not built right' and the $2B Tesla investment into xAI"
+    },
+    {
+      "pair_source": "Satya Nadella -- Microsoft CEO, Azure AI pivot, and OpenAI partnership",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2026/04/29/satya-nadella-says-hes-ready-to-exploit-the-new-openai-deal/",
+      "reason": "Details of Microsoft's royalty-free access to OpenAI models through 2032 and 27% equity stake"
+    },
+    {
+      "pair_source": "Satya Nadella -- Microsoft CEO, Azure AI pivot, and OpenAI partnership",
+      "kind": "url",
+      "locator": "https://www.startuphub.ai/ai-news/ai-figures/2026/figure-satya-nadella-company-financial-breakdown-2026-07-24",
+      "reason": "Microsoft AI $37B annual run rate and Azure 40% year-on-year growth figures"
+    },
+    {
+      "pair_source": "Jensen Huang -- NVIDIA CEO, GPU dominance in AI, and trillion-dollar valuation",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2026/03/16/nvidia-gtc-2026-ceo-jensen-huang-keynote-blackwell-vera-rubin.html",
+      "reason": "Huang projecting $1 trillion in orders for Blackwell and Vera Rubin through 2027"
+    },
+    {
+      "pair_source": "Jensen Huang -- NVIDIA CEO, GPU dominance in AI, and trillion-dollar valuation",
+      "kind": "url",
+      "locator": "https://www.whoearns.com/blog/jensen-huang-net-worth-2026",
+      "reason": "Huang net worth estimates and NVIDIA market cap crossing $5 trillion in October 2025"
+    },
+    {
+      "pair_source": "Mark Zuckerberg -- Meta CEO, metaverse bet, AI pivot, privacy record, and Llama open-source",
+      "kind": "url",
+      "locator": "https://aicommission.org/2026/05/metas-ai-crisis-deepens-inside-the-fight-against-mark-zuckerberg/",
+      "reason": "Llama 4 benchmark controversy, Yann LeCun 'fudged' admission, and AI reorganization"
+    },
+    {
+      "pair_source": "Mark Zuckerberg -- Meta CEO, metaverse bet, AI pivot, privacy record, and Llama open-source",
+      "kind": "url",
+      "locator": "https://fortune.com/2025/12/04/mark-zuckerberg-metaverse-deep-cuts-30-percent/",
+      "reason": "Metaverse division deep cuts and investor skepticism about Reality Labs spending"
+    },
+    {
+      "pair_source": "Sundar Pichai -- Google/Alphabet CEO, AI race, antitrust rulings, and Gemini controversies",
+      "kind": "url",
+      "locator": "https://www.npr.org/2025/04/30/nx-s1-5382294/sundar-pichai-google-antitrust-testimony",
+      "reason": "Pichai defending Google against DOJ proposals in court, April 2025 testimony"
+    },
+    {
+      "pair_source": "Sundar Pichai -- Google/Alphabet CEO, AI race, antitrust rulings, and Gemini controversies",
+      "kind": "url",
+      "locator": "https://www.fastcompany.com/91502632/google-most-innovative-companies-2026",
+      "reason": "Pichai's plan to make Gemini the leading AI model and competitive positioning"
+    },
+    {
+      "pair_source": "Tim Cook -- Apple CEO, services pivot, Vision Pro, EU regulatory battles, and succession",
+      "kind": "url",
+      "locator": "https://www.macrumors.com/2026/07/01/tim-cook-constructive-talks-eu-siri-ai-launch/",
+      "reason": "Cook's July 2026 talks with EU over launching Siri AI under Digital Markets Act"
+    },
+    {
+      "pair_source": "Tim Cook -- Apple CEO, services pivot, Vision Pro, EU regulatory battles, and succession",
+      "kind": "url",
+      "locator": "https://fortune.com/2025/12/08/apple-executive-exodus-2026-new-leadership-team-rising-stars-tim-cook-successor/",
+      "reason": "Cook stepping down September 1 2026, John Ternus succession, and executive exodus"
+    },
+    {
+      "pair_source": "Tim Cook -- Apple CEO, services pivot, Vision Pro, EU regulatory battles, and succession",
+      "kind": "url",
+      "locator": "https://macdailynews.com/2026/01/09/apple-ceo-tim-cooks-2025-compensation-74-3-million/",
+      "reason": "Cook's $74.3 million compensation breakdown for 2025"
+    },
+    {
+      "pair_source": "Tech CEO compensation versus median worker pay -- the widening gap",
+      "kind": "url",
+      "locator": "https://fortune.com/2026/06/20/executive-pay-ceo-gap-worker-widened/",
+      "reason": "Median pay ratio 99-to-1 in 2025, average 312-to-1 excluding Musk, gap widening every year since 2022"
+    },
+    {
+      "pair_source": "Tech CEO compensation versus median worker pay -- the widening gap",
+      "kind": "url",
+      "locator": "https://aflcio.org/paywatch",
+      "reason": "AFL-CIO 2026 Executive Paywatch data on CEO-to-worker pay ratios"
+    },
+    {
+      "pair_source": "Revolving door between Big Tech and government -- lobbying and policy capture",
+      "kind": "url",
+      "locator": "https://www.somo.nl/the-united-states-birthplace-of-the-big-tech-lobby-playbook/",
+      "reason": "Meta 73% and Amazon 64% of U.S. lobbyists being former government officials"
+    },
+    {
+      "pair_source": "Revolving door between Big Tech and government -- lobbying and policy capture",
+      "kind": "url",
+      "locator": "https://thebulletin.org/2026/08/the-defense-revolving-door-silicon-valley-edition/",
+      "reason": "August 2026 reporting on Silicon Valley defense revolving door and military AI procurement"
+    },
+    {
+      "pair_source": "Tech billionaire philanthropy -- generosity or reputation laundering",
+      "kind": "url",
+      "locator": "https://www.odwyerpr.com/story/public/24642/2026-04-21/philanthropy-perceived-as-reputation-laundering.html",
+      "reason": "Q1 2026 Reputation Risk Index data showing philanthropy perceived as reputation laundering"
+    },
+    {
+      "pair_source": "Tech billionaire philanthropy -- generosity or reputation laundering",
+      "kind": "url",
+      "locator": "https://www.plinth.org.uk/debates/philanthropy-wealth-reputation",
+      "reason": "Analysis of whether big philanthropy is generous giving or reputation laundering"
+    },
+    {
+      "pair_source": "OpenAI's for-profit conversion -- the nonprofit mission versus commercial reality",
+      "kind": "url",
+      "locator": "https://www.forbes.com/sites/paulocarvao/2026/04/27/as-openai-shifts-to-for-profit-its-foundation-controls-130-billion-who-benefits/",
+      "reason": "Foundation's $130B stake, Musk trial, and questions about who benefits from the structure"
+    },
+    {
+      "pair_source": "OpenAI's for-profit conversion -- the nonprofit mission versus commercial reality",
+      "kind": "url",
+      "locator": "https://sacra.com/c/openai/",
+      "reason": "OpenAI revenue, valuation tracking, and $40B annualized revenue estimate for July 2026"
+    },
+    {
+      "pair_source": "NVIDIA's AI chip export controls and geopolitical entanglement",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html",
+      "reason": "Huang acknowledging China risk as material concern alongside $500B in AI chip orders"
+    },
+    {
+      "pair_source": "Google antitrust remedies -- the search monopoly ruling and its consequences",
+      "kind": "url",
+      "locator": "https://www.npr.org/2025/09/02/nx-s1-5478625/google-chrome-doj-antitrust-ruling",
+      "reason": "NPR report on judge letting Google keep Chrome but imposing other antitrust penalties"
+    },
+    {
+      "pair_source": "Google antitrust remedies -- the search monopoly ruling and its consequences",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2025/09/02/google-avoids-breakup-but-has-to-give-up-exclusive-search-deals-in-antitrust-trial/",
+      "reason": "Details of behavioral remedies: barring exclusive deals, data sharing requirements"
+    },
+    {
+      "pair_source": "Satya Nadella's AI infrastructure spending -- the $80 billion bet",
+      "kind": "url",
+      "locator": "https://www.startuphub.ai/ai-news/ai-figures/2026/figure-satya-nadella-venture-portfolio-breakdown-2026-08-13",
+      "reason": "Nadella's four-way AI portfolio: OpenAI, Anthropic, Mistral, and internal research"
+    }
+  ]
+}

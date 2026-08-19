@@ -1,0 +1,311 @@
+{
+  "domain": "people-infrastructure-builders",
+  "pairs": [
+    {
+      "source_text": "Robert Moses — the unelected power broker who reshaped New York through highways and racial exclusion",
+      "source_lang": "en",
+      "target_text": "Robert Moses (1888-1981) was never elected to public office yet became the most powerful figure in New York City's built environment, serving as construction coordinator and holding up to 12 simultaneous public authority titles. He built seven bridges, 14 expressways, 658 playgrounds, and hundreds of miles of parkway, including the Cross-Bronx Expressway, the Triborough Bridge, and the Verrazano-Narrows Bridge. His projects displaced an estimated 250,000 residents, disproportionately from Black and Puerto Rican neighborhoods, and he deliberately designed low-clearance bridges on Long Island parkways to prevent buses -- used primarily by low-income Black New Yorkers -- from reaching Jones Beach State Park. Moses prioritized automobile infrastructure over mass transit, a pattern that entrenched suburban sprawl and economic segregation across the metropolitan region for generations.",
+      "target_lang": "en",
+      "reason": "Moses exemplifies how unelected bureaucratic power can reshape cities; his career is the definitive case study in infrastructure as a tool of racial and economic segregation."
+    },
+    {
+      "source_text": "Hedy Lamarr — Hollywood actress and co-inventor of frequency-hopping spread spectrum technology",
+      "source_lang": "en",
+      "target_text": "Hedy Lamarr (1914-2000), born Hedwig Eva Maria Kiesler in Vienna, was simultaneously one of Hollywood's biggest stars and an unrecognized inventor whose work underpins modern wireless communication. In 1942, she and composer George Antheil received U.S. Patent 2,292,387 for a 'Secret Communication System' that used frequency hopping -- synchronized by a mechanism based on piano rolls with 88 frequencies -- to create jam-resistant torpedo guidance. The Navy shelved the invention, reportedly dismissing the idea of putting 'a player piano in a torpedo,' and did not deploy the technology until 1962, after the patent had expired, meaning Lamarr and Antheil received no royalties. Frequency-hopping spread spectrum became foundational to Bluetooth, Wi-Fi, and GPS; Lamarr was finally recognized with the Electronic Frontier Foundation Pioneer Award in 1997, three years before her death.",
+      "target_lang": "en",
+      "reason": "Lamarr's story reveals how gender bias and institutional inertia delayed adoption of a transformative communications technology by two decades."
+    },
+    {
+      "source_text": "Nikola Tesla — pioneer of AC power, radio, and induction motors who died impoverished",
+      "source_lang": "en",
+      "target_text": "Nikola Tesla (1856-1943) developed the alternating current induction motor and the polyphase AC power system that became the global standard for electricity generation and transmission, winning the 'War of Currents' against Thomas Edison's direct current system. His 1888 patents, licensed to George Westinghouse, powered the 1893 World's Columbian Exposition and the first major AC hydroelectric plant at Niagara Falls in 1896. Tesla held approximately 300 patents across 26 countries, contributing to radio, X-ray imaging, and remote control, yet he was a poor businessman who tore up his Westinghouse royalty contract to save the company from bankruptcy and poured his remaining funds into increasingly impractical projects like the Wardenclyffe Tower. He died alone on January 7, 1943, in Room 3327 of the New Yorker Hotel, impoverished and surviving on a $7,000 annual honorarium from the Tesla Institute in Belgrade.",
+      "target_lang": "en",
+      "reason": "Tesla's career illustrates the gap between technical genius and commercial success, and how patent systems and corporate power determine who profits from foundational infrastructure inventions."
+    },
+    {
+      "source_text": "Isambard Kingdom Brunel — Victorian engineer of railways, bridges, tunnels, and transatlantic steamships",
+      "source_lang": "en",
+      "target_text": "Isambard Kingdom Brunel (1806-1859) was appointed chief engineer of the Great Western Railway at age 27, building over 1,600 km of broad-gauge track between London and Bristol with innovations including the Box Tunnel (then the world's longest railway tunnel) and the Maidenhead Railway Bridge (the flattest brick arch ever built). He designed three pioneering steamships: the SS Great Western (1838), which proved commercial transatlantic steam travel viable with a 15-day Bristol-to-New-York voyage; the SS Great Britain (1845), the first large iron-hulled, screw-propeller-driven ocean liner; and the SS Great Eastern (1858), which remained the world's largest ship for 40 years and later laid the first transatlantic telegraph cable. His Clifton Suspension Bridge, spanning 214 meters over the Avon Gorge, was completed posthumously in 1864 and still carries over four million vehicles annually. Voted the second-greatest Briton of all time in a 2002 BBC poll, Brunel drove himself relentlessly -- he died at 53, just days after the troubled launch of the Great Eastern, likely from overwork-related stroke.",
+      "target_lang": "en",
+      "reason": "Brunel's career spans railways, bridges, tunnels, and ships, making him the prototype of the systems-thinking infrastructure engineer whose ambition pushed industrial-era engineering to its limits."
+    },
+    {
+      "source_text": "John D. Rockefeller — Standard Oil monopolist and architect of modern philanthropy",
+      "source_lang": "en",
+      "target_text": "John D. Rockefeller (1839-1937) founded Standard Oil in 1870 and by the early 1880s controlled approximately 90% of U.S. oil refining and pipelines, building the template for the modern industrial monopoly through predatory pricing, secret railroad rebates, and systematic acquisition of competitors. The U.S. Supreme Court ordered Standard Oil dissolved in 1911 under the Sherman Antitrust Act, splitting it into 34 companies including predecessors of ExxonMobil and Chevron, but ironically the breakup made Rockefeller even richer as the separate companies' combined stock value soared. He became the world's first confirmed billionaire, with a fortune worth approximately $1.5 billion at his death (roughly $340 billion in 2023 dollars). Rockefeller donated over $500 million during his lifetime, founding the University of Chicago, Rockefeller University, and the Rockefeller Foundation, establishing the model of large-scale strategic philanthropy -- yet his wealth was built on labor exploitation, environmental destruction from unregulated extraction, and anti-competitive practices that crushed thousands of independent oil producers.",
+      "target_lang": "en",
+      "reason": "Rockefeller created the energy infrastructure monopoly model and the philanthropic foundation model simultaneously, both of which shaped 20th-century power structures."
+    },
+    {
+      "source_text": "Robert Caro's 'The Power Broker' — how one book changed the understanding of infrastructure and power",
+      "source_lang": "en",
+      "target_text": "Robert Caro's 'The Power Broker: Robert Moses and the Fall of New York' (1974) is a 1,336-page biography produced from seven years of research and over 500 interviews that won the Pulitzer Prize and fundamentally changed how Americans understand the relationship between infrastructure, political power, and race. The book documented how Moses accumulated power through public authorities -- quasi-governmental entities that could issue bonds, collect tolls, and operate outside democratic accountability -- to reshape New York without ever winning an election. Caro demonstrated that infrastructure decisions are political acts with permanent consequences: Moses's choice to build highways instead of mass transit, to route expressways through Black neighborhoods, and to design bridges that excluded buses were not engineering necessities but deliberate exercises of power. Named one of the hundred greatest nonfiction books of the 20th century by the Modern Library, the book created a lasting framework for analyzing infrastructure as a vehicle for social control rather than neutral public works.",
+      "target_lang": "en",
+      "reason": "Caro's book is the single most influential work connecting infrastructure to political power, providing the analytical vocabulary still used in urban planning debates."
+    },
+    {
+      "source_text": "Vannevar Bush — architect of modern R&D funding and visionary of information technology",
+      "source_lang": "en",
+      "target_text": "Vannevar Bush (1890-1974) directed the Office of Scientific Research and Development (OSRD) from 1941 to 1947, overseeing more than 6,000 wartime research contracts that produced radar, the proximity fuze, mass-produced penicillin, and early coordination of the Manhattan Project, establishing the model of government-funded, university-conducted research. His 1945 report 'Science, the Endless Frontier,' commissioned by President Roosevelt and delivered to President Truman, argued that federal investment in basic research was essential to national security, public health, and economic growth, directly leading to the creation of the National Science Foundation in 1950. In his July 1945 Atlantic article 'As We May Think,' Bush described the 'memex' -- a desk-sized device for storing, linking, and navigating vast bodies of knowledge -- prefiguring hypertext, the World Wide Web, and modern search engines by half a century. Bush's dual legacy as both the organizer of military-industrial research and the prophet of open information systems remains in productive tension: the infrastructure of knowledge he built simultaneously accelerated weapons development and democratized access to science.",
+      "target_lang": "en",
+      "reason": "Bush created the institutional infrastructure for modern R&D funding and conceptualized information infrastructure decades before the internet, linking physical and knowledge infrastructure."
+    },
+    {
+      "source_text": "The Interstate Highway System — Eisenhower's vision and the destruction of urban neighborhoods",
+      "source_lang": "en",
+      "target_text": "The Federal-Aid Highway Act of 1956, championed by President Eisenhower partly from his experience with the 1919 Army convoy across deteriorating roads and his admiration for Germany's Autobahn, authorized construction of over 41,000 miles of interstate highways at a cost that ultimately exceeded $500 billion in 2023 dollars. The system displaced more than one million people and destroyed over 475,000 households, according to U.S. Department of Transportation estimates, with routes systematically routed through Black neighborhoods -- communities in Atlanta, Miami's Overtown, Minneapolis's Rondo, and New York's South Bronx were bisected or demolished, often targeting areas already marked by discriminatory redlining maps. While the highway system enabled postwar suburbanization and a national logistics network, it simultaneously defunded public transit, accelerated white flight, and created physical barriers that segregated cities along racial and economic lines. The 'freeway revolts' of the 1960s and 1970s, where citizens in cities like San Francisco and New Orleans successfully blocked planned highways, marked the first organized resistance to automobile-centric infrastructure planning.",
+      "target_lang": "en",
+      "reason": "The Interstate Highway System is the largest infrastructure project in U.S. history and the clearest example of how infrastructure investment creates winners and losers along racial and economic lines."
+    },
+    {
+      "source_text": "Panama Canal construction — engineering triumph built on 27,000 deaths",
+      "source_lang": "en",
+      "target_text": "The Panama Canal, completed in 1914 after a decade of American construction (1904-1914) following France's failed 1881-1889 attempt, required excavating over 200 million cubic yards of earth through tropical jungle to create a 51-mile waterway linking the Atlantic and Pacific oceans. The total death toll across both construction phases was approximately 27,500 workers: roughly 22,000 during the French period and 5,609 during the American phase, killed primarily by yellow fever, malaria, landslides, and dynamite accidents. The workforce, which peaked at 40,000, was drawn largely from Caribbean nations -- Barbados, Jamaica, and Saint Lucia -- and these West Indian laborers faced a discriminatory 'gold roll / silver roll' pay system that paid white Americans in gold currency and Black workers in lesser silver currency, with segregated housing, dining, and medical facilities. Chief Sanitary Engineer William Gorgas's mosquito-eradication campaign eliminated yellow fever from the Canal Zone by 1906, but the engineering triumph was inseparable from colonial labor exploitation and the U.S.-backed separation of Panama from Colombia in 1903 to secure canal rights.",
+      "target_lang": "en",
+      "reason": "The Panama Canal represents the intersection of imperial power, racial labor exploitation, and engineering ambition that characterizes many mega-infrastructure projects."
+    },
+    {
+      "source_text": "Modern mega-project failures — cost overruns, delays, and accountability gaps",
+      "source_lang": "en",
+      "target_text": "Mega-infrastructure projects routinely exceed budgets and timelines by enormous margins, a pattern documented by Oxford professor Bent Flyvbjerg across hundreds of projects worldwide. California's High-Speed Rail, approved by voters in 2008 at an estimated $33 billion for San Francisco-to-Los Angeles service, has seen costs balloon to $128 billion with only 170 miles under construction in the Central Valley and no completion date in sight; $15.7 billion has been spent with the federal government moving to terminate $4 billion in grants over persistent delays. Berlin Brandenburg Airport, planned to open in 2011 at a cost of approximately 1 billion euros, finally opened in October 2020 -- nine years late -- at a cost exceeding 6.5 billion euros, delayed by failed fire safety inspections, contractor bankruptcy, and corruption investigations. These failures share common patterns: optimism bias in initial estimates, poor contract management, inadequate land acquisition before construction begins, and political incentives to announce projects at artificially low costs to secure approval, with taxpayers rather than decision-makers bearing the consequences.",
+      "target_lang": "en",
+      "reason": "Mega-project failures reveal systematic incentive problems in infrastructure planning where political actors benefit from underestimating costs and are rarely held accountable for overruns."
+    },
+    {
+      "source_text": "Infrastructure as political power — who decides what gets built and where",
+      "source_lang": "en",
+      "target_text": "Infrastructure investment is an inherently political act in which decisions about what gets built, where, and for whom reflect and reinforce existing power structures. The Center for American Progress has documented how public spending on infrastructure is frequently shaped by political strategy rather than need, with governments historically rewarding loyal districts and securing electoral support through project placement. Wealthy neighborhoods wield disproportionate influence through organized opposition ('NIMBY' movements), legal resources, and campaign donations, which is why affluent communities tend to receive parks and transit while lower-income communities receive highways, waste facilities, and industrial zones. The pattern extends internationally: from Haussmann's demolition of working-class Paris neighborhoods in the 1850s-1870s to create grand boulevards, to Robert Moses's New York, to China's Three Gorges Dam displacing 1.3 million people, infrastructure megaprojects consistently concentrate benefits among political and economic elites while distributing costs -- displacement, pollution, noise -- to those with the least power to resist.",
+      "target_lang": "en",
+      "reason": "Understanding infrastructure as political power rather than neutral engineering is essential to evaluating who benefits and who pays for the systems we build."
+    },
+    {
+      "source_text": "The 'move fast and break things' ethos applied to physical infrastructure — why software logic fails in the built environment",
+      "source_lang": "en",
+      "target_text": "Facebook's original motto 'move fast and break things' became Silicon Valley's dominant operating philosophy, but its application to physical infrastructure reveals dangerous category errors. Software bugs can be patched in minutes; a collapsed bridge, a contaminated water system, or a misrouted highway creates irreversible harm -- physical infrastructure is bound by physics, regulatory requirements, and the impossibility of 'rolling back' concrete and steel. Mark Zuckerberg himself retired the motto in 2014, replacing it with 'move fast with stable infrastructure,' acknowledging that even in software the costs of breakage compound. The ethos has nonetheless migrated into infrastructure-adjacent domains: ride-sharing companies deployed without regulatory frameworks, cryptocurrency exchanges operated without financial safeguards, and autonomous vehicle testing on public roads proceeded before adequate safety standards were established. The lesson from infrastructure engineering is that speed without institutional checks produces catastrophic failures -- the Hyatt Regency walkway collapse (1981, 114 deaths) resulted from a seemingly minor design change made to simplify construction, illustrating how small shortcuts in physical systems can have fatal consequences.",
+      "target_lang": "en",
+      "reason": "The contrast between software iteration culture and physical infrastructure constraints reveals fundamental tensions in how modern societies approach building and risk."
+    },
+    {
+      "source_text": "The Flint water crisis — infrastructure neglect as environmental racism",
+      "source_lang": "en",
+      "target_text": "In April 2014, the city of Flint, Michigan -- a majority-Black city under state-appointed emergency management -- switched its water source from Lake Huron (via Detroit) to the Flint River as a cost-cutting measure, without applying corrosion-control treatment required by federal law. The untreated river water leached lead from aging pipes into the drinking water of nearly 100,000 residents; lead levels in some homes exceeded EPA action levels by ten times, and a Legionnaires' disease outbreak linked to the water killed at least 12 people. State and federal officials dismissed residents' complaints for 18 months before independent testing by Virginia Tech researchers and a local pediatrician, Dr. Mona Hanna-Attisah, forced a public acknowledgment. The crisis cost over $600 million in pipe replacement and settlements, and exemplified how deferred infrastructure maintenance in poor, minority communities constitutes a form of environmental racism -- the decision-makers who chose the cheaper water source did not drink it.",
+      "target_lang": "en",
+      "reason": "Flint demonstrates that infrastructure neglect is itself a decision, and that the communities most dependent on public systems are most vulnerable when those systems fail."
+    },
+    {
+      "source_text": "Arundhati Roy on large dams — the human cost of India's mega-infrastructure",
+      "source_lang": "en",
+      "target_text": "Writer and activist Arundhati Roy's 1999 essay 'The Greater Common Good' brought global attention to the Narmada Valley Development Project, a plan for 3,200 dams across central India that would displace an estimated 40 million people, predominantly Adivasi (indigenous) and Dalit communities. Roy argued that large dams had displaced between 33 and 55 million people in India since independence in 1947, with the vast majority never receiving promised rehabilitation or compensation -- former Prime Minister Jawaharlal Nehru called dams 'the temples of modern India,' but Roy countered that they were monuments to a development model that sacrificed the poorest for the benefit of urban elites and agricultural landowners. The Sardar Sarovar Dam on the Narmada, the project's centerpiece, was completed in 2017 at 163 meters height despite decades of protest by the Narmada Bachao Andolan movement led by Medha Patkar. Roy's critique extended beyond India, contributing to a global reassessment of mega-dam projects and influencing the World Commission on Dams' 2000 report, which acknowledged that large dams had displaced 40-80 million people worldwide with inadequate compensation.",
+      "target_lang": "en",
+      "reason": "Roy's work represents the most influential literary critique of infrastructure mega-projects as instruments of displacement, connecting development ideology to the lived experience of displaced communities."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Robert Caro's 'The Power Broker' — how one book changed the understanding of infrastructure and power",
+      "to_source": "Robert Moses — the unelected power broker who reshaped New York through highways and racial exclusion",
+      "kind": "refines",
+      "reason": "Caro's book is the definitive analysis of Moses's career, providing the evidence and framework that transformed Moses from a celebrated builder into a cautionary figure about unchecked infrastructure power."
+    },
+    {
+      "from_source": "The Interstate Highway System — Eisenhower's vision and the destruction of urban neighborhoods",
+      "to_source": "Robert Moses — the unelected power broker who reshaped New York through highways and racial exclusion",
+      "kind": "refines",
+      "reason": "Moses's New York highway program was the local model that prefigured and reinforced the national Interstate Highway System's pattern of routing highways through minority neighborhoods."
+    },
+    {
+      "from_source": "Infrastructure as political power — who decides what gets built and where",
+      "to_source": "Robert Caro's 'The Power Broker' — how one book changed the understanding of infrastructure and power",
+      "kind": "refines",
+      "reason": "The broader analysis of infrastructure as political power directly descends from Caro's framework for understanding Moses, extending it from one city to a universal pattern."
+    },
+    {
+      "from_source": "The 'move fast and break things' ethos applied to physical infrastructure — why software logic fails in the built environment",
+      "to_source": "Modern mega-project failures — cost overruns, delays, and accountability gaps",
+      "kind": "refines",
+      "reason": "The Silicon Valley ethos of speed over caution provides an ideological framework that, when applied to physical projects, compounds the institutional failures that already produce mega-project cost overruns."
+    },
+    {
+      "from_source": "The Flint water crisis — infrastructure neglect as environmental racism",
+      "to_source": "Infrastructure as political power — who decides what gets built and where",
+      "kind": "refines",
+      "reason": "Flint is the most stark modern example of how infrastructure decisions distribute risks along racial and economic lines -- neglect as a form of political decision-making."
+    },
+    {
+      "from_source": "Nikola Tesla — pioneer of AC power, radio, and induction motors who died impoverished",
+      "to_source": "John D. Rockefeller — Standard Oil monopolist and architect of modern philanthropy",
+      "kind": "contradicts",
+      "reason": "Tesla and Rockefeller represent opposite outcomes of the infrastructure era: Tesla created foundational technology but captured no wealth, while Rockefeller built a fortune from controlling distribution rather than inventing technology."
+    },
+    {
+      "from_source": "Arundhati Roy on large dams — the human cost of India's mega-infrastructure",
+      "to_source": "Panama Canal construction — engineering triumph built on 27,000 deaths",
+      "kind": "refines",
+      "reason": "Roy's critique of dam displacement extends the pattern visible in Panama Canal construction: mega-infrastructure projects across centuries and continents extract disproportionate human costs from colonized and marginalized populations."
+    },
+    {
+      "from_source": "Vannevar Bush — architect of modern R&D funding and visionary of information technology",
+      "to_source": "Hedy Lamarr — Hollywood actress and co-inventor of frequency-hopping spread spectrum technology",
+      "kind": "refines",
+      "reason": "Bush built the institutional infrastructure (OSRD, NSF) that eventually funded the kind of communications research Lamarr's patent anticipated, but his systems excluded outsider inventors like Lamarr from recognition and reward."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Robert Moses — the unelected power broker who reshaped New York through highways and racial exclusion",
+      "kind": "url",
+      "locator": "https://www.smartcitiesdive.com/ex/sustainablecitiescollective/urban-designer-series-robert-moses/54826/",
+      "reason": "Details Moses's construction record: seven bridges, 14 expressways, parkways, and public works projects."
+    },
+    {
+      "pair_source": "Robert Moses — the unelected power broker who reshaped New York through highways and racial exclusion",
+      "kind": "url",
+      "locator": "https://www.washingtonpost.com/politics/2021/11/10/robert-moses-saga-racist-parkway-bridges/",
+      "reason": "Examines the evidence for Moses's deliberately low bridge clearances on Long Island parkways to exclude buses."
+    },
+    {
+      "pair_source": "Hedy Lamarr — Hollywood actress and co-inventor of frequency-hopping spread spectrum technology",
+      "kind": "url",
+      "locator": "https://jwa.org/thisweek/aug/11/1942/actress-hedy-lamarr-patents-basis-for-wifi",
+      "reason": "Documents U.S. Patent 2,292,387 issue date (August 11, 1942) and the frequency-hopping invention."
+    },
+    {
+      "pair_source": "Hedy Lamarr — Hollywood actress and co-inventor of frequency-hopping spread spectrum technology",
+      "kind": "url",
+      "locator": "https://www.uspatent.com/2026/03/beyond-the-silver-screen-hedy-lamarrs-hidden-legacy-as-a-pioneer-of-modern-technology/",
+      "reason": "Covers the patent's connection to modern Bluetooth, Wi-Fi, and GPS and the Navy's initial rejection."
+    },
+    {
+      "pair_source": "Nikola Tesla — pioneer of AC power, radio, and induction motors who died impoverished",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Nikola-Tesla",
+      "reason": "Comprehensive biography covering AC system development, patent count, and rivalry with Edison."
+    },
+    {
+      "pair_source": "Nikola Tesla — pioneer of AC power, radio, and induction motors who died impoverished",
+      "kind": "url",
+      "locator": "https://www.gnhtk.com/science/why-did-nikola-tesla-die-poor/",
+      "reason": "Details Tesla's financial decline, torn Westinghouse royalty contract, and death in poverty at the New Yorker Hotel."
+    },
+    {
+      "pair_source": "Isambard Kingdom Brunel — Victorian engineer of railways, bridges, tunnels, and transatlantic steamships",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Isambard-Kingdom-Brunel",
+      "reason": "Authoritative biography covering GWR appointment, ship designs, and engineering achievements."
+    },
+    {
+      "pair_source": "Isambard Kingdom Brunel — Victorian engineer of railways, bridges, tunnels, and transatlantic steamships",
+      "kind": "url",
+      "locator": "https://www.rmg.co.uk/stories/maritime-history/who-was-isambard-kingdom-brunel",
+      "reason": "Royal Museums Greenwich profile covering steamship innovations and 2002 BBC poll ranking."
+    },
+    {
+      "pair_source": "John D. Rockefeller — Standard Oil monopolist and architect of modern philanthropy",
+      "kind": "url",
+      "locator": "https://www.britannica.com/money/John-D-Rockefeller",
+      "reason": "Documents Standard Oil's 90% market control, 1911 Supreme Court dissolution, and philanthropic giving."
+    },
+    {
+      "pair_source": "John D. Rockefeller — Standard Oil monopolist and architect of modern philanthropy",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/john-d-rockefeller",
+      "reason": "Covers Rockefeller's business practices, predatory pricing, and railroad rebate schemes."
+    },
+    {
+      "pair_source": "Robert Caro's 'The Power Broker' — how one book changed the understanding of infrastructure and power",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/The-Power-Broker-Robert-Moses-and-the-Fall-of-New-York",
+      "reason": "Encyclopedic entry on the book's research scope (seven years, 500+ interviews) and Pulitzer Prize."
+    },
+    {
+      "pair_source": "Robert Caro's 'The Power Broker' — how one book changed the understanding of infrastructure and power",
+      "kind": "url",
+      "locator": "https://www.npr.org/2024/09/29/1202633127/author-robert-caro-on-the-history-of-power",
+      "reason": "NPR interview with Caro discussing the book's thesis on power and infrastructure."
+    },
+    {
+      "pair_source": "Vannevar Bush — architect of modern R&D funding and visionary of information technology",
+      "kind": "url",
+      "locator": "https://spectrum.ieee.org/vannevar-bush",
+      "reason": "IEEE Spectrum profile identifying Bush as potentially the most important engineer of the 20th century."
+    },
+    {
+      "pair_source": "Vannevar Bush — architect of modern R&D funding and visionary of information technology",
+      "kind": "url",
+      "locator": "https://www.allaboutcircuits.com/news/vannevar-bush-and-the-engineering-of-american-innovation/",
+      "reason": "Covers OSRD's 6,000+ research contracts and the path from 'Science, the Endless Frontier' to NSF creation in 1950."
+    },
+    {
+      "pair_source": "The Interstate Highway System — Eisenhower's vision and the destruction of urban neighborhoods",
+      "kind": "url",
+      "locator": "https://www.archives.gov/milestone-documents/national-interstate-and-defense-highways-act",
+      "reason": "National Archives entry on the 1956 Federal-Aid Highway Act as a milestone document."
+    },
+    {
+      "pair_source": "The Interstate Highway System — Eisenhower's vision and the destruction of urban neighborhoods",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/interstate-highway-system-infrastructure-construction-segregation",
+      "reason": "HISTORY article documenting how interstate highways reinforced racial segregation in American cities."
+    },
+    {
+      "pair_source": "The Interstate Highway System — Eisenhower's vision and the destruction of urban neighborhoods",
+      "kind": "url",
+      "locator": "https://www.aarp.org/livable-communities/getting-around/info-2023/before-the-highway-introduction.html",
+      "reason": "Documents displacement of over 475,000 households and the destruction of specific urban neighborhoods."
+    },
+    {
+      "pair_source": "Panama Canal construction — engineering triumph built on 27,000 deaths",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/panama-canal-construction-dangers",
+      "reason": "HISTORY article covering the dangers of Panama Canal construction and the death toll."
+    },
+    {
+      "pair_source": "Panama Canal construction — engineering triumph built on 27,000 deaths",
+      "kind": "url",
+      "locator": "https://hekint.org/2021/09/17/death-disease-and-discrimination-during-the-construction-of-the-panama-canal-1904-1914/",
+      "reason": "Medical history journal article detailing deaths, diseases, and the discriminatory gold-roll/silver-roll pay system."
+    },
+    {
+      "pair_source": "Modern mega-project failures — cost overruns, delays, and accountability gaps",
+      "kind": "url",
+      "locator": "https://grist.org/transportation/billions-spent-miles-to-go-the-story-of-californias-failure-to-build-high-speed-rail/",
+      "reason": "Investigative report on California HSR's cost escalation from $33 billion to $128 billion and persistent delays."
+    },
+    {
+      "pair_source": "Modern mega-project failures — cost overruns, delays, and accountability gaps",
+      "kind": "url",
+      "locator": "https://www.airportwatch.org.uk/2020/10/nine-years-late-and-x3-over-budget-due-to-problems-berlins-brandenburg-airport-finally-opens-during-a-pandemic/",
+      "reason": "Documents Berlin Brandenburg Airport opening nine years late at three times the original budget."
+    },
+    {
+      "pair_source": "Infrastructure as political power — who decides what gets built and where",
+      "kind": "url",
+      "locator": "https://www.americanprogress.org/article/infrastructure-investment-decisions-political-not-technical/",
+      "reason": "Center for American Progress analysis arguing infrastructure decisions are political, not technical."
+    },
+    {
+      "pair_source": "Infrastructure as political power — who decides what gets built and where",
+      "kind": "url",
+      "locator": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/issues/magazine-issue/article/2021/11/what-does-infrastructure-have-to-do-with-social-justice-and-equity",
+      "reason": "American Society of Civil Engineers article connecting infrastructure to social justice and equity."
+    },
+    {
+      "pair_source": "The 'move fast and break things' ethos applied to physical infrastructure — why software logic fails in the built environment",
+      "kind": "url",
+      "locator": "https://www.fastcompany.com/91494217/what-move-fast-and-break-things-means-in-hardware-now",
+      "reason": "Fast Company article examining why the 'move fast and break things' ethos fails when applied to physical hardware and infrastructure."
+    },
+    {
+      "pair_source": "The Flint water crisis — infrastructure neglect as environmental racism",
+      "kind": "url",
+      "locator": "https://www.nrdc.org/stories/flint-water-crisis-everything-you-need-know",
+      "reason": "NRDC comprehensive account of the Flint water crisis timeline, health impacts, and ongoing remediation."
+    },
+    {
+      "pair_source": "Arundhati Roy on large dams — the human cost of India's mega-infrastructure",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Arundhati-Roy",
+      "reason": "Britannica biography covering Roy's activism against the Narmada Valley Development Project and 'The Greater Common Good' essay."
+    }
+  ]
+}

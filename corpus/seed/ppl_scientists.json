@@ -1,0 +1,311 @@
+{
+  "domain": "people-scientists",
+  "pairs": [
+    {
+      "source_text": "Fritz Haber — nitrogen fixation that feeds billions and the birth of chemical warfare",
+      "source_lang": "en",
+      "target_text": "Fritz Haber (1868-1934) was a German physical chemist who won the 1918 Nobel Prize in Chemistry for synthesizing ammonia from nitrogen and hydrogen, a process scaled up by Carl Bosch at BASF and now known as the Haber-Bosch process. This invention revolutionized agriculture by enabling industrial nitrogen fertilizers, and roughly half the world's food production today depends on it. However, Haber also directed Germany's chemical weapons program in World War I, personally overseeing the first large-scale chlorine gas attack at Ypres in April 1915 and later supervising development of phosgene and mustard gas. His wife Clara Immerwahr, herself a chemist, shot herself with his military pistol in 1915, an act widely interpreted as a protest against his weapons work; Haber, of Jewish ancestry, fled Nazi Germany in 1933 and died in Basel, Switzerland, in January 1934.",
+      "target_lang": "en",
+      "reason": "Epitomizes the dual-use dilemma in science: the same chemistry that prevents mass starvation was weaponized to cause mass death"
+    },
+    {
+      "source_text": "Norman Borlaug — the Green Revolution and saving a billion lives from famine",
+      "source_lang": "en",
+      "target_text": "Norman Borlaug (1914-2009), an American agronomist known as the 'Father of the Green Revolution,' developed high-yielding, disease-resistant dwarf wheat varieties that dramatically increased crop production in Mexico, India, and Pakistan during the 1960s and 1970s. His work is credited with saving an estimated one billion people from starvation, and he was awarded the 1970 Nobel Peace Prize, the Presidential Medal of Freedom, and the Congressional Gold Medal — one of only seven people to hold all three. Critics argue the Green Revolution's reliance on synthetic fertilizers, pesticides, and intensive irrigation caused soil degradation, groundwater depletion, chemical contamination, and biodiversity loss, while widening the economic gap between large and small farmers. Borlaug acknowledged these trade-offs but maintained that without high-yield agriculture, far more wilderness would have been plowed under to feed a growing population.",
+      "target_lang": "en",
+      "reason": "Demonstrates how a single agricultural scientist reshaped global food security while sparking lasting environmental debates"
+    },
+    {
+      "source_text": "Jonas Salk — the polio vaccine and the decision not to patent it",
+      "source_lang": "en",
+      "target_text": "Jonas Salk (1914-1995) developed the first successful inactivated polio vaccine, which was declared safe and effective on April 12, 1955, after one of the largest clinical trials in history involving 1.8 million children. When Edward R. Murrow asked on CBS who owned the patent, Salk replied, 'Well, the people, I would say. There is no patent. Could you patent the sun?' — a decision estimated to have cost him $7 billion in personal wealth. The full story is more complex: lawyers for the National Foundation for Infantile Paralysis (March of Dimes) had concluded the vaccine likely could not be patented due to prior art, and the foundation had already committed to giving production processes to manufacturers for free. Regardless of the legal technicalities, the practical effect was that the vaccine spread rapidly and cheaply worldwide, leading to polio's near-eradication; Salk never pursued personal profit from it and spent his later years at the Salk Institute for Biological Studies, which he founded in La Jolla, California, in 1960.",
+      "target_lang": "en",
+      "reason": "Iconic case study in science and public interest — the mythology and reality of refusing to patent a lifesaving discovery"
+    },
+    {
+      "source_text": "Katalin Kariko — decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "source_lang": "en",
+      "target_text": "Katalin Kariko (born 1955) is a Hungarian-American biochemist who spent decades researching messenger RNA therapeutics while facing persistent funding rejections, demotions, and scientific skepticism — colleagues at the University of Pennsylvania called her 'that crazy mRNA lady,' and she was demoted from the tenure track in 1995. Her pivotal 2005 paper with Drew Weissman, showing that modified nucleosides could make synthetic mRNA non-inflammatory, was rejected by Nature and Science before appearing in Immunity, and the technology languished for nearly a decade. In 2013 she joined BioNTech, where her work became the foundation of the Pfizer-BioNTech COVID-19 vaccine administered to billions of people worldwide. Kariko and Weissman were awarded the 2023 Nobel Prize in Physiology or Medicine for their discoveries concerning nucleoside base modifications that enabled effective mRNA vaccines.",
+      "target_lang": "en",
+      "reason": "Demonstrates how institutional gatekeeping nearly buried one of the most consequential medical technologies of the 21st century"
+    },
+    {
+      "source_text": "Jennifer Doudna — CRISPR gene editing, patent wars, and the ethics of rewriting life",
+      "source_lang": "en",
+      "target_text": "Jennifer Doudna (born 1964) is an American biochemist at UC Berkeley who, with Emmanuelle Charpentier, published the landmark 2012 paper demonstrating that the bacterial CRISPR-Cas9 system could be programmed to cut specific DNA sequences — work that earned them the 2020 Nobel Prize in Chemistry. However, Feng Zhang of the Broad Institute at MIT and Harvard was the first to demonstrate CRISPR editing in human and mouse cells (January 2013), and in 2022 the US Patent Trial and Appeal Board ruled in the Broad Institute's favor on key patents, though a May 2025 Federal Circuit ruling ordered the PTAB to reconsider using the correct legal standard. Beyond the patent dispute, Doudna has been outspoken about the ethical dangers of genome editing, particularly after He Jiankui's 2018 announcement that he had created CRISPR-edited babies in China, and she co-founded the Innovative Genomics Institute to promote responsible use of the technology.",
+      "target_lang": "en",
+      "reason": "CRISPR represents the most powerful biological tool since PCR; Doudna's story encompasses discovery, commercialization battles, and urgent bioethics questions"
+    },
+    {
+      "source_text": "Tu Youyou — artemisinin, malaria, and bridging traditional and modern medicine",
+      "source_lang": "en",
+      "target_text": "Tu Youyou (born 1930) is a Chinese pharmacologist who discovered artemisinin, an antimalarial compound derived from sweet wormwood (Artemisia annua), which has saved millions of lives and remains the frontline treatment for malaria worldwide. In 1969 she was appointed team leader in the secret government-run Project 523, and after screening nearly 400 traditional Chinese herbal remedies compiled from ancient medical texts, her team isolated artemisinin in 1972. She became the first mainland Chinese scientist to win a Nobel Prize in a scientific category when she received the 2015 Nobel Prize in Physiology or Medicine, shared with William Campbell and Satoshi Omura — remarkably, she held no doctorate, no medical degree, and had never trained abroad. Her achievement is both celebrated as validation of traditional Chinese medicine and debated because the active compound was identified through modern extraction and pharmacological methods, not traditional preparation.",
+      "target_lang": "en",
+      "reason": "Shows how mining ancient medical knowledge with modern scientific methods can yield globally transformative drugs"
+    },
+    {
+      "source_text": "Kizzmekia Corbett — the immunologist behind the COVID-19 vaccine's spike protein strategy",
+      "source_lang": "en",
+      "target_text": "Kizzmekia Corbett (born 1986) is an American immunologist who served as scientific lead for the coronavirus team at the NIH Vaccine Research Center when SARS-CoV-2 emerged in January 2020. Building on years of prior work on MERS, she and colleagues had discovered that adding two proline amino acid substitutions stabilized the coronavirus spike protein in its prefusion form — a technique that became the basis for the Moderna mRNA-1273 vaccine. Corbett partnered with Moderna to adapt this approach for COVID-19, contributing to a vaccine that moved from sequence to first human injection in just 66 days, a record-breaking pace. She joined Harvard T.H. Chan School of Public Health as an assistant professor in June 2021 and has been widely recognized for her science communication efforts, particularly in addressing vaccine hesitancy in Black communities; Anthony Fauci called her 'an African American scientist who is right at the forefront of the development of the vaccine.'",
+      "target_lang": "en",
+      "reason": "Represents a new generation of scientists who combine cutting-edge research with public engagement on health equity"
+    },
+    {
+      "source_text": "William Shockley — co-inventor of the transistor who became a eugenics crusader",
+      "source_lang": "en",
+      "target_text": "William Shockley (1910-1989) shared the 1956 Nobel Prize in Physics with John Bardeen and Walter Brattain for co-inventing the transistor at Bell Labs, a device that became the foundation of modern electronics and the computer age. He then founded Shockley Semiconductor Laboratory in Mountain View, California, effectively seeding Silicon Valley — though eight of his researchers famously left to form Fairchild Semiconductor due to his abrasive management style. In his later decades as a professor of electrical engineering at Stanford, Shockley devoted himself to promoting eugenics and scientific racism, arguing without any training in genetics or biology that Black Americans suffered from 'dysgenesis' and advocating a 'Voluntary Sterilization Bonus Plan' to pay people with low IQ scores to be sterilized. He died in 1989 almost completely estranged from friends and family; his children reportedly learned of his death from newspaper reports.",
+      "target_lang": "en",
+      "reason": "A cautionary tale of how scientific genius in one field confers no authority in another, and how prestige can amplify dangerous ideology"
+    },
+    {
+      "source_text": "Wernher von Braun — from Nazi V-2 rockets to landing humans on the Moon",
+      "source_lang": "en",
+      "target_text": "Wernher von Braun (1912-1977) was the chief architect of the V-2 ballistic missile at the secret Peenemuende facility in Nazi Germany, the world's first long-range guided rocket, which killed an estimated 9,000 civilians when fired at London, Paris, and Antwerp from September 1944 onward. He joined the Nazi Party in 1937 and held the rank of SS Sturmbannfuehrer (major); the V-2 production at the Mittelwerk underground factory used concentration camp slave labor from Dora-Mittelbau, where roughly 20,000 prisoners died from starvation, disease, and execution. After the war, von Braun and over 100 German rocket engineers were brought to the United States under Operation Paperclip, and he became director of NASA's Marshall Space Flight Center, where he led development of the Saturn V rocket that carried Apollo 11 to the Moon in July 1969. His legacy remains deeply contested: he is simultaneously honored as a visionary space pioneer and condemned for his complicity in Nazi war crimes and forced labor.",
+      "target_lang": "en",
+      "reason": "The starkest example of moral compromise in the pursuit of scientific progress — governments chose results over accountability"
+    },
+    {
+      "source_text": "The Sackler family — Purdue Pharma, OxyContin, and the opioid epidemic they fueled",
+      "source_lang": "en",
+      "target_text": "The Sackler family, estimated to be worth over $11 billion by Forbes, owned Purdue Pharma, which introduced OxyContin in 1996 and aggressively marketed it as a safe, long-acting opioid painkiller despite internal evidence of its addictive potential. Their marketing campaign targeted doctors with misleading claims that OxyContin had less than a 1% addiction risk, fueling an epidemic that has killed over 500,000 Americans from opioid overdoses since 1999. Purdue filed for Chapter 11 bankruptcy in September 2019, and the Sackler family agreed to a $7.4 billion settlement in 2024 after the US Supreme Court overturned a prior deal that would have granted them broader legal immunity. Major cultural institutions — including the Metropolitan Museum of Art, the Louvre, the British Museum, and the Guggenheim — removed the Sackler name from their galleries under pressure from activists like photographer Nan Goldin, transforming the family from celebrated philanthropists into symbols of corporate malfeasance.",
+      "target_lang": "en",
+      "reason": "Demonstrates how pharmaceutical wealth built on deception caused a public health catastrophe and how accountability can eventually catch up"
+    },
+    {
+      "source_text": "Henrietta Lacks — the woman whose stolen cells transformed medicine",
+      "source_lang": "en",
+      "target_text": "Henrietta Lacks (1920-1951) was a Black tobacco farmer from Virginia whose cervical cancer cells were taken without her knowledge or consent during treatment at Johns Hopkins Hospital in 1951 and became the first immortal human cell line, known as HeLa. These cells have been used in more than 75,000 studies, contributing to breakthroughs in the polio vaccine, cancer research, HIV/AIDS treatment, gene mapping, and COVID-19 vaccines, generating billions of dollars in commercial value. The Lacks family remained unaware their mother's cells were being used for over two decades, lived in poverty without adequate healthcare, and received no compensation — a case that exposed systemic racism in medical research and the absence of informed consent protections. Rebecca Skloot's 2010 book 'The Immortal Life of Henrietta Lacks' brought worldwide attention to the injustice; in 2023 the family reached a settlement with Thermo Fisher Scientific, and the NIH established a HeLa Genome Data Access Working Group that includes Lacks family representatives.",
+      "target_lang": "en",
+      "reason": "A foundational case in bioethics — the tension between scientific progress and individual rights, compounded by racial inequality"
+    },
+    {
+      "source_text": "Rosalind Franklin — the X-ray crystallographer whose work on DNA was used without credit",
+      "source_lang": "en",
+      "target_text": "Rosalind Franklin (1920-1958) was a British biophysicist and X-ray crystallographer at King's College London whose experimental work was essential to determining the double-helix structure of DNA. Her famous Photo 51, an X-ray diffraction image captured in May 1952, provided critical evidence of DNA's helical structure and was shown to James Watson by Franklin's colleague Maurice Wilkins without her knowledge or permission. Watson and Francis Crick used insights from Photo 51 and Franklin's unpublished MRC report data to build their model, published in Nature in April 1953, but gave Franklin only a footnote acknowledgment. Watson, Crick, and Wilkins received the 1962 Nobel Prize in Physiology or Medicine; Franklin had died of ovarian cancer in 1958 at age 37, possibly caused by her extensive X-ray exposure, and was not eligible for posthumous nomination — her marginalization has become emblematic of how women's contributions to science have been systematically erased.",
+      "target_lang": "en",
+      "reason": "The most famous case of scientific credit theft, illustrating gender bias in mid-20th-century science and the politics of Nobel recognition"
+    },
+    {
+      "source_text": "Scientific credit disputes — who really discovered what, from DNA to CRISPR",
+      "source_lang": "en",
+      "target_text": "The history of science is littered with credit disputes that reveal how discovery is rarely a solo act. Beyond the Watson-Crick-Franklin case, notable examples include the fight over CRISPR patents between Jennifer Doudna's UC Berkeley team and Feng Zhang's Broad Institute group, still unresolved after a decade of litigation; the controversy over who deserves credit for the discovery of HIV, settled when Luc Montagnier and Francoise Barre-Sinoussi of the Pasteur Institute won the 2008 Nobel over Robert Gallo of the NIH; and the decades-long question of whether Jocelyn Bell Burnell, a graduate student who first identified pulsars in 1967, was unfairly excluded when her supervisor Antony Hewish received the 1974 Nobel Prize in Physics. These disputes recur because the Nobel Prize can be shared by at most three people, incentivizing priority claims, and because institutional power structures consistently disadvantage junior researchers, women, and scientists from underrepresented groups.",
+      "target_lang": "en",
+      "reason": "Reveals the structural factors — prize limits, hierarchy, bias — that determine who gets credit in science and who gets erased"
+    },
+    {
+      "source_text": "Clara Immerwahr — the chemist who opposed her husband Fritz Haber's chemical weapons",
+      "source_lang": "en",
+      "target_text": "Clara Immerwahr (1870-1915) was the first woman to earn a doctorate in chemistry from the University of Breslau in 1900, and she married Fritz Haber in 1901. As Haber threw himself into developing chlorine gas weapons for the German military during World War I, Clara reportedly voiced strong moral objections, calling chemical warfare a 'perversion of science' and a 'sign of barbarity.' On the night of May 2, 1915 — days after Haber returned from personally directing the first chlorine gas attack at Ypres — Clara shot herself with his military pistol in the garden of their home; their 13-year-old son Hermann found her dying. Haber left for the Eastern Front the next morning to oversee further gas attacks, and Clara's death has become a powerful symbol of the personal costs of weapons research and the moral conflicts within scientific families.",
+      "target_lang": "en",
+      "reason": "Inseparable from the Haber story — her protest and death personalize the human cost of weaponizing science"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Fritz Haber — nitrogen fixation that feeds billions and the birth of chemical warfare",
+      "to_source": "Clara Immerwahr — the chemist who opposed her husband Fritz Haber's chemical weapons",
+      "kind": "refines",
+      "reason": "Clara's story adds the personal and moral dimension to Haber's dual legacy"
+    },
+    {
+      "from_source": "Fritz Haber — nitrogen fixation that feeds billions and the birth of chemical warfare",
+      "to_source": "Norman Borlaug — the Green Revolution and saving a billion lives from famine",
+      "kind": "refines",
+      "reason": "Haber-Bosch synthetic fertilizer enabled Borlaug's high-yield crop revolution — one could not have happened without the other"
+    },
+    {
+      "from_source": "Katalin Kariko — decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "to_source": "Kizzmekia Corbett — the immunologist behind the COVID-19 vaccine's spike protein strategy",
+      "kind": "refines",
+      "reason": "Kariko's mRNA platform and Corbett's spike protein stabilization technique converged in the Moderna COVID-19 vaccine"
+    },
+    {
+      "from_source": "Rosalind Franklin — the X-ray crystallographer whose work on DNA was used without credit",
+      "to_source": "Scientific credit disputes — who really discovered what, from DNA to CRISPR",
+      "kind": "refines",
+      "reason": "Franklin's case is the archetypal example analyzed in the broader pattern of scientific credit disputes"
+    },
+    {
+      "from_source": "Jennifer Doudna — CRISPR gene editing, patent wars, and the ethics of rewriting life",
+      "to_source": "Scientific credit disputes — who really discovered what, from DNA to CRISPR",
+      "kind": "refines",
+      "reason": "The Doudna-Zhang CRISPR patent fight is a contemporary instance of the recurring credit dispute pattern"
+    },
+    {
+      "from_source": "Wernher von Braun — from Nazi V-2 rockets to landing humans on the Moon",
+      "to_source": "William Shockley — co-inventor of the transistor who became a eugenics crusader",
+      "kind": "refines",
+      "reason": "Both illustrate how societies separate a scientist's technical contributions from their moral failings, though the mechanisms differ"
+    },
+    {
+      "from_source": "Henrietta Lacks — the woman whose stolen cells transformed medicine",
+      "to_source": "Jonas Salk — the polio vaccine and the decision not to patent it",
+      "kind": "contradicts",
+      "reason": "Salk is celebrated for putting public good over profit; Lacks's cells generated billions in commercial value while her family received nothing — contrasting stories of who benefits from medical science"
+    },
+    {
+      "from_source": "The Sackler family — Purdue Pharma, OxyContin, and the opioid epidemic they fueled",
+      "to_source": "Jonas Salk — the polio vaccine and the decision not to patent it",
+      "kind": "contradicts",
+      "reason": "Salk gave away his vaccine; the Sacklers aggressively monetized addictive drugs — opposing models of pharmaceutical ethics"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Fritz Haber — nitrogen fixation that feeds billions and the birth of chemical warfare",
+      "kind": "url",
+      "locator": "https://www.nobelprize.org/prizes/chemistry/1918/haber/biographical/",
+      "reason": "Nobel Prize official biography of Fritz Haber with details on his ammonia synthesis work"
+    },
+    {
+      "pair_source": "Fritz Haber — nitrogen fixation that feeds billions and the birth of chemical warfare",
+      "kind": "url",
+      "locator": "https://www.sciencehistory.org/education/scientific-biographies/fritz-haber/",
+      "reason": "Science History Institute biography covering Haber's chemical weapons program and personal life"
+    },
+    {
+      "pair_source": "Norman Borlaug — the Green Revolution and saving a billion lives from famine",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Norman-Borlaug",
+      "reason": "Britannica entry on Borlaug with details on his Nobel Peace Prize and high-yielding wheat varieties"
+    },
+    {
+      "pair_source": "Norman Borlaug — the Green Revolution and saving a billion lives from famine",
+      "kind": "url",
+      "locator": "https://biographics.org/norman-borlaug-controversial-father-of-the-green-revolution/",
+      "reason": "Detailed account of both Borlaug's achievements and environmental criticisms of the Green Revolution"
+    },
+    {
+      "pair_source": "Jonas Salk — the polio vaccine and the decision not to patent it",
+      "kind": "url",
+      "locator": "https://slate.com/technology/2014/04/the-real-reasons-jonas-salk-didnt-patent-the-polio-vaccine.html",
+      "reason": "Slate investigation into the legal and practical reasons behind Salk's decision not to patent the vaccine"
+    },
+    {
+      "pair_source": "Jonas Salk — the polio vaccine and the decision not to patent it",
+      "kind": "url",
+      "locator": "https://www.forbes.com/sites/quora/2012/08/09/how-much-money-did-jonas-salk-potentially-forfeit-by-not-patenting-the-polio-vaccine/",
+      "reason": "Forbes analysis of the estimated $7 billion in forgone wealth from not patenting"
+    },
+    {
+      "pair_source": "Katalin Kariko — decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "kind": "url",
+      "locator": "https://www.scientificamerican.com/article/katalin-karikos-nobel-prize-winning-work-on-mrna-was-long-ignored-and-led-to/",
+      "reason": "Scientific American profile of Kariko's long path from rejection to Nobel recognition"
+    },
+    {
+      "pair_source": "Katalin Kariko — decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "kind": "url",
+      "locator": "https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2023.1306025/full",
+      "reason": "Frontiers in Immunology peer-reviewed article on Kariko and Weissman's mRNA vaccine work"
+    },
+    {
+      "pair_source": "Jennifer Doudna — CRISPR gene editing, patent wars, and the ethics of rewriting life",
+      "kind": "url",
+      "locator": "https://www.science.org/content/article/crispr-s-nobel-prize-winners-defeated-key-patent-claim-genome-editor",
+      "reason": "Science magazine coverage of the PTAB ruling against Doudna and Charpentier in the CRISPR patent dispute"
+    },
+    {
+      "pair_source": "Jennifer Doudna — CRISPR gene editing, patent wars, and the ethics of rewriting life",
+      "kind": "url",
+      "locator": "https://www.technologyreview.com/2025/05/13/1116344/a-us-court-just-put-ownership-of-crispr-back-in-play/",
+      "reason": "MIT Technology Review reporting on the May 2025 Federal Circuit ruling reopening the CRISPR patent case"
+    },
+    {
+      "pair_source": "Tu Youyou — artemisinin, malaria, and bridging traditional and modern medicine",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Tu-Youyou",
+      "reason": "Britannica entry on Tu Youyou's biography, Project 523, and Nobel Prize"
+    },
+    {
+      "pair_source": "Tu Youyou — artemisinin, malaria, and bridging traditional and modern medicine",
+      "kind": "url",
+      "locator": "https://www.nobelprize.org/stories/women-who-changed-science/tu-youyou/",
+      "reason": "Nobel Prize official profile of Tu Youyou and the artemisinin discovery"
+    },
+    {
+      "pair_source": "Kizzmekia Corbett — the immunologist behind the COVID-19 vaccine's spike protein strategy",
+      "kind": "url",
+      "locator": "https://irp.nih.gov/blog/post/2021/07/a-record-breaking-sprint-to-create-a-covid-19-vaccine",
+      "reason": "NIH Intramural Research Program article detailing Corbett's role in the COVID-19 vaccine sprint"
+    },
+    {
+      "pair_source": "Kizzmekia Corbett — the immunologist behind the COVID-19 vaccine's spike protein strategy",
+      "kind": "url",
+      "locator": "https://hsph.harvard.edu/news/kizzmekia-corbett-joins-harvard-chan-school/",
+      "reason": "Harvard announcement of Corbett's appointment as assistant professor"
+    },
+    {
+      "pair_source": "William Shockley — co-inventor of the transistor who became a eugenics crusader",
+      "kind": "url",
+      "locator": "https://www.science.org/doi/10.1126/science.adf8117",
+      "reason": "Science magazine article documenting Shockley's racism and eugenics advocacy"
+    },
+    {
+      "pair_source": "William Shockley — co-inventor of the transistor who became a eugenics crusader",
+      "kind": "url",
+      "locator": "https://www.splcenter.org/resources/extremist-files/william-shockley/",
+      "reason": "Southern Poverty Law Center extremist profile of Shockley's eugenics campaign"
+    },
+    {
+      "pair_source": "Wernher von Braun — from Nazi V-2 rockets to landing humans on the Moon",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Wernher-von-Braun",
+      "reason": "Britannica biography covering von Braun's Nazi-era work and NASA career"
+    },
+    {
+      "pair_source": "Wernher von Braun — from Nazi V-2 rockets to landing humans on the Moon",
+      "kind": "url",
+      "locator": "https://www.nasa.gov/people/wernher-von-braun/",
+      "reason": "NASA official biography of von Braun and the Saturn V program"
+    },
+    {
+      "pair_source": "The Sackler family — Purdue Pharma, OxyContin, and the opioid epidemic they fueled",
+      "kind": "url",
+      "locator": "https://www.govinfo.gov/content/pkg/CHRG-116hhrg43010/html/CHRG-116hhrg43010.htm",
+      "reason": "US Congressional hearing record on the role of Purdue Pharma and the Sackler family in the opioid epidemic"
+    },
+    {
+      "pair_source": "The Sackler family — Purdue Pharma, OxyContin, and the opioid epidemic they fueled",
+      "kind": "url",
+      "locator": "https://gothamist.com/arts-entertainment/met-will-remove-sackler-family-name-exhibit-spaces-over-opioid-crisis",
+      "reason": "Gothamist reporting on the Metropolitan Museum of Art removing the Sackler name"
+    },
+    {
+      "pair_source": "Henrietta Lacks — the woman whose stolen cells transformed medicine",
+      "kind": "url",
+      "locator": "https://www.nature.com/articles/d41586-020-02494-z",
+      "reason": "Nature editorial on the scientific and ethical legacy of Henrietta Lacks and HeLa cells"
+    },
+    {
+      "pair_source": "Henrietta Lacks — the woman whose stolen cells transformed medicine",
+      "kind": "url",
+      "locator": "https://www.pbs.org/newshour/nation/family-of-henrietta-lacks-whose-cells-were-taken-for-medical-advancement-settles-with-company-that-profited",
+      "reason": "PBS News reporting on the 2023 Lacks family settlement with Thermo Fisher Scientific"
+    },
+    {
+      "pair_source": "Rosalind Franklin — the X-ray crystallographer whose work on DNA was used without credit",
+      "kind": "url",
+      "locator": "https://www.nature.com/articles/d41586-023-01313-5",
+      "reason": "Nature article re-examining what Franklin truly contributed to the discovery of DNA's structure"
+    },
+    {
+      "pair_source": "Rosalind Franklin — the X-ray crystallographer whose work on DNA was used without credit",
+      "kind": "url",
+      "locator": "https://nautil.us/one-of-the-most-egregious-ripoffs-in-the-history-of-science-238331",
+      "reason": "Nautilus article describing how Photo 51 was shown to Watson without Franklin's permission"
+    },
+    {
+      "pair_source": "Scientific credit disputes — who really discovered what, from DNA to CRISPR",
+      "kind": "url",
+      "locator": "https://www.fastcompany.com/90561762/nobel-prize-jennifer-doudna-emmanuelle-charpentier-crispr-patent-lawsuit",
+      "reason": "Fast Company analysis of the disconnect between Nobel recognition and patent ownership in CRISPR"
+    },
+    {
+      "pair_source": "Clara Immerwahr — the chemist who opposed her husband Fritz Haber's chemical weapons",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Fritz-Haber",
+      "reason": "Britannica biography of Fritz Haber including details on Clara Immerwahr's death"
+    }
+  ]
+}

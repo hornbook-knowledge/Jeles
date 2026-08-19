@@ -1,0 +1,453 @@
+{
+  "domain": "adversarial-contradiction-audit",
+  "pairs": [
+    {
+      "source_text": "Hubble tension: CMB (Planck-2018/DESI-BAO-2024) gives H0 = 67.27 km/s/Mpc",
+      "source_lang": "en",
+      "target_text": "Distance ladder (SH0ES/H0DN-2026) gives H0 = 73.04 km/s/Mpc \u2014 7.1 sigma discrepancy",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL CONTRADICTION. This is the strongest genuine contradiction in the corpus. As of 2026, the discrepancy has widened to 7.1 sigma (H0DN 2026). JWST infrared Cepheid observations have narrowed uncertainties but widened the rift. A 2026 comprehensive analysis ruled out 'one bad measurement' as an explanation. SPT-3G delensed measurements (H0 = 66.66 +/- 0.60) reinforce the CMB side. Sound-horizon-free measurements cluster closer to 67 than 73. No identified systematic error bridges the gap. This may indicate new physics beyond Lambda-CDM. Both measurements are methodologically rigorous \u2014 the contradiction is in nature, not in the measuring."
+    },
+    {
+      "source_text": "GPT-4o MMLU score: 88.7% (OpenAI system card, 5-shot)",
+      "source_lang": "en",
+      "target_text": "GPT-4o MMLU-CF score: 73.4% (contamination-free benchmark, 5-shot) and MMLU-Pro: 72.6%",
+      "target_lang": "en",
+      "reason": "VERDICT: FALSE CONTRADICTION \u2014 MISLEADING FRAMING. The 15pp gap is fully explained by benchmark contamination and question difficulty, not by contradictory claims about the model's ability. MMLU-CF was specifically designed to avoid data leakage (Microsoft, ACL 2025); MMLU-Pro uses 10-option questions instead of 4 and harder reasoning chains. Both 88.7% and 73.4% are 'correct' measurements \u2014 they measure different things (memorized answers vs novel understanding). Calling this a contradiction implies OpenAI misrepresented performance, when actually the original MMLU is a flawed instrument inflated by contamination across all models, not just GPT-4o. The real story is that MMLU as a benchmark is broken, not that OpenAI's number is wrong."
+    },
+    {
+      "source_text": "WHO GLP-1 obesity guideline (Dec 2025): recommends GLP-1 therapies only at BMI >= 30; does NOT extend to BMI 27-30 with comorbidities",
+      "source_lang": "en",
+      "target_text": "FDA GLP-1 obesity approval: BMI >= 27 with comorbidities \u2014 materially lower bar than WHO",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL BUT CONTEXT-DEPENDENT. Both positions are defensible within their mandates. WHO sets global guidance for resource-constrained health systems where cost-effectiveness at the BMI 27-30 range may not justify population-level recommendation. FDA approves drugs for a wealthy market where individual patient benefit at BMI 27+ with comorbidities is clinically demonstrated. The contradiction is real for patients in the BMI 27-29.9 range with comorbidities: WHO says no, FDA says yes. But framing this as 'WHO vs FDA disagree' obscures that they answer different questions \u2014 'should this be globally recommended?' vs 'is this safe and effective for this patient?'"
+    },
+    {
+      "source_text": "~70% of journals have AI-related guidelines; 83% of high-impact journals formally ban AI authorship citing accountability",
+      "source_lang": "en",
+      "target_text": "AAAI-26 deployed LLM-generated review across all 22,977 submissions; ICML 2026 permits LLM reviewer assistance; 15.8% of ICLR 2024 reviews already AI-assisted",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL AND GENUINELY PARADOXICAL. The stated justification for banning AI authorship \u2014 that AI cannot be held accountable \u2014 applies equally to AI peer review. If an LLM cannot bear responsibility for claims in a paper, it cannot bear responsibility for evaluating those claims either. The numbers make this vivid: nearly half of ICLR 2024 submissions received at least one AI-assisted review. Nature reports over 50% of researchers already use AI in review, often violating existing policies. The institutional position is incoherent: AI is simultaneously too unreliable to write science and reliable enough to judge it. This is the strongest 'genuine paradox' in the corpus."
+    },
+    {
+      "source_text": "New longitudinal studies (2025-2026): eight-year Finnish study found no clear harm from moderate screen time; cognitive benefits in some contexts; AAP retired decade-old hourly screen limits in January 2026",
+      "source_lang": "en",
+      "target_text": "Australia banned social media for under-16s (Dec 2025); France, Denmark, UK followed; 30+ US states passed classroom phone bans by mid-2026",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL CONTRADICTION \u2014 POLICY RUNNING AHEAD OF EVIDENCE. The AAP's January 2026 decision to retire its screen-time framework is especially significant: the professional body most cited by legislators as justification for bans explicitly moved away from the harm narrative that underpins those bans. Research shows the popular narrative blaming screens for an adolescent mental health crisis 'runs well ahead of current evidence,' and reducing social media time does not improve mental health in controlled studies. However, the policy wave is accelerating regardless. This is a case where political incentives (appearing to protect children) have decoupled from scientific consensus."
+    },
+    {
+      "source_text": "Whistleblower Protection Act (1989, strengthened 2012) shields federal employees who report waste, fraud, or abuse through authorized channels",
+      "source_lang": "en",
+      "target_text": "Espionage Act of 1917 criminalizes unauthorized disclosure of classified information with no public interest defense, no distinction for whistleblower motivation",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL LEGAL CONTRADICTION \u2014 the strongest structural contradiction in the corpus. The same act of disclosure can be simultaneously protected under one statute and criminalized under another. National-security whistleblowers fall into the gap: they possess the most consequential information about government wrongdoing but enjoy no statutory protection whatsoever from criminal prosecution. As legal scholarship notes, Congress 'has excluded employees who have the most consequential information and allowed a statute to treat whistleblowing as if it were espionage.' Reform bills (Wyden-Khanna, Tlaib) have been introduced but face resistance from intelligence officials. This is not a matter of context or framing \u2014 the two frameworks are logically incompatible as applied to the same individuals."
+    },
+    {
+      "source_text": "Organic farming rejects synthetic nitrogen fertilizer; USDA Organic label requires crops grown without synthetic pesticides, synthetic fertilizers, or GMO seeds",
+      "source_lang": "en",
+      "target_text": "Haber-Bosch process produces synthetic ammonia that feeds approximately half the world's population; 50% of nitrogen in human tissue traces to Haber-Bosch",
+      "target_lang": "en",
+      "reason": "VERDICT: FALSE BINARY \u2014 COMPLEMENTARY IN PRACTICE. Organic certification rejects synthetic nitrogen, but does not reject nitrogen itself. Biological nitrogen fixation (legume rotation, cover crops, rhizobia), composting, and animal manure provide nitrogen through different pathways. Most agriculture globally already uses both approaches in varying proportions. The real question is scale: organic yields are 20-25% lower per acre, and biological fixation cannot match Haber-Bosch throughput for current global caloric needs. But framing this as 'organic vs Haber-Bosch' creates a false either/or. Emerging research on engineered nitrogen-fixing microbes and green ammonia (Haber-Bosch powered by renewables) is actively bridging the gap. The tension is real at global scale but not at the level of principle."
+    },
+    {
+      "source_text": "Yoshua Bengio: launched LawZero ($30M safety lab, June 2025); co-authored 2026 International AI Safety Report; warns hyperintelligent AI could threaten extinction within 10 years; advocates restricting access to powerful AI",
+      "source_lang": "en",
+      "target_text": "Yann LeCun: dismisses catastrophic AI risk scenarios; argues AI is designed to enhance intelligence not cause harm; emphasizes designing safe systems rather than imagining catastrophes; AI safety skeptic who left Meta AI to found startup",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL INTELLECTUAL CONTRADICTION. Two Turing Award co-recipients (2018, jointly with Hinton) who share deep learning's intellectual lineage interpret the same technological trajectory in diametrically opposite ways. This is not a contextual difference \u2014 they are evaluating identical evidence about frontier model capabilities and reaching opposite conclusions about urgency. LeCun explicitly disagreed with Bengio's comparison of AI to weapons. Bengio agreed AI systems should be treated like weapons whose access should be restricted. Their public clash (documented by VentureBeat) is one of the few cases in this corpus where the contradiction is between two named individuals interpreting the same evidence set, not between institutions with different mandates."
+    },
+    {
+      "source_text": "Jonas Salk declined to patent the polio vaccine (1955): 'Could you patent the sun?' \u2014 publicly funded research made freely available",
+      "source_lang": "en",
+      "target_text": "Sackler family aggressively marketed OxyContin (1996+) despite knowing addiction risks; $11B+ family wealth extracted from opioid crisis that killed 500,000+",
+      "target_lang": "en",
+      "reason": "VERDICT: FALSE OPPOSITION \u2014 DIFFERENT ERAS, DIFFERENT STRUCTURES. The pairing is morally illustrative but analytically misleading. Salk operated in the 1950s pre-patent pharmaceutical landscape where vaccine development was largely publicly funded (March of Dimes), university-based, and lawyers concluded the vaccine likely could not have been patented anyway (lack of novelty). The Sacklers operated in the 1990s-2000s era of direct-to-consumer pharmaceutical marketing, patent-protected blockbuster drugs, and regulatory capture. The ethical gulf is real, but presenting them as a 'contradiction' implies they faced the same choice and chose differently. They faced fundamentally different incentive structures, regulatory environments, and funding models. A more honest comparison would be Salk vs. modern vaccine manufacturers during COVID-19 patent disputes."
+    },
+    {
+      "source_text": "Apple removed most parts pairing from iPhone 16+ (under Oregon/Colorado legislative pressure, effective 2025-2026)",
+      "source_lang": "en",
+      "target_text": "Apple expanded Activation Lock to individual iPhone components (battery, display, FaceID, camera) via iOS 18, linking parts to iCloud accounts",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL CORPORATE STRATEGY CONTRADICTION. Apple conceded the principle of parts interchangeability under legislative pressure while simultaneously introducing a new software lock that serves a similar gatekeeping function. iFixit documented this as Apple 'replacing one lock with another.' The stated justification differs \u2014 parts pairing was about 'quality assurance,' Activation Lock is about 'theft deterrence' \u2014 but the practical effect for independent repair shops is similar: a software authentication layer controlled by Apple stands between the repairer and a functioning component. Right to Repair Europe stated Apple's program 'is not the Right to Repair we need.' This mirrors the historical AT&T Carterfone pattern: concede openness in principle, maintain control through technical mechanisms."
+    },
+    {
+      "source_text": "Expert consensus: commercial fusion before 2035 remains unlikely; independent experts push realistic deployment to 2040+; no private company has demonstrated net energy gain",
+      "source_lang": "en",
+      "target_text": "Helion signed binding PPA with Microsoft for 50MW+ by 2028; began Orion plant construction July 2025; making 'big bet' on Tiny Merge testbed to meet timeline",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL TENSION \u2014 THE HIGHEST-STAKES TESTABLE CONTRADICTION IN THE CORPUS. Unlike many contradictions here that reflect different methodologies or mandates, this one has a hard deadline: 2028. Either Helion delivers commercial fusion power or it does not. Expert skepticism is grounded in physics (no private company has demonstrated net energy gain), while Helion's commitment is grounded in commercial contracts (a binding PPA with penalty clauses). Mike Campbell (UCSD) said he would be 'happily surprised' if the goal is met. The February 2026 Fortune profile noted Helion's Sam Altman-backed approach faces credible doubts. This is the one contradiction in the corpus that will be definitively resolved within two years."
+    },
+    {
+      "source_text": "TMC pursues unilateral US deep-sea mining permits via NOAA under DSHMRA (1980); NOAA rule changes effective January 2026 enable simultaneous exploration/recovery permits; TMC expects mining permit by Q1 2027",
+      "source_lang": "en",
+      "target_text": "37+ countries support moratorium on deep-sea mining; French President Macron called it 'madness'; 44-year Nature study shows persistent multi-decadal ecosystem damage at mining sites",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL POLICY CONTRADICTION \u2014 UNILATERAL ACTION VS MULTILATERAL CONSENSUS. This is not a difference of measurement or methodology; it is a direct conflict between a company seeking to begin extraction and a growing international coalition arguing extraction should not proceed. The NOAA rule change (January 2026) explicitly enables bypass of the ISA framework that the moratorium countries support. The 44-year Nature study provides the scientific grounding: test mining sites from 1979 showed no ecosystem recovery after four decades. The critical minerals imperative (IEA projects lithium demand tripling by 2030) provides the counter-pressure. This is a genuine clash of values \u2014 energy transition needs vs marine conservation \u2014 with no compromise position currently available."
+    },
+    {
+      "source_text": "EPA proposed rescinding MCLs for four PFAS compounds and extending PFOA/PFOS compliance from 2029 to 2031 (May 2026)",
+      "source_lang": "en",
+      "target_text": "WHO/UNICEF JMP 2025: 2.1 billion people lack safely managed drinking water; even water-rich nations failing on water quality",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL BUT MISLEADINGLY FRAMED. The EPA rollback and the WHO/UNICEF report address genuinely different problems. The EPA action is about specific forever-chemical contamination standards in a wealthy nation; the JMP report is about basic water access globally (106 million drinking untreated surface water). Calling this a contradiction implies the EPA rollback worsens the global water crisis, when actually 45% of US tap water contains PFAS regardless of the regulatory standard \u2014 the rollback changes compliance timelines, not contamination levels. The real contradiction is narrower: the US is weakening standards for chemicals its own agencies acknowledge are harmful, at a time when its own population is broadly exposed. The global framing inflates the contradiction beyond its actual scope."
+    },
+    {
+      "source_text": "84% of US high school students used generative AI for schoolwork in 2025 (College Board); AI homework usage rose from 48% to 62% between May-December 2025 (RAND)",
+      "source_lang": "en",
+      "target_text": "Only 30% of schools have AI rules; nearly 40% ban AI outright; students in banning schools use AI at same rates as non-banning schools",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL EFFECTIVENESS GAP, NOT A CONTRADICTION OF PRINCIPLE. The original framing ('bans rendered moot by speed of adoption') is accurate on the facts but mislabeled as a contradiction. Bans and usage are not opposing claims about reality \u2014 they are a policy and its observed ineffectiveness. The RAND, CDT, Gallup, and OECD data are consistent: bans do not reduce AI use; they redistribute it underground. This is better described as a policy failure than a contradiction. The genuine contradiction is narrower: schools that punish AI use while deploying AI-detection tools with 50%+ false-positive rates are simultaneously claiming to protect academic integrity while undermining it through unreliable enforcement."
+    },
+    {
+      "source_text": "South Korea AI Framework Act (effective January 2026): mandates impact assessments, risk management for high-impact AI, fines up to KRW 30M for violations",
+      "source_lang": "en",
+      "target_text": "Japan AI Promotion Act (May 2025): no fines, no penalties, no banned applications, no pre-launch approvals \u2014 'most permissive AI law passed by any major economy'",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL PHILOSOPHICAL DIVERGENCE \u2014 A NATURAL EXPERIMENT. The two largest East Asian AI economies adopted opposing regulatory philosophies within months. This is genuinely contradictory: for the same technology category, in neighboring countries with comparable AI industries, one chose binding obligations with penalties and the other chose deliberate permissiveness. FPF's comparative table confirms the gap is structural, not just tonal. South Korea sits closer to the EU on the obligation spectrum; Japan delegates risk differentiation entirely to voluntary soft-law instruments. The outcome of this natural experiment \u2014 which approach better balances innovation and safety \u2014 will be observable within 3-5 years and has implications for AI governance globally."
+    },
+    {
+      "source_text": "Streaming dominance: US recorded music $11.5B (2025, RIAA); 106.5M paid subscriptions; Spotify pays $0.003-$0.005 per stream",
+      "source_lang": "en",
+      "target_text": "Vinyl revenue: $1.04B in 2025 (9.3% YoY growth, 19th consecutive year); a $25-35 vinyl sale delivers far more artist revenue than thousands of streams",
+      "target_lang": "en",
+      "reason": "VERDICT: MISLEADING FRAMING \u2014 TRUE FACTS ARRANGED TO IMPLY A FALSE CONCLUSION. The per-unit comparison is arithmetically correct (one vinyl sale ~ 4,500+ Spotify streams in artist revenue) but economically misleading. Streaming's value proposition is not per-unit revenue but discovery, reach, and catalog monetization. An artist with 1 million monthly Spotify listeners reaches an audience that vinyl physically cannot serve. The framing implies vinyl is the 'better' channel, but most vinyl buyers discovered the artist through streaming first. The two are complementary parts of a single revenue ecosystem, not competing alternatives. The real issue \u2014 that streaming concentrates revenue in top artists while mid-tier artists struggle \u2014 is obscured by the per-unit framing."
+    },
+    {
+      "source_text": "Trevor Milton sentenced to 4 years for securities/wire fraud, ordered to pay $690M+ restitution; SBF sentenced to 25 years (upheld on appeal June 2026); Do Kwon 15 years",
+      "source_lang": "en",
+      "target_text": "Trump granted Milton a full and unconditional pardon (March 2025) after Milton donated $920K to Trump 47 Committee and $750K to RFK Jr.'s MAHA Alliance",
+      "target_lang": "en",
+      "reason": "VERDICT: REAL LEGAL CONTRADICTION \u2014 EXECUTIVE OVERRIDE OF JUDICIAL FRAMEWORK. The sentencing framework analysis across tech fraud cases (SBF 25 years, Do Kwon 15, Holmes 11.25, Milton 4) implies a functioning accountability system with proportional outcomes. Milton's pardon does not challenge the conviction's logic; it simply nullifies the outcome via a separate branch of government. California's governor documented that Trump pardons wiped nearly $2B in victim repayment across multiple cases. Milton has since launched a new venture (SyberJet, seeking $1B) \u2014 the pardon eliminates not just punishment but the reputational consequence that normally prevents convicted fraudsters from raising capital again. This genuinely undermines any systematic sentencing analysis."
+    },
+    {
+      "source_text": "The 'great man' theory holds that history is primarily shaped by exceptional individuals whose intellect, charisma, or will drives events (Carlyle, 1840s)",
+      "source_lang": "en",
+      "target_text": "Comparative analysis of totalitarian power consolidation reveals remarkably consistent structural patterns across different leaders (Hitler, Stalin, Mao) \u2014 the same playbook regardless of individual",
+      "target_lang": "en",
+      "reason": "VERDICT: CONTEXT-DEPENDENT \u2014 LARGELY RESOLVED BY CONTEMPORARY SCHOLARSHIP. The framing presents great man theory and structural analysis as opposing, but modern historiography has moved to a layered synthesis: individuals matter more when institutions are weak and situations are loosely constrained, less when structural forces dominate. The consolidation-patterns entry actually demonstrates this synthesis \u2014 individual leaders exploit crises, but they follow predictable structural playbooks. The contradiction dissolves when you abandon the binary: agency and structure are not competing explanations but different lenses at different scales. The original Carlyle formulation is a straw man that few serious historians still defend in pure form."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "adversarial-contradiction-audit:hubble-tension",
+      "to_source": "Planck-2018/DESI-BAO-2024 vs SH0ES/H0DN-2026",
+      "kind": "confirms-contradiction",
+      "reason": "Web evidence confirms 7.1 sigma discrepancy as of 2026; ruled out single-measurement error; may require new physics"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:mmlu-benchmark",
+      "to_source": "websearch:openai-system-card+arxiv:2410.21276 vs websearch:arxiv.org/2412.15194",
+      "kind": "reclassifies-as-false",
+      "reason": "MMLU-CF was designed to measure contamination gap, not to contradict OpenAI's reported score; both numbers are valid measurements of different properties"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:glp1-thresholds",
+      "to_source": "round3:medical WHO vs FDA",
+      "kind": "confirms-with-context",
+      "reason": "Real disagreement for BMI 27-30 patients, but WHO and FDA answer different questions (global recommendation vs individual approval)"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:ai-authorship-vs-review",
+      "to_source": "round4:scientific-credibility AI authorship ban vs LLM review",
+      "kind": "confirms-contradiction",
+      "reason": "The accountability justification applies symmetrically; 15.8% of ICLR reviews already AI-assisted; institutional position is internally incoherent"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:screen-time-vs-bans",
+      "to_source": "round5:news-children-safety screen time research vs social media bans",
+      "kind": "confirms-contradiction",
+      "reason": "AAP retired screen-time framework Jan 2026 while legislative bans accelerated; policy decoupled from evidence base"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:espionage-vs-whistleblower",
+      "to_source": "people:people-whistleblowers protection vs Espionage Act",
+      "kind": "confirms-contradiction",
+      "reason": "Legal scholarship confirms the two frameworks are logically incompatible as applied to national-security whistleblowers; reform bills stalled"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:organic-vs-haber-bosch",
+      "to_source": "modern-world:modern-world-food organic vs Haber-Bosch",
+      "kind": "reclassifies-as-complementary",
+      "reason": "Most agriculture uses both approaches; biological nitrogen fixation and green ammonia are bridging the gap; false binary"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:bengio-vs-lecun",
+      "to_source": "people:people-ai-pioneers Bengio vs LeCun safety views",
+      "kind": "confirms-contradiction",
+      "reason": "VentureBeat documented direct public clash; same evidence base, opposite conclusions; Bengio launched $30M safety lab while LeCun dismisses catastrophism"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:salk-vs-sacklers",
+      "to_source": "people:people-scientists Salk vs Sacklers",
+      "kind": "reclassifies-as-false",
+      "reason": "Different eras (1955 vs 1996+), different funding models, different regulatory environments; Salk's vaccine likely could not have been patented anyway"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:apple-parts-pairing",
+      "to_source": "round4:right-to-repair Apple parts pairing vs Activation Lock",
+      "kind": "confirms-contradiction",
+      "reason": "iFixit documented Activation Lock as replacement gatekeeping mechanism; mirrors historical AT&T Carterfone pattern"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:fusion-helion",
+      "to_source": "wildcard:wildcard-fusion-energy expert skepticism vs Helion PPA",
+      "kind": "confirms-contradiction",
+      "reason": "Binding 2028 PPA vs expert consensus of 2040+; hard deadline makes this the most testable contradiction in the corpus"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:deep-sea-mining",
+      "to_source": "wildcard:wildcard-deep-ocean TMC vs moratorium",
+      "kind": "confirms-contradiction",
+      "reason": "NOAA rule change (Jan 2026) explicitly enables ISA bypass; 37+ country moratorium coalition; no compromise position exists"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:epa-pfas",
+      "to_source": "round6:water-scarcity EPA rollback vs WHO/UNICEF JMP",
+      "kind": "narrows-scope",
+      "reason": "Real EPA rollback, but global framing inflates the contradiction beyond its actual scope; the relevant contradiction is domestic, not global"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:student-ai-bans",
+      "to_source": "round4:education-ai-policy student usage vs school bans",
+      "kind": "reclassifies-as-policy-failure",
+      "reason": "Not a contradiction of claims but a policy and its observed ineffectiveness; RAND/CDT/Gallup/OECD all confirm bans do not reduce usage"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:korea-vs-japan-ai",
+      "to_source": "round6:ai-governance-international South Korea vs Japan",
+      "kind": "confirms-contradiction",
+      "reason": "FPF comparative table confirms structural regulatory gap; genuine natural experiment in AI governance philosophy"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:streaming-vs-vinyl",
+      "to_source": "wildcard:wildcard-physical-media streaming vs vinyl",
+      "kind": "reclassifies-as-misleading",
+      "reason": "Per-unit comparison is arithmetically correct but economically misleading; vinyl buyers typically discovered artists through streaming; complementary ecosystem"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:milton-pardon",
+      "to_source": "people:people-tech-scandals sentencing vs Milton pardon",
+      "kind": "confirms-contradiction",
+      "reason": "Executive override nullified judicial outcome; $920K in political donations preceded pardon; Milton now raising $1B for new venture"
+    },
+    {
+      "from_source": "adversarial-contradiction-audit:great-man-theory",
+      "to_source": "historical:people-historical-political great man vs consolidation patterns",
+      "kind": "reclassifies-as-resolved",
+      "reason": "Contemporary scholarship has moved to layered synthesis; pure Carlyle formulation is a straw man; agency and structure are complementary lenses"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Hubble tension: CMB (Planck-2018/DESI-BAO-2024) gives H0 = 67.27 km/s/Mpc",
+      "kind": "web-search",
+      "locator": "https://medium.com/starts-with-a-bang/one-bad-measurement-ruled-out-as-hubble-tension-explanation-4fb28546a612",
+      "reason": "Ethan Siegel (April 2026): comprehensive analysis rules out single-measurement error as Hubble tension explanation"
+    },
+    {
+      "pair_source": "Hubble tension: CMB (Planck-2018/DESI-BAO-2024) gives H0 = 67.27 km/s/Mpc",
+      "kind": "web-search",
+      "locator": "https://iopscience.iop.org/article/10.1088/1674-4527/ae842f",
+      "reason": "IOPscience decade review of Hubble tension confirms 7.1 sigma significance as of 2026"
+    },
+    {
+      "pair_source": "GPT-4o MMLU score: 88.7% (OpenAI system card, 5-shot)",
+      "kind": "web-search",
+      "locator": "https://arxiv.org/abs/2412.15194",
+      "reason": "MMLU-CF paper (Microsoft, ACL 2025): GPT-4o drops from 88.0% to 73.4% on contamination-free version, demonstrating benchmark contamination rather than model contradiction"
+    },
+    {
+      "pair_source": "GPT-4o MMLU score: 88.7% (OpenAI system card, 5-shot)",
+      "kind": "web-search",
+      "locator": "https://tianpan.co/blog/2026-04-19-benchmark-contamination-llm-evaluation-gap",
+      "reason": "Analysis: 'Why That 90% MMLU Score Doesn't Mean What You Think' \u2014 systematic contamination problem across all models"
+    },
+    {
+      "pair_source": "WHO GLP-1 obesity guideline (Dec 2025): recommends GLP-1 therapies only at BMI >= 30; does NOT extend to BMI 27-30 with comorbidities",
+      "kind": "web-search",
+      "locator": "https://www.mdlinx.com/article/glp-1-obesity-care-in-2026-whos-first-guideline-and-ada-standards-update/0181Pk004DCLeioLEq94sN",
+      "reason": "MDLinx summary of WHO first guideline vs ADA Standards update confirming BMI threshold divergence"
+    },
+    {
+      "pair_source": "~70% of journals have AI-related guidelines; 83% of high-impact journals formally ban AI authorship citing accountability",
+      "kind": "web-search",
+      "locator": "https://detectiondrama.com/ai-generated-research-papers-statistics/",
+      "reason": "2026 statistics: 15.8% of ICLR 2024 peer reviews were AI-assisted; 49.4% of submissions received at least one AI-assisted review"
+    },
+    {
+      "pair_source": "~70% of journals have AI-related guidelines; 83% of high-impact journals formally ban AI authorship citing accountability",
+      "kind": "web-search",
+      "locator": "https://arxiv.org/pdf/2605.25415",
+      "reason": "LLM-as-a-Reviewer benchmark: documents divergence between LLM and human review, prompt injection vulnerabilities in peer review systems"
+    },
+    {
+      "pair_source": "New longitudinal studies (2025-2026): eight-year Finnish study found no clear harm from moderate screen time; cognitive benefits in some contexts; AAP retired decade-old hourly screen limits in January 2026",
+      "kind": "web-search",
+      "locator": "https://theconversation.com/screen-time-guidelines-for-kids-and-adolescents-have-shifted-as-research-paints-a-more-nuanced-picture-281300",
+      "reason": "The Conversation (2026): AAP retired hourly screen limits; research 'runs well ahead of current evidence' for harm narrative"
+    },
+    {
+      "pair_source": "New longitudinal studies (2025-2026): eight-year Finnish study found no clear harm from moderate screen time; cognitive benefits in some contexts; AAP retired decade-old hourly screen limits in January 2026",
+      "kind": "web-search",
+      "locator": "https://www.sciencemediacentre.org/expert-comments-on-evidence-on-benefits-and-harms-of-social-media-and-social-media-bans-on-young-people/",
+      "reason": "Science Media Centre expert roundup: evidence base for bans characterized as inconclusive; most studies unable to establish causality"
+    },
+    {
+      "pair_source": "Whistleblower Protection Act (1989, strengthened 2012) shields federal employees who report waste, fraud, or abuse through authorized channels",
+      "kind": "web-search",
+      "locator": "https://digitalcommons.wcl.american.edu/facsch_lawrev/55/",
+      "reason": "Vladeck (American University WCL): 'The Espionage Act and National Security Whistleblowing After Garcetti' \u2014 legal analysis of the protection gap"
+    },
+    {
+      "pair_source": "Whistleblower Protection Act (1989, strengthened 2012) shields federal employees who report waste, fraud, or abuse through authorized channels",
+      "kind": "web-search",
+      "locator": "https://www.americanbar.org/groups/crsj/publications/crsj-featured-articles/espionage-act-reform-bill/",
+      "reason": "ABA analysis of Gabbard's reform bill: highlights that Espionage Act lacks public interest defense, treating whistleblowing as espionage"
+    },
+    {
+      "pair_source": "Organic farming rejects synthetic nitrogen fertilizer; USDA Organic label requires crops grown without synthetic pesticides, synthetic fertilizers, or GMO seeds",
+      "kind": "web-search",
+      "locator": "https://fcarchitects.org/2026/05/05/blogpost-the-next-haber-bosch-moment-its-time-to-reinvent-fertilizer-production/",
+      "reason": "Future Cleantech Architects (2026): 'The next Haber-Bosch Moment' \u2014 green ammonia and biological nitrogen fixation as bridging technologies"
+    },
+    {
+      "pair_source": "Organic farming rejects synthetic nitrogen fertilizer; USDA Organic label requires crops grown without synthetic pesticides, synthetic fertilizers, or GMO seeds",
+      "kind": "web-search",
+      "locator": "https://www.csiro.au/en/news/all/articles/2026/april/nitrogen-fertiliser-explainer",
+      "reason": "CSIRO (April 2026): nitrogen fertiliser explainer showing complementary role of synthetic and biological nitrogen sources"
+    },
+    {
+      "pair_source": "Yoshua Bengio: launched LawZero ($30M safety lab, June 2025); co-authored 2026 International AI Safety Report; warns hyperintelligent AI could threaten extinction within 10 years; advocates restricting access to powerful AI",
+      "kind": "web-search",
+      "locator": "https://venturebeat.com/ai/ai-pioneers-yann-lecun-and-yoshua-bengio-clash-in-an-intense-online-debate-over-ai-safety-and-governance",
+      "reason": "VentureBeat: documented direct public clash between Bengio and LeCun on AI safety and governance"
+    },
+    {
+      "pair_source": "Yoshua Bengio: launched LawZero ($30M safety lab, June 2025); co-authored 2026 International AI Safety Report; warns hyperintelligent AI could threaten extinction within 10 years; advocates restricting access to powerful AI",
+      "kind": "web-search",
+      "locator": "https://thenextweb.com/news/bengio-ai-extinction-warning-lawzero-safety",
+      "reason": "TNW: Bengio warns hyperintelligent AI could threaten extinction within 10 years; launched LawZero safety lab with $30M"
+    },
+    {
+      "pair_source": "Jonas Salk declined to patent the polio vaccine (1955): 'Could you patent the sun?' \u2014 publicly funded research made freely available",
+      "kind": "web-search",
+      "locator": "https://slate.com/technology/2014/04/the-real-reasons-jonas-salk-didnt-patent-the-polio-vaccine.html",
+      "reason": "Slate: lawyers concluded Salk's vaccine likely could not have been patented (lack of novelty); complicates the altruism narrative"
+    },
+    {
+      "pair_source": "Jonas Salk declined to patent the polio vaccine (1955): 'Could you patent the sun?' \u2014 publicly funded research made freely available",
+      "kind": "web-search",
+      "locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11070890/",
+      "reason": "PMC: 'Beyond Profit: The Ethical Compass of Banting and Salk in Medical Innovation' \u2014 contextualizes the pre-patent pharmaceutical era"
+    },
+    {
+      "pair_source": "Apple removed most parts pairing from iPhone 16+ (under Oregon/Colorado legislative pressure, effective 2025-2026)",
+      "kind": "web-search",
+      "locator": "https://www.ifixit.com/News/94127/apples-parts-pairing-rollback-doesnt-go-far-enough",
+      "reason": "iFixit: 'Apple's Parts Pairing Rollback Doesn't Go Far Enough' \u2014 documents Activation Lock as replacement gatekeeping mechanism"
+    },
+    {
+      "pair_source": "Apple removed most parts pairing from iPhone 16+ (under Oregon/Colorado legislative pressure, effective 2025-2026)",
+      "kind": "web-search",
+      "locator": "https://www.ifixit.com/News/100266/the-end-of-parts-pairing-almost",
+      "reason": "iFixit: 'The End of Parts Pairing? Almost.' \u2014 details how Activation Lock extends to individual iPhone components"
+    },
+    {
+      "pair_source": "Expert consensus: commercial fusion before 2035 remains unlikely; independent experts push realistic deployment to 2040+; no private company has demonstrated net energy gain",
+      "kind": "web-search",
+      "locator": "https://www.geekwire.com/2026/helion-makes-big-bet-on-tiny-merge-fusion-testbed-to-meet-aggressive-microsoft-timeline/",
+      "reason": "GeekWire (2026): Helion's 'big bet on Tiny Merge fusion testbed' \u2014 documents the aggressive timeline and technical challenges"
+    },
+    {
+      "pair_source": "Expert consensus: commercial fusion before 2035 remains unlikely; independent experts push realistic deployment to 2040+; no private company has demonstrated net energy gain",
+      "kind": "web-search",
+      "locator": "https://fortune.com/2026/02/13/sam-altman-fusion-helion-energy-milestone-doubters-grid-power-2028/",
+      "reason": "Fortune (Feb 2026): Helion milestone vs doubters \u2014 profiles expert skepticism alongside company progress"
+    },
+    {
+      "pair_source": "TMC pursues unilateral US deep-sea mining permits via NOAA under DSHMRA (1980); NOAA rule changes effective January 2026 enable simultaneous exploration/recovery permits; TMC expects mining permit by Q1 2027",
+      "kind": "web-search",
+      "locator": "https://investors.metals.co/news-releases/news-release-details/tmc-welcomes-noaa-rule-modernizing-deep-seabed-mining-permits-us",
+      "reason": "TMC press release: welcomes NOAA rule modernizing permits \u2014 confirms unilateral US regulatory pathway bypassing ISA"
+    },
+    {
+      "pair_source": "TMC pursues unilateral US deep-sea mining permits via NOAA under DSHMRA (1980); NOAA rule changes effective January 2026 enable simultaneous exploration/recovery permits; TMC expects mining permit by Q1 2027",
+      "kind": "web-search",
+      "locator": "https://theconversation.com/mining-companies-may-soon-bypass-un-rules-and-mine-the-deep-sea-283854",
+      "reason": "The Conversation: 'Mining companies may soon bypass UN rules and mine the deep sea' \u2014 documents the governance conflict"
+    },
+    {
+      "pair_source": "EPA proposed rescinding MCLs for four PFAS compounds and extending PFOA/PFOS compliance from 2029 to 2031 (May 2026)",
+      "kind": "web-search",
+      "locator": "https://www.epa.gov/sdwa/proposed-pfas-rescission-rule",
+      "reason": "EPA official page: proposed PFAS rescission rule details \u2014 rescinding MCLs for four PFAS compounds"
+    },
+    {
+      "pair_source": "EPA proposed rescinding MCLs for four PFAS compounds and extending PFOA/PFOS compliance from 2029 to 2031 (May 2026)",
+      "kind": "web-search",
+      "locator": "https://www.whitecase.com/insight-alert/epa-partially-rolls-back-pfas-drinking-water-rule",
+      "reason": "White & Case legal analysis: EPA partially rolls back PFAS drinking water rule \u2014 compliance extension from 2029 to 2031"
+    },
+    {
+      "pair_source": "84% of US high school students used generative AI for schoolwork in 2025 (College Board); AI homework usage rose from 48% to 62% between May-December 2025 (RAND)",
+      "kind": "web-search",
+      "locator": "https://fortune.com/2026/07/16/school-ai-policy-detection-tools-failing/",
+      "reason": "Fortune (July 2026): '84% of students use AI for homework. Only 3 in 10 schools have rules for it' \u2014 documents policy gap"
+    },
+    {
+      "pair_source": "84% of US high school students used generative AI for schoolwork in 2025 (College Board); AI homework usage rose from 48% to 62% between May-December 2025 (RAND)",
+      "kind": "web-search",
+      "locator": "https://schoollyai.com/blog/ai-policy-drawbacks-schools-effectiveness/",
+      "reason": "SchoollyAI: 'The Case Against Punitive AI Policies' \u2014 RAND/CDT/Gallup/OECD consensus that bans do not reduce usage"
+    },
+    {
+      "pair_source": "South Korea AI Framework Act (effective January 2026): mandates impact assessments, risk management for high-impact AI, fines up to KRW 30M for violations",
+      "kind": "web-search",
+      "locator": "https://fpf.org/wp-content/uploads/2025/07/Comparative-table_-EU-AI-Act-South-Korea-AI-Framework-Act-Japan-AI-Promotion-Act.pdf",
+      "reason": "FPF comparative table: EU AI Act vs South Korea AI Framework Act vs Japan AI Promotion Act \u2014 structural comparison confirming philosophical divergence"
+    },
+    {
+      "pair_source": "South Korea AI Framework Act (effective January 2026): mandates impact assessments, risk management for high-impact AI, fines up to KRW 30M for violations",
+      "kind": "web-search",
+      "locator": "https://www.sciencedirect.com/science/article/pii/S2212473X26001069",
+      "reason": "ScienceDirect: 'How hard are hard laws? AI legislation, soft-law governance, and comparative lessons from South Korea and Japan'"
+    },
+    {
+      "pair_source": "Streaming dominance: US recorded music $11.5B (2025, RIAA); 106.5M paid subscriptions; Spotify pays $0.003-$0.005 per stream",
+      "kind": "web-search",
+      "locator": "https://www.billboard.com/pro/riaa-2025-music-report-revenue-streaming-vinyl/",
+      "reason": "Billboard/RIAA 2025 report: $11.5B total revenue, streaming dominant, vinyl crossed $1B \u2014 market structure data"
+    },
+    {
+      "pair_source": "Streaming dominance: US recorded music $11.5B (2025, RIAA); 106.5M paid subscriptions; Spotify pays $0.003-$0.005 per stream",
+      "kind": "web-search",
+      "locator": "https://royaltyexchange.com/blog/how-music-streaming-platforms-calculate-payouts-per-stream-2025",
+      "reason": "Royalty Exchange: streaming platform per-stream payout rates for 2026 \u2014 Spotify $0.003-$0.005, Apple Music $0.007-$0.01"
+    },
+    {
+      "pair_source": "Trevor Milton sentenced to 4 years for securities/wire fraud, ordered to pay $690M+ restitution; SBF sentenced to 25 years (upheld on appeal June 2026); Do Kwon 15 years",
+      "kind": "web-search",
+      "locator": "https://www.cnbc.com/2025/03/28/trump-pardons-nikola-trevor-milton-ceo-securities-fraud-electric-vehicle.html",
+      "reason": "CNBC: Trump pardons Nikola founder \u2014 documents full and unconditional pardon after fraud conviction"
+    },
+    {
+      "pair_source": "Trevor Milton sentenced to 4 years for securities/wire fraud, ordered to pay $690M+ restitution; SBF sentenced to 25 years (upheld on appeal June 2026); Do Kwon 15 years",
+      "kind": "web-search",
+      "locator": "https://www.gov.ca.gov/2026/03/05/trumpcriminals3/",
+      "reason": "California Governor's office: Trump pardons wiped nearly $2B in victim repayment \u2014 systemic impact of executive overrides"
+    },
+    {
+      "pair_source": "Trevor Milton sentenced to 4 years for securities/wire fraud, ordered to pay $690M+ restitution; SBF sentenced to 25 years (upheld on appeal June 2026); Do Kwon 15 years",
+      "kind": "web-search",
+      "locator": "https://www.techbuzz.ai/articles/pardoned-nikola-founder-seeks-1b-for-ai-autonomous-jets",
+      "reason": "TechBuzz: pardoned Milton seeks $1B for AI autonomous jets venture SyberJet \u2014 pardon eliminated reputational barrier to fundraising"
+    },
+    {
+      "pair_source": "The 'great man' theory holds that history is primarily shaped by exceptional individuals whose intellect, charisma, or will drives events (Carlyle, 1840s)",
+      "kind": "web-search",
+      "locator": "https://en.wikipedia.org/wiki/Great_man_theory",
+      "reason": "Wikipedia overview: contemporary scholarship adopts layered model where individual agency is embedded within structural constraints"
+    }
+  ]
+}

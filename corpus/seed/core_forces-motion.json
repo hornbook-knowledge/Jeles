@@ -1,0 +1,209 @@
+{
+  "domain": "core-forces-motion",
+  "pairs": [
+    {
+      "source_text": "Why does a feather fall slower than a bowling ball?",
+      "source_lang": "en",
+      "target_text": "Both objects are pulled by gravity at the same rate, but air resistance pushes back against anything moving through it. A feather has a large surface area relative to its tiny weight, so air drag slows it almost immediately to a gentle drift — its terminal velocity. A bowling ball is heavy compared to its surface, so air resistance barely matters and it accelerates nearly as fast as if the air weren't there. In a vacuum, they hit the ground at the exact same time — Apollo 15 astronaut David Scott demonstrated this on the Moon with a hammer and a falcon feather.",
+      "target_lang": "en",
+      "reason": "Falling objects are the most intuitive entry point into gravity and drag"
+    },
+    {
+      "source_text": "How does a door handle give you enough force to move a heavy latch?",
+      "source_lang": "en",
+      "target_text": "A door handle is a lever. The handle extends several centimeters from the pivot point of the latch mechanism, so a light squeeze of your fingers at the end of the handle translates into a much stronger pull on the short latch bolt near the pivot. The longer the handle relative to the latch arm, the greater the mechanical advantage — which is why stubby knobs are harder to turn than long lever handles, and why accessibility codes often require lever-style handles.",
+      "target_lang": "en",
+      "reason": "Door handles are levers people use dozens of times a day without recognizing the physics"
+    },
+    {
+      "source_text": "Why is it so much easier to move something on wheels than to drag it?",
+      "source_lang": "en",
+      "target_text": "Dragging a heavy box means its entire bottom surface grinds against the floor, generating sliding friction across a large contact area. A wheel converts that sliding motion into rolling motion: only a tiny patch of the wheel touches the ground at any moment, and that patch doesn't slide — it briefly touches and lifts away. This can reduce friction by a factor of 100 or more. The axle is essential because it provides a fixed pivot point so the wheel can spin freely while the load rides above it, and a little grease on the axle reduces the remaining friction even further.",
+      "target_lang": "en",
+      "reason": "The wheel is arguably the most consequential simple machine in human history"
+    },
+    {
+      "source_text": "Why do bicycle gears make hills easier?",
+      "source_lang": "en",
+      "target_text": "A low gear uses a small chainring driving a large rear sprocket. Each pedal stroke turns the wheel fewer times but with more force — trading speed for torque. This is the same principle as a long lever: more distance moved at the input means more force at the output. That's why shifting to a lower gear on a hill makes your legs spin faster but each push feels lighter, while a high gear on flat road lets each pedal stroke cover more ground at the cost of requiring more leg force.",
+      "target_lang": "en",
+      "reason": "Gears are the most common force-multiplier people interact with daily"
+    },
+    {
+      "source_text": "How does a mattress spring push back just the right amount?",
+      "source_lang": "en",
+      "target_text": "A coiled spring stores energy when you compress or stretch it, and the force it pushes back with is proportional to how far you've compressed it — this is Hooke's Law. When you lie on a mattress, each spring compresses until its upward push exactly balances the weight of the body part above it. Heavier parts like your hips sink deeper, compressing springs more and getting more support, while lighter parts like your ankles barely dent the surface. The same principle lets a car's suspension springs absorb a pothole: they compress to absorb the bump's energy, then release it gradually instead of jolting you.",
+      "target_lang": "en",
+      "reason": "Springs are hidden inside mattresses, cars, pens, and clocks — understanding stored elastic energy explains all of them"
+    },
+    {
+      "source_text": "How is a screw just a ramp wrapped around a stick?",
+      "source_lang": "en",
+      "target_text": "If you cut a right triangle out of paper and wrap it around a pencil, the hypotenuse traces a spiral that looks exactly like screw threads. A screw converts rotational force into a powerful linear push by forcing material to travel up that long, gentle ramp with each turn. This is why a screw can pull two boards tightly together with just a few twists of a screwdriver — you're effectively pushing the wood up a very long, gradual incline. The same geometry explains jar lids (a short, wide screw thread) and spiral staircases (a ramp wrapped around a column so you gain height without a steep climb).",
+      "target_lang": "en",
+      "reason": "The screw-as-wrapped-ramp insight connects several everyday objects people don't realize are related"
+    },
+    {
+      "source_text": "Why is ice so slippery?",
+      "source_lang": "en",
+      "target_text": "The surface of ice is naturally covered by a microscopically thin layer of liquid water, even well below freezing. Ice molecules at the surface have fewer neighbors to bond with than those buried inside, so they remain loosely organized and behave almost like a liquid film. This quasi-liquid layer acts as a lubricant between your shoe and the solid ice beneath. Pressure from your weight and friction heat from your foot's motion can make this layer slightly thicker, which is part of why ice skates glide so well — the narrow blade concentrates your full weight onto a tiny area, enhancing the effect.",
+      "target_lang": "en",
+      "reason": "The slipperiness of ice is a universal experience whose mechanism is surprisingly subtle and was debated for over a century"
+    },
+    {
+      "source_text": "How does a pulley let you lift something heavier than you could normally?",
+      "source_lang": "en",
+      "target_text": "A single fixed pulley just changes the direction of your pull — you pull a rope down and the load goes up, which is convenient but no stronger. The real magic starts when you add a movable pulley attached to the load: now the weight is supported by two sections of rope instead of one, cutting the force you need in half. Each additional pulley in the system splits the load further. The tradeoff is distance — to lift a load one meter with a two-pulley system, you must pull two meters of rope. Cranes, elevators, and even window blinds use variations of this principle.",
+      "target_lang": "en",
+      "reason": "Pulleys demonstrate the universal principle that you can trade distance for force"
+    },
+    {
+      "source_text": "Why do car brakes use friction on purpose when friction usually wastes energy?",
+      "source_lang": "en",
+      "target_text": "Friction converts kinetic energy into heat, which is exactly what braking requires — you need to remove the car's motion energy, and heat is the most convenient place to dump it. Brake pads clamp against a spinning metal disc (or press against a drum), and the resulting friction converts the wheel's rotational energy into heat so intense the brakes can reach several hundred degrees Celsius. But friction also keeps you on the road: tire rubber grips asphalt through friction, and without it — as on black ice — your brakes are useless because the tires themselves can't transfer stopping force to the ground.",
+      "target_lang": "en",
+      "reason": "Friction is usually introduced as a nuisance, but brakes show it is also engineered on purpose"
+    },
+    {
+      "source_text": "How does a drinking straw actually work?",
+      "source_lang": "en",
+      "target_text": "A straw doesn't suck liquid up — it works by removing air pressure from above the liquid. When you create a partial vacuum in your mouth, you reduce the air pressure at the top of the straw. The full weight of the atmosphere — about 101,000 pascals — still pushes down on the surface of the drink outside the straw, and that unbalanced pressure forces liquid up the straw into your mouth. This is why a straw won't work in a vacuum and why you can't sip through a straw longer than about 10 meters — beyond that, atmospheric pressure isn't strong enough to push water any higher.",
+      "target_lang": "en",
+      "reason": "Straws are a perfect everyday demonstration that atmospheric pressure does the real work"
+    },
+    {
+      "source_text": "Why does the spin cycle in a washing machine get your clothes so dry?",
+      "source_lang": "en",
+      "target_text": "When the drum spins, your clothes are pushed outward against the drum wall — they need a constant inward force to keep traveling in a circle. The drum wall and fabric provide that force for the clothes, but water in the fabric has nothing to grip onto. As the drum spins faster, the water's tendency to fly in a straight line (its inertia) overcomes the fabric's ability to hold it, and the water shoots outward through the holes in the drum. Salad spinners use the same effect: lettuce clings to the basket walls while water droplets fly off through the holes.",
+      "target_lang": "en",
+      "reason": "The centrifugal effect is one of the most commonly experienced but poorly understood forces in daily life"
+    },
+    {
+      "source_text": "How can a steel ship float when a steel ball sinks?",
+      "source_lang": "en",
+      "target_text": "A solid steel ball is denser than water, so it sinks. But a ship is a steel shell shaped around a huge volume of air, which makes the ship's average density — steel plus air combined — much less than water's. The key is Archimedes' principle: any object in water gets pushed upward by a force equal to the weight of water it displaces. A ship's wide hull displaces an enormous volume of water, generating enough buoyant force to support the entire vessel. This is also why you float higher in the Dead Sea — the extra-salty water is denser, so each liter you displace weighs more and pushes you up harder.",
+      "target_lang": "en",
+      "reason": "The steel-ship paradox is one of the most frequently asked physics questions and a clean demonstration of buoyancy"
+    },
+    {
+      "source_text": "How does a suction cup stick to a wall?",
+      "source_lang": "en",
+      "target_text": "When you press a suction cup flat against a smooth surface, you squeeze out the air behind it. The flexible rubber tries to spring back to its dome shape, creating a partial vacuum — a zone of low pressure — between the cup and the wall. The full force of atmospheric pressure on the outside then pushes the cup firmly against the surface. A suction cup on a rough or dusty wall fails because tiny air channels let outside air leak back in, equalizing the pressure. This is the same reason vacuum cleaners work: a motor-driven fan creates low pressure inside the machine, and atmospheric pressure pushes air (along with dust and debris) in through the nozzle to fill that low-pressure zone.",
+      "target_lang": "en",
+      "reason": "Suction cups and vacuum cleaners are everyday devices whose operation hinges on atmospheric pressure differentials"
+    },
+    {
+      "source_text": "Why does a car lean outward when turning a corner?",
+      "source_lang": "en",
+      "target_text": "To follow a curved path, a car needs a constant inward (centripetal) force, which comes from tire friction against the road. But the car's body and passengers have inertia — they want to keep traveling in a straight line. The tires pull the bottom of the car inward along the curve while the unsupported upper body resists that change, so the chassis rolls outward. This is why highway curves are often banked (tilted inward): the tilted road surface provides some of the turning force through the car's own weight, reducing the lean and the demand on tire friction — the same principle that lets a cyclist lean into a turn without falling.",
+      "target_lang": "en",
+      "reason": "Body roll in turns is a viscerally felt effect that connects centripetal force to road engineering"
+    },
+    {
+      "source_text": "Why does a longer bottle opener make it easier to pop off a cap?",
+      "source_lang": "en",
+      "target_text": "A bottle opener is a lever with the fulcrum at the lip of the bottle cap. When you push down on the long handle, the short arm under the cap pushes up with much greater force — the ratio of the handle length to the cap lip distance determines how much your effort is multiplied. A 15-centimeter opener might give you a five-to-one mechanical advantage, meaning five kilograms of push at your hand becomes twenty-five kilograms of lift under the cap. This is why bartenders prefer long-handled speed openers and why prying a cap with a short coin is so much harder — less lever length means less force multiplication.",
+      "target_lang": "en",
+      "reason": "Bottle openers make the lever principle tangible — you can feel the mechanical advantage change with handle length"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Why does a feather fall slower than a bowling ball?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Terminal_velocity",
+      "reason": "Explains terminal velocity and the role of air resistance in limiting the speed of falling objects"
+    },
+    {
+      "pair_source": "Why does a feather fall slower than a bowling ball?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Apollo_15#Hammer_and_feather_experiment",
+      "reason": "Documents the Apollo 15 hammer-feather experiment demonstrating equal gravitational acceleration in vacuum"
+    },
+    {
+      "pair_source": "How does a door handle give you enough force to move a heavy latch?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Lever",
+      "reason": "Describes the three classes of levers and mechanical advantage"
+    },
+    {
+      "pair_source": "Why is it so much easier to move something on wheels than to drag it?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Rolling_resistance",
+      "reason": "Explains why rolling friction is orders of magnitude lower than sliding friction"
+    },
+    {
+      "pair_source": "Why do bicycle gears make hills easier?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Bicycle_gearing",
+      "reason": "Describes gear ratios, mechanical advantage, and the torque-speed tradeoff in bicycle drivetrains"
+    },
+    {
+      "pair_source": "How does a mattress spring push back just the right amount?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Hooke%27s_law",
+      "reason": "Defines the proportional relationship between spring compression and restoring force"
+    },
+    {
+      "pair_source": "How is a screw just a ramp wrapped around a stick?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Screw_(simple_machine)",
+      "reason": "Explains the screw as an inclined plane wrapped helically around a cylinder"
+    },
+    {
+      "pair_source": "Why is ice so slippery?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Ice#Slipperiness",
+      "reason": "Covers the quasi-liquid layer on ice surfaces and the history of competing theories for ice slipperiness"
+    },
+    {
+      "pair_source": "How does a pulley let you lift something heavier than you could normally?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Pulley",
+      "reason": "Explains fixed vs movable pulleys and how compound pulley systems multiply force"
+    },
+    {
+      "pair_source": "Why do car brakes use friction on purpose when friction usually wastes energy?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Disc_brake",
+      "reason": "Describes how brake pads convert kinetic energy into thermal energy through friction"
+    },
+    {
+      "pair_source": "How does a drinking straw actually work?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Atmospheric_pressure",
+      "reason": "Explains how atmospheric pressure acts on liquid surfaces and enables devices like straws"
+    },
+    {
+      "pair_source": "Why does the spin cycle in a washing machine get your clothes so dry?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Centripetal_force",
+      "reason": "Describes the inward force required for circular motion and the inertial tendency to fly outward"
+    },
+    {
+      "pair_source": "How can a steel ship float when a steel ball sinks?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Archimedes%27_principle",
+      "reason": "States that the buoyant force equals the weight of displaced fluid and explains flotation"
+    },
+    {
+      "pair_source": "How does a suction cup stick to a wall?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Suction_cup",
+      "reason": "Explains how removing air behind the cup creates a pressure differential that holds it in place"
+    },
+    {
+      "pair_source": "Why does a car lean outward when turning a corner?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Banked_turn",
+      "reason": "Describes how road banking provides centripetal force through a component of the normal force"
+    },
+    {
+      "pair_source": "Why does a longer bottle opener make it easier to pop off a cap?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Mechanical_advantage",
+      "reason": "Defines mechanical advantage and the force-distance tradeoff in lever systems"
+    }
+  ]
+}

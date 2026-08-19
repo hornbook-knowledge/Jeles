@@ -1,0 +1,312 @@
+{
+  "domain": "modern-world-energy",
+  "pairs": [
+    {
+      "source_text": "Why did alternating current win the War of the Currents, and how does AC transmission work?",
+      "source_lang": "en",
+      "target_text": "In the late 1880s, Thomas Edison championed direct current (DC) while George Westinghouse and Nikola Tesla backed alternating current (AC). Edison's DC system could only transmit power about 1.5 km before unacceptable losses, requiring a power station every few blocks. AC won because transformers -- simple devices with two coils of wire around an iron core -- can step voltage up or down. By stepping voltage up to hundreds of thousands of volts for transmission, the same power flows with far less current, cutting resistive losses dramatically. In 1892, Edison's company merged with Thomson-Houston to form General Electric, which adopted AC. Today virtually all long-distance power transmission uses AC, typically at 115 kV to 765 kV, because transformers make voltage conversion cheap and efficient.",
+      "target_lang": "en",
+      "reason": "The AC/DC choice is the most fundamental design decision in electrical infrastructure and still shapes every grid on Earth"
+    },
+    {
+      "source_text": "Why is high-voltage direct current (HVDC) transmission making a comeback despite AC's dominance?",
+      "source_lang": "en",
+      "target_text": "HVDC is resurging because modern power electronics (thyristor and voltage-source converters) can now convert between AC and DC efficiently, eliminating the original barrier. HVDC beats AC for three scenarios: long distances (breakeven is 500-800 km for overhead lines), undersea cables (any length, since AC cables suffer capacitive losses underwater), and connecting asynchronous grids that run at different frequencies. The global HVDC market is projected at $13.4 billion in 2026, growing to $19 billion by 2033. Major 2025-2026 projects include the Champlain Hudson Power Express delivering Canadian hydropower into New York City and the New England Clean Energy Connect bringing Quebec hydro into Massachusetts. China alone has built over 30 HVDC links, some spanning 3,000 km from western solar and wind farms to eastern cities.",
+      "target_lang": "en",
+      "reason": "HVDC is critical to the renewable transition because wind and solar resources are often far from population centers"
+    },
+    {
+      "source_text": "How does the merit order determine which power plants run and set wholesale electricity prices?",
+      "source_lang": "en",
+      "target_text": "Grid operators dispatch power plants in merit order -- ranked from lowest to highest marginal cost of producing the next megawatt-hour. Nuclear and renewables (with near-zero fuel costs) run first, followed by natural gas combined-cycle, then gas peakers and oil. The last plant dispatched to meet demand sets the clearing price for all generators in that interval. This is why adding cheap renewables pushes wholesale prices down: they displace expensive plants from the stack. In the U.S. in 2025, wholesale prices averaged about $40/MWh nationally, ranging from roughly $30/MWh in Texas (ERCOT) to $55/MWh in the Pacific Northwest. When renewables flood the market at midday, prices can go negative -- meaning generators pay the grid to take their power -- then spike above $100/MWh in the evening ramp.",
+      "target_lang": "en",
+      "reason": "Merit order dispatch is how market economics and physics interact to determine what generates electricity at every moment"
+    },
+    {
+      "source_text": "What is the duck curve and why does it create problems for grids with lots of solar power?",
+      "source_lang": "en",
+      "target_text": "The duck curve, named by the California Independent System Operator (CAISO) around 2012, shows what happens to 'net load' -- total demand minus solar and wind generation -- over a day. At midday, abundant solar drives net load to a deep valley (the duck's belly), then as the sun sets demand surges while solar drops to zero, creating a steep evening ramp (the duck's neck) that requires fast-ramping generators. California now needs up to 17,000 MW of generation to come online within three hours each evening. In 2024, California curtailed 3.4 million MWh of solar and wind (a 29% increase over 2023), with solar accounting for 93% of curtailed energy. March 2025 set a single-month record of 919 GWh curtailed. The duck curve has evolved into a 'canyon' as solar saturation deepens the midday trough further each year.",
+      "target_lang": "en",
+      "reason": "The duck curve is the central operational challenge of integrating large amounts of solar energy into existing grids"
+    },
+    {
+      "source_text": "How do grid-scale lithium-ion batteries stabilize the electrical grid?",
+      "source_lang": "en",
+      "target_text": "Grid-scale lithium-ion batteries, predominantly lithium iron phosphate (LFP) chemistry which now takes about 95% of new utility-scale awards, absorb excess renewable generation and discharge it during peak demand. They respond in milliseconds, far faster than any fossil fuel plant, making them ideal for frequency regulation -- keeping the grid at exactly 50 or 60 Hz. California scaled from roughly 500 MW of battery storage in 2020 to over 13 GW by early 2025, specifically to tame the duck curve by charging at near-zero midday prices and discharging during the evening ramp. Globally, battery energy storage shipments reached 421 GWh in 2025 (up 75% year-over-year), with 600 GWh projected for 2026. Cell prices for utility-grade LFP have fallen to $55-75/kWh, making four-hour storage systems cost-competitive with natural gas peaker plants in many markets.",
+      "target_lang": "en",
+      "reason": "Lithium-ion batteries are the fastest-growing grid asset and the primary tool for managing short-duration renewable intermittency"
+    },
+    {
+      "source_text": "How do iron-air and pumped hydro provide long-duration energy storage beyond what lithium-ion can do?",
+      "source_lang": "en",
+      "target_text": "Lithium-ion batteries are economical for up to 4-8 hours of storage, but multiday weather events (windless, cloudy weeks) require longer-duration technologies. Pumped hydro -- pumping water uphill to a reservoir when power is cheap, releasing it through turbines when needed -- is the world's largest form of energy storage at 201 GW globally, with 243 GW under construction (mostly in China, which has 218 GW of pumped storage being built). Iron-air batteries are the leading electrochemical alternative: Form Energy's system uses iron, water, and air (essentially reversible rusting) to store electricity for 100 hours at costs competitive with fossil fuel plants. Form Energy began commercial deliveries in 2025, launched manufacturing in Weirton, West Virginia, and secured a $1 billion deal with Google for 300 MW / 30 GWh of storage. The iron-air battery market is projected to grow from $247 million in 2025 to $14.3 billion by 2035.",
+      "target_lang": "en",
+      "reason": "Long-duration storage is the missing piece for a fully renewable grid that can ride through multiday weather events"
+    },
+    {
+      "source_text": "What are capacity markets and why are they struggling to keep up with electricity demand growth?",
+      "source_lang": "en",
+      "target_text": "Capacity markets pay power plants to be available to generate -- separate from the energy they actually produce -- ensuring enough reserve capacity exists for peak demand. PJM Interconnection, the largest U.S. grid operator (serving 65 million people across 13 states), runs a capacity auction three years ahead. In its December 2025 auction for the 2027/2028 delivery year, PJM fell short of its reliability requirement by 6,623 MW for the first time in the auction's history, driven by surging data center demand that added over 13,000 MW of projected load growth. Capacity prices reflect this tightness: PJM's clearing price reached $333/MW-day, while MISO's 2025/2026 auction cleared at $217/MW-day -- ten times the previous year's $21/MW-day. These price signals are meant to incentivize new generation construction, but building power plants takes years while demand is growing now.",
+      "target_lang": "en",
+      "reason": "Capacity markets are the mechanism that keeps the lights on during extreme events, and their current strain reveals a looming reliability gap"
+    },
+    {
+      "source_text": "Why is there a global shortage of power transformers and how does it bottleneck grid expansion?",
+      "source_lang": "en",
+      "target_text": "Power transformers -- the massive, custom-built devices that step voltage up and down at substations -- have become the physical bottleneck for grid modernization. Lead times for large power transformers now average 128 weeks (nearly 2.5 years), with generator step-up transformers averaging 144 weeks. Demand for step-up transformers surged 274% between 2019 and 2025, driven by renewable energy interconnection, data center construction, and vehicle electrification. Wood Mackenzie estimates a 30% shortfall in power transformer supply versus demand in 2025. The constraint is partly material: grain-oriented electrical steel (GOES), essential for transformer cores, is produced in the U.S. only by Cleveland-Cliffs, and GOES prices have roughly doubled since 2020. Global transformer demand grows 7-9% annually while manufacturing capacity expands at only 3-4%, meaning the gap is widening.",
+      "target_lang": "en",
+      "reason": "Transformer availability has replaced capital and permitting as the primary constraint on new grid infrastructure, affecting every energy transition goal"
+    },
+    {
+      "source_text": "Why do nuclear power plants take so long to build and cost so much more than planned?",
+      "source_lang": "en",
+      "target_text": "Nuclear plants suffer from a 'megaproject trap': they are one-off, highly complex constructions with stringent safety requirements, a shrinking pool of experienced workers, and regulatory processes that can change mid-build. The U.S. Vogtle Units 3 and 4 in Georgia, completed in 2023-2024, came in seven years late and at more than double the original cost estimate, reaching approximately $35 billion. The UK's Hinkley Point C, originally scheduled for 2025, has been pushed to at least 2030 at an estimated cost of 48 billion pounds (roughly $60 billion in current prices). In contrast, South Korea and China have built reactors closer to schedule by using standardized designs and maintaining continuous construction programs that preserve workforce expertise. Small modular reactors (SMRs) aim to solve this by factory-building smaller units, but none have reached commercial operation in the West as of 2026.",
+      "target_lang": "en",
+      "reason": "Nuclear energy is essential for baseload low-carbon power, but chronic construction problems have made it the most financially risky form of generation"
+    },
+    {
+      "source_text": "What are virtual power plants and how do they turn distributed energy into a grid resource?",
+      "source_lang": "en",
+      "target_text": "A virtual power plant (VPP) is a network of distributed energy resources -- rooftop solar panels, home batteries, smart thermostats, electric vehicle chargers -- coordinated by software to act as a single dispatchable power plant. When the grid needs power, the VPP operator signals thousands of devices to reduce consumption or discharge stored energy simultaneously. The global VPP market reached $4.8 billion in 2025, growing at 29.5% annually, with demand response accounting for 40% of VPP activity. North American VPP capacity reached 37.5 GW in 2025. Tesla expanded its Powerwall-based VPP across multiple U.S. states in 2025, while Germany had installed over 1.8 million residential battery systems (15.4 GWh total) by the end of 2025. In 2026, Germany launched the world's first dedicated inertia market, paying battery systems to provide the grid-stabilizing rotational energy traditionally supplied only by large spinning generators.",
+      "target_lang": "en",
+      "reason": "VPPs represent the shift from a one-way grid to a two-way system where consumers become active participants in grid stability"
+    },
+    {
+      "source_text": "How does the grid maintain exactly 50 or 60 Hz frequency and what happens when it fails?",
+      "source_lang": "en",
+      "target_text": "Grid frequency (60 Hz in North America, 50 Hz in Europe and most of the world) is a real-time indicator of the balance between generation and consumption. When demand exceeds supply, generators slow down and frequency drops; when supply exceeds demand, frequency rises. Traditionally, the spinning mass of large turbine generators provides 'inertia' that resists sudden frequency changes, buying seconds for automatic controls to respond. As renewables (which connect through power electronics with no spinning mass) replace conventional generators, system inertia drops and frequency can change faster after disturbances. If frequency deviates too far -- typically below 47.5 Hz or above 52 Hz -- protective relays disconnect equipment in cascading stages, potentially causing blackouts. Grid operators purchase 'ancillary services' including frequency response (reacting in seconds), spinning reserves (available within 10 minutes), and voltage support to prevent this. Battery storage now provides the fastest frequency response, reacting in under 200 milliseconds.",
+      "target_lang": "en",
+      "reason": "Frequency stability is the invisible constraint that limits how fast renewables can replace conventional generators without new stabilization technologies"
+    },
+    {
+      "source_text": "How are retail electricity prices set and why do time-of-use rates matter for the energy transition?",
+      "source_lang": "en",
+      "target_text": "Retail electricity prices have three main components: generation (about 50-60% of the bill), transmission and distribution (30-40%), and taxes or regulatory charges (5-15%). Most residential customers pay a flat rate per kilowatt-hour regardless of when they use power, which hides the true cost variation -- wholesale prices can swing from negative at midday to over $180/MWh during evening peaks, as seen at the PJM hub in May 2026. Time-of-use (TOU) pricing passes some of this variation to consumers, charging more during peak hours (typically 4-9 PM) and less during off-peak periods, incentivizing behaviors like charging EVs overnight or running dishwashers at midday. California, Arizona, and many European countries have made TOU rates the default for new customers. Real-time pricing goes further, exposing customers to hourly wholesale rates via smart meters, which has been shown to reduce peak demand by 10-15% in pilot programs.",
+      "target_lang": "en",
+      "reason": "Price signals are the primary tool for shifting consumer behavior to match the new reality of variable renewable generation"
+    },
+    {
+      "source_text": "What is a microgrid and how does it provide energy resilience when the main grid fails?",
+      "source_lang": "en",
+      "target_text": "A microgrid is a self-contained energy system -- typically combining solar panels, battery storage, and a backup generator -- that can operate connected to the main grid or 'island' itself during outages. When the main grid goes down, an automatic transfer switch disconnects the microgrid and it continues powering its local area independently. Microgrids are increasingly deployed at hospitals, military bases, university campuses, and communities vulnerable to wildfires or hurricanes. California hosts about 1,200 community solar projects, and the state has over 17 GW of behind-the-meter solar capacity. The technology has evolved from simple backup systems to sophisticated platforms: in early 2026, providers advanced peer-to-peer energy trading within microgrids, allowing neighbors to buy and sell surplus solar power directly. Costs have fallen enough that a residential microgrid (solar plus battery) can pay for itself in 7-12 years through avoided utility bills and backup power value.",
+      "target_lang": "en",
+      "reason": "Microgrids represent the decentralization of energy infrastructure, providing resilience against an increasingly stressed centralized grid"
+    },
+    {
+      "source_text": "How does the electrical grid handle the load-balancing problem of matching supply to demand every second?",
+      "source_lang": "en",
+      "target_text": "Electricity cannot be stored on the wires -- supply must equal demand at every instant across the entire synchronized grid. Grid operators achieve this through a hierarchy of controls operating at different timescales. Economic dispatch (every 5 minutes) adjusts generator output based on demand forecasts and merit order costs. Automatic Generation Control (AGC) sends signals every 2-4 seconds to designated generators to correct small frequency deviations. Faster still, generator governors respond mechanically within fractions of a second to frequency changes. Grid operators also maintain operating reserves: spinning reserves (generators already running below capacity, available in 10 minutes) and non-spinning reserves (offline plants that can start within 30 minutes). The challenge is growing: CAISO must now ramp up 17,000 MW in three hours each evening, and PJM is projecting over 13,000 MW of new data center load. Every grid operator runs day-ahead and real-time markets simultaneously to coordinate this balancing act across thousands of generators.",
+      "target_lang": "en",
+      "reason": "Real-time load balancing is the core engineering challenge of electrical grids and the reason the system is far more complex than just 'generating enough power'"
+    },
+    {
+      "source_text": "How does high-voltage transmission reduce energy losses and why are different voltage levels used?",
+      "source_lang": "en",
+      "target_text": "Power loss in a wire equals the current squared times the resistance (P = I squared times R). Since power equals voltage times current, transmitting at higher voltage means lower current for the same power, and losses drop with the square of the current reduction. Doubling the voltage cuts transmission losses by 75%. This is why grids use a voltage hierarchy: generators produce at 11-25 kV, step-up transformers boost this to 115-765 kV for long-distance transmission, then step-down transformers reduce it to 69 kV or 34.5 kV for regional distribution, and finally to 120/240 V (North America) or 230 V (Europe) for homes. Even at high voltages, about 5% of generated electricity is lost in transmission and distribution in the U.S. The highest AC transmission voltages in regular use are 765 kV in North America and 1,000 kV in China. Higher voltages also require larger towers, wider rights-of-way, and more expensive insulation, so each voltage level reflects an economic tradeoff between loss reduction and infrastructure cost.",
+      "target_lang": "en",
+      "reason": "The voltage hierarchy is the physical architecture that makes long-distance power delivery practical, and understanding it explains why grid expansion is so capital-intensive"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Why did alternating current win the War of the Currents, and how does AC transmission work?",
+      "to_source": "Why is high-voltage direct current (HVDC) transmission making a comeback despite AC's dominance?",
+      "kind": "refines",
+      "reason": "HVDC's comeback adds nuance to AC's victory -- modern power electronics have eliminated DC's original disadvantage, making DC superior for specific use cases"
+    },
+    {
+      "from_source": "What is the duck curve and why does it create problems for grids with lots of solar power?",
+      "to_source": "How do grid-scale lithium-ion batteries stabilize the electrical grid?",
+      "kind": "refines",
+      "reason": "Battery storage is the primary technology deployed to solve the duck curve problem, charging during the midday solar surplus and discharging during the evening ramp"
+    },
+    {
+      "from_source": "How do grid-scale lithium-ion batteries stabilize the electrical grid?",
+      "to_source": "How do iron-air and pumped hydro provide long-duration energy storage beyond what lithium-ion can do?",
+      "kind": "refines",
+      "reason": "Iron-air and pumped hydro address the duration limitation of lithium-ion, extending storage from hours to days or weeks"
+    },
+    {
+      "from_source": "How does the merit order determine which power plants run and set wholesale electricity prices?",
+      "to_source": "How are retail electricity prices set and why do time-of-use rates matter for the energy transition?",
+      "kind": "refines",
+      "reason": "Wholesale merit-order pricing feeds into retail rate design, and the growing gap between midday and evening wholesale prices drives the adoption of time-of-use rates"
+    },
+    {
+      "from_source": "What are capacity markets and why are they struggling to keep up with electricity demand growth?",
+      "to_source": "Why is there a global shortage of power transformers and how does it bottleneck grid expansion?",
+      "kind": "refines",
+      "reason": "Even when capacity markets send price signals to build new generation, the transformer shortage physically prevents that generation from connecting to the grid fast enough"
+    },
+    {
+      "from_source": "What are virtual power plants and how do they turn distributed energy into a grid resource?",
+      "to_source": "What is a microgrid and how does it provide energy resilience when the main grid fails?",
+      "kind": "refines",
+      "reason": "VPPs and microgrids are complementary aspects of grid decentralization -- VPPs aggregate distributed resources for grid services while microgrids provide local resilience"
+    },
+    {
+      "from_source": "How does the grid maintain exactly 50 or 60 Hz frequency and what happens when it fails?",
+      "to_source": "How does the electrical grid handle the load-balancing problem of matching supply to demand every second?",
+      "kind": "refines",
+      "reason": "Frequency maintenance is the real-time manifestation of the load-balancing problem -- frequency deviations are the physical signal that supply and demand are mismatched"
+    },
+    {
+      "from_source": "How does high-voltage transmission reduce energy losses and why are different voltage levels used?",
+      "to_source": "Why did alternating current win the War of the Currents, and how does AC transmission work?",
+      "kind": "refines",
+      "reason": "The physics of voltage-loss tradeoffs explains why transformers (AC's key advantage) were so decisive in the War of the Currents"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Why did alternating current win the War of the Currents, and how does AC transmission work?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/articles/war-currents-ac-vs-dc-power",
+      "reason": "U.S. Department of Energy historical account of the AC vs DC competition and AC's victory"
+    },
+    {
+      "pair_source": "Why did alternating current win the War of the Currents, and how does AC transmission work?",
+      "kind": "url",
+      "locator": "https://blog.rootsofprogress.org/why-ac-won",
+      "reason": "Detailed technical explanation of why AC's transformer advantage was decisive for long-distance transmission"
+    },
+    {
+      "pair_source": "Why is high-voltage direct current (HVDC) transmission making a comeback despite AC's dominance?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/oe/articles/connecting-country-hvdc",
+      "reason": "U.S. DOE overview of HVDC advantages and current U.S. interconnection projects"
+    },
+    {
+      "pair_source": "Why is high-voltage direct current (HVDC) transmission making a comeback despite AC's dominance?",
+      "kind": "url",
+      "locator": "https://www.persistencemarketresearch.com/market-research/hvdc-transmission-systems-market.asp",
+      "reason": "HVDC market size projections of $13.4B in 2026 growing to $19B by 2033"
+    },
+    {
+      "pair_source": "How does the merit order determine which power plants run and set wholesale electricity prices?",
+      "kind": "url",
+      "locator": "https://www.iso-ne.com/about/what-we-do/how-resources-are-selected-and-prices-are-set",
+      "reason": "ISO New England's official explanation of merit order dispatch and marginal price-setting"
+    },
+    {
+      "pair_source": "How does the merit order determine which power plants run and set wholesale electricity prices?",
+      "kind": "url",
+      "locator": "https://www.iea.org/reports/electricity-mid-year-update-2025/prices-trends-in-wholesale-markets-differ-across-regions",
+      "reason": "IEA data on 2025 wholesale electricity price levels across U.S. regions"
+    },
+    {
+      "pair_source": "What is the duck curve and why does it create problems for grids with lots of solar power?",
+      "kind": "url",
+      "locator": "https://howtostoreelectricity.com/renewable-curtailment/",
+      "reason": "Detailed 2024-2025 curtailment data for California including the 3.4 million MWh figure and March 2025 record"
+    },
+    {
+      "pair_source": "What is the duck curve and why does it create problems for grids with lots of solar power?",
+      "kind": "url",
+      "locator": "https://www.energycentral.com/renewables/post/the-duck-curve-is-now-a-wall-what-happens-when-solar-saturates-a-grid-9uOQ0o3RsAvZyIB",
+      "reason": "Analysis of the duck curve evolving into a 'canyon' as solar saturation deepens"
+    },
+    {
+      "pair_source": "How do grid-scale lithium-ion batteries stabilize the electrical grid?",
+      "kind": "url",
+      "locator": "https://energyindustryreview.com/power/battery-storage-capacity-record-growth-and-trends-in-2026/",
+      "reason": "Global BESS deployment data: 421 GWh shipped in 2025, 600 GWh projected for 2026"
+    },
+    {
+      "pair_source": "How do iron-air and pumped hydro provide long-duration energy storage beyond what lithium-ion can do?",
+      "kind": "url",
+      "locator": "https://www.hydropower.org/news/year-of-the-water-battery-global-pumped-storage-capacity-surpasses-200-gw",
+      "reason": "International Hydropower Association data on pumped storage reaching 201 GW globally with 243 GW under construction"
+    },
+    {
+      "pair_source": "How do iron-air and pumped hydro provide long-duration energy storage beyond what lithium-ion can do?",
+      "kind": "url",
+      "locator": "https://formenergy.com/form-energy-crusoe-announce-agreement-for-12-gigawatt-hours-of-iron-air-batteries-for-ai-data-centers/",
+      "reason": "Form Energy's commercial iron-air battery deployments and 75+ GWh pipeline"
+    },
+    {
+      "pair_source": "How do iron-air and pumped hydro provide long-duration energy storage beyond what lithium-ion can do?",
+      "kind": "url",
+      "locator": "https://techstartups.com/2026/02/26/form-energy-lands-1b-google-deal-for-100-hour-iron-air-battery-eyes-ipo/",
+      "reason": "Confirms Form Energy's $1 billion Google deal for 300 MW / 30 GWh of 100-hour iron-air storage"
+    },
+    {
+      "pair_source": "What are capacity markets and why are they struggling to keep up with electricity demand growth?",
+      "kind": "url",
+      "locator": "https://www.everycrsreport.com/reports/R48553.html",
+      "reason": "Congressional Research Service report on PJM capacity market structure and the December 2025 auction shortfall"
+    },
+    {
+      "pair_source": "What are capacity markets and why are they struggling to keep up with electricity demand growth?",
+      "kind": "url",
+      "locator": "https://www.enelnorthamerica.com/insights/blogs/miso-2025-capacity-auction-results",
+      "reason": "MISO 2025 capacity auction results showing tenfold price increase to $217/MW-day"
+    },
+    {
+      "pair_source": "Why is there a global shortage of power transformers and how does it bottleneck grid expansion?",
+      "kind": "url",
+      "locator": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/",
+      "reason": "Lead time data (128-144 weeks), demand surge figures (274% increase), and 30% supply shortfall estimate"
+    },
+    {
+      "pair_source": "Why is there a global shortage of power transformers and how does it bottleneck grid expansion?",
+      "kind": "url",
+      "locator": "https://www.powermag.com/transformers-in-2026-shortage-scramble-or-self-inflicted-crisis/",
+      "reason": "Analysis of transformer manufacturing capacity gap (7-9% demand growth vs 3-4% capacity expansion)"
+    },
+    {
+      "pair_source": "Why do nuclear power plants take so long to build and cost so much more than planned?",
+      "kind": "url",
+      "locator": "https://climate.mit.edu/ask-mit/are-nuclear-power-plants-too-expensive-build",
+      "reason": "MIT analysis of systemic reasons for nuclear construction cost overruns including regulatory, workforce, and design standardization factors"
+    },
+    {
+      "pair_source": "Why do nuclear power plants take so long to build and cost so much more than planned?",
+      "kind": "url",
+      "locator": "https://www.renewable-energy-industry.com/countries/article-7249-british-nuclear-power-plant-hinkley-point-c-faces-further-delays-and-rising-costs-nuclear-power-costs-at-least-15-cents-per-kilowatt-hour",
+      "reason": "Hinkley Point C cost and schedule data: original 2025 target pushed to 2030, costs reaching 48 billion pounds"
+    },
+    {
+      "pair_source": "What are virtual power plants and how do they turn distributed energy into a grid resource?",
+      "kind": "url",
+      "locator": "https://www.utilitydive.com/news/in-2026-virtual-power-plants-must-scale-or-risk-being-left-behind/810321/",
+      "reason": "VPP market size ($4.8B in 2025), North American capacity (37.5 GW), and 2026 scaling challenges"
+    },
+    {
+      "pair_source": "What are virtual power plants and how do they turn distributed energy into a grid resource?",
+      "kind": "url",
+      "locator": "https://www.hsfkramer.com/notes/energy/2025-posts/germany-to-launch-inertia-service-market-in-2026-new-revenue-stream-for-grid-forming-bess",
+      "reason": "Germany's January 2026 launch of the world's first dedicated inertia service market for battery systems"
+    },
+    {
+      "pair_source": "How does the grid maintain exactly 50 or 60 Hz frequency and what happens when it fails?",
+      "kind": "url",
+      "locator": "https://academic.oup.com/ce/article/9/2/204/7950656",
+      "reason": "Global review of fast frequency response services and the challenges of declining system inertia from renewable integration"
+    },
+    {
+      "pair_source": "How are retail electricity prices set and why do time-of-use rates matter for the energy transition?",
+      "kind": "url",
+      "locator": "https://www.eia.gov/electricity/monthly/update/print-version.php",
+      "reason": "EIA wholesale electricity price data showing regional price ranges and monthly variations in 2025-2026"
+    },
+    {
+      "pair_source": "What is a microgrid and how does it provide energy resilience when the main grid fails?",
+      "kind": "url",
+      "locator": "https://www.microgridknowledge.com/about-microgrids/article/55340521/five-compelling-microgrid-project-storylines-which-fascinated-readers-in-2025",
+      "reason": "Survey of significant microgrid deployments and trends in 2025"
+    },
+    {
+      "pair_source": "How does the electrical grid handle the load-balancing problem of matching supply to demand every second?",
+      "kind": "url",
+      "locator": "https://insidelines.pjm.com/2025-in-review-pjm-market-rules-support-efficiency-resource-adequacy/",
+      "reason": "PJM's description of real-time and day-ahead market operations for balancing supply and demand"
+    },
+    {
+      "pair_source": "How does high-voltage transmission reduce energy losses and why are different voltage levels used?",
+      "kind": "url",
+      "locator": "https://solartechonline.com/blog/hvdc-transmission-technology-guide/",
+      "reason": "Technical guide covering voltage levels, loss physics, and the transmission voltage hierarchy"
+    }
+  ]
+}

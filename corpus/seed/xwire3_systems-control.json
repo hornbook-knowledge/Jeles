@@ -1,0 +1,175 @@
+{
+  "domain": "crossdomain-systems-control",
+  "pairs": [
+    {
+      "source_text": "FISA Section 702 authorizes warrantless collection of communications of non-US persons abroad, but inevitably sweeps in domestic communications through upstream surveillance of internet backbone traffic",
+      "source_lang": "en",
+      "target_text": "Social media recommendation algorithms perform analogous bulk collection: they ingest all user behavioral signals without individualized consent for each inference, then use that aggregate to construct influence profiles that shape what each person sees, creating a private-sector upstream surveillance system that operates without judicial oversight",
+      "target_lang": "en",
+      "reason": "Both FISA 702 upstream collection and algorithmic recommendation operate on the same structural logic: intercept everything at the infrastructure layer, filter later. The state version taps fiber-optic trunk lines; the corporate version taps behavioral data streams. Both claim targeted intent while practicing bulk collection. The control mechanism is identical: whoever controls the chokepoint (backbone router or feed algorithm) controls the information environment without needing to target individuals explicitly."
+    },
+    {
+      "source_text": "The IMF's Structural Adjustment Programs condition loan disbursement on policy reforms including privatization, trade liberalization, and fiscal austerity, effectively governing debtor nations' domestic policy without democratic mandate",
+      "source_lang": "en",
+      "target_text": "Federal student loan servicers and income-driven repayment plans function as individualized structural adjustment: borrowers must report income, maintain employment in approved categories for forgiveness programs, and accept decades of garnishment-eligible obligation, creating a personal governance regime that shapes career choices, geographic mobility, and family formation without legislative deliberation of those downstream effects",
+      "target_lang": "en",
+      "reason": "Debt as governance scales fractally: at the sovereign level, the IMF disciplines nations into policy compliance through conditionality; at the individual level, student debt disciplines workers into labor-market compliance through repayment structures. Both substitute creditor conditions for democratic decision-making. Neither the IMF board nor the loan servicer stands for election, yet both exercise veto power over the debtor's choices. The structural parallel reveals debt as a technology of control that operates identically whether the borrower is a country or a person."
+    },
+    {
+      "source_text": "School-to-prison pipeline research documents how zero-tolerance disciplinary policies in underfunded public schools funnel students, disproportionately Black and Latino, into juvenile detention and adult incarceration through suspensions, expulsions, and school-based arrests",
+      "source_lang": "en",
+      "target_text": "Prison labor programs pay incarcerated workers between $0.14 and $1.41 per hour to produce goods for government agencies and private contractors, and many states exclude incarcerated workers from labor law protections, creating a labor extraction system that the Thirteenth Amendment's exception clause explicitly permits as punishment for crime",
+      "target_lang": "en",
+      "reason": "The school-to-prison pipeline and prison labor form a closed loop: the education system's disciplinary apparatus channels specific populations into incarceration, where they become a captive labor force operating outside minimum wage and labor protections. The pipeline does not merely punish; it produces workers stripped of bargaining power. This is not conspiracy but structural coupling: underfunded schools create the conditions (behavioral infractions, dropout) that feed the carceral system, which in turn supplies sub-minimum-wage labor to state and private enterprises. The Thirteenth Amendment's exception clause is the legal hinge connecting the two systems."
+    },
+    {
+      "source_text": "Academic journal publishers charge universities subscription fees averaging $2,000-$35,000 per title annually for access to research largely funded by public grants, while requiring authors to transfer copyright as a condition of publication, creating a privatized gatekeeping system over publicly funded knowledge",
+      "source_lang": "en",
+      "target_text": "The US patent system grants 20-year monopolies on inventions, and the Bayh-Dole Act of 1980 allowed universities to patent discoveries made with federal funding, enabling institutions to privatize the outputs of taxpayer-funded research and license them back to the public through commercial products at market prices",
+      "target_lang": "en",
+      "reason": "Academic publishing and patent law form complementary gatekeeping systems over publicly funded knowledge. Publishing locks up the description of knowledge behind paywalls and copyright transfer; patent law locks up the application of knowledge behind licensing fees and exclusion rights. Bayh-Dole and journal copyright policies emerged from the same late-20th-century privatization logic. Together they ensure that the public pays three times: once for the research grant, once for journal access, and once for the patented product. The two systems reinforce each other because published papers disclose inventions that can then be patented, while patents incentivize secrecy that limits what gets published openly."
+    },
+    {
+      "source_text": "The SWIFT interbank messaging network, headquartered in Belgium but subject to US and EU sanctions compliance, can disconnect entire national banking systems from global finance, as demonstrated when Iranian and later Russian banks were cut off following geopolitical disputes",
+      "source_lang": "en",
+      "target_text": "The Border Gateway Protocol (BGP) routing system and the ICANN-managed Domain Name System (DNS) root servers create analogous chokepoints for internet traffic: BGP route hijacking or withdrawal can isolate a nation's internet connectivity, and DNS root zone control determines whether a country's top-level domain resolves globally, as demonstrated when ICANN considered but declined Ukraine's 2022 request to revoke Russia's .ru domain",
+      "target_lang": "en",
+      "reason": "Financial infrastructure control (SWIFT/sanctions) and internet infrastructure control (BGP/DNS) are structurally identical systems of exclusion operating through chokepoint architecture. Both are nominally neutral technical standards administered by international bodies, yet both concentrate enforcement power in Western-aligned governance structures. SWIFT disconnection severs financial communication; BGP withdrawal or DNS revocation severs digital communication. The parallel explains why sanctioned states (Russia, Iran, China) simultaneously pursue alternatives to both: SPFS/CIPS for SWIFT, and domestic DNS roots and internet sovereignty laws for BGP/DNS dependence."
+    },
+    {
+      "source_text": "The Office of War Information during WWII and the Cold War-era United States Information Agency deployed psychological operations techniques including message framing, source credibility manipulation, and emotional arousal to shape foreign and domestic public opinion toward policy objectives",
+      "source_lang": "en",
+      "target_text": "YouTube's recommendation algorithm optimizes for watch-time by amplifying content that provokes emotional arousal and engagement, and internal research leaked in 2019 documented that the algorithm systematically promoted increasingly extreme content because outrage and fear reliably increased session duration, replicating the emotional manipulation techniques of state propaganda through commercial incentive rather than political directive",
+      "target_lang": "en",
+      "reason": "State propaganda and algorithmic recommendation converge on identical manipulation techniques not because platforms studied propaganda manuals, but because both discovered independently that emotional arousal (especially outrage and fear) is the most reliable lever for attention capture. The structural parallel is precise: the Office of War Information selected messages for maximum attitude change; YouTube's algorithm selects content for maximum engagement. Both exploit the same cognitive vulnerabilities. The difference is intentionality: the state propagandist has a target belief; the algorithm has a target metric. But the downstream effect on public epistemology is comparable, as both systematically amplify emotionally charged content over nuanced information."
+    },
+    {
+      "source_text": "EPA data shows that hazardous waste facilities, fossil fuel infrastructure, and polluting industrial sites are disproportionately located in communities with higher percentages of Black, Hispanic, and low-income residents, a pattern documented since the 1982 Warren County PCB landfill protests and confirmed by the 1987 United Church of Christ Toxic Wastes and Race report",
+      "source_lang": "en",
+      "target_text": "Residential redlining maps drawn by the Home Owners' Loan Corporation in the 1930s, which graded neighborhoods by racial composition and denied mortgage insurance to Black areas, predict with high accuracy the present-day locations of urban heat islands, flood-prone zones, and pollution exposure hotspots, because disinvestment prevented infrastructure upgrades while zoning permitted industrial uses that wealthier white neighborhoods excluded",
+      "target_lang": "en",
+      "reason": "Environmental racism and redlining are not merely correlated but causally linked through zoning and land-use law. HOLC redlining maps determined which neighborhoods received investment and political representation; disinvested neighborhoods then became the path of least resistance for industrial siting because residents lacked the political power and property values to resist. The environmental regulation system reinforces this: permitting processes that require public comment favor communities with resources to participate. The result is a feedback loop where historical racial exclusion from property and political systems produces present-day concentration of environmental harm."
+    },
+    {
+      "source_text": "The Five Eyes intelligence alliance (US, UK, Canada, Australia, New Zealand) enables each member state to conduct surveillance on another's citizens and share the results, circumventing each nation's domestic legal restrictions on surveilling its own population",
+      "source_lang": "en",
+      "target_text": "Data broker firms collect location data, browsing history, and app usage from commercial sources including advertising exchanges and SDK integrations, then sell packaged dossiers to law enforcement agencies, enabling police departments to acquire surveillance intelligence about US persons without obtaining a warrant, circumventing Fourth Amendment protections through a commercial transaction",
+      "target_lang": "en",
+      "reason": "Five Eyes and the data broker pipeline are structural equivalents: both circumvent constitutional privacy protections through jurisdictional or sectoral boundary-crossing. Five Eyes launders surveillance through allied foreign agencies to evade domestic restrictions; data brokers launder surveillance through commercial intermediaries to evade warrant requirements. The Supreme Court's Carpenter v. United States decision recognized cell-site location data as constitutionally protected, yet agencies continue purchasing equivalent data commercially. Both systems exploit the same gap: constitutional protections bind the government's direct collection but not its acquisition of data collected by others."
+    },
+    {
+      "source_text": "The Invention Secrecy Act of 1951 allows the US government to impose secrecy orders on patent applications deemed detrimental to national security, with over 5,900 orders active as of 2020, suppressing inventions from public knowledge without the inventor's consent and without judicial review",
+      "source_lang": "en",
+      "target_text": "The classification system established by Executive Order 13526 allows government officials to restrict access to information by stamping it Confidential, Secret, or Top Secret, with an estimated 50 million documents classified annually and a declassification backlog spanning decades, creating an information asymmetry where the executive branch controls what the public and Congress can learn about government activities",
+      "target_lang": "en",
+      "reason": "Patent secrecy orders and the classification system are two faces of the same knowledge-suppression apparatus. Patent secrecy prevents technological knowledge from entering the public domain; classification prevents political and operational knowledge from reaching democratic oversight. Both operate through executive discretion without meaningful judicial review, both create information asymmetries that favor state actors over citizens, and both lack effective sunset mechanisms (secrecy orders can persist indefinitely; classification backlogs ensure decades-long delays). Together they form a comprehensive system for controlling what the public can know about both technology and governance."
+    },
+    {
+      "source_text": "China's Social Credit System aggregates data from financial transactions, court records, social media behavior, and surveillance cameras to generate citizen scores that determine access to travel, loans, employment, and education, fusing state surveillance with behavioral control through algorithmic scoring",
+      "source_lang": "en",
+      "target_text": "US consumer credit scoring systems (FICO, VantageScore) aggregate data from financial transactions, debt repayment, and increasingly non-traditional sources including rent payments and utility bills, generating scores that determine access to housing, employment, insurance, and loans, while operating as private entities exempt from constitutional due process requirements and with limited transparency about scoring algorithms under trade-secret protection",
+      "target_lang": "en",
+      "reason": "China's Social Credit System and US consumer credit scoring are structurally convergent despite ideological framing as opposites. Both aggregate behavioral data into algorithmic scores that gate access to essential services. Both lack meaningful transparency about scoring methodology. Both create feedback loops where low scores restrict access to opportunities needed to improve the score. The key difference is governance sector, not function: China's system is state-administered; the US system is privately administered but state-sanctioned through regulatory frameworks like the Fair Credit Reporting Act. The convergence reveals that algorithmic behavioral scoring is a technology of control that operates similarly regardless of whether the implementing authority is communist or capitalist."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "FISA Section 702 authorizes warrantless collection of communications of non-US persons abroad, but inevitably sweeps in domestic communications through upstream surveillance of internet backbone traffic",
+      "to_source": "The Five Eyes intelligence alliance (US, UK, Canada, Australia, New Zealand) enables each member state to conduct surveillance on another's citizens and share the results, circumventing each nation's domestic legal restrictions on surveilling its own population",
+      "kind": "refines",
+      "reason": "Five Eyes refines the FISA surveillance mechanism by adding an international jurisdictional bypass: where FISA 702 collects foreign communications that incidentally include domestic ones, Five Eyes explicitly routes surveillance through allied agencies to collect what domestic law prohibits collecting directly. Five Eyes is the multilateral extension of the unilateral authority FISA 702 grants."
+    },
+    {
+      "from_source": "The Five Eyes intelligence alliance (US, UK, Canada, Australia, New Zealand) enables each member state to conduct surveillance on another's citizens and share the results, circumventing each nation's domestic legal restrictions on surveilling its own population",
+      "to_source": "China's Social Credit System aggregates data from financial transactions, court records, social media behavior, and surveillance cameras to generate citizen scores that determine access to travel, loans, employment, and education, fusing state surveillance with behavioral control through algorithmic scoring",
+      "kind": "refines",
+      "reason": "China's Social Credit System refines the Five Eyes surveillance model by closing the loop between collection and consequence. Five Eyes collects data across jurisdictions but leaves enforcement to separate legal processes; the Social Credit System integrates collection and behavioral control into a single automated pipeline where surveillance outputs directly determine citizen access to services. Five Eyes is surveillance-for-intelligence; Social Credit is surveillance-for-governance, the logical endpoint of the same infrastructure."
+    },
+    {
+      "from_source": "The IMF's Structural Adjustment Programs condition loan disbursement on policy reforms including privatization, trade liberalization, and fiscal austerity, effectively governing debtor nations' domestic policy without democratic mandate",
+      "to_source": "The SWIFT interbank messaging network, headquartered in Belgium but subject to US and EU sanctions compliance, can disconnect entire national banking systems from global finance, as demonstrated when Iranian and later Russian banks were cut off following geopolitical disputes",
+      "kind": "refines",
+      "reason": "SWIFT disconnection refines IMF conditionality from a soft enforcement mechanism (policy conditions attached to loans) to a hard enforcement mechanism (exclusion from the financial communication system). IMF conditions require debtor compliance; SWIFT sanctions impose compliance unilaterally. Together they represent the spectrum of financial coercion available to Western-aligned institutions."
+    },
+    {
+      "from_source": "EPA data shows that hazardous waste facilities, fossil fuel infrastructure, and polluting industrial sites are disproportionately located in communities with higher percentages of Black, Hispanic, and low-income residents, a pattern documented since the 1982 Warren County PCB landfill protests and confirmed by the 1987 United Church of Christ Toxic Wastes and Race report",
+      "to_source": "School-to-prison pipeline research documents how zero-tolerance disciplinary policies in underfunded public schools funnel students, disproportionately Black and Latino, into juvenile detention and adult incarceration through suspensions, expulsions, and school-based arrests",
+      "kind": "refines",
+      "reason": "The school-to-prison pipeline refines the environmental racism pattern by showing the same geographic and demographic targeting operating through a different institutional channel. Both concentrate harm on the same communities through the same mechanism: disinvestment in public infrastructure (schools, environmental regulation) combined with punitive state presence (policing, permitting of polluters). Environmental racism and the school-to-prison pipeline are parallel outputs of the same underlying system of racialized disinvestment, differing only in which institutional pipeline (environmental or carceral) channels the harm."
+    },
+    {
+      "from_source": "School-to-prison pipeline research documents how zero-tolerance disciplinary policies in underfunded public schools funnel students, disproportionately Black and Latino, into juvenile detention and adult incarceration through suspensions, expulsions, and school-based arrests",
+      "to_source": "China's Social Credit System aggregates data from financial transactions, court records, social media behavior, and surveillance cameras to generate citizen scores that determine access to travel, loans, employment, and education, fusing state surveillance with behavioral control through algorithmic scoring",
+      "kind": "contradicts",
+      "reason": "These systems produce similar outcomes (behavioral control that restricts life opportunities) through opposed mechanisms. The school-to-prison pipeline operates through institutional neglect and punitive exclusion in an ostensibly free system; China's Social Credit System operates through comprehensive monitoring and scored inclusion in an explicitly controlled system. One punishes by ejecting people from institutions; the other punishes by restricting access within institutions. The contradiction reveals that total surveillance and total neglect can produce functionally equivalent systems of control."
+    },
+    {
+      "from_source": "Academic journal publishers charge universities subscription fees averaging $2,000-$35,000 per title annually for access to research largely funded by public grants, while requiring authors to transfer copyright as a condition of publication, creating a privatized gatekeeping system over publicly funded knowledge",
+      "to_source": "The Invention Secrecy Act of 1951 allows the US government to impose secrecy orders on patent applications deemed detrimental to national security, with over 5,900 orders active as of 2020, suppressing inventions from public knowledge without the inventor's consent and without judicial review",
+      "kind": "contradicts",
+      "reason": "Academic publishing and invention secrecy orders restrict knowledge access through opposing justifications that produce the same structural outcome. Publishers restrict access through market mechanisms (copyright, subscription fees) justified by private property rights; secrecy orders restrict access through state authority justified by national security. The contradiction highlights how both free-market and state-security rationales converge on the same result: the public that funded the research cannot access it."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "FISA Section 702 authorizes warrantless collection of communications of non-US persons abroad, but inevitably sweeps in domestic communications through upstream surveillance of internet backbone traffic",
+      "kind": "public_record",
+      "locator": "https://www.pclob.gov/Reports/report-702",
+      "reason": "The Privacy and Civil Liberties Oversight Board's 2014 report on Section 702 documented upstream collection from internet backbone traffic and the incidental collection of domestic communications, providing the authoritative public record of how 702 operates in practice."
+    },
+    {
+      "pair_source": "The IMF's Structural Adjustment Programs condition loan disbursement on policy reforms including privatization, trade liberalization, and fiscal austerity, effectively governing debtor nations' domestic policy without democratic mandate",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/en/About/Factsheets/Sheets/2023/IMF-Conditionality",
+      "reason": "The IMF's own factsheet on conditionality describes how loan disbursement is tied to policy reform commitments, confirming that structural adjustment conditions function as external governance requirements on debtor nations."
+    },
+    {
+      "pair_source": "School-to-prison pipeline research documents how zero-tolerance disciplinary policies in underfunded public schools funnel students, disproportionately Black and Latino, into juvenile detention and adult incarceration through suspensions, expulsions, and school-based arrests",
+      "kind": "public_record",
+      "locator": "https://www.aclu.org/documents/school-prison-pipeline-infographic",
+      "reason": "The ACLU's school-to-prison pipeline documentation compiles data on zero-tolerance policies, school-based arrests, and the disproportionate impact on Black and Latino students, confirming the disciplinary-to-carceral pathway described in the source text."
+    },
+    {
+      "pair_source": "Academic journal publishers charge universities subscription fees averaging $2,000-$35,000 per title annually for access to research largely funded by public grants, while requiring authors to transfer copyright as a condition of publication, creating a privatized gatekeeping system over publicly funded knowledge",
+      "kind": "public_record",
+      "locator": "https://sparcopen.org/our-work/landscape-analysis/",
+      "reason": "SPARC's Landscape Analysis documents the academic publishing market's pricing structures, copyright transfer requirements, and the concentration of scholarly publishing among major commercial publishers, providing comprehensive evidence of the knowledge-gatekeeping system."
+    },
+    {
+      "pair_source": "The SWIFT interbank messaging network, headquartered in Belgium but subject to US and EU sanctions compliance, can disconnect entire national banking systems from global finance, as demonstrated when Iranian and later Russian banks were cut off following geopolitical disputes",
+      "kind": "public_record",
+      "locator": "https://www.swift.com/news-events/news/message-swift-community-sanctions",
+      "reason": "SWIFT's own public statement on sanctions compliance documents the disconnection of designated banks from its messaging network, confirming the chokepoint authority described in the source text."
+    },
+    {
+      "pair_source": "The Office of War Information during WWII and the Cold War-era United States Information Agency deployed psychological operations techniques including message framing, source credibility manipulation, and emotional arousal to shape foreign and domestic public opinion toward policy objectives",
+      "kind": "public_record",
+      "locator": "https://www.archives.gov/research/guide-fed-records/groups/208.html",
+      "reason": "The National Archives Record Group 208 contains the records of the Office of War Information, documenting its domestic and overseas propaganda operations, message framing strategies, and media control techniques deployed during WWII."
+    },
+    {
+      "pair_source": "EPA data shows that hazardous waste facilities, fossil fuel infrastructure, and polluting industrial sites are disproportionately located in communities with higher percentages of Black, Hispanic, and low-income residents, a pattern documented since the 1982 Warren County PCB landfill protests and confirmed by the 1987 United Church of Christ Toxic Wastes and Race report",
+      "kind": "public_record",
+      "locator": "https://www.epa.gov/ejscreen",
+      "reason": "EPA's EJScreen environmental justice screening tool provides the geospatial data confirming disproportionate proximity of pollution sources to communities of color and low-income populations, as described in the source text."
+    },
+    {
+      "pair_source": "The Five Eyes intelligence alliance (US, UK, Canada, Australia, New Zealand) enables each member state to conduct surveillance on another's citizens and share the results, circumventing each nation's domestic legal restrictions on surveilling its own population",
+      "kind": "public_record",
+      "locator": "https://www.theguardian.com/world/2013/jun/21/gchq-cables-secret-world-communications-nsa",
+      "reason": "The Guardian's reporting on the Snowden disclosures documented GCHQ's Tempora program and the Five Eyes intelligence-sharing arrangements that enable reciprocal surveillance of each other's citizens, providing the primary public disclosure of the circumvention mechanism described in the source text."
+    },
+    {
+      "pair_source": "The Invention Secrecy Act of 1951 allows the US government to impose secrecy orders on patent applications deemed detrimental to national security, with over 5,900 orders active as of 2020, suppressing inventions from public knowledge without the inventor's consent and without judicial review",
+      "kind": "public_record",
+      "locator": "https://fas.org/issues/government-secrecy/invention-secrecy/",
+      "reason": "The Federation of American Scientists tracks active invention secrecy orders annually and publishes statistics on the Invention Secrecy Act's use, confirming the 5,900+ active orders and the absence of judicial review described in the source text."
+    },
+    {
+      "pair_source": "China's Social Credit System aggregates data from financial transactions, court records, social media behavior, and surveillance cameras to generate citizen scores that determine access to travel, loans, employment, and education, fusing state surveillance with behavioral control through algorithmic scoring",
+      "kind": "public_record",
+      "locator": "https://merics.org/en/report/chinas-social-credit-system-2021",
+      "reason": "The Mercator Institute for China Studies (MERICS) published detailed analysis of China's Social Credit System implementation, documenting how scores aggregate data from multiple sources and gate access to services, confirming the behavioral-control mechanism described in the source text."
+    }
+  ]
+}

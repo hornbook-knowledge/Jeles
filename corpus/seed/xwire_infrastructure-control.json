@@ -1,0 +1,259 @@
+{
+  "domain": "crossdomain-infrastructure-control",
+  "pairs": [
+    {
+      "source_text": "Robert Moses to BGP routing -- how infrastructure design embeds political choices in concrete and code",
+      "source_lang": "en",
+      "target_text": "Robert Moses designed low overpasses on Long Island parkways to exclude buses carrying Black and low-income New Yorkers from public beaches. BGP routing decisions, peering agreements, and content throttling similarly embed political and economic choices into the flow of information, determining whose traffic gets priority and whose gets dropped. In both cases the infrastructure appears neutral -- a road, a protocol -- but the design choices are deliberate acts of inclusion and exclusion. The people affected rarely see the mechanism; they only experience the outcome. The lesson is that infrastructure is never merely technical: it is always a distribution of access, and therefore always political. The builders' intentions persist in the system long after the builders themselves are gone.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Robert Moses with [modern-world] internet routing/BGP, showing that embedding political choices in infrastructure is a cross-domain constant"
+    },
+    {
+      "source_text": "The transformer bottleneck and the submarine cable chokepoint -- single points of failure in systems we assume are redundant",
+      "source_lang": "en",
+      "target_text": "The global electrical grid faces a multi-year backlog for large power transformers, each one custom-built over 12-18 months by a handful of manufacturers. Undersea fiber-optic cables carry 99% of intercontinental data traffic through a small number of geographic chokepoints vulnerable to sabotage and anchor strikes. Both systems present themselves as robust networks but depend on irreplaceable physical components with long replacement timelines. When a transformer fails or a cable is cut, the redundancy that planners assumed existed turns out to be thinner than modeled. These bottlenecks reveal a shared pattern: complex systems evolve toward hidden concentration even as they appear to distribute risk.",
+      "target_lang": "en",
+      "reason": "Bridges [modern-world] transformer shortage with [round5] submarine cable sabotage, exposing the hidden fragility pattern across energy and telecom infrastructure"
+    },
+    {
+      "source_text": "From zoning laws to DNS resolution -- invisible administrative layers that determine who gets access to what",
+      "source_lang": "en",
+      "target_text": "Municipal zoning codes decide whether a neighborhood gets affordable housing or luxury condos, whether a factory can sit next to a school, whether density is permitted or forbidden. DNS and ICANN governance decide which domain names resolve, which top-level domains exist, and under what rules registrars operate. Both are administrative systems that most people never think about but that fundamentally shape access -- to housing and economic opportunity in one case, to information and digital commerce in the other. Both suffer from capture by incumbent interests: NIMBYism blocks housing supply, while ICANN processes favor well-resourced corporate actors. The parallel suggests that governance of access infrastructure, whether physical or digital, gravitates toward opacity and incumbency unless actively forced toward transparency.",
+      "target_lang": "en",
+      "reason": "Bridges [modern-world] zoning/NIMBYism with [modern-world] DNS/ICANN governance, revealing shared access-gatekeeping patterns across physical and digital infrastructure"
+    },
+    {
+      "source_text": "Wastewater surveillance and BGP monitoring -- infrastructure that watches back",
+      "source_lang": "en",
+      "target_text": "Wastewater surveillance detects disease outbreaks before hospitals report them by analyzing what flows through the sewage system. BGP monitoring reveals internet health by tracking route announcements across autonomous systems. Both turn passive infrastructure -- pipes, cables -- into active sensing systems that generate intelligence about the populations they serve. The ethical tension is identical in both cases: the same monitoring that enables public health or network reliability also enables surveillance. Snowden's disclosures showed that communications infrastructure had been turned into a mass surveillance apparatus; wastewater monitoring, while currently used for epidemiology, collects biological data on entire communities without individual consent. Infrastructure that watches back is powerful precisely because opting out means disconnecting from the system entirely.",
+      "target_lang": "en",
+      "reason": "Bridges [modern-world] wastewater surveillance with [modern-world] BGP/internet monitoring and [people] Snowden, connecting public health, telecom, and surveillance through the shared pattern of infrastructure-as-sensor"
+    },
+    {
+      "source_text": "The duck curve and the data center demand spike -- when new loads crash into old grid assumptions",
+      "source_lang": "en",
+      "target_text": "The duck curve emerged because solar generation floods the grid at midday and vanishes at sunset, creating a steep evening ramp that legacy generators struggle to follow. Data center power demand compounds this problem by adding enormous constant baseload that the grid was never designed to accommodate, pushing transformer and transmission capacity to limits. Both phenomena show the same dynamic: infrastructure designed for one demand pattern breaks when the pattern shifts. The grid was built for predictable industrial and residential load; it is now asked to handle intermittent renewables and hyperscale computing simultaneously. The collision produces cascading stress on transformers, transmission lines, and capacity markets -- all infrastructure layers designed for a world that no longer exists.",
+      "target_lang": "en",
+      "reason": "Bridges [modern-world] duck curve with [round5] data center power demand and [modern-world] transformer shortage, showing how demand-pattern shifts break infrastructure across multiple layers simultaneously"
+    },
+    {
+      "source_text": "Submarine cables and Interstate Highways -- military infrastructure that reshapes civilian geography",
+      "source_lang": "en",
+      "target_text": "Eisenhower built the Interstate Highway System for nuclear-era military logistics: rapid troop movement and urban evacuation. The system destroyed Black urban neighborhoods through demolition and division, then reshaped American life around suburban sprawl and automobile dependence. Submarine fiber-optic cables were laid along routes shaped by Cold War strategic considerations and colonial telegraph paths, creating a global information topology that concentrates traffic through a few chokepoints. In both cases, military rationale determined the infrastructure's geometry, and civilian society reorganized itself around that geometry. The Interstate system made suburban retail possible; submarine cables made the cloud possible. Neither outcome was the stated purpose, but both became the defining consequence.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Interstate Highway System with [round5] submarine cable sabotage, showing that military-origin infrastructure reshapes civilian life in ways the original planners never intended"
+    },
+    {
+      "source_text": "From Snowden's disclosures to the Facebook outage -- hidden infrastructure becomes visible only through failure or whistleblowing",
+      "source_lang": "en",
+      "target_text": "Snowden revealed the NSA's mass surveillance apparatus built on top of telecommunications infrastructure that most people assumed was neutral plumbing. The Facebook BGP outage of October 2021 revealed how deeply a single company's infrastructure had become embedded in daily life when its misconfiguration took down not just social media but authentication systems, business tools, and emergency communications. Both events made invisible infrastructure suddenly legible to the public. The pattern is consistent: infrastructure recedes from awareness precisely as it becomes more critical, and only catastrophic failure or deliberate disclosure makes the dependency visible. This creates a structural information asymmetry: the builders understand the system's power; the users discover it only when it breaks.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Snowden with [modern-world] Facebook BGP outage, connecting surveillance and platform infrastructure through the shared pattern of invisible-until-broken"
+    },
+    {
+      "source_text": "The merit order and content delivery -- how routing algorithms pick winners in energy and information markets",
+      "source_lang": "en",
+      "target_text": "The merit order dispatches electricity from cheapest generator to most expensive, determining which power plants run and which sit idle, and therefore which companies profit. CDN and anycast routing algorithms dispatch user requests to the nearest or least-loaded server, determining which data centers carry traffic and which regions experience latency. Both are algorithmic dispatch systems operating on physical infrastructure with enormous economic consequences. Both create winner-take-most dynamics: low-marginal-cost generators (solar, wind, nuclear) push gas plants off the merit order; dominant CDN providers (Cloudflare, Akamai) concentrate traffic at scale. In both cases, the routing algorithm is the invisible hand that allocates real economic value, and those who control the algorithm control the market.",
+      "target_lang": "en",
+      "reason": "Bridges [modern-world] merit order with [modern-world] CDNs and anycast routing, revealing that algorithmic dispatch is the shared mechanism of market power in both energy and internet infrastructure"
+    },
+    {
+      "source_text": "Microgrids and mesh networks -- when the edges of infrastructure become more resilient than the center",
+      "source_lang": "en",
+      "target_text": "Microgrids island themselves from a failing main grid to maintain local power. Mesh network architectures route around damage or censorship by treating every node as both consumer and relay. Both represent a decentralization response to centralized infrastructure fragility. The submarine cable sabotage incidents and the Facebook BGP outage demonstrate that centralized infrastructure creates single points of failure with catastrophic blast radii. Microgrids and mesh networks trade efficiency for resilience: they cost more per unit of service but survive disruptions that take down centralized systems. The political dimension is significant -- decentralized infrastructure is harder to control, which is why authoritarian regimes suppress mesh networks and why utilities resist microgrid interconnection.",
+      "target_lang": "en",
+      "reason": "Bridges [modern-world] microgrids with internet architecture and [round5] submarine cable sabotage, connecting energy and information infrastructure through the decentralization-as-resilience pattern"
+    },
+    {
+      "source_text": "GPS coordinates and grid frequency -- the hidden synchronization layers that make modern infrastructure coherent",
+      "source_lang": "en",
+      "target_text": "GPS coordinates provide a universal spatial reference system that makes navigation, surveying, logistics, and financial timestamping possible. Grid frequency maintenance at exactly 50 or 60 Hz provides the temporal synchronization that keeps generators, motors, and clocks running in phase across entire continents. Both are synchronization layers so fundamental that their failure cascades through every system built on top of them. A GPS constellation failure would ground aircraft, disable precision agriculture, and disrupt financial markets. A grid frequency deviation of more than a few hertz triggers automatic load shedding and cascading blackouts. These are the metainfrastructure -- the infrastructure that makes other infrastructure possible -- and they are maintained by a remarkably small number of institutions with little public visibility.",
+      "target_lang": "en",
+      "reason": "Bridges [core] GPS coordinates with [modern-world] grid frequency, showing that invisible synchronization layers are the deepest infrastructure of all, connecting spatial and temporal coherence"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Robert Moses \u2014 the unelected power broker who reshaped New York through highways and racial exclusion",
+      "to_source": "How does zoning decide what can be built in a city, and what is NIMBYism?",
+      "kind": "refines",
+      "reason": "Moses used highway placement as de facto zoning before formal zoning gained its current power; modern NIMBYism continues the same exclusionary function through administrative rather than infrastructural means"
+    },
+    {
+      "from_source": "Infrastructure as political power \u2014 who decides what gets built and where",
+      "to_source": "Who governs the internet, and how do ICANN, IETF, and RIRs divide responsibility?",
+      "kind": "refines",
+      "reason": "The political power question applies identically to digital infrastructure: ICANN, IETF, and RIRs are the unelected bodies that decide what gets built in internet infrastructure, paralleling physical infrastructure governance"
+    },
+    {
+      "from_source": "The Interstate Highway System \u2014 Eisenhower's vision and the destruction of urban neighborhoods",
+      "to_source": "Submarine cable sabotage escalates across three global chokepoints",
+      "kind": "refines",
+      "reason": "Both are strategic infrastructure with military origins whose civilian dependencies create geopolitical vulnerabilities -- highways for domestic logistics, cables for global communications"
+    },
+    {
+      "from_source": "Why is there a global shortage of power transformers and how does it bottleneck grid expansion?",
+      "to_source": "Data center power demand creates grid crisis and Ratepayer Protection Pledge",
+      "kind": "refines",
+      "reason": "The transformer shortage is the specific bottleneck through which data center demand creates grid crisis -- new AI compute cannot be powered without transformers that take years to manufacture"
+    },
+    {
+      "from_source": "Edward Snowden \u2014 NSA mass surveillance disclosures",
+      "to_source": "What happened during the Facebook BGP outage of October 2021, and what does it reveal about internet fragility?",
+      "kind": "refines",
+      "reason": "Both revealed hidden infrastructure dependencies to the public: Snowden showed telecom infrastructure was a surveillance apparatus; the BGP outage showed a single company's infrastructure had become essential public utility"
+    },
+    {
+      "from_source": "What is the duck curve and why does it create problems for grids with lots of solar power?",
+      "to_source": "Data center power demand creates grid crisis and Ratepayer Protection Pledge",
+      "kind": "refines",
+      "reason": "Data center demand worsens the duck curve by adding constant baseload that competes with the evening ramp, forcing grid operators to manage both intermittency and hyperscale computing simultaneously"
+    },
+    {
+      "from_source": "The 'move fast and break things' ethos applied to physical infrastructure \u2014 why software logic fails in the built environment",
+      "to_source": "How does the grid maintain exactly 50 or 60 Hz frequency and what happens when it fails?",
+      "kind": "contradicts",
+      "reason": "Grid frequency maintenance exemplifies why the 'move fast and break things' ethos is lethal in physical infrastructure -- a few-hertz deviation triggers cascading blackouts with no rollback possible"
+    },
+    {
+      "from_source": "What do the numbers in a GPS coordinate actually mean?",
+      "to_source": "How does the Domain Name System (DNS) translate website names into IP addresses?",
+      "kind": "refines",
+      "reason": "Both are address-resolution systems that translate human-usable references into machine-actionable coordinates -- GPS maps location names to lat/long, DNS maps domain names to IP addresses"
+    },
+    {
+      "from_source": "Meredith Whittaker \u2014 AI Now Institute co-founder, Signal president, and critic of surveillance-driven AI",
+      "to_source": "EU AI Act enforcement status \u2014 August 2026",
+      "kind": "refines",
+      "reason": "Whittaker's critique of surveillance-driven AI directly informed the political movement that produced the EU AI Act; her work connecting infrastructure control to AI governance shaped the regulatory framework"
+    },
+    {
+      "from_source": "How does wastewater surveillance detect disease outbreaks before hospitals do?",
+      "to_source": "AI and smart water grid leak detection \u2014 2026",
+      "kind": "refines",
+      "reason": "Both use water infrastructure as a sensing platform -- wastewater for epidemiology, smart grids for leak detection -- showing how passive pipes become active intelligence-gathering systems"
+    },
+    {
+      "from_source": "What is a microgrid and how does it provide energy resilience when the main grid fails?",
+      "to_source": "Submarine cable sabotage escalates across three global chokepoints",
+      "kind": "refines",
+      "reason": "Microgrids represent the decentralization response to the same fragility pattern that submarine cable chokepoints expose -- both demonstrate that centralized infrastructure creates catastrophic single points of failure"
+    },
+    {
+      "from_source": "Martin Luther King Jr. \u2014 civil rights icon, radical politics, and the sanitized legacy",
+      "to_source": "The personal cost of activism \u2014 documented patterns of retaliation, imprisonment, and assassination",
+      "kind": "refines",
+      "reason": "King's assassination is a primary case study in the personal cost pattern; his sanitized legacy also demonstrates how systems of power neutralize dissent posthumously by stripping radical politics from the record"
+    },
+    {
+      "from_source": "Infrastructure as political power \u2014 who decides what gets built and where",
+      "to_source": "Data center power demand creates grid crisis and Ratepayer Protection Pledge",
+      "kind": "refines",
+      "reason": "Data center siting decisions are the contemporary version of infrastructure-as-power: tech companies choose locations, consume grid capacity, and impose costs on ratepayers who had no say in the decision"
+    },
+    {
+      "from_source": "Commonwealth Fusion Systems SPARC assembly progress \u2014 2025-2026",
+      "to_source": "Why is there a global shortage of power transformers and how does it bottleneck grid expansion?",
+      "kind": "refines",
+      "reason": "Even if fusion succeeds, the power it generates cannot reach consumers without transformers -- the transformer bottleneck constrains all new generation sources regardless of how revolutionary they are"
+    },
+    {
+      "from_source": "How do content delivery networks (CDNs) like Cloudflare and Akamai speed up the internet?",
+      "to_source": "Submarine cable sabotage escalates across three global chokepoints",
+      "kind": "refines",
+      "reason": "CDNs mitigate submarine cable dependency by caching content at network edges, but still rely on cables for cache synchronization and origin fetches -- they reduce but do not eliminate the chokepoint vulnerability"
+    },
+    {
+      "from_source": "What interoperability and data portability legislation emerged in 2025-2026?",
+      "to_source": "Who governs the internet, and how do ICANN, IETF, and RIRs divide responsibility?",
+      "kind": "refines",
+      "reason": "Interoperability legislation attempts to impose the open-standards ethos of IETF and ICANN onto proprietary platforms, extending infrastructure governance principles from the protocol layer to the application layer"
+    },
+    {
+      "from_source": "AI safety vs AI ethics divide -- the two communities and what separates them",
+      "to_source": "EU AI Act enforcement status \u2014 August 2026",
+      "kind": "refines",
+      "reason": "The EU AI Act represents the AI ethics community's regulatory approach prevailing over the AI safety community's preference for voluntary alignment research -- the divide shaped which risks the legislation addresses"
+    },
+    {
+      "from_source": "Seabed 2030 mapping reaches 28.7% of ocean floor \u2014 April 2026",
+      "to_source": "Submarine cable sabotage escalates across three global chokepoints",
+      "kind": "refines",
+      "reason": "Seabed mapping is essential for both submarine cable route planning and cable protection -- the 71.3% of unmapped ocean floor represents unknown risk for the cable infrastructure that carries global internet traffic"
+    },
+    {
+      "from_source": "How does the electrical grid handle the load-balancing problem of matching supply to demand every second?",
+      "to_source": "What is anycast routing and how does it make DNS and CDNs faster and more resilient?",
+      "kind": "refines",
+      "reason": "Both are real-time load-balancing systems: the grid matches generation to consumption every second, anycast routes requests to the nearest available server every millisecond -- same optimization problem across energy and information"
+    },
+    {
+      "from_source": "Sea level rise \u2014 satellites vs tide gauges",
+      "to_source": "Seabed 2030 mapping reaches 28.7% of ocean floor \u2014 April 2026",
+      "kind": "refines",
+      "reason": "Sea level measurement and seabed mapping are complementary ocean observation infrastructures -- one tracks the surface from above, the other maps the floor from above, and both underpin climate and infrastructure planning"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Robert Moses to BGP routing -- how infrastructure design embeds political choices in concrete and code",
+      "kind": "url",
+      "locator": "https://www.nytimes.com/2017/03/07/opinion/the-best-book-about-american-politics.html",
+      "reason": "Coverage of how Caro's Power Broker established the understanding that infrastructure design is political action"
+    },
+    {
+      "pair_source": "The transformer bottleneck and the submarine cable chokepoint -- single points of failure in systems we assume are redundant",
+      "kind": "url",
+      "locator": "https://www.energy.gov/gdo/articles/department-energy-releases-new-report-assessing-vulnerabilities-large-power",
+      "reason": "DOE report on power transformer supply chain vulnerabilities and long lead times"
+    },
+    {
+      "pair_source": "Submarine cables and Interstate Highways -- military infrastructure that reshapes civilian geography",
+      "kind": "url",
+      "locator": "https://www.fhwa.dot.gov/interstate/history.cfm",
+      "reason": "Federal Highway Administration history of the Interstate system's military defense origins"
+    },
+    {
+      "pair_source": "From Snowden's disclosures to the Facebook outage -- hidden infrastructure becomes visible only through failure or whistleblowing",
+      "kind": "url",
+      "locator": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+      "reason": "Facebook's own engineering postmortem of the October 2021 BGP outage and its cascading effects"
+    },
+    {
+      "pair_source": "The duck curve and the data center demand spike -- when new loads crash into old grid assumptions",
+      "kind": "url",
+      "locator": "https://www.caiso.com/documents/flexibleresourceshelprenewables_fastfacts.pdf",
+      "reason": "CAISO original documentation of the duck curve phenomenon and its grid management implications"
+    },
+    {
+      "pair_source": "GPS coordinates and grid frequency -- the hidden synchronization layers that make modern infrastructure coherent",
+      "kind": "url",
+      "locator": "https://www.gps.gov/applications/timing/",
+      "reason": "GPS.gov documentation of GPS timing applications across infrastructure including power grid synchronization"
+    },
+    {
+      "pair_source": "The merit order and content delivery -- how routing algorithms pick winners in energy and information markets",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Merit_order",
+      "reason": "Wikipedia explains merit order dispatch in electricity markets and how algorithmic ordering determines resource allocation"
+    },
+    {
+      "pair_source": "Microgrids and mesh networks -- when the edges of infrastructure become more resilient than the center",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Microgrid",
+      "reason": "Wikipedia documents how microgrids operate independently from central grids, paralleling mesh network decentralization"
+    },
+    {
+      "pair_source": "Wastewater surveillance and BGP monitoring -- infrastructure that watches back",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Wastewater-based_epidemiology",
+      "reason": "Wikipedia documents how wastewater monitoring provides population-level surveillance through infrastructure"
+    },
+    {
+      "pair_source": "From zoning laws to DNS resolution -- invisible administrative layers that determine who gets access to what",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Domain_Name_System",
+      "reason": "Wikipedia explains DNS as an administrative layer that resolves names to addresses, controlling access routing"
+    }
+  ]
+}

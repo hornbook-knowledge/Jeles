@@ -1,0 +1,300 @@
+{
+  "domain": "modern-world-internet",
+  "pairs": [
+    {
+      "source_text": "How do undersea submarine cables carry 99% of intercontinental internet traffic?",
+      "source_lang": "en",
+      "target_text": "As of 2026, approximately 694 submarine cable systems connect continents through 1,893 landing stations, carrying over 99% of all intercontinental data traffic. These cables contain bundles of hair-thin glass fibers that transmit data as pulses of laser light, with modern systems designed for 60+ terabits per second capacity. Meta's 2Africa cable, completed in November 2025, stretches 45,000 kilometers around Africa with a design capacity of 180 Tbps. Cables are laid by specialized ships that unspool cable from massive drums at about 7 knots (15 km/h), burying it in shallow waters using a seabed plow for protection from anchors and fishing gear, while in deep water (up to 7,000 meters) the cable rests directly on the ocean floor.",
+      "target_lang": "en",
+      "reason": "Submarine cables are the physical backbone of the global internet, yet most people assume the internet is transmitted wirelessly or via satellite"
+    },
+    {
+      "source_text": "Who owns the world's submarine internet cables, and how has ownership shifted to tech giants?",
+      "source_lang": "en",
+      "target_text": "Submarine cable ownership has shifted dramatically from telecom consortia to technology companies. Google holds ownership stakes in 34 cable systems, Meta in 20, and Microsoft and Amazon share stakes in ten more between them. Hyperscalers' share of international bandwidth use has grown from nearly zero in 2010 to roughly 75% today, and they control about 90% of trans-Atlantic capacity. Over two-thirds of all planned new cable deployments involve these tech companies. This shift means that a handful of private corporations now control the physical paths through which most global internet traffic flows, a concentration that raises questions about infrastructure resilience and market power.",
+      "target_lang": "en",
+      "reason": "Understanding who controls physical internet infrastructure reveals the enormous concentration of power among a few technology companies"
+    },
+    {
+      "source_text": "How are damaged submarine internet cables found and repaired on the ocean floor?",
+      "source_lang": "en",
+      "target_text": "When a submarine cable is damaged, a specialized cable repair ship sails to a point near the fault location and drags a cutting grapnel along the seabed perpendicular to the cable's path. The ship hooks the damaged cable and slowly raises it to the surface, where technicians cut out the damaged section and splice in new cable by carefully joining the optical fibers and sealing the joint with watertight protective materials. The repaired cable is then lowered back to the seabed, and in shallow buried zones it is reburied using water jets. Shallow-water repairs near a repair base can take a few days, while deep-sea repairs in remote locations can take several weeks, especially in adverse weather. There are fewer than 60 cable repair ships in the world, making repair capacity itself a bottleneck.",
+      "target_lang": "en",
+      "reason": "Cable repair is a slow, physical process that reveals how fragile global connectivity can be despite its apparent reliability"
+    },
+    {
+      "source_text": "How does BGP routing allow packets to find their way across the global internet?",
+      "source_lang": "en",
+      "target_text": "The Border Gateway Protocol (BGP) is the routing protocol that holds the internet together. The internet is composed of over 75,000 autonomous systems (ASes) -- independently operated networks run by ISPs, companies, universities, and governments, each identified by a unique Autonomous System Number (ASN). BGP routers at the borders of each AS exchange reachability information, announcing which IP address blocks they can reach and the path of ASes a packet would traverse to get there. BGP is a path-vector protocol: it does not simply pick the shortest path but makes routing decisions based on the full AS path, network policies, and operator-defined rules. When a route fails, BGP routers detect the withdrawal and converge on alternative paths, though convergence can take seconds to minutes.",
+      "target_lang": "en",
+      "reason": "BGP is the invisible 'postal system' of the internet that determines how every packet finds its destination across thousands of independent networks"
+    },
+    {
+      "source_text": "What happened during the Facebook BGP outage of October 2021, and what does it reveal about internet fragility?",
+      "source_lang": "en",
+      "target_text": "On October 4, 2021, Facebook, Instagram, and WhatsApp went offline globally for over seven hours -- one of the largest outages in internet history. A routine maintenance command intended to assess backbone capacity accidentally disconnected all of Facebook's data centers from each other. This triggered a safety mechanism that withdrew all BGP route announcements for Facebook's networks, which in turn made their DNS servers unreachable from the entire internet. The cascading failure was so complete that Facebook engineers could not even remotely access their own routers to fix the problem; technicians had to physically travel to data centers to restore connectivity. BGP routes were re-announced around 21:00 UTC, and DNS became resolvable again at 21:05 UTC.",
+      "target_lang": "en",
+      "reason": "This real-world incident shows how BGP failures can make an entire platform vanish from the internet and illustrates cascading infrastructure dependencies"
+    },
+    {
+      "source_text": "How does the Domain Name System (DNS) translate website names into IP addresses?",
+      "source_lang": "en",
+      "target_text": "DNS works as a hierarchical lookup system that converts human-readable domain names (like example.com) into the numeric IP addresses computers use. When you type a URL, your browser first checks its local cache, then asks a recursive resolver (typically run by your ISP or a service like Google's 8.8.8.8 or Cloudflare's 1.1.1.1). If the resolver doesn't have the answer cached, it queries a root server, which directs it to the appropriate top-level domain server (e.g., .com), which in turn directs it to the domain's authoritative nameserver, which returns the final IP address. There are 13 root server identities (named A through M), operated by 12 independent organizations, but thanks to anycast routing these 13 identities are served by over 1,500 physical servers distributed across more than 130 locations worldwide.",
+      "target_lang": "en",
+      "reason": "DNS is the first step in every internet interaction, yet its hierarchical design and root server architecture are rarely understood"
+    },
+    {
+      "source_text": "How do content delivery networks (CDNs) like Cloudflare and Akamai speed up the internet?",
+      "source_lang": "en",
+      "target_text": "A CDN is a distributed network of edge servers that cache copies of web content -- images, videos, HTML, JavaScript -- at points of presence (PoPs) close to end users, so requests travel a short distance instead of crossing continents to an origin server. When a user requests a page, DNS routes them to the nearest edge server; if it has a cached copy, it serves it immediately; if not, it fetches from the origin, caches it, and then serves it. Cloudflare operates in over 300 cities across more than 100 countries. Akamai maintains over 325,000 servers across 4,100+ PoPs in more than 135 countries. CDNs also absorb traffic spikes and DDoS attacks, acting as a buffer between the public internet and origin servers.",
+      "target_lang": "en",
+      "reason": "CDNs are why a website hosted in one country loads quickly everywhere -- they are a hidden but critical layer of internet performance"
+    },
+    {
+      "source_text": "What are Internet Exchange Points (IXPs) and why do they matter for internet performance?",
+      "source_lang": "en",
+      "target_text": "An Internet Exchange Point (IXP) is a physical facility with high-speed Ethernet switches where multiple autonomous networks connect to exchange traffic directly, rather than routing through expensive transit providers. Networks at an IXP use BGP to announce which IP blocks they can reach, and when two networks agree to peer, traffic flows over the IXP switch at near-zero marginal cost beyond the port fee. This direct exchange reduces latency, cuts bandwidth costs, and improves performance for end users. The largest IXP by aggregate traffic is IX.br in Brazil at roughly 42 Tbps, followed by DE-CIX in Frankfurt at approximately 22 Tbps, and Equinix Exchange at around 19.6 Tbps. Port speeds at major IXPs range from 1 Gbps for small participants to 400 Gbps for large networks.",
+      "target_lang": "en",
+      "reason": "IXPs are where the internet's independent networks physically meet and exchange traffic, directly affecting the speed and cost of data delivery"
+    },
+    {
+      "source_text": "How is 'the cloud' actually physical infrastructure, and how large are the major hyperscalers?",
+      "source_lang": "en",
+      "target_text": "Cloud computing runs on vast physical data centers -- warehouse-scale buildings filled with servers, storage, networking equipment, and cooling systems. As of 2025, Microsoft Azure operates more than 70 regions and over 400 data centers globally. AWS holds roughly 31% of the cloud infrastructure market with over $110 billion in annual revenue, Azure follows at about 25% and $100+ billion, and Google Cloud holds approximately 12%. Oracle has 147 active data centers with 64 more under development. These hyperscalers are currently compute-constrained: demand -- especially for AI workloads -- far outpaces their ability to build new capacity, with global cloud infrastructure spending rising 29% in Q4 2025 alone.",
+      "target_lang": "en",
+      "reason": "Demystifying the cloud as physical infrastructure helps people understand that internet services depend on real buildings, power, and hardware"
+    },
+    {
+      "source_text": "What happens end-to-end when you load a web page in your browser?",
+      "source_lang": "en",
+      "target_text": "Loading a web page involves a precise sequence of steps. First, the browser performs a DNS lookup to resolve the domain name to an IP address. Then it establishes a TCP connection via a three-way handshake (SYN, SYN-ACK, ACK), followed by a TLS handshake for HTTPS sites where the browser and server exchange cryptographic keys and verify certificates. These preambles typically add 100-200 milliseconds of latency. The browser then sends an HTTP GET request; modern browsers use HTTP/2 or HTTP/3, which allow multiplexing multiple resource requests over a single connection. The server responds with HTML, which the browser parses into a DOM tree, then fetches referenced CSS and JavaScript, constructs a render tree, computes layout, paints pixels, and composites layers via the GPU. For a 60Hz display, this rendering pipeline must complete each frame in under 16.7 milliseconds.",
+      "target_lang": "en",
+      "reason": "Understanding the full chain from URL to rendered page reveals the dozens of protocols and systems that cooperate to make browsing feel instant"
+    },
+    {
+      "source_text": "How does the 'last mile' deliver internet to homes via fiber, cable, 5G, and satellite?",
+      "source_lang": "en",
+      "target_text": "The last mile is the final leg of internet delivery from a local exchange or cell tower to the end user's home or device. Fiber-to-the-home (FTTH) leads in performance, with many providers offering 2-10 Gbps plans and latency under 5 milliseconds. Legacy DSL runs over existing copper telephone lines at 1-35 Mbps with 20-50 ms latency and is the lowest-cost broadband option. Cable internet uses coaxial TV lines for typically 100-1,000 Mbps. 5G fixed wireless delivers 100-500 Mbps at 20-40 ms latency with a simple plug-in router and no technician visit. SpaceX's Starlink uses a low-Earth-orbit constellation of nearly 7,000 satellites (as of mid-2025) to deliver 50-200 Mbps with 20-50 ms latency to over 1.4 million US subscribers, making satellite internet a legitimate broadband option rather than a last resort.",
+      "target_lang": "en",
+      "reason": "The last mile is where most people experience the internet, and the diversity of technologies explains why speeds and prices vary so dramatically by location"
+    },
+    {
+      "source_text": "Who governs the internet, and how do ICANN, IETF, and RIRs divide responsibility?",
+      "source_lang": "en",
+      "target_text": "No single entity controls the internet; governance is distributed across specialized organizations using a multistakeholder model. The Internet Engineering Task Force (IETF) develops open technical standards like HTTP, TCP, and TLS through a consensus-driven process open to anyone. ICANN (Internet Corporation for Assigned Names and Numbers) coordinates the Domain Name System, managing top-level domains (.com, .org, country codes) and overseeing the root zone. Five Regional Internet Registries (RIRs) -- ARIN (North America), RIPE NCC (Europe/Middle East), APNIC (Asia-Pacific), LACNIC (Latin America), and AFRINIC (Africa) -- allocate IP address blocks within their regions. The World Wide Web Consortium (W3C) develops web standards like HTML and CSS. These bodies coordinate through the I* partnership but operate independently, each governing its own domain of internet infrastructure.",
+      "target_lang": "en",
+      "reason": "Understanding internet governance dispels the myth that any government or company 'controls' the internet and reveals its distributed, cooperative nature"
+    },
+    {
+      "source_text": "How does the TLS handshake secure an HTTPS connection between a browser and a server?",
+      "source_lang": "en",
+      "target_text": "TLS (Transport Layer Security) secures HTTPS connections through a handshake that establishes encrypted communication. In TLS 1.3 (the current standard), the handshake takes just one round trip: the client sends a 'Client Hello' with supported cipher suites and a key share, and the server responds with its chosen cipher suite, its own key share, and its certificate in a single 'Server Hello' message. Both sides then independently compute the same session key using Diffie-Hellman key exchange, without ever transmitting the key itself. The browser verifies the server's certificate against a chain of trust rooted in Certificate Authorities (CAs) pre-installed in the operating system. TLS 1.3 eliminated older, insecure features like RSA key exchange and reduced handshake latency from two round trips (in TLS 1.2) to one, and even zero round trips for repeat connections using pre-shared keys.",
+      "target_lang": "en",
+      "reason": "TLS is the security layer that makes online commerce and private communication possible, protecting every HTTPS page load"
+    },
+    {
+      "source_text": "What is anycast routing and how does it make DNS and CDNs faster and more resilient?",
+      "source_lang": "en",
+      "target_text": "Anycast is a network addressing method where the same IP address is announced from multiple physical locations simultaneously. When a user sends a packet to an anycast address, internet routing protocols (BGP) naturally direct it to the nearest announcing server based on network topology, not just geography. DNS root servers use anycast to turn 13 root identities into over 1,500 physical servers worldwide -- a query to root server 'L' reaches whichever L-root instance is topologically closest. CDNs like Cloudflare use anycast across their 300+ cities so that every user is automatically routed to a nearby edge server without any special client configuration. Anycast also provides natural DDoS resilience: attack traffic is distributed across all announcing locations rather than concentrated on a single server.",
+      "target_lang": "en",
+      "reason": "Anycast is the clever routing trick that makes globally distributed services like DNS and CDNs appear as a single, fast endpoint from anywhere in the world"
+    },
+    {
+      "source_text": "How do internet peering and transit agreements determine the economics of internet traffic?",
+      "source_lang": "en",
+      "target_text": "Internet traffic flows between networks through two types of commercial arrangements: peering and transit. In a peering agreement, two networks of roughly equal size agree to exchange traffic directly at no cost (settlement-free peering), typically at an IXP or through a direct private interconnection. In a transit agreement, a smaller network pays a larger one (a transit provider) to carry its traffic to the rest of the internet, essentially buying access to routes it cannot reach through its own peers. Tier 1 networks -- about 15-20 globally, including Lumen (formerly CenturyLink), Arelion (formerly Telia Carrier), NTT, and Cogent -- can reach every destination on the internet through settlement-free peering alone, without purchasing transit from anyone. The cost of transit has fallen dramatically, from over $1,000 per Mbps per month in the early 2000s to under $1 per Mbps in major markets today.",
+      "target_lang": "en",
+      "reason": "Peering and transit economics are the invisible market forces that determine how internet traffic actually flows and why some routes are faster than others"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "How does BGP routing allow packets to find their way across the global internet?",
+      "to_source": "What happened during the Facebook BGP outage of October 2021, and what does it reveal about internet fragility?",
+      "kind": "refines",
+      "reason": "The Facebook outage is a concrete case study that illustrates how BGP failures cascade through the internet as described in the BGP routing pair"
+    },
+    {
+      "from_source": "How does the Domain Name System (DNS) translate website names into IP addresses?",
+      "to_source": "What happens end-to-end when you load a web page in your browser?",
+      "kind": "refines",
+      "reason": "DNS resolution is the first step in the end-to-end web page load process"
+    },
+    {
+      "from_source": "How does BGP routing allow packets to find their way across the global internet?",
+      "to_source": "What are Internet Exchange Points (IXPs) and why do they matter for internet performance?",
+      "kind": "refines",
+      "reason": "IXPs are the physical locations where BGP peering sessions are established between autonomous systems"
+    },
+    {
+      "from_source": "How do undersea submarine cables carry 99% of intercontinental internet traffic?",
+      "to_source": "Who owns the world's submarine internet cables, and how has ownership shifted to tech giants?",
+      "kind": "refines",
+      "reason": "Ownership details expand on the physical infrastructure by explaining who controls it"
+    },
+    {
+      "from_source": "How do undersea submarine cables carry 99% of intercontinental internet traffic?",
+      "to_source": "How are damaged submarine internet cables found and repaired on the ocean floor?",
+      "kind": "refines",
+      "reason": "Repair processes reveal the maintenance challenges of the submarine cable infrastructure"
+    },
+    {
+      "from_source": "How do content delivery networks (CDNs) like Cloudflare and Akamai speed up the internet?",
+      "to_source": "What is anycast routing and how does it make DNS and CDNs faster and more resilient?",
+      "kind": "refines",
+      "reason": "Anycast is the routing technique that enables CDNs to direct users to their nearest edge server"
+    },
+    {
+      "from_source": "What are Internet Exchange Points (IXPs) and why do they matter for internet performance?",
+      "to_source": "How do internet peering and transit agreements determine the economics of internet traffic?",
+      "kind": "refines",
+      "reason": "IXPs are the physical facilities where the peering and transit agreements described in the economics pair are operationalized"
+    },
+    {
+      "from_source": "How does the TLS handshake secure an HTTPS connection between a browser and a server?",
+      "to_source": "What happens end-to-end when you load a web page in your browser?",
+      "kind": "refines",
+      "reason": "The TLS handshake is a critical step within the end-to-end page load sequence"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "How do undersea submarine cables carry 99% of intercontinental internet traffic?",
+      "kind": "url",
+      "locator": "https://www.mappr.co/submarine-internet-cables/",
+      "reason": "Confirms 694 cable systems, 1,893 landing stations, and over 99% of intercontinental traffic as of 2026"
+    },
+    {
+      "pair_source": "How do undersea submarine cables carry 99% of intercontinental internet traffic?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/SEA-ME-WE_6",
+      "reason": "Provides context on modern submarine cable system design and capacity"
+    },
+    {
+      "pair_source": "Who owns the world's submarine internet cables, and how has ownership shifted to tech giants?",
+      "kind": "url",
+      "locator": "https://www.mappr.co/submarine-internet-cables/",
+      "reason": "Documents Google's 34 cable stakes, Meta's 20, and hyperscalers' 75% bandwidth share and 90% trans-Atlantic control"
+    },
+    {
+      "pair_source": "How are damaged submarine internet cables found and repaired on the ocean floor?",
+      "kind": "url",
+      "locator": "https://hackaday.com/2024/07/30/undersea-cable-repair/",
+      "reason": "Details the repair process including grapnel dragging, splicing, and timeline for repairs"
+    },
+    {
+      "pair_source": "How are damaged submarine internet cables found and repaired on the ocean floor?",
+      "kind": "url",
+      "locator": "https://www.amissiontech.com/news/how-submarine-cables-are-laid-and-repaired.html",
+      "reason": "Describes cable laying at 7 knots, burial with seabed plows, and deep-water placement up to 7,000m"
+    },
+    {
+      "pair_source": "How does BGP routing allow packets to find their way across the global internet?",
+      "kind": "url",
+      "locator": "https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/",
+      "reason": "Explains autonomous systems, ASNs, and how BGP operates between them"
+    },
+    {
+      "pair_source": "How does BGP routing allow packets to find their way across the global internet?",
+      "kind": "url",
+      "locator": "https://www.kentik.com/kentipedia/bgp-routing/",
+      "reason": "Comprehensive technical overview of BGP as a path-vector protocol with policy-based routing decisions"
+    },
+    {
+      "pair_source": "What happened during the Facebook BGP outage of October 2021, and what does it reveal about internet fragility?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/2021_Facebook_outage",
+      "reason": "Documents the October 4, 2021 outage timeline, root cause, and recovery"
+    },
+    {
+      "pair_source": "What happened during the Facebook BGP outage of October 2021, and what does it reveal about internet fragility?",
+      "kind": "url",
+      "locator": "https://www.thousandeyes.com/blog/facebook-outage-analysis",
+      "reason": "Technical analysis of the BGP withdrawal and DNS unreachability during the outage"
+    },
+    {
+      "pair_source": "How does the Domain Name System (DNS) translate website names into IP addresses?",
+      "kind": "url",
+      "locator": "https://www.cloudflare.com/learning/dns/glossary/dns-root-server/",
+      "reason": "Explains the 13 root server identities, 1,500+ physical servers, and hierarchical DNS resolution"
+    },
+    {
+      "pair_source": "How does the Domain Name System (DNS) translate website names into IP addresses?",
+      "kind": "url",
+      "locator": "https://www.icann.org/en/blogs/details/there-are-not-13-root-servers-15-11-2007-en",
+      "reason": "ICANN clarification that 13 root identities are served by over 1,500 physical servers across 130+ locations"
+    },
+    {
+      "pair_source": "How do content delivery networks (CDNs) like Cloudflare and Akamai speed up the internet?",
+      "kind": "url",
+      "locator": "https://www.cloudflare.com/network/",
+      "reason": "Confirms Cloudflare's presence in 300+ cities across 100+ countries"
+    },
+    {
+      "pair_source": "How do content delivery networks (CDNs) like Cloudflare and Akamai speed up the internet?",
+      "kind": "url",
+      "locator": "https://www.akamai.com/glossary/what-is-a-cdn",
+      "reason": "Akamai's explanation of CDN architecture including origin servers, edge servers, and caching strategy"
+    },
+    {
+      "pair_source": "What are Internet Exchange Points (IXPs) and why do they matter for internet performance?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/List_of_Internet_exchange_points",
+      "reason": "Lists largest IXPs including IX.br at 42 Tbps and DE-CIX at 22 Tbps aggregate traffic"
+    },
+    {
+      "pair_source": "How is 'the cloud' actually physical infrastructure, and how large are the major hyperscalers?",
+      "kind": "url",
+      "locator": "https://www.datacenterknowledge.com/hyperscalers/hyperscalers-in-2026-what-s-next-for-the-world-s-largest-data-center-operators-",
+      "reason": "Documents hyperscaler data center counts, market shares, and compute constraints as of 2025-2026"
+    },
+    {
+      "pair_source": "How is 'the cloud' actually physical infrastructure, and how large are the major hyperscalers?",
+      "kind": "url",
+      "locator": "https://omdia.tech.informa.com/pr/2026/mar/global-cloud-infrastructure-spending-rose-29percent-in-q4-2025-as-hyperscalers-scaled-ai-infrastructure-investment",
+      "reason": "Confirms 29% rise in cloud infrastructure spending in Q4 2025"
+    },
+    {
+      "pair_source": "What happens end-to-end when you load a web page in your browser?",
+      "kind": "url",
+      "locator": "https://medium.com/@addyosmani/how-modern-browsers-work-7e1cc7337fff",
+      "reason": "Addy Osmani's deep dive into browser parsing, DOM construction, layout, paint, and GPU compositing"
+    },
+    {
+      "pair_source": "How does the 'last mile' deliver internet to homes via fiber, cable, 5G, and satellite?",
+      "kind": "url",
+      "locator": "https://highlinefast.com/blog/fiber-internet-vs-5g-wireless-internet-vs-starlink-internet",
+      "reason": "Compares fiber, 5G fixed wireless, and Starlink speeds, latency, and deployment characteristics"
+    },
+    {
+      "pair_source": "How does the 'last mile' deliver internet to homes via fiber, cable, 5G, and satellite?",
+      "kind": "url",
+      "locator": "https://www.forasoft.com/learn/video-streaming/articles-streaming/last-mile-mobile-5g-starlink-wifi",
+      "reason": "Details Starlink's 7,000 satellites and 1.4 million US subscribers as of mid-2025"
+    },
+    {
+      "pair_source": "Who governs the internet, and how do ICANN, IETF, and RIRs divide responsibility?",
+      "kind": "url",
+      "locator": "https://www.internetsociety.org/internet/who-makes-it-work/",
+      "reason": "Internet Society overview of the multistakeholder governance model and I* partnership"
+    },
+    {
+      "pair_source": "How does the TLS handshake secure an HTTPS connection between a browser and a server?",
+      "kind": "url",
+      "locator": "https://dev.to/manoj_kumarvemula_31e045/how-dns-tcp-tls-http-actually-work-4ajd",
+      "reason": "Technical explanation of TLS 1.3 handshake reduction from two round trips to one"
+    },
+    {
+      "pair_source": "What is anycast routing and how does it make DNS and CDNs faster and more resilient?",
+      "kind": "url",
+      "locator": "https://www.icann.org/root-server-system-en",
+      "reason": "Explains how anycast enables 13 root server identities to be served from 1,500+ physical locations"
+    },
+    {
+      "pair_source": "How do internet peering and transit agreements determine the economics of internet traffic?",
+      "kind": "url",
+      "locator": "https://netrality.com/blog/internet-exchange-points-ixp-network-peering/",
+      "reason": "Explains the distinction between settlement-free peering and paid transit arrangements at IXPs"
+    }
+  ]
+}

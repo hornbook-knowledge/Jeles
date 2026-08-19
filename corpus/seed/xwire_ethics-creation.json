@@ -1,0 +1,253 @@
+{
+  "domain": "crossdomain-ethics-creation",
+  "pairs": [
+    {
+      "source_text": "Haber to Borlaug to modern food supply -- the chain that feeds 8 billion people",
+      "source_lang": "en",
+      "target_text": "Fritz Haber's nitrogen fixation enabled synthetic fertilizer; Norman Borlaug's Green Revolution used that fertilizer to breed high-yield crops that averted predicted famines across Asia and Latin America. Today precision agriculture refines the chain with GPS-guided application, yet the Haber-Bosch process still consumes roughly 1-2% of global energy and its runoff creates oceanic dead zones. The arc from Haber's laboratory to a modern GPS-equipped combine is a single supply chain in which each generation solved the previous generation's crisis while seeding the next one.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Haber and Borlaug with [modern-world] precision agriculture and food waste to trace a century-long dual-use chain"
+    },
+    {
+      "source_text": "Salk, Lacks, and generic drugs -- three models of who profits from medical discovery",
+      "source_lang": "en",
+      "target_text": "Jonas Salk refused to patent the polio vaccine, declaring it belonged to the people; Henrietta Lacks's cells were taken without consent yet generated a multi-billion-dollar biomedical industry; the modern generic-drug pipeline tries to split the difference with time-limited patents followed by public access. Each model answers the same question differently: does the inventor, the source patient, or the public own a medical breakthrough? Salk's gift economy, Lacks's extraction economy, and the generic-drug compromise economy coexist today, and informed-consent law has only partially closed the gap Lacks exposed.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Salk and Lacks with [modern-world] generic drugs and [websearch] informed consent to map the ethics-of-profit spectrum"
+    },
+    {
+      "source_text": "Open source as Salk's principle digitized -- from refusing to patent the vaccine to GPL",
+      "source_lang": "en",
+      "target_text": "When Salk said 'Could you patent the sun?' he articulated the principle Stallman later encoded in the GPL: some inventions are too fundamental to privatize. The philosophical divide between GPL copyleft, MIT permissiveness, and Apache patent grants recapitulates old arguments about whether givers can impose obligations on recipients. Yet the open-source maintainer burnout crisis and the xz backdoor show that Salk's gift model has failure modes he never faced -- unpaid labor and trust exploitation. Aaron Swartz died fighting for the same principle applied to academic knowledge, proving the cost of Salk-style generosity can fall on the giver.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Salk with [people] Stallman, Swartz, xz backdoor and License wars to compare gift-economy ethics across medicine and software"
+    },
+    {
+      "source_text": "Von Braun and Einstein's letter -- when the same mind builds the weapon and regrets the weapon",
+      "source_lang": "en",
+      "target_text": "Wernher von Braun built V-2 rockets with slave labor at Mittelwerk, then used the same engineering to put Americans on the Moon. Einstein urged Roosevelt to build the atomic bomb, then spent his remaining years advocating disarmament. Both men illustrate the inventor's dilemma at its starkest: the knowledge that enables destruction is inseparable from the knowledge that enables progress. The Golden Dome missile defense program carries this lineage forward, centering advanced rocketry in Huntsville -- the city von Braun built -- to defend against the very class of weapon he pioneered.",
+      "target_lang": "en",
+      "reason": "Bridges [people] von Braun with [historical] Einstein's personal life and [round5] Golden Dome to trace dual-use rocketry across decades"
+    },
+    {
+      "source_text": "CRISPR and the Haber pattern -- a tool that could feed or destroy",
+      "source_lang": "en",
+      "target_text": "Fritz Haber's nitrogen fixation fed billions and gassed thousands; Jennifer Doudna's CRISPR-Cas9 could eliminate genetic disease or engineer biological weapons. Both discoveries were so fundamental that restricting them proved nearly impossible -- nitrogen chemistry and gene editing are dual-use by nature. Doudna herself has spoken of nightmares about the technology's misuse, echoing Clara Immerwahr's moral revolt against Haber's weaponization of chemistry. The patent wars around CRISPR add an economic dimension Haber never faced: who controls editing the code of life is now a billion-dollar legal question, not just a moral one.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Doudna, Haber, and Immerwahr across a century of dual-use invention ethics"
+    },
+    {
+      "source_text": "Curie, Kariko, and the price of persistence -- radiation, rejection, and recognition deferred",
+      "source_lang": "en",
+      "target_text": "Marie Curie carried radioactive samples in her pockets and died of aplastic anemia; Katalin Kariko was demoted, defunded, and nearly deported before mRNA technology earned her a Nobel Prize. Both women paid enormous personal costs for discoveries that transformed medicine -- Curie's work underpins cancer radiotherapy, Kariko's enabled COVID vaccines. The scientific credit system failed both: Curie was excluded from the French Academy of Sciences, and Kariko's early papers were rejected for decades. Their stories bracket a century in which the barriers women face in science changed in form but not in kind.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] Curie with [people] Kariko and scientific credit disputes to trace gendered obstacles in invention"
+    },
+    {
+      "source_text": "Tesla, Lamarr, and the inventor's poverty -- when credit and compensation diverge",
+      "source_lang": "en",
+      "target_text": "Nikola Tesla died alone in a hotel room, his AC power system lighting the world but his patents long expired or stolen. Hedy Lamarr's frequency-hopping patent expired before the military adopted it, and she received neither royalties nor recognition until old age. Both cases expose a structural flaw: patent systems reward those who can litigate, not those who can invent. The open-source maintainer burnout crisis is the digital heir to this pattern -- critical infrastructure built by individuals who capture none of the value they create. From Tesla's AC grid to a lone maintainer's compression library, the gap between creation and compensation persists.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Tesla and Lamarr with open source maintainer burnout to show structural inventor-exploitation across eras"
+    },
+    {
+      "source_text": "The xz backdoor as trust weaponized -- when the gift horse is the weapon",
+      "source_lang": "en",
+      "target_text": "The xz Utils backdoor turned the open-source gift economy into an attack surface: a state actor spent years earning trust as a maintainer, then injected a backdoor into infrastructure used by millions. This inverts the Haber pattern -- rather than an inventor's gift being turned to war by others, the 'gift' was the attack from the start. Andres Freund's detection echoes Clara Immerwahr's moral role: the insider who sees the weaponization and acts. The incident forced the open-source community to confront a question Salk never had to ask: what if the person who volunteers to help is the adversary?",
+      "target_lang": "en",
+      "reason": "Bridges [people] xz backdoor and Freund with Haber/Immerwahr pattern to compare trust exploitation in chemistry and code"
+    },
+    {
+      "source_text": "From Lacks to COPPA -- informed consent across centuries of exploitation",
+      "source_lang": "en",
+      "target_text": "Henrietta Lacks's cells were harvested in 1951 without her knowledge; seventy years later, the FTC fined Epic Games $520 million and Disney for collecting children's data without proper consent. The through-line is informed consent -- who must be asked before their biological material or behavioral data is used for others' profit. COPPA and its 2025 amendments are the digital-age answer to the exploitation Lacks endured, yet the pattern of extract-first-regulate-later persists. Australia's under-16 social media ban represents the most aggressive intervention yet, suggesting that when consent frameworks fail, outright prohibition follows.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Lacks with [websearch] informed consent, [round4] COPPA, [round5] FTC settlements to trace consent ethics from biology to data"
+    },
+    {
+      "source_text": "Ellsberg, Swartz, and non-disparagement -- the cost of telling the public what it owns",
+      "source_lang": "en",
+      "target_text": "Daniel Ellsberg leaked the Pentagon Papers and faced espionage charges; Aaron Swartz downloaded academic articles and faced federal prosecution; today non-disparagement agreements silence AI researchers before they can even reach the whistleblowing stage. Each case asks the same question: when knowledge is created with public money or affects public safety, who has the right to restrict its circulation? Ellsberg's leak changed the course of the Vietnam War; Swartz's prosecution catalyzed the open-access movement; the chilling effect of NDAs on AI safety researchers may be suppressing warnings about risks the public has not yet learned to name.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Ellsberg, Swartz, and non-disparagement agreements to trace the ethics of information liberation across government, academia, and industry"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Fritz Haber — nitrogen fixation that feeds billions and the birth of chemical warfare",
+      "to_source": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+      "kind": "refines",
+      "reason": "The people biography gives the moral dimension -- dual-use tragedy -- that the modern-world systems explanation of the Haber-Bosch process omits"
+    },
+    {
+      "from_source": "Jonas Salk — the polio vaccine and the decision not to patent it",
+      "to_source": "How do generic drugs get approved, and why are they cheaper than brand-name drugs?",
+      "kind": "contradicts",
+      "reason": "Salk bypassed the patent system entirely; the generic-drug pipeline depends on patents expiring, showing two incompatible models for making medicine affordable"
+    },
+    {
+      "from_source": "Norman Borlaug — the Green Revolution and saving a billion lives from famine",
+      "to_source": "How does precision agriculture use GPS and sensors to run a modern farm?",
+      "kind": "refines",
+      "reason": "Precision agriculture is the technological successor to Borlaug's high-yield breeding -- digitizing the same goal of maximizing output per acre"
+    },
+    {
+      "from_source": "Norman Borlaug — the Green Revolution and saving a billion lives from famine",
+      "to_source": "Where does food waste happen in the supply chain and why is 30-40% of production lost?",
+      "kind": "contradicts",
+      "reason": "Borlaug solved production scarcity, but 30-40% waste reveals the crisis was never just about growing enough -- distribution and consumption failures persist"
+    },
+    {
+      "from_source": "Wernher von Braun — from Nazi V-2 rockets to landing humans on the Moon",
+      "to_source": "Golden Dome Missile Defense Program Centered on Huntsville",
+      "kind": "refines",
+      "reason": "Golden Dome's Huntsville location directly inherits the rocket infrastructure von Braun built, extending his dual-use legacy into 21st-century missile defense"
+    },
+    {
+      "from_source": "Wernher von Braun — from Nazi V-2 rockets to landing humans on the Moon",
+      "to_source": "Einstein's personal life -- Mileva Maric, the bomb letter, and pacifism",
+      "kind": "refines",
+      "reason": "Einstein's bomb letter and von Braun's V-2 program are parallel cases of physicists enabling weapons, but Einstein acted from fear of a worse outcome while von Braun acted under coercion and ambition"
+    },
+    {
+      "from_source": "Henrietta Lacks — the woman whose stolen cells transformed medicine",
+      "to_source": "informed consent",
+      "kind": "refines",
+      "reason": "Lacks is the paradigmatic case that drove modern informed consent doctrine -- her exploitation is the historical referent the legal concept now guards against"
+    },
+    {
+      "from_source": "Henrietta Lacks — the woman whose stolen cells transformed medicine",
+      "to_source": "What does the 2025 COPPA Rule update change for children's software operators?",
+      "kind": "refines",
+      "reason": "COPPA applies the informed-consent principle Lacks's case established to children's digital data -- a new domain of extraction from those who cannot consent for themselves"
+    },
+    {
+      "from_source": "Marie Curie -- radioactivity, two Nobel Prizes, and the barriers she faced",
+      "to_source": "Katalin Kariko — decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "kind": "refines",
+      "reason": "Kariko's decades of institutional rejection mirror Curie's exclusion from the French Academy, showing that barriers for women in science changed form but not substance over a century"
+    },
+    {
+      "from_source": "Kizzmekia Corbett — the immunologist behind the COVID-19 vaccine's spike protein strategy",
+      "to_source": "How are vaccines manufactured and distributed at scale using the cold chain?",
+      "kind": "refines",
+      "reason": "Corbett designed the antigen strategy; the cold chain is the system that delivers it -- inventor and infrastructure are two halves of the same public-health act"
+    },
+    {
+      "from_source": "Katalin Kariko — decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "to_source": "Global childhood vaccination rates 2025",
+      "kind": "refines",
+      "reason": "Kariko's mRNA platform is now being adapted for childhood vaccines; global vaccination rates measure the downstream impact of her decades of rejected work"
+    },
+    {
+      "from_source": "Aaron Swartz -- Reddit co-founder, JSTOR case, suicide, and open access legacy",
+      "to_source": "What interoperability and data portability legislation emerged in 2025-2026?",
+      "kind": "refines",
+      "reason": "Swartz fought for open access to publicly funded knowledge; interoperability legislation extends that principle to user-generated data trapped in private platforms"
+    },
+    {
+      "from_source": "Daniel Ellsberg — Pentagon Papers and the precedent for government whistleblowing",
+      "to_source": "First Federal Deepfake Conviction Under Take It Down Act (April 2026)",
+      "kind": "contradicts",
+      "reason": "Ellsberg established that truth-telling serves democracy; the Take It Down Act shows that fabricated content (deepfakes) can weaponize the same information channels whistleblowers rely on"
+    },
+    {
+      "from_source": "Non-disparagement agreements -- their chilling effect on AI whistleblowers",
+      "to_source": "Australia Enacts World-First Social Media Ban for Under-16s (2025)",
+      "kind": "refines",
+      "reason": "NDAs suppress internal warnings about AI harms; Australia's ban represents what happens when suppressed warnings eventually break through -- governments resort to blunt prohibition"
+    },
+    {
+      "from_source": "Fritz Haber — nitrogen fixation that feeds billions and the birth of chemical warfare",
+      "to_source": "What does 'organic' actually mean on a food label and how do organic yields compare to conventional?",
+      "kind": "contradicts",
+      "reason": "Organic farming explicitly rejects Haber's synthetic nitrogen, yet its lower yields raise the question of whether it can feed the population Haber's process enabled"
+    },
+    {
+      "from_source": "John Locke -- natural rights, social contract, and his involvement in colonial trade and slavery",
+      "to_source": "Henrietta Lacks — the woman whose stolen cells transformed medicine",
+      "kind": "refines",
+      "reason": "Locke's natural-rights philosophy is the foundation for bodily autonomy claims, yet his personal involvement in colonial extraction mirrors the institutional extraction of Lacks's cells"
+    },
+    {
+      "from_source": "The xz Utils backdoor (CVE-2024-3094) -- how a trusted maintainer was a state actor",
+      "to_source": "Parts pairing and software-locked repairs — cross-sector pattern",
+      "kind": "refines",
+      "reason": "Both exploit trust in the supply chain: parts pairing locks users into manufacturer control, while the xz backdoor exploited open-source trust to insert state-level compromise"
+    },
+    {
+      "from_source": "Albert Einstein -- special and general relativity, the photoelectric effect, and the Nobel Prize",
+      "to_source": "Jennifer Doudna — CRISPR gene editing, patent wars, and the ethics of rewriting life",
+      "kind": "refines",
+      "reason": "Einstein's physics enabled nuclear weapons he did not build; Doudna's biology enables genetic modifications she cannot control -- both face the inventor's dilemma of fundamental discovery outrunning its creator's ethics"
+    },
+    {
+      "from_source": "Clara Immerwahr — the chemist who opposed her husband Fritz Haber's chemical weapons",
+      "to_source": "Why do nuclear power plants take so long to build and cost so much more than planned?",
+      "kind": "refines",
+      "reason": "Immerwahr's opposition to weaponized chemistry prefigures the precautionary regulatory culture that slows nuclear construction -- society's memory of dual-use catastrophe translates into institutional caution decades later"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Haber to Borlaug to modern food supply -- the chain that feeds 8 billion people",
+      "kind": "url",
+      "locator": "https://ourworldindata.org/how-many-people-does-synthetic-fertilizer-feed",
+      "reason": "Our World in Data estimates that without synthetic nitrogen fertilizer from the Haber-Bosch process, roughly half of the world's current food production would not exist"
+    },
+    {
+      "pair_source": "Salk, Lacks, and generic drugs -- three models of who profits from medical discovery",
+      "kind": "url",
+      "locator": "https://www.fda.gov/drugs/generic-drugs/generic-drug-facts",
+      "reason": "FDA explainer on how the generic drug approval pathway balances patent incentives with eventual public access"
+    },
+    {
+      "pair_source": "Open source as Salk's principle digitized -- from refusing to patent the vaccine to GPL",
+      "kind": "url",
+      "locator": "https://www.gnu.org/philosophy/free-sw.en.html",
+      "reason": "Stallman's Free Software Definition articulates the same no-patent principle Salk applied to the polio vaccine, translated into software licensing terms"
+    },
+    {
+      "pair_source": "Von Braun and Einstein's letter -- when the same mind builds the weapon and regrets the weapon",
+      "kind": "url",
+      "locator": "https://www.atomicarchive.com/resources/documents/beginnings/einstein-szilard.html",
+      "reason": "Full text of the Einstein-Szilard letter to Roosevelt urging atomic bomb development, the foundational document of the inventor's-dilemma pattern"
+    },
+    {
+      "pair_source": "CRISPR and the Haber pattern -- a tool that could feed or destroy",
+      "kind": "url",
+      "locator": "https://www.nature.com/articles/d41586-019-00673-1",
+      "reason": "Nature coverage of Doudna's public statements about CRISPR ethics and her expressed fears about misuse of the technology"
+    },
+    {
+      "pair_source": "Curie, Kariko, and the price of persistence -- radiation, rejection, and recognition deferred",
+      "kind": "url",
+      "locator": "https://www.nobelprize.org/prizes/medicine/2023/kariko/facts/",
+      "reason": "Nobel Prize biography of Katalin Kariko documenting her decades of funding rejection before mRNA recognition"
+    },
+    {
+      "pair_source": "Tesla, Lamarr, and the inventor's poverty -- when credit and compensation diverge",
+      "kind": "url",
+      "locator": "https://www.smithsonianmag.com/smithsonian-institution/incredible-true-story-how-hedy-lamarr-pioneered-spread-spectrum-communication-180968717/",
+      "reason": "Smithsonian article documenting Lamarr's frequency-hopping patent and the military's adoption of it only after the patent expired"
+    },
+    {
+      "pair_source": "The xz backdoor as trust weaponized -- when the gift horse is the weapon",
+      "kind": "url",
+      "locator": "https://www.openwall.com/lists/oss-security/2024/03/29/4",
+      "reason": "Andres Freund's original disclosure of the xz backdoor on the oss-security mailing list"
+    },
+    {
+      "pair_source": "From Lacks to COPPA -- informed consent across centuries of exploitation",
+      "kind": "url",
+      "locator": "https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa",
+      "reason": "FTC's COPPA rule page documenting the 2025 amendments that tightened consent requirements for children's data"
+    },
+    {
+      "pair_source": "Ellsberg, Swartz, and non-disparagement -- the cost of telling the public what it owns",
+      "kind": "url",
+      "locator": "https://www.vox.com/future-perfect/351132/openai-nda-non-disparagement-whistleblower-daniel-kokotajlo",
+      "reason": "Reporting on OpenAI's non-disparagement agreements and their chilling effect on AI safety whistleblowers"
+    }
+  ]
+}

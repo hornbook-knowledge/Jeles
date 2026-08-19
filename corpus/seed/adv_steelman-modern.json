@@ -1,0 +1,307 @@
+{
+  "domain": "adversarial-steelman-modern",
+  "generated": "2026-08-19",
+  "method": "For heroes: strongest honest critique (not character assassination). For villains: strongest honest defense. For structural claims: strongest counter-evidence.",
+  "pairs": [
+    {
+      "id": 1,
+      "target": "Edward Snowden",
+      "role_in_corpus": "hero",
+      "steelman_type": "honest-critique",
+      "title": "Snowden took far more than surveillance secrets -- the bulk of his haul was military intelligence",
+      "argument": "Snowden's disclosures went well beyond exposing unconstitutional domestic surveillance. He took an estimated 1.5 million classified documents, the vast majority concerning legitimate foreign intelligence operations unrelated to civil liberties -- signals intelligence against China, monitoring of allied leaders, and military capabilities assessments. NSA Director Keith Alexander and the Defense Intelligence Agency assessed that the leaks caused 'grave damage' to foreign intelligence collection. His route through Hong Kong to permanent asylum in Moscow -- a country with no extradition treaty and its own massive surveillance apparatus -- raised serious questions about whether Russian or Chinese intelligence services accessed the full archive. Whatever the merits of exposing Section 215 bulk collection, the indiscriminate scale of the theft cannot be justified as whistleblowing: a genuine whistleblower targets the abuse, not the entire filing cabinet. The USA FREEDOM Act could plausibly have been achieved by leaking only the domestic surveillance programs, without compromising foreign operations that had nothing to do with Americans' rights.",
+      "evidence": [
+        {
+          "source": "House Intelligence Committee report on Snowden (declassified 2016)",
+          "url": "https://intelligence.house.gov/news/documentsingle.aspx?DocumentID=780",
+          "detail": "Concluded the majority of documents taken concerned legitimate military and intelligence programs, not domestic surveillance"
+        },
+        {
+          "source": "DIA damage assessment reported by NYT",
+          "url": "https://www.nytimes.com/2013/12/15/us/sheer-volume-of-nsa-data-approach-overwhelmed-spy-agency.html",
+          "detail": "DIA assessed 1.5 million documents taken; bulk related to military capabilities, not civil liberties"
+        },
+        {
+          "source": "Bart Gellman, 'Dark Mirror' (2020)",
+          "url": "https://www.penguinrandomhouse.com/books/316094/dark-mirror-by-barton-gellman/",
+          "detail": "Gellman, one of the journalists who published Snowden material, acknowledged the archive extended far beyond domestic surveillance"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "target": "Ruth Bader Ginsburg",
+      "role_in_corpus": "hero",
+      "steelman_type": "honest-critique",
+      "title": "RBG's refusal to retire was a catastrophic strategic failure that undid her life's work",
+      "argument": "Ruth Bader Ginsburg was 80 years old with two prior cancer diagnoses when Democrats held 55 Senate seats in 2013-2014. Multiple allies, including legal scholars and reportedly President Obama himself, urged her to retire so a like-minded successor could be confirmed. She refused, telling interviewers she wanted to serve until age 90 and that Obama could not appoint anyone 'as good' as she was for the role. This was not humility -- it was a personal gamble with the constitutional rights of millions. When she died in September 2020, her seat was filled by Amy Coney Barrett, creating the 6-3 conservative supermajority that overturned Roe v. Wade in Dobbs (2022), gutted the Voting Rights Act further in Brnovich (2021), ended race-conscious college admissions in Students for Fair Admissions (2023), and curtailed federal regulatory power in Loper Bright (2024). Every one of these decisions reversed or undermined causes Ginsburg had spent her career building. The 'Notorious RBG' cultural phenomenon arguably contributed to the problem by turning a judicial office into a personal brand, making retirement feel like a diminishment rather than a strategic act of stewardship. Her legacy is now inseparable from its own undoing.",
+      "evidence": [
+        {
+          "source": "Reuters - legal scholars publicly urged RBG to retire",
+          "url": "https://www.reuters.com/article/us-usa-court-ginsburg-idUSKBN0GE1YM20140814",
+          "detail": "Erwin Chemerinsky and Randall Kennedy were among prominent legal figures who publicly urged retirement in 2014"
+        },
+        {
+          "source": "Joan Biskupic, CNN - Obama's private conversation with Ginsburg about retirement",
+          "url": "https://www.cnn.com/2019/09/18/politics/ruth-bader-ginsburg-retirement/index.html",
+          "detail": "Reporting on Obama's private approach and Ginsburg's refusal"
+        },
+        {
+          "source": "Dobbs v. Jackson Women's Health Organization, 597 U.S. 215 (2022)",
+          "url": "https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf",
+          "detail": "Barrett's vote was decisive in the 6-3 majority overturning Roe v. Wade"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "target": "Ralph Nader",
+      "role_in_corpus": "hero",
+      "steelman_type": "honest-critique",
+      "title": "Nader's 2000 run -- the consumer safety titan who may have delivered the Iraq War",
+      "argument": "Ralph Nader's consumer protection legacy is real and enormous: OSHA, the EPA, seatbelt mandates, the Safe Drinking Water Act. But his 2000 presidential campaign demands an honest reckoning with consequences. He received 97,488 votes in Florida, where Gore lost by 537. Even by his defenders' own data, approximately 60% of his Florida voters would have chosen Gore -- more than enough to change the outcome. Nader did not merely run; he actively campaigned in swing states in the final weeks despite polls showing he could tip the election, dismissing the difference between Bush and Gore as negligible ('Tweedledee and Tweedledum'). The Bush presidency produced the Iraq War (over 4,000 American and hundreds of thousands of Iraqi deaths), the Patriot Act's surveillance expansion, weakened EPA enforcement, two conservative Supreme Court justices (Roberts and Alito), and the financial deregulation that contributed to the 2008 crash. These outcomes were catastrophic for every cause Nader spent his life advancing. His refusal to withdraw or redirect supporters in swing states was not principled third-party advocacy -- it was a failure to reckon with the structure of the electoral system he was operating within, and it permanently fractured the progressive coalition he needed to achieve his policy goals.",
+      "evidence": [
+        {
+          "source": "Herron & Lewis, 'Did Ralph Nader Spoil Al Gore's Presidential Bid?', Quarterly Journal of Political Science (2007)",
+          "url": "https://doi.org/10.1561/100.00005039",
+          "detail": "Ballot-level analysis finding approximately 60% of Nader's Florida voters would have chosen Gore"
+        },
+        {
+          "source": "Federal Election Commission 2000 results - Florida",
+          "url": "https://www.fec.gov/introduction-campaign-finance/election-and-voting-information/federal-elections-2000/",
+          "detail": "Official count: Nader 97,488 votes in Florida; Bush margin 537 votes"
+        },
+        {
+          "source": "Nader's late swing-state campaign strategy, Washington Post (2000)",
+          "url": "https://www.washingtonpost.com/archive/politics/2000/11/02/nader-runs-hard-in-close-states/",
+          "detail": "Nader deliberately campaigned in swing states in the final week despite polls showing a razor-thin race"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "target": "Rupert Murdoch",
+      "role_in_corpus": "villain",
+      "steelman_type": "honest-defense",
+      "title": "The case for Murdoch: he gave voice to audiences elite media dismissed, and subsidized journalism others abandoned",
+      "argument": "The strongest honest defense of Murdoch rests on three pillars. First, Fox News filled a genuine market gap. Decades of survey data from Pew, Gallup, and the Knight Foundation consistently show that large segments of the American public -- particularly rural, religious, and working-class conservatives -- felt mainstream media did not represent their perspectives. Whether or not one agrees with Fox's editorial slant, the network responded to a real demand that NBC, CBS, ABC, and CNN were not meeting. Second, Murdoch sustained print journalism when others were abandoning it. The Wall Street Journal under News Corp's ownership maintained a large international reporting staff and won Pulitzer Prizes; The Times of London and The Sunday Times continued operating with substantial newsrooms at a time when comparable titles were gutting staff or closing. His Australian newspapers, despite criticism, employ thousands of journalists who produce accountability reporting at the state and local level. Third, Murdoch was not unique in blending media and political influence -- the Sulzberger family's New York Times, the Graham family's Washington Post, and Hearst's empire all wielded political influence through editorial positioning. The difference was directional, not structural. None of this excuses the phone-hacking scandal, the Dominion settlement, or the documented amplification of election disinformation, but the honest defense is that Murdoch built businesses that served audiences others ignored and sustained journalism employment that others eliminated.",
+      "evidence": [
+        {
+          "source": "Pew Research Center - political polarization and media habits",
+          "url": "https://www.pewresearch.org/journalism/2014/10/21/political-polarization-media-habits/",
+          "detail": "Documented that conservatives trusted far fewer mainstream news sources than liberals, showing the market gap Fox addressed"
+        },
+        {
+          "source": "Wall Street Journal Pulitzer Prize record under Murdoch ownership",
+          "url": "https://www.pulitzer.org/winners/wall-street-journal-staff",
+          "detail": "WSJ continued winning Pulitzers for investigative reporting after News Corp acquisition"
+        },
+        {
+          "source": "Gallup trust in media polling (1972-2024)",
+          "url": "https://news.gallup.com/poll/1663/media-use-evaluation.aspx",
+          "detail": "Long-running decline in media trust, especially among Republicans, predating Fox News and showing the demand it met"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "target": "The Sackler family / Purdue Pharma",
+      "role_in_corpus": "villain",
+      "steelman_type": "honest-defense",
+      "title": "The Sacklers operated within a system that was begging for stronger painkillers -- the medical consensus, the FDA, and the WHO all pointed the same direction",
+      "argument": "The strongest honest defense of the Sacklers -- not a moral exoneration but a structural argument -- is that they operated within a medical and regulatory consensus that was actively demanding more aggressive pain treatment. In the 1990s, the American Pain Society campaigned for pain as 'the fifth vital sign,' the WHO published its analgesic ladder promoting opioid use, and the Joint Commission (JCAHO) issued pain management standards that effectively pressured hospitals to prescribe more aggressively. The FDA approved OxyContin with its controlled-release labeling based on submitted clinical data -- the same regulatory process every pharmaceutical company follows. Purdue was not the only opioid manufacturer: generic oxycodone, hydrocodone (Vicodin), and fentanyl patches from other companies flooded the market simultaneously. The later phases of the opioid epidemic were driven overwhelmingly by illicit fentanyl and heroin, not prescription OxyContin, after prescribing restrictions tightened. Furthermore, the $7.4 billion settlement -- while enormous -- was negotiated within a legal system that found civil rather than criminal liability appropriate for the family members. None of this erases the documented evidence that Purdue's marketing misrepresented addiction risks or that the family extracted billions while the crisis grew. But the honest defense is that the system of medical consensus, FDA regulation, and hospital accreditation was designed to prevent exactly what happened, and it failed at every level -- placing the entirety of blame on one family obscures the systemic failures that enabled the epidemic.",
+      "evidence": [
+        {
+          "source": "American Pain Society 'Pain as the 5th Vital Sign' campaign",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/10618076/",
+          "detail": "1999 editorial establishing the medical consensus framework that drove increased opioid prescribing"
+        },
+        {
+          "source": "Joint Commission (JCAHO) pain management standards",
+          "url": "https://www.jointcommission.org/resources/news-and-multimedia/fact-sheets/facts-about-pain-management/",
+          "detail": "Accreditation standards that pressured hospitals to treat pain more aggressively"
+        },
+        {
+          "source": "CDC data on opioid epidemic phases",
+          "url": "https://www.cdc.gov/opioids/basics/epidemic.html",
+          "detail": "Three waves: prescription opioids (1990s), heroin (2010), synthetic fentanyl (2013+) -- later waves driven by illicit supply, not Purdue"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "target": "Wernher von Braun",
+      "role_in_corpus": "villain/contested",
+      "steelman_type": "honest-defense",
+      "title": "Von Braun in context: a young engineer in a totalitarian state whose later work was humanity's greatest exploration achievement",
+      "argument": "The honest defense of von Braun does not deny his complicity but contextualizes it. He joined the Nazi Party in 1937 at age 25, in a totalitarian state where refusal carried severe consequences, and his SS rank was, by multiple accounts including his own sworn affidavits, assigned rather than sought -- Himmler pressured technical specialists into the SS to assert control over the rocket program. His dream of spaceflight predated the Nazi regime by a decade; he joined the German Army's rocket program in 1932 because it was the only institution funding liquid-fuel rocketry. After the war, the US government made a deliberate strategic decision through Operation Paperclip that his expertise was essential to national security -- a judgment vindicated when the Saturn V he designed remained the most powerful operational rocket for over 50 years and carried humans to another world. The Apollo program he led employed 400,000 Americans and produced technologies from water purification to medical telemetry. The moral question is real: 20,000 people died in the Mittelwerk factory producing his V-2s. But the defense argues that individual agency in a totalitarian weapons program is more constrained than peacetime moral frameworks assume, and that his post-war work -- chosen freely -- represented an unambiguous contribution to human civilization. Tom Lehrer's famous lyric ('Once the rockets are up, who cares where they come down? That's not my department') captures the critique, but also inadvertently captures the defense: the same engineering capability can serve destruction or exploration depending on the political system directing it.",
+      "evidence": [
+        {
+          "source": "Michael Neufeld, 'Von Braun: Dreamer of Space, Engineer of War' (2007)",
+          "url": "https://www.penguinrandomhouse.com/books/292090/von-braun-by-michael-j-neufeld/",
+          "detail": "Definitive biography documenting both the degree of his complicity and the constraints of operating in a totalitarian system"
+        },
+        {
+          "source": "NASA History Division - Saturn V and Apollo Program",
+          "url": "https://history.nasa.gov/SP-4206/sp4206.htm",
+          "detail": "Technical history of the Saturn V development under von Braun's direction at Marshall Space Flight Center"
+        },
+        {
+          "source": "Operation Paperclip records, National Archives",
+          "url": "https://www.archives.gov/iwg/research-papers/paperclip-war-crimes",
+          "detail": "US government records on the deliberate decision to recruit German rocket scientists and the security reviews involved"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "target": "Frances Haugen",
+      "role_in_corpus": "hero",
+      "steelman_type": "honest-critique",
+      "title": "Haugen's disclosures were more selective and less technically rigorous than the 'Facebook whistleblower' narrative suggests",
+      "argument": "Frances Haugen was a product manager, not a researcher or engineer -- her understanding of Facebook's recommendation algorithms was necessarily secondhand. The internal research she disclosed was more nuanced than her public framing: Meta's own studies on Instagram and teen mental health contained mixed findings, with some showing positive effects for teens experiencing loneliness or social isolation. Haugen selectively emphasized the most alarming conclusions. Her claim that Facebook's algorithms systematically amplified divisive content oversimplified a complex system with many competing objectives, and independent research (including a large-scale 2023 Science study by Meta-affiliated and independent researchers) found that reducing algorithmic amplification did not significantly change users' political attitudes or knowledge. The policy prescriptions she advocated -- algorithmic transparency mandates, content moderation requirements -- could impose compliance costs that entrench large platforms while crushing smaller competitors, the opposite of the competition she said she wanted. Furthermore, the state AG lawsuits she is credited with catalyzing were largely already in development before her disclosures. Her testimony was politically effective but scientifically imprecise, and the resulting regulatory conversation has focused on symptoms (algorithmic amplification) rather than structural issues (advertising-driven business models, market concentration).",
+      "evidence": [
+        {
+          "source": "Guess et al., 'How do social media feed algorithms affect attitudes and behavior in an election campaign?', Science (2023)",
+          "url": "https://doi.org/10.1126/science.abp9364",
+          "detail": "Large-scale experiment finding that removing algorithmic curation from Facebook feeds did not significantly change political attitudes"
+        },
+        {
+          "source": "NYT - 'Facebook's own research on Instagram was more nuanced than Haugen suggested'",
+          "url": "https://www.nytimes.com/2021/10/06/technology/facebook-instagram-teens.html",
+          "detail": "Analysis showing the internal research contained mixed findings, not the uniformly alarming picture presented in testimony"
+        },
+        {
+          "source": "Benedict Evans analysis of Haugen disclosures",
+          "url": "https://www.ben-evans.com/benedictevans/2021/10/4/facebook-and-the-metaverse",
+          "detail": "Technology analyst arguing Haugen's framing oversimplified complex systems and that policy prescriptions could backfire"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "target": "The death of local newspapers",
+      "role_in_corpus": "structural-claim",
+      "steelman_type": "counter-evidence",
+      "title": "Against the local news doom narrative: digital-native outlets, nonprofit newsrooms, and community-funded journalism are partially filling the gap",
+      "argument": "The 2,500-closures statistic is real, but the narrative that nothing is replacing local news overstates the case. The Institute for Nonprofit News reports that its member organizations grew from 27 in 2009 to over 450 by 2024, with combined revenue exceeding $500 million. Projects like Report for America have placed over 350 journalists in local newsrooms since 2017. Digital-native local outlets -- including The City (NYC), Berkeleyside (California), VTDigger (Vermont), and The Texas Tribune -- have demonstrated that subscription- and donation-funded local journalism can be financially sustainable. ProPublica's Local Reporting Network partners with newsrooms in 'news deserts' to produce accountability journalism. Several states have passed legislation supporting local news: California's AB 886 proposed requiring platforms to pay for news content; Colorado created a tax credit for local news subscribers. The MacArthur Foundation, Knight Foundation, and American Journalism Project have collectively invested hundreds of millions in local news infrastructure. The gap is real and the closures are devastating, particularly for small rural communities, but the structural transformation is not purely destructive -- it is also producing new models of community-funded accountability journalism that may prove more sustainable than the advertising-dependent model that failed.",
+      "evidence": [
+        {
+          "source": "Institute for Nonprofit News - 2024 index",
+          "url": "https://inn.org/inn-index/",
+          "detail": "Tracking growth of nonprofit newsrooms from 27 (2009) to 450+ (2024) with combined revenue exceeding $500M"
+        },
+        {
+          "source": "Report for America - impact report",
+          "url": "https://www.reportforamerica.org/impact/",
+          "detail": "Program placing emerging journalists in local newsrooms, 350+ placements since 2017"
+        },
+        {
+          "source": "American Journalism Project",
+          "url": "https://www.theajp.org/",
+          "detail": "Venture philanthropy organization investing in sustainable local news models across the US"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "target": "Digital activism and slacktivism",
+      "role_in_corpus": "structural-claim",
+      "steelman_type": "counter-evidence",
+      "title": "Slacktivism works more than critics admit: online participation predicts offline action, and digital mobilization produced real policy",
+      "argument": "The 'slacktivism' critique -- that online gestures substitute for real engagement -- is contradicted by accumulating evidence. A systematic review in Journalist's Resource found that small online acts of participation are strongly correlated with subsequent offline participation, suggesting digital engagement functions as an entry ramp rather than an exit. The most significant social movements of the 2010s-2020s were digitally native: #MeToo produced the conviction of Harvey Weinstein, changes in corporate HR practices, and new legislation in multiple states; Black Lives Matter protests in 2020, coordinated largely through social media, contributed to police reform legislation in over 30 states and the conviction of Derek Chauvin; the Arab Spring overthrew governments in Tunisia and Egypt; and the March for Our Lives movement contributed to the Bipartisan Safer Communities Act of 2022. A 2020 study in Political Communication found that social media use for political purposes positively predicted protest participation even after controlling for prior political engagement. The critique that digital movements lack durability has some validity -- sustaining organizational infrastructure remains a challenge -- but the evidence shows that digitally mobilized movements have produced concrete legal, institutional, and policy changes, not merely hashtags.",
+      "evidence": [
+        {
+          "source": "Journalist's Resource - review of digital activism research",
+          "url": "https://journalistsresource.org/politics-and-government/digital-activism-slacktivism-research/",
+          "detail": "Systematic review finding online participation strongly correlates with offline political action"
+        },
+        {
+          "source": "Valenzuela, 'Unpacking the Use of Social Media for Protest Behavior', American Behavioral Scientist (2013)",
+          "url": "https://doi.org/10.1177/0002764213479375",
+          "detail": "Found social media use for political purposes predicted protest participation controlling for prior engagement"
+        },
+        {
+          "source": "Bipartisan Safer Communities Act (2022) legislative history",
+          "url": "https://www.congress.gov/bill/117th-congress/senate-bill/2938",
+          "detail": "First major federal gun legislation in 30 years, directly responsive to youth-led digital/physical mobilization"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "target": "Norman Borlaug / Green Revolution",
+      "role_in_corpus": "hero",
+      "steelman_type": "honest-critique",
+      "title": "The Green Revolution's environmental and social costs were not trade-offs -- they were foreseeable catastrophes that created new crises",
+      "argument": "Borlaug's 'billion lives saved' figure, while widely cited, is an estimate that assumes no alternative pathways to food security existed -- it treats the Green Revolution as the sole counterfactual to mass famine. The honest critique is not that high-yield agriculture was worthless but that its implementation model created cascading crises that are now themselves existential. In Punjab, India -- the Green Revolution's showcase -- the water table has dropped over 10 meters in four decades due to intensive irrigation, and the state faces agricultural collapse within a generation. Monoculture wheat and rice displaced nutritionally diverse traditional crops (millets, pulses, indigenous varieties), contributing to micronutrient deficiency even as caloric supply increased -- the so-called 'hidden hunger' affecting over 2 billion people globally. The economic model required expensive inputs (hybrid seeds, fertilizers, pesticides, irrigation), concentrating benefits among large landholders and driving hundreds of thousands of small farmers into debt spirals -- between 1995 and 2018, over 300,000 Indian farmers died by suicide, a crisis linked by researchers to input costs and market volatility. Borlaug acknowledged some environmental costs but consistently dismissed critics as elitists who had never faced hunger. The stronger critique is that he created a dependency model that is now itself a source of food insecurity as aquifers deplete, soils degrade, and climate change undermines the stable conditions his varieties were optimized for.",
+      "evidence": [
+        {
+          "source": "Rodell et al., 'Satellite-based estimates of groundwater depletion in India', Nature (2009)",
+          "url": "https://doi.org/10.1038/nature08238",
+          "detail": "NASA satellite data documenting severe groundwater depletion in northern India's Green Revolution breadbasket"
+        },
+        {
+          "source": "Shiva, 'The Violence of the Green Revolution' (1991)",
+          "url": "https://www.zedbooks.net/shop/book/the-violence-of-the-green-revolution/",
+          "detail": "Documented ecological and social costs including biodiversity loss, farmer debt, and Punjab's agricultural crisis"
+        },
+        {
+          "source": "National Crime Records Bureau (India) - farmer suicide data",
+          "url": "https://ncrb.gov.in/accidental-deaths-suicides-in-india.html",
+          "detail": "Official data documenting over 300,000 farmer suicides in India (1995-2018), linked by researchers to input-cost dependency"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "target": "Chelsea Manning",
+      "role_in_corpus": "hero",
+      "steelman_type": "honest-critique",
+      "title": "Manning's leak was indiscriminate, uncurated, and endangered people who did nothing wrong",
+      "argument": "The critical distinction between Manning and other whistleblowers is scale and curation. Daniel Ellsberg read the Pentagon Papers and understood what he was leaking. Snowden, whatever his other faults, worked with journalists who redacted operational details. Manning transmitted approximately 750,000 documents to WikiLeaks -- a volume she could not possibly have reviewed -- including 251,287 diplomatic cables from US embassies worldwide that contained the names of confidential sources, human rights activists, and informants in authoritarian countries. The Defense Department's review identified hundreds of at-risk individuals whose names appeared unredacted in cables published by WikiLeaks. While WikiLeaks initially partnered with traditional media outlets for redaction, it subsequently published the full unredacted archive in September 2011 after Guardian journalist Luke Harding inadvertently published the encryption passphrase. The 'Collateral Murder' video and evidence of unreported civilian casualties constituted genuine whistleblowing, but they represented a tiny fraction of the total disclosure. The vast majority of diplomatic cables revealed routine (if embarrassing) diplomacy, not wrongdoing -- frank assessments of foreign leaders, negotiating positions, and intelligence-sharing arrangements. The honest critique is that Manning's action was closer to a data dump driven by personal grievance and political disillusionment than to a targeted disclosure of specific abuses, and the indiscriminate nature of the leak caused real harm to real people.",
+      "evidence": [
+        {
+          "source": "Information Review Task Force (Pentagon review of WikiLeaks damage)",
+          "url": "https://www.reuters.com/article/us-usa-wikileaks-damage-idUSTRE70Q05I20110127",
+          "detail": "DoD review identifying hundreds of at-risk sources named in unredacted cables"
+        },
+        {
+          "source": "Luke Harding, 'WikiLeaks' (2011) - accidental publication of encryption key",
+          "url": "https://www.theguardian.com/world/2011/sep/01/unredacted-us-embassy-cables-online",
+          "detail": "How the full unredacted cable archive became publicly available"
+        },
+        {
+          "source": "Yochai Benkler, 'A Free Irresponsible Press', Harvard Civil Rights-Civil Liberties Law Review (2011)",
+          "url": "https://dash.harvard.edu/handle/1/10900863",
+          "detail": "Legal scholarship analyzing the tension between the public interest value and the indiscriminate nature of the Manning disclosures"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "target": "Whistleblower protection laws",
+      "role_in_corpus": "structural-claim",
+      "steelman_type": "counter-evidence",
+      "title": "The whistleblower protection system actually works well outside national security -- the problem is narrower than the narrative suggests",
+      "argument": "The corpus presents whistleblower protections as broadly inadequate, but the counter-evidence is that the system works reasonably well in the non-national-security context -- which covers the vast majority of whistleblowing. The SEC's whistleblower program under Dodd-Frank has paid out over $2 billion in awards since 2012, with the largest individual award exceeding $279 million in 2023. The program has generated enforcement actions recovering billions for defrauded investors. The False Claims Act's qui tam provisions produced over $72 billion in settlements and judgments since 1986, with whistleblowers receiving a percentage -- creating a powerful financial incentive structure. OSHA's whistleblower protection program handles over 3,000 complaints annually across 22 federal statutes and has secured substantial settlements. Corporate whistleblowers like Sherron Watkins (Enron), Cynthia Cooper (WorldCom), and the anonymous CIA officer whose complaint triggered Trump's first impeachment all received statutory protection that functioned as designed. The genuine gap is in national security, where the Espionage Act's lack of a public-interest defense creates an anomalous regime. But framing the entire system as broken because it fails in one domain -- classified intelligence -- obscures the fact that for the vast majority of fraud, safety, environmental, and financial whistleblowers, the legal protections are increasingly robust and financially rewarding.",
+      "evidence": [
+        {
+          "source": "SEC Office of the Whistleblower - annual reports",
+          "url": "https://www.sec.gov/whistleblower",
+          "detail": "Cumulative awards exceeding $2 billion; program has generated major enforcement actions"
+        },
+        {
+          "source": "Department of Justice - False Claims Act statistics",
+          "url": "https://www.justice.gov/civil/pages/attachments/2024/10/24/fca_stats.pdf",
+          "detail": "Over $72 billion recovered under FCA since 1986, with whistleblower share providing strong financial incentives"
+        },
+        {
+          "source": "Government Accountability Project - whistleblower success stories",
+          "url": "https://whistleblower.org/",
+          "detail": "Nonprofit tracking successful use of whistleblower protections across corporate, government, and environmental contexts"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "domain": "ai-distillation-caching",
+  "pairs": [
+    {
+      "source_text": "What is knowledge distillation and what cost-performance tradeoffs does it achieve in 2026 production LLM systems?",
+      "source_lang": "en",
+      "target_text": "Knowledge distillation transfers learned behavior from a large teacher model to a smaller student model, typically via soft-target matching on the teacher's logits. In 2026 production deployments, distillation routinely achieves 5-30x cost reduction and 4x faster inference while retaining 95-97% of the teacher's original performance. Three main transfer channels exist: soft-target distillation (student learns from teacher logits preserving class-relationship uncertainty), feature-based distillation (student matches intermediate representations), and relational distillation (student mimics how the teacher relates different inputs). Advanced variants include adversarial and data-free distillation for privacy-constrained deployments.",
+      "target_lang": "en",
+      "reason": "Foundational concept for understanding the compute-vs-lookup tradeoff across the entire domain"
+    },
+    {
+      "source_text": "How does progressive distillation differ from single-step distillation for LLM compression in 2025-2026?",
+      "source_lang": "en",
+      "target_text": "Progressive distillation breaks model compression into multiple intermediate stages rather than one large jump, using bridging models or gradually increasing regularization. Research in 2025-2026 shows it yields better training stability and smoother accuracy degradation than single-step distillation. Notable applications include Chain-of-Thought distillation, where the student learns to replicate the teacher's step-by-step reasoning. OpenAI's GPT-4o mini (2024-2025) is the most prominent commercial example, a distilled version of GPT-4o that maintains strong performance at far lower compute. Progressive consistency distillation for multimodal LLMs has demonstrated FLOP reductions exceeding 80%.",
+      "target_lang": "en",
+      "reason": "Progressive distillation is key to understanding how distillation has moved beyond naive single-step compression"
+    },
+    {
+      "source_text": "What are the leading small language models (SLMs) distilled or derived from larger architectures as of mid-2026?",
+      "source_lang": "en",
+      "target_text": "The leading SLMs in 2026 include Microsoft Phi-4-mini (3.8B parameters, dense decoder-only transformer with 200K vocabulary), Google Gemma 4 (released April 2, 2026, available in E2B, E4B, 26B MoE, and 31B Dense variants with 128K-256K context), Meta Llama 3.2 (1B/3B), and Qwen 2.5 (0.5B-1.5B). Phi-4-mini-reasoning matches OpenAI o1-mini on math benchmarks despite having only 3.8B parameters. Qwen-1.5B achieved 83.9% accuracy on Math-500 by distilling 800K examples from DeepSeek-R1. Gemma 4's 26B MoE variant activates only 3.8B parameters during inference for fast token generation.",
+      "target_lang": "en",
+      "reason": "SLMs represent the practical output of distillation techniques and define what is deployable at the edge"
+    },
+    {
+      "source_text": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "source_lang": "en",
+      "target_text": "Semantic caching extends classical caching by storing query-response pairs, encoding queries as embeddings, and returning cached responses when a new query's embedding is sufficiently similar to an existing one. In 2026, semantic caching cuts LLM inference costs by 30-70% on workloads with repeated or similar queries. Anthropic's prefix caching delivers 90% cost reduction and 85% latency reduction for long prompts. OpenAI's automatic caching (enabled by default) achieves 50% cost savings. GPTCache, an open-source library by Zilliz with over 8,000 GitHub stars, provides a modular architecture integrating with LangChain and LlamaIndex, speeding up responses 2-10x on cache hits.",
+      "target_lang": "en",
+      "reason": "Semantic caching is the primary 'look up instead of compute' mechanism for LLM inference"
+    },
+    {
+      "source_text": "What KV-cache optimization techniques reduce LLM inference memory and cost in 2026?",
+      "source_lang": "en",
+      "target_text": "Five major technique families address KV-cache optimization in 2026: paged attention (vLLM's memory management, now default in all production stacks), prefix caching (vLLM and SGLang RadixAttention), attention-layer compression (MQA, GQA, DeepSeek's Multi-head Latent Attention), KV-cache quantization (INT8 and FP8), and eviction policies. Google's TurboQuant (March 2026) compresses KV cache to 3 bits per value with zero measured accuracy loss, cutting memory by 6x. On Llama 70B at 1M context, KV cache alone reaches approximately 135 GB at FP16, exceeding the 140 GB of model weights. Stacking optimizations across layers can reduce inference cost by 80% or more.",
+      "target_lang": "en",
+      "reason": "KV-cache is the dominant memory bottleneck for long-context LLM inference, making its optimization critical to the cost equation"
+    },
+    {
+      "source_text": "How does speculative decoding with EAGLE-3 accelerate LLM inference in 2025-2026?",
+      "source_lang": "en",
+      "target_text": "Speculative decoding uses a small draft model to propose multiple tokens that the larger target model verifies in a single forward pass. EAGLE-3, the current production standard merged into vLLM, SGLang, and TensorRT-LLM in early 2026, achieves 0.80-0.88 acceptance rates on instruction-following tasks (up from 0.72-0.78 for EAGLE-2). EAGLE-3's acceptance rate stays nearly flat across token positions because the draft head learns to recover from its own errors. NVIDIA demonstrated 3.6x throughput improvements on H200 GPUs. The original EAGLE achieved 2.7-3.5x latency speedup on LLaMA-2-Chat 70B. EAGLE-3 also discovered a scaling law for speculative decoding: more training data yields proportional speedup improvements.",
+      "target_lang": "en",
+      "reason": "Speculative decoding is the leading technique for reducing inference latency without changing output quality"
+    },
+    {
+      "source_text": "What are the cost breakpoints between API, self-hosted, and cached LLM inference in 2026?",
+      "source_lang": "en",
+      "target_text": "LLM API pricing dropped approximately 80% between early 2025 and early 2026. Frontier APIs (GPT-5.4, Claude Sonnet 4.6) cost $2.50-$15 per million tokens. Open-weight hosted APIs (Llama 4, DeepSeek V4) cost $0.07-$0.90 per million tokens. Self-hosted Llama 4 70B on an H100 with vLLM costs roughly $0.18 per million output tokens at batch=8, but engineering overhead adds $3,000-$6,000/month. The self-hosting break-even versus managed APIs sits at roughly 2-5 million tokens per day on reserved GPU capacity over a 12-month window. Against budget open-weight APIs at $0.14-$0.50 per million tokens, self-hosting almost never wins on cost alone. Quantized models (INT4/INT8) cost 50-70% less than full-precision.",
+      "target_lang": "en",
+      "reason": "The cost comparison defines when organizations should compute fresh, use cached results, or serve their own models"
+    },
+    {
+      "source_text": "How do GPTQ, AWQ, and GGUF quantization methods compare for LLM accuracy and performance in 2026?",
+      "source_lang": "en",
+      "target_text": "AWQ (Activation-aware Weight Quantization) has become the default for production GPU serving in 2026, preserving salient weights based on activation magnitudes. All three methods stay within approximately 6% of baseline perplexity. For code generation, AWQ, GGUF Q4_K_M, and BitsandBytes achieve about 4% below baseline, while GPTQ and Marlin-GPTQ drop around 10%. A 70B model quantized to 4-bit INT4 using AWQ or GPTQ drops from 140 GB to 35-40 GB, fitting on a single RTX 4090 or A100. GGUF dominates CPU and Apple Silicon inference via llama.cpp. AWQ leads GPU throughput. GPTQ remains popular for its broad ecosystem support. FP8 quantization is emerging as a near-lossless option for datacenter GPUs.",
+      "target_lang": "en",
+      "reason": "Quantization is the primary compute-accuracy tradeoff mechanism for deploying models on constrained hardware"
+    },
+    {
+      "source_text": "How has Mixture of Experts architecture become the dominant LLM design pattern by mid-2026?",
+      "source_lang": "en",
+      "target_text": "By mid-2026, MoE has become the dominant architecture for state-of-the-art open-weight LLMs. The top seven models on major leaderboards (GLM-5.2, DeepSeek V4-Pro, Kimi K2.6, MiniMax M3, Qwen3-Coder-480B, Llama 4 Maverick, and Qwen3.6-35B-A3B) are all MoE. DeepSeek-V3 pioneered the current generation with 671B total parameters but only 37B activated per token, using 256 routed experts plus 1 shared expert, trained on 14.8 trillion tokens using 2,048 H800 GPUs for approximately $5.6 million. MoE delivers up to 70% lower computation costs versus dense models of equivalent quality. Google's Gemma 4 26B MoE variant activates only 3.8B of its parameters per token.",
+      "target_lang": "en",
+      "reason": "MoE represents the architectural approach to selective computation, complementing distillation and caching"
+    },
+    {
+      "source_text": "What is practical for on-device edge LLM inference on smartphones and embedded hardware in 2026?",
+      "source_lang": "en",
+      "target_text": "In 2026, sub-4B quantized LLMs on consumer smartphones achieve 5-15 tokens per second, sufficient for interactive use. Practical models include Llama 3.2 1B/3B, Gemma 3 (down to 270M parameters), Phi-4 mini (3.8B), SmolLM2 (135M-1.7B), and Qwen 2.5 0.5B-1.5B. Gemma 4 E2B runs natively on smartphones with 128K context and supports 140+ languages with native audio. QLoRA and GGUF INT4 quantization are the most practical approaches for mobile, achieving 4-6x memory and latency improvements. Key drivers for on-device inference are latency (avoiding cloud round-trips), privacy (data never leaves device), cost (shifting inference to user hardware), and offline availability.",
+      "target_lang": "en",
+      "reason": "Edge inference represents the extreme end of the compute-vs-lookup spectrum where models must be maximally compressed"
+    },
+    {
+      "source_text": "What is Google TurboQuant and how does it advance KV-cache compression in 2026?",
+      "source_lang": "en",
+      "target_text": "Google's TurboQuant, released in March 2026, compresses KV cache values to 3 bits per value with zero measured accuracy loss on standard benchmarks, achieving a 6x reduction in KV cache memory. This is significant because at long contexts (1M tokens on Llama 70B), KV cache alone reaches approximately 135 GB at FP16, rivaling the model weights themselves. TurboQuant makes million-token contexts practical on single-node GPU setups where memory was previously the binding constraint. It complements existing KV-cache techniques like paged attention and prefix caching rather than replacing them.",
+      "target_lang": "en",
+      "reason": "TurboQuant represents a breakthrough in the specific KV-cache memory bottleneck that limits long-context inference"
+    },
+    {
+      "source_text": "How does DeepSeek Multi-head Latent Attention (MLA) reduce inference compute in MoE architectures?",
+      "source_lang": "en",
+      "target_text": "DeepSeek's Multi-head Latent Attention (MLA), introduced in DeepSeek-V2 and refined in V3, compresses key-value representations into a low-rank latent space before storing them in the KV cache. This reduces per-token KV cache memory by 5-13x compared to standard multi-head attention while preserving model quality. In DeepSeek-V3 (671B total, 37B active), MLA combines with 256 routed experts and an auxiliary-loss-free load-balancing strategy. The architecture also pioneered multi-token prediction as a training objective, which later proved useful for speculative decoding by providing natural draft predictions during inference.",
+      "target_lang": "en",
+      "reason": "MLA is a concrete architecture innovation that bridges attention optimization and the broader MoE efficiency story"
+    },
+    {
+      "source_text": "What challenges does semantic caching introduce for LLM response correctness and how are they being addressed in 2025-2026?",
+      "source_lang": "en",
+      "target_text": "Semantic caching introduces reliability risks because a false cache hit can directly harm response correctness, returning a cached answer to a semantically similar but factually distinct query. Research in 2025-2026 addresses this through several approaches: ContextCache (2025) provides context-aware semantic caching for multi-turn conversations that tracks conversation state to avoid false hits across dialogue turns. Continuous Semantic Caching (2026) uses online adaptation to improve similarity thresholds over time. Risk-constrained freshness-aware caching (2026) balances cache staleness against correctness requirements for retrieval-augmented LLMs. The fundamental tension remains: higher similarity thresholds reduce false hits but also reduce cache hit rates, directly trading cost savings against accuracy.",
+      "target_lang": "en",
+      "reason": "The correctness challenge is the central limitation of the 'look up instead of compute' strategy"
+    },
+    {
+      "source_text": "How does Qwen-1.5B achieve strong reasoning through distillation from DeepSeek-R1?",
+      "source_lang": "en",
+      "target_text": "Qwen-1.5B achieved 83.9% accuracy on the Math-500 benchmark by distilling 800,000 reasoning examples from DeepSeek-R1, demonstrating that small language models can acquire strong mathematical reasoning through targeted distillation from much larger reasoning-specialized teachers. This result is notable because it approaches the performance of models 10-50x larger on structured reasoning tasks. The approach uses Chain-of-Thought distillation where the student learns not just the final answer but the step-by-step reasoning process. This has become a template for creating task-specific SLMs: distill a large reasoning model on curated high-quality examples rather than training from scratch on broad data.",
+      "target_lang": "en",
+      "reason": "Demonstrates that distillation from reasoning models can transfer reasoning ability to very small models"
+    },
+    {
+      "source_text": "What is the three-layer caching architecture for production LLM inference systems in 2026?",
+      "source_lang": "en",
+      "target_text": "Modern production LLM systems in 2026 utilize three distinct caching layers operating at different granularities. Semantic caching operates at the request level, matching new queries against embeddings of previous query-response pairs to return cached answers for similar inputs (30-70% cost reduction). KV caching operates at the attention level, storing computed key-value pairs to avoid recomputation during autoregressive generation (fundamental to transformer inference). Prompt caching (prefix caching) operates at the token-prefix level, reusing KV computations for shared prompt prefixes across requests (Anthropic achieves 90% cost reduction, OpenAI achieves 50%). These layers are complementary and are typically stacked in production deployments.",
+      "target_lang": "en",
+      "reason": "Understanding the layered caching architecture clarifies how different caching strategies compose rather than compete"
+    },
+    {
+      "source_text": "What role does Microsoft Phi-4-mini-reasoning play in demonstrating distilled model capabilities for edge deployment?",
+      "source_lang": "en",
+      "target_text": "Microsoft's Phi-4-mini-reasoning, released April 30, 2025, is a 3.8B parameter dense decoder-only transformer with grouped-query attention and 200K vocabulary. Despite its compact size, it matches OpenAI o1-mini on Math-500 and GPQA Diamond benchmarks, outperforms DeepSeek-R1-Distill-Llama-8B and Bespoke-Stratos-7B, and rivals DeepSeek-R1-Distill-Qwen-7B. Microsoft's Phi series is built around data quality over scale, using curated textbook-quality data and synthetic datasets. Phi-4-mini is designed for educational applications, embedded tutoring, and lightweight edge deployment, demonstrating that reasoning-capable models can run on mobile devices with appropriate quantization.",
+      "target_lang": "en",
+      "reason": "Phi-4-mini exemplifies the convergence of distillation, small model design, and edge deployment"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "What is knowledge distillation and what cost-performance tradeoffs does it achieve in 2026 production LLM systems?",
+      "to_source": "How does progressive distillation differ from single-step distillation for LLM compression in 2025-2026?",
+      "kind": "refines",
+      "reason": "Progressive distillation is a specific multi-stage variant of the general knowledge distillation framework"
+    },
+    {
+      "from_source": "How does progressive distillation differ from single-step distillation for LLM compression in 2025-2026?",
+      "to_source": "What are the leading small language models (SLMs) distilled or derived from larger architectures as of mid-2026?",
+      "kind": "refines",
+      "reason": "SLMs are the practical output of applying distillation techniques including progressive distillation"
+    },
+    {
+      "from_source": "What are the cost breakpoints between API, self-hosted, and cached LLM inference in 2026?",
+      "to_source": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "kind": "refines",
+      "reason": "Semantic caching is one of the key mechanisms that shifts the cost equation between API and self-hosted inference"
+    },
+    {
+      "from_source": "How do GPTQ, AWQ, and GGUF quantization methods compare for LLM accuracy and performance in 2026?",
+      "to_source": "What is practical for on-device edge LLM inference on smartphones and embedded hardware in 2026?",
+      "kind": "refines",
+      "reason": "GGUF and INT4 quantization are the enabling technologies that make edge inference practical"
+    },
+    {
+      "from_source": "What KV-cache optimization techniques reduce LLM inference memory and cost in 2026?",
+      "to_source": "What is Google TurboQuant and how does it advance KV-cache compression in 2026?",
+      "kind": "refines",
+      "reason": "TurboQuant is a specific breakthrough within the broader family of KV-cache optimization techniques"
+    },
+    {
+      "from_source": "How has Mixture of Experts architecture become the dominant LLM design pattern by mid-2026?",
+      "to_source": "How does DeepSeek Multi-head Latent Attention (MLA) reduce inference compute in MoE architectures?",
+      "kind": "refines",
+      "reason": "MLA is a specific attention optimization developed for and deployed within the MoE architecture paradigm"
+    },
+    {
+      "from_source": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "to_source": "What challenges does semantic caching introduce for LLM response correctness and how are they being addressed in 2025-2026?",
+      "kind": "refines",
+      "reason": "Correctness challenges are the primary limitation of the semantic caching approach described in the parent pair"
+    },
+    {
+      "from_source": "What KV-cache optimization techniques reduce LLM inference memory and cost in 2026?",
+      "to_source": "What is the three-layer caching architecture for production LLM inference systems in 2026?",
+      "kind": "refines",
+      "reason": "KV caching is one layer of the three-layer caching architecture; the broader view shows how they compose"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "What is knowledge distillation and what cost-performance tradeoffs does it achieve in 2026 production LLM systems?",
+      "kind": "url",
+      "locator": "https://labelyourdata.com/articles/machine-learning/model-distillation",
+      "reason": "Comprehensive guide to teacher-student distillation techniques and cost-performance metrics in 2026"
+    },
+    {
+      "pair_source": "What is knowledge distillation and what cost-performance tradeoffs does it achieve in 2026 production LLM systems?",
+      "kind": "url",
+      "locator": "https://zylos.ai/research/2026-02-08-model-distillation/",
+      "reason": "Documents the 5-30x cost reduction and 95-97% performance retention figures for production distillation"
+    },
+    {
+      "pair_source": "How does progressive distillation differ from single-step distillation for LLM compression in 2025-2026?",
+      "kind": "url",
+      "locator": "https://redis.io/blog/model-distillation-llm-guide/",
+      "reason": "Covers progressive distillation stages and Chain-of-Thought distillation methods for LLMs"
+    },
+    {
+      "pair_source": "What are the leading small language models (SLMs) distilled or derived from larger architectures as of mid-2026?",
+      "kind": "url",
+      "locator": "https://www.datacamp.com/blog/top-small-language-models",
+      "reason": "Ranked listing of top SLMs for 2026 including Phi, Gemma, Llama, and Qwen variants"
+    },
+    {
+      "pair_source": "What are the leading small language models (SLMs) distilled or derived from larger architectures as of mid-2026?",
+      "kind": "url",
+      "locator": "https://www.bentoml.com/blog/the-best-open-source-small-language-models",
+      "reason": "Benchmark comparisons and distillation provenance of leading open-source SLMs"
+    },
+    {
+      "pair_source": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "kind": "url",
+      "locator": "https://www.spheron.network/blog/semantic-cache-llm-inference-gpu-cloud/",
+      "reason": "Technical guide to GPTCache, Redis Vector Cache, and prompt caching setup in 2026"
+    },
+    {
+      "pair_source": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "kind": "url",
+      "locator": "https://myengineeringpath.dev/genai-engineer/llm-caching/",
+      "reason": "Explains the three-layer caching model and cost savings for semantic, KV, and prompt caching"
+    },
+    {
+      "pair_source": "What KV-cache optimization techniques reduce LLM inference memory and cost in 2026?",
+      "kind": "url",
+      "locator": "https://www.digitalapplied.com/blog/kv-cache-optimization-techniques-2026-engineering-guide",
+      "reason": "Engineering guide covering paged attention, prefix caching, MQA/GQA, and KV-cache quantization"
+    },
+    {
+      "pair_source": "What is Google TurboQuant and how does it advance KV-cache compression in 2026?",
+      "kind": "url",
+      "locator": "https://www.morphllm.com/llm-inference-optimization",
+      "reason": "Documents TurboQuant's 3-bit KV cache compression and its integration with other optimization layers"
+    },
+    {
+      "pair_source": "How does speculative decoding with EAGLE-3 accelerate LLM inference in 2025-2026?",
+      "kind": "url",
+      "locator": "https://arxiv.org/html/2503.01840v1",
+      "reason": "EAGLE-3 paper describing training-time test scaling and acceptance rate improvements"
+    },
+    {
+      "pair_source": "How does speculative decoding with EAGLE-3 accelerate LLM inference in 2025-2026?",
+      "kind": "url",
+      "locator": "https://introl.com/blog/speculative-decoding-llm-inference-speedup-guide-2025",
+      "reason": "Production guide to speculative decoding showing 2-3x speedup and NVIDIA H200 benchmarks"
+    },
+    {
+      "pair_source": "What are the cost breakpoints between API, self-hosted, and cached LLM inference in 2026?",
+      "kind": "url",
+      "locator": "https://featherless.ai/blog/llm-api-pricing-comparison-2026-complete-guide-inference-costs",
+      "reason": "Complete API pricing comparison across frontier and open-weight models in 2026"
+    },
+    {
+      "pair_source": "What are the cost breakpoints between API, self-hosted, and cached LLM inference in 2026?",
+      "kind": "url",
+      "locator": "https://cloudzy.com/blog/self-hosting-open-weight-llm-gpu-vps-cost/",
+      "reason": "Real cost math comparing self-hosted vs API inference including engineering overhead"
+    },
+    {
+      "pair_source": "How do GPTQ, AWQ, and GGUF quantization methods compare for LLM accuracy and performance in 2026?",
+      "kind": "url",
+      "locator": "https://sesamedisk.com/quantization-techniques-ai-inference-2026/",
+      "reason": "Technical comparison of GGUF, AWQ, GPTQ, and FP8 with accuracy benchmarks"
+    },
+    {
+      "pair_source": "How do GPTQ, AWQ, and GGUF quantization methods compare for LLM accuracy and performance in 2026?",
+      "kind": "url",
+      "locator": "https://www.index.dev/skill-vs-skill/ai-gptq-vs-awq-vs-gguf",
+      "reason": "Head-to-head comparison of quantization methods with perplexity and code generation benchmarks"
+    },
+    {
+      "pair_source": "How has Mixture of Experts architecture become the dominant LLM design pattern by mid-2026?",
+      "kind": "url",
+      "locator": "https://tensorops.ai/blog/what-is-mixture-of-experts-llm",
+      "reason": "2026 field guide documenting MoE's rise to dominance and the top MoE models"
+    },
+    {
+      "pair_source": "How does DeepSeek Multi-head Latent Attention (MLA) reduce inference compute in MoE architectures?",
+      "kind": "url",
+      "locator": "https://arxiv.org/pdf/2412.19437",
+      "reason": "DeepSeek-V3 technical report detailing MLA architecture, 256-expert routing, and training methodology"
+    },
+    {
+      "pair_source": "What is practical for on-device edge LLM inference on smartphones and embedded hardware in 2026?",
+      "kind": "url",
+      "locator": "https://www.edge-ai-vision.com/2026/01/on-device-llms-in-2026-what-changed-what-matters-whats-next/",
+      "reason": "Industry analysis of what changed for on-device LLMs entering 2026"
+    },
+    {
+      "pair_source": "What is practical for on-device edge LLM inference on smartphones and embedded hardware in 2026?",
+      "kind": "url",
+      "locator": "https://thebackenddevelopers.substack.com/p/edge-ai-on-mobile-devices-in-2026",
+      "reason": "Covers battery, privacy, and inference speed tradeoffs for mobile LLM deployment"
+    },
+    {
+      "pair_source": "What challenges does semantic caching introduce for LLM response correctness and how are they being addressed in 2025-2026?",
+      "kind": "url",
+      "locator": "https://arxiv.org/abs/2508.07675",
+      "reason": "Research on offline-to-online adaptation for semantic caching similarity thresholds"
+    },
+    {
+      "pair_source": "How does Qwen-1.5B achieve strong reasoning through distillation from DeepSeek-R1?",
+      "kind": "url",
+      "locator": "https://cogitx.ai/blog/small-language-models-slms-comprehensive-guide-2026",
+      "reason": "Documents the Qwen-1.5B distillation from DeepSeek-R1 achieving 83.9% on Math-500"
+    },
+    {
+      "pair_source": "What role does Microsoft Phi-4-mini-reasoning play in demonstrating distilled model capabilities for edge deployment?",
+      "kind": "url",
+      "locator": "https://huggingface.co/microsoft/Phi-4-mini-reasoning",
+      "reason": "Official Phi-4-mini-reasoning model card with architecture specs and benchmark results"
+    },
+    {
+      "pair_source": "What role does Microsoft Phi-4-mini-reasoning play in demonstrating distilled model capabilities for edge deployment?",
+      "kind": "url",
+      "locator": "https://azure.microsoft.com/en-us/blog/empowering-innovation-the-next-generation-of-the-phi-family/",
+      "reason": "Microsoft's announcement of the Phi family with data-quality-over-scale philosophy"
+    },
+    {
+      "pair_source": "What is the three-layer caching architecture for production LLM inference systems in 2026?",
+      "kind": "url",
+      "locator": "https://introl.com/blog/prompt-caching-infrastructure-llm-cost-latency-reduction-guide-2025",
+      "reason": "Infrastructure guide covering prompt caching setup and cost-latency reduction strategies"
+    },
+    {
+      "pair_source": "What are the leading small language models (SLMs) distilled or derived from larger architectures as of mid-2026?",
+      "kind": "url",
+      "locator": "https://ai.google.dev/gemma/docs/core/model_card_4",
+      "reason": "Official Gemma 4 model card with architecture details, sizes, and context window specifications"
+    }
+  ]
+}

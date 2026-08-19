@@ -1,0 +1,221 @@
+{
+  "domain": "adversarial-factcheck-r8",
+  "pairs": [
+    {
+      "source_text": "The global derivatives market is valued at $1.2 quadrillion",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The $1.2 quadrillion figure conflates notional value with actual economic exposure. The Bank for International Settlements (BIS) reported OTC derivatives notional amounts outstanding at approximately $667.1 trillion as of end-June 2024. The gross market value — the actual cost of replacing all contracts — was roughly $20.7 trillion at end-2023. Exchange-traded derivatives add more notional value but do not bring the total to $1.2 quadrillion. Citing notional value without context is misleading because it double-counts offsetting positions and does not represent money at risk.",
+      "target_lang": "en",
+      "reason": "This inflated figure circulates widely in popular finance commentary and distorts understanding of systemic risk in derivatives markets"
+    },
+    {
+      "source_text": "Banks operate on a fractional reserve system where they lend out a fraction of customer deposits",
+      "source_lang": "en",
+      "target_text": "[REFUTED] The Bank of England's Q1 2014 Quarterly Bulletin paper 'Money Creation in the Modern Economy' explicitly stated: 'banks do not act simply as intermediaries, lending out deposits that savers place with them.' In practice, banks create new broad money (deposits) when they make loans — the loan creates the deposit, not the other way around. The money multiplier model, where reserves mechanically constrain lending, is a pedagogical simplification that most central banks have disavowed. The Federal Reserve eliminated reserve requirements entirely in March 2020, further undermining the fractional reserve framing.",
+      "target_lang": "en",
+      "reason": "The fractional reserve model persists in many textbooks and knowledge bases despite central banks explicitly correcting it; this matters for understanding monetary policy transmission"
+    },
+    {
+      "source_text": "The Amazon rainforest produces 20% of the world's oxygen",
+      "source_lang": "en",
+      "target_text": "[REFUTED] The Amazon's net oxygen contribution to the atmosphere is near zero. While Amazonian photosynthesis does produce large quantities of oxygen, decomposition of organic matter and cellular respiration by plants, animals, and microbes consume nearly all of it. Oxford ecosystem scientist Yadvinder Malhi calculated in a 2019 analysis that the Amazon's gross oxygen production is about 16 billion tonnes per year but almost all is consumed locally. Nearly all atmospheric oxygen (~21%) was produced over billions of years of geological history and is maintained by the ocean-atmosphere system. The '20%' figure was widely repeated during the 2019 Amazon fires but has no basis in atmospheric science.",
+      "target_lang": "en",
+      "reason": "This false claim was amplified by world leaders including Emmanuel Macron during the 2019 fire crisis and persists in environmental knowledge bases, undermining scientific credibility"
+    },
+    {
+      "source_text": "The Paris Agreement commits nations to limiting global warming to 1.5°C above pre-industrial levels",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] Article 2(1)(a) of the Paris Agreement states the goal is 'holding the increase in the global average temperature to well below 2°C above pre-industrial levels and pursuing efforts to limit the temperature increase to 1.5°C above pre-industrial levels.' The binding commitment is 'well below 2°C'; the 1.5°C target is framed as an aspiration to 'pursue efforts' toward. This distinction matters legally and practically: nationally determined contributions (NDCs) are assessed against the 2°C guardrail, and the IPCC's 2018 Special Report on 1.5°C was commissioned to clarify the gap between the two targets.",
+      "target_lang": "en",
+      "reason": "Collapsing 'well below 2°C' and 'pursuing efforts to limit to 1.5°C' into a single 1.5°C commitment misrepresents the legal structure of the agreement and inflates what nations actually signed up for"
+    },
+    {
+      "source_text": "Citizens United v. FEC established that corporations are people under the law",
+      "source_lang": "en",
+      "target_text": "[REFUTED] The 2010 Supreme Court decision in Citizens United v. Federal Election Commission (558 U.S. 310) did not establish corporate personhood. Corporate personhood as a legal doctrine has roots stretching back to at least Dartmouth College v. Woodward (1819) and was applied in tax and jurisdictional contexts in Santa Clara County v. Southern Pacific Railroad (1886). What Citizens United actually held was that the First Amendment's free speech protections prohibit the government from restricting independent political expenditures by corporations, associations, and labor unions. The majority opinion by Justice Kennedy focused on speech rights, not personhood doctrine.",
+      "target_lang": "en",
+      "reason": "This widespread mischaracterization obscures the actual holding of the case and the far older legal history of corporate personhood, leading to confused public discourse about campaign finance law"
+    },
+    {
+      "source_text": "The Five Eyes intelligence alliance was established during World War II in 1941",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] While UK-US signals intelligence cooperation began informally during WWII (including the 1943 BRUSA Agreement on sharing COMINT), the formal UKUSA Agreement that created the alliance was signed on March 5, 1946, between the US State-Army-Navy Communication Intelligence Board and the London Signal Intelligence Board. Canada acceded in 1948; Australia and New Zealand joined in 1956. The name 'Five Eyes' (from the classification marking 'AUS/CAN/NZ/UK/US EYES ONLY') came into common use considerably later. Citing 1941 conflates wartime ad hoc cooperation with the formalized postwar alliance.",
+      "target_lang": "en",
+      "reason": "Misdating the alliance by five years confuses wartime bilateral cooperation with the institutionalized multilateral framework that still operates today"
+    },
+    {
+      "source_text": "There are approximately 13,000 nuclear weapons in the world",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The ~13,000 figure was accurate around 2021 but is now outdated. The Stockholm International Peace Research Institute (SIPRI) Yearbook 2024 estimated approximately 12,121 nuclear warheads globally as of January 2024. The Federation of American Scientists (FAS) estimated roughly 12,100 as of mid-2024. Reductions are primarily due to the US and Russia dismantling retired warheads, though both countries continue modernizing their arsenals. Meanwhile, SIPRI noted that China's stockpile grew from an estimated 350 to 500 warheads between January 2023 and January 2024, and the number of operationally deployed warheads globally increased.",
+      "target_lang": "en",
+      "reason": "Using outdated total figures masks the important trend: while totals decline slowly, operationally deployed warheads are increasing and China is expanding rapidly"
+    },
+    {
+      "source_text": "The US national debt is $31 trillion",
+      "source_lang": "en",
+      "target_text": "[OUTDATED] The $31 trillion figure dates to approximately October 2022. According to the US Treasury's 'Debt to the Penny' dataset, total public debt outstanding surpassed $34 trillion in January 2024, reached $35 trillion by July 2024, and exceeded $36 trillion by early 2025. As of mid-2025 it is approximately $36.2 trillion. Citing $31 trillion understates the actual figure by over $5 trillion — itself larger than the GDP of all but three countries.",
+      "target_lang": "en",
+      "reason": "National debt figures become stale rapidly given current deficit trajectories; a $5+ trillion understatement is materially misleading"
+    },
+    {
+      "source_text": "GDPR violations can result in fines of up to 4% of a company's annual global turnover",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] This is incomplete. Article 83 of the GDPR specifies two distinct fine tiers. Article 83(4) covers violations of obligations of controllers and processors, data protection impact assessments, etc., with fines up to EUR 10 million or 2% of total worldwide annual turnover, whichever is higher. Article 83(5) covers more serious infringements — basic processing principles, data subjects' rights, and international data transfers — with fines up to EUR 20 million or 4% of total worldwide annual turnover, whichever is higher. Stating only the 4% maximum omits that many violations fall under the lower 2% tier.",
+      "target_lang": "en",
+      "reason": "The selective citation of only the maximum tier creates a misleading impression of enforcement severity and obscures the regulation's actual graduated penalty structure"
+    },
+    {
+      "source_text": "Atmospheric CO2 concentration has reached 420 parts per million",
+      "source_lang": "en",
+      "target_text": "[OUTDATED] The 420 ppm milestone was passed in 2023. NOAA's Global Monitoring Laboratory at Mauna Loa recorded a monthly average of 426.91 ppm in May 2024, and the annual mean for 2024 was approximately 424.6 ppm. The May 2025 peak is expected to exceed 428 ppm given the ongoing annual growth rate of approximately 2.5-3 ppm per year. Citing 420 ppm understates the concentration by roughly 5-8 ppm, which represents approximately two to three years of emissions growth.",
+      "target_lang": "en",
+      "reason": "CO2 concentration is a key climate metric; understating it by several ppm obscures the pace of accumulation and the narrowing window for emissions targets"
+    },
+    {
+      "source_text": "97% of climate scientists agree that climate change is real and caused by humans",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The widely cited 97% figure originates from Cook et al. (2013), published in Environmental Research Letters. That study examined 11,944 peer-reviewed abstracts and found that among papers expressing a position on anthropogenic global warming, 97.1% endorsed the consensus. However, 66.4% of the abstracts examined were categorized as expressing no position. A subsequent study by Lynas, Houlton & Perry (2021), also in Environmental Research Letters, examined papers from 2012-2020 and found greater than 99.85% consensus (only 28 of 88,125 papers were skeptical). The 97% figure is therefore not wrong but is outdated and understates current scientific agreement; the methodology behind it is also more nuanced than the shorthand suggests.",
+      "target_lang": "en",
+      "reason": "The 97% statistic is both the most cited and most attacked climate figure; its imprecise use weakens science communication when critics point out the methodological caveats"
+    },
+    {
+      "source_text": "The Bretton Woods system established the US dollar as the world's sole reserve currency in 1944",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The Bretton Woods Agreement (July 1944) created a system of fixed exchange rates where participating currencies were pegged to the US dollar, which was convertible to gold at $35 per troy ounce. This gave the dollar a privileged anchor role but did not designate it the 'sole' reserve currency. The British pound sterling, French franc, and other currencies continued to be held as reserves by central banks. As late as 1950, sterling accounted for a larger share of global reserves than the dollar. Dollar dominance grew gradually, aided by the Marshall Plan and US current account surpluses, and was cemented only after the system's collapse in August 1971 (the Nixon Shock) and the subsequent petrodollar arrangements of the 1970s.",
+      "target_lang": "en",
+      "reason": "Backdating dollar dominance to 1944 misrepresents a gradual geopolitical process as an institutional decree and ignores sterling's continued major role in the postwar decade"
+    },
+    {
+      "source_text": "Bitcoin has a hard cap of exactly 21 million coins that can ever be created",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] Due to the way Bitcoin's block reward halving is implemented using integer arithmetic (right bit-shift), the actual maximum supply will be slightly below 21 million — approximately 20,999,999.9769 BTC. The last satoshi is projected to be mined around the year 2140. Furthermore, the effective circulating supply is significantly lower: Chainalysis estimated in 2020 that approximately 3.7 million BTC are likely permanently lost (inaccessible due to lost private keys, including an estimated 1.1 million attributed to Satoshi Nakamoto's unmoved early mining rewards). The '21 million' figure is a convenient approximation, not a precise cap.",
+      "target_lang": "en",
+      "reason": "False precision in stating 'exactly 21 million' misrepresents both the protocol's actual mathematics and the practical reality of irretrievably lost coins"
+    },
+    {
+      "source_text": "The Geneva Conventions protect all combatants and civilians in armed conflict",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The four Geneva Conventions of 1949 have specific and differentiated scopes: the First Convention covers wounded and sick soldiers on land; the Second covers wounded, sick, and shipwrecked military at sea; the Third covers prisoners of war; and the Fourth covers civilian persons in time of war. Crucially, Common Article 3 — the only provision applying to non-international armed conflicts (civil wars, insurgencies) — provides only minimum protections. Fighters who do not qualify as lawful combatants under the Third Convention (e.g., those not wearing distinctive signs or carrying arms openly) are not entitled to POW status. The Additional Protocols of 1977 expanded protections significantly, but Protocol I (international conflicts) has not been ratified by the US, and Protocol II (non-international conflicts) has a higher threshold for application. The blanket claim that 'all combatants and civilians' are protected overstates the coverage.",
+      "target_lang": "en",
+      "reason": "Overgeneralizing Geneva Convention coverage obscures critical gaps — particularly for non-state actors, civil wars, and states that have not ratified the Additional Protocols"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Atmospheric CO2 concentration has reached 420 parts per million",
+      "to_source": "The Paris Agreement commits nations to limiting global warming to 1.5°C above pre-industrial levels",
+      "kind": "refines",
+      "reason": "Understating current CO2 levels compounds the mischaracterization of Paris targets — the gap between current trajectory and stated goals is larger than either outdated claim implies"
+    },
+    {
+      "from_source": "97% of climate scientists agree that climate change is real and caused by humans",
+      "to_source": "Atmospheric CO2 concentration has reached 420 parts per million",
+      "kind": "refines",
+      "reason": "Both claims understate current reality: consensus is now above 99%, and CO2 is well above 420 ppm — together they paint a picture less urgent than the actual science"
+    },
+    {
+      "from_source": "The global derivatives market is valued at $1.2 quadrillion",
+      "to_source": "The US national debt is $31 trillion",
+      "kind": "contradicts",
+      "reason": "Both involve inflated or stale financial figures used for rhetorical effect; the derivatives figure is inflated by ~2x via notional confusion, while the debt figure is stale by ~$5 trillion — opposite error directions undermine credibility of financial claims as a class"
+    },
+    {
+      "from_source": "Banks operate on a fractional reserve system where they lend out a fraction of customer deposits",
+      "to_source": "The Bretton Woods system established the US dollar as the world's sole reserve currency in 1944",
+      "kind": "refines",
+      "reason": "Both perpetuate oversimplified monetary narratives: the fractional reserve model misrepresents how money is created, and the Bretton Woods claim misrepresents how dollar dominance arose — together they form a misleading origin story of modern money"
+    },
+    {
+      "from_source": "There are approximately 13,000 nuclear weapons in the world",
+      "to_source": "The Geneva Conventions protect all combatants and civilians in armed conflict",
+      "kind": "refines",
+      "reason": "Outdated weapons counts combined with overstated legal protections create a false sense of both the scale of the threat and the adequacy of the legal framework governing it"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "The global derivatives market is valued at $1.2 quadrillion",
+      "kind": "public_record",
+      "locator": "https://www.bis.org/statistics/derstats.htm",
+      "reason": "BIS OTC derivatives statistics — the authoritative source for notional amounts outstanding and gross market values"
+    },
+    {
+      "pair_source": "Banks operate on a fractional reserve system where they lend out a fraction of customer deposits",
+      "kind": "public_record",
+      "locator": "https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy",
+      "reason": "Bank of England Quarterly Bulletin Q1 2014 — 'Money creation in the modern economy' — explicitly refutes the money multiplier / fractional reserve lending model"
+    },
+    {
+      "pair_source": "The Amazon rainforest produces 20% of the world's oxygen",
+      "kind": "public_record",
+      "locator": "https://www.eci.ox.ac.uk/research/ecodynamics/ymalhi.html",
+      "reason": "Yadvinder Malhi's analysis of Amazon oxygen production at the Oxford Environmental Change Institute, widely cited in debunking the 20% claim"
+    },
+    {
+      "pair_source": "The Paris Agreement commits nations to limiting global warming to 1.5°C above pre-industrial levels",
+      "kind": "public_record",
+      "locator": "https://unfccc.int/sites/default/files/english_paris_agreement.pdf",
+      "reason": "Full text of the Paris Agreement — Article 2(1)(a) specifies 'well below 2°C' with efforts toward 1.5°C"
+    },
+    {
+      "pair_source": "Citizens United v. FEC established that corporations are people under the law",
+      "kind": "public_record",
+      "locator": "https://www.supremecourt.gov/opinions/09pdf/08-205.pdf",
+      "reason": "Full text of the Citizens United v. FEC opinion (558 U.S. 310, 2010) — majority opinion addresses speech rights, not personhood"
+    },
+    {
+      "pair_source": "The Five Eyes intelligence alliance was established during World War II in 1941",
+      "kind": "public_record",
+      "locator": "https://www.nsa.gov/Helpful-Links/NSA-FOIA/Declassification-Transparency-Initiatives/Historical-Releases/View/Article/1633577/",
+      "reason": "NSA declassified release of the UKUSA Agreement, dated March 5, 1946 — the founding document of the Five Eyes alliance"
+    },
+    {
+      "pair_source": "There are approximately 13,000 nuclear weapons in the world",
+      "kind": "public_record",
+      "locator": "https://www.sipri.org/yearbook/2024",
+      "reason": "SIPRI Yearbook 2024 — authoritative annual estimate of global nuclear arsenals, reporting approximately 12,121 warheads as of January 2024"
+    },
+    {
+      "pair_source": "The US national debt is $31 trillion",
+      "kind": "public_record",
+      "locator": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
+      "reason": "US Treasury Fiscal Data — 'Debt to the Penny' dataset providing daily total public debt outstanding figures"
+    },
+    {
+      "pair_source": "GDPR violations can result in fines of up to 4% of a company's annual global turnover",
+      "kind": "public_record",
+      "locator": "https://gdpr-info.eu/art-83-gdpr/",
+      "reason": "GDPR Article 83 text — specifies both the 2%/EUR 10M lower tier and 4%/EUR 20M upper tier of administrative fines"
+    },
+    {
+      "pair_source": "Atmospheric CO2 concentration has reached 420 parts per million",
+      "kind": "public_record",
+      "locator": "https://gml.noaa.gov/ccgg/trends/",
+      "reason": "NOAA Global Monitoring Laboratory — Mauna Loa CO2 measurements, the primary global reference for atmospheric CO2 concentration"
+    },
+    {
+      "pair_source": "97% of climate scientists agree that climate change is real and caused by humans",
+      "kind": "public_record",
+      "locator": "https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024",
+      "reason": "Cook et al. (2013) 'Quantifying the consensus on anthropogenic global warming in the scientific literature' — the original source of the 97% figure, including its caveats about abstracts expressing no position"
+    },
+    {
+      "pair_source": "The Bretton Woods system established the US dollar as the world's sole reserve currency in 1944",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/external/about/histend.htm",
+      "reason": "IMF historical overview of the Bretton Woods system — describes the dollar's anchor role without characterizing it as the 'sole' reserve currency"
+    },
+    {
+      "pair_source": "Bitcoin has a hard cap of exactly 21 million coins that can ever be created",
+      "kind": "public_record",
+      "locator": "https://bitcoin.org/bitcoin.pdf",
+      "reason": "Satoshi Nakamoto's original Bitcoin whitepaper (2008) — describes the halving schedule from which the asymptotic-but-not-exact 21 million limit derives"
+    },
+    {
+      "pair_source": "The Geneva Conventions protect all combatants and civilians in armed conflict",
+      "kind": "public_record",
+      "locator": "https://www.icrc.org/en/doc/war-and-law/treaties-customary-law/geneva-conventions/overview-geneva-conventions.htm",
+      "reason": "ICRC overview of the four Geneva Conventions — details the specific scope and limitations of each convention and Common Article 3"
+    }
+  ]
+}

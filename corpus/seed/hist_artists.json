@@ -1,0 +1,323 @@
+{
+  "domain": "people-historical-artists",
+  "pairs": [
+    {
+      "source_text": "William Shakespeare — playwright, poet, and businessman",
+      "source_lang": "en",
+      "target_text": "William Shakespeare (1564-1616) wrote at least 37 plays and 154 sonnets, inventing or popularizing roughly 1,700 English words including 'assassinate,' 'lonely,' and 'eyeball.' Remarkably little is documented about his life: no letters survive, his 'lost years' from 1585-1592 are a complete blank, and the six surviving signatures each spell his name differently. The authorship debate, which attracted skeptics including Mark Twain and Sigmund Freud, proposes candidates such as Edward de Vere (Earl of Oxford), Francis Bacon, and Christopher Marlowe, though no contemporary document links any alternative to the plays. Shakespeare was a shrewd businessman who held shares in the Globe Theatre earning roughly 200 pounds annually, purchased New Place (one of Stratford's largest houses) in 1597, and invested in agricultural leases near Stratford that doubled in value. The academic consensus overwhelmingly supports his authorship, pointing to his listing as actor in the Lord Chamberlain's Men and multiple contemporary references naming him as playwright.",
+      "target_lang": "en",
+      "reason": "Foundational literary figure; covers the plays, the language innovation, biographical gaps, the authorship controversy, and his often-overlooked business acumen"
+    },
+    {
+      "source_text": "Leonardo da Vinci — painter, inventor, anatomist, and Renaissance polymath",
+      "source_lang": "en",
+      "target_text": "Leonardo da Vinci (1452-1519) produced iconic paintings including the Mona Lisa and The Last Supper, but was equally remarkable as an anatomist who dissected over 30 corpses and as an engineer whose notebooks contained designs for flying machines, armored vehicles, and hydraulic systems centuries ahead of their time. He was a chronic non-finisher: the Adoration of the Magi (1481), St. Jerome in the Wilderness, and numerous commissions were left incomplete, and his notebooks -- over 7,000 pages written in mirror script -- went largely unpublished until the late 19th century, delaying their scientific impact by centuries. In April 1476, just before his 24th birthday, Leonardo was anonymously accused of sodomy with Jacopo Saltarelli in Florence, where the crime was punishable by death; the charges were dropped but he soon left for Milan. Modern biographers, including Walter Isaacson, describe him as openly attracted to men, noting his lifelong relationships with male pupils like Salai and Francesco Melzi. His unfinished legacy paradoxically enhanced his myth, positioning him as the archetype of the restless genius whose ambition outstripped any single lifetime.",
+      "target_lang": "en",
+      "reason": "Quintessential polymath whose biography illuminates Renaissance attitudes toward sexuality, the gap between invention and publication, and the mythology of genius"
+    },
+    {
+      "source_text": "Ludwig van Beethoven — composer who bridged Classical and Romantic music",
+      "source_lang": "en",
+      "target_text": "Ludwig van Beethoven (1770-1827) composed nine symphonies, five piano concertos, 32 piano sonatas, and one opera, fundamentally transforming Western music from the structured elegance of the Classical period to the emotional expressiveness of Romanticism. His father Johann, a court musician and alcoholic, subjected him to brutal practice regimes from early childhood; at 18, Ludwig petitioned authorities to redirect half of Johann's salary to the household to prevent it being spent on drink. Beethoven's progressive hearing loss began around 1798 and was near-total by 1814, yet he composed some of his greatest works -- including the Ninth Symphony and the late string quartets -- while profoundly deaf. After his brother Caspar's death in 1815, Beethoven waged a seven-year custody battle over his nephew Karl, during which he defamed his sister-in-law Johanna as an unfit mother; his possessive and volatile guardianship may have contributed to Karl's suicide attempt in 1826. The Eroica Symphony (1803), originally dedicated to Napoleon before Beethoven furiously scratched out the dedication, is widely considered the work that broke Classical conventions and inaugurated a new musical era.",
+      "target_lang": "en",
+      "reason": "Covers the music, the deafness, the abusive upbringing, the custody battle, and his role as the bridge between Classical and Romantic periods"
+    },
+    {
+      "source_text": "Pablo Picasso — Cubism, prolific output, and unexamined personal cruelty",
+      "source_lang": "en",
+      "target_text": "Pablo Picasso (1881-1973) produced an estimated 50,000 works across painting, sculpture, ceramics, and printmaking, co-founding Cubism with Georges Braque and reshaping 20th-century art through periods including the Blue, Rose, and Surrealist phases. His 1907 painting Les Demoiselles d'Avignon drew heavily on African masks he encountered at the Trocadero museum, yet Picasso repeatedly denied the debt; contemporary critics view this as emblematic of Western art's unacknowledged appropriation from colonized cultures. His treatment of women was documented and devastating: his granddaughter Marina wrote that 'no one in my family ever managed to escape the stranglehold of this genius,' and two of his partners -- Marie-Therese Walter and Jacqueline Roque -- died by suicide. Picasso joined the French Communist Party in 1944 during the Nazi occupation of Paris and won the Lenin Peace Prize twice (1950 and 1961), though his Modernist style clashed with Soviet Socialist Realism. His famous declaration 'Good artists copy; great artists steal' ironically captures both his creative philosophy and the ethical tensions in his borrowing from African, Iberian, and other traditions.",
+      "target_lang": "en",
+      "reason": "Addresses Cubism and prolific output alongside documented misogyny, political affiliations, and the cultural appropriation debate central to reassessing his legacy"
+    },
+    {
+      "source_text": "Frida Kahlo — self-portraits, Mexican identity, and the politics of commodification",
+      "source_lang": "en",
+      "target_text": "Frida Kahlo (1907-1954) created approximately 200 paintings, 55 of them self-portraits, drawing on Mexican folk art, indigenous symbolism, and Surrealist techniques to build a visual vocabulary of bodily pain and political defiance. Childhood polio and a devastating 1925 bus accident that fractured her spine in multiple places led to some 30 surgeries over her lifetime, and her art channels that suffering into images of unflinching power. She joined the Mexican Communist Party as a teenager, housed Leon Trotsky during his exile, and remained a committed leftist throughout her life, dimensions that scholars argue are flattened by her modern commodification into tote bags, refrigerator magnets, and branded merchandise. Her marriage to muralist Diego Rivera was tempestuous: both had numerous affairs (Kahlo with both men and women), they divorced and remarried, and Rivera's infidelity with Kahlo's sister was a particular betrayal. The 'Fridamania' that exploded in the 1980s has been criticized for privileging the pain narrative and romantic drama over her radical politics and artistic innovations, reducing a complex revolutionary artist to an icon of aesthetic suffering.",
+      "target_lang": "en",
+      "reason": "Balances artistic achievement with the commodification critique, the Rivera relationship, her political commitments, and the debate over reducing her to a suffering icon"
+    },
+    {
+      "source_text": "Muhammad Ali — boxing, activism, and the performance of defiance",
+      "source_lang": "en",
+      "target_text": "Muhammad Ali (1942-2016), born Cassius Clay, compiled a 56-5 professional boxing record, held the heavyweight title three times, and is widely considered the greatest boxer in history. He converted to the Nation of Islam in 1964 immediately after defeating Sonny Liston, changing his name and declaring 'Cassius Clay is a slave name'; he later transitioned to mainstream Sunni Islam. In 1967, Ali refused induction into the U.S. Army, stating 'I ain't got no quarrel with them Viet Cong,' for which he was convicted of draft evasion, stripped of his title, and banned from boxing for over three years until the Supreme Court unanimously overturned his conviction in 1971. His trash-talking -- rhyming predictions, psychological warfare like the 'rope-a-dope' against Foreman in 1974 -- was calculated performance art that influenced sports entertainment, hip-hop, and professional wrestling. Ali was diagnosed with Parkinson's disease in 1984, three years after retiring; whether boxing-related head trauma caused or accelerated the disease remains scientifically debated. His 1996 appearance lighting the Olympic torch in Atlanta, hands trembling from Parkinson's, became one of the most poignant moments in sports history.",
+      "target_lang": "en",
+      "reason": "Covers boxing career, religious conversion, Vietnam refusal, trash-talking as performance, Parkinson's diagnosis, and his cultural significance beyond sport"
+    },
+    {
+      "source_text": "Toni Morrison — Nobel laureate, editor, and architect of Black literary infrastructure",
+      "source_lang": "en",
+      "target_text": "Toni Morrison (1931-2019) won the Nobel Prize in Literature in 1993 -- the first African American so honored -- for novels including Beloved (1987), Song of Solomon (1977), and The Bluest Eye (1970), which collectively reimagined American literature through Black interiority and the afterlife of slavery. Before her own novels made her famous, Morrison served as the first Black woman senior editor in fiction at Random House, where she championed writers including Toni Cade Bambara, Gayl Jones, Angela Davis, and Gayl Jones; Henry Louis Gates Jr. called her hiring 'probably the single most important moment in the transformation of the relationship of Black writers to white publishers.' Her 1992 critical work Playing in the Dark: Whiteness and the Literary Imagination, adapted from Harvard's Massey Lectures, helped create the academic field now known as whiteness studies by examining how American literature constructs racial identity. Four of her novels -- Beloved, Song of Solomon, Sula, and The Bluest Eye -- have been repeatedly banned or challenged in U.S. schools for their graphic content, making her one of the most frequently targeted authors in American education. Morrison's dual legacy as both creator and institutional gatekeeper is unusual: she built the publishing infrastructure that made space for an entire generation of Black writers while simultaneously producing the most acclaimed body of fiction by any American novelist of her era.",
+      "target_lang": "en",
+      "reason": "Covers the Nobel Prize and major works alongside the underappreciated editorial career, critical theory contributions, and ongoing book-banning controversies"
+    },
+    {
+      "source_text": "The 'tortured artist' myth — does suffering actually produce better art?",
+      "source_lang": "en",
+      "target_text": "The belief that great art requires personal anguish -- rooted in Romantic-era figures like Byron, Keats, and Shelley -- persists in popular culture but is largely unsupported by empirical research. A Goldsmiths University study of 290 creative professionals found that participants were most creative when experiencing wellbeing and positive emotions, not during periods of distress. Van Gogh, the archetype of the tortured genius, produced his most acclaimed works (Starry Night, his Arles paintings) during periods of relative mental stability, not during his most severe episodes. A 2014 study in the European Journal of Social Psychology found that viewers rated artworks more favorably when told the artist suffered from mental illness, suggesting the myth is driven partly by audience perception rather than actual creative quality. Research shows that only bipolar disorder has a small (8%) elevated association with artistic populations, contradicting the broader claim that artists are more prone to mental illness. The myth may be actively harmful: it romanticizes untreated mental illness and discourages artists from seeking help, while obscuring that sustained creative output typically requires discipline, stability, and community support.",
+      "target_lang": "en",
+      "reason": "Examines a pervasive cultural belief with specific research findings, counterexamples, and the real-world harm of romanticizing artistic suffering"
+    },
+    {
+      "source_text": "Art and propaganda — how regimes weaponize culture",
+      "source_lang": "en",
+      "target_text": "Throughout history, political regimes have systematically used art and culture as instruments of power, from Egyptian pharaohs commissioning colossal statuary to project divine authority, to Roman emperors placing idealized portraits on coins circulated across the empire. The 20th century industrialized this practice: Nazi Germany deployed Leni Riefenstahl's Triumph of the Will (1935) and the Degenerate Art exhibition (1937), while the Soviet Union mandated Socialist Realism and suppressed avant-garde movements, and Mao's China used visual art as state propaganda, as in Liu Chunhua's iconic portrait of the young Chairman. The United States was not exempt -- the CIA covertly funded Abstract Expressionism during the Cold War as evidence of Western creative freedom, instrumentalizing artists like Jackson Pollock and Mark Rothko without their knowledge. Renaissance patronage blurred the same line more subtly: the Medici family used commissions to Botticelli and Michelangelo to project political legitimacy in Florence. The recurring pattern reveals that propaganda is most effective when it co-opts genuine artistic talent rather than replacing it, making the boundary between patronage and manipulation persistently difficult to draw.",
+      "target_lang": "en",
+      "reason": "Surveys propaganda's use of art across eras, including the often-overlooked CIA-Abstract Expressionism connection, showing that cultural weaponization is not unique to authoritarian regimes"
+    },
+    {
+      "source_text": "The canon wars — who decides what counts as 'great art'",
+      "source_lang": "en",
+      "target_text": "The 'canon wars' that erupted in American universities in the 1980s and 1990s centered on whether the Western literary and artistic canon -- dominated by white European men -- reflected genuine merit or the tastes of those who held institutional power. Harold Bloom's The Western Canon (1994) defended a hierarchy based on 'aesthetic autonomy,' while critics like Edward Said, Gayatri Spivak, and the multiculturalist movement argued that the canon excluded entire traditions from African, Asian, Indigenous, and women's literature not because of inferior quality but because of structural racism and sexism. The debate is not merely additive -- some scholars argued for dismantling aesthetic hierarchies entirely, while others pushed for expanding the canon to include previously excluded voices like Toni Morrison, Chinua Achebe, and Zora Neale Hurston. Universities gradually responded: by the 2000s, most English departments taught far more diverse syllabi than they had in the 1970s, though debates over required reading lists continue. The canon wars revealed that 'greatness' in art is never purely intrinsic but is shaped by publishing access, translation, critical attention, and the demographics of those doing the judging.",
+      "target_lang": "en",
+      "reason": "Maps the institutional and philosophical dimensions of the canon debate, connecting it to power structures, specific scholars, and ongoing curricular changes"
+    },
+    {
+      "source_text": "Posthumous reputation shifts — artists condemned in life, celebrated after death",
+      "source_lang": "en",
+      "target_text": "Vincent van Gogh sold only one painting during his lifetime and died in poverty in 1890; by the 21st century his works sell for tens of millions of dollars and he is among the most recognized artists in history. Emily Dickinson published fewer than a dozen of her nearly 1,800 poems during her lifetime, and her radical formal innovations -- dashes, slant rhyme, compression -- were 'corrected' by early editors before being recognized as deliberate and revolutionary. Paul Cezanne was shunned by the art establishment for most of his career, yet Picasso later credited him as 'the father of us all,' and in 2012 his painting The Card Players sold for approximately $250 million. Franz Kafka asked his friend Max Brod to burn his manuscripts after death; Brod refused, and Kafka's work became foundational to 20th-century literature. The reverse also occurs: artists celebrated in their lifetimes can fade -- Victorian poet laureate Alfred Lord Tennyson, once England's most famous writer, is now rarely read outside academia. These shifts reveal that artistic reputation depends as much on subsequent historical context, changing tastes, and the accidents of literary executorship as on the work itself.",
+      "target_lang": "en",
+      "reason": "Provides specific cases of dramatic posthumous reversals in both directions, illustrating that 'greatness' is historically contingent rather than fixed"
+    },
+    {
+      "source_text": "Picasso and African art — the appropriation that built Cubism",
+      "source_lang": "en",
+      "target_text": "Picasso's 1907 painting Les Demoiselles d'Avignon, widely considered the gateway to Cubism, shows two figures with faces directly modeled on African masks he encountered at the Trocadero ethnographic museum in Paris, yet Picasso alternately acknowledged and denied the influence throughout his life. The masks and sculptures had arrived in France through colonial channels, purchased or seized during the European scramble for Africa, and were displayed as ethnographic curiosities rather than fine art. Contemporary Ugandan artist Francis Nnaggenda captured the asymmetry with his statement: 'People tell me my work looks like Picasso, but they have it wrong -- it is Picasso who looks like me, like Africa.' Art historians now broadly agree that African sculptural traditions provided essential formal innovations -- geometric abstraction, non-perspectival space, conceptual rather than perceptual representation -- that Picasso and Braque synthesized into Cubism. The appropriation debate extends beyond attribution: African artists received no recognition, compensation, or influence over how their traditions were used, and the resulting movement was marketed as a purely European innovation. This case has become a touchstone in broader discussions of cultural appropriation, colonial extraction, and the ethics of artistic borrowing across power differentials.",
+      "target_lang": "en",
+      "reason": "Refines the Picasso profile by focusing specifically on the African art appropriation, a key case study in cultural borrowing and colonial power dynamics"
+    },
+    {
+      "source_text": "Beethoven's Ninth Symphony — deafness, revolution, and universal aspiration",
+      "source_lang": "en",
+      "target_text": "Beethoven's Symphony No. 9 in D minor, premiered in May 1824, was composed when the 53-year-old was almost completely deaf and had to be turned around by a performer to see the audience's thunderous applause he could not hear. The final movement's choral setting of Friedrich Schiller's 'Ode to Joy' was unprecedented in symphonic form and expressed Enlightenment ideals of universal brotherhood that transcended the personal anguish of Beethoven's isolation. The work has been adopted across political spectrums: it became the anthem of the European Union in 1985, was performed at the fall of the Berlin Wall in 1989 conducted by Leonard Bernstein (who changed 'Freude' to 'Freiheit' -- joy to freedom), and was also used by authoritarian regimes including Rhodesia as a national anthem. Its composition during the same years as the brutal custody battle over nephew Karl demonstrates the complex relationship between personal turmoil and artistic creation -- though, consistent with research on the tortured artist myth, Beethoven composed it during periods of focused work, not during his worst crises. The Ninth remains the most performed symphony in the world and a test case for whether art can carry universal meaning across radically different political and cultural contexts.",
+      "target_lang": "en",
+      "reason": "Refines the Beethoven profile by focusing on a single work that embodies his deafness, the Classical-Romantic transition, and art's political afterlife"
+    },
+    {
+      "source_text": "Morrison and the canon — how a banned author became required reading",
+      "source_lang": "en",
+      "target_text": "Toni Morrison's trajectory from banned author to canonical figure encapsulates the canon wars in miniature: Beloved, inspired by the true story of Margaret Garner, an enslaved woman who killed her daughter rather than see her returned to slavery, was challenged in school districts across the United States for its graphic depictions of slavery's violence, yet is now taught in most American high school and university literature curricula. Her 1992 critical work Playing in the Dark argued that canonical American literature -- Melville, Twain, Hemingway, Cather -- could not be understood without examining how it constructed whiteness against an 'Africanist presence,' a thesis that reshaped how the canon itself was read. The tension between banning and canonization intensified in the 2020s, as conservative school boards renewed challenges to her novels while literary scholars ranked her among the most important American writers of any era. Morrison herself addressed this paradox, noting that attempts to suppress her work confirmed its power to disturb comfortable narratives. Her case demonstrates that canon formation is not a settled judgment but an ongoing political contest, with the same work simultaneously condemned as dangerous and celebrated as essential.",
+      "target_lang": "en",
+      "reason": "Connects Morrison's personal trajectory to the broader canon wars, showing how banning and canonization can coexist as competing institutional forces"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Picasso and African art — the appropriation that built Cubism",
+      "to_source": "Pablo Picasso — Cubism, prolific output, and unexamined personal cruelty",
+      "kind": "refines",
+      "reason": "Deepens the Picasso profile by isolating the African art appropriation as a specific case study in cultural borrowing and colonial power dynamics"
+    },
+    {
+      "from_source": "Beethoven's Ninth Symphony — deafness, revolution, and universal aspiration",
+      "to_source": "Ludwig van Beethoven — composer who bridged Classical and Romantic music",
+      "kind": "refines",
+      "reason": "Focuses the Beethoven profile onto a single landmark work that embodies his deafness, the era transition, and the political afterlife of art"
+    },
+    {
+      "from_source": "Morrison and the canon — how a banned author became required reading",
+      "to_source": "Toni Morrison — Nobel laureate, editor, and architect of Black literary infrastructure",
+      "kind": "refines",
+      "reason": "Extends Morrison's profile into the canon wars, showing how her work became both a target and a test case for institutional gatekeeping"
+    },
+    {
+      "from_source": "Morrison and the canon — how a banned author became required reading",
+      "to_source": "The canon wars — who decides what counts as 'great art'",
+      "kind": "refines",
+      "reason": "Uses Morrison's specific trajectory as a concrete case study illustrating the abstract dynamics of canon formation and contestation"
+    },
+    {
+      "from_source": "The 'tortured artist' myth — does suffering actually produce better art?",
+      "to_source": "Frida Kahlo — self-portraits, Mexican identity, and the politics of commodification",
+      "kind": "contradicts",
+      "reason": "Research on the tortured artist myth challenges the pain narrative that dominates popular reception of Kahlo, suggesting her art succeeded through discipline and political vision, not suffering alone"
+    },
+    {
+      "from_source": "Posthumous reputation shifts — artists condemned in life, celebrated after death",
+      "to_source": "The canon wars — who decides what counts as 'great art'",
+      "kind": "refines",
+      "reason": "Posthumous reputation shifts provide historical evidence for the canon wars argument that 'greatness' is institutionally constructed rather than intrinsic"
+    },
+    {
+      "from_source": "Art and propaganda — how regimes weaponize culture",
+      "to_source": "Beethoven's Ninth Symphony — deafness, revolution, and universal aspiration",
+      "kind": "refines",
+      "reason": "The Ninth Symphony's adoption by both democratic and authoritarian movements illustrates how propaganda co-opts genuine artistic achievement across political spectrums"
+    },
+    {
+      "from_source": "The 'tortured artist' myth — does suffering actually produce better art?",
+      "to_source": "Ludwig van Beethoven — composer who bridged Classical and Romantic music",
+      "kind": "contradicts",
+      "reason": "Research findings that creativity peaks during stability challenge the popular narrative that Beethoven's suffering was the engine of his genius"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "William Shakespeare — playwright, poet, and businessman",
+      "kind": "url",
+      "locator": "https://www.ebsco.com/research-starters/literature-and-writing/shakespeare-authorship-question",
+      "reason": "EBSCO Research Starters summary of authorship debate, including anti-Stratfordian arguments and academic consensus"
+    },
+    {
+      "pair_source": "William Shakespeare — playwright, poet, and businessman",
+      "kind": "url",
+      "locator": "https://www.smithsonianmag.com/arts-culture/to-be-or-not-to-be-shakespeare-127247606/",
+      "reason": "Smithsonian Magazine feature on the authorship question, covering biographical gaps and competing candidates"
+    },
+    {
+      "pair_source": "William Shakespeare — playwright, poet, and businessman",
+      "kind": "url",
+      "locator": "https://www.biography.com/authors-writers/a64501905/william-shakespeare-wealth",
+      "reason": "Biography.com profile on Shakespeare's financial life, Globe Theatre shares, and Stratford real estate investments"
+    },
+    {
+      "pair_source": "Leonardo da Vinci — painter, inventor, anatomist, and Renaissance polymath",
+      "kind": "url",
+      "locator": "https://www.thepinknews.com/2018/01/09/new-biography-paints-a-portrait-of-leonardo-da-vincis-life-as-an-openly-gay-man/",
+      "reason": "PinkNews coverage of Walter Isaacson's biography addressing Leonardo's sexuality and relationships"
+    },
+    {
+      "pair_source": "Leonardo da Vinci — painter, inventor, anatomist, and Renaissance polymath",
+      "kind": "url",
+      "locator": "https://www.artsy.net/article/artsy-editorial-6-things-leonardo-da-vinci",
+      "reason": "Artsy article covering lesser-known aspects of da Vinci's life including unfinished works and legal troubles"
+    },
+    {
+      "pair_source": "Leonardo da Vinci — painter, inventor, anatomist, and Renaissance polymath",
+      "kind": "url",
+      "locator": "https://www.vam.co.uk/articles/leonardo-da-vincis-notebooks",
+      "reason": "Victoria and Albert Museum resource on Leonardo's notebooks, their contents, and delayed publication"
+    },
+    {
+      "pair_source": "Ludwig van Beethoven — composer who bridged Classical and Romantic music",
+      "kind": "url",
+      "locator": "https://interlude.hk/beethovens-nephew-karl-inside-the-family-scandal-that-changed-music-history/",
+      "reason": "Interlude article on the custody battle over nephew Karl, including Karl's suicide attempt and Beethoven's volatile guardianship"
+    },
+    {
+      "pair_source": "Ludwig van Beethoven — composer who bridged Classical and Romantic music",
+      "kind": "url",
+      "locator": "https://www.biography.com/musicians/ludwig-van-beethoven",
+      "reason": "Biography.com profile covering deafness timeline, father's abuse, and the Classical-to-Romantic transition"
+    },
+    {
+      "pair_source": "Pablo Picasso — Cubism, prolific output, and unexamined personal cruelty",
+      "kind": "url",
+      "locator": "https://www.theparisreview.org/blog/2017/11/09/how-picasso-bled-the-women-in-his-life-for-art/",
+      "reason": "Paris Review essay documenting Picasso's treatment of women, including suicides of partners and family testimony"
+    },
+    {
+      "pair_source": "Pablo Picasso — Cubism, prolific output, and unexamined personal cruelty",
+      "kind": "url",
+      "locator": "https://jacobin.com/2023/06/pablo-picasso-brooklyn-museum-gadsby-communism",
+      "reason": "Jacobin article on Picasso's Communist Party membership, Lenin Peace Prizes, and the tension with Soviet aesthetics"
+    },
+    {
+      "pair_source": "Picasso and African art — the appropriation that built Cubism",
+      "kind": "url",
+      "locator": "https://www.moma.org/collection/works/79766",
+      "reason": "MoMA collection page for Les Demoiselles d'Avignon with curatorial context on African and Iberian influences"
+    },
+    {
+      "pair_source": "Picasso and African art — the appropriation that built Cubism",
+      "kind": "url",
+      "locator": "https://news.artnet.com/art-world/was-picasso-really-inspired-by-african-art-a-century-old-debate-reignites-2672344",
+      "reason": "Artnet feature on the ongoing scholarly debate over Picasso's African art influence and the appropriation question"
+    },
+    {
+      "pair_source": "Frida Kahlo — self-portraits, Mexican identity, and the politics of commodification",
+      "kind": "url",
+      "locator": "https://www.artsy.net/article/artsy-editorial-frida-kahlo-global-brand",
+      "reason": "Artsy article on how Kahlo became a global brand and the commodification of her image"
+    },
+    {
+      "pair_source": "Frida Kahlo — self-portraits, Mexican identity, and the politics of commodification",
+      "kind": "url",
+      "locator": "https://www.dailyartmagazine.com/the-art-and-politics-of-frida-kahlo/",
+      "reason": "DailyArt Magazine article on Kahlo's Communist Party membership, relationship with Rivera, and political dimensions of her work"
+    },
+    {
+      "pair_source": "Muhammad Ali — boxing, activism, and the performance of defiance",
+      "kind": "url",
+      "locator": "https://www.foxnews.com/lifestyle/this-day-history-april-28-1967-muhammad-ali-refuses-serve-military-vietnam-war",
+      "reason": "Fox News historical feature on Ali's April 28, 1967 draft refusal, conviction, and Supreme Court reversal"
+    },
+    {
+      "pair_source": "Muhammad Ali — boxing, activism, and the performance of defiance",
+      "kind": "url",
+      "locator": "https://www.pbs.org/newshour/health/was-boxing-to-blame-for-parkinsons-disease-in-muhammad-ali",
+      "reason": "PBS NewsHour report on the scientific debate over whether boxing caused Ali's Parkinson's disease"
+    },
+    {
+      "pair_source": "Muhammad Ali — boxing, activism, and the performance of defiance",
+      "kind": "url",
+      "locator": "https://bleacherreport.com/articles/2645884-ranking-muhammad-alis-10-greatest-lines-of-trash-talk",
+      "reason": "Bleacher Report ranking of Ali's trash talk, documenting its strategic and performative dimensions"
+    },
+    {
+      "pair_source": "Toni Morrison — Nobel laureate, editor, and architect of Black literary infrastructure",
+      "kind": "url",
+      "locator": "https://www.thenation.com/article/culture/toni-morrison-book-editor/",
+      "reason": "The Nation essay on Morrison's editorial career at Random House and her role championing Black writers"
+    },
+    {
+      "pair_source": "Toni Morrison — Nobel laureate, editor, and architect of Black literary infrastructure",
+      "kind": "url",
+      "locator": "https://www.nobelprize.org/prizes/literature/1993/press-release/",
+      "reason": "Official Nobel Prize press release for Morrison's 1993 Literature prize"
+    },
+    {
+      "pair_source": "Morrison and the canon — how a banned author became required reading",
+      "kind": "url",
+      "locator": "https://www.hup.harvard.edu/books/9780674673779",
+      "reason": "Harvard University Press page for Playing in the Dark, documenting its origin as Massey Lectures and its academic impact"
+    },
+    {
+      "pair_source": "The 'tortured artist' myth — does suffering actually produce better art?",
+      "kind": "url",
+      "locator": "https://www.gold.ac.uk/news/the-tortured-artist-myth/",
+      "reason": "Goldsmiths University press release on research linking wellbeing (not suffering) to creativity in 290 professional artists"
+    },
+    {
+      "pair_source": "The 'tortured artist' myth — does suffering actually produce better art?",
+      "kind": "url",
+      "locator": "https://www.creativityandmadness.com/blog/creativity-and-mental-health-debunking-the-myth-of-the-tortured-artist",
+      "reason": "Creativity and Madness organization resource reviewing psychiatric research on the artist-mental illness link"
+    },
+    {
+      "pair_source": "Art and propaganda — how regimes weaponize culture",
+      "kind": "url",
+      "locator": "https://www.artmajeur.com/en/magazine/5-art-history/art-as-a-propaganda-tool-through-the-ages/339232",
+      "reason": "Artmajeur historical survey of art as propaganda from ancient Egypt through 20th-century totalitarian regimes"
+    },
+    {
+      "pair_source": "Art and propaganda — how regimes weaponize culture",
+      "kind": "url",
+      "locator": "https://smarthistory.org/reframing-art-history/print-culture-propaganda-twentieth-century/",
+      "reason": "Smarthistory academic resource on 20th-century print propaganda including WWI and WWII poster campaigns"
+    },
+    {
+      "pair_source": "The canon wars — who decides what counts as 'great art'",
+      "kind": "url",
+      "locator": "https://jamesgmartin.center/2022/09/why-the-canon-wars-still-matter/",
+      "reason": "Martin Center essay on the continuing relevance of canon debates in university curricula"
+    },
+    {
+      "pair_source": "Posthumous reputation shifts — artists condemned in life, celebrated after death",
+      "kind": "url",
+      "locator": "https://stacker.com/stories/art-style/artists-who-found-fame-after-death",
+      "reason": "Stacker compilation of artists who achieved recognition only posthumously, with specific sales data and reception history"
+    },
+    {
+      "pair_source": "Posthumous reputation shifts — artists condemned in life, celebrated after death",
+      "kind": "url",
+      "locator": "https://listverse.com/2023/06/20/ten-renowned-artists-who-were-unappreciated-in-life/",
+      "reason": "Listverse article documenting ten artists including Cezanne and Monet whose reputations shifted dramatically after death"
+    },
+    {
+      "pair_source": "Beethoven's Ninth Symphony — deafness, revolution, and universal aspiration",
+      "kind": "url",
+      "locator": "https://www.kennedy-center.org/education/resources-for-educators/classroom-resources/media-and-interactives/artists/beethoven-ludwig-van/",
+      "reason": "Kennedy Center educational resource on Beethoven's life, deafness, and major works including the Ninth Symphony"
+    }
+  ]
+}

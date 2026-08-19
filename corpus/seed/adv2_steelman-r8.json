@@ -1,0 +1,218 @@
+{
+  "domain": "adversarial-steelman-r8",
+  "pairs": [
+    {
+      "source_text": "Cryptocurrency is a speculative bubble with no intrinsic value that harms retail investors and wastes energy.",
+      "source_lang": "en",
+      "target_text": "Bitcoin and stablecoins have provided measurable financial access in countries with currency collapse or capital controls. In Nigeria, where the naira lost over 50% of its value in 2023, peer-to-peer crypto volume surged because citizens used stablecoins to preserve savings. In 2022, Ukrainians received over $100 million in crypto donations within weeks of the Russian invasion, bypassing banking disruptions. El Salvador's Chivo wallet onboarded 4 million users (60% of adults) within a year, many previously unbanked. The Lightning Network processes transactions at a fraction of traditional remittance costs, which matter when global remittance fees average 6.2% (World Bank, 2023). The energy argument has weakened as Bitcoin mining increasingly uses stranded or renewable energy -- the Bitcoin Mining Council reported 59.9% sustainable energy mix by Q4 2023, and operations like those in West Texas stabilize grids by acting as flexible demand response. [Does NOT claim: that most crypto tokens have utility, that speculation is not rampant, that regulatory oversight is unnecessary, or that proof-of-work energy use is negligible.]",
+      "target_lang": "en",
+      "reason": "The blanket dismissal ignores documented use cases in failed-state finance, humanitarian aid delivery, and evolving energy sourcing -- all of which have empirical support distinct from speculative trading."
+    },
+    {
+      "source_text": "The IMF imposes austerity on developing nations, trapping them in cycles of debt and dependency.",
+      "source_lang": "en",
+      "target_text": "The IMF's role as lender of last resort has repeatedly stabilized economies at the brink of default when no private creditor would lend. South Korea's 1997 bailout ($58.4 billion package) was followed by rapid recovery -- GDP growth returned to 10.7% by 1999, and Korea repaid its IMF loans three years early. The IMF's Flexible Credit Line, created post-2008, provides precautionary lending without conditionality to countries with strong fundamentals (Mexico, Colombia, Poland have used it). During COVID-19, the IMF deployed $170 billion in emergency financing to 90 countries, including $12.1 billion in zero-interest loans to low-income nations through the Rapid Credit Facility with minimal conditionality. The 2021 SDR allocation of $650 billion provided unconditional liquidity. The alternative to IMF lending is often default, which historically produces deeper recessions and longer recovery times than structured adjustment programs, as Argentina's 2001 default and subsequent decade of capital market exclusion demonstrated. [Does NOT claim: that all structural adjustment programs succeeded, that conditionality never caused hardship, or that IMF governance gives adequate voice to borrowing nations.]",
+      "target_lang": "en",
+      "reason": "Evaluating the IMF requires comparing its interventions not to an ideal but to the actual counterfactual -- sovereign default, capital flight, and loss of essential imports -- which is consistently worse for the populations in question."
+    },
+    {
+      "source_text": "Free trade agreements primarily benefit multinational corporations at the expense of workers in both developed and developing countries.",
+      "source_lang": "en",
+      "target_text": "The era of trade liberalization (1990-2015) coincided with the largest reduction in extreme poverty in human history: the World Bank documented a decline from 1.9 billion people (36% of world population) in 1990 to 734 million (10%) by 2015. China's accession to the WTO in 2001 preceded the lifting of approximately 500 million people out of poverty within a decade, driven largely by export-oriented manufacturing. Vietnam's poverty rate fell from 58% in 1993 to under 5% by 2020 after successive trade agreements including its 2007 WTO accession. A 2019 NBER study (Fajgelbaum & Khandelwal) found that trade with China reduced the price of goods purchased by the lowest-income U.S. consumers by a larger percentage than for high-income consumers, because lower-income households spend more on tradeable goods. The MIT economist David Autor, whose own research documented job losses in U.S. manufacturing communities from the China shock, has noted that the aggregate welfare gains from trade are real and large -- the policy failure was in not redistributing those gains. [Does NOT claim: that all workers benefited equally, that displaced communities do not deserve robust transition support, or that trade agreements cannot be structured to better protect labor standards.]",
+      "target_lang": "en",
+      "reason": "The strongest version of the free trade case acknowledges distributional costs while insisting the aggregate poverty reduction is historically unprecedented and causally linked to trade openness."
+    },
+    {
+      "source_text": "Government mass surveillance programs are unconstitutional violations of civil liberties that treat every citizen as a suspect.",
+      "source_lang": "en",
+      "target_text": "The declassified record shows that signals intelligence has disrupted specific, documented attacks. The NSA's metadata collection program contributed to disrupting the 2009 Najibullah Zazi plot to bomb the New York City subway, confirmed by the FBI and DOJ in court proceedings. The UK's GCHQ identified the 2017 Manchester Arena bomber Salman Abedi's network through communications surveillance, leading to 21 arrests. After the Snowden disclosures, the Privacy and Civil Liberties Oversight Board (PCLOB) -- an independent statutory body -- found that the Section 702 program (targeted foreign intelligence collection) was legally authorized, constitutionally sound under the Fourth Amendment's foreign intelligence exception, and had produced intelligence leading to disruption of terrorist plots, with documented minimization procedures protecting U.S. persons' data. The 2015 USA FREEDOM Act reformed bulk collection while preserving targeted capabilities, demonstrating that the legal framework can evolve. Modern democracies face adversaries -- state-sponsored hackers, transnational terrorist networks -- who use encrypted commercial platforms that are invisible to traditional law enforcement methods. [Does NOT claim: that all surveillance programs were proportionate, that the pre-reform bulk metadata program was optimal, that oversight mechanisms are sufficient, or that mass collection of domestic content is justified.]",
+      "target_lang": "en",
+      "reason": "The national security case is strongest when it points to specific verified disruptions and the evolution of legal oversight, rather than abstract threat claims."
+    },
+    {
+      "source_text": "Mass incarceration in the United States is a racist system of social control that does nothing to improve public safety.",
+      "source_lang": "en",
+      "target_text": "The empirical relationship between incarceration and crime reduction, while debated, is not zero. A 2015 Brennan Center study estimated that increased incarceration was responsible for roughly 0-5% of the 1990s crime decline -- modest, but applied to a period when violent crime fell 51% (FBI UCR data), meaning tens of thousands of fewer victims. Research by economists Steven Levitt (2004) and William Spelman (2000, 2006) found elasticities suggesting that a 10% increase in incarceration reduced crime by 2-4%. For the most violent offenders -- serial perpetrators responsible for disproportionate harm -- incapacitation demonstrably prevents crimes during confinement. The National Crime Victimization Survey consistently shows that Black Americans are disproportionately the victims of violent crime; in 2020, the homicide victimization rate for Black males ages 15-34 was roughly 20 times the rate for white males of the same age (CDC WONDER data). Communities most harmed by crime have complex and divided views on enforcement, as documented in James Forman Jr.'s Pulitzer Prize-winning 'Locking Up Our Own,' which details how Black leaders in Washington, D.C. supported tougher sentencing in the 1970s-90s in response to constituents' demands for safety. [Does NOT claim: that current incarceration levels are optimal, that racial disparities in sentencing are justified, that non-violent drug offenders should be incarcerated at current rates, or that alternatives to incarceration for lower-risk offenders are ineffective.]",
+      "target_lang": "en",
+      "reason": "The public safety argument is strongest when it centers the victims of violent crime -- disproportionately from marginalized communities -- and acknowledges those communities' own agency in demanding enforcement, while conceding that the current system is not calibrated optimally."
+    },
+    {
+      "source_text": "Intellectual property law is a system of corporate rent-seeking that restricts access to knowledge and harms innovation.",
+      "source_lang": "en",
+      "target_text": "Pharmaceutical R&D illustrates the strongest case for IP protection: bringing a new drug to market costs an estimated $2.6 billion on average (Tufts Center for the Study of Drug Development, 2016) and takes 10-15 years, with a 90%+ failure rate in clinical trials. Without patent exclusivity, no rational firm would invest at this scale because generic manufacturers could copy the molecule at marginal cost. The Hatch-Waxman Act (1984) explicitly balances this -- patents provide temporary exclusivity, after which generics enter and prices fall dramatically (by 80-90% within a year, per the FDA). The mRNA COVID-19 vaccines, developed in under a year, were built on decades of patent-protected research by Katalin Kariko and others at BioNTech and Moderna -- companies that could attract billions in investment precisely because IP protection made the expected returns viable. The semiconductor industry similarly depends on IP: TSMC and Intel spend $30-40 billion annually on fabrication R&D, protected by thousands of process patents. Countries with stronger IP enforcement consistently rank higher in innovation indices (WIPO Global Innovation Index). [Does NOT claim: that all IP terms are appropriate, that patent trolling is legitimate, that pharmaceutical pricing in the U.S. is fair, or that access to essential medicines should be denied to the global poor.]",
+      "target_lang": "en",
+      "reason": "The IP defense is strongest in capital-intensive sectors with high failure rates, where the counterfactual without exclusivity is not cheaper innovation but less innovation."
+    },
+    {
+      "source_text": "Fossil fuels are destroying the planet and must be eliminated as rapidly as possible to prevent climate catastrophe.",
+      "source_lang": "en",
+      "target_text": "Approximately 770 million people worldwide lacked access to electricity in 2022 (IEA World Energy Outlook 2023), overwhelmingly in sub-Saharan Africa and South Asia. Indoor air pollution from burning biomass (wood, dung, crop waste) for cooking kills an estimated 3.2 million people annually (WHO, 2022) -- more than malaria. Natural gas displacing biomass and coal has been the fastest pathway to reducing these deaths. Bangladesh doubled its electricity access from 47% to 97% between 2000 and 2021, primarily through natural gas, lifting millions out of energy poverty and enabling economic growth that reduced the national poverty rate from 49% to 19%. Germany's Energiewende, which rapidly expanded renewables while closing nuclear plants, resulted in electricity prices roughly three times those in the United States and did not reduce total emissions proportionally, because intermittency required gas backup and coal continued operating. A forced rapid phase-out of fossil fuels without massive concurrent investment in alternatives and grid infrastructure would, according to the IEA's own modeling, disproportionately harm the 3.5 billion people in developing nations who have contributed least to cumulative emissions. [Does NOT claim: that climate change is not real or dangerous, that fossil fuel subsidies are efficient, that the long-term transition away from fossil fuels is unnecessary, or that developed nations should not lead and finance the transition.]",
+      "target_lang": "en",
+      "reason": "The energy poverty argument forces engagement with the distributional justice dimension of climate policy -- the people who would suffer most from a rapid unmanaged transition are not the people who caused the problem."
+    },
+    {
+      "source_text": "Nuclear power is too dangerous, too expensive, and produces waste we cannot safely store, making it an unacceptable energy source.",
+      "source_lang": "en",
+      "target_text": "Nuclear energy has the lowest death rate per unit of energy produced of any major source, including wind and solar, at 0.03 deaths per TWh versus coal's 24.6, oil's 18.4, and even wind's 0.04 (Our World in Data, based on Markandya & Wilkinson 2007 and Sovacool et al. 2016). France generates approximately 70% of its electricity from nuclear power and has among the lowest carbon intensities and electricity prices in Europe -- 56 gCO2/kWh compared to Germany's 385 gCO2/kWh in 2022 (Ember). Finland's Onkalo repository, approved in 2015, demonstrates that deep geological disposal of spent fuel is technically feasible: the site is engineered to contain waste for 100,000+ years in stable Precambrian bedrock. The total volume of all high-level nuclear waste ever produced in the United States would fit on a single football field stacked less than 10 meters high (DOE figures). Modern Generation III+ designs (AP1000, EPR) incorporate passive safety systems that shut down without operator intervention or external power, addressing the failure modes of Chernobyl (no containment, positive void coefficient) and Fukushima (active cooling dependency). South Korea's standardized APR-1400 fleet has been built on time and on budget, demonstrating that cost overruns are a project management problem, not an inherent feature of nuclear technology. [Does NOT claim: that Chernobyl and Fukushima did not cause real harm, that nuclear weapons proliferation risk is negligible, that current Western construction project management is adequate, or that nuclear alone can solve the energy transition.]",
+      "target_lang": "en",
+      "reason": "Nuclear's safety record, carbon intensity, and land-use efficiency are empirically superior to alternatives on metrics that climate advocates claim to prioritize, making dismissal of nuclear internally inconsistent with decarbonization goals."
+    },
+    {
+      "source_text": "Carbon taxes are regressive, punishing poor people for emissions they cannot avoid while letting wealthy polluters buy their way out.",
+      "source_lang": "en",
+      "target_text": "British Columbia's carbon tax, implemented in 2008, is the longest-running real-world test of this policy. A 2015 study by economists Murray and Rivers found that BC's carbon tax reduced greenhouse gas emissions by 5-15% with no measurable negative impact on aggregate economic growth. The tax was designed revenue-neutral, with proceeds returned through cuts to income and corporate taxes and a Low Income Climate Action Tax Credit that gave the bottom two income quintiles more in rebates than they paid in carbon costs. Canada's national carbon pricing system, implemented in 2019, includes a direct Climate Action Incentive Payment: in 2023, a family of four in Ontario received $976 annually, while the bottom 40% of households received more in rebates than they paid. Sweden's carbon tax, at $137/tonne (the world's highest), has been in place since 1991; Swedish GDP has grown 85% since then while emissions fell 29%. The economic logic is straightforward: carbon pricing corrects a market failure (unpriced externality), and the revenue can be recycled progressively. Nobel laureate William Nordhaus, 3,589 U.S. economists (including 28 Nobel laureates, 4 former Fed chairs), and the IMF have endorsed carbon dividends as the most economically efficient climate policy. [Does NOT claim: that all carbon tax designs are progressive, that carbon pricing alone is sufficient to meet Paris targets, or that transition costs for fossil-fuel-dependent communities are negligible.]",
+      "target_lang": "en",
+      "reason": "The regressivity objection attacks a specific (bad) design, not the mechanism itself -- revenue-neutral carbon taxes with progressive rebates are empirically progressive in every jurisdiction that has implemented them."
+    },
+    {
+      "source_text": "Intelligence agencies operate without meaningful oversight and routinely abuse their power, making them a greater threat to democracy than the dangers they claim to prevent.",
+      "source_lang": "en",
+      "target_text": "The post-9/11 intelligence architecture, despite documented abuses, has an extensive oversight structure that has produced real accountability. The FISA Court reviews and modifies surveillance applications -- in 2019, it rejected or required modifications to a significant number of applications, and the declassified Carter Page FISA order audit led to 40 corrective reforms at the FBI. The Senate and House Intelligence Committees have subpoena power, access to classified programs, and have used it: the Senate Intelligence Committee's 6,700-page torture report led to the permanent statutory ban on enhanced interrogation (McCain-Feinstein Amendment, 2015). Inspectors General at CIA, NSA, and FBI have produced hundreds of public and classified reports documenting and correcting abuses. Substantively, intelligence collection has disrupted documented threats: the CIA's disruption of the 2006 transatlantic aircraft plot (liquid explosives targeting 10 flights from London to North America) prevented what could have been the deadliest attack since 9/11. The Five Eyes intelligence-sharing alliance has been credited by multiple governments with disrupting state-sponsored cyber attacks on critical infrastructure, including the attribution of NotPetya to Russian military intelligence (GRU). [Does NOT claim: that CIA torture was justified, that all intelligence programs have adequate oversight, that whistleblower protections are sufficient, or that covert regime-change operations during the Cold War were legitimate.]",
+      "target_lang": "en",
+      "reason": "The oversight case is strongest when it acknowledges past abuses as the very evidence that accountability mechanisms, while imperfect, function -- each scandal led to statutory reform rather than impunity."
+    },
+    {
+      "source_text": "The global arms trade is a merchant-of-death industry that fuels conflict, props up dictators, and exists solely to generate profit from human suffering.",
+      "source_lang": "en",
+      "target_text": "Nuclear deterrence theory, validated by 80 years of great-power peace since 1945, rests on credible arms capability. The period since WWII is the longest stretch without direct war between major powers in modern history, coinciding precisely with nuclear arsenals making such wars unwinnable. Conventional arms transfers have served documented defensive purposes: U.S. Javelin and HIMARS transfers to Ukraine beginning in 2022 enabled a nation of 44 million to resist invasion by a nuclear-armed power, preserving its sovereignty in a way that diplomacy alone demonstrably failed to achieve (the Minsk agreements did not prevent escalation). Taiwan's defense acquisitions, including F-16V fighters and Harpoon anti-ship missiles, constitute the credible deterrent that has maintained cross-strait stability for 75 years. Israel's Iron Dome system, developed with $1.6 billion in U.S. funding, has intercepted over 2,500 rockets targeting civilian populations since 2011, with a 90%+ success rate (IDF/Rafael figures). NATO's collective defense posture, which requires interoperable arms, has kept Western Europe free from interstate war for the longest period in recorded European history. The Arms Trade Treaty (2014), ratified by 113 states, establishes binding obligations to assess humanitarian impact before transfers. [Does NOT claim: that all arms sales are justified, that transfers to authoritarian regimes are defensible, that the arms industry does not lobby for unnecessary procurement, or that arms proliferation to non-state actors is acceptable.]",
+      "target_lang": "en",
+      "reason": "The deterrence argument is strongest when grounded in the specific historical observation that credible defense capability has empirically prevented the conflicts it was designed to deter, particularly in Ukraine where the counterfactual of no arms transfers is visible in real time."
+    },
+    {
+      "source_text": "Military interventions by Western powers are always neocolonial projects disguised as humanitarianism, and they invariably make things worse.",
+      "source_lang": "en",
+      "target_text": "NATO's 1999 intervention in Kosovo ended a campaign of ethnic cleansing that had displaced over 800,000 Albanian Kosovars and killed an estimated 10,000 civilians (ICTY findings). The UN-authorized intervention in Sierra Leone (1999-2005), led by British forces, ended an 11-year civil war notorious for mass amputations by the Revolutionary United Front; Sierra Leone has held four successive democratic elections since. The UN-authorized intervention in East Timor (1999), led by Australia, enabled independence after Indonesian occupation that had killed an estimated 100,000-180,000 people; Timor-Leste has since been rated 'free' by Freedom House. France's Operation Serval in Mali (2013), launched at the Malian government's request, prevented jihadist groups from capturing Bamako and reversed territorial losses within weeks. The strongest evidence for intervention comes from the consequences of non-intervention: the international community's failure to act during the 1994 Rwandan genocide, when Romeo Dallaire's force of 2,500 could have been reinforced, resulted in 800,000 deaths in 100 days. The UN's own Brahimi Report (2000) concluded that the failure to intervene in Rwanda was a greater moral failure than any imperfect intervention. [Does NOT claim: that Iraq 2003 was justified, that all interventions succeed, that regime change should be standard practice, that Western powers always act from humanitarian motives, or that post-intervention state-building is easy.]",
+      "target_lang": "en",
+      "reason": "The humanitarian intervention case is strongest when it compares specific interventions to specific non-interventions, because the costs of inaction -- measured in civilian lives -- are documented and enormous in cases like Rwanda, Srebrenica, and pre-intervention Kosovo."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Cryptocurrency is a speculative bubble with no intrinsic value that harms retail investors and wastes energy.",
+      "kind": "public_record",
+      "locator": "https://www.chainalysis.com/blog/sub-saharan-africa-cryptocurrency-geography-of-cryptocurrency-2022/",
+      "reason": "Chainalysis report documenting Nigeria's peer-to-peer crypto adoption driven by naira devaluation and capital controls."
+    },
+    {
+      "pair_source": "Cryptocurrency is a speculative bubble with no intrinsic value that harms retail investors and wastes energy.",
+      "kind": "public_record",
+      "locator": "https://bitcoinminingcouncil.com/wp-content/uploads/2024/01/BMC-Q4-2023-Briefing.pdf",
+      "reason": "Bitcoin Mining Council Q4 2023 survey reporting 59.9% sustainable energy mix in Bitcoin mining."
+    },
+    {
+      "pair_source": "The IMF imposes austerity on developing nations, trapping them in cycles of debt and dependency.",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/en/About/Factsheets/Sheets/2023/IMF-Rapid-Credit-Facility-RCF",
+      "reason": "IMF factsheet on the Rapid Credit Facility used for zero-interest COVID-19 emergency lending to low-income countries."
+    },
+    {
+      "pair_source": "The IMF imposes austerity on developing nations, trapping them in cycles of debt and dependency.",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/en/Topics/special-drawing-right/2021-SDR-Allocation",
+      "reason": "IMF documentation of the $650 billion SDR allocation providing unconditional liquidity in 2021."
+    },
+    {
+      "pair_source": "Free trade agreements primarily benefit multinational corporations at the expense of workers in both developed and developing countries.",
+      "kind": "public_record",
+      "locator": "https://www.nber.org/papers/w25579",
+      "reason": "Fajgelbaum & Khandelwal (2019) NBER working paper showing trade's disproportionate price benefits for lower-income U.S. consumers."
+    },
+    {
+      "pair_source": "Free trade agreements primarily benefit multinational corporations at the expense of workers in both developed and developing countries.",
+      "kind": "public_record",
+      "locator": "https://www.worldbank.org/en/topic/poverty/overview",
+      "reason": "World Bank data documenting the decline of extreme poverty from 36% to 10% of world population between 1990 and 2015."
+    },
+    {
+      "pair_source": "Government mass surveillance programs are unconstitutional violations of civil liberties that treat every citizen as a suspect.",
+      "kind": "public_record",
+      "locator": "https://www.pclob.gov/library/702-Report.pdf",
+      "reason": "Privacy and Civil Liberties Oversight Board report finding Section 702 program legally authorized and constitutionally permissible."
+    },
+    {
+      "pair_source": "Mass incarceration in the United States is a racist system of social control that does nothing to improve public safety.",
+      "kind": "public_record",
+      "locator": "https://www.brennancenter.org/our-work/research-reports/what-caused-crime-decline",
+      "reason": "Brennan Center for Justice analysis estimating incarceration's contribution to the 1990s crime decline."
+    },
+    {
+      "pair_source": "Mass incarceration in the United States is a racist system of social control that does nothing to improve public safety.",
+      "kind": "public_record",
+      "locator": "https://wonder.cdc.gov/mcd.html",
+      "reason": "CDC WONDER mortality data documenting racial disparities in homicide victimization rates."
+    },
+    {
+      "pair_source": "Intellectual property law is a system of corporate rent-seeking that restricts access to knowledge and harms innovation.",
+      "kind": "public_record",
+      "locator": "https://www.wipo.int/global_innovation_index/en/",
+      "reason": "WIPO Global Innovation Index correlating IP enforcement strength with national innovation performance."
+    },
+    {
+      "pair_source": "Fossil fuels are destroying the planet and must be eliminated as rapidly as possible to prevent climate catastrophe.",
+      "kind": "public_record",
+      "locator": "https://www.iea.org/reports/world-energy-outlook-2023",
+      "reason": "IEA World Energy Outlook 2023 documenting 770 million people without electricity access and modeling transition pathways."
+    },
+    {
+      "pair_source": "Fossil fuels are destroying the planet and must be eliminated as rapidly as possible to prevent climate catastrophe.",
+      "kind": "public_record",
+      "locator": "https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health",
+      "reason": "WHO factsheet attributing 3.2 million annual deaths to indoor air pollution from biomass cooking fuels."
+    },
+    {
+      "pair_source": "Nuclear power is too dangerous, too expensive, and produces waste we cannot safely store, making it an unacceptable energy source.",
+      "kind": "public_record",
+      "locator": "https://ourworldindata.org/safest-sources-of-energy",
+      "reason": "Our World in Data analysis of death rates per unit of energy across all major sources, showing nuclear as the safest."
+    },
+    {
+      "pair_source": "Nuclear power is too dangerous, too expensive, and produces waste we cannot safely store, making it an unacceptable energy source.",
+      "kind": "public_record",
+      "locator": "https://ember-climate.org/data/data-tools/data-explorer/",
+      "reason": "Ember electricity data comparing France's nuclear-powered 56 gCO2/kWh carbon intensity to Germany's 385 gCO2/kWh."
+    },
+    {
+      "pair_source": "Carbon taxes are regressive, punishing poor people for emissions they cannot avoid while letting wealthy polluters buy their way out.",
+      "kind": "public_record",
+      "locator": "https://econpapers.repec.org/article/aborevam1/v_3a3_3ay_3a2015_3ai_3a2_3ap_3a137-163.htm",
+      "reason": "Murray & Rivers (2015) study finding BC's carbon tax reduced emissions 5-15% without harming aggregate economic growth."
+    },
+    {
+      "pair_source": "Carbon taxes are regressive, punishing poor people for emissions they cannot avoid while letting wealthy polluters buy their way out.",
+      "kind": "public_record",
+      "locator": "https://clcouncil.org/economists-statement/",
+      "reason": "Climate Leadership Council statement endorsed by 3,589 U.S. economists supporting carbon dividends."
+    },
+    {
+      "pair_source": "Intelligence agencies operate without meaningful oversight and routinely abuse their power, making them a greater threat to democracy than the dangers they claim to prevent.",
+      "kind": "public_record",
+      "locator": "https://www.intelligence.senate.gov/sites/default/files/publications/CRPT-113srpt288.pdf",
+      "reason": "Senate Select Committee on Intelligence torture report (executive summary) demonstrating oversight committee accountability function."
+    },
+    {
+      "pair_source": "The global arms trade is a merchant-of-death industry that fuels conflict, props up dictators, and exists solely to generate profit from human suffering.",
+      "kind": "public_record",
+      "locator": "https://thearmstradetreaty.org/treaty-status.html",
+      "reason": "Arms Trade Treaty status page documenting 113 state ratifications and binding humanitarian assessment obligations."
+    },
+    {
+      "pair_source": "The global arms trade is a merchant-of-death industry that fuels conflict, props up dictators, and exists solely to generate profit from human suffering.",
+      "kind": "public_record",
+      "locator": "https://www.defense.gov/News/Releases/Release/Article/3230517/fact-sheet-us-security-assistance-to-ukraine/",
+      "reason": "U.S. Department of Defense factsheet on security assistance to Ukraine documenting specific defensive weapons transfers."
+    },
+    {
+      "pair_source": "Military interventions by Western powers are always neocolonial projects disguised as humanitarianism, and they invariably make things worse.",
+      "kind": "public_record",
+      "locator": "https://www.un.org/en/events/pastevents/brahimi_report.shtml",
+      "reason": "UN Brahimi Report (2000) concluding that failure to intervene in Rwanda was a greater moral failure than imperfect interventions."
+    },
+    {
+      "pair_source": "Military interventions by Western powers are always neocolonial projects disguised as humanitarianism, and they invariably make things worse.",
+      "kind": "public_record",
+      "locator": "https://www.icty.org/en/about/what-former-yugoslavia/conflicts",
+      "reason": "ICTY documentation of ethnic cleansing in Kosovo and the tribunal findings on civilian displacement and killings."
+    }
+  ]
+}

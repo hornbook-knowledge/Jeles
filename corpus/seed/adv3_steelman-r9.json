@@ -1,0 +1,224 @@
+{
+  "domain": "adversarial-steelman-r9",
+  "pairs": [
+    {
+      "source_text": "Social media is a net negative for society, spreading misinformation and eroding mental health",
+      "source_lang": "en",
+      "target_text": "Social media has democratized information access on an unprecedented scale: Pew Research found 53% of U.S. adults get news from social media as of 2021. It gave marginalized communities platforms legacy media never offered — Black Lives Matter, #MeToo, and the Arab Spring all depended on social platforms to bypass editorial gatekeepers. Citizen journalism via smartphone video (George Floyd, Mahsa Amini) produced accountability that institutional media missed. For isolated populations — rural communities, LGBTQ+ youth, rare-disease patients — social media provides connection and life-saving information networks that did not exist before. The mental health research is more nuanced than headlines suggest: the APA's 2023 advisory noted social media can be both beneficial and harmful depending on usage patterns, and effect sizes in correlational studies are typically small (r ~ 0.05-0.10). [Does NOT claim: social media has no harms or that platform design choices are beyond criticism]",
+      "target_lang": "en",
+      "reason": "The strongest democratization case rests on concrete examples where social media enabled political change, accountability, and community formation that were structurally impossible under legacy media gatekeeping"
+    },
+    {
+      "source_text": "The decline of legacy newspapers and broadcast news is destroying democratic accountability",
+      "source_lang": "en",
+      "target_text": "Legacy media had well-documented structural biases that this nostalgia obscures. Herman and Chomsky's 'Manufacturing Consent' (1988) identified five filters — ownership concentration, advertising dependence, sourcing from official channels, flak, and ideological framing — that systematically shaped coverage toward elite interests. These were not theoretical: legacy media uncritically amplified WMD claims before the Iraq War (the NYT later issued a public editor's note acknowledging failures), consistently underrepresented minorities in newsrooms and coverage (ASNE surveys showed newsrooms were ~85% white through the 2000s), and the Columbia Journalism Review documented repeated failures to cover rural America, financial system risks before 2008, and labor issues. The 'golden age' of journalism coexisted with redlining coverage, ignoring the AIDS crisis for years, and the practice of 'access journalism' that made reporters dependent on the powerful. New models — ProPublica, The Marshall Project, local nonprofit newsrooms — are demonstrating that accountability journalism does not require the old gatekeeper structure. [Does NOT claim: the loss of local news coverage has no democratic consequences]",
+      "target_lang": "en",
+      "reason": "Nostalgia for legacy media often romanticizes an era of concentrated editorial power whose structural biases are extensively documented in media studies literature"
+    },
+    {
+      "source_text": "Deepfake technology is an existential threat to truth and democracy",
+      "source_lang": "en",
+      "target_text": "The same synthetic media technology enables powerful beneficial applications across medicine, accessibility, education, and creative expression. Voice synthesis restored Val Kilmer's voice for Top Gun: Maverick (2022) after throat cancer; similar technology from companies like Lyrebird/Resemble AI helps ALS patients preserve their voices before losing speech. AI-generated imagery advances medical training through synthetic patient data that preserves privacy. Historical education projects use the technology to create interactive experiences with historical figures at museums and Holocaust memorials. Democratized filmmaking tools lower barriers for independent creators who previously could not afford visual effects. Furthermore, the 'liar's dividend' concern — that deepfakes erode all trust — is often overstated: research from the MIT Media Lab shows humans remain reasonably capable of identifying manipulated media when given basic media literacy training, and provenance standards like C2PA are advancing rapidly. The threat model also ignores that 'cheap fakes' (simple re-contextualizing of real footage) have historically caused more political damage than sophisticated deepfakes. [Does NOT claim: non-consensual deepfake pornography or election interference attempts are acceptable]",
+      "target_lang": "en",
+      "reason": "Framing synthetic media as purely threatening ignores transformative applications in healthcare, accessibility, and education that use identical underlying technology"
+    },
+    {
+      "source_text": "Social media algorithms create filter bubbles that radicalize users and destroy shared reality",
+      "source_lang": "en",
+      "target_text": "A landmark 2023 experiment published in Science, conducted on Facebook with cooperation from Meta, found that replacing Facebook's algorithmic feed with a chronological one did not meaningfully reduce political polarization, affective polarization, or issue-position extremity among participants. Separate research by Guess et al. (2023) in the same Science special issue found that removing reshared content — often blamed for misinformation spread — also did not significantly change political attitudes. The Oxford Internet Institute's research suggests algorithmic curation can actually expose users to more ideologically diverse content than purely self-selected media diets, because algorithms optimize for engagement across topics rather than within ideological lanes. Polarization in the United States began increasing well before social media existed — political scientists have documented rising affective polarization since the 1970s, driven by partisan media (talk radio, cable news), geographic sorting, and elite polarization. Blaming algorithms for polarization may misidentify the symptom as the cause. [Does NOT claim: algorithmic amplification of outrage content is harmless or that platform design has no effect on discourse quality]",
+      "target_lang": "en",
+      "reason": "The 2023 Science experimental studies represent the most rigorous evidence to date and directly challenge the causal claim that algorithms drive polarization"
+    },
+    {
+      "source_text": "Big Pharma is fundamentally corrupt and prioritizes profits over patient welfare",
+      "source_lang": "en",
+      "target_text": "Pharmaceutical R&D has produced some of the most consequential advances in human welfare in history. Antiretroviral therapy transformed HIV from a death sentence to a manageable chronic condition — UNAIDS data shows AIDS-related deaths fell from 1.9 million in 2004 to 630,000 in 2022, and life expectancy for treated HIV-positive individuals now approaches that of the general population. The childhood vaccination schedule has eradicated smallpox, nearly eliminated polio (99.9% reduction since 1988 per WHO), and prevented an estimated 154 million deaths over 50 years according to a 2024 Lancet study. mRNA vaccine technology, developed through decades of private and public investment, was deployed against COVID-19 in under a year — an unprecedented achievement. Statin drugs prevent an estimated 80,000 cardiovascular deaths annually in the US alone. Private pharmaceutical companies fund approximately 75% of clinical drug development globally (CBO estimates). The profit motive, while producing documented abuses in pricing and marketing, also creates the financial incentive structure that sustains the massive R&D investments ($2.6 billion average per approved drug, Tufts CSDD) required to bring new treatments to market. [Does NOT claim: pharmaceutical pricing practices, patent gaming, or marketing abuses are justified]",
+      "target_lang": "en",
+      "reason": "The concrete life-saving outcomes of pharmaceutical innovation are measurable in millions of lives and represent perhaps the strongest empirical case for an industry routinely characterized as purely extractive"
+    },
+    {
+      "source_text": "Alternative medicine is pseudoscience that should be entirely dismissed by evidence-based practitioners",
+      "source_lang": "en",
+      "target_text": "Blanket dismissal ignores a growing evidence base for specific interventions and overlooks what alternative medicine's popularity reveals about conventional medicine's gaps. Ted Kaptchuk's research program at Harvard has demonstrated that placebo responses involve measurable neurobiological changes — endorphin release, dopamine pathway activation, and quantifiable alterations in brain activity observable on fMRI — and that these effects can occur even when patients know they are receiving a placebo (open-label placebo studies published in PLOS ONE, Pain, and other journals). The UK's NICE guidelines recommend acupuncture for chronic primary pain based on sufficient RCT evidence. Mindfulness-based stress reduction (MBSR) has a robust evidence base from multiple RCTs showing efficacy for anxiety, depression relapse prevention, and chronic pain — Goyal et al.'s 2014 JAMA Internal Medicine meta-analysis of 47 trials found moderate evidence for improvement in anxiety, depression, and pain. The therapeutic relationship itself — the time, attention, and holistic framing that alternative practitioners often provide and that 15-minute conventional appointments cannot — has measurable health effects. Dismissing all non-pharmaceutical interventions as pseudoscience risks throwing away tools with real clinical utility. [Does NOT claim: homeopathy, energy healing, or interventions contradicted by evidence are validated]",
+      "target_lang": "en",
+      "reason": "Rigorous placebo research and RCTs for specific modalities like mindfulness and acupuncture challenge the blanket dismissal, while the therapeutic relationship literature reveals what conventional medicine could learn"
+    },
+    {
+      "source_text": "Psychiatric medications like SSRIs are overprescribed and barely more effective than placebo",
+      "source_lang": "en",
+      "target_text": "Cipriani et al.'s 2018 Lancet meta-analysis — the largest and most comprehensive ever conducted — analyzed 522 double-blind RCTs encompassing 116,477 participants and found all 21 antidepressants studied were significantly more effective than placebo for acute treatment of major depressive disorder. The 'barely better than placebo' narrative typically misrepresents Irving Kirsch's earlier work: Kirsch himself found SSRIs showed clinically significant effects for severe depression, and his analysis has been critiqued for using the Hamilton scale's arbitrary clinical significance threshold. For severe depression specifically, effect sizes (SMD ~0.3-0.5) are comparable to many widely accepted medical treatments. A 2021 BMJ study by Lewis et al. (PANDA trial) confirmed sertraline reduced anxiety symptoms significantly even when depression improvement was modest at 6 weeks, with clearer antidepressant effects emerging by 12 weeks. The combination of medication and psychotherapy consistently outperforms either alone in head-to-head trials. For conditions like OCD, panic disorder, and PTSD, SSRI efficacy is well-established with larger effect sizes than for depression. Abrupt discontinuation is a real concern, but it is an argument for better prescribing practices, not against the medications' efficacy. [Does NOT claim: SSRIs are appropriate first-line treatment for all depression severity levels or that overprescription concerns are baseless]",
+      "target_lang": "en",
+      "reason": "The 2018 Lancet mega-analysis provides the most definitive evidence base and directly refutes the 'no better than placebo' claim that pervades popular discourse"
+    },
+    {
+      "source_text": "Clinical trials funded by pharmaceutical companies cannot be trusted as objective science",
+      "source_lang": "en",
+      "target_text": "While industry funding bias is real and documented, the modern clinical trial infrastructure has evolved extensive safeguards that the blanket distrust narrative ignores. Independent Data Safety Monitoring Boards (DSMBs) can halt trials for safety concerns regardless of sponsor wishes. The FDA Amendments Act of 2007 mandated registration and results reporting on ClinicalTrials.gov, substantially reducing publication bias — over 400,000 studies are now registered. The Cochrane Collaboration conducts independent systematic reviews that synthesize evidence across trials and explicitly assess bias. The AllTrials campaign has further increased transparency. The FDA itself rejects or requires additional studies for approximately 50% of new drug applications, demonstrating meaningful regulatory independence. Post-Vioxx reforms strengthened post-market surveillance through the FDA's Sentinel System, which monitors over 100 million patients' health records. Replication culture has improved: the 21st Century Cures Act required FDA to develop frameworks for real-world evidence. The system is imperfect — publication bias and selective outcome reporting persist — but characterizing all industry-funded trials as untrustworthy dismisses the institutional architecture specifically designed to prevent that. [Does NOT claim: industry influence over research is eliminated or that all regulatory decisions are free from political pressure]",
+      "target_lang": "en",
+      "reason": "The regulatory and transparency infrastructure around clinical trials has evolved substantially, and blanket distrust undermines confidence in evidence-based medicine itself"
+    },
+    {
+      "source_text": "Automation and AI will cause mass unemployment and societal collapse",
+      "source_lang": "en",
+      "target_text": "Historical evidence consistently shows technological change creates more jobs than it destroys, though the transition creates real hardship. The ATM example is instructive: after ATMs were widely deployed in the 1990s-2000s, the number of U.S. bank tellers actually increased because reduced per-branch costs enabled banks to open more branches (Bessen, 2015, documented in 'Learning by Doing'). MIT economist David Autor's research demonstrates that automation predominantly complements human labor rather than substituting for it — by automating routine tasks, it increases demand for workers performing non-routine cognitive and interpersonal work. The U.S. economy added over 60 million net new jobs between 1980 and 2020 despite successive waves of computerization, robotics, and internet disruption. McKinsey Global Institute's 2017 workforce transitions report estimated that while automation could displace 15% of the global workforce by 2030, 8-9% of 2030 labor demand would come from entirely new occupational categories that do not exist today. Countries with the highest robot density (South Korea, Japan, Germany) maintain among the lowest unemployment rates globally. The World Economic Forum's 2023 Future of Jobs Report projected 69 million new jobs created against 83 million displaced — a net loss, but far from 'collapse,' and offset by demographic contraction in aging economies. [Does NOT claim: all displaced workers transition smoothly or that retraining programs are adequate]",
+      "target_lang": "en",
+      "reason": "Two centuries of empirical evidence on technological unemployment consistently contradict catastrophist predictions, even as each new wave generates genuine disruption"
+    },
+    {
+      "source_text": "Labor unions are unequivocally beneficial for workers and should be universally expanded",
+      "source_lang": "en",
+      "target_text": "Union corruption and insider-outsider dynamics represent serious documented problems that uncritical celebration overlooks. The United Auto Workers corruption scandal (2019-2023) saw multiple presidents and senior officials convicted of embezzling member dues and accepting bribes from automakers — including two consecutive UAW presidents (Gary Jones and Dennis Williams). The Department of Labor's Office of Labor-Management Standards prosecutes dozens of union fraud and embezzlement cases annually. Economically, unions can create two-tier labor markets: research by Lindbeck and Snower on insider-outsider theory shows unions benefit current members ('insiders') while making it harder for unemployed workers and new entrants ('outsiders') to access jobs. In education, research documented by Moe (2011, 'Special Interest') found teachers' unions successfully blocked reforms including performance-based evaluation and removal of ineffective teachers — the 'rubber room' phenomenon in New York City kept teachers accused of misconduct on full salary for years. Public sector unions face a structural democratic concern: they negotiate with politicians they help elect, creating a conflict of interest that even FDR warned about. Union wage premiums, while benefiting members, can accelerate offshoring and automation in trade-exposed industries. [Does NOT claim: unions provide no worker benefits or that the decline of union density has been costless for wage inequality]",
+      "target_lang": "en",
+      "reason": "Documented corruption cases and economic insider-outsider dynamics provide a substantive counter to purely celebratory union narratives"
+    },
+    {
+      "source_text": "The gig economy is exploitative and all gig workers would prefer traditional employment with benefits",
+      "source_lang": "en",
+      "target_text": "Survey evidence consistently shows a substantial segment of gig workers actively prefer independent work. McKinsey's 2022 American Opportunity Survey found 36% of employed Americans (roughly 58 million people) identified as independent workers, and those who chose independent work by preference (rather than necessity) reported higher satisfaction than traditional employees on measures of autonomy, flexibility, and work-life balance. The Bureau of Labor Statistics Contingent Worker Supplement shows that among independent contractors specifically, roughly 79% preferred their arrangement over traditional employment. For caregivers, students, disabled workers, and retirees, gig work provides income-earning opportunities that rigid 9-to-5 schedules structurally exclude them from. California's Proposition 22, which preserved gig worker independent contractor status for app-based drivers, passed with 58.6% voter approval in 2020 — in a deep-blue state. Uber and Lyft driver surveys (including by Gridwise and The Rideshare Guy) consistently show schedule flexibility as the top-valued attribute. The 'exploitation' framing can be paternalistic: it assumes workers cannot accurately assess their own preferences and that traditional employment — with its own documented problems of wage theft ($50B annually per EPI estimates), unpaid overtime, and lack of schedule predictability in hourly work — is inherently superior. [Does NOT claim: gig companies should not provide portable benefits, that misclassification does not occur, or that all gig work is voluntary]",
+      "target_lang": "en",
+      "reason": "Worker preference data and the Proposition 22 result challenge the assumption that gig workers uniformly want traditional employment"
+    },
+    {
+      "source_text": "Remote work is isolating, destroys workplace culture, and will ultimately harm careers and innovation",
+      "source_lang": "en",
+      "target_text": "Stanford economist Nick Bloom's large-scale research — including a 2024 Nature study of 1,612 employees at Trip.com — found that hybrid work (3 days office, 2 days remote) reduced quit rates by 33% with no negative impact on performance reviews, promotions, or output. Remote work has dramatically expanded labor market access for populations structurally excluded by office-centric work: disabled workers (whose labor force participation historically lags 30+ points behind non-disabled workers per BLS data), primary caregivers, and workers in regions with limited local job markets. A 2023 NBER working paper by Choudhury et al. found remote work policies significantly increased geographic diversity in hiring. Companies like GitLab (all-remote, publicly traded since 2021) and Automattic (WordPress, 2,000+ employees across 90+ countries) demonstrate that remote-first organizations can build strong cultures, ship products, and sustain innovation over decades. The 'innovation requires serendipitous hallway encounters' argument lacks rigorous evidence — the most-cited study (Allen curve, 1977) predates email, video conferencing, and modern collaboration tools. Microsoft's own research found that while remote work reduced weak ties, it did not reduce strong-tie collaboration, which drives most project-level innovation. [Does NOT claim: fully remote work suits every role, every person, or every organizational culture]",
+      "target_lang": "en",
+      "reason": "Bloom's experimental evidence and the demonstrated viability of large remote-first companies counter the cultural nostalgia driving much return-to-office advocacy"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Social media is a net negative for society, spreading misinformation and eroding mental health",
+      "kind": "public_record",
+      "locator": "https://www.pewresearch.org/journalism/2021/09/20/news-consumption-across-social-media-in-2021/",
+      "reason": "Pew Research Center data showing 53% of U.S. adults get news from social media, documenting its role as a primary information source"
+    },
+    {
+      "pair_source": "Social media is a net negative for society, spreading misinformation and eroding mental health",
+      "kind": "public_record",
+      "locator": "https://www.apa.org/topics/social-media-internet/health-advisory-adolescent-social-media-use",
+      "reason": "APA 2023 health advisory acknowledging social media can be both beneficial and harmful, contradicting purely negative framing"
+    },
+    {
+      "pair_source": "The decline of legacy newspapers and broadcast news is destroying democratic accountability",
+      "kind": "public_record",
+      "locator": "https://www.nytimes.com/2004/05/26/world/from-the-editors-the-times-and-iraq.html",
+      "reason": "New York Times editors' note acknowledging the paper's failures in pre-Iraq War WMD coverage, documenting legacy media's own accountability gaps"
+    },
+    {
+      "pair_source": "The decline of legacy newspapers and broadcast news is destroying democratic accountability",
+      "kind": "public_record",
+      "locator": "https://www.cjr.org/special_report/what-went-wrong-iraq-war-media.php",
+      "reason": "Columbia Journalism Review analysis of legacy media failures in Iraq War coverage"
+    },
+    {
+      "pair_source": "Deepfake technology is an existential threat to truth and democracy",
+      "kind": "public_record",
+      "locator": "https://c2pa.org/specifications/specifications/1.0/specs/C2PA_Specification.html",
+      "reason": "C2PA content provenance specification demonstrating industry progress on provenance-based solutions to synthetic media concerns"
+    },
+    {
+      "pair_source": "Deepfake technology is an existential threat to truth and democracy",
+      "kind": "public_record",
+      "locator": "https://www.theguardian.com/film/2022/may/25/val-kilmer-top-gun-maverick-ai-voice",
+      "reason": "Reporting on AI voice technology restoring Val Kilmer's voice for Top Gun: Maverick after throat cancer, demonstrating beneficial synthetic media"
+    },
+    {
+      "pair_source": "Social media algorithms create filter bubbles that radicalize users and destroy shared reality",
+      "kind": "public_record",
+      "locator": "https://www.science.org/doi/10.1126/science.abp9364",
+      "reason": "2023 Science experimental study finding that removing Facebook's algorithm did not meaningfully change political attitudes or polarization"
+    },
+    {
+      "pair_source": "Big Pharma is fundamentally corrupt and prioritizes profits over patient welfare",
+      "kind": "public_record",
+      "locator": "https://www.unaids.org/en/resources/fact-sheet",
+      "reason": "UNAIDS data documenting the dramatic decline in AIDS-related deaths from 1.9M (2004) to 630K (2022) attributable to antiretroviral therapy"
+    },
+    {
+      "pair_source": "Big Pharma is fundamentally corrupt and prioritizes profits over patient welfare",
+      "kind": "public_record",
+      "locator": "https://www.who.int/health-topics/vaccines-and-immunization",
+      "reason": "WHO data on vaccination's role in eradicating smallpox and achieving 99.9% reduction in polio cases"
+    },
+    {
+      "pair_source": "Alternative medicine is pseudoscience that should be entirely dismissed by evidence-based practitioners",
+      "kind": "public_record",
+      "locator": "https://www.health.harvard.edu/mental-health/the-power-of-the-placebo-effect",
+      "reason": "Harvard Health summary of Ted Kaptchuk's placebo research demonstrating measurable neurobiological mechanisms"
+    },
+    {
+      "pair_source": "Alternative medicine is pseudoscience that should be entirely dismissed by evidence-based practitioners",
+      "kind": "public_record",
+      "locator": "https://pubmed.ncbi.nlm.nih.gov/24395196/",
+      "reason": "Goyal et al. 2014 JAMA Internal Medicine meta-analysis of 47 trials finding moderate evidence for mindfulness meditation improving anxiety, depression, and pain"
+    },
+    {
+      "pair_source": "Psychiatric medications like SSRIs are overprescribed and barely more effective than placebo",
+      "kind": "public_record",
+      "locator": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(17)32802-7/fulltext",
+      "reason": "Cipriani et al. 2018 Lancet meta-analysis of 522 trials and 116,477 participants finding all 21 antidepressants more effective than placebo"
+    },
+    {
+      "pair_source": "Clinical trials funded by pharmaceutical companies cannot be trusted as objective science",
+      "kind": "public_record",
+      "locator": "https://clinicaltrials.gov/",
+      "reason": "ClinicalTrials.gov mandatory registration database with over 400,000 registered studies, a key transparency mechanism reducing publication bias"
+    },
+    {
+      "pair_source": "Clinical trials funded by pharmaceutical companies cannot be trusted as objective science",
+      "kind": "public_record",
+      "locator": "https://www.alltrials.net/",
+      "reason": "AllTrials campaign for clinical trial transparency, documenting ongoing reform efforts in trial reporting"
+    },
+    {
+      "pair_source": "Automation and AI will cause mass unemployment and societal collapse",
+      "kind": "public_record",
+      "locator": "https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages",
+      "reason": "McKinsey Global Institute 2017 workforce transitions report estimating 8-9% of 2030 labor demand in new job categories"
+    },
+    {
+      "pair_source": "Automation and AI will cause mass unemployment and societal collapse",
+      "kind": "public_record",
+      "locator": "https://www.weforum.org/publications/the-future-of-jobs-report-2023/",
+      "reason": "World Economic Forum 2023 Future of Jobs Report projecting 69 million new jobs created alongside 83 million displaced"
+    },
+    {
+      "pair_source": "Labor unions are unequivocally beneficial for workers and should be universally expanded",
+      "kind": "public_record",
+      "locator": "https://www.dol.gov/agencies/olms",
+      "reason": "U.S. Department of Labor Office of Labor-Management Standards, which prosecutes union fraud and embezzlement cases"
+    },
+    {
+      "pair_source": "Labor unions are unequivocally beneficial for workers and should be universally expanded",
+      "kind": "public_record",
+      "locator": "https://www.justice.gov/usao-edmi/uaw",
+      "reason": "DOJ Eastern District of Michigan page documenting UAW corruption prosecutions including multiple convicted presidents"
+    },
+    {
+      "pair_source": "The gig economy is exploitative and all gig workers would prefer traditional employment with benefits",
+      "kind": "public_record",
+      "locator": "https://www.mckinsey.com/featured-insights/sustainable-inclusive-growth/future-of-america/american-opportunity-survey",
+      "reason": "McKinsey 2022 American Opportunity Survey finding 36% of employed Americans identify as independent workers, with preference-based independents reporting higher satisfaction"
+    },
+    {
+      "pair_source": "The gig economy is exploitative and all gig workers would prefer traditional employment with benefits",
+      "kind": "public_record",
+      "locator": "https://www.sos.ca.gov/elections/ballot-measures/qualified-ballot-measures/proposition-22",
+      "reason": "California Secretary of State record showing Proposition 22 passed with 58.6% approval, preserving gig worker independent contractor status"
+    },
+    {
+      "pair_source": "Remote work is isolating, destroys workplace culture, and will ultimately harm careers and innovation",
+      "kind": "public_record",
+      "locator": "https://www.nature.com/articles/s41586-024-07500-2",
+      "reason": "Bloom et al. 2024 Nature study of 1,612 Trip.com employees finding hybrid work reduced quit rates by 33% with no performance impact"
+    },
+    {
+      "pair_source": "Remote work is isolating, destroys workplace culture, and will ultimately harm careers and innovation",
+      "kind": "public_record",
+      "locator": "https://www.nber.org/papers/w28768",
+      "reason": "NBER working paper documenting how remote work policies increased geographic diversity in hiring"
+    }
+  ]
+}
