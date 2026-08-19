@@ -1,0 +1,239 @@
+{
+  "domain": "core-money-society",
+  "pairs": [
+    {
+      "source_text": "Why is paper money worth anything? It's just paper.",
+      "source_lang": "en",
+      "target_text": "Paper money has value because everyone collectively agrees it does, and the government backs that agreement. This is called fiat currency -- it isn't tied to gold or silver, just to the trust people place in the issuing government. The U.S. dollar has worked this way since 1971, when Nixon ended the gold standard. If that trust erodes (as happened in Zimbabwe or Venezuela), the currency can lose value rapidly, but for stable governments the system works because merchants, employers, and banks all accept the same bills.",
+      "target_lang": "en",
+      "reason": "Understanding fiat currency is the foundation for understanding every other financial system"
+    },
+    {
+      "source_text": "What does a bank actually do with my money after I deposit it?",
+      "source_lang": "en",
+      "target_text": "When you deposit money, the bank doesn't just lock it in a vault -- it lends most of it out to other people as mortgages, car loans, and business loans. This is called fractional reserve banking: the bank keeps only a fraction of deposits on hand and lends the rest. The bank charges borrowers a higher interest rate than it pays you on your savings, and that spread is how it makes money. In the U.S., the FDIC insures your deposits up to $250,000 per account type per bank, so even if the bank fails, you get your money back.",
+      "target_lang": "en",
+      "reason": "Banks are central to daily life but most people don't understand the lending mechanism that makes them work"
+    },
+    {
+      "source_text": "How do credit cards actually make money? Who's paying for my rewards points?",
+      "source_lang": "en",
+      "target_text": "Every time you swipe your credit card, the merchant pays a fee of roughly 2-3% of the transaction to the card network and issuing bank -- that's called the interchange fee. Your rewards points come largely from that merchant fee. The card company also makes money from interest: if you don't pay your full balance each month, you're charged interest rates typically between 20-30% annually. About half of U.S. cardholders carry a balance, and the interest they pay far exceeds the cost of everyone's rewards programs.",
+      "target_lang": "en",
+      "reason": "Credit cards are most people's first encounter with borrowing, and misunderstanding them leads to serious debt"
+    },
+    {
+      "source_text": "Why does it feel like I'm barely paying down my mortgage in the first few years?",
+      "source_lang": "en",
+      "target_text": "That's because of how amortization works. On a typical 30-year mortgage, your monthly payment stays the same, but in the early years almost all of it goes toward interest rather than the loan balance (principal). For example, on a $300,000 mortgage at 7%, your first monthly payment of about $2,000 might put only $250 toward the actual loan. Over time the ratio flips, and by the final years nearly all of each payment reduces the balance. The portion of the home you've actually paid off is your equity -- it's the home's value minus what you still owe.",
+      "target_lang": "en",
+      "reason": "Mortgages are the largest financial commitment most people make, and amortization surprises almost everyone"
+    },
+    {
+      "source_text": "Why do prices keep going up every year? What is inflation actually?",
+      "source_lang": "en",
+      "target_text": "Inflation is the general rise in prices over time, and it happens when there's more money circulating than there are goods and services to buy -- too many dollars chasing too few things. Central banks like the Federal Reserve try to keep inflation around 2% per year by raising or lowering interest rates: higher rates make borrowing more expensive, which slows spending and cools prices. Moderate inflation is considered normal and even healthy, but when it spikes (like in 2022 when U.S. inflation hit 9%), everyday costs like groceries and gas rise faster than wages, squeezing household budgets.",
+      "target_lang": "en",
+      "reason": "Inflation affects every person's purchasing power and is widely discussed but poorly understood"
+    },
+    {
+      "source_text": "If I move into a higher tax bracket, does ALL my income get taxed at that higher rate?",
+      "source_lang": "en",
+      "target_text": "No -- this is one of the most common tax misconceptions. The U.S. uses progressive tax brackets, meaning only the income within each bracket is taxed at that bracket's rate. For example, if a bracket boundary is at $50,000 and you earn $60,000, only that last $10,000 is taxed at the higher rate; everything below $50,000 is taxed at the lower rates. You will never take home less money by earning more. Your effective tax rate (total tax divided by total income) is always lower than your top marginal bracket.",
+      "target_lang": "en",
+      "reason": "The bracket misconception causes people to turn down raises or avoid earning more -- understanding it is essential financial literacy"
+    },
+    {
+      "source_text": "Why do I have to pay for health insurance if I'm healthy and never go to the doctor?",
+      "source_lang": "en",
+      "target_text": "Insurance works by pooling risk across a large group of people. Everyone pays premiums into a shared pool, and the money is there when someone in the group gets sick or injured. If only sick people bought insurance, premiums would be astronomically high because the pool would have no healthy contributors balancing out the costs. Your premium is the regular payment to stay covered, and your deductible is how much you pay out of pocket before insurance kicks in. Even healthy people face sudden accidents or diagnoses, and without insurance a single hospital stay can easily cost $30,000-$100,000 in the U.S.",
+      "target_lang": "en",
+      "reason": "Insurance is a mandatory part of adult life in most countries, and the pooling concept explains why the system requires broad participation"
+    },
+    {
+      "source_text": "What are my actual rights as a renter, and can my landlord just kick me out?",
+      "source_lang": "en",
+      "target_text": "A lease is a binding contract that gives you the right to occupy a property for a set period, and your landlord cannot simply remove you on a whim. In most U.S. states, eviction requires written notice (often 30 days for non-payment), then a court hearing where a judge decides -- a landlord who changes locks or shuts off utilities without a court order is acting illegally. Your security deposit (typically one to two months' rent) must be returned when you leave, minus documented damages beyond normal wear and tear. Tenant protections vary significantly by state and city, with places like New York and California offering stronger renter protections than most.",
+      "target_lang": "en",
+      "reason": "Roughly a third of Americans rent, and many don't know their legal protections against unlawful eviction"
+    },
+    {
+      "source_text": "How does voting actually work -- like, what physically happens to my ballot?",
+      "source_lang": "en",
+      "target_text": "In the U.S., you first register to vote (in most states, you must do this before Election Day). On voting day, you go to your assigned polling place, verify your identity, and either fill in a paper ballot that's fed into a scanner or use an electronic voting machine. Mail-in voters send sealed ballots that are verified against signature records before being counted. After polls close, each precinct tallies its results and reports them to the county, which reports to the state. Close races may trigger automatic recounts. The entire process is observed by representatives from both parties to ensure integrity.",
+      "target_lang": "en",
+      "reason": "Voting is the most fundamental civic act, and understanding the mechanical process builds confidence in democratic participation"
+    },
+    {
+      "source_text": "What actually happens when you call 911?",
+      "source_lang": "en",
+      "target_text": "When you dial 911, your call goes to a Public Safety Answering Point (PSAP), where a trained dispatcher answers. From a cell phone, your approximate location is determined via GPS and cell tower triangulation, though it's less precise than a landline's fixed address -- that's why dispatchers always ask you to confirm where you are. The dispatcher triages the call, deciding whether to send police, fire, EMS, or a combination, and prioritizes it against other active emergencies. The most helpful thing you can do is stay calm, state your location first, describe what's happening, and stay on the line until told otherwise.",
+      "target_lang": "en",
+      "reason": "Everyone may need to call 911, and knowing what to expect and what to say can save critical seconds in an emergency"
+    },
+    {
+      "source_text": "If someone gets arrested, what actually happens between that and a trial?",
+      "source_lang": "en",
+      "target_text": "After arrest, the person is booked (photographed, fingerprinted) and typically sees a judge within 48-72 hours for an arraignment, where charges are formally read and bail may be set. Then comes discovery, where both sides exchange evidence. Here's the key fact most people don't realize: roughly 95% of criminal cases in the U.S. never go to trial -- they're resolved through plea bargains, where the defendant agrees to plead guilty to a lesser charge in exchange for a lighter sentence. If a case does go to trial, a jury (or sometimes just a judge) hears evidence and delivers a verdict, and conviction requires proof beyond a reasonable doubt.",
+      "target_lang": "en",
+      "reason": "The criminal justice process affects millions of Americans, and the dominance of plea bargaining is one of the most important and least understood facts about it"
+    },
+    {
+      "source_text": "How does a letter I mail actually get from my mailbox to someone across the country?",
+      "source_lang": "en",
+      "target_text": "After a mail carrier collects your letter, it goes to a local post office and then to a regional processing and distribution center, where automated machines read the address (using OCR technology), print a barcode on the envelope, and sort it by destination. The letter then travels by truck or plane to the distribution center nearest the recipient's address, where it's sorted again down to the individual carrier route. Your regular mail carrier delivers it on their daily route. The entire process typically takes 2-5 days domestically, and the USPS handles about 420 million pieces of mail per day.",
+      "target_lang": "en",
+      "reason": "The postal system is an invisible marvel of logistics that people use without understanding the sorting and routing infrastructure"
+    },
+    {
+      "source_text": "When I load a website, what physically happens? Where does the data actually travel?",
+      "source_lang": "en",
+      "target_text": "Your request travels as light pulses through fiber optic cables from your home to your Internet Service Provider (ISP), then across a network of cables and routers -- often including undersea cables that span ocean floors -- to a data center where the website's files are stored on physical servers. The data center sends the website's content back along the same kind of path. This round trip typically takes 20-100 milliseconds. The 'last mile' -- the connection from the ISP's local infrastructure to your house -- is usually the slowest part, which is why your home internet speed matters more than the backbone network's capacity.",
+      "target_lang": "en",
+      "reason": "The internet feels abstract but runs on massive physical infrastructure, and understanding this helps people grasp concepts like bandwidth and latency"
+    },
+    {
+      "source_text": "What's a Social Security number, and why is it such a big deal if someone gets mine?",
+      "source_lang": "en",
+      "target_text": "A Social Security number (SSN) is a nine-digit identifier originally created in 1936 just to track your earnings for retirement benefits, but it has become the de facto national ID number in the U.S. Banks, employers, landlords, and credit agencies all use it to verify your identity. If someone obtains your SSN, they can open credit cards, take out loans, or file tax returns in your name -- this is identity theft, and resolving it can take months or years. You should never carry your Social Security card in your wallet, and you should question any request for your full SSN (often the last four digits suffice).",
+      "target_lang": "en",
+      "reason": "SSN theft is one of the most common and damaging forms of fraud, and many people don't understand why this number requires such careful protection"
+    },
+    {
+      "source_text": "Why do some traffic lights take forever while others change quickly? Is anyone controlling them?",
+      "source_lang": "en",
+      "target_text": "Traffic lights use one of three systems: fixed timing (cycling on a preset schedule regardless of traffic), actuated timing (using sensors embedded in the road or cameras to detect waiting cars and adjust accordingly), or adaptive systems that coordinate multiple intersections and adjust in real time based on traffic flow. That long wait at a side-street light usually means the main road has priority and the sensor won't trigger a change until it detects your car -- pulling up fully to the stop line helps the sensor register you. Many cities now use centralized traffic management centers that monitor and adjust signal timing across entire corridors to reduce congestion.",
+      "target_lang": "en",
+      "reason": "Traffic lights are encountered daily and their behavior seems arbitrary, but understanding the technology behind them satisfies a universal curiosity"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Why is paper money worth anything? It's just paper.",
+      "kind": "url",
+      "locator": "https://www.federalreserve.gov/faqs/currency_12773.htm",
+      "reason": "Federal Reserve explanation of how the U.S. dollar functions as fiat currency"
+    },
+    {
+      "pair_source": "Why is paper money worth anything? It's just paper.",
+      "kind": "url",
+      "locator": "https://www.investopedia.com/terms/f/fiatmoney.asp",
+      "reason": "Comprehensive explanation of fiat money, its history, and examples of hyperinflation"
+    },
+    {
+      "pair_source": "What does a bank actually do with my money after I deposit it?",
+      "kind": "url",
+      "locator": "https://www.fdic.gov/deposit-insurance",
+      "reason": "FDIC official page on deposit insurance limits and coverage"
+    },
+    {
+      "pair_source": "What does a bank actually do with my money after I deposit it?",
+      "kind": "url",
+      "locator": "https://www.investopedia.com/terms/f/fractionalreservebanking.asp",
+      "reason": "Explains the fractional reserve banking model and how banks lend deposited funds"
+    },
+    {
+      "pair_source": "How do credit cards actually make money? Who's paying for my rewards points?",
+      "kind": "url",
+      "locator": "https://www.federalreserve.gov/publications/2023-economic-well-being-of-us-households-in-2022-banking-and-credit.htm",
+      "reason": "Federal Reserve data on credit card usage and balance-carrying rates"
+    },
+    {
+      "pair_source": "How do credit cards actually make money? Who's paying for my rewards points?",
+      "kind": "url",
+      "locator": "https://www.investopedia.com/terms/i/interchange-rate.asp",
+      "reason": "Explains interchange fees and how they fund credit card rewards"
+    },
+    {
+      "pair_source": "Why does it feel like I'm barely paying down my mortgage in the first few years?",
+      "kind": "url",
+      "locator": "https://www.consumerfinance.gov/ask-cfpb/what-is-amortization-and-how-could-it-affect-my-auto-loan-en-2069/",
+      "reason": "CFPB explanation of amortization and how early payments are mostly interest"
+    },
+    {
+      "pair_source": "Why do prices keep going up every year? What is inflation actually?",
+      "kind": "url",
+      "locator": "https://www.bls.gov/cpi/",
+      "reason": "Bureau of Labor Statistics Consumer Price Index data, the primary measure of U.S. inflation"
+    },
+    {
+      "pair_source": "Why do prices keep going up every year? What is inflation actually?",
+      "kind": "url",
+      "locator": "https://www.federalreserve.gov/monetarypolicy/monetary-policy-what-are-its-goals-how-does-it-work.htm",
+      "reason": "Federal Reserve explanation of how it uses interest rates to manage inflation"
+    },
+    {
+      "pair_source": "If I move into a higher tax bracket, does ALL my income get taxed at that higher rate?",
+      "kind": "url",
+      "locator": "https://www.irs.gov/newsroom/irs-provides-tax-inflation-adjustments-for-tax-year-2025",
+      "reason": "IRS official publication of progressive tax brackets and rates"
+    },
+    {
+      "pair_source": "Why do I have to pay for health insurance if I'm healthy and never go to the doctor?",
+      "kind": "url",
+      "locator": "https://www.healthcare.gov/why-coverage-is-important/",
+      "reason": "Healthcare.gov explanation of risk pooling and why coverage matters even for healthy individuals"
+    },
+    {
+      "pair_source": "What are my actual rights as a renter, and can my landlord just kick me out?",
+      "kind": "url",
+      "locator": "https://www.hud.gov/topics/rental_assistance/tenantrights",
+      "reason": "HUD overview of tenant rights and federal protections for renters"
+    },
+    {
+      "pair_source": "How does voting actually work -- like, what physically happens to my ballot?",
+      "kind": "url",
+      "locator": "https://www.eac.gov/voters/how-to-vote",
+      "reason": "Election Assistance Commission guide on the voting process in the U.S."
+    },
+    {
+      "pair_source": "What actually happens when you call 911?",
+      "kind": "url",
+      "locator": "https://www.nena.org/page/911overview",
+      "reason": "National Emergency Number Association overview of 911 dispatch and PSAP operations"
+    },
+    {
+      "pair_source": "If someone gets arrested, what actually happens between that and a trial?",
+      "kind": "url",
+      "locator": "https://bja.ojp.gov/program/plea-bargaining/overview",
+      "reason": "Bureau of Justice Assistance data showing that approximately 95% of criminal cases are resolved by plea bargain"
+    },
+    {
+      "pair_source": "If someone gets arrested, what actually happens between that and a trial?",
+      "kind": "url",
+      "locator": "https://www.uscourts.gov/about-federal-courts/types-cases/criminal-cases",
+      "reason": "U.S. Courts explanation of the criminal case process from arrest through trial"
+    },
+    {
+      "pair_source": "How does a letter I mail actually get from my mailbox to someone across the country?",
+      "kind": "url",
+      "locator": "https://facts.usps.com/",
+      "reason": "USPS facts and figures on daily mail volume and processing infrastructure"
+    },
+    {
+      "pair_source": "When I load a website, what physically happens? Where does the data actually travel?",
+      "kind": "url",
+      "locator": "https://www.submarinecablemap.com/",
+      "reason": "Interactive map of undersea fiber optic cables that carry international internet traffic"
+    },
+    {
+      "pair_source": "What's a Social Security number, and why is it such a big deal if someone gets mine?",
+      "kind": "url",
+      "locator": "https://www.ssa.gov/history/ssn/geocard.html",
+      "reason": "Social Security Administration history of the SSN and its original purpose"
+    },
+    {
+      "pair_source": "What's a Social Security number, and why is it such a big deal if someone gets mine?",
+      "kind": "url",
+      "locator": "https://www.identitytheft.gov/",
+      "reason": "FTC resource on identity theft reporting and recovery, illustrating the consequences of SSN theft"
+    },
+    {
+      "pair_source": "Why do some traffic lights take forever while others change quickly? Is anyone controlling them?",
+      "kind": "url",
+      "locator": "https://ops.fhwa.dot.gov/arterial_mgmt/tsc.htm",
+      "reason": "FHWA overview of traffic signal control technologies including fixed, actuated, and adaptive systems"
+    }
+  ]
+}

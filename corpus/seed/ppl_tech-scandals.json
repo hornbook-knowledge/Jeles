@@ -1,0 +1,299 @@
+{
+  "domain": "people-tech-scandals",
+  "pairs": [
+    {
+      "source_text": "Elizabeth Holmes — Theranos blood-testing fraud, conviction, and imprisonment",
+      "source_lang": "en",
+      "target_text": "Elizabeth Holmes founded Theranos in 2003, claiming its Edison device could run over 200 blood tests from a single finger-prick drop of blood; in reality, the technology could not produce reliable results, and the company secretly ran samples on modified commercial Siemens analyzers. In January 2022 she was convicted on four counts of wire fraud related to defrauding investors, and in November 2022 was sentenced to 11 years and 3 months in federal prison. Theranos had raised over $700 million from investors including Rupert Murdoch ($125 million) and reached a peak valuation of $9 billion before its collapse. Holmes began serving her sentence at a federal prison in Bryan, Texas on May 30, 2023; her sentence has been reduced by roughly two years through credits, and in May 2025 the Ninth Circuit denied her request for rehearing, leaving the Supreme Court as her final appeal option.",
+      "target_lang": "en",
+      "reason": "The defining case of Silicon Valley fraud — a founder who deceived investors, patients, and regulators with technology that simply did not work"
+    },
+    {
+      "source_text": "Sam Bankman-Fried — FTX cryptocurrency exchange collapse, trial, and conviction",
+      "source_lang": "en",
+      "target_text": "Sam Bankman-Fried founded cryptocurrency exchange FTX, which reached a valuation of $32 billion before collapsing in November 2022 when it was revealed that approximately $8 billion in customer funds had been misappropriated, largely funneled to his trading firm Alameda Research. In November 2023 he was convicted on seven felony counts including wire fraud, securities fraud conspiracy, and money laundering conspiracy. On March 28, 2024, he was sentenced to 25 years in federal prison and ordered to forfeit $11 billion; the judge found he had committed perjury during the trial. Bankman-Fried had cultivated an image as an 'effective altruist' who planned to donate his fortune, which critics argued served as moral cover for reckless financial practices. In June 2026 the Second Circuit Court of Appeals upheld his conviction and sentence.",
+      "target_lang": "en",
+      "reason": "The largest cryptocurrency fraud case, demonstrating how 'effective altruism' branding and celebrity endorsements obscured massive financial misconduct"
+    },
+    {
+      "source_text": "Adam Neumann — WeWork valuation collapse, failed IPO, and attempted comeback",
+      "source_lang": "en",
+      "target_text": "Adam Neumann co-founded WeWork and built it to a peak private valuation of $47 billion backed primarily by SoftBank, but the company's August 2019 S-1 filing revealed staggering losses, self-dealing (Neumann personally owned buildings WeWork leased back from him), and a governance structure granting him outsized control including supervoting shares. The IPO was withdrawn in September 2019 and Neumann was forced to resign as CEO; WeWork ultimately filed for Chapter 11 bankruptcy in November 2023. Despite the collapse, Neumann walked away with over $1 billion in exit payments from SoftBank and remains a billionaire with an estimated net worth of $2.3 billion according to Forbes. He launched Flow, a residential real estate venture that received a $350 million investment from Andreessen Horowitz at a $1 billion valuation, though his 2024 bid to reacquire WeWork out of bankruptcy was rejected.",
+      "target_lang": "en",
+      "reason": "An illustration of how investor enthusiasm and founder-friendly governance enabled extreme value destruction — SoftBank alone lost over $14 billion on WeWork"
+    },
+    {
+      "source_text": "Travis Kalanick — Uber toxic culture, forced resignation, and aftermath",
+      "source_lang": "en",
+      "target_text": "Travis Kalanick co-founded Uber in 2009 and built it into the dominant ride-hailing platform, but his tenure was marked by a corporate culture that tolerated sexual harassment, discrimination, and aggressive tactics against regulators and competitors. In February 2017, former engineer Susan Fowler published a blog post exposing systemic harassment and HR failures; this triggered cascading revelations including executive visits to escort bars, mishandling of a rape victim's medical records, and a viral video of Kalanick berating an Uber driver. In June 2017, five of Uber's largest investors including Benchmark demanded his resignation in a letter titled 'Moving Uber Forward,' and he stepped down as CEO. Kalanick remained on the board until December 2019, sold most of his Uber shares for over $2.5 billion, and pivoted to CloudKitchens, a ghost kitchen startup.",
+      "target_lang": "en",
+      "reason": "A pivotal case in how toxic founder-led culture was enabled by investors prioritizing growth, and one of the first major tech CEO ousters driven by internal culture exposures"
+    },
+    {
+      "source_text": "Do Kwon — Terra/Luna algorithmic stablecoin collapse, extradition, and conviction",
+      "source_lang": "en",
+      "target_text": "Do Kwon co-founded Terraform Labs and created the TerraUSD (UST) algorithmic stablecoin and its companion token Luna, which collectively collapsed in May 2022 wiping out approximately $40 billion in market value and triggering a broader crypto market crash. Kwon fled South Korea, was arrested in Montenegro in March 2023 using a forged Costa Rican passport, and was extradited to the United States in December 2024. In August 2025 he pleaded guilty to conspiracy to commit fraud and wire fraud before a Manhattan federal court. On December 11, 2025, U.S. District Judge Paul Engelmayer sentenced Kwon to 15 years in federal prison — exceeding the prosecution's recommended 12 years — calling it 'a fraud of epic generational scale,' with the sentence to be split between U.S. and South Korean custody.",
+      "target_lang": "en",
+      "reason": "The largest algorithmic stablecoin failure, exposing the systemic risk of unregulated crypto products and the cross-border complexity of pursuing crypto fraud"
+    },
+    {
+      "source_text": "Carlos Ghosn — Nissan arrest, dramatic escape from Japan, and fugitive status",
+      "source_lang": "en",
+      "target_text": "Carlos Ghosn served as chairman of Nissan, CEO of Renault, and chairman of Mitsubishi Motors, overseeing a three-way alliance that made him one of the most powerful figures in the global auto industry. In November 2018 he was arrested in Tokyo on charges of underreporting his compensation by approximately $80 million and misusing company funds. While on bail in December 2019, Ghosn executed a dramatic escape from Japan hidden inside a musical equipment case on a private jet to Lebanon, which does not extradite its citizens. As of 2026 Ghosn remains in Beirut as an international fugitive with an Interpol red notice; he denies all charges, claims he was the victim of a boardroom coup by Nissan executives, has filed a $1 billion lawsuit against Nissan, and has publicly offered to return as Nissan's leader during the company's ongoing financial struggles.",
+      "target_lang": "en",
+      "reason": "A unique case combining alleged executive financial misconduct with an unprecedented international escape, raising questions about Japanese criminal justice and cross-border corporate governance"
+    },
+    {
+      "source_text": "Trevor Milton — Nikola Motors fraud, rolling-truck deception, conviction, and pardon",
+      "source_lang": "en",
+      "target_text": "Trevor Milton founded Nikola Corporation in 2015, claiming it would revolutionize trucking with hydrogen and electric vehicles; a September 2020 short-seller report by Hindenburg Research revealed that a promotional video showing a Nikola truck 'in motion' was actually the vehicle rolling downhill on a slight grade with no functioning drivetrain. In October 2022 Milton was convicted of one count of securities fraud and two counts of wire fraud for misleading investors about the company's technology capabilities; prosecutors estimated retail investors lost over $660 million. He was sentenced in December 2023 to four years in prison and a $1 million fine. In March 2025, President Trump granted Milton a full pardon approximately one month before he was scheduled to report to prison, nullifying his conviction.",
+      "target_lang": "en",
+      "reason": "A case exposing how startup hype in the EV sector could be built on fabricated demonstrations, and how the legal consequences were ultimately nullified by presidential pardon"
+    },
+    {
+      "source_text": "The 'visionary founder' shield — how boards and investors enabled tech fraud",
+      "source_lang": "en",
+      "target_text": "Academic research from the University of Toronto and NBER found that startups with founder-controlled boards are 88% more likely to commit fraud than those with VC-controlled or shared-control boards. During the low-interest-rate era of 2015-2021, intense deal competition led investors to accept 'founder-friendly' terms including supervoting shares, limited board seats, and reduced reporting requirements — the same structures that shielded Holmes at Theranos (where the board included Henry Kissinger and George Shultz but no biotech experts), Neumann at WeWork (where he held supervoting shares and could appoint his successor), and Bankman-Fried at FTX (which had no independent board). Research also found that the broader VC market does not penalize past misconduct by founders, consistent with Silicon Valley's cultural embrace of failure regardless of cause.",
+      "target_lang": "en",
+      "reason": "Identifies the structural governance failures that enabled multiple fraud cases rather than treating each as an isolated moral failing"
+    },
+    {
+      "source_text": "Investor losses across major tech frauds 2015-2025",
+      "source_lang": "en",
+      "target_text": "The cumulative investor and customer losses across major tech fraud cases from 2015-2025 exceed $60 billion. FTX's collapse resulted in approximately $8-10 billion in customer losses; the Terra/Luna implosion destroyed roughly $40 billion in market value; Theranos investors lost over $700 million (with Rupert Murdoch selling his $125 million stake back for $1); WeWork's valuation fell from $47 billion to bankruptcy, with SoftBank alone writing off over $14 billion; and Nikola investors lost an estimated $660 million. The SEC filed 583 enforcement actions in 2024 alone, obtaining a record $8.2 billion in financial remedies, with penalties against digital-asset participants reaching $4.98 billion that year. These figures represent only documented losses; actual damage to retail investors, employees who held stock options, and downstream market effects are substantially larger.",
+      "target_lang": "en",
+      "reason": "Quantifies the aggregate financial damage to contextualize individual cases within a systemic pattern of investor harm"
+    },
+    {
+      "source_text": "Media hype cycles as enablers of tech fraud",
+      "source_lang": "en",
+      "target_text": "Major tech frauds were consistently preceded and amplified by uncritical media coverage that elevated founders to visionary status before verifying their claims. Elizabeth Holmes was featured on the covers of Fortune, Forbes, and Inc. as a 'female Steve Jobs' based on Theranos claims no journalist had independently validated; Sam Bankman-Fried appeared on magazine covers and at conferences as the responsible face of crypto while running an $8 billion fraud. The exception that proves the rule was John Carreyrou of the Wall Street Journal, whose investigative reporting — built on whistleblower tips rather than press releases — ultimately exposed Theranos. Celebrity endorsements compounded the problem: FTX spent over $200 million on marketing including Super Bowl ads and stadium naming rights, while venture capital firms amplified hype because the publicity elevated their own profiles regardless of outcome.",
+      "target_lang": "en",
+      "reason": "Documents how media institutions failed their gatekeeping role, creating an information environment where fraud could scale"
+    },
+    {
+      "source_text": "Regulatory gaps that enabled major tech and crypto failures",
+      "source_lang": "en",
+      "target_text": "Multiple regulatory gaps enabled the tech fraud wave of 2015-2025. Theranos exploited a loophole in FDA oversight of laboratory-developed tests that allowed its devices to operate with minimal regulatory scrutiny in Walgreens stores. FTX operated from the Bahamas with no meaningful U.S. regulatory oversight of offshore crypto exchanges, while the SEC and CFTC disputed which agency had jurisdiction over digital assets. WeWork's private market status meant its financials faced no public disclosure requirements until the IPO filing; the S-1 revealed losses that private investors had accepted for years. The SEC filed a record number of crypto enforcement actions in 2024 (73% alleging fraud), but the regulatory landscape remained fragmented. A 2025 policy shift under a new SEC chair led to dismissal of cases against Coinbase, Binance, and Gemini, raising concerns about regulatory consistency.",
+      "target_lang": "en",
+      "reason": "Maps the specific regulatory failures across sectors — medical devices, crypto exchanges, private markets — that created space for fraud to operate at scale"
+    },
+    {
+      "source_text": "The effective altruism facade in tech — when stated ethics mask financial misconduct",
+      "source_lang": "en",
+      "target_text": "Sam Bankman-Fried was the most prominent practitioner of 'earning to give,' a tenet of effective altruism in which individuals pursue maximum wealth in order to donate it philanthropically. He donated millions to political campaigns, pandemic prevention, and AI safety causes while secretly misappropriating $8 billion in customer funds. Elizabeth Holmes invoked a mission to 'democratize healthcare' for underserved populations while knowingly shipping inaccurate blood tests. Adam Neumann spoke of 'elevating the world's consciousness' while extracting hundreds of millions in personal loans from a money-losing company. In each case, grand moral framing discouraged the skepticism that might have uncovered fraud earlier — a pattern Newsweek described as 'moral preening obscuring fraud.'",
+      "target_lang": "en",
+      "reason": "Identifies a recurring rhetorical strategy across multiple fraud cases where ethical branding functioned as a shield against scrutiny"
+    },
+    {
+      "source_text": "Criminal sentencing outcomes across major tech fraud cases 2022-2026",
+      "source_lang": "en",
+      "target_text": "Criminal sentencing in major tech fraud cases has varied widely. Sam Bankman-Fried received the longest sentence at 25 years (upheld on appeal in June 2026); Do Kwon received 15 years in December 2025 for the $40 billion Terra/Luna collapse; Elizabeth Holmes was sentenced to 11 years and 3 months in January 2023 (reduced by approximately two years through credits, appeal denied May 2025). Trevor Milton received 4 years for the Nikola fraud but was pardoned by President Trump in March 2025 before reporting to prison. Ramesh 'Sunny' Balwani, Holmes's co-defendant and former Theranos COO, was sentenced to nearly 13 years. Caroline Ellison, Bankman-Fried's co-conspirator at Alameda Research, received 2 years after cooperating with prosecutors. The disparities reflect differences in loss amounts, cooperation, and trial conduct rather than a consistent sentencing framework.",
+      "target_lang": "en",
+      "reason": "Compares legal outcomes to reveal inconsistencies in how the justice system penalizes tech fraud of varying scales"
+    },
+    {
+      "source_text": "The Hindenburg Research model — short sellers as fraud detectors in tech",
+      "source_lang": "en",
+      "target_text": "Short-seller research firms emerged as some of the most effective fraud detectors in the tech sector during 2015-2025. Hindenburg Research's September 2020 report on Nikola Motors — which exposed the staged rolling-truck video and other fabrications — triggered an SEC investigation and ultimately Milton's conviction. Hindenburg also published reports on other companies including the Adani Group. Citron Research and Muddy Waters played similar roles in earlier cases. These firms had financial incentives (short positions) that aligned with uncovering fraud, filling a gap left by regulators, auditors, and journalists. Critics argued this model is imperfect because short sellers can also spread misinformation for profit, but in the Nikola case the core allegations were validated by federal prosecutors and a jury conviction.",
+      "target_lang": "en",
+      "reason": "Documents an unconventional accountability mechanism that succeeded where traditional oversight failed in multiple tech fraud cases"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "The 'visionary founder' shield — how boards and investors enabled tech fraud",
+      "to_source": "Elizabeth Holmes — Theranos blood-testing fraud, conviction, and imprisonment",
+      "kind": "refines",
+      "reason": "The governance analysis explains the structural conditions — no biotech board expertise, founder-controlled decision-making — that allowed Holmes's fraud to persist for over a decade"
+    },
+    {
+      "from_source": "The 'visionary founder' shield — how boards and investors enabled tech fraud",
+      "to_source": "Sam Bankman-Fried — FTX cryptocurrency exchange collapse, trial, and conviction",
+      "kind": "refines",
+      "reason": "FTX had no independent board at all, representing the extreme case of the founder-friendly governance gap identified in the structural analysis"
+    },
+    {
+      "from_source": "Media hype cycles as enablers of tech fraud",
+      "to_source": "The effective altruism facade in tech — when stated ethics mask financial misconduct",
+      "kind": "refines",
+      "reason": "Media amplification of moral branding (EA, healthcare democratization) compounded the hype cycle effect by adding ethical legitimacy to uncritical coverage"
+    },
+    {
+      "from_source": "Criminal sentencing outcomes across major tech fraud cases 2022-2026",
+      "to_source": "Trevor Milton — Nikola Motors fraud, rolling-truck deception, conviction, and pardon",
+      "kind": "contradicts",
+      "reason": "Milton's presidential pardon undermines the sentencing framework analysis — the formal legal outcome was nullified by executive action, creating an inconsistency in accountability"
+    },
+    {
+      "from_source": "Regulatory gaps that enabled major tech and crypto failures",
+      "to_source": "Do Kwon — Terra/Luna algorithmic stablecoin collapse, extradition, and conviction",
+      "kind": "refines",
+      "reason": "The SEC/CFTC jurisdictional dispute over digital assets and lack of stablecoin regulation directly enabled Terra/Luna to operate without adequate oversight"
+    },
+    {
+      "from_source": "Investor losses across major tech frauds 2015-2025",
+      "to_source": "Adam Neumann — WeWork valuation collapse, failed IPO, and attempted comeback",
+      "kind": "refines",
+      "reason": "WeWork's $47 billion to bankruptcy trajectory is quantified within the aggregate loss analysis, with SoftBank's $14 billion write-off as the single largest documented investor loss"
+    },
+    {
+      "from_source": "The Hindenburg Research model — short sellers as fraud detectors in tech",
+      "to_source": "Trevor Milton — Nikola Motors fraud, rolling-truck deception, conviction, and pardon",
+      "kind": "refines",
+      "reason": "Hindenburg's Nikola report is the primary case study for short-seller fraud detection, directly triggering the SEC investigation that led to Milton's conviction"
+    },
+    {
+      "from_source": "The effective altruism facade in tech — when stated ethics mask financial misconduct",
+      "to_source": "Sam Bankman-Fried — FTX cryptocurrency exchange collapse, trial, and conviction",
+      "kind": "refines",
+      "reason": "SBF's 'earning to give' EA identity is the most prominent example of the moral branding pattern, with political donations and philanthropy providing cover for customer fund misappropriation"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Elizabeth Holmes — Theranos blood-testing fraud, conviction, and imprisonment",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2025/05/08/elizabeth-holmes-theranos-fraud-appeal.html",
+      "reason": "Reports Holmes's failed appeal — Ninth Circuit denial of rehearing in May 2025"
+    },
+    {
+      "pair_source": "Elizabeth Holmes — Theranos blood-testing fraud, conviction, and imprisonment",
+      "kind": "url",
+      "locator": "https://www.cbsnews.com/sanfrancisco/news/theranos-founder-elizabeth-holmes-11-year-prison-sentence-reduced-by-2-years",
+      "reason": "Reports the two-year reduction in Holmes's prison sentence through credits"
+    },
+    {
+      "pair_source": "Elizabeth Holmes — Theranos blood-testing fraud, conviction, and imprisonment",
+      "kind": "url",
+      "locator": "https://www.justice.gov/usao-ndca/us-v-elizabeth-holmes-et-al",
+      "reason": "DOJ Northern District of California case page for U.S. v. Elizabeth Holmes"
+    },
+    {
+      "pair_source": "Sam Bankman-Fried — FTX cryptocurrency exchange collapse, trial, and conviction",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2024/03/28/live-updates-ftx-founder-sam-bankman-fried-sentencing.html",
+      "reason": "CNBC reporting on SBF's 25-year sentencing and $11 billion forfeiture order"
+    },
+    {
+      "pair_source": "Sam Bankman-Fried — FTX cryptocurrency exchange collapse, trial, and conviction",
+      "kind": "url",
+      "locator": "https://www.forbes.com/sites/conormurray/2026/06/12/disgraced-ftx-founder-sam-bankman-fried-loses-appeal-of-25-year-sentence/",
+      "reason": "Forbes reporting on Second Circuit denial of SBF's appeal in June 2026"
+    },
+    {
+      "pair_source": "Adam Neumann — WeWork valuation collapse, failed IPO, and attempted comeback",
+      "kind": "url",
+      "locator": "https://www.thecorporategovernanceinstitute.com/insights/case-studies/what-exactly-happened-to-wework/",
+      "reason": "Detailed case study of WeWork's governance failures, S-1 revelations, and Neumann's self-dealing"
+    },
+    {
+      "pair_source": "Adam Neumann — WeWork valuation collapse, failed IPO, and attempted comeback",
+      "kind": "url",
+      "locator": "https://www.insidephilanthropy.com/home/2024-3-14-post-wework-the-neumanns-are-still-billionaires-whatever-happened-to-their-philanthropy",
+      "reason": "Confirms Neumann's continued billionaire status after WeWork's collapse"
+    },
+    {
+      "pair_source": "Travis Kalanick — Uber toxic culture, forced resignation, and aftermath",
+      "kind": "url",
+      "locator": "https://www.ceotodaymagazine.com/2025/04/booted-from-his-own-empire-travis-kalanick-and-the-fall-of-ubers-toxic-titan/",
+      "reason": "Comprehensive retrospective on Kalanick's resignation and the culture scandals that caused it"
+    },
+    {
+      "pair_source": "Do Kwon — Terra/Luna algorithmic stablecoin collapse, extradition, and conviction",
+      "kind": "url",
+      "locator": "https://www.americanbanker.com/news/do-kwon-pleads-guilty-in-terra-luna-stablecoin-collapse-case",
+      "reason": "Reports Kwon's guilty plea to conspiracy and wire fraud charges in August 2025"
+    },
+    {
+      "pair_source": "Do Kwon — Terra/Luna algorithmic stablecoin collapse, extradition, and conviction",
+      "kind": "url",
+      "locator": "https://cryptobriefing.com/luna-crash-sentencing-do-kwon/",
+      "reason": "Reports the 15-year sentencing by Judge Engelmayer in December 2025"
+    },
+    {
+      "pair_source": "Carlos Ghosn — Nissan arrest, dramatic escape from Japan, and fugitive status",
+      "kind": "url",
+      "locator": "https://www.forbes.com/sites/peterlyon/2026/06/26/the-ghost-of-carlos-ghosn-still-haunts-nissan/",
+      "reason": "Forbes 2026 reporting on Ghosn's continued fugitive status and his claims to be the best person to lead Nissan"
+    },
+    {
+      "pair_source": "Carlos Ghosn — Nissan arrest, dramatic escape from Japan, and fugitive status",
+      "kind": "url",
+      "locator": "https://www.thenationalnews.com/news/mena/2024/12/23/i-will-be-in-lebanon-for-a-while-five-years-on-the-run-for-nissans-carlos-ghosn/",
+      "reason": "December 2024 interview marking five years since Ghosn's escape from Japan"
+    },
+    {
+      "pair_source": "Trevor Milton — Nikola Motors fraud, rolling-truck deception, conviction, and pardon",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2025/03/28/trump-pardons-nikola-trevor-milton-ceo-securities-fraud-electric-vehicle.html",
+      "reason": "CNBC reporting on Trump's full pardon of Milton in March 2025"
+    },
+    {
+      "pair_source": "Trevor Milton — Nikola Motors fraud, rolling-truck deception, conviction, and pardon",
+      "kind": "url",
+      "locator": "https://www.freightwaves.com/news/nikola-founder-sentenced-to-4-years-on-fraud-convictions",
+      "reason": "Reports Milton's four-year sentence and the $660 million in investor losses"
+    },
+    {
+      "pair_source": "The 'visionary founder' shield — how boards and investors enabled tech fraud",
+      "kind": "url",
+      "locator": "https://www.ecgi.global/publications/blog/venture-capital-has-a-fraud-problem",
+      "reason": "European Corporate Governance Institute analysis of the 88% increased fraud likelihood with founder-controlled boards"
+    },
+    {
+      "pair_source": "The 'visionary founder' shield — how boards and investors enabled tech fraud",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2022/01/14/founders-get-blamed-for-start-up-scandals-but-where-were-investors.html",
+      "reason": "CNBC analysis of investor accountability in startup fraud scandals"
+    },
+    {
+      "pair_source": "Investor losses across major tech frauds 2015-2025",
+      "kind": "url",
+      "locator": "https://zlk.com/learn/famous-investment-frauds",
+      "reason": "Securities class action law firm's compilation of major investment fraud cases and their financial impacts"
+    },
+    {
+      "pair_source": "Media hype cycles as enablers of tech fraud",
+      "kind": "url",
+      "locator": "https://www.philmckinney.com/innovation-hero-worship-ftx-theranos-and-the-media/",
+      "reason": "Analysis of how media hero worship of tech founders enabled both the Theranos and FTX frauds"
+    },
+    {
+      "pair_source": "Media hype cycles as enablers of tech fraud",
+      "kind": "url",
+      "locator": "https://33charts.com/theranos-media-hype-cycle/",
+      "reason": "Analysis of how the media hype cycle specifically enabled Theranos to avoid scrutiny"
+    },
+    {
+      "pair_source": "Regulatory gaps that enabled major tech and crypto failures",
+      "kind": "url",
+      "locator": "https://theconversation.com/how-theranos-faulty-blood-tests-got-to-market-and-what-that-shows-about-gaps-in-fda-regulation-168050",
+      "reason": "Analysis of FDA regulatory gaps that allowed Theranos devices to reach Walgreens stores"
+    },
+    {
+      "pair_source": "Regulatory gaps that enabled major tech and crypto failures",
+      "kind": "url",
+      "locator": "https://www.whitecase.com/insight-alert/sec-fy-2025-review-transformative-year-sec-enforcement",
+      "reason": "White & Case law firm review of SEC enforcement in 2025 including crypto case dismissals"
+    },
+    {
+      "pair_source": "The effective altruism facade in tech — when stated ethics mask financial misconduct",
+      "kind": "url",
+      "locator": "https://www.newsweek.com/ftxs-downfall-how-moral-preening-obscured-fraud-opinion-1760135",
+      "reason": "Newsweek analysis of how SBF's effective altruism posture obscured the FTX fraud"
+    },
+    {
+      "pair_source": "Criminal sentencing outcomes across major tech fraud cases 2022-2026",
+      "kind": "url",
+      "locator": "https://www.npr.org/2024/03/28/1241210300/sam-bankman-fried-ftx-sentencing-crimes-crypto-mogul-greed",
+      "reason": "NPR coverage of SBF sentencing providing context on judge's reasoning and comparisons to other fraud sentences"
+    },
+    {
+      "pair_source": "The Hindenburg Research model — short sellers as fraud detectors in tech",
+      "kind": "url",
+      "locator": "https://www.truckinginfo.com/10183479/nikola-founder-trevor-milton-convicted-of-fraud",
+      "reason": "Details how Hindenburg Research's report triggered the investigation leading to Milton's fraud conviction"
+    }
+  ]
+}

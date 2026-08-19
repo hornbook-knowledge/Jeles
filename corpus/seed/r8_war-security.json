@@ -1,0 +1,441 @@
+{
+  "domain": "war-security-systems",
+  "pairs": [
+    {
+      "source_text": "Theories of conflict onset identify multiple causal pathways to war",
+      "source_lang": "en",
+      "target_text": "Political scientists have identified several major theories for why wars begin. The 'rationalist' school (Fearon 1995) argues wars result from information failures and commitment problems between states that would otherwise prefer negotiated outcomes. The 'resource curse' thesis holds that states rich in extractable resources (oil, diamonds, coltan) face higher civil war risk -- the World Bank's 2003 'Breaking the Conflict Trap' report found that countries with primary commodity exports exceeding 32% of GDP had a 22% risk of civil war over any five-year period, versus 1% for countries without such dependence. Ethnic fractionalization interacts with weak institutions: Collier and Hoeffler (2004) showed that ethnic diversity alone does not predict civil war, but ethnic dominance (one group comprising 45-90% of the population) significantly increases risk. Proxy wars became a Cold War staple -- the US and Soviet Union fought indirectly in Korea (1950-53), Vietnam (1955-75), Angola (1975-2002), and Afghanistan (1979-89), among dozens of theaters, killing millions while the superpowers avoided direct confrontation.",
+      "target_lang": "en",
+      "reason": "Understanding why wars start is foundational to prevention -- different theories imply different interventions"
+    },
+    {
+      "source_text": "The Manhattan Project created nuclear weapons and established the atomic age",
+      "source_lang": "en",
+      "target_text": "The Manhattan Project (1942-1946) employed over 125,000 people at a cost of nearly $2 billion ($28 billion in 2023 dollars). Led by J. Robert Oppenheimer at Los Alamos, the project produced the Trinity test on July 16, 1945, followed by the bombings of Hiroshima (Little Boy, uranium-235, August 6, 1945, approximately 70,000-80,000 immediate deaths) and Nagasaki (Fat Man, plutonium-239, August 9, 1945, approximately 40,000 immediate deaths). Total casualties including radiation effects reached an estimated 200,000 by December 1945. The project involved deliberate human radiation experiments: from 1945-47, 18 hospital patients were injected with plutonium without informed consent to study metabolic effects, a fact revealed only by journalist Eileen Welsome's investigation in 1993. The Atomic Energy Act of 1946 transferred control to civilian authority, but the military-industrial complex the project spawned persists -- the US spent an estimated $35.1 trillion (in 2022 dollars) on nuclear weapons from 1940 through 2022, according to the Brookings Institution's 'Atomic Audit' project.",
+      "target_lang": "en",
+      "reason": "The Manhattan Project established precedents for secrecy, scale of government R&D, and ethical failures that persist in defense programs"
+    },
+    {
+      "source_text": "Nine states possess approximately 12,500 nuclear warheads as of 2023",
+      "source_lang": "en",
+      "target_text": "The Federation of American Scientists (FAS) and Stockholm International Peace Research Institute (SIPRI) estimate the global nuclear arsenal at approximately 12,512 warheads as of January 2023. Russia holds roughly 6,257 (1,674 deployed strategic), the United States 5,550 (1,744 deployed strategic), France 290, China 350 (rapidly expanding, projected 1,500 by 2035 per DoD estimates), the United Kingdom 225, Pakistan 170, India 164, Israel (undeclared, estimated 90), and North Korea (estimated 40-50). The New START treaty (2010) between the US and Russia limits deployed strategic warheads to 1,550 each and was extended to February 2026, but Russia suspended participation in February 2023. The Treaty on the Prohibition of Nuclear Weapons (TPNW) entered into force in January 2021 with 68 states parties, but no nuclear-armed state has joined. Peak global arsenals reached approximately 70,300 warheads in 1986.",
+      "target_lang": "en",
+      "reason": "Current nuclear arsenals represent both a dramatic reduction from Cold War peaks and a continuing existential threat"
+    },
+    {
+      "source_text": "Mutually Assured Destruction doctrine shaped Cold War strategy but has structural weaknesses",
+      "source_lang": "en",
+      "target_text": "MAD doctrine holds that nuclear war is prevented because any first strike would trigger a retaliatory second strike causing unacceptable damage to the attacker. The doctrine was formalized under Secretary of Defense Robert McNamara in the 1960s, defining 'unacceptable damage' as destruction of 25-33% of the Soviet population and 66-75% of industrial capacity. However, MAD has nearly failed multiple times: in September 1983, Soviet officer Stanislav Petrov correctly identified a satellite warning of five incoming US ICBMs as a false alarm, defying protocol that required immediate report up the chain of command. In January 1995, a Norwegian scientific rocket was briefly mistaken by Russian radar as a US submarine-launched missile, leading President Yeltsin to activate his nuclear briefcase for the first time. The Bulletin of the Atomic Scientists' Doomsday Clock stood at 90 seconds to midnight as of January 2023, the closest it has ever been. Critics including Daniel Ellsberg (author of 'The Doomsday Machine,' 2017) argue MAD depends on rational actors with perfect information -- assumptions repeatedly contradicted by the historical record.",
+      "target_lang": "en",
+      "reason": "MAD is treated as stable deterrence but near-misses show the doctrine has barely survived its own implementation"
+    },
+    {
+      "source_text": "The Nuclear Non-Proliferation Treaty is the cornerstone of arms control but faces erosion",
+      "source_lang": "en",
+      "target_text": "The NPT, signed in 1968 and entering force in 1970, divides the world into five recognized nuclear-weapon states (US, Russia, UK, France, China) and non-nuclear-weapon states who agree not to acquire weapons in exchange for access to peaceful nuclear technology and a commitment by weapon states to pursue disarmament (Article VI). 191 states are party to the treaty. Four states never joined: India (tested in 1974 and 1998), Pakistan (tested in 1998), Israel (undeclared program), and South Sudan. North Korea withdrew in 2003. The 2010 Review Conference produced an action plan, but the 2015 conference failed to reach consensus and the 2022 conference also ended without agreement due to disputes over the Zaporizhzhia nuclear power plant. South Africa remains the only state to have developed and then voluntarily dismantled nuclear weapons (six devices, disclosed in 1993). Libya abandoned its program in 2003. The Iran nuclear deal (JCPOA, 2015) limited Iran's enrichment but the US withdrew in 2018 and Iran subsequently exceeded agreed limits.",
+      "target_lang": "en",
+      "reason": "The NPT regime is the primary framework preventing proliferation but its bargain is fraying on both sides"
+    },
+    {
+      "source_text": "CIA operations include documented coups, torture programs, and intelligence failures",
+      "source_lang": "en",
+      "target_text": "The CIA, established by the National Security Act of 1947, has conducted operations now extensively documented through declassified records. Confirmed covert operations include the 1953 Iranian coup (Operation TPAJAX, restoring Shah Mohammad Reza Pahlavi after overthrowing Prime Minister Mossadegh), the 1954 Guatemalan coup (Operation PBSUCCESS, overthrowing President Arbenz), the 1961 Bay of Pigs invasion (failed), and involvement in the 1973 Chilean coup. The Church Committee (1975) revealed assassination plots against foreign leaders including Fidel Castro, Patrice Lumumba, and others. The CIA's post-9/11 enhanced interrogation program (2002-2007) used techniques including waterboarding, sleep deprivation up to 180 hours, and rectal feeding, as documented in the Senate Intelligence Committee's 6,700-page report (summary released December 2014). The report found the techniques produced no unique intelligence that prevented attacks. The CIA also failed to prevent 9/11 despite having tracked two of the hijackers, and its 2002 National Intelligence Estimate on Iraqi WMD was described by the WMD Commission (2005) as 'one of the most damaging intelligence failures in recent American history.'",
+      "target_lang": "en",
+      "reason": "Intelligence agencies wield enormous power with limited accountability; documented abuses inform ongoing oversight debates"
+    },
+    {
+      "source_text": "Mossad and MI6 have conducted high-profile operations with mixed legacies",
+      "source_lang": "en",
+      "target_text": "Israel's Mossad has conducted operations including the capture of Adolf Eichmann in Buenos Aires (1960), Operation Wrath of God targeting Black September operatives after the 1972 Munich Olympics massacre (killing at least 12 people, including the mistaken killing of Moroccan waiter Ahmed Bouchikhi in Lillehammer, Norway in 1973), the assassination of Hamas weapons engineer Mahmoud al-Mabhouh in Dubai (2010, using forged passports from allied nations), and the reported sabotage of Iran's nuclear program including the assassination of nuclear scientists. The UK's MI6 (Secret Intelligence Service) was involved in the joint CIA-MI6 1953 Iran coup (Operation Boot), penetrated Soviet intelligence through agents like Oleg Penkovsky (whose intelligence was crucial during the 1962 Cuban Missile Crisis), and faced scandal when Kim Philby and the Cambridge Five were revealed as Soviet double agents. Russia's FSB (successor to the KGB's domestic functions) has been linked to the 2006 polonium-210 poisoning of Alexander Litvinenko in London and the 2018 Novichok attack on Sergei and Yulia Skripal in Salisbury, both attributed by UK investigations to Russian state agents.",
+      "target_lang": "en",
+      "reason": "Intelligence operations by multiple states reveal patterns of extraterritorial action, plausible deniability, and blowback"
+    },
+    {
+      "source_text": "Stuxnet represented the first known cyber weapon to cause physical destruction of infrastructure",
+      "source_lang": "en",
+      "target_text": "Stuxnet, discovered in 2010 but operational from approximately 2007, was a sophisticated computer worm that targeted Siemens SCADA systems controlling centrifuges at Iran's Natanz uranium enrichment facility. The malware caused approximately 1,000 of Iran's 5,000 IR-1 centrifuges to spin at abnormal speeds and destroy themselves while reporting normal operations to monitoring systems. Widely attributed to the United States (under Operation Olympic Games, initiated by President George W. Bush and continued by President Obama) and Israel, though neither has officially confirmed responsibility. Journalist David Sanger's 2012 book 'Confront and Conceal' detailed the US-Israeli collaboration. Stuxnet escaped Natanz and spread to computers in other countries, demonstrating the 'blowback' risk of cyber weapons. The operation delayed Iran's nuclear program by an estimated 1-2 years according to various assessments, but also established a precedent for state-sponsored cyberattacks on critical infrastructure that other nations have since followed.",
+      "target_lang": "en",
+      "reason": "Stuxnet opened the era of cyber weapons targeting physical infrastructure, setting precedents still being worked through"
+    },
+    {
+      "source_text": "State-sponsored cyber operations have escalated from espionage to infrastructure attacks",
+      "source_lang": "en",
+      "target_text": "The SolarWinds attack (discovered December 2020) compromised the software supply chain of SolarWinds Orion, used by approximately 18,000 organizations including the US Treasury, Commerce, and Homeland Security departments. The US government attributed it to Russia's SVR (foreign intelligence service). In 2017, the NotPetya malware, attributed to Russia's GRU military intelligence (Unit 74455, 'Sandworm'), was deployed against Ukraine but spread globally, causing an estimated $10 billion in damages -- Maersk alone lost $300 million. China's APT groups have conducted extensive economic espionage; the 2015 OPM breach exposed personnel records of 21.5 million current and former federal employees. North Korea's Lazarus Group conducted the 2014 Sony Pictures hack and the 2017 WannaCry ransomware attack affecting 200,000 computers across 150 countries. The US Cyber Command, established in 2009 and elevated to a unified combatant command in 2018, reportedly conducts offensive operations including against ISIS networks and Russian troll farms. The Tallinn Manual (2013, updated 2017) attempts to apply international law to cyber operations but is not binding.",
+      "target_lang": "en",
+      "reason": "Cyber warfare blurs the line between peace and conflict and currently operates in a legal gray zone"
+    },
+    {
+      "source_text": "The global arms trade is dominated by a small number of exporters selling to conflict-prone regions",
+      "source_lang": "en",
+      "target_text": "SIPRI data shows the top five arms exporters for 2018-2022 were the United States (40% of global arms exports), Russia (16%), France (11%), China (5.2%), and Germany (4.2%). The US alone exported $205.6 billion in arms through Foreign Military Sales from FY2015-2022. Saudi Arabia was the world's largest arms importer in 2018-2022, receiving 7.4% of global imports, primarily from the US. The Obama administration authorized over $115 billion in arms sales to Saudi Arabia; the Trump administration continued with a $110 billion deal announced in May 2017. These weapons were used in the Saudi-led coalition's intervention in Yemen (from 2015), where coalition airstrikes hit hospitals, schools, funerals, and a school bus (August 2018, killing 40 children, with fragments traced to a Lockheed Martin bomb sold through US government channels). The Arms Trade Treaty (ATT), entering force in 2014, requires risk assessments before exports but the US signed in 2013 then 'unsigned' in 2019. Russia, China, India, and Saudi Arabia have not signed.",
+      "target_lang": "en",
+      "reason": "Arms export patterns directly enable conflicts and humanitarian crises while generating enormous revenue for exporting states"
+    },
+    {
+      "source_text": "Cluster munitions and autonomous weapons represent contested categories in arms control",
+      "source_lang": "en",
+      "target_text": "The Convention on Cluster Munitions (2008, effective 2010) bans the use, production, and transfer of cluster munitions, which scatter submunitions ('bomblets') over wide areas with high failure rates (5-40% depending on type), leaving de facto landmines. 111 states are party; the US, Russia, China, India, Israel, Brazil, and others have not joined. The US used cluster munitions in Vietnam (approximately 270 million bomblets dropped on Laos alone, of which an estimated 80 million failed to detonate and continue killing -- over 20,000 casualties since 1964 according to Legacies of War), Iraq, and transferred them to Ukraine in 2023 under President Biden's authorization. On autonomous weapons (lethal autonomous weapons systems, LAWS), the UN Convention on Certain Conventional Weapons has held Group of Governmental Experts meetings since 2017 but has not produced a binding instrument. Turkey's Kargu-2 drone reportedly autonomously engaged targets in Libya in March 2020, per a UN Panel of Experts report, potentially marking the first autonomous lethal engagement without human command. The Campaign to Stop Killer Robots, launched in 2013, advocates for a preemptive ban, supported by 30 Nobel laureates.",
+      "target_lang": "en",
+      "reason": "Cluster munitions show how weapons banned by many states remain in use by major powers; autonomous weapons are an active frontier"
+    },
+    {
+      "source_text": "Private military companies operate in a legal and accountability gray zone",
+      "source_lang": "en",
+      "target_text": "Blackwater (founded 1997 by Erik Prince, renamed Xe Services 2009, then Academi 2011, merged into Constellis 2014) received over $2 billion in US government contracts from 2000-2010. On September 16, 2007, Blackwater guards killed 17 Iraqi civilians at Nisour Square, Baghdad. Four guards were convicted in US courts in 2014-15 (one of first-degree murder, three of voluntary manslaughter), but were pardoned by President Trump in December 2020. At peak in 2008-2009, private military contractors in Iraq outnumbered US troops, with approximately 190,000 contractors versus 165,000 military personnel. Russia's Wagner Group (founded circa 2014, linked to Yevgeny Prigozhin) deployed in Syria, Libya, Central African Republic, Mali, Mozambique, and Ukraine. Wagner forces were documented by the UN in committing summary executions in Mali and CAR. Wagner fielded approximately 50,000 fighters in Ukraine, many recruited from Russian prisons. After Prigozhin's brief June 2023 mutiny and his death in an August 2023 plane crash, Wagner operations were absorbed into Russia's Ministry of Defense and rebranded. The Montreux Document (2008) established 73 good practices for PMCs but is not legally binding.",
+      "target_lang": "en",
+      "reason": "PMCs allow states to project force with reduced political accountability and operate outside standard military justice systems"
+    },
+    {
+      "source_text": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "source_lang": "en",
+      "target_text": "The four Geneva Conventions of 1949 and their 1977 Additional Protocols establish protections for wounded soldiers, prisoners of war, and civilians in armed conflict. All 196 states are party to the 1949 conventions, making them among the most universally ratified treaties. Key protections include: prohibition of torture and inhumane treatment (Common Article 3), requirement to distinguish between combatants and civilians (Protocol I, Article 48), prohibition of attacking hospitals and medical personnel, and requirement to treat POWs humanely. However, enforcement mechanisms are limited. The International Criminal Court (established by the Rome Statute, 2002) has jurisdiction over war crimes, crimes against humanity, and genocide, but major powers including the US, Russia, China, and India are not members. The ICC has completed only 10 cases in its first 20 years, all involving African defendants, drawing criticism of selective justice. The International Court of Justice can rule on state responsibility but lacks enforcement power. Grave breaches of the conventions require states to prosecute or extradite offenders (universal jurisdiction), but this is rarely exercised.",
+      "target_lang": "en",
+      "reason": "International humanitarian law sets crucial norms but the gap between rules and enforcement enables ongoing violations"
+    },
+    {
+      "source_text": "War leaves lasting health consequences including PTSD, toxic exposure, and systemic care failures",
+      "source_lang": "en",
+      "target_text": "PTSD affects an estimated 11-20% of veterans who served in Operations Iraqi Freedom and Enduring Freedom, 12% of Gulf War veterans, and 15% of Vietnam veterans in their lifetimes, according to the US Department of Veterans Affairs National Center for PTSD. Veteran suicide is a persistent crisis: the VA's 2022 National Veteran Suicide Prevention Annual Report found an average of 17 veteran suicides per day in 2020. Agent Orange (containing the dioxin TCDD) was sprayed over approximately 4.5 million acres in Vietnam from 1962-1971 under Operation Ranch Hand; the VA recognizes 14 diseases as presumptively connected to Agent Orange exposure. An estimated 3 million Vietnamese and thousands of US veterans suffered health effects. The US used approximately 300 tons of depleted uranium munitions in the 1991 Gulf War and 170 tons in the 2003 Iraq invasion; studies in Fallujah documented elevated rates of childhood cancer, leukemia, and birth defects, though causality remains scientifically contested. The VA healthcare system serves 9 million enrolled veterans but has faced persistent scandals including the 2014 waitlist crisis, where the Phoenix VA facility maintained secret lists concealing wait times up to 115 days, linked to at least 40 veteran deaths.",
+      "target_lang": "en",
+      "reason": "The human cost of war extends far beyond the battlefield into decades of health consequences and institutional failures in care"
+    },
+    {
+      "source_text": "Resource competition drives specific conflicts from oil to water to rare earth minerals",
+      "source_lang": "en",
+      "target_text": "The relationship between natural resources and conflict is well-documented in specific cases. Iraq's invasion of Kuwait (1990) was driven partly by disputes over the Rumaila oil field and Kuwait's alleged overproduction depressing oil prices that Iraq depended on to service war debts. The Democratic Republic of Congo's conflicts (1996-present, over 5.4 million estimated deaths by 2008 per the International Rescue Committee) have been fueled by competition over coltan, cassiterite, gold, and other minerals essential for electronics. The Dodd-Frank Act Section 1502 (2010) required US companies to disclose use of conflict minerals from the DRC region. Water scarcity is increasingly recognized as a conflict driver: the Pacific Institute's Water Conflict Chronology documents over 900 water-related conflicts historically. Syria's civil war (2011-present) was preceded by its worst drought in 900 years (2006-2010), which displaced 1.5 million people internally and contributed to urban instability. China controls approximately 60% of global rare earth mineral production, creating strategic dependencies that factor into defense planning worldwide.",
+      "target_lang": "en",
+      "reason": "Resource scarcity and resource wealth both generate conflict dynamics that are intensifying with climate change"
+    },
+    {
+      "source_text": "Proxy wars remain a primary mechanism of great power competition in the 21st century",
+      "source_lang": "en",
+      "target_text": "Proxy warfare -- supporting allied combatants rather than deploying one's own forces directly -- persists as a major feature of international conflict. In Syria's civil war, the US supported Kurdish-led Syrian Democratic Forces and selected rebel groups, Russia provided air power and ground forces supporting the Assad government from 2015, Iran deployed Revolutionary Guard forces and funded Hezbollah fighters, Turkey supported opposition factions and invaded northern Syria targeting Kurdish forces, and Saudi Arabia and Qatar funded various rebel groups, sometimes at cross-purposes. In Yemen, the Saudi-led coalition (backed by US intelligence, logistics, and arms sales) fought Houthi rebels supported by Iran, creating what the UN called the world's worst humanitarian crisis -- over 377,000 deaths by end of 2021 (UN estimate), including 150,000 from indirect causes such as starvation and preventable disease. In Ukraine, Western nations have provided over $75 billion in military aid since Russia's February 2022 invasion, while Iran supplied Shahed-136 drones and North Korea reportedly supplied ammunition to Russia. These arrangements allow major powers to pursue strategic goals while managing escalation risks.",
+      "target_lang": "en",
+      "reason": "Proxy warfare distributes costs but concentrates suffering in the countries where fighting actually occurs"
+    },
+    {
+      "source_text": "Nuclear close calls have brought the world to the brink of accidental war multiple times",
+      "source_lang": "en",
+      "target_text": "Beyond the well-known Cuban Missile Crisis of October 1962 (during which Soviet submarine officer Vasili Arkhipov refused to authorize a nuclear torpedo launch against US destroyers, potentially preventing nuclear war), there have been numerous documented close calls. On November 9, 1979, NORAD computers showed a massive Soviet first strike due to a training tape being loaded into the operational system; the error was identified in six minutes. On June 3, 1980, a faulty computer chip caused NORAD to display between 0 and 2,000 incoming Soviet missiles in random sequence, triggering a brief alert. During the Able Archer 83 NATO exercise (November 1983), Soviet leadership, already on heightened alert after shooting down Korean Air Lines Flight 007, genuinely feared the exercise was cover for a real first strike. A 1990 report by the President's Foreign Intelligence Advisory Board concluded the war scare was real and the US intelligence community had failed to recognize its severity. Eric Schlosser's 2013 book 'Command and Control' documents dozens of accidents involving US nuclear weapons, including a 1961 incident where a B-52 broke apart over Goldsboro, North Carolina, dropping two hydrogen bombs -- one went through five of six arming steps before a single low-voltage switch prevented detonation of a 3.8-megaton weapon.",
+      "target_lang": "en",
+      "reason": "The frequency of near-misses challenges the assumption that nuclear deterrence is inherently stable"
+    },
+    {
+      "source_text": "The laws of war fail to adequately address cyber operations, autonomous weapons, and non-state actors",
+      "source_lang": "en",
+      "target_text": "International humanitarian law was designed for interstate conflicts with identifiable combatants. Several modern realities strain this framework. Cyber operations: the Tallinn Manual 2.0 (2017), produced by NATO's Cooperative Cyber Defence Centre of Excellence, offers legal analysis but no state is bound by it, and fundamental questions remain unresolved -- at what threshold does a cyberattack constitute an 'armed attack' triggering self-defense rights under UN Charter Article 51? Autonomous weapons: no binding international law specifically addresses LAWS; existing IHL requires human judgment in proportionality and distinction assessments (Additional Protocol I, Articles 51 and 57), but whether an algorithm can satisfy these requirements is disputed. Non-state actors: groups like ISIS controlled territory and fielded armies but were not parties to conventions designed for states; Common Article 3 applies to non-international armed conflicts but enforcement against non-state actors relies on domestic prosecution or ad hoc tribunals. The US Authorization for Use of Military Force (2001) has been used to justify operations in at least 22 countries across four presidential administrations without new congressional authorization, stretching the legal framework beyond recognition.",
+      "target_lang": "en",
+      "reason": "Legal frameworks designed for 20th century warfare are increasingly inadequate for 21st century threats"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "The Manhattan Project created nuclear weapons and established the atomic age",
+      "to_source": "Nine states possess approximately 12,500 nuclear warheads as of 2023",
+      "kind": "refines",
+      "reason": "The Manhattan Project initiated the nuclear age; current arsenals show how proliferation followed despite being launched by a single state's program"
+    },
+    {
+      "from_source": "Nine states possess approximately 12,500 nuclear warheads as of 2023",
+      "to_source": "Mutually Assured Destruction doctrine shaped Cold War strategy but has structural weaknesses",
+      "kind": "refines",
+      "reason": "The size and deployment posture of arsenals are designed around MAD assumptions; the doctrine justifies the numbers"
+    },
+    {
+      "from_source": "Mutually Assured Destruction doctrine shaped Cold War strategy but has structural weaknesses",
+      "to_source": "Nuclear close calls have brought the world to the brink of accidental war multiple times",
+      "kind": "contradicts",
+      "reason": "MAD assumes rational control prevents launch; close calls show technical and human failures repeatedly nearly defeated the doctrine"
+    },
+    {
+      "from_source": "The Nuclear Non-Proliferation Treaty is the cornerstone of arms control but faces erosion",
+      "to_source": "Nine states possess approximately 12,500 nuclear warheads as of 2023",
+      "kind": "contradicts",
+      "reason": "The NPT's Article VI requires disarmament, but weapon states maintain and modernize large arsenals, undermining the treaty's core bargain"
+    },
+    {
+      "from_source": "CIA operations include documented coups, torture programs, and intelligence failures",
+      "to_source": "Mossad and MI6 have conducted high-profile operations with mixed legacies",
+      "kind": "refines",
+      "reason": "Intelligence agencies across democracies share patterns of covert action, extraterritorial operations, and limited accountability"
+    },
+    {
+      "from_source": "Stuxnet represented the first known cyber weapon to cause physical destruction of infrastructure",
+      "to_source": "State-sponsored cyber operations have escalated from espionage to infrastructure attacks",
+      "kind": "refines",
+      "reason": "Stuxnet set the precedent; subsequent operations by multiple states escalated in scope and destructiveness"
+    },
+    {
+      "from_source": "State-sponsored cyber operations have escalated from espionage to infrastructure attacks",
+      "to_source": "The laws of war fail to adequately address cyber operations, autonomous weapons, and non-state actors",
+      "kind": "refines",
+      "reason": "The scale of cyber operations intensifies the urgency of the legal gap in regulating them"
+    },
+    {
+      "from_source": "The global arms trade is dominated by a small number of exporters selling to conflict-prone regions",
+      "to_source": "Proxy wars remain a primary mechanism of great power competition in the 21st century",
+      "kind": "refines",
+      "reason": "Arms exports enable proxy wars -- the same states that dominate exports arm the proxies fighting in Yemen, Syria, and elsewhere"
+    },
+    {
+      "from_source": "Cluster munitions and autonomous weapons represent contested categories in arms control",
+      "to_source": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "kind": "refines",
+      "reason": "Specific weapons categories expose the limits of the Geneva Convention framework -- norms exist but non-signatory major powers disregard them"
+    },
+    {
+      "from_source": "Private military companies operate in a legal and accountability gray zone",
+      "to_source": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "kind": "contradicts",
+      "reason": "PMCs exploit the enforcement gap in IHL -- they are neither clearly soldiers nor civilians, creating accountability vacuums"
+    },
+    {
+      "from_source": "Theories of conflict onset identify multiple causal pathways to war",
+      "to_source": "Resource competition drives specific conflicts from oil to water to rare earth minerals",
+      "kind": "refines",
+      "reason": "Resource war theory is one of several causal pathways; specific cases illustrate the general theory with concrete evidence"
+    },
+    {
+      "from_source": "Proxy wars remain a primary mechanism of great power competition in the 21st century",
+      "to_source": "War leaves lasting health consequences including PTSD, toxic exposure, and systemic care failures",
+      "kind": "refines",
+      "reason": "Proxy wars produce the same physical and psychological damage as direct conflicts but often with even less accountability for veteran care in proxy states"
+    },
+    {
+      "from_source": "The global arms trade is dominated by a small number of exporters selling to conflict-prone regions",
+      "to_source": "Cluster munitions and autonomous weapons represent contested categories in arms control",
+      "kind": "refines",
+      "reason": "Arms trade patterns determine which contested weapons reach conflict zones; export decisions are policy choices with humanitarian consequences"
+    },
+    {
+      "from_source": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "to_source": "The laws of war fail to adequately address cyber operations, autonomous weapons, and non-state actors",
+      "kind": "refines",
+      "reason": "The Geneva Conventions' enforcement gaps are compounded by entirely new domains of warfare they were never designed to cover"
+    },
+    {
+      "from_source": "CIA operations include documented coups, torture programs, and intelligence failures",
+      "to_source": "Theories of conflict onset identify multiple causal pathways to war",
+      "kind": "refines",
+      "reason": "Intelligence agency covert actions -- coups, proxy support, destabilization -- are themselves a causal pathway to conflict, distinct from structural theories"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Theories of conflict onset identify multiple causal pathways to war",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Rationalist_explanations_for_war",
+      "reason": "Documents Fearon's rationalist theory of war onset and the information-failure mechanism"
+    },
+    {
+      "pair_source": "Theories of conflict onset identify multiple causal pathways to war",
+      "kind": "public_record",
+      "locator": "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/908361468779415199/breaking-the-conflict-trap-civil-war-and-development-policy",
+      "reason": "World Bank report establishing the link between commodity dependence and civil war risk"
+    },
+    {
+      "pair_source": "The Manhattan Project created nuclear weapons and established the atomic age",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Manhattan_Project",
+      "reason": "Comprehensive overview of the project's scope, cost, personnel, and outcomes"
+    },
+    {
+      "pair_source": "The Manhattan Project created nuclear weapons and established the atomic age",
+      "kind": "public_record",
+      "locator": "https://www.brookings.edu/the-costs-of-the-manhattan-project/",
+      "reason": "Brookings Institution Atomic Audit documenting the total costs of US nuclear weapons programs"
+    },
+    {
+      "pair_source": "Nine states possess approximately 12,500 nuclear warheads as of 2023",
+      "kind": "public_record",
+      "locator": "https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/",
+      "reason": "Federation of American Scientists' authoritative tracking of global nuclear arsenals"
+    },
+    {
+      "pair_source": "Nine states possess approximately 12,500 nuclear warheads as of 2023",
+      "kind": "public_record",
+      "locator": "https://www.sipri.org/yearbook/2023/06",
+      "reason": "SIPRI Yearbook data on world nuclear forces"
+    },
+    {
+      "pair_source": "Mutually Assured Destruction doctrine shaped Cold War strategy but has structural weaknesses",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/1983_Soviet_nuclear_false_alarm_incident",
+      "reason": "Documents the Petrov incident where a Soviet officer prevented potential nuclear war from a false alarm"
+    },
+    {
+      "pair_source": "Mutually Assured Destruction doctrine shaped Cold War strategy but has structural weaknesses",
+      "kind": "public_record",
+      "locator": "https://thebulletin.org/doomsday-clock/",
+      "reason": "Bulletin of the Atomic Scientists' Doomsday Clock current setting and historical timeline"
+    },
+    {
+      "pair_source": "The Nuclear Non-Proliferation Treaty is the cornerstone of arms control but faces erosion",
+      "kind": "public_record",
+      "locator": "https://www.un.org/disarmament/wmd/nuclear/npt/",
+      "reason": "UN resource on NPT status, text, review conferences, and parties"
+    },
+    {
+      "pair_source": "The Nuclear Non-Proliferation Treaty is the cornerstone of arms control but faces erosion",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/South_Africa_and_weapons_of_mass_destruction",
+      "reason": "Documents South Africa's unique nuclear disarmament history"
+    },
+    {
+      "pair_source": "CIA operations include documented coups, torture programs, and intelligence failures",
+      "kind": "public_record",
+      "locator": "https://www.intelligence.senate.gov/sites/default/files/publications/CRPT-113srpt288.pdf",
+      "reason": "Senate Select Committee on Intelligence study of CIA detention and interrogation program (executive summary)"
+    },
+    {
+      "pair_source": "CIA operations include documented coups, torture programs, and intelligence failures",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Church_Committee",
+      "reason": "Documents the Church Committee investigation revealing CIA assassination plots and domestic surveillance"
+    },
+    {
+      "pair_source": "Mossad and MI6 have conducted high-profile operations with mixed legacies",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Operation_Wrath_of_God",
+      "reason": "Documents Mossad's post-Munich operation including the Lillehammer affair mistaken killing"
+    },
+    {
+      "pair_source": "Mossad and MI6 have conducted high-profile operations with mixed legacies",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Poisoning_of_Alexander_Litvinenko",
+      "reason": "UK public inquiry findings attributing the polonium-210 poisoning to Russian state agents"
+    },
+    {
+      "pair_source": "Stuxnet represented the first known cyber weapon to cause physical destruction of infrastructure",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Stuxnet",
+      "reason": "Technical overview of Stuxnet's mechanisms, targets, and attribution"
+    },
+    {
+      "pair_source": "Stuxnet represented the first known cyber weapon to cause physical destruction of infrastructure",
+      "kind": "public_record",
+      "locator": "https://www.nytimes.com/2012/06/01/world/middleeast/obama-ordered-wave-of-cyberattacks-against-iran.html",
+      "reason": "David Sanger's reporting on Operation Olympic Games and US-Israeli collaboration"
+    },
+    {
+      "pair_source": "State-sponsored cyber operations have escalated from espionage to infrastructure attacks",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/2020_United_States_federal_government_data_breach",
+      "reason": "Details of the SolarWinds supply chain compromise and its scope across US government agencies"
+    },
+    {
+      "pair_source": "State-sponsored cyber operations have escalated from espionage to infrastructure attacks",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Petya_and_NotPetya",
+      "reason": "Documents the NotPetya attack, its attribution to Russian GRU, and $10 billion in global damages"
+    },
+    {
+      "pair_source": "The global arms trade is dominated by a small number of exporters selling to conflict-prone regions",
+      "kind": "public_record",
+      "locator": "https://www.sipri.org/publications/2023/sipri-fact-sheets/trends-international-arms-transfers-2022",
+      "reason": "SIPRI data on global arms transfer trends, top exporters, and top importers"
+    },
+    {
+      "pair_source": "The global arms trade is dominated by a small number of exporters selling to conflict-prone regions",
+      "kind": "public_record",
+      "locator": "https://www.cnn.com/2018/08/17/middleeast/us-saudi-yemen-bus-bomb-intl/index.html",
+      "reason": "Reporting on the 2018 Yemen school bus bombing and traced US-made Lockheed Martin munitions"
+    },
+    {
+      "pair_source": "Cluster munitions and autonomous weapons represent contested categories in arms control",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Convention_on_Cluster_Munitions",
+      "reason": "Overview of the Convention on Cluster Munitions, parties, and non-signatories"
+    },
+    {
+      "pair_source": "Cluster munitions and autonomous weapons represent contested categories in arms control",
+      "kind": "public_record",
+      "locator": "https://www.stopkillerrobots.org/",
+      "reason": "Campaign to Stop Killer Robots advocacy and resources on autonomous weapons policy"
+    },
+    {
+      "pair_source": "Private military companies operate in a legal and accountability gray zone",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Nisour_Square_massacre",
+      "reason": "Documents the Blackwater Nisour Square killings, trials, convictions, and pardons"
+    },
+    {
+      "pair_source": "Private military companies operate in a legal and accountability gray zone",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Wagner_Group",
+      "reason": "Overview of Wagner Group operations, documented abuses, Ukraine deployment, and Prigozhin mutiny"
+    },
+    {
+      "pair_source": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "kind": "public_record",
+      "locator": "https://www.icrc.org/en/doc/war-and-law/treaties-customary-law/geneva-conventions/overview-geneva-conventions.htm",
+      "reason": "ICRC official overview of the Geneva Conventions and their Additional Protocols"
+    },
+    {
+      "pair_source": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/International_Criminal_Court",
+      "reason": "Documents ICC membership gaps, case history, and criticisms of selective justice"
+    },
+    {
+      "pair_source": "War leaves lasting health consequences including PTSD, toxic exposure, and systemic care failures",
+      "kind": "public_record",
+      "locator": "https://www.ptsd.va.gov/understand/common/common_veterans.asp",
+      "reason": "VA National Center for PTSD data on prevalence rates across conflicts"
+    },
+    {
+      "pair_source": "War leaves lasting health consequences including PTSD, toxic exposure, and systemic care failures",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Veterans_Health_Administration_scandal_of_2014",
+      "reason": "Documents the VA waitlist scandal, secret lists, and veteran deaths linked to delayed care"
+    },
+    {
+      "pair_source": "Resource competition drives specific conflicts from oil to water to rare earth minerals",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Conflict_resource",
+      "reason": "Overview of conflict resources, including DRC minerals and the role of commodity extraction in fueling armed conflict"
+    },
+    {
+      "pair_source": "Resource competition drives specific conflicts from oil to water to rare earth minerals",
+      "kind": "public_record",
+      "locator": "https://www.worldwater.org/water-conflict/",
+      "reason": "Pacific Institute Water Conflict Chronology documenting over 900 water-related conflicts"
+    },
+    {
+      "pair_source": "Proxy wars remain a primary mechanism of great power competition in the 21st century",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Foreign_involvement_in_the_Syrian_civil_war",
+      "reason": "Documents the multiple foreign powers operating in the Syrian civil war and their competing interests"
+    },
+    {
+      "pair_source": "Proxy wars remain a primary mechanism of great power competition in the 21st century",
+      "kind": "public_record",
+      "locator": "https://news.un.org/en/story/2021/11/1106362",
+      "reason": "UN reporting on Yemen death toll exceeding 377,000 including indirect causes"
+    },
+    {
+      "pair_source": "Nuclear close calls have brought the world to the brink of accidental war multiple times",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Vasily_Arkhipov",
+      "reason": "Documents Arkhipov's refusal to authorize nuclear torpedo launch during the Cuban Missile Crisis"
+    },
+    {
+      "pair_source": "Nuclear close calls have brought the world to the brink of accidental war multiple times",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/1961_Goldsboro_B-52_crash",
+      "reason": "Documents the Goldsboro incident where a hydrogen bomb nearly detonated over North Carolina"
+    },
+    {
+      "pair_source": "The laws of war fail to adequately address cyber operations, autonomous weapons, and non-state actors",
+      "kind": "public_record",
+      "locator": "https://ccdcoe.org/research/tallinn-manual/",
+      "reason": "NATO CCDCOE resource on the Tallinn Manual 2.0 and its applicability to cyber operations under international law"
+    },
+    {
+      "pair_source": "The laws of war fail to adequately address cyber operations, autonomous weapons, and non-state actors",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Authorization_for_Use_of_Military_Force_of_2001",
+      "reason": "Documents the 2001 AUMF's use across four administrations and 22+ countries without new congressional authorization"
+    }
+  ]
+}

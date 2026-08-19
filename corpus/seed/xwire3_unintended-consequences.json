@@ -1,0 +1,169 @@
+{
+  "domain": "crossdomain-unintended-consequences",
+  "pairs": [
+    {
+      "source_text": "The Green Revolution introduced high-yield crop varieties and synthetic fertilizers that saved an estimated one billion people from famine between the 1960s and 1990s",
+      "source_lang": "en",
+      "target_text": "Dependence on expensive seeds, pesticides, and fertilizers trapped smallholder farmers in debt cycles, contributing to over 300,000 farmer suicides in India between 1995 and 2018",
+      "target_lang": "en",
+      "reason": "Agricultural modernization solved mass starvation but created input-dependency economics that destroyed the livelihoods of the very farmers it was designed to help, illustrating how technological solutions can shift risk from populations to individuals"
+    },
+    {
+      "source_text": "Alexander Fleming's discovery of penicillin in 1928 launched the antibiotic era, saving an estimated 200 million lives by reducing deaths from bacterial infections",
+      "source_lang": "en",
+      "target_text": "Widespread antibiotic overuse in medicine and agriculture accelerated antimicrobial resistance, with the WHO estimating drug-resistant infections could cause 10 million deaths annually by 2050",
+      "target_lang": "en",
+      "reason": "The same selection-pressure dynamic appears in AI safety research: solving an immediate threat creates conditions for a more dangerous successor, as safety techniques that improve capability create a capability overhang analogous to resistance evolution"
+    },
+    {
+      "source_text": "Social media platforms connected over 4.5 billion users worldwide, enabling the Arab Spring uprisings and giving voice to previously marginalized communities",
+      "source_lang": "en",
+      "target_text": "Facebook's recommendation algorithms amplified hate speech in Myanmar, contributing to the 2017 Rohingya genocide in which over 25,000 people were killed, while platform dynamics drove a global teen mental health crisis",
+      "target_lang": "en",
+      "reason": "Network effects that democratize communication also democratize incitement; the same algorithmic amplification that surfaces useful content preferentially surfaces emotionally triggering content, turning a connection tool into a radicalization engine"
+    },
+    {
+      "source_text": "Nuclear deterrence through mutually assured destruction prevented direct conflict between the United States and Soviet Union for over four decades of the Cold War",
+      "source_lang": "en",
+      "target_text": "The deterrence framework required maintaining thousands of warheads on hair-trigger alert and incentivized proliferation to nine nuclear states, creating existential risk from accidental launch, with at least six documented near-miss incidents",
+      "target_lang": "en",
+      "reason": "Preventing war through the threat of annihilation is a stability paradox: the system works only as long as the catastrophe it prevents remains plausibly imminent, meaning safety and danger must be maintained simultaneously"
+    },
+    {
+      "source_text": "Muhammad Yunus won the 2006 Nobel Peace Prize for pioneering microfinance through Grameen Bank, extending small loans to lift the rural poor out of poverty",
+      "source_lang": "en",
+      "target_text": "Commercialization of microfinance led to predatory lending practices with interest rates exceeding 100% annually, triggering a debt-trap crisis in Andhra Pradesh in 2010 where over 200 borrowers committed suicide",
+      "target_lang": "en",
+      "reason": "When a poverty-reduction tool becomes a profit-maximization vehicle, the incentive structure inverts: lenders benefit from borrower dependency rather than borrower success, replicating the extractive dynamics the intervention was designed to disrupt"
+    },
+    {
+      "source_text": "Content moderation systems were developed by major platforms to combat hate speech, terrorism recruitment, and disinformation following pressure from governments and civil society",
+      "source_lang": "en",
+      "target_text": "Automated moderation systems disproportionately suppressed content in Arabic, Tigrinya, and other non-English languages, silencing Palestinian, Ethiopian, and Uyghur activists documenting human rights abuses",
+      "target_lang": "en",
+      "reason": "Moderation at scale requires classification, and classification encodes the biases of its training data and the political constraints of its operators, meaning speech protection becomes speech suppression when the system cannot distinguish dissent from disruption"
+    },
+    {
+      "source_text": "The United States declared a War on Drugs in 1971 under President Nixon with the stated goal of reducing drug abuse and its associated public health harms",
+      "source_lang": "en",
+      "target_text": "The War on Drugs produced the world's largest prison population, with US incarceration rising from 300,000 in 1970 to over 2.3 million by 2020, disproportionately affecting Black Americans while empowering cartels through prohibition economics",
+      "target_lang": "en",
+      "reason": "Criminalizing supply without addressing demand creates a price premium that funds the very organizations enforcement targets, while punitive sentencing removes people from communities rather than removing drugs from them"
+    },
+    {
+      "source_text": "Standardized testing was introduced in the early 20th century as a meritocratic tool to democratize access to higher education beyond the privileges of family connections and wealth",
+      "source_lang": "en",
+      "target_text": "SAT scores correlate more strongly with family income than with college performance, with students from families earning over $200,000 scoring on average 250 points higher than those earning under $20,000, reinforcing rather than disrupting class stratification",
+      "target_lang": "en",
+      "reason": "A measurement designed to bypass privilege instead measures the resources that privilege buys: test preparation, educational quality, and cognitive development conditions, making the meritocratic instrument a laundering mechanism for inherited advantage"
+    },
+    {
+      "source_text": "Western nations imposed SWIFT banking sanctions on Russia following the 2022 invasion of Ukraine, intending to isolate Russia financially and pressure it to withdraw",
+      "source_lang": "en",
+      "target_text": "SWIFT sanctions accelerated de-dollarization efforts as China, India, Brazil, and other nations expanded alternative payment systems including CIPS and bilateral currency agreements, potentially fragmenting the global financial architecture that underpins Western economic power",
+      "target_lang": "en",
+      "reason": "Weaponizing financial infrastructure reveals its contingent nature to all participants, not just the target, incentivizing diversification that erodes the very leverage the sanctions depend on, a self-undermining enforcement mechanism"
+    },
+    {
+      "source_text": "Open-source AI initiatives including Meta's release of LLaMA models were framed as democratizing access to artificial intelligence, preventing monopolistic control by a few corporations",
+      "source_lang": "en",
+      "target_text": "Openly available model weights enabled fine-tuning to remove safety guardrails, generation of nonconsensual deepfake imagery, and development of autonomous cyber-attack tools by actors who could never have built foundation models themselves",
+      "target_lang": "en",
+      "reason": "Democratizing capability without democratizing responsibility replicates the dual-use dilemma of nuclear physics: openness that prevents monopoly simultaneously prevents containment, and the marginal cost of misuse drops to near zero while the marginal cost of defense remains high"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Alexander Fleming's discovery of penicillin in 1928 launched the antibiotic era, saving an estimated 200 million lives by reducing deaths from bacterial infections",
+      "to_source": "Open-source AI initiatives including Meta's release of LLaMA models were framed as democratizing access to artificial intelligence, preventing monopolistic control by a few corporations",
+      "kind": "refines",
+      "reason": "Both exhibit the same structural pattern: a beneficial intervention that reduces barriers (to health, to capability) simultaneously reduces barriers to harm (resistant pathogens, misuse), revealing that access and safety are inherently in tension"
+    },
+    {
+      "from_source": "Nuclear deterrence through mutually assured destruction prevented direct conflict between the United States and Soviet Union for over four decades of the Cold War",
+      "to_source": "Western nations imposed SWIFT banking sanctions on Russia following the 2022 invasion of Ukraine, intending to isolate Russia financially and pressure it to withdraw",
+      "kind": "refines",
+      "reason": "Both weaponize a shared system (nuclear balance, financial infrastructure) for security, but in doing so reveal the system's fragility and incentivize adversaries to exit it, degrading the deterrent over time"
+    },
+    {
+      "from_source": "The Green Revolution introduced high-yield crop varieties and synthetic fertilizers that saved an estimated one billion people from famine between the 1960s and 1990s",
+      "to_source": "Muhammad Yunus won the 2006 Nobel Peace Prize for pioneering microfinance through Grameen Bank, extending small loans to lift the rural poor out of poverty",
+      "kind": "refines",
+      "reason": "Both were Nobel-recognized interventions targeting rural poverty that created debt dependency among the populations they served, showing how market-mediated solutions can convert humanitarian gains into financial extraction"
+    },
+    {
+      "from_source": "Content moderation systems were developed by major platforms to combat hate speech, terrorism recruitment, and disinformation following pressure from governments and civil society",
+      "to_source": "Social media platforms connected over 4.5 billion users worldwide, enabling the Arab Spring uprisings and giving voice to previously marginalized communities",
+      "kind": "contradicts",
+      "reason": "Content moderation was the intended fix for social media's amplification harms, but it introduced a new failure mode (suppression of legitimate speech) that partially negates the original democratizing purpose of the platforms"
+    },
+    {
+      "from_source": "The United States declared a War on Drugs in 1971 under President Nixon with the stated goal of reducing drug abuse and its associated public health harms",
+      "to_source": "Standardized testing was introduced in the early 20th century as a meritocratic tool to democratize access to higher education beyond the privileges of family connections and wealth",
+      "kind": "refines",
+      "reason": "Both are state-administered systems designed to produce equality (health equity, educational equity) that instead deepened the racial and economic stratification they were meant to correct, showing how institutional interventions can launder systemic bias through procedural legitimacy"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "The Green Revolution introduced high-yield crop varieties and synthetic fertilizers that saved an estimated one billion people from famine between the 1960s and 1990s",
+      "kind": "public_record",
+      "locator": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6188621/",
+      "reason": "National Crime Records Bureau data and scholarly analysis documenting the link between agrarian distress, input costs, and farmer suicides in India during the post-Green Revolution period"
+    },
+    {
+      "pair_source": "Alexander Fleming's discovery of penicillin in 1928 launched the antibiotic era, saving an estimated 200 million lives by reducing deaths from bacterial infections",
+      "kind": "public_record",
+      "locator": "https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance",
+      "reason": "WHO fact sheet on antimicrobial resistance documenting the global scope of drug-resistant infections and projected mortality"
+    },
+    {
+      "pair_source": "Social media platforms connected over 4.5 billion users worldwide, enabling the Arab Spring uprisings and giving voice to previously marginalized communities",
+      "kind": "public_record",
+      "locator": "https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf",
+      "reason": "UN Human Rights Council Independent International Fact-Finding Mission report on Myanmar documenting Facebook's role in amplifying hate speech that contributed to atrocities against the Rohingya"
+    },
+    {
+      "pair_source": "Nuclear deterrence through mutually assured destruction prevented direct conflict between the United States and Soviet Union for over four decades of the Cold War",
+      "kind": "public_record",
+      "locator": "https://www.ucsusa.org/resources/close-calls-nuclear-weapons",
+      "reason": "Union of Concerned Scientists documentation of near-miss nuclear incidents demonstrating the existential risk inherent in deterrence-based stability"
+    },
+    {
+      "pair_source": "Muhammad Yunus won the 2006 Nobel Peace Prize for pioneering microfinance through Grameen Bank, extending small loans to lift the rural poor out of poverty",
+      "kind": "public_record",
+      "locator": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3322661/",
+      "reason": "Peer-reviewed analysis of the Andhra Pradesh microfinance crisis documenting the transition from poverty alleviation to predatory lending and its human consequences"
+    },
+    {
+      "pair_source": "Content moderation systems were developed by major platforms to combat hate speech, terrorism recruitment, and disinformation following pressure from governments and civil society",
+      "kind": "public_record",
+      "locator": "https://www.eff.org/deeplinks/2022/02/content-moderation-not-just-about-free-speech",
+      "reason": "Electronic Frontier Foundation analysis documenting how automated content moderation systems disproportionately impact marginalized language communities and human rights documentation"
+    },
+    {
+      "pair_source": "The United States declared a War on Drugs in 1971 under President Nixon with the stated goal of reducing drug abuse and its associated public health harms",
+      "kind": "public_record",
+      "locator": "https://www.sentencingproject.org/reports/color-of-justice-racial-and-ethnic-disparity-in-state-prisons-the/",
+      "reason": "The Sentencing Project report documenting racial disparities in incarceration driven by drug enforcement policies"
+    },
+    {
+      "pair_source": "Standardized testing was introduced in the early 20th century as a meritocratic tool to democratize access to higher education beyond the privileges of family connections and wealth",
+      "kind": "public_record",
+      "locator": "https://www.brookings.edu/articles/race-gaps-in-sat-scores-highlight-inequality-and-hinder-upward-mobility/",
+      "reason": "Brookings Institution analysis of SAT score correlations with family income and race, demonstrating how standardized testing reproduces rather than disrupts socioeconomic stratification"
+    },
+    {
+      "pair_source": "Western nations imposed SWIFT banking sanctions on Russia following the 2022 invasion of Ukraine, intending to isolate Russia financially and pressure it to withdraw",
+      "kind": "public_record",
+      "locator": "https://www.atlanticcouncil.org/blogs/econographics/russia-sanctions-and-the-weaponization-of-finance/",
+      "reason": "Atlantic Council analysis documenting how SWIFT sanctions accelerated global de-dollarization efforts and alternative payment system development"
+    },
+    {
+      "pair_source": "Open-source AI initiatives including Meta's release of LLaMA models were framed as democratizing access to artificial intelligence, preventing monopolistic control by a few corporations",
+      "kind": "public_record",
+      "locator": "https://www.rand.org/pubs/research_reports/RRA2977-1.html",
+      "reason": "RAND Corporation report examining dual-use risks of openly available large language models, including fine-tuning to circumvent safety measures"
+    }
+  ]
+}

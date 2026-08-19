@@ -1,0 +1,304 @@
+{
+  "domain": "people-whistleblowers",
+  "pairs": [
+    {
+      "source_text": "Edward Snowden — NSA mass surveillance disclosures",
+      "source_lang": "en",
+      "target_text": "Edward Snowden, a former NSA contractor, disclosed in June 2013 that the U.S. government was conducting mass surveillance of domestic and international communications, including the bulk collection of Americans' phone metadata under a secret interpretation of Section 215 of the Patriot Act. His revelations led directly to the USA FREEDOM Act of 2015, which ended the bulk phone-records program and required the FISA court to publish significant opinions — the largest pro-privacy reform to U.S. intelligence law since FISA's original enactment in 1978. Snowden was charged under the Espionage Act, fled to Hong Kong and then Russia, where he was granted permanent residency and full citizenship in 2022; he remains in Moscow with his wife Lindsay Mills and their children. Despite the reforms his disclosures prompted, Section 702 of FISA was reauthorized in 2024 with provisions critics say actually expanded government surveillance authority.",
+      "target_lang": "en",
+      "reason": "The most consequential national-security whistleblower of the 21st century, whose disclosures reshaped global debate on privacy versus security"
+    },
+    {
+      "source_text": "Frances Haugen — Facebook Papers and Congressional testimony",
+      "source_lang": "en",
+      "target_text": "Frances Haugen, a former Facebook product manager, left the company in 2021 after copying tens of thousands of internal documents showing that Meta's own research found Instagram was harmful to teenage mental health and that the platform's algorithms amplified divisive content for engagement. She worked with Whistleblower Aid, provided the documents to the Wall Street Journal for its 'Facebook Files' series, filed eight whistleblower complaints with the SEC, and testified before Congress in October 2021 — helping trigger more than 40 state attorneys general lawsuits against Meta over alleged harm to children. Through her nonprofit Beyond the Screen, she continues to advocate for platform transparency and regulatory reform. Her disclosures are widely cited as a catalyst for the FTC's antitrust case against Meta, which went to trial in 2025 with CEO Mark Zuckerberg testifying.",
+      "target_lang": "en",
+      "reason": "Demonstrated that tech companies' own internal research often contradicts their public safety claims, shifting the burden of proof in platform regulation debates"
+    },
+    {
+      "source_text": "Daniel Ellsberg — Pentagon Papers and the precedent for government whistleblowing",
+      "source_lang": "en",
+      "target_text": "Daniel Ellsberg, a military analyst at the RAND Corporation, secretly copied and leaked 7,000 pages of classified documents in 1971 revealing that the U.S. government had systematically deceived the public about the Vietnam War's prospects and scope. The resulting Supreme Court case, New York Times Co. v. United States (1971), established a landmark precedent against government prior restraint of publication. Ellsberg was charged under the Espionage Act, but all charges were dismissed in 1973 after it emerged that the Nixon administration had burglarized his psychiatrist's office and wiretapped him illegally — abuses that became part of the broader Watergate scandal. Ellsberg continued his activism for decades, co-founded the Freedom of the Press Foundation, spoke against nuclear proliferation and the Iraq War, and died of pancreatic cancer on June 16, 2023, at age 92, widely remembered as the patron saint of whistleblowers.",
+      "target_lang": "en",
+      "reason": "Set the foundational legal and cultural precedent for government whistleblowing in the United States, influencing every subsequent case"
+    },
+    {
+      "source_text": "Chelsea Manning — WikiLeaks military intelligence disclosures",
+      "source_lang": "en",
+      "target_text": "Chelsea Manning, a U.S. Army intelligence analyst, leaked approximately 750,000 classified military and diplomatic documents to WikiLeaks in 2010, including the 'Collateral Murder' video showing a U.S. Apache helicopter killing Iraqi civilians and Reuters journalists, diplomatic cables exposing U.S. foreign-policy conduct, and Afghan and Iraq war logs documenting unreported civilian casualties. She was convicted under the Espionage Act and sentenced to 35 years in military prison — the longest sentence ever imposed for a leak to the media at that time — before President Obama commuted her sentence in January 2017 after she had served seven years. Manning was jailed again in 2019 for refusing to testify before a grand jury investigating WikiLeaks, spending another year in detention. As of 2024, she serves as Chief Security Officer at Nym Technologies, a privacy firm, and speaks publicly about surveillance, censorship, and information environments.",
+      "target_lang": "en",
+      "reason": "The scale of her disclosure and the severity of her punishment made her case a defining test of how the U.S. treats those who expose military conduct"
+    },
+    {
+      "source_text": "Reality Winner — NSA report on Russian election interference",
+      "source_lang": "en",
+      "target_text": "Reality Winner, a 25-year-old NSA contractor and Air Force veteran, was arrested in June 2017 for leaking a classified report to The Intercept detailing Russian military intelligence's attempts to hack U.S. voting-infrastructure suppliers and local election officials ahead of the 2016 presidential election. She was identified partly because The Intercept shared the document with the NSA for comment before publication, and printer tracking dots on the document narrowed the suspect pool. Winner pleaded guilty under the Espionage Act and received a five-year, three-month sentence — the longest ever imposed for an unauthorized disclosure to the media at that time — and was released in June 2021. Her post-release supervision ended in 2024; she has since become a CrossFit coach and veterinary technology student in Texas and published a memoir, 'I Am Not Your Enemy,' cleared by the NSA without redactions.",
+      "target_lang": "en",
+      "reason": "Illustrates the severe consequences faced by lower-ranking leakers and the operational security failures that can identify them, as well as the tension between public interest and classified information"
+    },
+    {
+      "source_text": "Mark Felt ('Deep Throat') — FBI source behind Watergate",
+      "source_lang": "en",
+      "target_text": "W. Mark Felt, the Associate Director of the FBI and the bureau's second-highest-ranking official, secretly guided Washington Post reporters Bob Woodward and Carl Bernstein through the Watergate investigation from 1972 to 1974, providing critical confirmation and direction under the pseudonym 'Deep Throat.' His tips helped the reporters connect the Watergate break-in to a broader pattern of political espionage and sabotage directed by the Nixon White House, contributing to President Nixon's resignation in August 1974. Felt's identity remained secret for over 30 years — he was even assigned to investigate the leak of his own information — until he revealed himself in a 2005 Vanity Fair article at age 91. Felt died on December 18, 2008, at the age of 95, and his case remains the most famous example of an anonymous government source enabling investigative journalism to hold a president accountable.",
+      "target_lang": "en",
+      "reason": "The paradigmatic case of an insider source enabling journalism to hold executive power accountable, shaping how source protection and anonymous sourcing are understood"
+    },
+    {
+      "source_text": "Peiter 'Mudge' Zatko — Twitter security whistleblower",
+      "source_lang": "en",
+      "target_text": "Peiter 'Mudge' Zatko, a renowned hacker and former head of security at Twitter from November 2020 to January 2022, filed a whistleblower complaint with federal regulators in 2022 alleging that Twitter had egregious security deficiencies, misled the FTC about its data-protection practices, and knowingly allowed foreign government agents access to sensitive user data and internal systems. He testified before the Senate Judiciary Committee in September 2022, warning that any Twitter employee could potentially take over the accounts of U.S. senators and that the company's failures posed national security risks. His disclosures coincided with Elon Musk's acquisition bid and were cited in the legal disputes surrounding that transaction. Unlike many whistleblowers who suffer lasting career damage, Zatko joined cybersecurity firm Rapid7 in 2023 and was appointed Chief Information Officer of DARPA in August 2024, returning to the defense research agency where he had previously founded the Information Innovation Office.",
+      "target_lang": "en",
+      "reason": "A rare case where deep technical expertise and institutional credibility allowed a whistleblower to transition to senior government roles after disclosure"
+    },
+    {
+      "source_text": "Whistleblower protection laws — what actually protects them and what does not",
+      "source_lang": "en",
+      "target_text": "U.S. whistleblower protections are a patchwork: the Whistleblower Protection Act (1989, strengthened 2012) covers federal employees who report waste, fraud, or abuse through authorized channels, while sector-specific statutes like Sarbanes-Oxley (2002) and Dodd-Frank (2010) protect corporate and financial-sector whistleblowers and offer monetary incentives through SEC and CFTC bounty programs. However, these laws generally do not protect those who disclose classified national-security information, which is why figures like Snowden, Manning, and Winner were prosecuted under the Espionage Act rather than shielded by whistleblower statutes. The U.S. Court of Appeals for the Federal Circuit has further narrowed protections by applying a restrictive definition of what qualifies as a protected disclosure. State-level protections vary widely; as of 2024, New York increased penalties for employer retaliation, California extended protections for private-sector employees handling sensitive data, and the CFPB warned that overly broad NDAs in employment agreements may themselves violate whistleblower laws.",
+      "target_lang": "en",
+      "reason": "Understanding the gap between the idea of whistleblower protection and its reality is essential to evaluating every individual case"
+    },
+    {
+      "source_text": "The personal cost of whistleblowing — careers, health, relationships",
+      "source_lang": "en",
+      "target_text": "Research consistently documents devastating personal consequences for whistleblowers: over two-thirds experience extended unemployment after coming forward, many are rendered unemployable by PTSD, reputational damage, and industry blacklisting. Studies published through the National Center for Biotechnology Information find that whistleblowing has a 'profound and overwhelmingly negative effect on working relationships,' with subjects reporting bullying, social exclusion, pressure to resign, and halted career progression from former colleagues. The toll extends beyond professional life — breakdowns in marriages and family relationships, financial ruin, and homelessness are documented outcomes. When whistleblowers later regret their decisions, research indicates it is generally because they vastly underestimated the potential damage, particularly the collateral impact on their families, rather than because they questioned the rightness of the disclosure itself.",
+      "target_lang": "en",
+      "reason": "The personal cost pattern is remarkably consistent across cases and sectors, suggesting systemic rather than incidental retaliation"
+    },
+    {
+      "source_text": "Corporate retaliation patterns — NDAs, legal threats, and reputation destruction",
+      "source_lang": "en",
+      "target_text": "Corporate retaliation against whistleblowers follows well-documented patterns: companies use broadly drafted non-disclosure agreements to create legal exposure for anyone who reports wrongdoing, deploy defamation threats and strategic lawsuits (SLAPPs) to exhaust whistleblowers' resources, and conduct internal reputation campaigns to discredit the source. In 2024, the CFTC issued its first-ever enforcement action for impeding whistleblowers, fining a commodities trader $55 million, while the SEC fined an investment firm $10 million for NDA provisions that lacked required whistleblower carve-outs. In January 2025, the DOJ and OSHA issued a joint statement asserting that NDAs may not lawfully be used to deter or prevent employees from reporting violations to federal authorities. A high-profile 2024 case saw former OpenAI employees approach the SEC alleging the company used illegal NDAs to silence concerns about AI safety — illustrating that these retaliation patterns persist even in industries built around transparency and public benefit.",
+      "target_lang": "en",
+      "reason": "Retaliation tactics are systematic and predictable, which means they can be identified, regulated, and countered through legal reform"
+    },
+    {
+      "source_text": "Journalism's role — who broke the stories and how source protection works",
+      "source_lang": "en",
+      "target_text": "Every major whistleblower case depended on journalists willing to receive, verify, and publish disclosures: the New York Times and Washington Post published the Pentagon Papers; Woodward and Bernstein at the Post broke Watergate with Deep Throat's guidance; Glenn Greenwald and Laura Poitras at The Guardian published Snowden's NSA documents; the Wall Street Journal ran the Facebook Files from Haugen's documents; and The Intercept published Winner's NSA report. Source protection rests on shield laws — enacted in 41 states and the District of Columbia but absent at the federal level — and on journalists' ethical commitment to confidentiality, which can carry contempt-of-court penalties when courts order disclosure. The Intercept's handling of the Winner document demonstrated the catastrophic consequences when source protection fails operationally: sharing the original document with the government for comment enabled the identification of the source through printer-steganography tracking dots.",
+      "target_lang": "en",
+      "reason": "Journalism is the mechanism through which whistleblower disclosures reach the public, making source protection both an ethical obligation and a practical necessity"
+    },
+    {
+      "source_text": "Leaking versus whistleblowing — legal and ethical distinctions",
+      "source_lang": "en",
+      "target_text": "The legal distinction between whistleblowing and leaking centers on channel and authorization: whistleblowing uses established internal reporting systems, inspectors general, or designated regulatory bodies, while leaking bypasses these channels to provide information directly to the media or public. This distinction carries enormous legal consequences — whistleblowers who use authorized channels receive statutory protection from retaliation, while those who leak classified information can be prosecuted under the Espionage Act regardless of public-interest value. Ethically, the line is more contested: critics argue that authorized channels are often ineffective or compromised, particularly in national-security contexts where the agencies being reported on control the reporting mechanisms. The cases of Snowden and Manning illustrate this tension — both argued that internal channels were futile or would have led to suppression, while the government maintained that existing procedures would have addressed their concerns without compromising classified sources and methods.",
+      "target_lang": "en",
+      "reason": "The legal framework treats channel choice as dispositive, but the ethical debate recognizes that channel effectiveness determines whether formal procedures serve accountability or obstruct it"
+    },
+    {
+      "source_text": "The Espionage Act of 1917 — the law used to prosecute national-security whistleblowers",
+      "source_lang": "en",
+      "target_text": "The Espionage Act of 1917, originally enacted to prosecute spies during World War I, has become the primary tool for criminalizing unauthorized disclosures of classified information, with no provision allowing defendants to argue that their disclosure served the public interest. Daniel Ellsberg was the first person charged under the Act for leaking to the press (charges dismissed in 1973 due to government misconduct); Chelsea Manning was convicted under it in 2013; Edward Snowden was charged under it in 2013 and remains in exile partly because the Act offers no public-interest defense at trial; and Reality Winner pleaded guilty to a single count in 2018. Legal scholars and press-freedom advocates have long argued that using a century-old espionage statute against disclosures to journalists — rather than to foreign governments — conflates public-interest whistleblowing with espionage, creating a chilling effect on accountability for classified programs.",
+      "target_lang": "en",
+      "reason": "The Espionage Act is the common legal thread connecting most national-security whistleblower prosecutions and shapes the risk calculus for anyone considering disclosure"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Daniel Ellsberg — Pentagon Papers and the precedent for government whistleblowing",
+      "to_source": "Edward Snowden — NSA mass surveillance disclosures",
+      "kind": "refines",
+      "reason": "Snowden explicitly cited Ellsberg as an inspiration; both disclosed classified evidence of government deception, but Snowden's case occurred in the digital age with far more data and global reach"
+    },
+    {
+      "from_source": "Edward Snowden — NSA mass surveillance disclosures",
+      "to_source": "Reality Winner — NSA report on Russian election interference",
+      "kind": "refines",
+      "reason": "Winner followed Snowden's path of leaking classified NSA material to the press but received harsher sentencing; her case showed that post-Snowden enforcement had become more aggressive"
+    },
+    {
+      "from_source": "Chelsea Manning — WikiLeaks military intelligence disclosures",
+      "to_source": "Edward Snowden — NSA mass surveillance disclosures",
+      "kind": "refines",
+      "reason": "Manning's prosecution under the Espionage Act and the government's aggressive pursuit directly informed Snowden's decision to flee the U.S. before disclosing, rather than face trial domestically"
+    },
+    {
+      "from_source": "Frances Haugen — Facebook Papers and Congressional testimony",
+      "to_source": "Peiter 'Mudge' Zatko — Twitter security whistleblower",
+      "kind": "refines",
+      "reason": "Zatko's 2022 testimony followed Haugen's 2021 playbook — internal documents, Whistleblower Aid legal support, Congressional testimony — applying the same model to a different tech platform"
+    },
+    {
+      "from_source": "Mark Felt ('Deep Throat') — FBI source behind Watergate",
+      "to_source": "Journalism's role — who broke the stories and how source protection works",
+      "kind": "refines",
+      "reason": "Felt's 30-year anonymity is the gold standard for journalistic source protection and the case that made 'anonymous source' a fixture of accountability journalism"
+    },
+    {
+      "from_source": "Whistleblower protection laws — what actually protects them and what does not",
+      "to_source": "The Espionage Act of 1917 — the law used to prosecute national-security whistleblowers",
+      "kind": "contradicts",
+      "reason": "Whistleblower protection statutes and the Espionage Act represent directly opposing legal frameworks — one shields disclosure, the other criminalizes it — and national-security whistleblowers fall into the gap between them"
+    },
+    {
+      "from_source": "Leaking versus whistleblowing — legal and ethical distinctions",
+      "to_source": "The Espionage Act of 1917 — the law used to prosecute national-security whistleblowers",
+      "kind": "refines",
+      "reason": "The legal distinction between leaking and whistleblowing is enforced primarily through the Espionage Act, which criminalizes unauthorized disclosures regardless of motive or public benefit"
+    },
+    {
+      "from_source": "The personal cost of whistleblowing — careers, health, relationships",
+      "to_source": "Corporate retaliation patterns — NDAs, legal threats, and reputation destruction",
+      "kind": "refines",
+      "reason": "The documented personal costs are largely the downstream effects of the systematic retaliation patterns — the mechanisms produce the outcomes"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Edward Snowden — NSA mass surveillance disclosures",
+      "kind": "url",
+      "locator": "https://www.eff.org/deeplinks/2023/05/10-years-after-snowden-some-things-are-better-some-were-still-fighting",
+      "reason": "EFF retrospective on Snowden's impact after 10 years, documenting reforms achieved and surveillance authorities still contested"
+    },
+    {
+      "pair_source": "Edward Snowden — NSA mass surveillance disclosures",
+      "kind": "url",
+      "locator": "https://www.cbsnews.com/news/putin-grants-russian-citizenship-edward-snowden/",
+      "reason": "CBS News report on Putin granting Snowden Russian citizenship in 2022"
+    },
+    {
+      "pair_source": "Edward Snowden — NSA mass surveillance disclosures",
+      "kind": "url",
+      "locator": "https://www.eff.org/deeplinks/2024/11/nsa-surveillance-and-section-702-fisa-2024-year-review",
+      "reason": "EFF year-in-review documenting the 2024 FISA Section 702 reauthorization and its expanded surveillance provisions"
+    },
+    {
+      "pair_source": "Frances Haugen — Facebook Papers and Congressional testimony",
+      "kind": "url",
+      "locator": "https://time.com/6121931/frances-haugen-facebook-whistleblower-profile/",
+      "reason": "Time profile of Haugen explaining her motivations, the process of collecting internal documents, and working with Whistleblower Aid"
+    },
+    {
+      "pair_source": "Frances Haugen — Facebook Papers and Congressional testimony",
+      "kind": "url",
+      "locator": "https://www.democracynow.org/2025/4/16/frances_haugen_facebook_meta_antitrust",
+      "reason": "2025 interview with Haugen discussing Meta antitrust trial and connection to her original disclosures"
+    },
+    {
+      "pair_source": "Daniel Ellsberg — Pentagon Papers and the precedent for government whistleblowing",
+      "kind": "url",
+      "locator": "https://www.cnn.com/2023/06/16/politics/daniel-ellsberg-dies/index.html",
+      "reason": "CNN obituary covering Ellsberg's life, the Pentagon Papers case, Supreme Court ruling, and lasting legacy"
+    },
+    {
+      "pair_source": "Daniel Ellsberg — Pentagon Papers and the precedent for government whistleblowing",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Daniel_Ellsberg",
+      "reason": "Comprehensive reference covering the timeline of events, legal proceedings, and Ellsberg's subsequent activism"
+    },
+    {
+      "pair_source": "Chelsea Manning — WikiLeaks military intelligence disclosures",
+      "kind": "url",
+      "locator": "https://www.aclu.org/news/free-speech/chelsea-manning-case-timeline",
+      "reason": "ACLU timeline of Manning's case from arrest through commutation and subsequent grand jury detention"
+    },
+    {
+      "pair_source": "Chelsea Manning — WikiLeaks military intelligence disclosures",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2024/11/14/wikileaks-whistleblower-chelsea-manning-says-censorship-is-still-a-dominant-threat.html",
+      "reason": "2024 report on Manning's current role at Nym Technologies and her public statements on censorship and information environments"
+    },
+    {
+      "pair_source": "Reality Winner — NSA report on Russian election interference",
+      "kind": "url",
+      "locator": "https://www.texasobserver.org/reality-winner-rebuilds-in-kingsville/",
+      "reason": "Texas Observer profile documenting Winner's life after prison, including her studies, coaching, and ongoing felony-related restrictions"
+    },
+    {
+      "pair_source": "Reality Winner — NSA report on Russian election interference",
+      "kind": "url",
+      "locator": "https://www.rollingstone.com/tv-movies/tv-movie-features/reality-winner-nsa-whistleblower-hollywood-muse-sydney-sweeney-trump-1234865597/",
+      "reason": "Rolling Stone feature on Winner's post-release life, Hollywood portrayals, and her memoir publication"
+    },
+    {
+      "pair_source": "Mark Felt ('Deep Throat') — FBI source behind Watergate",
+      "kind": "url",
+      "locator": "https://www.history.com/this-day-in-history/may-31/deep-throat-is-revealed",
+      "reason": "History.com account of Felt's 2005 revelation, covering the Vanity Fair article and Woodward/Bernstein's confirmation"
+    },
+    {
+      "pair_source": "Mark Felt ('Deep Throat') — FBI source behind Watergate",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Mark-Felt",
+      "reason": "Britannica biography of Felt covering his FBI career, role in Watergate, and death in 2008"
+    },
+    {
+      "pair_source": "Peiter 'Mudge' Zatko — Twitter security whistleblower",
+      "kind": "url",
+      "locator": "https://www.npr.org/2022/09/13/1122671582/twitter-whistleblower-mudge-senate-hearing",
+      "reason": "NPR coverage of Zatko's September 2022 Senate Judiciary Committee testimony and key allegations"
+    },
+    {
+      "pair_source": "Peiter 'Mudge' Zatko — Twitter security whistleblower",
+      "kind": "url",
+      "locator": "https://www.defenseone.com/policy/2024/08/darpa-hires-twitter-whistleblower-serve-its-cio/398669/",
+      "reason": "Defense One report on Zatko's appointment as DARPA Chief Information Officer in August 2024"
+    },
+    {
+      "pair_source": "Whistleblower protection laws — what actually protects them and what does not",
+      "kind": "url",
+      "locator": "https://kkc.com/frequently-asked-questions/us-whistleblower-protection-laws/",
+      "reason": "Comprehensive 2025 guide to U.S. federal and state whistleblower protection statutes"
+    },
+    {
+      "pair_source": "Whistleblower protection laws — what actually protects them and what does not",
+      "kind": "url",
+      "locator": "https://employmentdiscrimination.com/post/whistleblower-protection-in-2024-updates-to-federal-and-state-laws",
+      "reason": "2024 overview of updates to federal and state whistleblower protection laws including New York and California changes"
+    },
+    {
+      "pair_source": "The personal cost of whistleblowing — careers, health, relationships",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK519623/",
+      "reason": "NCBI systematic review of empirical evidence on whistleblowing outcomes including career, health, and relationship impacts"
+    },
+    {
+      "pair_source": "The personal cost of whistleblowing — careers, health, relationships",
+      "kind": "url",
+      "locator": "https://www.newamerica.org/weekly/personal-cost-whistleblowing/",
+      "reason": "New America analysis of the documented personal costs whistleblowers face across sectors"
+    },
+    {
+      "pair_source": "Corporate retaliation patterns — NDAs, legal threats, and reputation destruction",
+      "kind": "url",
+      "locator": "https://www.omm.com/insights/alerts-publications/doj-and-osha-target-ndas-that-undermine-whistleblower-protection-laws/",
+      "reason": "O'Melveny analysis of the January 2025 DOJ-OSHA joint statement on NDAs that undermine whistleblower protections"
+    },
+    {
+      "pair_source": "Corporate retaliation patterns — NDAs, legal threats, and reputation destruction",
+      "kind": "url",
+      "locator": "https://parrishgoodman.com/all-legal-insights/openai-whistleblower-case-that-will-blow-your-mind/",
+      "reason": "Legal analysis of the 2024 OpenAI whistleblower case involving allegedly illegal NDAs that silenced safety concerns"
+    },
+    {
+      "pair_source": "Journalism's role — who broke the stories and how source protection works",
+      "kind": "url",
+      "locator": "https://nationalpress.org/topic/whistleblower-journalist-source-protection/",
+      "reason": "National Press Foundation resource on the obligation of source protection and its practical challenges"
+    },
+    {
+      "pair_source": "Journalism's role — who broke the stories and how source protection works",
+      "kind": "url",
+      "locator": "https://www.unesco.org/en/articles/journalists-and-whistleblowers-dynamic-relationship-fight-corruption",
+      "reason": "UNESCO analysis of the mutual relationship between journalists and whistleblowers in fighting corruption"
+    },
+    {
+      "pair_source": "Leaking versus whistleblowing — legal and ethical distinctions",
+      "kind": "url",
+      "locator": "https://news.clearancejobs.com/2019/08/01/whistleblowing-vs-leaking-explained/",
+      "reason": "ClearanceJobs explainer on the legal and procedural differences between whistleblowing and leaking, particularly regarding classified information"
+    },
+    {
+      "pair_source": "Leaking versus whistleblowing — legal and ethical distinctions",
+      "kind": "url",
+      "locator": "https://www.voanews.com/a/whistleblowing-and-leaking-explained/3736863.html",
+      "reason": "VOA News explanation of the legal distinctions between whistleblowing through authorized channels and unauthorized leaking"
+    },
+    {
+      "pair_source": "The Espionage Act of 1917 — the law used to prosecute national-security whistleblowers",
+      "kind": "url",
+      "locator": "https://www.iapp.org/news/a/the-usa-freedom-act-the-presidents-review-group-and-the-biggest-intelligence-reform-in-40-years",
+      "reason": "IAPP analysis of the USA FREEDOM Act as the legislative response to Espionage Act prosecutions and the surveillance disclosures that prompted reform"
+    }
+  ]
+}

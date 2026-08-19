@@ -1,0 +1,253 @@
+{
+  "domain": "crossdomain-credit-erasure",
+  "pairs": [
+    {
+      "source_text": "The credit assignment pattern -- from Photo 51 to LSTM to CRISPR patent wars",
+      "source_lang": "en",
+      "target_text": "Rosalind Franklin's Photo 51 was shown to Watson and Crick without her knowledge. Schmidhuber has spent decades arguing that Hochreiter's and his LSTM work was inadequately credited by the deep learning establishment. Doudna and Charpentier won the CRISPR Nobel while Feng Zhang's parallel contributions fueled years of patent warfare. The structural pattern repeats: the person closest to the experimental or theoretical breakthrough loses credit to the person with better institutional positioning, publication timing, or narrative control. Credit flows upward and outward, away from the bench and toward the podium.",
+      "target_lang": "en",
+      "reason": "Bridges [people] AI credit disputes with [historical] DNA controversy and modern biotech patent wars to show a single recurring mechanism of credit misallocation in science"
+    },
+    {
+      "source_text": "Sanitization of dissent -- from MLK's radicalism to Hinton's AI warnings",
+      "source_lang": "en",
+      "target_text": "Martin Luther King Jr.'s 'Beyond Vietnam' speech denounced capitalism, militarism, and racism as interlocking systems -- positions his sanitized legacy quietly drops. Geoffrey Hinton left Google to warn about existential AI risk, and the mainstream narrative recast him as an elder statesman having second thoughts rather than a scientist sounding an alarm about specific technical dangers. The pattern is consistent: radical positions are softened into palatable wisdom, urgent warnings become philosophical musings, and the system being criticized absorbs the critic's prestige while discarding their actual demands. Mandela's armed resistance becomes 'reconciliation'; King's democratic socialism becomes 'I have a dream.'",
+      "target_lang": "en",
+      "reason": "Bridges [historical] political sanitization with [people] contemporary AI safety advocacy to reveal how institutions neutralize criticism by honoring the critic"
+    },
+    {
+      "source_text": "The lone genius myth from Newton through Einstein to the Turing Award trio",
+      "source_lang": "en",
+      "target_text": "Newton claimed priority over Leibniz for calculus with the backing of the Royal Society he presided over. Einstein's solo-genius image obscured Mileva Maric's contributions and the broader physics community's parallel work. The 2018 Turing Award canonized Hinton, LeCun, and Bengio as 'godfathers of deep learning' while dozens of contributors -- Schmidhuber, Hochreiter, Werbos, Fukushima -- were compressed into footnotes. Each era constructs its lone geniuses by the same mechanism: prizes and narratives require a small number of protagonists, so collaborative reality is trimmed to fit the hero-journey template. The myth serves institutions that benefit from a simple story more than it serves historical accuracy.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] philosophy of science with [people] modern AI credit disputes to show the lone genius myth as a structural feature of how awards and narratives work, not a historical accident"
+    },
+    {
+      "source_text": "Women erased from their own revolutions -- suffrage movements to AI laboratories",
+      "source_lang": "en",
+      "target_text": "Emmeline Pankhurst's militant suffrage campaign was riven by class: working-class women who bore the brunt of force-feeding and imprisonment were written out in favor of a middle-class leadership narrative. Simone de Beauvoir's philosophical contributions were long treated as derivative of Sartre's. Marie Curie's two Nobel Prizes could not prevent her exclusion from the French Academy of Sciences. In AI, Fei-Fei Li created ImageNet -- the dataset that catalyzed the deep learning revolution -- yet the 'founding fathers' narrative centers three men. The pattern is not that women are absent from transformative work but that narrative structures systematically relocate them from protagonist to supporting character.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] feminist history with [people] women in AI to show erasure as an active narrative process rather than passive omission"
+    },
+    {
+      "source_text": "The Nobel Prize as memory machine -- structural choices in who gets remembered",
+      "source_lang": "en",
+      "target_text": "The Nobel's three-person limit is not a natural law but a design choice that forces collaborative science into a hero narrative. Franklin died before the DNA Nobel and could not be included even in principle. Katalin Kariko waited decades for recognition of mRNA work that made COVID vaccines possible. Tu Youyou's 2015 prize for artemisinin acknowledged traditional Chinese medicine for the first time. Demis Hassabis's Nobel for AlphaFold protein structure prediction marked AI's entry into the chemistry prize. Each decision -- who is included, which field claims the work, when recognition arrives -- shapes collective memory for generations. The Nobel does not merely record scientific importance; it constructs it.",
+      "target_lang": "en",
+      "reason": "Bridges [people] modern laureates with [historical] Nobel history and [round4] Nobel Disease to examine the prize as an active agent of historiography rather than passive record"
+    },
+    {
+      "source_text": "Dual-legacy figures -- the hero who also did terrible things and how we choose which to remember",
+      "source_lang": "en",
+      "target_text": "Fritz Haber's nitrogen fixation feeds roughly half the world's population; his chlorine gas killed thousands at Ypres. William Shockley co-invented the transistor that underlies all modern computing; he spent his later career promoting eugenics. Winston Churchill's wartime leadership is inseparable from the Bengal famine that killed millions under his policies. Franklin Roosevelt built the New Deal and ordered Japanese internment. The pattern is not hypocrisy but the inadequacy of hero-villain categories for people whose actions span domains. Societies resolve the discomfort by compartmentalizing -- Haber the chemist and Haber the war criminal become two different people in collective memory -- but the compartments leak.",
+      "target_lang": "en",
+      "reason": "Bridges [people] scientists with [historical] political leaders to examine how selective memory operates across domains when a single figure defies simple moral categorization"
+    },
+    {
+      "source_text": "The canon as erasure engine -- from philosophy to literature to AI's founding mythology",
+      "source_lang": "en",
+      "target_text": "The Western philosophical canon preserved Plato and Aristotle while erasing Islamic, African, and Asian traditions that transmitted, critiqued, and extended their work. Literary canons excluded Toni Morrison until cultural pressure made exclusion untenable, at which point she was absorbed as 'always having belonged.' AI's emerging canon of founding figures -- the Turing Award trio, a handful of company founders -- is being constructed in real time with the same exclusion patterns. The canon wars in literature and philosophy are not ancient history; they are a live template for understanding how AI will remember its own origins. Whoever controls the narrative of 'who built this' controls the implied answer to 'who should govern it.'",
+      "target_lang": "en",
+      "reason": "Bridges [historical] canon formation in philosophy and literature with [people] AI's emerging institutional mythology to show canon-building as a repeating power mechanism"
+    },
+    {
+      "source_text": "Corporate silencing as modern erasure -- from NDAs to reputation destruction",
+      "source_lang": "en",
+      "target_text": "Elizabeth Holmes used NDAs, legal threats, and targeted retaliation to silence Theranos whistleblowers -- a modern mechanism of erasure that does not need to rewrite history books because it prevents the counter-narrative from forming in the first place. The OpenAI-to-Anthropic exodus by the Amodeis and others was shaped by what could and could not be said under departure agreements. The great talent diaspora from Google Brain, DeepMind, and OpenAI was partly driven by disagreements over credit and direction that corporate structures made dangerous to voice publicly. These are not historical erasures recovered by later scholars; they are erasures-in-progress, enforced by legal machinery rather than narrative convention.",
+      "target_lang": "en",
+      "reason": "Bridges [people] tech industry dynamics with [historical] erasure patterns to show how modern corporate mechanisms achieve the same effect as historical narrative control but through legal rather than historiographic means"
+    },
+    {
+      "source_text": "From scientific racism to algorithmic bias -- the intellectual infrastructure of exclusion persists",
+      "source_lang": "en",
+      "target_text": "Colonial scientific racism provided the intellectual infrastructure for exploitation -- measuring skulls, ranking races, publishing in prestigious journals. Shockley's pivot from transistors to eugenics shows the pipeline from legitimate science to racist pseudoscience was never fully sealed. The same institutional structures that enabled colonial-era scientific racism -- peer review that reflects reviewer biases, funding that follows prestige, credit that flows to the already-credited -- now shape AI development. When training data encodes historical discrimination and credit for AI breakthroughs flows along familiar demographic lines, the infrastructure of exclusion has not been dismantled; it has been digitized.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] colonial intellectual history with [people] modern AI figures to trace how structural exclusion mechanisms persist through technological transitions"
+    },
+    {
+      "source_text": "The right to erasure versus the right to remember -- legal and historical tensions",
+      "source_lang": "en",
+      "target_text": "The EDPB's coordinated enforcement on the right to erasure reveals that even the legal right to be forgotten has systemic gaps in implementation. Meanwhile, historians fight to preserve records that the powerful would prefer erased -- the body count debates around atrocities, the recovery of erased philosophical traditions, the documentation of scientific priority disputes. These are opposing forces operating on the same material: the historical record. The EU AI Act's transparency obligations add another layer, requiring that certain AI decisions be explainable and traceable -- a legal mandate against algorithmic erasure. The tension is irresolvable: some erasure protects the vulnerable, some erasure serves the powerful, and no single principle distinguishes them.",
+      "target_lang": "en",
+      "reason": "Bridges [round5] regulatory enforcement with [historical] historiographic debates to examine the fundamental tension between privacy-as-erasure and accountability-as-memory"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Rosalind Franklin \u2014 the X-ray crystallographer whose work on DNA was used without credit",
+      "to_source": "Scientific priority disputes -- the pattern across centuries",
+      "kind": "refines",
+      "reason": "Franklin's case is the modern archetype of the centuries-long pattern of scientific priority disputes -- her story refines the general pattern into its most culturally resonant specific instance"
+    },
+    {
+      "from_source": "Jurgen Schmidhuber \u2014 LSTM inventor and persistent critic of the deep learning credit narrative",
+      "to_source": "The lone genius myth versus collaborative reality in scientific discovery",
+      "kind": "contradicts",
+      "reason": "Schmidhuber's persistent objections to the deep learning credit narrative are a direct challenge to the lone genius myth -- he argues the collaborative reality was suppressed to construct a simpler founding story"
+    },
+    {
+      "from_source": "The 2018 Turing Award \u2014 canonizing the 'deep learning revolution' narrative and its discontents",
+      "to_source": "The canon problem -- whose philosophical ideas were preserved and whose were erased",
+      "kind": "refines",
+      "reason": "The Turing Award canonization is the canon problem playing out in real time in a new domain -- the same structural question of whose contributions get preserved applies to AI as to philosophy"
+    },
+    {
+      "from_source": "Sanitization of radical leaders \u2014 how MLK, Mandela, and Gandhi were made safe for the mainstream",
+      "to_source": "Geoffrey Hinton \u2014 deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "kind": "refines",
+      "reason": "Hinton's transformation from industry insider to safety whistleblower is undergoing the same sanitization process -- his specific technical warnings are being softened into generic elder-statesman concern"
+    },
+    {
+      "from_source": "King's 'Beyond Vietnam' speech \u2014 the moment the radical MLK broke with the liberal establishment",
+      "to_source": "Dario and Daniela Amodei \u2014 the OpenAI exodus that built Anthropic",
+      "kind": "refines",
+      "reason": "Both represent a break-with-the-establishment moment where insiders concluded the institution could not be reformed from within -- King leaving the liberal consensus, the Amodeis leaving OpenAI over safety disagreements"
+    },
+    {
+      "from_source": "Women in liberation movements \u2014 systematically written out of the story",
+      "to_source": "Fei-Fei Li \u2014 ImageNet creator, Stanford HAI co-director, World Labs founder, TIME Person of the Year",
+      "kind": "contradicts",
+      "reason": "Li's growing recognition contradicts the pattern of women being written out, though her case also refines it -- recognition arrived decades after ImageNet's impact, and the 'founding fathers' label persists for the Turing trio"
+    },
+    {
+      "from_source": "Marie Curie -- radioactivity, two Nobel Prizes, and the barriers she faced",
+      "to_source": "Katalin Kariko \u2014 decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "kind": "refines",
+      "reason": "Kariko's decades of institutional rejection before Nobel recognition refines Curie's story into a template: women in science face not just barriers to entry but systematic delays in credit assignment"
+    },
+    {
+      "from_source": "William Shockley \u2014 co-inventor of the transistor who became a eugenics crusader",
+      "to_source": "Ideas that killed -- scientific racism and the intellectual infrastructure of colonial exploitation",
+      "kind": "refines",
+      "reason": "Shockley is a 20th-century instance of scientific prestige being leveraged to legitimize racist ideology -- the same infrastructure that enabled colonial scientific racism persisting into the semiconductor age"
+    },
+    {
+      "from_source": "Nobel Disease \u2014 documented cases beyond Pauling",
+      "to_source": "William Shockley \u2014 co-inventor of the transistor who became a eugenics crusader",
+      "kind": "refines",
+      "reason": "Shockley is perhaps the most consequential case of Nobel Disease -- his transistor Nobel lent unearned authority to his eugenics advocacy, showing how prestige in one domain gets weaponized in another"
+    },
+    {
+      "from_source": "Posthumous reputation shifts \u2014 artists condemned in life, celebrated after death",
+      "to_source": "Katalin Kariko \u2014 decades of rejection, mRNA breakthroughs, and a Nobel Prize",
+      "kind": "refines",
+      "reason": "Kariko's story is a living-person version of the posthumous reputation shift -- she experienced the full arc from rejection to celebration within her own lifetime, compressing a pattern that usually takes generations"
+    },
+    {
+      "from_source": "Corporate retaliation patterns \u2014 NDAs, legal threats, and reputation destruction",
+      "to_source": "Women in liberation movements \u2014 systematically written out of the story",
+      "kind": "refines",
+      "reason": "Modern corporate silencing mechanisms -- NDAs, legal threats, reputation destruction -- are the contemporary equivalent of how liberation movements wrote out women: both use institutional power to prevent counter-narratives from forming"
+    },
+    {
+      "from_source": "Nelson Mandela \u2014 anti-apartheid struggle, armed resistance, and the limits of political liberation",
+      "to_source": "Malala Yousafzai \u2014 education advocate, Nobel laureate, and the Malala Fund",
+      "kind": "refines",
+      "reason": "Malala's trajectory from militant resistance survivor to Nobel-honored education advocate echoes Mandela's arc from armed resistance to global moral authority -- both show how the international community requires activists to adopt palatable frames to receive recognition"
+    },
+    {
+      "from_source": "Jennifer Doudna \u2014 CRISPR gene editing, patent wars, and the ethics of rewriting life",
+      "to_source": "Scientific priority disputes -- the pattern across centuries",
+      "kind": "refines",
+      "reason": "The CRISPR patent war between Doudna/Charpentier and Zhang is the most expensive and consequential scientific priority dispute in history, refining the centuries-old pattern with billions of dollars in commercial stakes"
+    },
+    {
+      "from_source": "Scientific credit disputes \u2014 who really discovered what, from DNA to CRISPR",
+      "to_source": "The canon problem -- whose philosophical ideas were preserved and whose were erased",
+      "kind": "refines",
+      "reason": "Scientific credit disputes and philosophical canon formation are the same erasure mechanism operating in different domains -- both decide whose contributions are remembered by deciding whose names attach to ideas"
+    },
+    {
+      "from_source": "Albert Einstein -- special and general relativity, the photoelectric effect, and the Nobel Prize",
+      "to_source": "Demis Hassabis \u2014 DeepMind founder, AlphaFold architect, Nobel laureate, now stepping aside from CEO role",
+      "kind": "refines",
+      "reason": "Both Einstein and Hassabis received Nobels that were partly strategic -- Einstein's was for the photoelectric effect rather than relativity, Hassabis's was in chemistry rather than computer science -- revealing how the Nobel system shapes what work gets remembered and in which domain"
+    },
+    {
+      "from_source": "Toni Morrison \u2014 Nobel laureate, editor, and architect of Black literary infrastructure",
+      "to_source": "Tu Youyou \u2014 artemisinin, malaria, and bridging traditional and modern medicine",
+      "kind": "refines",
+      "reason": "Both Morrison and Tu Youyou worked within marginalized traditions -- Black American literature and traditional Chinese medicine -- and their Nobel recognition forced the mainstream to acknowledge entire knowledge systems it had previously dismissed, not just individual achievement"
+    },
+    {
+      "from_source": "Emmeline Pankhurst \u2014 militant suffrage, class politics, and family fractures",
+      "to_source": "The great talent diaspora \u2014 how departures from Google Brain, DeepMind, and OpenAI reshaped the AI industry",
+      "kind": "refines",
+      "reason": "Both the Pankhurst family fractures and the AI talent diaspora show how movements splinter over strategy -- Emmeline versus Sylvia Pankhurst on class, safety-focused versus capabilities-focused researchers on AI development pace -- and how the resulting splits reshape the field"
+    },
+    {
+      "from_source": "EDPB Coordinated Enforcement on Right to Erasure Reveals Systemic Gaps",
+      "to_source": "The canon problem -- whose philosophical ideas were preserved and whose were erased",
+      "kind": "contradicts",
+      "reason": "The legal right to erasure operates in direct tension with the historical problem of canon erasure -- one is a privacy protection against unwanted memory, the other is a power mechanism of unwanted forgetting, and the two frameworks cannot be reconciled without acknowledging that erasure serves different masters in different contexts"
+    },
+    {
+      "from_source": "How dead thinkers get recruited -- selective reading of Smith, Marx, and Locke for modern political arguments",
+      "to_source": "The 2018 Turing Award \u2014 canonizing the 'deep learning revolution' narrative and its discontents",
+      "kind": "refines",
+      "reason": "The selective recruitment of dead thinkers for modern arguments is the mature form of what the Turing Award is doing in its early stages -- constructing a simplified origin story that future actors will selectively cite to legitimize their own positions"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "The credit assignment pattern -- from Photo 51 to LSTM to CRISPR patent wars",
+      "kind": "url",
+      "locator": "https://www.nature.com/articles/d41586-023-00032-3",
+      "reason": "Nature's retrospective on Franklin's contribution and the broader pattern of credit disputes in molecular biology"
+    },
+    {
+      "pair_source": "Sanitization of dissent -- from MLK's radicalism to Hinton's AI warnings",
+      "kind": "url",
+      "locator": "https://www.nytimes.com/2023/05/01/technology/ai-google-chatbot-engineer-quits-hinton.html",
+      "reason": "NYT coverage of Hinton's departure from Google and the framing of his AI safety concerns"
+    },
+    {
+      "pair_source": "The lone genius myth from Newton through Einstein to the Turing Award trio",
+      "kind": "url",
+      "locator": "https://amturing.acm.org/award_winners/bengio_3406375.cfm",
+      "reason": "ACM Turing Award page for the 2018 laureates -- the official canonization document"
+    },
+    {
+      "pair_source": "The Nobel Prize as memory machine -- structural choices in who gets remembered",
+      "kind": "url",
+      "locator": "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/facts/",
+      "reason": "Nobel Prize page for Hassabis's chemistry prize for AlphaFold, illustrating how the prize system categorizes interdisciplinary work"
+    },
+    {
+      "pair_source": "Women erased from their own revolutions -- suffrage movements to AI laboratories",
+      "kind": "url",
+      "locator": "https://time.com/7095001/fei-fei-li-time-person-of-year-2024/",
+      "reason": "TIME Person of the Year coverage of Fei-Fei Li, documenting the delayed recognition of her foundational contributions"
+    },
+    {
+      "pair_source": "Dual-legacy figures -- the hero who also did terrible things and how we choose which to remember",
+      "kind": "url",
+      "locator": "https://www.sciencehistory.org/education/scientific-biographies/fritz-haber/",
+      "reason": "Science History Institute biography of Haber documenting both nitrogen fixation and chemical warfare contributions"
+    },
+    {
+      "pair_source": "Corporate silencing as modern erasure -- from NDAs to reputation destruction",
+      "kind": "url",
+      "locator": "https://www.wsj.com/articles/theranos-elizabeth-holmes-whistleblower-11643387673",
+      "reason": "WSJ investigation into Theranos whistleblower retaliation and the role of NDAs in suppressing counter-narratives"
+    },
+    {
+      "pair_source": "The right to erasure versus the right to remember -- legal and historical tensions",
+      "kind": "url",
+      "locator": "https://www.edpb.europa.eu/our-work-tools/our-documents/other/coordinated-enforcement-action-right-erasure_en",
+      "reason": "EDPB coordinated enforcement report revealing systemic gaps in implementing the right to erasure"
+    },
+    {
+      "pair_source": "The canon as erasure engine -- from philosophy to literature to AI's founding mythology",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Western_canon#Debate",
+      "reason": "Wikipedia documents ongoing debate about exclusion and bias in canonical traditions across disciplines"
+    },
+    {
+      "pair_source": "From scientific racism to algorithmic bias -- the intellectual infrastructure of exclusion persists",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Algorithmic_bias",
+      "reason": "Wikipedia documents how historical biases in data and design perpetuate exclusion through algorithmic systems"
+    }
+  ]
+}

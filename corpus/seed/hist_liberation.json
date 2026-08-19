@@ -1,0 +1,348 @@
+{
+  "domain": "people-historical-liberation",
+  "pairs": [
+    {
+      "source_text": "Mahatma Gandhi — nonviolent resistance, Indian independence, and personal contradictions",
+      "source_lang": "en",
+      "target_text": "Mohandas Karamchand Gandhi (1869-1948) led India's independence movement against British colonial rule through satyagraha (nonviolent civil disobedience), achieving independence in August 1947. His campaigns — the Salt March of 1930, the Quit India movement of 1942 — mobilized millions and influenced resistance movements worldwide. However, during his early years in South Africa (1893-1914), Gandhi made derogatory statements about Black Africans, writing that Indians should not be 'placed on the same level with the Natives' and using the term 'Kaffirs'; scholars note his views evolved over decades, and by 1928 his writings expressed solidarity with Zulu struggles. He publicly opposed untouchability and welcomed Dalits into his ashram, but his position on the caste system itself was ambiguous — he rejected B.R. Ambedkar's call for the abolition of caste, advocating reform within the varna framework instead. His treatment of his family drew sharp criticism: he denied his dying wife Kasturba penicillin during their 1942 imprisonment at Aga Khan Palace, yet accepted quinine for his own malaria shortly after her death; he estranged his eldest son Harilal by refusing him educational privileges, and Harilal died destitute in 1948, months after Gandhi's assassination.",
+      "target_lang": "en",
+      "reason": "Comprehensive profile balancing Gandhi's transformative political achievements with documented personal and ideological contradictions, including his evolving racial views, caste position, and family relationships."
+    },
+    {
+      "source_text": "Nelson Mandela — anti-apartheid struggle, armed resistance, and the limits of political liberation",
+      "source_lang": "en",
+      "target_text": "Nelson Rolihlahla Mandela (1918-2013) served 27 years in prison for his anti-apartheid activism, then became South Africa's first Black president (1994-1999), earning the Nobel Peace Prize in 1993 alongside F.W. de Klerk. While often cast as a lifelong pacifist, Mandela co-founded Umkhonto we Sizwe (MK), the ANC's armed wing, in 1961 after concluding that nonviolent resistance alone could not end apartheid; MK carried out sabotage of government installations, and Mandela was convicted at the Rivonia Trial in 1964 for conspiring to overthrow the state. As president, he championed the Truth and Reconciliation Commission, which offered amnesty to those who fully confessed political crimes — a compromise that critics argued let perpetrators of serious human rights abuses escape justice in exchange for political stability. His government's 1996 shift from the redistributive Reconstruction and Development Programme (RDP) to the neoliberal Growth, Employment and Redistribution (GEAR) strategy was seen by many as a betrayal of the ANC's economic promises; South Africa remains ranked as one of the world's most unequal countries by Gini coefficient, and the economic structures of apartheid were never fully dismantled. He remained on the U.S. terrorism watch list until 2008.",
+      "target_lang": "en",
+      "reason": "Profile addresses the gap between Mandela's symbolic legacy and the complexities of his methods, political compromises, and the structural economic inequality that persisted after apartheid's formal end."
+    },
+    {
+      "source_text": "Martin Luther King Jr. — civil rights icon, radical politics, and the sanitized legacy",
+      "source_lang": "en",
+      "target_text": "Martin Luther King Jr. (1929-1968) led the American civil rights movement through nonviolent direct action, delivering the 'I Have a Dream' speech at the 1963 March on Washington, winning the Nobel Peace Prize in 1964, and helping secure the Civil Rights Act of 1964 and Voting Rights Act of 1965 before his assassination in Memphis on April 4, 1968. The FBI, under J. Edgar Hoover, designated King 'the most dangerous and effective Negro leader in the country,' conducting extensive surveillance from 1962 onward, tapping his phones, and sending him an anonymous letter in 1964 that appeared to urge suicide. The radical King who emerged after 1965 is largely absent from mainstream memory: he denounced the Vietnam War in his 1967 'Beyond Vietnam' speech at Riverside Church, alienating the Johnson administration and much of the liberal establishment; he called for a 'revolution of values' against militarism, materialism, and racism; and he organized the Poor People's Campaign demanding economic justice, including a guaranteed income. His approval rating had dropped to 75% unfavorable among white Americans by the time of his death. The sanitization of King's legacy — reducing him to the 'I Have a Dream' speech while erasing his anti-war, anti-capitalist positions — has been documented by scholars as a deliberate process of making a radical figure safe for mainstream consumption.",
+      "target_lang": "en",
+      "reason": "Contrasts the mainstream commemorative version of King with the documented historical record of FBI persecution and his increasingly radical political positions in his final years."
+    },
+    {
+      "source_text": "Harriet Tubman — Underground Railroad conductor, Civil War operative, and myth vs. reality",
+      "source_lang": "en",
+      "target_text": "Harriet Tubman (c. 1822-1913), born Araminta Ross into slavery in Dorchester County, Maryland, escaped in 1849 and made approximately 13 return missions to the Eastern Shore to guide roughly 70 people to freedom via the Underground Railroad — not the 300 often cited in popular accounts, a figure Tubman herself never used. Her scope extended far beyond the Railroad: during the Civil War she served the Union Army as a scout, spy, and nurse, and in June 1863 she became the first woman to lead an armed military operation in U.S. history when she guided the Combahee Ferry Raid in South Carolina, liberating more than 700 enslaved people in a single night. Despite her military service, she fought for decades to receive a federal pension and was not granted one until 1899, receiving only $20 per month. After the war, she was active in the women's suffrage movement and established the Harriet Tubman Home for the Aged in Auburn, New York. The mythology around Tubman, while celebratory, has sometimes obscured the strategic and military dimensions of her work, reducing her to a singular narrative of Underground Railroad heroism rather than recognizing her as a multifaceted intelligence operative, military leader, and political activist.",
+      "target_lang": "en",
+      "reason": "Corrects common myths about the number of people Tubman freed while elevating her lesser-known military and political roles, providing a more complete historical picture."
+    },
+    {
+      "source_text": "Toussaint Louverture — the Haitian Revolution, death in captivity, and Haiti's punishment for freedom",
+      "source_lang": "en",
+      "target_text": "Toussaint Louverture (c. 1743-1803) led the Haitian Revolution, the only successful large-scale slave revolt in modern history, transforming Saint-Domingue from France's most profitable colony into the independent republic of Haiti. Born into slavery, he rose to command an army that defeated Spanish, British, and French forces between 1791 and 1801, abolishing slavery and establishing self-governance under nominal French authority. In 1802, Napoleon Bonaparte dispatched an expedition to recapture the colony; Louverture was betrayed during negotiations, arrested, and deported to Fort de Joux in the French Jura Mountains, where he was deliberately subjected to freezing conditions with inadequate food and clothing and denied any medical attention despite severe illness. He died of pneumonia on April 7, 1803, never seeing Haiti's declaration of independence on January 1, 1804, which his lieutenant Jean-Jacques Dessalines completed. Haiti paid catastrophically for its freedom: in 1825, France demanded an indemnity of 150 million francs — later reduced to 90 million — under threat of military invasion, forcing Haiti to take crippling loans whose final payments extended to 1947; combined with an international trade embargo, this debt effectively punished the world's first Black republic for the act of self-liberation, contributing to the economic underdevelopment that persists today.",
+      "target_lang": "en",
+      "reason": "Connects Louverture's revolutionary achievement and personal sacrifice to the systemic international punishment Haiti endured for successfully revolting, illustrating how liberation victories can be undermined by external economic coercion."
+    },
+    {
+      "source_text": "Frederick Douglass — abolitionist orator, political pragmatist, and personal controversies",
+      "source_lang": "en",
+      "target_text": "Frederick Douglass (c. 1817-1895) escaped slavery in Maryland in 1838 and became the most influential African American abolitionist of the 19th century, publishing three autobiographies — including the landmark 'Narrative of the Life of Frederick Douglass' (1845) — that provided searing firsthand testimony of slavery's brutality. His relationship with Abraham Lincoln evolved from distrust to grudging respect: Douglass initially condemned Lincoln's slowness on abolition and his support for colonization schemes to resettle Black Americans abroad, but came to appreciate Lincoln's political pragmatism, particularly after the Emancipation Proclamation of 1863 and their personal meetings at the White House. Douglass displayed his own political evolution, shifting from the Radical Abolition Party to supporting the Republicans by 1856, demonstrating the tactical flexibility that defined his career. In 1884, a year after his first wife Anna Murray Douglass died, he married Helen Pitts, a white woman 20 years his junior; the marriage provoked condemnation from both races — Black newspapers accused him of abandoning his race, while Helen's father refused to speak to her again and cut her from his will. Douglass responded: 'What business has the world with the color of my wife?' He served as U.S. Marshal for the District of Columbia and as minister to Haiti, using political appointments to advance civil rights causes from within government.",
+      "target_lang": "en",
+      "reason": "Presents Douglass as both a moral visionary and a strategic political operator, including the personal controversy of his second marriage that illuminates 19th-century racial politics."
+    },
+    {
+      "source_text": "Emmeline Pankhurst — militant suffrage, class politics, and family fractures",
+      "source_lang": "en",
+      "target_text": "Emmeline Pankhurst (1858-1928) founded the Women's Social and Political Union (WSPU) in 1903 and led the British suffragette movement through increasingly militant tactics — from window-smashing and attacks on pillar boxes to arson of empty buildings and bombings — under the principle that property destruction was justified when legal avenues had failed, though she insisted actions must not endanger human life. Her movement helped secure the Representation of the People Act 1918, which granted voting rights to women over 30 who met property qualifications, and the Equal Franchise Act 1928, which extended the vote to all women over 21. The WSPU was run autocratically by the Pankhurst family, with members who demanded democratic governance expelled in 1907 and moderates opposed to property destruction purged in 1912. The movement fractured along class and ideological lines: daughter Sylvia, who retained ties to the labor movement and organized working-class women in the East London Federation of Suffragettes, was expelled from the WSPU in 1914; youngest daughter Adela was also pushed out, emigrating to Australia. Christabel, Emmeline's eldest and closest political ally, steered the WSPU toward supporting Britain's World War I effort, suspending suffrage campaigning — a decision Sylvia vehemently opposed. The suffragette movement's class dynamics remain debated: it primarily mobilized middle- and upper-class women while working-class women often lacked the resources to participate in sustained campaigns of civil disobedience.",
+      "target_lang": "en",
+      "reason": "Covers both the tactical militancy that made the suffragettes effective and the internal class and family conflicts that complicate the movement's legacy."
+    },
+    {
+      "source_text": "Nonviolence vs. armed resistance — when each strategy works and why",
+      "source_lang": "en",
+      "target_text": "Political scientists Erica Chenoweth and Maria Stephan analyzed 323 violent and nonviolent resistance campaigns from 1900 to 2006 in their landmark study 'Why Civil Resistance Works' (2011), finding that nonviolent campaigns succeeded 53% of the time compared to 26% for violent ones. The mechanisms of nonviolent success include lower barriers to participation (enabling mass mobilization), greater opportunities for tactical innovation, and the tendency to provoke loyalty shifts among regime supporters, including military defections. However, the study's own data shows that nearly half of nonviolent campaigns also failed, and scholars like Frantz Fanon argued in 'The Wretched of the Earth' (1961) that colonial violence could only be answered with counter-violence — a position that influenced armed liberation movements from Algeria to Mozambique. The historical record suggests context matters enormously: the Indian independence movement succeeded through mass nonviolent resistance partly because Britain was weakened by World War II and faced international pressure; the Haitian Revolution required armed revolt because enslaved people had no political leverage within the colonial system. Most successful movements, including the anti-apartheid struggle and the American civil rights movement, employed a spectrum of tactics — the ANC used both negotiation and armed sabotage, while the threat of more radical Black Power groups arguably strengthened King's negotiating position.",
+      "target_lang": "en",
+      "reason": "Presents the academic evidence on resistance strategies without romanticizing either approach, noting that most successful movements combined multiple methods depending on context."
+    },
+    {
+      "source_text": "The cost of liberation — what independence movements achieved vs. what followed",
+      "source_lang": "en",
+      "target_text": "Liberation movements across Africa and Asia achieved political sovereignty but frequently failed to deliver economic justice, with the gap between formal independence and substantive freedom becoming one of the defining patterns of the 20th century. Algeria's war of independence (1954-1962) cost an estimated 1.5 million Algerian lives, yet post-independence Algeria under the FLN became a single-party state. The Congo Crisis (1960-1965) saw the democratically elected Patrice Lumumba assassinated within months of independence, with foreign intervention installing Mobutu Sese Seko, whose 32-year kleptocracy impoverished the nation. In South Africa, the end of apartheid brought universal suffrage but the ANC's adoption of neoliberal economic policies preserved apartheid-era economic structures, leaving South Africa with the world's highest Gini coefficient. Haiti's successful revolution in 1804 led to 150 years of debt payments to France and international isolation that continue to shape the country's poverty today. These outcomes reflect not inherent failures of liberation movements but the persistence of colonial economic structures, Cold War geopolitics, and the willingness of former colonial powers to undermine independent states — what Kwame Nkrumah termed 'neo-colonialism' in 1965.",
+      "target_lang": "en",
+      "reason": "Examines the structural reasons why political liberation often failed to produce economic liberation, avoiding both romanticization of independence movements and victim-blaming of newly independent nations."
+    },
+    {
+      "source_text": "Sanitization of radical leaders — how MLK, Mandela, and Gandhi were made safe for the mainstream",
+      "source_lang": "en",
+      "target_text": "The posthumous sanitization of radical leaders follows a consistent pattern: reduce complex political figures to a few palatable quotes, erase their most challenging positions, and claim them as universal symbols of progress rather than critics of specific power structures. Martin Luther King Jr. is remembered primarily for 'I Have a Dream' while his condemnation of capitalism, U.S. militarism, and the Vietnam War — positions that made him deeply unpopular at the time of his death, with a 75% unfavorable rating among white Americans — are largely omitted from mainstream commemorations. Nelson Mandela, who co-founded an armed resistance wing and remained on the U.S. terrorism watch list until 2008, was recast after his presidency as a lifelong advocate of peaceful reconciliation. Gandhi's legacy is invoked by governments worldwide while his specific critiques of Western industrialization, materialism, and colonial economic structures are quietly set aside. As scholars have documented, this sanitization serves a political function: by celebrating these figures as advocates of patience and gradual progress, their legacies are weaponized against contemporary protest movements, with the very institutions that opposed them in life now citing their words to counsel moderation. The co-optation began even during their lifetimes — King himself confronted it, noting that white moderates preferred 'a negative peace which is the absence of tension to a positive peace which is the presence of justice.'",
+      "target_lang": "en",
+      "reason": "Analyzes the political mechanics of how radical leaders are domesticated for mainstream consumption, with specific examples of how each figure's most challenging positions have been systematically erased."
+    },
+    {
+      "source_text": "Women in liberation movements — systematically written out of the story",
+      "source_lang": "en",
+      "target_text": "Women's contributions to liberation movements have been systematically minimized or erased across virtually every historical context, a pattern scholars describe as the 'Great Man' narrative of resistance history. In the American civil rights movement, women like Ella Baker, Fannie Lou Hamer, Diane Nash, and Septima Clark served as organizers, strategists, and bridge leaders whose work was essential to the movement's structure, yet mainstream histories center almost exclusively on male clergy leaders. In African decolonization, women organized protests, distributed anti-colonial propaganda, and provided medical care to guerrilla fighters — from the Algerian women who carried bombs during the Battle of Algiers to Somali women poets whose work galvanized resistance — yet they are largely absent from independence narratives. The founding documents of late-1960s feminist movements explicitly cite sexism within civil rights and anti-colonial movements as a catalyst: women who fought for liberation abroad or at home found themselves excluded from leadership and subjected to the same patriarchal structures they were ostensibly dismantling. After independence, women's wartime contributions were frequently instrumentalized — their sacrifice invoked for national legitimacy while post-independence governments restricted their political participation. This erasure is not merely an oversight but a structural feature of how liberation histories are constructed and taught.",
+      "target_lang": "en",
+      "reason": "Documents the systematic pattern of women's erasure from liberation narratives across multiple movements and continents, identifying it as structural rather than accidental."
+    },
+    {
+      "source_text": "The Pankhurst family split — ideology, class, and the personal cost of political movements",
+      "source_lang": "en",
+      "target_text": "The Pankhurst family's fracturing illustrates how liberation movements generate internal conflicts along lines of class, strategy, and ideology that are often as bitter as the external struggle. Emmeline and Christabel Pankhurst ran the WSPU autocratically, purging dissent and prioritizing militant spectacle — arson of historic buildings, slashing of gallery paintings — over democratic organizing. Sylvia Pankhurst, an artist who particularly abhorred the destruction of artworks, broke with her mother and sister in 1914 to form the East London Federation of Suffragettes, which explicitly linked women's suffrage to working-class solidarity and socialism — a connection Emmeline and Christabel rejected. Adela Pankhurst, the youngest daughter, was effectively exiled to Australia. When World War I began, Emmeline and Christabel suspended the suffrage campaign and became fervent supporters of the war effort, while Sylvia became an anti-war activist and later supported the Soviet Union and Ethiopian independence. The sisters never fully reconciled; their divergence demonstrates that 'the suffragette movement' was not a monolith but contained fundamental disagreements about whether women's liberation could be achieved within existing class structures or required broader social transformation.",
+      "target_lang": "en",
+      "reason": "Uses the Pankhurst family as a case study for the broader phenomenon of ideological fracturing within liberation movements, particularly around class politics."
+    },
+    {
+      "source_text": "Gandhi's family relationships — the personal costs of public sainthood",
+      "source_lang": "en",
+      "target_text": "Gandhi's treatment of his immediate family stands in stark contrast to his public image as a figure of compassion and moral authority. He was publicly dismissive of his wife Kasturba, whom he married when both were 13, writing that he 'simply cannot bear to look at Ba's face' and mocking her illiteracy before others. During their imprisonment at Aga Khan Palace in 1942-1944, he refused to allow Kasturba to receive penicillin when she fell ill, aligning with his opposition to Western medicine; she died in February 1944. When Gandhi himself contracted malaria shortly afterward, he accepted treatment with quinine — a contradiction his critics have noted ever since. His eldest son Harilal was denied the educational opportunities Gandhi provided to others at his ashram, receiving no special privileges as a matter of principle; Harilal became estranged, struggled with alcoholism, publicly accused his father of selfishness and hypocrisy, and died destitute in June 1948, just months after Gandhi's assassination. When another son, Manilal, secretly sent money to the struggling Harilal, Gandhi was furious and sent Manilal to Chennai to earn through manual labor as penance. These family dynamics complicate the Mahatma ('Great Soul') title without necessarily negating his political achievements, but they illustrate the human cost of constructing a public persona of moral perfection.",
+      "target_lang": "en",
+      "reason": "Examines Gandhi's documented treatment of his family to complicate the hagiographic narrative, using specific incidents to illustrate the gap between public sainthood and private conduct."
+    },
+    {
+      "source_text": "King's 'Beyond Vietnam' speech — the moment the radical MLK broke with the liberal establishment",
+      "source_lang": "en",
+      "target_text": "On April 4, 1967 — exactly one year before his assassination — Martin Luther King Jr. delivered 'Beyond Vietnam: A Time to Break Silence' at Riverside Church in New York City, a speech that alienated most of his former allies and revealed the radical political vision his sanitized legacy would later obscure. King called the United States 'the greatest purveyor of violence in the world today,' linked the Vietnam War to domestic poverty by arguing that military spending drained resources from anti-poverty programs, and described a 'revolution of values' that would challenge 'the giant triplets of racism, extreme materialism, and militarism.' The response was immediate and severe: The New York Times editorial board called the speech 'facile' and 'slander'; the NAACP board voted to oppose merging civil rights with anti-war activism; the Johnson administration, which had worked with King on the Civil Rights and Voting Rights Acts, effectively severed relations. The FBI intensified its COINTELPRO operations against King, having already bugged his phones and hotel rooms since 1962 and sent him a letter in 1964 that scholars interpret as encouraging suicide. King's final campaign, the Poor People's Campaign of 1968, demanded a $30 billion anti-poverty package and a guaranteed annual income — positions far more radical than the voting rights agenda for which he is primarily remembered.",
+      "target_lang": "en",
+      "reason": "Centers the specific speech and campaign that best illustrate the gap between the commemorated King and the historical King, with documented reactions from contemporaries."
+    },
+    {
+      "source_text": "Mandela's Rivonia Trial speech — the case for armed resistance in the anti-apartheid struggle",
+      "source_lang": "en",
+      "target_text": "At the Rivonia Trial in April 1964, Nelson Mandela delivered a speech from the dock that articulated the moral and strategic reasoning behind the ANC's turn to armed resistance — a dimension of his legacy that his post-presidential canonization has largely smoothed over. Mandela stated that after 50 years of nonviolent resistance to apartheid had produced only increasing repression, including the 1960 Sharpeville massacre in which police killed 69 unarmed protesters, he concluded that 'it would be unrealistic and wrong for African leaders to continue preaching peace and non-violence at a time when the government met our peaceful demands with force.' Umkhonto we Sizwe, which he co-founded in 1961, conducted 57 acts of sabotage in its first 18 months, targeting power stations, railway lines, and government buildings while attempting to avoid casualties. Mandela was sentenced to life imprisonment and spent 18 of his 27 years on Robben Island. The speech concluded with words that became iconic: 'I have cherished the ideal of a democratic and free society... It is an ideal for which I am prepared to die.' What is less commonly remembered is that this was a defense of political violence delivered by a man who had personally studied guerrilla warfare techniques and traveled to Ethiopia and Algeria for military training in 1962.",
+      "target_lang": "en",
+      "reason": "Recovers the specific historical context of Mandela's embrace of armed resistance, including his military training, to counter the reductive 'peaceful reconciliation' narrative."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Nonviolence vs. armed resistance — when each strategy works and why",
+      "to_source": "Mandela's Rivonia Trial speech — the case for armed resistance in the anti-apartheid struggle",
+      "kind": "refines",
+      "reason": "The Mandela profile provides a concrete historical case study that illustrates the theoretical framework about when nonviolence fails and armed resistance emerges."
+    },
+    {
+      "from_source": "Sanitization of radical leaders — how MLK, Mandela, and Gandhi were made safe for the mainstream",
+      "to_source": "King's 'Beyond Vietnam' speech — the moment the radical MLK broke with the liberal establishment",
+      "kind": "refines",
+      "reason": "The Beyond Vietnam entry provides specific evidence for the sanitization thesis by documenting exactly which positions were erased from King's mainstream legacy."
+    },
+    {
+      "from_source": "Sanitization of radical leaders — how MLK, Mandela, and Gandhi were made safe for the mainstream",
+      "to_source": "Nelson Mandela — anti-apartheid struggle, armed resistance, and the limits of political liberation",
+      "kind": "refines",
+      "reason": "Mandela's profile documents his armed resistance background and U.S. terror watch listing, providing concrete evidence of the gap between historical Mandela and sanitized Mandela."
+    },
+    {
+      "from_source": "Gandhi's family relationships — the personal costs of public sainthood",
+      "to_source": "Mahatma Gandhi — nonviolent resistance, Indian independence, and personal contradictions",
+      "kind": "refines",
+      "reason": "The family relationships entry expands on the personal contradictions summarized in the main Gandhi profile, providing deeper documentation of specific incidents."
+    },
+    {
+      "from_source": "The cost of liberation — what independence movements achieved vs. what followed",
+      "to_source": "Toussaint Louverture — the Haitian Revolution, death in captivity, and Haiti's punishment for freedom",
+      "kind": "refines",
+      "reason": "Haiti's independence debt and isolation is the most extreme example of the post-liberation punishment pattern described in the thematic entry."
+    },
+    {
+      "from_source": "Women in liberation movements — systematically written out of the story",
+      "to_source": "Emmeline Pankhurst — militant suffrage, class politics, and family fractures",
+      "kind": "contradicts",
+      "reason": "The Pankhurst entry shows a case where women led the movement but class dynamics excluded working-class women, complicating the simple 'women were erased' narrative by showing erasure operated along class lines within women's movements too."
+    },
+    {
+      "from_source": "The Pankhurst family split — ideology, class, and the personal cost of political movements",
+      "to_source": "Emmeline Pankhurst — militant suffrage, class politics, and family fractures",
+      "kind": "refines",
+      "reason": "The family split entry provides detailed context for the internal conflicts summarized in the main Pankhurst profile."
+    },
+    {
+      "from_source": "Nonviolence vs. armed resistance — when each strategy works and why",
+      "to_source": "Mahatma Gandhi — nonviolent resistance, Indian independence, and personal contradictions",
+      "kind": "refines",
+      "reason": "Gandhi's movement is a primary case in the academic literature on nonviolent resistance, with contextual factors (WWII, international pressure) explaining its success beyond moral force alone."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Mahatma Gandhi — nonviolent resistance, Indian independence, and personal contradictions",
+      "kind": "url",
+      "locator": "https://wagingnonviolence.org/2019/10/south-africa-forced-gandhi-reckon-with-racism-imperialism/",
+      "reason": "Documents Gandhi's evolving views on race during his South Africa years, including derogatory statements about Black Africans and his later shift."
+    },
+    {
+      "pair_source": "Mahatma Gandhi — nonviolent resistance, Indian independence, and personal contradictions",
+      "kind": "url",
+      "locator": "https://scroll.in/article/939623/gandhis-racism-its-time-for-the-mahatma-to-become-a-properly-historical-figure-with-all-his-flaws",
+      "reason": "Academic analysis arguing for treating Gandhi as a historical figure with documented flaws rather than a saint, covering his racial views and caste position."
+    },
+    {
+      "pair_source": "Gandhi's family relationships — the personal costs of public sainthood",
+      "kind": "url",
+      "locator": "https://www.newsgram.com/history/2025/10/10/did-mahatma-gandhi-killed-his-wife",
+      "reason": "Documents Gandhi's refusal to allow Kasturba penicillin during imprisonment and his subsequent acceptance of quinine for his own illness."
+    },
+    {
+      "pair_source": "Nelson Mandela — anti-apartheid struggle, armed resistance, and the limits of political liberation",
+      "kind": "url",
+      "locator": "https://liberationschool.org/nelson-mandela-armed-struggle-and-communism-in-the-fight-for-freedom/",
+      "reason": "Details Mandela's role in founding MK, the ANC's armed wing, and the strategic reasoning behind the turn to armed resistance."
+    },
+    {
+      "pair_source": "Nelson Mandela — anti-apartheid struggle, armed resistance, and the limits of political liberation",
+      "kind": "url",
+      "locator": "https://journals.sagepub.com/doi/10.1177/01914537221079674",
+      "reason": "Academic analysis of neoliberal influence on South Africa's post-apartheid economic policy and its failure to address structural inequality."
+    },
+    {
+      "pair_source": "Nelson Mandela — anti-apartheid struggle, armed resistance, and the limits of political liberation",
+      "kind": "url",
+      "locator": "https://theconversation.com/why-south-africa-should-undo-mandelas-economic-deals-52767",
+      "reason": "Critical analysis of Mandela's economic policy decisions and their contribution to persistent inequality in South Africa."
+    },
+    {
+      "pair_source": "Martin Luther King Jr. — civil rights icon, radical politics, and the sanitized legacy",
+      "kind": "url",
+      "locator": "https://www.thenation.com/article/culture/mlk-fbi-sam-pollard/",
+      "reason": "Documents the FBI's extensive surveillance program against King, including phone taps and the anonymous letter urging suicide."
+    },
+    {
+      "pair_source": "Martin Luther King Jr. — civil rights icon, radical politics, and the sanitized legacy",
+      "kind": "url",
+      "locator": "https://icnacsj.org/the-sanitization-of-martin-luther-king-jr-s-legacy/",
+      "reason": "Analysis of how King's radical positions on capitalism, war, and economic justice have been systematically erased from mainstream commemorations."
+    },
+    {
+      "pair_source": "King's 'Beyond Vietnam' speech — the moment the radical MLK broke with the liberal establishment",
+      "kind": "url",
+      "locator": "https://www.commondreams.org/news/2020/01/20/countering-annual-whitewash-his-legacy-progressives-remember-anti-capitalist-anti",
+      "reason": "Documents King's anti-capitalist and anti-imperialist positions and the annual effort to counter the whitewashing of his legacy."
+    },
+    {
+      "pair_source": "Harriet Tubman — Underground Railroad conductor, Civil War operative, and myth vs. reality",
+      "kind": "url",
+      "locator": "https://www.nps.gov/hatu/planyourvisit/upload/MD_TubmanFactSheet_MythsFacts_2.pdf",
+      "reason": "National Park Service fact sheet correcting common myths about Tubman, including the inflated number of people she freed."
+    },
+    {
+      "pair_source": "Harriet Tubman — Underground Railroad conductor, Civil War operative, and myth vs. reality",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/harriet-tubman-combahee-ferry-raid-civil-war",
+      "reason": "Details Tubman's role in the Combahee Ferry Raid, the first U.S. military operation led by a woman, liberating over 700 enslaved people."
+    },
+    {
+      "pair_source": "Toussaint Louverture — the Haitian Revolution, death in captivity, and Haiti's punishment for freedom",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Toussaint-Louverture",
+      "reason": "Comprehensive biographical reference covering Louverture's military campaigns, capture, and death at Fort de Joux."
+    },
+    {
+      "pair_source": "Toussaint Louverture — the Haitian Revolution, death in captivity, and Haiti's punishment for freedom",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Haitian_independence_debt",
+      "reason": "Documents the 150 million franc indemnity France imposed on Haiti in 1825 and its long-term economic consequences."
+    },
+    {
+      "pair_source": "Toussaint Louverture — the Haitian Revolution, death in captivity, and Haiti's punishment for freedom",
+      "kind": "url",
+      "locator": "https://news.un.org/en/story/2025/04/1162406",
+      "reason": "UN reporting on how Haiti paid for its freedom twice over through the independence debt, with analysis of the financial burden."
+    },
+    {
+      "pair_source": "Frederick Douglass — abolitionist orator, political pragmatist, and personal controversies",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/abraham-lincoln-frederick-douglass-relation",
+      "reason": "Documents the evolution of the Douglass-Lincoln relationship from mutual distrust to a working alliance."
+    },
+    {
+      "pair_source": "Frederick Douglass — abolitionist orator, political pragmatist, and personal controversies",
+      "kind": "url",
+      "locator": "https://www.britannica.com/story/why-was-frederick-douglasss-marriage-to-helen-pitts-controversial",
+      "reason": "Explains the racial and social controversy surrounding Douglass's 1884 marriage to Helen Pitts, including family estrangement."
+    },
+    {
+      "pair_source": "Emmeline Pankhurst — militant suffrage, class politics, and family fractures",
+      "kind": "url",
+      "locator": "https://thehistorypress.co.uk/article/the-pankhursts-politics-protest-and-passion/",
+      "reason": "Covers the political and personal fractures within the Pankhurst family, including Sylvia and Adela's expulsion from the WSPU."
+    },
+    {
+      "pair_source": "Emmeline Pankhurst — militant suffrage, class politics, and family fractures",
+      "kind": "url",
+      "locator": "https://www.londonmuseum.org.uk/blog/suffragette-christabel-pankhurst-her-militant-strategy/",
+      "reason": "Details Christabel Pankhurst's militant strategy and the escalation of WSPU tactics including arson and property destruction."
+    },
+    {
+      "pair_source": "Nonviolence vs. armed resistance — when each strategy works and why",
+      "kind": "url",
+      "locator": "https://news.harvard.edu/gazette/story/2019/02/why-nonviolent-resistance-beats-violent-force-in-effecting-social-political-change/",
+      "reason": "Harvard Gazette summary of Chenoweth and Stephan's research findings on the comparative effectiveness of nonviolent vs. violent resistance."
+    },
+    {
+      "pair_source": "Nonviolence vs. armed resistance — when each strategy works and why",
+      "kind": "url",
+      "locator": "https://www.belfercenter.org/sites/default/files/pantheon_files/files/publication/IS3301_pp007-044_Stephan_Chenoweth.pdf",
+      "reason": "Original academic paper by Stephan and Chenoweth presenting the NAVCO dataset analysis of 323 resistance campaigns from 1900-2006."
+    },
+    {
+      "pair_source": "The cost of liberation — what independence movements achieved vs. what followed",
+      "kind": "url",
+      "locator": "https://education.cfr.org/learn/reading/how-did-decolonization-reshape-world",
+      "reason": "Council on Foreign Relations educational resource on the outcomes of decolonization movements and post-independence challenges."
+    },
+    {
+      "pair_source": "Sanitization of radical leaders — how MLK, Mandela, and Gandhi were made safe for the mainstream",
+      "kind": "url",
+      "locator": "https://thegrio.com/2013/12/07/the-radical-histories-of-mandela-and-mlk/",
+      "reason": "Analysis of how the radical histories of both Mandela and King have been sanitized for mainstream consumption."
+    },
+    {
+      "pair_source": "Sanitization of radical leaders — how MLK, Mandela, and Gandhi were made safe for the mainstream",
+      "kind": "url",
+      "locator": "https://fair.org/home/nelson-mandela-and-nonviolent-resistance/",
+      "reason": "FAIR analysis of how media recast Mandela as a lifelong nonviolent figure despite his documented armed resistance."
+    },
+    {
+      "pair_source": "Women in liberation movements — systematically written out of the story",
+      "kind": "url",
+      "locator": "https://www.nps.gov/articles/women-in-the-african-american-civil-rights-movement-an-historic-context.htm",
+      "reason": "National Park Service documentation of women's central but underrecognized roles in the American civil rights movement."
+    },
+    {
+      "pair_source": "Women in liberation movements — systematically written out of the story",
+      "kind": "url",
+      "locator": "https://qz.com/africa/1574284/africas-women-have-been-forgotten-from-its-independence-history",
+      "reason": "Quartz Africa reporting on the systematic forgetting of women leaders from African independence struggles."
+    },
+    {
+      "pair_source": "Mandela's Rivonia Trial speech — the case for armed resistance in the anti-apartheid struggle",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/toussaint-louverture-haiti-revolution",
+      "reason": "Historical context for armed resistance in liberation movements, paralleling Mandela's justification with earlier slave revolts."
+    },
+    {
+      "pair_source": "Mandela's Rivonia Trial speech — the case for armed resistance in the anti-apartheid struggle",
+      "kind": "url",
+      "locator": "https://crgreview.com/the-power-of-african-activism-how-the-anc-and-umkhonto-we-sizwe-defeated-apartheid/",
+      "reason": "Analysis of MK's sabotage campaign and Mandela's role in founding and directing the ANC's armed wing."
+    },
+    {
+      "pair_source": "The Pankhurst family split — ideology, class, and the personal cost of political movements",
+      "kind": "url",
+      "locator": "https://www.pankhurstmuseum.com/the-pankhurst-family",
+      "reason": "Pankhurst Museum resource documenting the family's internal political disagreements and the expulsion of Sylvia and Adela."
+    },
+    {
+      "pair_source": "The Pankhurst family split — ideology, class, and the personal cost of political movements",
+      "kind": "url",
+      "locator": "https://www.theoldie.co.uk/blog/the-pankhursts-at-war",
+      "reason": "Details the Pankhurst family's divergent positions on World War I and the resulting permanent fracture between Emmeline/Christabel and Sylvia."
+    },
+    {
+      "pair_source": "Mandela's Rivonia Trial speech — the case for armed resistance in the anti-apartheid struggle",
+      "kind": "url",
+      "locator": "https://www.un.org/en/events/mandeladay/court_statement_1964.shtml",
+      "reason": "Full text of Mandela Rivonia Trial speech hosted by the United Nations"
+    },
+    {
+      "pair_source": "The Pankhurst family split — ideology, class, and the personal cost of political movements",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Emmeline-Pankhurst",
+      "reason": "Britannica profile covering the Pankhurst family divisions and political divergences"
+    }
+  ]
+}

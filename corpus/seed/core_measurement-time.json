@@ -1,0 +1,215 @@
+{
+  "domain": "core-measurement-time",
+  "pairs": [
+    {
+      "source_text": "Why are there 24 hours in a day instead of, say, 10 or 20?",
+      "source_lang": "en",
+      "target_text": "The ancient Egyptians divided daytime into 12 parts and nighttime into 12 parts, giving us 24 hours total. They likely chose 12 because the Babylonians used a base-12 counting system -- you can count to 12 on one hand by tapping each finger-bone segment with your thumb. The Babylonians then subdivided each hour into 60 minutes (and each minute into 60 seconds) because 60 is divisible by 2, 3, 4, 5, 6, 10, 12, 15, 20, and 30, making fractional calculations easy without decimals.",
+      "target_lang": "en",
+      "reason": "Foundational: everyone reads clocks daily but few know why the numbers are what they are"
+    },
+    {
+      "source_text": "How does a clock actually keep time?",
+      "source_lang": "en",
+      "target_text": "Every clock needs something that repeats at a steady rate. In a pendulum clock, a swinging weight completes one arc in a fixed time determined by its length -- about one meter for a one-second swing. A quartz wristwatch uses a tiny crystal that vibrates exactly 32,768 times per second when electricity is applied; a circuit counts those vibrations and advances the display once every 32,768 cycles. Atomic clocks go further, counting the 9,192,631,770 vibrations per second of a cesium-133 atom, which is so stable it drifts less than one second in 300 million years.",
+      "target_lang": "en",
+      "reason": "Explains the physical principle behind an object people check dozens of times daily"
+    },
+    {
+      "source_text": "Why do we need leap years?",
+      "source_lang": "en",
+      "target_text": "Earth takes about 365.2422 days to orbit the Sun, not a clean 365. If we ignored that extra quarter-day, the calendar would drift by one full day every four years -- after 700 years, July would fall in midwinter. Adding one day every four years (February 29) mostly fixes this, but slightly overcorrects, so century years like 1900 are skipped unless they are divisible by 400 (which is why 2000 was a leap year but 1900 was not). This rule keeps the calendar accurate to within one day every 3,236 years.",
+      "target_lang": "en",
+      "reason": "Universally encountered but the century-skip rule is widely misunderstood"
+    },
+    {
+      "source_text": "Why does the world have time zones, and why are some of them offset by 30 or 45 minutes?",
+      "source_lang": "en",
+      "target_text": "Because the Earth rotates 360 degrees in 24 hours, the sun reaches its highest point about one hour later for every 15 degrees of longitude you move west. Before railroads, every town set its own clocks to local solar noon, which made scheduling trains chaotic. In 1884, an international conference divided the globe into 24 standard zones, each roughly 15 degrees wide, centered on the prime meridian in Greenwich. Some countries chose half- or quarter-hour offsets to better match their geography: India uses UTC+5:30 to center the zone on the subcontinent, and Nepal uses UTC+5:45.",
+      "target_lang": "en",
+      "reason": "Time zones affect daily life for anyone communicating across regions"
+    },
+    {
+      "source_text": "Why do some months have 30 days and others 31?",
+      "source_lang": "en",
+      "target_text": "The early Roman calendar had only 10 months starting in March, leaving winter as an unorganized gap. King Numa Pompilius added January and February around 713 BCE, but the months still did not add up to a solar year, so rulers periodically inserted extra days. Julius Caesar reformed the calendar in 46 BCE, spreading 365 days across 12 months by alternating 31 and 30, with February getting 28 (29 in leap years). When Augustus Caesar later took the month of Sextilis and renamed it August, tradition holds he borrowed a day from February to make his month equal to Julius's July at 31 days, disrupting the tidy pattern.",
+      "target_lang": "en",
+      "reason": "A quirk everyone lives with but few can explain -- rooted in Roman politics"
+    },
+    {
+      "source_text": "How does a thermometer measure temperature?",
+      "source_lang": "en",
+      "target_text": "A traditional thermometer uses a liquid like mercury or dyed alcohol sealed in a glass tube. When the temperature rises, the liquid expands and climbs up the narrow tube; when it cools, the liquid contracts and drops. The tube is marked with a scale so you read the temperature where the liquid level sits. Digital thermometers work differently: they contain a thermistor, a small component whose electrical resistance changes predictably with temperature, and a microchip converts that resistance reading into a number on the display.",
+      "target_lang": "en",
+      "reason": "Bridges the gap between the familiar glass-tube image and modern digital versions"
+    },
+    {
+      "source_text": "Why do some countries use meters and kilograms while others use feet and pounds?",
+      "source_lang": "en",
+      "target_text": "The metric system was created during the French Revolution in the 1790s to replace the patchwork of local units across France with a rational, decimal system based on nature -- the meter was originally defined as one ten-millionth of the distance from the equator to the North Pole. Over the next two centuries, most countries adopted it for trade and science. Britain clung to its traditional imperial measures longer but has largely converted, while the United States, Liberia, and Myanmar remain the only countries that have not officially adopted metric for everyday use, largely due to the enormous cost of switching infrastructure and public habit.",
+      "target_lang": "en",
+      "reason": "The imperial-metric divide causes real confusion in engineering, cooking, and commerce"
+    },
+    {
+      "source_text": "How does a scale know how much something weighs?",
+      "source_lang": "en",
+      "target_text": "A simple balance scale compares an unknown object against known reference masses on the other arm -- when the beam is level, the two sides have equal mass. A spring scale measures weight (the force of gravity on an object) by how far a spring stretches; the same object would register lighter on the Moon because gravity is weaker there, even though its mass has not changed. Modern digital scales use strain gauges: thin metallic strips bonded to a metal beam that flex slightly under load, changing their electrical resistance by an amount proportional to the weight applied.",
+      "target_lang": "en",
+      "reason": "Clarifies the mass-vs-weight distinction through a concrete, everyday device"
+    },
+    {
+      "source_text": "How does a compass know which way is north?",
+      "source_lang": "en",
+      "target_text": "Earth's liquid iron core generates a magnetic field that extends into space, making the planet behave like a giant bar magnet. A compass contains a lightweight magnetized needle balanced on a nearly frictionless pivot; the needle's north-seeking pole aligns with Earth's magnetic field lines and points roughly toward the magnetic north pole. However, magnetic north and true geographic north (the axis the Earth spins on) are not in the same place -- they are currently about 500 kilometers apart, and the difference, called declination, varies by location and changes slowly over time.",
+      "target_lang": "en",
+      "reason": "Navigation is fundamental, and the magnetic-vs-true-north distinction matters practically"
+    },
+    {
+      "source_text": "What do the numbers in a GPS coordinate actually mean?",
+      "source_lang": "en",
+      "target_text": "A GPS coordinate like 40.7128 N, 74.0060 W is an address on a grid draped over the Earth. Latitude measures how far north or south you are from the equator (0 degrees) to the poles (90 degrees); longitude measures how far east or west you are from an imaginary line running through Greenwich, England (0 degrees) to the opposite side of the globe (180 degrees). Greenwich was chosen as the zero line in 1884 because Britain's Royal Observatory had long published the world's most widely used nautical almanacs, so most ships already referenced it.",
+      "target_lang": "en",
+      "reason": "GPS coordinates appear on every map app; understanding them unlocks basic geography"
+    },
+    {
+      "source_text": "How do flat maps represent a round Earth, and what do they get wrong?",
+      "source_lang": "en",
+      "target_text": "Flattening a sphere onto a plane is like trying to press an orange peel flat without tearing or stretching it -- something always distorts. Mapmakers use mathematical projections to choose which property to preserve. The familiar Mercator projection keeps shapes and angles accurate (useful for navigation) but wildly inflates areas near the poles, making Greenland look as large as Africa when it is actually 14 times smaller. Other projections preserve area, or distance from a point, or the shortest-route paths, but none can preserve everything at once.",
+      "target_lang": "en",
+      "reason": "Map distortion shapes people's perception of the world, often without them realizing it"
+    },
+    {
+      "source_text": "How does a car's speedometer know how fast you are going?",
+      "source_lang": "en",
+      "target_text": "In older cars, a flexible cable spins at a rate proportional to wheel rotation. That cable turns a magnet inside the speedometer housing; the spinning magnet induces swirling electrical currents (called eddy currents) in a nearby aluminum cup, which push the cup -- and the attached needle -- against a spring. The faster the wheels turn, the stronger the eddy currents and the farther the needle swings. Modern cars replace all of this with a small sensor on each wheel that counts the teeth on a toothed ring as they pass, and a computer calculates speed from how quickly the teeth go by.",
+      "target_lang": "en",
+      "reason": "Demystifies a gauge drivers glance at constantly, bridging electromagnetism and digital sensing"
+    },
+    {
+      "source_text": "Why does computer storage use weird numbers like 256 and 1,024 instead of round ones?",
+      "source_lang": "en",
+      "target_text": "Computers store everything as binary digits (bits) -- switches that are either on (1) or off (0). Because each bit doubles the number of possible values, capacities naturally fall on powers of 2: 2, 4, 8, 16, 32, 64, 128, 256, 1,024, and so on. Engineers originally called 1,024 bytes a 'kilobyte' because it was close to 1,000, but hard-drive manufacturers started using 1,000 bytes to make their drives sound bigger. To end the confusion, standards bodies introduced new names -- kibibyte (1,024 bytes) versus kilobyte (1,000 bytes) -- but most people still use 'kilobyte' loosely for both.",
+      "target_lang": "en",
+      "reason": "Explains a daily source of confusion when buying storage or downloading files"
+    },
+    {
+      "source_text": "How does Daylight Saving Time work, and why do we do it?",
+      "source_lang": "en",
+      "target_text": "In regions that observe Daylight Saving Time, clocks spring forward one hour in spring and fall back one hour in autumn, shifting an hour of daylight from early morning to evening. The idea, first widely adopted during World War I, was that longer evening daylight would reduce the need for artificial lighting and save energy. However, modern studies show the energy savings are minimal or nonexistent, and the time changes are linked to spikes in heart attacks and traffic accidents. Many countries -- including most of Africa, Asia, and South America -- do not observe DST at all, and there is a growing movement in the US and EU to abolish the practice.",
+      "target_lang": "en",
+      "reason": "Affects billions of people twice a year, yet the rationale is widely debated and misunderstood"
+    },
+    {
+      "source_text": "Why is tipping expected in American restaurants but not in most other countries?",
+      "source_lang": "en",
+      "target_text": "Tipping in America traces back to wealthy Americans adopting the European aristocratic custom of rewarding servants in the late 1800s. After Prohibition ended in 1933, struggling restaurant owners seized on tips as a way to keep menu prices low by paying servers a reduced 'tipped minimum wage,' with gratuities making up the difference. The customary amount has crept from 10% to 15-20% over the decades. In most of Europe and Asia, a service charge is included in the price or servers earn a full wage, so leaving an extra tip is a polite bonus rather than an economic necessity.",
+      "target_lang": "en",
+      "reason": "Tipping culture is a measurement-adjacent social convention that confuses travelers worldwide"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Why are there 24 hours in a day instead of, say, 10 or 20?",
+      "kind": "url",
+      "locator": "https://www.scientificamerican.com/article/why-is-a-minute-divided-into-60-seconds/",
+      "reason": "Establishes the Babylonian base-60 origin of minutes and seconds"
+    },
+    {
+      "pair_source": "Why are there 24 hours in a day instead of, say, 10 or 20?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/time/Time-in-ancient-civilizations",
+      "reason": "Documents Egyptian division of day and night into 12 parts each"
+    },
+    {
+      "pair_source": "How does a clock actually keep time?",
+      "kind": "url",
+      "locator": "https://www.nist.gov/pml/time-and-frequency-division/time-realization/primary-standard-nist-f1",
+      "reason": "NIST documentation on cesium atomic clock frequency and accuracy"
+    },
+    {
+      "pair_source": "How does a clock actually keep time?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/quartz-clock",
+      "reason": "Explains quartz crystal oscillation at 32,768 Hz and circuit division"
+    },
+    {
+      "pair_source": "Why do we need leap years?",
+      "kind": "url",
+      "locator": "https://www.timeanddate.com/date/leapyear.html",
+      "reason": "Explains the 365.2422-day orbit and the century/400-year correction rules"
+    },
+    {
+      "pair_source": "Why does the world have time zones, and why are some of them offset by 30 or 45 minutes?",
+      "kind": "url",
+      "locator": "https://www.timeanddate.com/time/time-zones-history.html",
+      "reason": "History of the 1884 International Meridian Conference and adoption of standard time zones"
+    },
+    {
+      "pair_source": "Why do some months have 30 days and others 31?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/Julian-calendar",
+      "reason": "Documents Julius Caesar's 46 BCE calendar reform and month-length assignments"
+    },
+    {
+      "pair_source": "How does a thermometer measure temperature?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/thermometer",
+      "reason": "Covers liquid-expansion and electronic thermometer principles"
+    },
+    {
+      "pair_source": "Why do some countries use meters and kilograms while others use feet and pounds?",
+      "kind": "url",
+      "locator": "https://www.nist.gov/pml/owm/metric-si/si-history",
+      "reason": "NIST history of the metric system from the French Revolution onward"
+    },
+    {
+      "pair_source": "How does a scale know how much something weighs?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/strain-gauge",
+      "reason": "Explains strain gauge operating principle used in modern digital scales"
+    },
+    {
+      "pair_source": "How does a compass know which way is north?",
+      "kind": "url",
+      "locator": "https://www.ngdc.noaa.gov/geomag/declination.shtml",
+      "reason": "NOAA data on magnetic declination and the difference between magnetic and true north"
+    },
+    {
+      "pair_source": "What do the numbers in a GPS coordinate actually mean?",
+      "kind": "url",
+      "locator": "https://oceanservice.noaa.gov/facts/longitude.html",
+      "reason": "NOAA explanation of latitude, longitude, and the Greenwich prime meridian"
+    },
+    {
+      "pair_source": "How do flat maps represent a round Earth, and what do they get wrong?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/publications/map-projections-working-manual",
+      "reason": "USGS reference on map projection types and their distortion trade-offs"
+    },
+    {
+      "pair_source": "How does a car's speedometer know how fast you are going?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/speedometer",
+      "reason": "Describes both eddy-current and electronic speedometer mechanisms"
+    },
+    {
+      "pair_source": "Why does computer storage use weird numbers like 256 and 1,024 instead of round ones?",
+      "kind": "url",
+      "locator": "https://www.nist.gov/pml/owm/metric-si/si-units",
+      "reason": "NIST clarification on SI binary prefixes (kibi-, mebi-) vs decimal prefixes"
+    },
+    {
+      "pair_source": "How does Daylight Saving Time work, and why do we do it?",
+      "kind": "url",
+      "locator": "https://www.timeanddate.com/time/dst/history.html",
+      "reason": "History of DST adoption, energy-saving rationale, and countries that do not observe it"
+    },
+    {
+      "pair_source": "Why is tipping expected in American restaurants but not in most other countries?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/tip-gratuity",
+      "reason": "Historical origins of tipping customs and their economic evolution in America"
+    }
+  ]
+}

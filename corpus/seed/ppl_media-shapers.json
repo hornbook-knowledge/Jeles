@@ -1,0 +1,298 @@
+{
+  "domain": "people-media-shapers",
+  "pairs": [
+    {
+      "source_text": "Rupert Murdoch — News Corp/Fox empire builder, political kingmaker, and succession battle",
+      "source_lang": "en",
+      "target_text": "Rupert Murdoch built a media empire spanning News Corp and Fox Corporation that includes Fox News, The Wall Street Journal, The Times of London, and newspapers across Australia, making him one of the most politically influential media owners of the past half-century. He stepped down as chairman of both companies in November 2023 at age 92, naming his son Lachlan as sole chair and CEO, but in December 2024 a Nevada court ruled against his attempt to alter the family trust to cement Lachlan's control, calling the effort a 'carefully crafted charade' — an appeal is pending. Fox News paid $787.5 million in 2023 to settle Dominion Voting Systems' defamation lawsuit over false 2020 election claims, and the earlier News of the World phone-hacking scandal in the UK led to criminal convictions and the closure of Britain's best-selling Sunday newspaper in 2011. Murdoch's outlets have shaped election outcomes in the US, UK, and Australia for decades, drawing both praise for providing conservative audiences a platform and criticism for blurring the line between news and political advocacy.",
+      "target_lang": "en",
+      "reason": "Murdoch's media holdings give him outsized influence over political discourse in three major English-speaking democracies"
+    },
+    {
+      "source_text": "Jeff Bezos — Washington Post owner and the collision between media independence and commercial power",
+      "source_lang": "en",
+      "target_text": "Jeff Bezos purchased The Washington Post in 2013 for $250 million and initially invested in its digital transformation, growing its audience and staffing, but the relationship soured publicly in late 2024 when he blocked the editorial board's planned endorsement of Kamala Harris days before the presidential election. The decision triggered the loss of roughly 250,000 digital subscribers, staff resignations, and accusations from former executive editor Martin Baron that Bezos was 'yielding to Trump' — Bezos countered that ending endorsements was a principled stand against perceived media bias. The Post lost an estimated $100 million in 2024; in February 2026 it laid off a third of its newsroom, after which CEO Will Lewis departed. The episode crystallized the tension inherent in billionaire media ownership: Bezos's Amazon relies on federal contracts and regulatory goodwill, creating an unavoidable perception that business interests can override editorial independence regardless of the owner's stated intentions.",
+      "target_lang": "en",
+      "reason": "Bezos illustrates how billionaire ownership of legacy media creates structural conflicts between editorial independence and commercial interests"
+    },
+    {
+      "source_text": "Jimmy Wales — Wikipedia founder and the governance of the world's largest reference work",
+      "source_lang": "en",
+      "target_text": "Jimmy Wales co-founded Wikipedia in 2001, and it has grown into the world's most-used reference work, with over 60 million articles in 300-plus languages, written and edited by roughly 250,000 active volunteer editors. Wales holds the Founder's seat on the 12-member Wikimedia Foundation Board of Trustees, though his operational role has diminished — since May 2023 he functions essentially as a respected senior community member and source of institutional knowledge rather than an executive decision-maker. His interventions remain controversial: in 2025 he was criticized for softening Wikipedia's page on Israel's actions in Gaza, prompting the Wikimedia Foundation to distance itself from his position and reportedly triggering donor concerns. Wikipedia's consensus-based editing model is simultaneously its strength and vulnerability — it resists top-down editorial control but can be slow to resolve disputes and susceptible to organized editing campaigns on politically sensitive topics.",
+      "target_lang": "en",
+      "reason": "Wikipedia is many people's first and only research source, making its governance model and Wales's residual influence significant for how billions encounter information"
+    },
+    {
+      "source_text": "Jack Dorsey — Twitter co-founder, content moderation dissenter, and decentralization advocate",
+      "source_lang": "en",
+      "target_text": "Jack Dorsey co-founded Twitter in 2006 and served two stints as CEO (2007-2008 and 2015-2021), during which the platform became a central arena for political speech yet struggled constantly with content moderation — criticized by the left for not banning Trump sooner and by the right for alleged anti-conservative bias. After stepping down as Twitter CEO in November 2021, he backed the creation of Bluesky as a decentralized social protocol, but resigned from its board in May 2024, claiming the company was 'literally repeating all the mistakes we made' at Twitter and that true free speech required censorship-resistant technology like the Nostr protocol. He now chairs Block, Inc. (formerly Square), the fintech company he co-founded, focusing on Bitcoin infrastructure and financial services rather than social media. Dorsey's trajectory — from building the platform that helped define modern political discourse to abandoning it and its successors — embodies the unresolved tension between platform scale, advertiser economics, and free-expression ideals.",
+      "target_lang": "en",
+      "reason": "Dorsey created one of the most consequential platforms for political speech and public discourse, and his evolving stance on moderation reflects the industry's unresolved dilemmas"
+    },
+    {
+      "source_text": "Susan Wojcicki — YouTube CEO who shaped the recommendation algorithm era (1968-2024)",
+      "source_lang": "en",
+      "target_text": "Susan Wojcicki was a foundational Google employee — she rented her Menlo Park garage to Larry Page and Sergey Brin in 1998, joined as marketing manager in 1999, and championed Google's $1.65 billion acquisition of YouTube in 2006. As YouTube CEO from 2014 to early 2023, she oversaw the platform's growth to over 2 billion monthly users and presided over its most consequential content-policy decisions, including demonetizing and removing extremist content, banning COVID-19 misinformation, and refining the recommendation algorithm that determines what two billion people watch next. Critics argued YouTube's algorithm still promoted conspiracy theories and radicalization pipelines despite policy changes, while creators complained that opaque demonetization rules amounted to censorship. Wojcicki stepped down in February 2023 and died of non-small cell lung cancer on August 9, 2024, at age 56, leaving a legacy defined by the tension between platform growth, algorithmic engagement, and content responsibility.",
+      "target_lang": "en",
+      "reason": "As head of the world's largest video platform, Wojcicki's decisions about algorithms and content policy shaped what billions of people watch and believe"
+    },
+    {
+      "source_text": "Ben Smith — Semafor founder and chronicler of digital journalism's broken business model",
+      "source_lang": "en",
+      "target_text": "Ben Smith served as editor-in-chief of BuzzFeed News from 2011 to 2020, building it from a viral-content curiosity into a Pulitzer Prize-winning newsroom, before becoming the New York Times media columnist and then co-founding Semafor in 2022 with former Bloomberg Media CEO Justin B. Smith. BuzzFeed News shut down in April 2023 — a landmark failure that epitomized the collapse of the venture-capital-funded, social-media-distribution model of digital journalism that Smith himself had helped pioneer. Smith has reflected candidly on the model's flaw: 'We tried to connect indirectly to a huge audience' through platforms rather than building direct reader relationships, calling it 'a really dumb thing to try to do now.' Semafor represents his pivot — a leaner, globally oriented outlet seeking profitability through direct subscriptions, events, and corporate partnerships rather than scale-dependent advertising, testing whether quality reporting can sustain itself without either billionaire patrons or platform dependency.",
+      "target_lang": "en",
+      "reason": "Smith both built and watched collapse the dominant digital news model of the 2010s, making him a key witness to the economic forces reshaping journalism"
+    },
+    {
+      "source_text": "Tucker Carlson — Fox News departure and the rise of post-cable conservative media",
+      "source_lang": "en",
+      "target_text": "Tucker Carlson hosted Fox News' highest-rated program until his abrupt departure on April 24, 2023, days after Fox's $787.5 million Dominion settlement, with internal messages revealing he privately disparaged Trump while amplifying election fraud claims on air. He rebuilt rapidly outside cable television, launching a podcast and video operation on X (formerly Twitter) and the subscription-based Tucker Carlson Network, including a Trump interview that drew more online viewers than the official Republican primary debate. His content grew more ideologically expansive post-Fox — including a sympathetic 2024 interview with Vladimir Putin and appearances at the GOP convention — while freed from the advertiser constraints that had moderated some cable-era positions. Carlson's trajectory demonstrates both the declining gatekeeping power of legacy cable news and the ability of established media figures to carry audiences onto direct-to-consumer platforms, raising questions about accountability when influential voices operate without editorial oversight or advertiser pressure.",
+      "target_lang": "en",
+      "reason": "Carlson's move from cable's most-watched political show to independent media illustrates the shifting power dynamics between legacy and direct-to-audience distribution"
+    },
+    {
+      "source_text": "The death of local newspapers — scale of closures and consequences for democratic accountability",
+      "source_lang": "en",
+      "target_text": "More than 2,500 American newspapers have closed since 2005, with over 130 shutting down in the past year alone, leaving more than half of US counties without a local news source and roughly 55 million people — about 16 percent of the population — with limited or no access to local journalism, according to Northwestern University's 2025 State of Local News report. The financial collapse is driven by the migration of advertising revenue to Google and Meta: newspaper advertising fell from $49 billion in 2006 to under $10 billion by 2022, and the sector lost more than 1,200 journalist jobs in the past year. Peer-reviewed research documents concrete accountability consequences — a 2026 University at Buffalo study found that in counties where newspapers closed, police agencies showed higher rates of reclassifying rape cases as unfounded and shifting death classifications from homicide to suicide, demonstrating that local journalism functioned as a 'capable guardian' whose absence degrades the integrity of public data. The closures also correlate with lower voter turnout, reduced municipal bond ratings, and higher borrowing costs for local governments, making the crisis not merely cultural but fiscal and democratic.",
+      "target_lang": "en",
+      "reason": "The collapse of local news removes the primary accountability mechanism for local government, policing, and public institutions across most of America"
+    },
+    {
+      "source_text": "Podcasts and Substack as new media power centers — who profits and who influences",
+      "source_lang": "en",
+      "target_text": "Substack raised $100 million in July 2025 and has evolved from a newsletter platform into a multimedia ecosystem with social feeds, live video, and podcast tools, while its top creators — several with over 100,000 paid subscribers at $8-15 per month — operate as lean, vertically integrated media companies generating millions annually without traditional newsroom overhead. The podcast industry, valued at over $4 billion in advertising revenue by 2024, has similarly concentrated influence: Joe Rogan's Spotify deal (worth a reported $250 million), and shows like The Daily and Call Her Daddy command audiences rivaling cable news while operating with a fraction of the staff. These platforms empower individual voices — political commentators, investigative journalists, and subject-matter experts — to bypass legacy gatekeepers, but they also concentrate influence in personalities who face no editorial board, fact-checking infrastructure, or institutional accountability. The economic model rewards polarization and parasocial loyalty: creators who provoke strong audience attachment monetize more effectively than those producing balanced, less emotionally charged reporting.",
+      "target_lang": "en",
+      "reason": "Podcasts and newsletter platforms are redistributing media power from institutions to individuals, reshaping both the economics and accountability structures of journalism"
+    },
+    {
+      "source_text": "Social media algorithms and radicalization — what the research actually shows",
+      "source_lang": "en",
+      "target_text": "The relationship between recommendation algorithms and radicalization is supported by evidence but more nuanced than public discourse suggests. A 2024 TikTok audit published in Social Science Computer Review found that the platform's algorithm creates measurable radicalization pipelines, with a large portion of far-right content attributable to platform recommendations rather than user-initiated searches. A 2024 experimental study of 1,256 US participants during the presidential campaign found that algorithmically increasing exposure to antidemocratic content measurably shifted attitudes, providing causal evidence. However, a 2025 University of Pennsylvania and Northeastern study found limited effects from YouTube's recommendation algorithm on political views, suggesting that off-platform communities and direct subscriptions drove radicalization more than the algorithm itself. Academic research has linked social media exposure to real-world harm — studies show that reductions in social media usage correlate with decreases in anti-immigrant hate crimes — but the causal chain runs through multiple factors including pre-existing beliefs, community dynamics, and platform design choices, not algorithms alone.",
+      "target_lang": "en",
+      "reason": "Understanding what research actually shows — and does not show — about algorithmic radicalization is essential to informed policy debates about platform regulation"
+    },
+    {
+      "source_text": "Media ownership concentration — the shrinking number of companies that control information flow",
+      "source_lang": "en",
+      "target_text": "Media ownership in the United States has consolidated dramatically: roughly 50 companies controlled the majority of American media in 1983, but by 2011 that number had shrunk to six — Comcast, Disney, News Corp/21st Century Fox, ViacomCBS (now Paramount Global), Warner Bros. Discovery, and Sony. As of 2024, just 10 companies own a quarter of all US newspapers, with three of them — Alden Global Capital, Lee Enterprises, and CNHI — partially or fully controlled by private equity firms or hedge funds that prioritize profit extraction over journalism. Cross-ownership through institutional investors further concentrates control: Vanguard, BlackRock, and State Street hold significant stakes in both Comcast and Disney, the co-owners of Hulu, creating overlapping financial interests across supposedly competing companies. The European Media Pluralism Monitor found in its 2023-2024 assessments that no EU country could be classified as low risk for media plurality, indicating that ownership concentration is a global phenomenon with implications for the diversity of perspectives available to citizens in democracies worldwide.",
+      "target_lang": "en",
+      "reason": "The concentration of media ownership in fewer hands directly shapes the range of information, perspectives, and narratives available to the public"
+    },
+    {
+      "source_text": "The Twitter Files and content moderation transparency — what was actually revealed",
+      "source_lang": "en",
+      "target_text": "The Twitter Files, released in installments beginning December 2022 through independent journalists given access by new owner Elon Musk, revealed internal documents showing that pre-acquisition Twitter used 'visibility filtering' to suppress content without notifying users, coordinated with FBI and other government agencies on content moderation decisions, and suppressed the October 2020 New York Post story about Hunter Biden's laptop under its hacked-materials policy. The disclosures prompted the Missouri and Louisiana attorneys general to file a federal lawsuit alleging government-censorship collusion, which reached the Supreme Court as Murthy v. Missouri in 2024, though the Court ruled 6-3 that the plaintiffs lacked standing. Critics argue the files were selectively released to support a political narrative and that government flagging content is constitutionally distinct from ordering its removal. In a notable irony, X's own 2024 transparency report showed that compliance with government takedown requests surged to 71 percent under Musk, up from 40 percent pre-acquisition, and the platform's content moderation shifted heavily toward automated AI systems that generated their own accuracy controversies.",
+      "target_lang": "en",
+      "reason": "The Twitter Files became the most significant window into how major platforms make content moderation decisions and interact with government, regardless of one's interpretation of what they showed"
+    },
+    {
+      "source_text": "Billionaire media ownership — the structural tension between wealth, power, and press independence",
+      "source_lang": "en",
+      "target_text": "The 2020s have made explicit what was long implicit: the major newspapers and media outlets that survive in the digital era increasingly depend on billionaire owners — Jeff Bezos at The Washington Post, Patrick Soon-Shiong at the Los Angeles Times, Laurene Powell Jobs at The Atlantic, Marc Benioff at Time, and John Henry at The Boston Globe. Each faces the same structural tension: their non-media businesses depend on government contracts, regulatory approvals, or political goodwill, creating perceived or actual conflicts of interest that legacy corporate ownership, while imperfect, partially insulated against. The pattern accelerated in late 2024 when both The Washington Post and the Los Angeles Times blocked presidential endorsements in decisions attributed to their billionaire owners, prompting mass subscriber cancellations and staff resignations at both papers. Whether billionaire ownership is saving journalism from financial collapse or subjecting it to a new form of oligarchic control remains the central unresolved question of American media in the 2020s.",
+      "target_lang": "en",
+      "reason": "The pattern of billionaire media ownership is the defining structural feature of 2020s American journalism, with direct implications for editorial independence"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Jeff Bezos — Washington Post owner and the collision between media independence and commercial power",
+      "to_source": "Billionaire media ownership — the structural tension between wealth, power, and press independence",
+      "kind": "refines",
+      "reason": "Bezos is one specific case within the broader pattern of billionaire media ownership; the structural pair generalizes the dynamics his case illustrates"
+    },
+    {
+      "from_source": "Rupert Murdoch — News Corp/Fox empire builder, political kingmaker, and succession battle",
+      "to_source": "Media ownership concentration — the shrinking number of companies that control information flow",
+      "kind": "refines",
+      "reason": "Murdoch's empire is one of the defining examples of media concentration, and his succession battle determines who controls a major share of global media"
+    },
+    {
+      "from_source": "Tucker Carlson — Fox News departure and the rise of post-cable conservative media",
+      "to_source": "Podcasts and Substack as new media power centers — who profits and who influences",
+      "kind": "refines",
+      "reason": "Carlson's post-Fox trajectory is a specific high-profile instance of the broader shift from legacy media to direct-to-audience platforms"
+    },
+    {
+      "from_source": "Susan Wojcicki — YouTube CEO who shaped the recommendation algorithm era (1968-2024)",
+      "to_source": "Social media algorithms and radicalization — what the research actually shows",
+      "kind": "refines",
+      "reason": "Wojcicki's content policy decisions at YouTube were direct responses to the algorithmic radicalization concerns that research documents"
+    },
+    {
+      "from_source": "Jack Dorsey — Twitter co-founder, content moderation dissenter, and decentralization advocate",
+      "to_source": "The Twitter Files and content moderation transparency — what was actually revealed",
+      "kind": "refines",
+      "reason": "Dorsey built the moderation systems the Twitter Files exposed, and his post-departure critique of centralized moderation directly responds to what they revealed"
+    },
+    {
+      "from_source": "The death of local newspapers — scale of closures and consequences for democratic accountability",
+      "to_source": "Media ownership concentration — the shrinking number of companies that control information flow",
+      "kind": "refines",
+      "reason": "Local newspaper closures are partly driven by ownership concentration, as hedge-fund owners strip papers for profit rather than investing in journalism"
+    },
+    {
+      "from_source": "Ben Smith — Semafor founder and chronicler of digital journalism's broken business model",
+      "to_source": "The death of local newspapers — scale of closures and consequences for democratic accountability",
+      "kind": "refines",
+      "reason": "The collapse of the ad-dependent digital model Smith helped pioneer shares root causes with the local newspaper crisis: the migration of ad revenue to tech platforms"
+    },
+    {
+      "from_source": "The Twitter Files and content moderation transparency — what was actually revealed",
+      "to_source": "Social media algorithms and radicalization — what the research actually shows",
+      "kind": "contradicts",
+      "reason": "The Twitter Files framed moderation as overreach and censorship, while radicalization research suggests platforms moderate too little — these represent opposing diagnoses of the same problem"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Rupert Murdoch — News Corp/Fox empire builder, political kingmaker, and succession battle",
+      "kind": "url",
+      "locator": "https://www.npr.org/2024/12/10/nx-s1-5222866/rupert-murdoch-loses-courtroom-attempt-to-change-the-family-trust",
+      "reason": "NPR report on the December 2024 court ruling against Murdoch's attempt to change the family trust"
+    },
+    {
+      "pair_source": "Rupert Murdoch — News Corp/Fox empire builder, political kingmaker, and succession battle",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Succession_of_Rupert_Murdoch",
+      "reason": "Comprehensive overview of Murdoch succession dispute, trust structure, and court proceedings"
+    },
+    {
+      "pair_source": "Jeff Bezos — Washington Post owner and the collision between media independence and commercial power",
+      "kind": "url",
+      "locator": "https://www.cnn.com/2024/10/26/media/washington-post-jeff-bezos-endorsement-turmoil/index.html",
+      "reason": "CNN report on Post turmoil following Bezos's decision to block the Harris endorsement"
+    },
+    {
+      "pair_source": "Jeff Bezos — Washington Post owner and the collision between media independence and commercial power",
+      "kind": "url",
+      "locator": "https://www.npr.org/2026/02/07/nx-s1-5705413/washington-post-ceo-resigns-will-lewis",
+      "reason": "NPR report on Will Lewis departure and one-third newsroom layoffs in February 2026"
+    },
+    {
+      "pair_source": "Jeff Bezos — Washington Post owner and the collision between media independence and commercial power",
+      "kind": "url",
+      "locator": "https://www.washingtonpost.com/opinions/2024/10/29/bezos-editorial-washington-post/",
+      "reason": "Bezos's own defense of ending presidential endorsements, published in the Post"
+    },
+    {
+      "pair_source": "Jimmy Wales — Wikipedia founder and the governance of the world's largest reference work",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Wikipedia:Role_of_Jimmy_Wales",
+      "reason": "Wikipedia's own documentation of Wales's evolving governance role since May 2023"
+    },
+    {
+      "pair_source": "Jimmy Wales — Wikipedia founder and the governance of the world's largest reference work",
+      "kind": "url",
+      "locator": "https://www.thecanary.co/skwawkbox/2025/11/05/wikipedia-israel-bias/",
+      "reason": "Report on Wales's intervention in Israel-Gaza content and Wikimedia Foundation distancing"
+    },
+    {
+      "pair_source": "Jack Dorsey — Twitter co-founder, content moderation dissenter, and decentralization advocate",
+      "kind": "url",
+      "locator": "https://www.engadget.com/jack-dorsey-claims-bluesky-is-repeating-all-the-mistakes-he-made-at-twitter-234326121.html",
+      "reason": "Dorsey's public criticism of Bluesky and explanation of his departure from its board in 2024"
+    },
+    {
+      "pair_source": "Jack Dorsey — Twitter co-founder, content moderation dissenter, and decentralization advocate",
+      "kind": "url",
+      "locator": "https://www.influencewatch.org/person/jack-dorsey/",
+      "reason": "Comprehensive profile covering Dorsey's roles at Twitter and Block, content moderation controversies"
+    },
+    {
+      "pair_source": "Susan Wojcicki — YouTube CEO who shaped the recommendation algorithm era (1968-2024)",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2024/08/10/former-youtube-ceo-and-silicon-valley-trailblazer-susan-wojcicki-has-died-at-age-56.html",
+      "reason": "CNBC obituary covering Wojcicki's career from Google's garage to YouTube CEO and her death at 56"
+    },
+    {
+      "pair_source": "Susan Wojcicki — YouTube CEO who shaped the recommendation algorithm era (1968-2024)",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Susan_Wojcicki",
+      "reason": "Comprehensive profile covering Wojcicki's role in YouTube acquisition, algorithm decisions, and content policy"
+    },
+    {
+      "pair_source": "Ben Smith — Semafor founder and chronicler of digital journalism's broken business model",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Semafor_(website)",
+      "reason": "Overview of Semafor's founding, business model, and Smith's vision for sustainable digital journalism"
+    },
+    {
+      "pair_source": "Ben Smith — Semafor founder and chronicler of digital journalism's broken business model",
+      "kind": "url",
+      "locator": "https://www.wnycstudios.org/podcasts/otm/episodes/on-the-media-ben-smith-death-buzzfeed-news",
+      "reason": "Smith's reflections on BuzzFeed News closure and lessons about platform-dependent journalism"
+    },
+    {
+      "pair_source": "Tucker Carlson — Fox News departure and the rise of post-cable conservative media",
+      "kind": "url",
+      "locator": "https://political.org/2026/05/06/what-happened-to-tucker-carlson-the-rise-fall-and-reinvention-of-americas-most-polarizing-broadcaster/",
+      "reason": "Comprehensive profile of Carlson's trajectory from Fox departure through independent media rebuild"
+    },
+    {
+      "pair_source": "Tucker Carlson — Fox News departure and the rise of post-cable conservative media",
+      "kind": "url",
+      "locator": "https://thehill.com/homenews/state-watch/3967348-five-takeaways-on-tucker-carlsons-exit-from-fox-news/",
+      "reason": "Analysis of Carlson's Fox departure including Dominion context and political implications"
+    },
+    {
+      "pair_source": "The death of local newspapers — scale of closures and consequences for democratic accountability",
+      "kind": "url",
+      "locator": "https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/2025/report/",
+      "reason": "Northwestern University 2025 State of Local News report with closure statistics and news-desert data"
+    },
+    {
+      "pair_source": "The death of local newspapers — scale of closures and consequences for democratic accountability",
+      "kind": "url",
+      "locator": "https://www.buffalo.edu/ubnow/stories/2026/07/khavis-police-accountability.html",
+      "reason": "University at Buffalo 2026 study linking newspaper closures to police misreporting of crime statistics"
+    },
+    {
+      "pair_source": "Podcasts and Substack as new media power centers — who profits and who influences",
+      "kind": "url",
+      "locator": "https://www.amraandelma.com/influencers-dominating-substack-in-2025/",
+      "reason": "Analysis of top Substack earners, subscriber counts, and revenue models in 2025"
+    },
+    {
+      "pair_source": "Social media algorithms and radicalization — what the research actually shows",
+      "kind": "url",
+      "locator": "https://journals.sagepub.com/doi/abs/10.1177/08944393231225547",
+      "reason": "2024 peer-reviewed TikTok algorithm audit finding measurable radicalization pipelines"
+    },
+    {
+      "pair_source": "Social media algorithms and radicalization — what the research actually shows",
+      "kind": "url",
+      "locator": "https://www.techpolicy.press/algorithms-shift-polarization-why-does-policy-still-miss-the-real-problem/",
+      "reason": "TechPolicy.Press analysis of algorithmic polarization research and policy implications"
+    },
+    {
+      "pair_source": "Media ownership concentration — the shrinking number of companies that control information flow",
+      "kind": "url",
+      "locator": "https://gmicp.org/media-ownership-and-concentration-in-the-united-states-of-america-1984-2023/",
+      "reason": "Global Media and Internet Concentration Project data on US media ownership 1984-2023"
+    },
+    {
+      "pair_source": "Media ownership concentration — the shrinking number of companies that control information flow",
+      "kind": "url",
+      "locator": "https://www.doolly.com/blog/legacy-media-ownership-2025-oligopoly-and-corporate-control",
+      "reason": "2025 analysis of legacy media oligopoly including private equity and institutional investor crossholdings"
+    },
+    {
+      "pair_source": "The Twitter Files and content moderation transparency — what was actually revealed",
+      "kind": "url",
+      "locator": "https://www.forbes.com/sites/anishasircar/2024/10/18/xs-latest-content-findings-reveal-troubling-trends-in-ai-moderation/",
+      "reason": "Forbes report on X's 2024 transparency data including government takedown compliance rates"
+    },
+    {
+      "pair_source": "Billionaire media ownership — the structural tension between wealth, power, and press independence",
+      "kind": "url",
+      "locator": "https://washingtonian.com/2026/02/05/the-washington-post-laid-off-one-third-of-its-staff-the-internet-has-thoughts/",
+      "reason": "Coverage of the Washington Post's 2026 layoffs under billionaire ownership, illustrating the structural pattern"
+    },
+    {
+      "pair_source": "Billionaire media ownership — the structural tension between wealth, power, and press independence",
+      "kind": "url",
+      "locator": "https://journalism.university/media-and-society/corporate-ownership-media-content-influence/",
+      "reason": "Analysis of how corporate and billionaire ownership structures influence media content decisions"
+    }
+  ]
+}

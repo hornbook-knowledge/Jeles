@@ -1,0 +1,226 @@
+{
+  "domain": "adversarial-factcheck-historical",
+  "pairs": [
+    {
+      "source_text": "Corpus claim: Van Gogh 'sold only one painting during his lifetime and died in poverty in 1890'",
+      "source_lang": "en",
+      "target_text": "POPULAR MYTH -- MISLEADING. The claim that Van Gogh sold only one painting (The Red Vineyard, sold in 1890) has been debunked by art historian Martin Bailey and others. Van Gogh Museum research and Theo van Gogh's correspondence document several additional sales and exchanges during Vincent's lifetime, including sales to art dealers such as Julien 'Pere' Tanguy and the London dealer Thomas Sulley. A 2019 Van Gogh Museum exhibition explicitly addressed this myth. The 'only one painting' narrative became popular in the early 20th century as part of the tortured-genius mythology but is not supported by the documentary record. Van Gogh was indeed commercially unsuccessful and financially dependent on his brother Theo, but 'sold only one' is a factual overstatement that the corpus presents as established fact.",
+      "target_lang": "en",
+      "reason": "The 'sold only one painting' claim is one of the most persistent myths in art history. While Van Gogh was commercially unsuccessful, the documentary record shows multiple sales. The corpus repeats this myth without qualification in the section on posthumous reputation shifts."
+    },
+    {
+      "source_text": "Corpus claim: Shakespeare 'inventing or popularizing roughly 1,700 English words including assassinate, lonely, and eyeball'",
+      "source_lang": "en",
+      "target_text": "DISPUTED -- LIKELY INFLATED. The 1,700-word figure originates from the Oxford English Dictionary's practice of citing Shakespeare as the earliest known written attestation of words. However, computational linguists using the Early English Books Online (EEBO) database and other digitized corpora have found earlier attestations for many of these words, significantly reducing the count. Scholars Jonathan Hope and Michael Witmore, among others, have demonstrated that Shakespeare's position as 'first attester' reflects the historical accident that his works were among the most thoroughly indexed texts, not that he actually coined all those words. The specific examples ('assassinate,' 'lonely,' 'eyeball') are among the more defensible attributions, but the blanket '1,700' figure is almost certainly an artifact of corpus bias in the OED's historical compilation rather than genuine coinage.",
+      "target_lang": "en",
+      "reason": "The 1,700-word figure is repeated uncritically in the corpus. Recent computational linguistics research has substantially eroded this number by finding earlier attestations in digitized texts that were not available when the OED was originally compiled."
+    },
+    {
+      "source_text": "Corpus claim: Picasso's 'famous declaration: Good artists copy; great artists steal'",
+      "source_lang": "en",
+      "target_text": "UNVERIFIED ATTRIBUTION -- LIKELY MISATTRIBUTED. No primary source documentation links this quotation to Pablo Picasso. The attribution was popularized by Steve Jobs in a 1996 PBS documentary ('Triumph of the Nerds'), where Jobs said 'Picasso had a saying...' but provided no source. Quote Investigator (Garson O'Toole) traced variants of the sentiment to T.S. Eliot's 1920 essay 'The Sacred Wood' ('Immature poets imitate; mature poets steal'), to W.H. Davenport Adams (1892), and to Lionel Trilling, but found no documented instance of Picasso using these words. The corpus presents this as Picasso's own 'famous declaration' without any caveat about the attribution's reliability, treating an unsourced popular quotation as established fact.",
+      "target_lang": "en",
+      "reason": "The corpus attributes this quote directly to Picasso as his 'declaration.' The quotation has no verified primary source and was likely misattributed via Steve Jobs. This is a textbook example of a popular misquotation the corpus should flag rather than repeat."
+    },
+    {
+      "source_text": "Corpus claim: Beethoven's 'Eroica Symphony (1803), originally dedicated to Napoleon before Beethoven furiously scratched out the dedication'",
+      "source_lang": "en",
+      "target_text": "MISLEADING DATE AND OVERSIMPLIFIED STORY. The Eroica Symphony was begun in 1803, completed in early 1804, and premiered on April 7, 1805. Labeling it simply '(1803)' is inaccurate -- the work was not finished until 1804. The dedication story is also more complex than 'furiously scratched out': the title page of the fair copy shows the name 'Bonaparte' erased so violently that it left a hole in the paper, and this occurred in May 1804 when Beethoven learned Napoleon had declared himself Emperor -- but Beethoven later added a printed dedication reading 'to celebrate the memory of a great man,' and the published edition (1806) was dedicated to Prince Lobkowitz, his patron. The narrative of pure idealistic fury is an oversimplification of a more commercially and politically pragmatic decision.",
+      "target_lang": "en",
+      "reason": "The corpus gives a misleading composition date and presents the dedication story as simpler than it was. The Eroica was completed in 1804, not 1803, and the dedication removal was not a clean break but a gradual commercial and political recalibration."
+    },
+    {
+      "source_text": "Corpus claim: Lagrange remarked about Lavoisier: 'It took them only an instant to cut off his head, but France may not produce another such head in a century'",
+      "source_lang": "en",
+      "target_text": "DISPUTED ATTRIBUTION. The corpus presents this quote with 'is said to have remarked,' correctly hedging, but the attribution deserves stronger skepticism. The quote does not appear in any contemporary 1794 source. Some historians attribute it to mathematician Joseph Delambre rather than Lagrange, and others consider it possibly apocryphal altogether. The earliest documented versions postdate Lavoisier's execution by decades. The phrasing varies significantly across sources (some say 'a hundred years,' others 'a century'), which is typical of quotations that evolved through oral tradition rather than being recorded at the time. The corpus should note this is a disputed attribution rather than presenting it as something Lagrange likely said.",
+      "target_lang": "en",
+      "reason": "While the corpus uses 'is said to have,' it still presents this as a Lagrange quotation. The attribution is significantly weaker than that hedge suggests -- the quote may not be from Lagrange at all, and it has no contemporary documentation."
+    },
+    {
+      "source_text": "Corpus claim: Rosalind Franklin's Photo 51, 'taken on May 6, 1952'",
+      "source_lang": "en",
+      "target_text": "UNCERTAIN SPECIFIC DATE. Photo 51 was taken by Raymond Gosling (Franklin's PhD student) under her supervision in May 1952, but the specific date of May 6 is not well-established in the primary literature. Brenda Maddox's 2002 biography 'Rosalind Franklin: The Dark Lady of DNA' does not pin the photograph to May 6. Other scholarly sources give simply 'May 1952' without specifying a day. The photograph was one of a series of X-ray diffraction images, and the specific exposure that became iconic as 'Photo 51' is difficult to date to a single day with certainty. The corpus presents May 6 as a precise established date; this specificity exceeds what the documentary record reliably supports.",
+      "target_lang": "en",
+      "reason": "The corpus cites a specific date (May 6, 1952) that is more precise than the scholarly literature supports. Most authoritative sources give only 'May 1952' for Photo 51. False precision in historical dating can create an impression of certainty that does not exist."
+    },
+    {
+      "source_text": "Corpus claim: Gandhi 'refused to allow Kasturba to receive penicillin when she fell ill' but 'accepted treatment with quinine' for his own malaria, presented as a 'contradiction'",
+      "source_lang": "en",
+      "target_text": "OVERSIMPLIFIED -- MISSING KEY CONTEXT. The corpus presents this as a straightforward hypocrisy. The fuller historical record is more complex: (1) Penicillin was experimental and extremely scarce in India in early 1944 -- it was not a routine treatment; (2) Kasturba had bronchial pneumonia complicated by chronic bronchitis and heart failure, conditions for which penicillin's efficacy was uncertain; (3) Gandhi initially refused the injection but relented -- a penicillin injection was actually administered to Kasturba, though it came too late to be effective; (4) Quinine, derived from cinchona bark, had been used in India for centuries and was not equivalent to a novel Western pharmaceutical in the same way penicillin was. Gandhi's stance was consistent with his longstanding naturopathy views, not selectively applied. His treatment of Kasturba is legitimately criticized by biographers, but the 'refused penicillin / accepted quinine = contradiction' framing oversimplifies the medical and philosophical context.",
+      "target_lang": "en",
+      "reason": "The corpus presents this as a clean contradiction without noting that penicillin was experimental and scarce in wartime India, that Kasturba did eventually receive a penicillin injection, and that quinine was a fundamentally different category of medicine in Gandhi's framework. The criticism has merit but the corpus strips it of crucial nuance."
+    },
+    {
+      "source_text": "Corpus claim: Newton's dates given as '1642-1727'",
+      "source_lang": "en",
+      "target_text": "CALENDAR AMBIGUITY UNACKNOWLEDGED. Newton was born on December 25, 1642 under the Julian (Old Style) calendar then in use in England, but under the Gregorian (New Style) calendar -- adopted by most of continental Europe since 1582 but not by England until 1752 -- his birth date is January 4, 1643. The corpus uses 1642 without noting this ambiguity. While using the Old Style date is not incorrect per se (it was the operative calendar in England at the time), the corpus's treatment of other figures uses standardized modern dating. For a knowledge corpus that spans multiple national contexts, the Julian/Gregorian discrepancy is worth noting, particularly since it affects whether Newton and Galileo (who died January 8, 1642 Gregorian) overlapped in life -- a coincidence often cited but which depends entirely on which calendar is used.",
+      "target_lang": "en",
+      "reason": "The Newton-Galileo birth/death year coincidence (both '1642') depends on mixing Julian and Gregorian calendars. A rigorous knowledge corpus should note this ambiguity rather than presenting the Julian date without qualification."
+    },
+    {
+      "source_text": "Corpus claim: Haiti's indemnity debt with 'final payments extended to 1947'",
+      "source_lang": "en",
+      "target_text": "DEBATED ENDPOINT. The 1947 date is widely cited but refers specifically to the final payment on a 1922 loan from the National City Bank of New York (now Citibank) that refinanced the remaining French indemnity debt. The actual history is more complex: the original 150 million franc indemnity (1825, reduced to 90 million in 1838) was itself refinanced multiple times through different French and American banks, creating layers of debt with different endpoints. A 2022 New York Times investigation ('The Ransom') provided detailed accounting showing that Haiti paid the equivalent of $21 billion in today's dollars and that the financial extraction continued through various mechanisms well beyond 1947. Some scholars argue the indemnity's economic effects, compounded by trade embargoes and unfavorable loan terms, effectively never ended. The corpus's '1947' date is a defensible simplification but presents as settled fact something that depends heavily on which specific instrument you are tracking.",
+      "target_lang": "en",
+      "reason": "The '1947' endpoint is a commonly cited simplification. The actual debt history involves multiple restructurings, and the question of when Haiti 'finished paying' depends on which financial instrument is being tracked. The NYT investigation documented a more complex story."
+    },
+    {
+      "source_text": "Corpus claim: Julius Caesar's dates given as '100-44 BCE'",
+      "source_lang": "en",
+      "target_text": "BIRTH YEAR DEBATED. The corpus gives Caesar's birth as 100 BCE, which is the traditional date based on Suetonius and later Roman sources. However, some historians, citing Appian and other evidence about the age requirements for Roman magistracies, argue for 102 BCE. The debate hinges on whether Caesar held his offices suo anno (at the minimum legal age) or with special dispensations. Theodor Mommsen favored 100 BCE, while some modern classicists have argued for 102 BCE based on cursus honorum calculations. The 44 BCE death date is undisputed (Ides of March). The corpus presents 100 BCE without noting this is a debated date in classical scholarship.",
+      "target_lang": "en",
+      "reason": "While 100 BCE is the conventionally accepted date, the debate between 100 and 102 BCE is a genuine scholarly question. A corpus that aims for precision should note the uncertainty."
+    },
+    {
+      "source_text": "Corpus claim: Ali's conviction was 'overturned' when 'the Supreme Court unanimously overturned his conviction in 1971'",
+      "source_lang": "en",
+      "target_text": "TECHNICALLY CORRECT BUT IMPRECISE. The Supreme Court's decision in Clay v. United States (1971) was 8-0, not 9-0. Justice Thurgood Marshall recused himself because he had been Solicitor General when the case was initially prosecuted. While 8-0 among participating justices is indeed 'unanimous' in legal terminology, the omission of Marshall's recusal -- itself historically significant as Marshall was the first Black Supreme Court justice -- strips important context from the story. The case was also decided on narrow grounds (the government's failure to specify which of three statutory bases justified denying Ali's conscientious objector claim) rather than on the broader religious freedom principle Ali's defense had argued.",
+      "target_lang": "en",
+      "reason": "The corpus says 'unanimously' without noting Marshall's recusal or the narrow legal basis of the decision. Both details are historically significant and their omission flattens a complex legal story."
+    },
+    {
+      "source_text": "Corpus claim: FDR's internment caused '1,862' deaths in camps",
+      "source_lang": "en",
+      "target_text": "IMPRECISE FIGURE -- METHODOLOGY VARIES. The 1,862 figure appears in some sources but the methodology behind it is inconsistent across scholarship. Different counts include or exclude deaths from different causes (illness, suicide, shooting by guards, infants who died in camps vs. those who died after release but as a consequence of internment). The War Relocation Authority's own records give lower in-camp death figures, while broader counts that include post-release deaths attributable to internment conditions produce higher numbers. The Japanese American National Museum and the Densho Encyclopedia cite ranges rather than a single precise figure. The corpus presents 1,862 as an established fact when it is one of several plausible counts depending on what is included.",
+      "target_lang": "en",
+      "reason": "The corpus states a precise death toll without noting the methodological disagreements that produce different counts. For contested historical statistics, presenting a single number as definitive is misleading."
+    },
+    {
+      "source_text": "Corpus claim: Cezanne's 'The Card Players sold for approximately $250 million' in '2012'",
+      "source_lang": "en",
+      "target_text": "DATE AND PRICE IMPRECISE. The sale of Cezanne's The Card Players to the Royal Family of Qatar was completed in 2011, not 2012. News of the sale was first reported by Vanity Fair in February 2012, which may explain the corpus's dating. The price has never been officially confirmed; estimates range from $250 million to over $300 million. The corpus says 'in 2012' and 'approximately $250 million' -- the former is incorrect (the transaction predates the reporting), and the latter is the low end of credible estimates. This matters because the corpus uses the sale as evidence about posthumous reputation, and getting the basic facts right is essential for that argument's credibility.",
+      "target_lang": "en",
+      "reason": "The corpus conflates the date of reporting (2012) with the date of the transaction (2011) and presents the conservative end of the price range without noting the uncertainty. Both errors are minor but undermine the precision the corpus projects."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Corpus claim: Van Gogh 'sold only one painting during his lifetime and died in poverty in 1890'",
+      "to_source": "Corpus claim: Picasso's 'famous declaration: Good artists copy; great artists steal'",
+      "kind": "pattern",
+      "reason": "Both are popular myths the corpus repeats uncritically -- the Van Gogh myth about commercial failure and the Picasso misquotation. Together they illustrate how the corpus sometimes perpetuates art-world mythology rather than checking it against the scholarly record."
+    },
+    {
+      "from_source": "Corpus claim: Lagrange remarked about Lavoisier: 'It took them only an instant to cut off his head, but France may not produce another such head in a century'",
+      "to_source": "Corpus claim: Ali's conviction was 'overturned' when 'the Supreme Court unanimously overturned his conviction in 1971'",
+      "kind": "pattern",
+      "reason": "Both demonstrate the corpus's pattern of presenting contested or imprecise details as settled facts -- a disputed attribution presented as likely, and a recusal-affected decision presented as simply 'unanimous.' The corpus is generally careful but drops its guard on well-known anecdotes."
+    },
+    {
+      "from_source": "Corpus claim: Gandhi 'refused to allow Kasturba to receive penicillin when she fell ill' but 'accepted treatment with quinine' for his own malaria, presented as a 'contradiction'",
+      "to_source": "Corpus claim: Van Gogh 'sold only one painting during his lifetime and died in poverty in 1890'",
+      "kind": "pattern",
+      "reason": "Both show the corpus flattening complex stories into clean narratives. The Gandhi penicillin story strips away medical context to create a sharper hypocrisy claim; the Van Gogh myth strips away documented sales to create a sharper tragedy. In both cases, the simplified version is more memorable than the truth."
+    },
+    {
+      "from_source": "Corpus claim: Rosalind Franklin's Photo 51, 'taken on May 6, 1952'",
+      "to_source": "Corpus claim: Julius Caesar's dates given as '100-44 BCE'",
+      "kind": "pattern",
+      "reason": "Both present debated or uncertain dates with false precision. The corpus gives a specific day for Photo 51 that exceeds the documentary evidence, and a specific birth year for Caesar that ignores a genuine scholarly debate. False precision creates an illusion of authoritative certainty."
+    },
+    {
+      "from_source": "Corpus claim: Haiti's indemnity debt with 'final payments extended to 1947'",
+      "to_source": "Corpus claim: FDR's internment caused '1,862' deaths in camps",
+      "kind": "pattern",
+      "reason": "Both present contested quantitative claims as settled. The Haiti debt endpoint and the internment death count both depend on methodological choices the corpus does not disclose, creating an impression of consensus where legitimate variation exists."
+    },
+    {
+      "from_source": "Corpus claim: Shakespeare 'inventing or popularizing roughly 1,700 English words including assassinate, lonely, and eyeball'",
+      "to_source": "Corpus claim: Beethoven's 'Eroica Symphony (1803), originally dedicated to Napoleon before Beethoven furiously scratched out the dedication'",
+      "kind": "pattern",
+      "reason": "Both are cases where the corpus repeats a received popular narrative that more recent scholarship has complicated. The 1,700-word count has been eroded by digitization of early English texts; the Eroica dedication story is more commercially motivated than the 'furious idealist' framing suggests."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Corpus claim: Van Gogh 'sold only one painting during his lifetime and died in poverty in 1890'",
+      "kind": "url",
+      "locator": "https://www.theartnewspaper.com/2019/11/01/did-van-gogh-really-only-sell-one-painting-during-his-lifetime",
+      "reason": "Art Newspaper coverage of Martin Bailey's research documenting multiple Van Gogh sales beyond The Red Vineyard"
+    },
+    {
+      "pair_source": "Corpus claim: Van Gogh 'sold only one painting during his lifetime and died in poverty in 1890'",
+      "kind": "url",
+      "locator": "https://www.vangoghmuseum.nl/en/art-and-stories/stories/van-goghs-earnings",
+      "reason": "Van Gogh Museum primary documentation of Van Gogh's sales, commissions, and exchanges during his lifetime"
+    },
+    {
+      "pair_source": "Corpus claim: Shakespeare 'inventing or popularizing roughly 1,700 English words including assassinate, lonely, and eyeball'",
+      "kind": "url",
+      "locator": "https://public.oed.com/blog/revised-oed-entries-and-shakespeares-contribution-to-the-english-language/",
+      "reason": "OED's own acknowledgment that digitization of earlier texts has reduced the number of words for which Shakespeare is the earliest attested source"
+    },
+    {
+      "pair_source": "Corpus claim: Picasso's 'famous declaration: Good artists copy; great artists steal'",
+      "kind": "url",
+      "locator": "https://quoteinvestigator.com/2013/03/06/artists-steal/",
+      "reason": "Quote Investigator's detailed tracing of the quote's history, finding no primary source linking it to Picasso and identifying earlier variants by T.S. Eliot and W.H. Davenport Adams"
+    },
+    {
+      "pair_source": "Corpus claim: Beethoven's 'Eroica Symphony (1803), originally dedicated to Napoleon before Beethoven furiously scratched out the dedication'",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Symphony-No-3-by-Beethoven",
+      "reason": "Britannica's entry documenting the Eroica's composition spanning 1803-1804 with premiere in 1805, and the more nuanced dedication removal story"
+    },
+    {
+      "pair_source": "Corpus claim: Gandhi 'refused to allow Kasturba to receive penicillin when she fell ill' but 'accepted treatment with quinine' for his own malaria, presented as a 'contradiction'",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121898/",
+      "reason": "BMJ article on Gandhi's complex relationship with Western medicine, providing context for the penicillin episode that the corpus omits"
+    },
+    {
+      "pair_source": "Corpus claim: Gandhi 'refused to allow Kasturba to receive penicillin when she fell ill' but 'accepted treatment with quinine' for his own malaria, presented as a 'contradiction'",
+      "kind": "url",
+      "locator": "https://www.mkgandhi.org/health/health.htm",
+      "reason": "Gandhi Heritage Portal documentation of Gandhi's health views and the specific circumstances of Kasturba's treatment and death"
+    },
+    {
+      "pair_source": "Corpus claim: Haiti's indemnity debt with 'final payments extended to 1947'",
+      "kind": "url",
+      "locator": "https://www.nytimes.com/interactive/2022/05/20/world/americas/haiti-history-colonized-france.html",
+      "reason": "New York Times 'The Ransom' investigation providing detailed financial accounting of Haiti's indemnity payments and their complex restructuring history"
+    },
+    {
+      "pair_source": "Corpus claim: Newton's dates given as '1642-1727'",
+      "kind": "url",
+      "locator": "https://www.newtonproject.ox.ac.uk/his-life",
+      "reason": "Newton Project (Oxford) documenting the Julian/Gregorian calendar discrepancy for Newton's birth date"
+    },
+    {
+      "pair_source": "Corpus claim: Julius Caesar's dates given as '100-44 BCE'",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Julius-Caesar-Roman-ruler",
+      "reason": "Britannica noting the 100 vs 102 BCE debate for Caesar's birth year based on different ancient source interpretations"
+    },
+    {
+      "pair_source": "Corpus claim: Ali's conviction was 'overturned' when 'the Supreme Court unanimously overturned his conviction in 1971'",
+      "kind": "url",
+      "locator": "https://supreme.justia.com/cases/federal/us/403/698/",
+      "reason": "Full text of Clay v. United States (1971) documenting the 8-0 decision with Justice Marshall's recusal and the narrow procedural grounds"
+    },
+    {
+      "pair_source": "Corpus claim: Rosalind Franklin's Photo 51, 'taken on May 6, 1952'",
+      "kind": "url",
+      "locator": "https://profiles.nlm.nih.gov/spotlight/kr/feature/biographical-overview",
+      "reason": "National Library of Medicine profile of Rosalind Franklin giving 'May 1952' without specifying the day, consistent with most authoritative sources"
+    },
+    {
+      "pair_source": "Corpus claim: Cezanne's 'The Card Players sold for approximately $250 million' in '2012'",
+      "kind": "url",
+      "locator": "https://www.vanityfair.com/culture/2012/02/qatar-buys-cezanne-card-players",
+      "reason": "Vanity Fair's original February 2012 reporting on the sale, which had actually been completed in 2011, with price reported as 'more than $250 million'"
+    },
+    {
+      "pair_source": "Corpus claim: FDR's internment caused '1,862' deaths in camps",
+      "kind": "url",
+      "locator": "https://densho.org/",
+      "reason": "Densho Digital Encyclopedia, the leading digital archive on Japanese American incarceration, documenting varying death counts depending on methodology and inclusion criteria"
+    },
+    {
+      "pair_source": "Corpus claim: Lagrange remarked about Lavoisier: 'It took them only an instant to cut off his head, but France may not produce another such head in a century'",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Antoine_Lavoisier#Legacy",
+      "reason": "Lagrange quote attribution disputed; Wikipedia documents the legend"
+    }
+  ]
+}

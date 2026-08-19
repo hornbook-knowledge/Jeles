@@ -1,0 +1,298 @@
+{
+  "domain": "people-open-source",
+  "pairs": [
+    {
+      "source_text": "Linus Torvalds -- Linux creator, management style, and the 2018 apology",
+      "source_lang": "en",
+      "target_text": "Linus Torvalds created the Linux kernel in 1991 as a Finnish university student and later developed the Git version control system in 2005. He became notorious for abrasive emails to kernel contributors, using profanity and personal attacks to enforce code quality standards. In September 2018, Torvalds issued a public apology on the Linux Kernel Mailing List, acknowledging his behavior was 'unprofessional and uncalled for,' and took a temporary leave to 'get some assistance on how to understand people's emotions.' The kernel project simultaneously adopted a Contributor Covenant-based Code of Conduct, replacing its earlier informal 'Code of Conflict.' As of 2026, Torvalds continues to lead kernel development, having overseen the release of Linux 7.0, with the codebase surpassing 40 million lines of code.",
+      "target_lang": "en",
+      "reason": "Creator of the most widely deployed operating system kernel in history and Git, both foundational to open source infrastructure"
+    },
+    {
+      "source_text": "Richard Stallman -- FSF founder, GNU project, forced resignation and partial return",
+      "source_lang": "en",
+      "target_text": "Richard Stallman launched the GNU Project in 1983 and founded the Free Software Foundation (FSF) in 1985, establishing the philosophical framework that distinguishes 'free software' from merely 'open source.' He authored the GNU General Public License (GPL), the most influential copyleft license in software history. In September 2019, Stallman resigned from both MIT and the FSF presidency after making controversial comments about the Jeffrey Epstein scandal, specifically questioning whether the term 'assault' applied in the case of Marvin Minsky. In March 2021, Stallman announced he had rejoined the FSF board, triggering widespread backlash: an open letter signed by hundreds demanded his removal, executive director John Sullivan and other senior staff resigned, and Red Hat pulled all funding from the foundation.",
+      "target_lang": "en",
+      "reason": "Architect of the free software movement and the copyleft principle that shaped decades of software licensing"
+    },
+    {
+      "source_text": "Aaron Swartz -- Reddit co-founder, JSTOR case, suicide, and open access legacy",
+      "source_lang": "en",
+      "target_text": "Aaron Swartz was a programming prodigy who co-authored the RSS 1.0 specification at age 14, co-founded Reddit, and became a central figure in the open access movement. In 2011, he was arrested and charged with wire fraud and computer fraud for mass-downloading approximately 4.8 million academic articles from JSTOR through MIT's network. Although JSTOR dropped its civil claims, federal prosecutors pursued the case aggressively, with Swartz facing up to 35 years in prison and $1 million in fines. Swartz died by suicide on January 11, 2013, at age 26, while awaiting trial. His death catalyzed the open access movement: JSTOR subsequently expanded free public access to its archives, and his case became a rallying point for reform of the Computer Fraud and Abuse Act.",
+      "target_lang": "en",
+      "reason": "His prosecution and death became the defining cautionary tale about prosecutorial overreach and the fight for open access to knowledge"
+    },
+    {
+      "source_text": "Vitalik Buterin -- Ethereum creator, crypto philosophy, and the DAO hack response",
+      "source_lang": "en",
+      "target_text": "Vitalik Buterin proposed Ethereum in 2013 at age 19 and launched it in 2015, creating the first programmable blockchain with smart contract capabilities. In June 2016, a vulnerability in The DAO (a decentralized investment fund built on Ethereum) was exploited to drain approximately 3.6 million ETH, then worth about $50 million. Buterin advocated for a controversial hard fork of the blockchain to reverse the theft, which succeeded but permanently split the network into Ethereum and Ethereum Classic, raising fundamental questions about the immutability of blockchains. He championed Ethereum's transition from proof-of-work to proof-of-stake consensus (completed in September 2022's 'Merge'), reducing energy consumption by over 99%. As of 2026, the Ethereum Foundation has allocated 75,000 ETH toward a revived DAO structure focused on security governance.",
+      "target_lang": "en",
+      "reason": "Created the programmable blockchain that enabled DeFi and smart contracts, and confronted the tension between code-is-law ideology and pragmatic governance"
+    },
+    {
+      "source_text": "Mitchell Baker -- Mozilla leadership, CEO compensation controversy, and Firefox's decline",
+      "source_lang": "en",
+      "target_text": "Mitchell Baker co-founded the Mozilla project in 1998 and served in various leadership roles including CEO, guiding Firefox from its peak of over 30% browser market share. Her compensation became a lightning rod for criticism: her total pay rose from $5.6 million in 2021 to $6.9 million in 2022, even as Mozilla's revenue declined and the organization conducted layoffs. Critics argued this was unconscionable for a nonprofit whose revenue depended almost entirely on a single Google search deal worth over $500 million annually, while Firefox's market share continued to erode. Baker stepped down as CEO in February 2024, replaced by board member Laura Chambers, and departed Mozilla entirely in 2025.",
+      "target_lang": "en",
+      "reason": "Her tenure illustrates the tension between nonprofit mission and executive compensation in open source organizations"
+    },
+    {
+      "source_text": "Moxie Marlinspike -- Signal creator, cryptography pioneer, and departure from Signal",
+      "source_lang": "en",
+      "target_text": "Moxie Marlinspike (born Matthew Rosenfeld) is a cryptographer and computer security researcher who founded Open Whisper Systems in 2013 and created the Signal Protocol, which provides end-to-end encryption now used by Signal, WhatsApp, and Google Messages, protecting billions of conversations worldwide. He built Signal into the gold standard for private messaging while maintaining it as a nonprofit, resisting pressure to monetize user data. Marlinspike stepped down as Signal's CEO in January 2022, stating he had always planned to grow the organization to the point where it could function without him. He was temporarily succeeded by WhatsApp co-founder Brian Acton, and later by Meredith Whittaker. Marlinspike also gained attention for his influential 2022 blog post critiquing Web3, arguing that decentralized systems inevitably re-centralize around a few platforms.",
+      "target_lang": "en",
+      "reason": "Created the most widely deployed end-to-end encryption protocol in history and demonstrated that privacy-first technology can scale"
+    },
+    {
+      "source_text": "Jim Zemlin -- Linux Foundation executive director and open source commercialization tensions",
+      "source_lang": "en",
+      "target_text": "Jim Zemlin has served as executive director (later CEO) of the Linux Foundation since 2007, transforming it from a small industry consortium into the world's largest open source organization hosting hundreds of projects including Kubernetes, Node.js, and Let's Encrypt. Under his leadership, the Foundation's annual revenue grew to over $250 million, funded primarily by corporate memberships from companies like Google, Microsoft, and IBM. Critics accuse the Foundation of functioning more as a corporate lobbying group than a community organization, pointing to its pay-to-play governance structure where platinum members (paying $500,000+ annually) get board seats. Zemlin has also drawn scrutiny for his own compensation and for the Foundation's role in 'greenwashing' corporate open source participation, though supporters credit him with creating sustainable funding models for critical infrastructure projects.",
+      "target_lang": "en",
+      "reason": "Personifies the debate over whether corporate stewardship strengthens or co-opts open source communities"
+    },
+    {
+      "source_text": "Open source maintainer burnout -- the unpaid labor crisis",
+      "source_lang": "en",
+      "target_text": "The 2024 Tidelift State of the Open Source Maintainer Report found that 60% of open source maintainers are unpaid, 60% have quit or considered quitting, and 44% cite burnout as their reason for leaving. Critical infrastructure used by millions of companies depends on solo volunteers working nights and weekends: in November 2025, Kubernetes retired Ingress NGINX, one of its most popular components, not because it was obsolete but because its maintainers could no longer sustain the work. The crisis was starkly illustrated by the xz Utils backdoor, where a lone, exhausted maintainer was socially engineered by an attacker who offered to 'help.' Proposed solutions range from GitHub Sponsors and Tidelift subscriptions to the Sovereign Tech Fund (Germany) directly funding maintainers, but 81% of maintainers say they want predictable monthly income rather than one-time donations, and most receive neither.",
+      "target_lang": "en",
+      "reason": "The structural unsustainability of volunteer-maintained critical infrastructure is the central crisis of modern open source"
+    },
+    {
+      "source_text": "The open core business model -- who profits from free software",
+      "source_lang": "en",
+      "target_text": "The open core model offers a free, open source 'community edition' of software while selling proprietary features, support, or hosted services on top. Companies like GitLab, Elastic, MongoDB, and HashiCorp built billion-dollar valuations on this approach, but the model creates inherent tension: the company is incentivized to keep the best features proprietary, potentially starving the open source version. HashiCorp's 2023 switch of Terraform from the Mozilla Public License to the restrictive Business Source License (BSL) exemplified the risk, prompting the Linux Foundation-backed OpenTofu fork within days. Critics including the OSI argue that BSL and similar 'source-available' licenses are not open source at all, while proponents contend that without commercial viability, critical projects would have no sustained development funding.",
+      "target_lang": "en",
+      "reason": "Open core is the dominant monetization strategy for open source companies, and its tensions define the current era of open source business"
+    },
+    {
+      "source_text": "License wars -- GPL vs MIT vs Apache and the philosophical divide",
+      "source_lang": "en",
+      "target_text": "The open source licensing landscape reflects a deep philosophical schism between copyleft and permissive approaches. The GPL family (authored by Stallman) requires derivative works to carry the same license, ensuring modifications remain open -- a principle critics call 'viral' and supporters call 'freedom-preserving.' Permissive licenses like MIT and Apache 2.0 allow code to be incorporated into proprietary products without restriction, which maximizes adoption but enables corporate extraction. Apache 2.0 adds explicit patent grants absent from MIT, making it preferred for enterprise use. The trend has shifted decisively toward permissive licensing: as of 2024, MIT is the most popular license on GitHub, while GPL usage has steadily declined since 2010. This shift reflects the rise of cloud computing, where copyleft's 'distribution trigger' does not apply to software run as a service, and corporate legal departments' preference for permissive terms.",
+      "target_lang": "en",
+      "reason": "License choice encodes competing visions of software freedom and determines how value flows between communities and corporations"
+    },
+    {
+      "source_text": "Corporate capture of open source projects -- examples and backlash",
+      "source_lang": "en",
+      "target_text": "Corporate capture occurs when a company gains control of an open source project and redirects it to serve commercial interests at the expense of the community. High-profile examples include HashiCorp relicensing Terraform under the BSL in August 2023 (spawning the OpenTofu fork), Red Hat restricting access to RHEL source code in June 2023 (prompting backlash and reinforcing AlmaLinux and Rocky Linux forks), and Oracle's stewardship of MySQL and OpenOffice after acquiring Sun Microsystems (leading to the MariaDB and LibreOffice forks). Elastic changed Elasticsearch's license from Apache 2.0 to SSPL in 2021 after Amazon launched a competing managed service, and MongoDB adopted the SSPL in 2018 for similar reasons. The pattern is consistent: a company builds market share on open source goodwill, then restricts the license when cloud providers commoditize the software, and the community responds by forking.",
+      "target_lang": "en",
+      "reason": "The recurring cycle of corporate relicensing and community forking is the central governance tension in modern open source"
+    },
+    {
+      "source_text": "The xz Utils backdoor (CVE-2024-3094) -- how a trusted maintainer was a state actor",
+      "source_lang": "en",
+      "target_text": "In March 2024, Microsoft engineer Andres Freund discovered a sophisticated backdoor in xz Utils versions 5.6.0 and 5.6.1, a compression library installed on virtually all Linux systems. The backdoor (CVE-2024-3094) was designed to subvert OpenSSH authentication, enabling remote code execution via crafted SSH certificates. The attacker, operating under the pseudonym 'Jia Tan,' had spent over two years (since late 2021) building trust with the project's sole maintainer, Lasse Collin, who was dealing with mental health issues and maintainer burnout. Jia Tan gradually gained commit access, then inserted the backdoor through obfuscated test files. The attack was caught before reaching any stable Linux distribution (Debian Stable, Ubuntu LTS, and RHEL were unaffected), but security researchers noted it was the most sophisticated open source supply chain attack ever discovered. Analysis of commit timestamps and activity patterns suggested a state-sponsored operation, with theories pointing to either APT29 (Russia's Cozy Bear) or a Chinese intelligence unit.",
+      "target_lang": "en",
+      "reason": "The xz backdoor exposed the fragility of the open source supply chain and the vulnerability of burned-out solo maintainers to sophisticated social engineering"
+    },
+    {
+      "source_text": "Andres Freund -- the engineer who caught the xz backdoor",
+      "source_lang": "en",
+      "target_text": "Andres Freund is a Microsoft software engineer and PostgreSQL committer who discovered the xz Utils backdoor (CVE-2024-3094) on March 29, 2024, while investigating a 500-millisecond latency anomaly in SSH logins on a Debian testing system. His meticulous debugging -- tracing the slowdown from sshd through systemd to liblzma -- uncovered what security researchers called the most sophisticated supply chain attack in open source history. Freund's discovery was serendipitous: he happened to be benchmarking PostgreSQL performance and noticed the SSH anomaly only because he was running an unstable pre-release distribution. Had the backdoor reached stable releases undetected, it could have compromised SSH access on billions of Linux systems worldwide.",
+      "target_lang": "en",
+      "reason": "His accidental discovery prevented a potentially catastrophic supply chain compromise and highlighted how thin the line of defense for open source security can be"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Open source maintainer burnout -- the unpaid labor crisis",
+      "to_source": "The xz Utils backdoor (CVE-2024-3094) -- how a trusted maintainer was a state actor",
+      "kind": "refines",
+      "reason": "The xz backdoor is a direct consequence of maintainer burnout: the attacker exploited a burned-out solo maintainer's need for help"
+    },
+    {
+      "from_source": "The open core business model -- who profits from free software",
+      "to_source": "Corporate capture of open source projects -- examples and backlash",
+      "kind": "refines",
+      "reason": "Open core creates the structural conditions (corporate control of governance) that enable corporate capture through relicensing"
+    },
+    {
+      "from_source": "License wars -- GPL vs MIT vs Apache and the philosophical divide",
+      "to_source": "Richard Stallman -- FSF founder, GNU project, forced resignation and partial return",
+      "kind": "refines",
+      "reason": "Stallman authored the GPL and the copyleft philosophy; the license wars are a direct extension of his ideological framework"
+    },
+    {
+      "from_source": "Corporate capture of open source projects -- examples and backlash",
+      "to_source": "The open core business model -- who profits from free software",
+      "kind": "refines",
+      "reason": "Each corporate relicensing episode (HashiCorp, Elastic, MongoDB) tests and redefines the boundaries of the open core model"
+    },
+    {
+      "from_source": "The xz Utils backdoor (CVE-2024-3094) -- how a trusted maintainer was a state actor",
+      "to_source": "Andres Freund -- the engineer who caught the xz backdoor",
+      "kind": "refines",
+      "reason": "Freund's discovery is the resolution of the xz backdoor narrative -- without his debugging, the attack might have succeeded"
+    },
+    {
+      "from_source": "Linus Torvalds -- Linux creator, management style, and the 2018 apology",
+      "to_source": "Jim Zemlin -- Linux Foundation executive director and open source commercialization tensions",
+      "kind": "refines",
+      "reason": "Torvalds created Linux; Zemlin's Linux Foundation became its institutional home, representing two different axes of power in the same ecosystem"
+    },
+    {
+      "from_source": "Moxie Marlinspike -- Signal creator, cryptography pioneer, and departure from Signal",
+      "to_source": "Aaron Swartz -- Reddit co-founder, JSTOR case, suicide, and open access legacy",
+      "kind": "refines",
+      "reason": "Both represent the hacker-activist tradition of building tools to resist institutional power, though with very different outcomes"
+    },
+    {
+      "from_source": "License wars -- GPL vs MIT vs Apache and the philosophical divide",
+      "to_source": "Corporate capture of open source projects -- examples and backlash",
+      "kind": "refines",
+      "reason": "The shift from copyleft to permissive licensing enabled the corporate extraction patterns that make capture possible"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Linus Torvalds -- Linux creator, management style, and the 2018 apology",
+      "kind": "url",
+      "locator": "https://www.theregister.com/software/2018/09/17/linux-kernels-torvalds-i-am-truly-sorry-for-my-unprofessional-rants-i-need-a-break-to-get-help/1493699",
+      "reason": "The Register's contemporary coverage of Torvalds' 2018 apology and temporary leave from kernel development"
+    },
+    {
+      "pair_source": "Linus Torvalds -- Linux creator, management style, and the 2018 apology",
+      "kind": "url",
+      "locator": "https://itsfoss.com/linux-code-of-conduct/",
+      "reason": "Coverage of the Linux kernel's adoption of the Contributor Covenant Code of Conduct following Torvalds' apology"
+    },
+    {
+      "pair_source": "Linus Torvalds -- Linux creator, management style, and the 2018 apology",
+      "kind": "url",
+      "locator": "https://linux.slashdot.org/story/26/02/09/2034222/linux-70-kernel-confirmed-by-linus-torvalds-expected-in-mid-april-2026",
+      "reason": "Confirmation of Linux 7.0 release and Torvalds' continued leadership as of 2026"
+    },
+    {
+      "pair_source": "Richard Stallman -- FSF founder, GNU project, forced resignation and partial return",
+      "kind": "url",
+      "locator": "https://fsfe.org/news/2021/news-20210324-01.html",
+      "reason": "FSFE's official statement on Stallman's controversial return to the FSF board in 2021"
+    },
+    {
+      "pair_source": "Richard Stallman -- FSF founder, GNU project, forced resignation and partial return",
+      "kind": "url",
+      "locator": "https://www.theregister.com/2021/03/30/fsf_mass_resignation/",
+      "reason": "Coverage of FSF staff resignations following Stallman's reinstatement to the board"
+    },
+    {
+      "pair_source": "Richard Stallman -- FSF founder, GNU project, forced resignation and partial return",
+      "kind": "url",
+      "locator": "https://www.techradar.com/news/red-hat-pulls-funding-from-free-software-foundation",
+      "reason": "Red Hat's withdrawal of FSF funding in response to Stallman's return"
+    },
+    {
+      "pair_source": "Aaron Swartz -- Reddit co-founder, JSTOR case, suicide, and open access legacy",
+      "kind": "url",
+      "locator": "https://stanforddaily.com/2020/03/27/remembering-aaron-swartzs-legacy-in-light-of-jstor-opening-access/",
+      "reason": "Stanford Daily's analysis of Swartz's legacy in the context of JSTOR expanding open access"
+    },
+    {
+      "pair_source": "Aaron Swartz -- Reddit co-founder, JSTOR case, suicide, and open access legacy",
+      "kind": "url",
+      "locator": "https://economicsfromthetopdown.com/2019/06/19/the-legacy-of-aaron-swartz-the-fight-for-open-access/",
+      "reason": "Detailed analysis of Swartz's impact on the open access movement"
+    },
+    {
+      "pair_source": "Vitalik Buterin -- Ethereum creator, crypto philosophy, and the DAO hack response",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Ethereum",
+      "reason": "Comprehensive overview of Ethereum's history including the DAO hack and hard fork"
+    },
+    {
+      "pair_source": "Vitalik Buterin -- Ethereum creator, crypto philosophy, and the DAO hack response",
+      "kind": "url",
+      "locator": "https://www.theblock.co/post/405248/ethereum-130-million-security-fund-the-dao-hack-10-years",
+      "reason": "Coverage of Ethereum Foundation's 2026 DAO revival and security fund allocation"
+    },
+    {
+      "pair_source": "Mitchell Baker -- Mozilla leadership, CEO compensation controversy, and Firefox's decline",
+      "kind": "url",
+      "locator": "https://theregister.com/AMP/2024/02/09/opinion_column_mozilla_ceo_quits",
+      "reason": "Analysis of Baker's departure as Mozilla CEO and its implications for Firefox"
+    },
+    {
+      "pair_source": "Mitchell Baker -- Mozilla leadership, CEO compensation controversy, and Firefox's decline",
+      "kind": "url",
+      "locator": "https://fossforce.com/2024/02/is-mozillas-mitchell-baker-getting-out-while-the-gettings-good/",
+      "reason": "Critical analysis of Baker's compensation relative to Mozilla's performance and mission"
+    },
+    {
+      "pair_source": "Moxie Marlinspike -- Signal creator, cryptography pioneer, and departure from Signal",
+      "kind": "url",
+      "locator": "https://www.theregister.com/2022/01/11/signal_ceo_moxie_marlinspike_resigns/",
+      "reason": "The Register's coverage of Marlinspike's resignation as Signal CEO"
+    },
+    {
+      "pair_source": "Moxie Marlinspike -- Signal creator, cryptography pioneer, and departure from Signal",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Moxie_Marlinspike",
+      "reason": "Biographical overview of Marlinspike's career, Signal Protocol development, and Web3 critique"
+    },
+    {
+      "pair_source": "Jim Zemlin -- Linux Foundation executive director and open source commercialization tensions",
+      "kind": "url",
+      "locator": "https://www.facesofopensource.com/jim-zemlin-2/",
+      "reason": "Profile of Zemlin's role in growing the Linux Foundation"
+    },
+    {
+      "pair_source": "Open source maintainer burnout -- the unpaid labor crisis",
+      "kind": "url",
+      "locator": "https://socket.dev/blog/the-unpaid-backbone-of-open-source",
+      "reason": "Socket.dev's analysis of the solo maintainer crisis and its security implications"
+    },
+    {
+      "pair_source": "Open source maintainer burnout -- the unpaid labor crisis",
+      "kind": "url",
+      "locator": "https://byteiota.com/open-source-maintainer-crisis-60-unpaid-burnout-hits-44/",
+      "reason": "Coverage of the 2024 Tidelift survey statistics on maintainer burnout and compensation"
+    },
+    {
+      "pair_source": "The open core business model -- who profits from free software",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Open-core_model",
+      "reason": "Overview of the open core model's mechanics and controversies"
+    },
+    {
+      "pair_source": "The open core business model -- who profits from free software",
+      "kind": "url",
+      "locator": "https://spacelift.io/blog/terraform-license-change",
+      "reason": "Analysis of HashiCorp's BSL license change and its impact on the Terraform ecosystem"
+    },
+    {
+      "pair_source": "License wars -- GPL vs MIT vs Apache and the philosophical divide",
+      "kind": "url",
+      "locator": "https://exygy.com/blog/which-license-should-i-use-mit-vs-apache-vs-gpl",
+      "reason": "Comparative analysis of GPL, MIT, and Apache license philosophies and use cases"
+    },
+    {
+      "pair_source": "Corporate capture of open source projects -- examples and backlash",
+      "kind": "url",
+      "locator": "https://thenewstack.io/open-source-inside-2025s-4-biggest-trends/",
+      "reason": "The New Stack's analysis of corporate relicensing trends and 'fauxpen source' in 2025"
+    },
+    {
+      "pair_source": "Corporate capture of open source projects -- examples and backlash",
+      "kind": "url",
+      "locator": "https://opentofu.org/blog/opentofu-announces-fork-of-terraform/",
+      "reason": "OpenTofu's announcement of the community fork in response to HashiCorp's license change"
+    },
+    {
+      "pair_source": "The xz Utils backdoor (CVE-2024-3094) -- how a trusted maintainer was a state actor",
+      "kind": "url",
+      "locator": "https://www.techrepublic.com/article/xz-backdoor-linux/",
+      "reason": "TechRepublic's detailed timeline of the two-year social engineering campaign behind the xz backdoor"
+    },
+    {
+      "pair_source": "The xz Utils backdoor (CVE-2024-3094) -- how a trusted maintainer was a state actor",
+      "kind": "url",
+      "locator": "https://www.catonetworks.com/blog/xz-backdoor-rce-cve-2024-3094-is-the-biggest-supply-chain-attack-since-log4j/",
+      "reason": "Technical analysis of the CVE-2024-3094 backdoor mechanism and its potential impact"
+    },
+    {
+      "pair_source": "Andres Freund -- the engineer who caught the xz backdoor",
+      "kind": "url",
+      "locator": "https://www.offsec.com/blog/xz-backdoor/",
+      "reason": "Detailed account of Freund's discovery process and the serendipitous nature of the detection"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "domain": "crossdomain-money-power",
+  "pairs": [
+    {
+      "source_text": "The 2022 exclusion of major Russian banks from the SWIFT interbank messaging network demonstrated that financial infrastructure built for neutral commerce can be repurposed as a coercive instrument of geopolitical power, effectively weaponizing the plumbing of global payments.",
+      "source_lang": "en",
+      "target_text": "Sanctions regimes operate as a form of siege warfare conducted through banking systems rather than naval blockades, cutting a targeted state off from the liquidity it needs to fund imports, pay soldiers, and service sovereign debt.",
+      "target_lang": "en",
+      "reason": "SWIFT disconnection is the clearest modern case where a financial utility designed for efficiency became a weapon. It links monetary infrastructure (economics domain) to coercive statecraft (war/governance domain) by showing that control over payment rails confers warmaking leverage without firing a shot."
+    },
+    {
+      "source_text": "The Bretton Woods conference of 1944 established the US dollar as the world reserve currency pegged to gold, embedding American financial hegemony into the architecture of postwar international institutions including the IMF and World Bank.",
+      "source_lang": "en",
+      "target_text": "Reserve currency status gives the issuing nation an 'exorbitant privilege': the ability to run persistent trade deficits, fund military bases in over 80 countries, and impose extraterritorial legal jurisdiction through dollar-denominated transactions.",
+      "target_lang": "en",
+      "reason": "Bretton Woods was simultaneously an economic settlement and a power settlement. The dollar's role as reserve currency is the financial substrate that enables sustained US military projection, linking monetary system design directly to global military posture."
+    },
+    {
+      "source_text": "IMF structural adjustment programs imposed on debtor nations in the 1980s and 1990s required privatization of state assets, removal of trade protections, and austerity cuts to public services as conditions for receiving emergency loans.",
+      "source_lang": "en",
+      "target_text": "Conditionality-driven lending restructured the domestic governance of borrowing nations by transferring economic policy decisions from elected legislatures to creditor institutions, effectively creating a parallel sovereignty exercised through debt covenants.",
+      "target_lang": "en",
+      "reason": "Structural adjustment is where economics becomes governance by other means. The IMF's loan conditions overrode democratic policy choices in dozens of countries, demonstrating how creditor power translates directly into political control over sovereign states."
+    },
+    {
+      "source_text": "The 1973 petrodollar arrangement between the United States and Saudi Arabia ensured that global oil sales would be denominated in US dollars, requiring every oil-importing nation to maintain dollar reserves and recycle petrodollars through American financial markets.",
+      "source_lang": "en",
+      "target_text": "Saddam Hussein's 2000 decision to price Iraqi oil in euros, and Muammar Gaddafi's 2009 proposal for a gold-backed African dinar, preceded military interventions that resulted in regime change, though both conflicts had multiple stated justifications.",
+      "target_lang": "en",
+      "reason": "The petrodollar system illustrates how a pricing convention for a commodity becomes a load-bearing pillar of military alliances and casus belli. Leaders who threatened dollar-denominated oil pricing faced consequences that suggest the monetary arrangement is defended with military force."
+    },
+    {
+      "source_text": "HSBC paid a $1.9 billion fine in 2012 after a US Senate investigation found the bank had processed hundreds of millions of dollars for Mexican drug cartels and routed transactions through the US financial system on behalf of sanctioned entities including Iran and Libya.",
+      "source_lang": "en",
+      "target_text": "Money laundering through global banks provides the financial oxygen for armed non-state actors, enabling drug trafficking organizations to sustain private armies and territorial control that rivals or exceeds the capacity of the governments they operate within.",
+      "target_lang": "en",
+      "reason": "The HSBC case reveals the complicity of mainstream banking in financing violence. It connects the economics domain (banking compliance, profit motives) to the war/security domain (cartel violence, state failure) by showing how legitimate financial institutions enable armed conflict through willful blindness."
+    },
+    {
+      "source_text": "The Citizens United v. FEC Supreme Court decision of 2010 held that corporate political spending is protected speech under the First Amendment, removing limits on independent expenditures by corporations and unions in elections.",
+      "source_lang": "en",
+      "target_text": "Post-Citizens United, total spending on US federal elections more than doubled, with outside spending by super PACs and dark money groups creating a system where policy outcomes correlate more strongly with donor preferences than with median voter preferences, as documented in the Gilens and Page 2014 study.",
+      "target_lang": "en",
+      "reason": "Citizens United is the legal mechanism by which concentrated wealth captures democratic governance. It connects money systems (campaign finance, corporate treasuries) to governance (legislative outcomes, regulatory capture) by removing the barrier between economic power and political power."
+    },
+    {
+      "source_text": "China's Belt and Road Initiative has extended over $1 trillion in infrastructure loans to developing nations, with repayment terms that in several cases have resulted in strategic asset transfers when borrowers default, as occurred with Sri Lanka's Hambantota Port in 2017.",
+      "source_lang": "en",
+      "target_text": "Debt-financed infrastructure lending creates leverage that functions as a soft-power projection tool, enabling the creditor state to acquire strategic footholds such as port facilities, telecommunications networks, and mineral extraction rights without military conquest.",
+      "target_lang": "en",
+      "reason": "Belt and Road lending inverts the traditional relationship between conquest and resource extraction. Instead of military occupation securing economic access, economic lending secures strategic military-relevant assets, linking sovereign debt dynamics to geopolitical competition."
+    },
+    {
+      "source_text": "War bonds issued by the United States during World War II raised approximately $185 billion (over $3 trillion in 2023 dollars) from ordinary citizens, simultaneously financing the war effort and suppressing domestic inflation by absorbing consumer purchasing power.",
+      "source_lang": "en",
+      "target_text": "The capacity to issue sovereign debt at scale determines a nation's warfighting endurance: states that can borrow from their own population or international markets sustain prolonged conflicts, while states that cannot are forced to capitulate regardless of battlefield performance.",
+      "target_lang": "en",
+      "reason": "War bonds reveal that modern warfare is won as much in capital markets as on battlefields. The connection between public debt instruments and military capacity shows that a nation's financial system is itself a strategic asset, linking bond markets directly to war outcomes."
+    },
+    {
+      "source_text": "The US Magnitsky Act of 2012, later expanded as the Global Magnitsky Act of 2016, authorized the freezing of assets and denial of US entry to foreign individuals identified as human rights abusers or corrupt officials, using financial punishment as a human rights enforcement tool.",
+      "source_lang": "en",
+      "target_text": "Targeted financial sanctions against individuals create a governance mechanism that bypasses traditional diplomacy: by threatening the personal wealth of autocrats and oligarchs held in Western financial systems, democratic states exercise jurisdiction over the conduct of foreign officials without requiring their government's consent.",
+      "target_lang": "en",
+      "reason": "The Magnitsky Acts weaponize the fact that authoritarian elites park personal wealth in Western banks and real estate. This links financial system access (economics) to human rights enforcement (governance) by making individual bank accounts into instruments of extraterritorial legal authority."
+    },
+    {
+      "source_text": "The Roman Empire's progressive debasement of its silver denarius from 95% silver content under Augustus to less than 5% under Diocletian financed military overextension but ultimately destroyed the currency's purchasing power, contributing to the empire's fiscal and territorial collapse.",
+      "source_lang": "en",
+      "target_text": "Currency debasement is the hidden tax that empires impose when explicit taxation cannot keep pace with military expenditure, creating an inflationary spiral that erodes public trust in institutions and accelerates the political fragmentation the military spending was meant to prevent.",
+      "target_lang": "en",
+      "reason": "Roman debasement is the archetype for how monetary manipulation to fund military ambitions destroys the economic base that sustains imperial power. It connects ancient monetary policy (economics) to imperial collapse (governance/war) and resonates with modern debates about deficit spending for defense."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "The 2022 exclusion of major Russian banks from the SWIFT interbank messaging network demonstrated that financial infrastructure built for neutral commerce can be repurposed as a coercive instrument of geopolitical power, effectively weaponizing the plumbing of global payments.",
+      "to_source": "The internet's physical infrastructure depends on approximately 550 submarine fiber-optic cables carrying over 95% of intercontinental data traffic",
+      "kind": "refines",
+      "reason": "SWIFT weaponization refines the general principle that infrastructure built for connectivity can be leveraged as a chokepoint. Just as submarine cables are vulnerable physical infrastructure, SWIFT is vulnerable financial infrastructure whose neutrality is contingent on geopolitical alignment."
+    },
+    {
+      "from_source": "The Bretton Woods conference of 1944 established the US dollar as the world reserve currency pegged to gold, embedding American financial hegemony into the architecture of postwar international institutions including the IMF and World Bank.",
+      "to_source": "The Marshall Plan provided over $13 billion in economic assistance to Western European nations between 1948 and 1951",
+      "kind": "refines",
+      "reason": "Bretton Woods created the monetary framework that made the Marshall Plan operationally possible. Dollar hegemony was the precondition for denominating European reconstruction aid in American currency, reinforcing both economic recovery and geopolitical alignment."
+    },
+    {
+      "from_source": "IMF structural adjustment programs imposed on debtor nations in the 1980s and 1990s required privatization of state assets, removal of trade protections, and austerity cuts to public services as conditions for receiving emergency loans.",
+      "to_source": "Decolonization movements across Africa and Asia in the mid-twentieth century dismantled formal colonial governance structures",
+      "kind": "contradicts",
+      "reason": "Structural adjustment contradicts the promise of decolonization by reimposing external control over domestic economic policy through financial rather than military mechanisms. Former colonies that gained political sovereignty found their economic sovereignty constrained by creditor conditionality."
+    },
+    {
+      "from_source": "The 1973 petrodollar arrangement between the United States and Saudi Arabia ensured that global oil sales would be denominated in US dollars, requiring every oil-importing nation to maintain dollar reserves and recycle petrodollars through American financial markets.",
+      "to_source": "Global energy systems remain dependent on fossil fuels for approximately 80% of primary energy consumption",
+      "kind": "refines",
+      "reason": "The petrodollar arrangement refines understanding of fossil fuel dependency by adding a monetary dimension: the world depends on oil not only for energy but because dollar-denominated oil trading underpins the reserve currency system that structures global finance."
+    },
+    {
+      "from_source": "HSBC paid a $1.9 billion fine in 2012 after a US Senate investigation found the bank had processed hundreds of millions of dollars for Mexican drug cartels and routed transactions through the US financial system on behalf of sanctioned entities including Iran and Libya.",
+      "to_source": "Whistleblowers who expose institutional wrongdoing face retaliation ranging from termination to criminal prosecution",
+      "kind": "refines",
+      "reason": "The HSBC case refines the whistleblower pattern: internal compliance officers who raised red flags were overruled by profit-seeking management, and the eventual exposure required both investigative journalism and congressional action rather than internal accountability mechanisms."
+    },
+    {
+      "from_source": "The Citizens United v. FEC Supreme Court decision of 2010 held that corporate political spending is protected speech under the First Amendment, removing limits on independent expenditures by corporations and unions in elections.",
+      "to_source": "The US Constitution's system of checks and balances distributes power among three branches of government",
+      "kind": "contradicts",
+      "reason": "Citizens United contradicts the checks-and-balances design by allowing concentrated economic power to capture the legislative branch through unlimited spending, undermining the separation of powers by making elected officials financially dependent on corporate donors."
+    },
+    {
+      "from_source": "China's Belt and Road Initiative has extended over $1 trillion in infrastructure loans to developing nations, with repayment terms that in several cases have resulted in strategic asset transfers when borrowers default, as occurred with Sri Lanka's Hambantota Port in 2017.",
+      "to_source": "China's rapid economic growth since the 1980s has been driven by export-oriented manufacturing and state-directed industrial policy",
+      "kind": "refines",
+      "reason": "Belt and Road refines understanding of China's economic model by showing how surplus industrial capacity and capital reserves are deployed as instruments of geopolitical influence, extending the state-directed economic model from domestic growth to international power projection."
+    },
+    {
+      "from_source": "War bonds issued by the United States during World War II raised approximately $185 billion (over $3 trillion in 2023 dollars) from ordinary citizens, simultaneously financing the war effort and suppressing domestic inflation by absorbing consumer purchasing power.",
+      "to_source": "World War II resulted in an estimated 70 to 85 million deaths and fundamentally reshaped the global order",
+      "kind": "refines",
+      "reason": "War bonds refine understanding of WWII's scale by revealing the financial mobilization behind the military one. The industrial and military victory was underwritten by a parallel financial campaign that enlisted civilian savings as a strategic resource."
+    },
+    {
+      "from_source": "The US Magnitsky Act of 2012, later expanded as the Global Magnitsky Act of 2016, authorized the freezing of assets and denial of US entry to foreign individuals identified as human rights abusers or corrupt officials, using financial punishment as a human rights enforcement tool.",
+      "to_source": "The Universal Declaration of Human Rights adopted by the United Nations in 1948 established a common standard of fundamental rights for all peoples and nations",
+      "kind": "refines",
+      "reason": "The Magnitsky Acts refine human rights enforcement by providing an operational mechanism with teeth. While the UDHR declares principles, Magnitsky sanctions attach concrete financial consequences to violations, bridging the gap between aspirational norms and enforceable accountability."
+    },
+    {
+      "from_source": "The Roman Empire's progressive debasement of its silver denarius from 95% silver content under Augustus to less than 5% under Diocletian financed military overextension but ultimately destroyed the currency's purchasing power, contributing to the empire's fiscal and territorial collapse.",
+      "to_source": "The fall of Rome in 476 CE marked the end of centralized imperial governance in Western Europe",
+      "kind": "refines",
+      "reason": "Currency debasement refines the narrative of Roman collapse by identifying a specific, measurable economic mechanism. The fall was not merely a military or political event but was preceded by centuries of monetary deterioration that hollowed out the fiscal capacity to maintain the empire."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "The 2022 exclusion of major Russian banks from the SWIFT interbank messaging network demonstrated that financial infrastructure built for neutral commerce can be repurposed as a coercive instrument of geopolitical power, effectively weaponizing the plumbing of global payments.",
+      "kind": "public_record",
+      "locator": "https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/russia-s-aggression-against-ukraine-eu-agrees-to-exclude-key-russian-banks-from-swift/",
+      "reason": "EU Council press release from 2 March 2022 announcing the agreement to exclude key Russian banks from the SWIFT network as part of the sanctions response to Russia's invasion of Ukraine."
+    },
+    {
+      "pair_source": "The Bretton Woods conference of 1944 established the US dollar as the world reserve currency pegged to gold, embedding American financial hegemony into the architecture of postwar international institutions including the IMF and World Bank.",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/external/about/histend.htm",
+      "reason": "IMF historical documentation of the Bretton Woods conference and the establishment of the dollar-gold standard that anchored the postwar international monetary system."
+    },
+    {
+      "pair_source": "IMF structural adjustment programs imposed on debtor nations in the 1980s and 1990s required privatization of state assets, removal of trade protections, and austerity cuts to public services as conditions for receiving emergency loans.",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/external/np/pdr/cond/2002/eng/overview/index.htm",
+      "reason": "IMF policy document reviewing the history and rationale of conditionality in IMF lending programs, including the structural adjustment conditions applied during the 1980s and 1990s."
+    },
+    {
+      "pair_source": "The 1973 petrodollar arrangement between the United States and Saudi Arabia ensured that global oil sales would be denominated in US dollars, requiring every oil-importing nation to maintain dollar reserves and recycle petrodollars through American financial markets.",
+      "kind": "public_record",
+      "locator": "https://www.bloomberg.com/news/features/2016-05-30/the-untold-story-behind-saudi-arabia-s-41-year-u-s-debt-secret",
+      "reason": "Bloomberg investigation documenting the 1974 secret agreement between the US Treasury and Saudi Arabia to recycle petrodollars through purchases of US government securities, based on declassified records."
+    },
+    {
+      "pair_source": "HSBC paid a $1.9 billion fine in 2012 after a US Senate investigation found the bank had processed hundreds of millions of dollars for Mexican drug cartels and routed transactions through the US financial system on behalf of sanctioned entities including Iran and Libya.",
+      "kind": "public_record",
+      "locator": "https://www.justice.gov/opa/pr/hsbc-holdings-plc-and-hsbc-bank-usa-na-admit-anti-money-laundering-and-sanctions-violations",
+      "reason": "US Department of Justice press release announcing HSBC's deferred prosecution agreement and $1.9 billion penalty for Bank Secrecy Act, anti-money-laundering, and sanctions violations."
+    },
+    {
+      "pair_source": "The Citizens United v. FEC Supreme Court decision of 2010 held that corporate political spending is protected speech under the First Amendment, removing limits on independent expenditures by corporations and unions in elections.",
+      "kind": "public_record",
+      "locator": "https://www.supremecourt.gov/opinions/09pdf/08-205.pdf",
+      "reason": "Full text of the Supreme Court opinion in Citizens United v. Federal Election Commission, 558 U.S. 310 (2010), establishing that corporate political expenditures are protected under the First Amendment."
+    },
+    {
+      "pair_source": "China's Belt and Road Initiative has extended over $1 trillion in infrastructure loans to developing nations, with repayment terms that in several cases have resulted in strategic asset transfers when borrowers default, as occurred with Sri Lanka's Hambantota Port in 2017.",
+      "kind": "public_record",
+      "locator": "https://www.nytimes.com/2018/06/25/world/asia/china-sri-lanka-port.html",
+      "reason": "New York Times investigation documenting how Sri Lanka's Hambantota Port was transferred to a Chinese state company on a 99-year lease after the country could not service its Chinese-held debt."
+    },
+    {
+      "pair_source": "War bonds issued by the United States during World War II raised approximately $185 billion (over $3 trillion in 2023 dollars) from ordinary citizens, simultaneously financing the war effort and suppressing domestic inflation by absorbing consumer purchasing power.",
+      "kind": "public_record",
+      "locator": "https://www.treasurydirect.gov/timeline/war-bonds/",
+      "reason": "US Treasury Department historical documentation of the war bond program, including aggregate sales figures across all eight war loan drives during World War II."
+    },
+    {
+      "pair_source": "The US Magnitsky Act of 2012, later expanded as the Global Magnitsky Act of 2016, authorized the freezing of assets and denial of US entry to foreign individuals identified as human rights abusers or corrupt officials, using financial punishment as a human rights enforcement tool.",
+      "kind": "public_record",
+      "locator": "https://www.congress.gov/bill/114th-congress/senate-bill/284",
+      "reason": "Congressional record for S.284, the Global Magnitsky Human Rights Accountability Act, documenting the legislative text authorizing asset freezes and visa bans for human rights abusers and corrupt officials worldwide."
+    },
+    {
+      "pair_source": "The Roman Empire's progressive debasement of its silver denarius from 95% silver content under Augustus to less than 5% under Diocletian financed military overextension but ultimately destroyed the currency's purchasing power, contributing to the empire's fiscal and territorial collapse.",
+      "kind": "public_record",
+      "locator": "https://www.jstor.org/stable/4436652",
+      "reason": "Published numismatic and economic analysis in the American Journal of Numismatics documenting the metallurgical decline of the Roman denarius across imperial reigns, with quantified silver content data."
+    }
+  ]
+}

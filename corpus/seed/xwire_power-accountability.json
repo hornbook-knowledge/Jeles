@@ -1,0 +1,259 @@
+{
+  "domain": "crossdomain-power-accountability",
+  "pairs": [
+    {
+      "source_text": "The recurring monopoly cycle -- Standard Oil to AT&T to Google, and why antitrust enforcement always arrives a decade late",
+      "source_lang": "en",
+      "target_text": "Rockefeller's Standard Oil controlled 91% of US refining before the 1911 breakup. AT&T held a telephone monopoly for over a century before the 1984 consent decree. Google captured 90%+ of search before the 2024 ruling. In each case, the monopolist's dominance was obvious years before enforcement began, and the legal process consumed another decade. The pattern is structural: monopolists generate economic dependencies that make regulators hesitant, fund lobbying that delays action, and use the slow pace of litigation to entrench further. By the time remedies arrive, the monopolist has often already shifted to the next market -- AT&T into wireless, Google into AI, NVIDIA from gaming GPUs to AI infrastructure.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Rockefeller, [round4] AT&T MFJ, [round4]/[round5] DOJ v Google, and [people] Jensen Huang across a single structural pattern"
+    },
+    {
+      "source_text": "Whistleblower outcomes across sectors -- Ellsberg, Snowden, Haugen, Gebru, Zatko, and what protection actually delivers",
+      "source_lang": "en",
+      "target_text": "Daniel Ellsberg leaked the Pentagon Papers in 1971 and faced Espionage Act charges that were dismissed due to government misconduct. Edward Snowden's 2013 NSA disclosures forced him into permanent exile in Russia. Frances Haugen's 2021 Facebook Papers led to Congressional hearings but no legislation. Timnit Gebru's 2020 firing from Google for AI ethics research demonstrated that internal dissent is punished even without leaking classified material. Mudge Zatko's 2022 Twitter complaints triggered SEC scrutiny but no personal vindication. The Harvard NIH whistleblower in 2026 shows the pattern continuing in academia. Across government, tech, and academia, whistleblower protection laws remain far weaker in practice than on paper, and the personal cost -- career destruction, legal battles, exile -- remains the primary deterrent to accountability.",
+      "target_lang": "en",
+      "reason": "Bridges [people] whistleblower profiles with [round5] Harvard whistleblower case and [people] protection law analysis"
+    },
+    {
+      "source_text": "How Nader's consumer protection movement connects to modern right-to-repair and data portability",
+      "source_lang": "en",
+      "target_text": "Ralph Nader's 1965 'Unsafe at Any Speed' established the principle that manufacturers owe safety obligations to consumers, not just shareholders. This principle threads directly through to modern right-to-repair: John Deere's software-locked tractors and Apple's parts-pairing practices represent the same manufacturer-consumer power asymmetry Nader fought, updated for the digital age. The historical chain from anti-scrip laws (banning company stores that trapped workers in closed ecosystems) to digital data portability follows the same logic -- users should not be locked into systems that extract value while denying autonomy. The FTC-Deere consent decree of 2026 is a direct institutional descendant of the consumer protection apparatus Nader helped build in the 1960s and 1970s.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Nader with [round4] right-to-repair, [round4] anti-scrip/data portability, and [round5] FTC-Deere decree"
+    },
+    {
+      "source_text": "The philanthropy-as-reputation-laundering pattern -- Rockefeller, Sackler, Zuckerberg, and the playbook that persists",
+      "source_lang": "en",
+      "target_text": "John D. Rockefeller pioneered the template: amass monopoly wealth through ruthless competition, then rehabilitate the family name through philanthropic foundations. The Sackler family followed the same playbook a century later, using museum donations and university endowments to launder a fortune built on the opioid epidemic that killed hundreds of thousands. Mark Zuckerberg's Chan Zuckerberg Initiative operates in the same tradition -- philanthropic spending that does not meaningfully constrain the business practices that generated the wealth. The pattern reveals that philanthropy without accountability functions as a reputation subsidy, allowing the donor to set the narrative while the structural harms continue. Smith's Theory of Moral Sentiments actually anticipated this: he warned that the rich mistake the admiration their wealth commands for genuine moral approval.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Rockefeller, [people] Sackler, [people] Zuckerberg, and [historical] Smith's Moral Sentiments"
+    },
+    {
+      "source_text": "Corporate NDAs as power tools -- from Purdue Pharma's opioid coverup to Google's AI ethics firings",
+      "source_lang": "en",
+      "target_text": "Non-disparagement agreements and NDAs serve a dual function: they protect legitimate trade secrets, and they silence employees who witness wrongdoing. Purdue Pharma used confidentiality agreements to prevent sales representatives from disclosing what they knew about OxyContin's addiction risks. Google's non-disparagement clauses had a chilling effect on AI researchers like Gebru and Mitchell who might otherwise have spoken about bias in large language models. Twitter's NDAs complicated Mudge Zatko's ability to disclose security vulnerabilities. The pattern is consistent across pharma, tech, and finance: the same legal instruments that protect proprietary information are weaponized to prevent accountability. The Harvard whistleblower case in 2026 shows this extends to academia, where grant-funded researchers face similar contractual constraints on disclosure.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Sackler/Purdue, [people] NDA chilling effects, [people] Gebru/Mitchell/Zatko, and [round5] Harvard whistleblower"
+    },
+    {
+      "source_text": "Adam Smith's actual warnings about monopoly power and their direct relevance to the DOJ v. Google rulings",
+      "source_lang": "en",
+      "target_text": "Adam Smith is routinely invoked to defend free markets against government intervention, but Smith himself wrote extensively against monopoly power. In the Wealth of Nations, he warned that merchants 'seldom meet together, even for merriment and diversion, but the conversation ends in a conspiracy against the public.' He opposed the East India Company's monopoly and argued that concentrated economic power distorts markets as surely as government overreach. The DOJ's 2024 finding that Google maintained an illegal search monopoly through exclusive default agreements with Apple and device manufacturers is precisely the kind of market manipulation Smith warned about. The selective reading of Smith -- stripping out his anti-monopoly arguments to leave only the 'invisible hand' -- has served to delay the very antitrust enforcement he would have supported.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] Smith's actual writings and selective reading with [round4]/[round5] Google antitrust rulings"
+    },
+    {
+      "source_text": "The infrastructure monopolist archetype -- from Robert Moses to John Deere to NVIDIA's GPU chokepoint",
+      "source_lang": "en",
+      "target_text": "Robert Caro's 'The Power Broker' documented how Robert Moses controlled New York's infrastructure for decades without electoral accountability, using authority over roads and bridges to shape the physical and social fabric of the city. The same archetype recurs in different forms: John Deere's software-locked tractors give the company monopoly control over agricultural repair infrastructure, and NVIDIA's dominance of AI-capable GPUs creates a chokepoint that shapes who can build and deploy artificial intelligence. In each case, the monopolist controls not a consumer product but the infrastructure layer beneath it -- transportation, food production, computation. Infrastructure monopolies are harder to challenge than consumer monopolies because switching costs are existential, not merely inconvenient. The CHIPS Act's attempt to diversify semiconductor production is a rare example of proactive infrastructure policy, though its delays show how difficult it is to execute.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Robert Caro/Power Broker, [round4] John Deere, [people] NVIDIA/Jensen Huang, and [round5] CHIPS Act"
+    },
+    {
+      "source_text": "How selective reading of philosophers enables monopoly apologetics -- Smith's invisible hand deployed to block antitrust",
+      "source_lang": "en",
+      "target_text": "The selective recruitment of dead thinkers for modern political arguments has real policy consequences. Adam Smith's 'invisible hand' metaphor -- which appears exactly once in the Wealth of Nations and once in the Theory of Moral Sentiments -- has been inflated into a comprehensive anti-regulation philosophy that Smith himself would not recognize. John Locke's natural rights framework, originally grounded in labor theory and common property, gets deployed to defend intellectual property regimes that lock farmers out of their own tractors. The EU and US approach AI governance from different philosophical traditions -- the EU's precautionary principle versus the US innovation-first stance -- but both selectively cite Enlightenment thinkers to justify their positions. The canon problem matters because whose ideas survive and in what form directly shapes which regulatory frameworks seem legitimate.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] selective reading and canon problem with [round4] EU vs US AI governance and right-to-repair"
+    },
+    {
+      "source_text": "The FTC's consent decree model -- from AT&T 1984 to Deere 2026, and why structural remedies keep losing to behavioral ones",
+      "source_lang": "en",
+      "target_text": "The AT&T Modified Final Judgment of 1984 was the last major structural antitrust remedy in the US -- an actual breakup of a monopoly into competing entities. Since then, the enforcement model has shifted decisively toward behavioral remedies and consent decrees. The DOJ v. Google case exemplifies this: the court rejected Chrome divestiture in favor of behavioral constraints that Google is already appealing. The FTC-Deere 10-year consent decree follows the same pattern -- mandating repair access rather than breaking the parts-pairing business model. The FTC's $2.5B Amazon Prime settlement and the Meta antitrust loss further demonstrate that regulators lack either the appetite or the legal tools for structural intervention. The result is a cycle where consent decrees expire, the monopolist's behavior reverts, and enforcement begins again from scratch -- AT&T reconsolidated into the new AT&T, and Google's behavioral remedies may prove similarly temporary.",
+      "target_lang": "en",
+      "reason": "Bridges [round4] AT&T MFJ with [round5] Google remedies, FTC-Deere decree, Amazon settlement, and Meta case"
+    },
+    {
+      "source_text": "Export controls as the new antitrust -- how NVIDIA's chip restrictions echo historical resource chokepoint politics",
+      "source_lang": "en",
+      "target_text": "NVIDIA's AI chip export controls represent a novel intersection of antitrust and geopolitics. Where Standard Oil controlled oil refining and AT&T controlled telephony, NVIDIA controls the computational substrate of artificial intelligence -- and the US government has made that chokepoint a tool of foreign policy through export restrictions on advanced GPUs to China. This transforms a private monopoly into a state-directed one, with geopolitical rather than market consequences. The CHIPS Act attempts to diversify the supply chain, but its funding delays and political renegotiation show the difficulty of building alternative infrastructure once a chokepoint is entrenched. Parts pairing in tractors and software-locking in consumer electronics are domestic analogs of the same pattern: controlling the supply of essential components to control the downstream market.",
+      "target_lang": "en",
+      "reason": "Bridges [people] NVIDIA export controls, [round5] CHIPS Act, [round4] parts pairing, and [people] Rockefeller/Standard Oil as historical precedent"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "John D. Rockefeller — Standard Oil monopolist and architect of modern philanthropy",
+      "to_source": "What were the DOJ v. Google antitrust rulings and remedies (2024-2025)?",
+      "kind": "refines",
+      "reason": "Rockefeller's Standard Oil monopoly (91% of refining, broken up in 1911) is the direct historical precedent for the DOJ's finding that Google maintained an illegal search monopoly through exclusive default agreements -- same pattern of market dominance through control of distribution channels, separated by 113 years"
+    },
+    {
+      "from_source": "What were the terms of the AT&T Modified Final Judgment (1984) and what changed?",
+      "to_source": "DOJ v Google: Behavioral Remedies Imposed, Chrome Divestiture Rejected",
+      "kind": "refines",
+      "reason": "The AT&T breakup was the last structural antitrust remedy in the US; the Google case's rejection of Chrome divestiture in favor of behavioral remedies marks the definitive shift away from the AT&T model, making the comparison essential to understanding why modern antitrust enforcement is weaker"
+    },
+    {
+      "from_source": "Frances Haugen — Facebook Papers and Congressional testimony",
+      "to_source": "Harvard whistleblower lawsuit over $275M in NIH grants allowed to proceed (June 2026)",
+      "kind": "refines",
+      "reason": "Haugen's experience -- Congressional attention without legislative follow-through -- established the template that the Harvard whistleblower case now tests in academia: whether institutional whistleblowing produces accountability or merely theater, across the tech-to-academic divide"
+    },
+    {
+      "from_source": "Ralph Nader — consumer protection pioneer and auto safety crusader",
+      "to_source": "John Deere right-to-repair settlements 2026",
+      "kind": "refines",
+      "reason": "Nader's 1960s fight against auto manufacturers who prioritized profit over consumer safety created the regulatory infrastructure (FTC consumer protection authority) that now enforces right-to-repair against John Deere -- a direct institutional lineage from auto safety to agricultural equipment repair access"
+    },
+    {
+      "from_source": "John Locke -- natural rights, social contract, and his involvement in colonial trade and slavery",
+      "to_source": "What is the historical chain from anti-scrip to digital data portability?",
+      "kind": "refines",
+      "reason": "Locke's labor theory of property -- that people own what they mix their labor with -- provides the philosophical foundation for the anti-scrip to data portability chain: if workers' labor creates value, they should not be trapped in closed company ecosystems, whether company stores or digital platforms"
+    },
+    {
+      "from_source": "Corporate retaliation patterns — NDAs, legal threats, and reputation destruction",
+      "to_source": "FTC Loses Meta Antitrust Case; Appeals in January 2026",
+      "kind": "refines",
+      "reason": "Corporate retaliation against whistleblowers and critics is the individual-level expression of the same power that lets Meta successfully defend against FTC antitrust action at the institutional level -- companies with enough resources to destroy individual careers can also outlast regulatory enforcement"
+    },
+    {
+      "from_source": "Timnit Gebru — fired from Google over AI ethics research, founder of DAIR Institute",
+      "to_source": "NIST AI RMF adoption and agentic-AI-specific guidance",
+      "kind": "refines",
+      "reason": "Gebru's firing demonstrated that internal AI ethics review is insufficient when it conflicts with business priorities; NIST AI RMF adoption represents the external governance framework that Gebru's case proved necessary -- you cannot rely on companies to regulate themselves on AI bias and safety"
+    },
+    {
+      "from_source": "Non-disparagement agreements -- their chilling effect on AI whistleblowers",
+      "to_source": "Harvard whistleblower lawsuit over $275M in NIH grants allowed to proceed (June 2026)",
+      "kind": "refines",
+      "reason": "The chilling effect of NDAs on tech AI whistleblowers extends to academia through analogous contractual mechanisms -- grant agreements, employment contracts, and institutional non-disclosure requirements that constrain researchers from disclosing misconduct in federally funded research"
+    },
+    {
+      "from_source": "Adam Smith -- Wealth of Nations, the invisible hand, and what Smith actually said versus how he has been cherry-picked",
+      "to_source": "Google antitrust remedies -- the search monopoly ruling and its consequences",
+      "kind": "contradicts",
+      "reason": "Smith is routinely cited to argue against antitrust intervention, but Smith explicitly warned against the kind of market manipulation Google employed -- exclusive dealing agreements that foreclose competition are precisely what Smith opposed when he criticized merchants conspiring against the public"
+    },
+    {
+      "from_source": "How dead thinkers get recruited -- selective reading of Smith, Marx, and Locke for modern political arguments",
+      "to_source": "EU vs US AI governance — structural comparison",
+      "kind": "refines",
+      "reason": "The EU and US AI governance divide reflects different selective readings of Enlightenment philosophy -- the EU's precautionary approach draws on continental traditions of state responsibility, while the US innovation-first stance recruits Smith's free-market arguments while ignoring his anti-monopoly positions"
+    },
+    {
+      "from_source": "Regulatory gaps that enabled major tech and crypto failures",
+      "to_source": "Amazon Antitrust Trial Pushed to 2027; FTC Secures $2.5B Prime Settlement",
+      "kind": "refines",
+      "reason": "The same regulatory gaps that enabled crypto collapses (FTX, Terra/Luna) are visible in the Amazon antitrust case: the FTC secured a monetary settlement rather than structural change, and the trial delay to 2027 demonstrates how regulatory gaps widen when enforcement cannot keep pace with market power"
+    },
+    {
+      "from_source": "Geoffrey Hinton — deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "to_source": "Agent-specific AI governance frameworks by jurisdiction",
+      "kind": "refines",
+      "reason": "Hinton's decision to leave Google in 2023 to speak freely about AI existential risks gave institutional credibility to the demand for AI governance frameworks -- his Nobel-laureate status made it harder to dismiss safety concerns as Luddism, directly accelerating the policy momentum behind agent-specific governance"
+    },
+    {
+      "from_source": "Parts pairing and software-locked repairs — cross-sector pattern",
+      "to_source": "NVIDIA's AI chip export controls and geopolitical entanglement",
+      "kind": "refines",
+      "reason": "Parts pairing locks consumers into manufacturer-controlled repair ecosystems; NVIDIA's export controls lock entire nations out of AI-capable computing. Both are chokepoint strategies where controlling component supply controls the downstream market, differing in scale (consumer vs. geopolitical) but identical in mechanism"
+    },
+    {
+      "from_source": "Meredith Whittaker -- Signal president, AI Now Institute co-founder, Google walkout organizer",
+      "to_source": "The canon problem -- whose philosophical ideas were preserved and whose were erased",
+      "kind": "refines",
+      "reason": "Whittaker's career trajectory -- from Google walkout organizer to AI Now co-founder to Signal president -- embodies a modern version of the canon problem: whose critique of power gets institutional support and preservation versus whose gets marginalized, fired, or forced out of the institutions they challenge"
+    },
+    {
+      "from_source": "Hospital mergers accelerate at record pace amid financial distress",
+      "to_source": "Modern mega-project failures — cost overruns, delays, and accountability gaps",
+      "kind": "refines",
+      "reason": "Accelerating hospital mergers during financial distress follow the same accountability gap as mega-project failures: concentrated decision-making by executives who bear no personal cost for consolidation that reduces patient choice, exactly as mega-project planners face no consequences for cost overruns that burden taxpayers"
+    },
+    {
+      "from_source": "Media hype cycles as enablers of tech fraud",
+      "to_source": "CHIPS Act funding awarded but faces delays and political renegotiation",
+      "kind": "refines",
+      "reason": "Media hype around AI and semiconductor competition drove bipartisan support for the CHIPS Act, but the same hype cycle that enabled funding now complicates execution -- political renegotiation reflects shifting media narratives about whether the investment will pay off, mirroring how hype enabled tech fraud before enabling industrial policy"
+    },
+    {
+      "from_source": "Mark Zuckerberg -- Meta CEO, metaverse bet, AI pivot, privacy record, and Llama open-source",
+      "to_source": "FTC Loses Meta Antitrust Case; Appeals in January 2026",
+      "kind": "refines",
+      "reason": "Zuckerberg's serial pivots -- social media to metaverse to AI to open-source Llama -- demonstrate how platform monopolists outmaneuver antitrust by redefining the relevant market faster than regulators can litigate, directly explaining why the FTC's case built on 2012-2014 acquisitions could not survive 2025-2026 market definitions"
+    },
+    {
+      "from_source": "Robert Caro's 'The Power Broker' — how one book changed the understanding of infrastructure and power",
+      "to_source": "DOJ v Google: Behavioral Remedies Imposed, Chrome Divestiture Rejected",
+      "kind": "refines",
+      "reason": "Caro showed that Robert Moses wielded unaccountable power through infrastructure control without holding elected office; Google's behavioral remedies without structural divestiture preserve the same dynamic -- control over search infrastructure without the accountability that a breakup would impose through market competition"
+    },
+    {
+      "from_source": "Adam Smith's Theory of Moral Sentiments -- the forgotten half of Smith's intellectual project",
+      "to_source": "The Sackler family — Purdue Pharma, OxyContin, and the opioid epidemic they fueled",
+      "kind": "refines",
+      "reason": "Smith's Theory of Moral Sentiments warned that the rich mistake the admiration their wealth commands for genuine moral approval; the Sackler family's philanthropy -- museum wings and university endowments funded by opioid profits -- is a precise illustration of Smith's point that wealth generates a false sense of moral standing that obscures real harm"
+    },
+    {
+      "from_source": "Daniel Ellsberg — Pentagon Papers and the precedent for government whistleblowing",
+      "to_source": "FTC-Deere 10-Year Consent Decree (July 2026)",
+      "kind": "refines",
+      "reason": "Ellsberg's Pentagon Papers case established that transparency can force institutional accountability even against powerful interests; the FTC-Deere consent decree represents the corporate analog -- forcing transparency in repair markets -- but uses regulatory leverage rather than whistleblower disclosure, showing how the accountability mechanism has shifted from individual courage to institutional enforcement"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "The recurring monopoly cycle -- Standard Oil to AT&T to Google, and why antitrust enforcement always arrives a decade late",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Standard_Oil_Co._of_New_Jersey_v._United_States",
+      "reason": "1911 Supreme Court decision breaking up Standard Oil after a decade of litigation, establishing the pattern of delayed antitrust enforcement"
+    },
+    {
+      "pair_source": "Whistleblower outcomes across sectors -- Ellsberg, Snowden, Haugen, Gebru, Zatko, and what protection actually delivers",
+      "kind": "url",
+      "locator": "https://www.govinfo.gov/content/pkg/PLAW-112publ199/html/PLAW-112publ199.htm",
+      "reason": "Whistleblower Protection Enhancement Act of 2012, the primary federal framework whose gaps the connector pair documents"
+    },
+    {
+      "pair_source": "How Nader's consumer protection movement connects to modern right-to-repair and data portability",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Unsafe_at_Any_Speed",
+      "reason": "Nader's 1965 book that launched the consumer protection movement and led to the National Traffic and Motor Vehicle Safety Act"
+    },
+    {
+      "pair_source": "The philanthropy-as-reputation-laundering pattern -- Rockefeller, Sackler, Zuckerberg, and the playbook that persists",
+      "kind": "url",
+      "locator": "https://www.newyorker.com/news/news-desk/the-sackler-family-and-the-art-of-reputation-laundering",
+      "reason": "New Yorker investigation documenting how Sackler philanthropy functioned as reputation management while Purdue Pharma fueled the opioid crisis"
+    },
+    {
+      "pair_source": "Corporate NDAs as power tools -- from Purdue Pharma's opioid coverup to Google's AI ethics firings",
+      "kind": "url",
+      "locator": "https://www.washingtonpost.com/technology/2023/03/30/tech-nda-whistleblower-impact/",
+      "reason": "Washington Post reporting on how NDAs and non-disparagement agreements in tech companies suppress internal accountability"
+    },
+    {
+      "pair_source": "Adam Smith's actual warnings about monopoly power and their direct relevance to the DOJ v. Google rulings",
+      "kind": "url",
+      "locator": "https://www.econlib.org/library/Smith/smWN.html",
+      "reason": "Full text of Wealth of Nations including Book I Chapter X on monopoly and Book IV on mercantile restrictions, containing Smith's anti-monopoly arguments"
+    },
+    {
+      "pair_source": "The infrastructure monopolist archetype -- from Robert Moses to John Deere to NVIDIA's GPU chokepoint",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/The_Power_Broker",
+      "reason": "Robert Caro's Pulitzer Prize-winning biography documenting how Robert Moses wielded unaccountable infrastructure power for decades"
+    },
+    {
+      "pair_source": "How selective reading of philosophers enables monopoly apologetics -- Smith's invisible hand deployed to block antitrust",
+      "kind": "url",
+      "locator": "https://www.theatlantic.com/business/archive/2014/04/adam-smiths-invisible-hand-was-an-afterthought/361017/",
+      "reason": "Analysis of how the invisible hand metaphor was inflated from a minor passage into a comprehensive market ideology Smith never intended"
+    },
+    {
+      "pair_source": "The FTC's consent decree model -- from AT&T 1984 to Deere 2026, and why structural remedies keep losing to behavioral ones",
+      "kind": "url",
+      "locator": "https://www.justice.gov/atr/case-document/modification-final-judgment",
+      "reason": "DOJ records of the AT&T Modified Final Judgment, the last major structural antitrust remedy in the US"
+    },
+    {
+      "pair_source": "Export controls as the new antitrust -- how NVIDIA's chip restrictions echo historical resource chokepoint politics",
+      "kind": "url",
+      "locator": "https://www.bis.doc.gov/index.php/policy-guidance/advanced-computing",
+      "reason": "Bureau of Industry and Security documentation of advanced computing export controls that transformed NVIDIA's market dominance into a geopolitical instrument"
+    }
+  ]
+}

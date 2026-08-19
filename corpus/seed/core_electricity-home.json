@@ -1,0 +1,203 @@
+{
+  "domain": "core-electricity-home",
+  "pairs": [
+    {
+      "source_text": "How does electricity actually get from a power plant to my house?",
+      "source_lang": "en",
+      "target_text": "A power plant generates electricity by spinning a turbine (using steam, water, or wind), which turns a generator to produce alternating current. That electricity travels at extremely high voltage (hundreds of thousands of volts) along transmission lines to minimize energy loss over long distances. Near your neighborhood, a transformer on a utility pole or in a green ground-level box steps the voltage down to 120/240 volts. From there it passes through a meter that measures your usage and into your breaker panel, which distributes it to every circuit in your home.",
+      "target_lang": "en",
+      "reason": "Understanding the electrical supply chain is foundational to knowing why power outages happen and how your home connects to the grid"
+    },
+    {
+      "source_text": "What does a circuit breaker do, and why does it trip?",
+      "source_lang": "en",
+      "target_text": "A circuit breaker is an automatic safety switch that cuts power to a circuit when too much current flows through it. Inside the breaker, either a bimetallic strip bends from heat or an electromagnet trips a latch when current exceeds a safe level (typically 15 or 20 amps for household circuits). This prevents wires in your walls from overheating and starting a fire. Unlike an old-fashioned fuse, which melts and must be replaced, a circuit breaker can simply be reset by flipping it back to the 'on' position after you remove whatever caused the overload.",
+      "target_lang": "en",
+      "reason": "Circuit breakers are the primary fire-safety mechanism in residential wiring and everyone encounters tripped breakers"
+    },
+    {
+      "source_text": "Why do electrical outlets have three holes instead of just two?",
+      "source_lang": "en",
+      "target_text": "The three holes in a standard outlet are for the hot wire (the smaller slot, which carries current from the panel), the neutral wire (the larger slot, which carries current back to complete the circuit), and the ground wire (the round hole at the bottom). The ground wire is a safety backup: if a fault causes the metal case of an appliance to become electrified, the ground wire gives that stray current a direct path back to the panel, tripping the breaker immediately instead of waiting for the current to flow through your body. Without grounding, touching a faulty appliance could deliver a lethal shock.",
+      "target_lang": "en",
+      "reason": "Grounding is a critical safety concept that explains outlet design and prevents electrocution"
+    },
+    {
+      "source_text": "What actually happens when I flip a light switch?",
+      "source_lang": "en",
+      "target_text": "A light switch is a mechanical gate in the circuit: when you flip it on, a metal contact inside the switch closes the gap in the hot wire, completing the circuit so current can flow through the light fixture and back via the neutral wire. The light appears to turn on instantly because electrical signals travel at nearly the speed of light through the wire (though the electrons themselves drift slowly). A standard single-pole switch controls a light from one location by breaking one wire, while a three-way switch setup uses two switches with a pair of 'traveler' wires between them, so either switch can complete or break the circuit independently.",
+      "target_lang": "en",
+      "reason": "The light switch is the most basic human interaction with an electrical circuit and illustrates how circuits work"
+    },
+    {
+      "source_text": "How does a toilet flush work?",
+      "source_lang": "en",
+      "target_text": "When you press the handle, a chain lifts a rubber flapper at the bottom of the tank, releasing several gallons of water into the bowl at once. This sudden rush of water pushes the bowl's contents up and over a curved passage called the trapway, which triggers a siphon effect: once water fills the curved pipe completely, suction pulls everything in the bowl down and through to the drainpipe. When the tank empties, the flapper falls shut and a fill valve opens to refill both the tank and the bowl to their resting levels, stopping automatically when a float rises to a set height.",
+      "target_lang": "en",
+      "reason": "The toilet is used many times daily and its siphon mechanism is an elegant example of applied physics in the home"
+    },
+    {
+      "source_text": "How does clean water get to my faucet when I turn it on?",
+      "source_lang": "en",
+      "target_text": "Water is drawn from a source like a river, lake, or underground aquifer and sent to a treatment plant, where it is filtered and disinfected (usually with chlorine or UV light) to make it safe to drink. The treated water is then pumped into a network of underground mains; many systems use elevated water towers so that gravity alone provides steady pressure throughout the neighborhood, typically around 40-60 psi. When you open a faucet, that pressure pushes water through the main, into your home's supply pipe, and out the tap. The faucet valve simply blocks or unblocks the pipe opening.",
+      "target_lang": "en",
+      "reason": "Clean pressurized water on demand is a cornerstone of modern sanitation and health"
+    },
+    {
+      "source_text": "How does a water heater heat the water in my house?",
+      "source_lang": "en",
+      "target_text": "A traditional tank water heater stores 30-80 gallons of water and keeps it hot around the clock using a gas burner at the bottom or electric heating elements inside the tank, controlled by a thermostat (usually set around 120 degrees Fahrenheit). Inside the tank, a sacrificial anode rod made of magnesium or aluminum slowly corrodes instead of the steel tank, preventing rust and extending the heater's life. A tankless (on-demand) water heater takes a different approach: it has no storage tank and instead fires a powerful burner or electric element only when water flows through it, heating water instantly as it passes through a heat exchanger.",
+      "target_lang": "en",
+      "reason": "Hot water is a basic modern comfort and understanding water heaters helps with maintenance and energy decisions"
+    },
+    {
+      "source_text": "How does a refrigerator keep food cold?",
+      "source_lang": "en",
+      "target_text": "A refrigerator does not create cold; it moves heat out of the insulated box and dumps it into your kitchen. It does this using a refrigerant, a fluid that boils at a very low temperature. A compressor squeezes the refrigerant gas into a high-pressure state, then sends it through condenser coils on the back or bottom of the fridge where it releases heat and condenses into a liquid. That liquid is then forced through a tiny expansion valve, which drops its pressure so it evaporates inside coils in the fridge compartment, absorbing heat from the food. The cycle repeats continuously, driven by the compressor.",
+      "target_lang": "en",
+      "reason": "Refrigeration is one of the most impactful household technologies and the vapor-compression cycle underlies both fridges and AC"
+    },
+    {
+      "source_text": "How does an air conditioner cool my house?",
+      "source_lang": "en",
+      "target_text": "An air conditioner works on the exact same principle as a refrigerator, but instead of cooling a small insulated box, it cools an entire room or house. The indoor unit contains an evaporator coil where liquid refrigerant absorbs heat from your indoor air and evaporates into a gas, while a fan blows the now-cooled air back into the room. The gaseous refrigerant is pumped outside to the condenser unit, where a compressor pressurizes it and condenser coils release the collected heat into the outdoor air. The cooled, re-liquefied refrigerant cycles back inside to repeat the process.",
+      "target_lang": "en",
+      "reason": "Air conditioning is essential in much of the world and understanding it as a heat pump demystifies both cooling and heating systems"
+    },
+    {
+      "source_text": "How does a smoke detector know there's a fire, and why does it chirp when the battery is low?",
+      "source_lang": "en",
+      "target_text": "There are two common types. An ionization smoke detector contains a tiny amount of radioactive material that ionizes the air between two charged plates, creating a small steady current; when smoke particles enter the chamber they disrupt this current, triggering the alarm. A photoelectric detector shines a light beam inside a sensing chamber, and when smoke particles scatter that light onto a sensor, it triggers the alarm. Ionization detectors respond faster to fast-flaming fires, while photoelectric ones are better at detecting slow, smoldering fires. The low-battery chirp is a separate circuit that monitors voltage and emits a brief beep every 30-60 seconds when the battery drops below a threshold, giving you warning before the detector goes dead.",
+      "target_lang": "en",
+      "reason": "Smoke detectors are the most common life-safety device in a home and understanding them helps people maintain them properly"
+    },
+    {
+      "source_text": "How does Wi-Fi work inside my house?",
+      "source_lang": "en",
+      "target_text": "Your Wi-Fi router is a small radio transmitter and receiver that sends data as radio waves, typically on two frequency bands: 2.4 GHz (which travels farther and penetrates walls better but is slower and more crowded) and 5 GHz (which is faster but has a shorter range and is more easily blocked by walls). Your phone or laptop has its own radio antenna that communicates back and forth with the router, encoding data into rapid patterns of radio wave modulation. Thick walls, metal surfaces, and even water (including fish tanks and your own body) absorb or reflect these radio waves, which is why signal strength drops as you move farther from the router or put walls between you and it.",
+      "target_lang": "en",
+      "reason": "Wi-Fi is the invisible infrastructure of modern home life and understanding radio propagation explains everyday connectivity frustrations"
+    },
+    {
+      "source_text": "How does a garbage disposal work if it doesn't have blades?",
+      "source_lang": "en",
+      "target_text": "Despite what most people assume, a garbage disposal does not have sharp blades. Instead, it has a spinning metal plate (called a flywheel) with small metal lugs or impellers attached to it. When you turn the disposal on, an electric motor spins this plate at around 2,000 RPM, and the impellers fling food waste outward against a stationary grind ring, a textured metal ring around the edge of the chamber. The food is shredded into tiny particles by the force of being smashed against this ring, and then water washes the particles down the drain. This design is actually safer than blades and is less likely to jam on hard objects.",
+      "target_lang": "en",
+      "reason": "The garbage disposal is a commonly misunderstood appliance and correcting the blade myth is a useful piece of practical knowledge"
+    },
+    {
+      "source_text": "How does a doorbell ring when I press the button?",
+      "source_lang": "en",
+      "target_text": "A traditional wired doorbell uses an electromagnet. When you press the button, you complete a low-voltage circuit (usually 16-24 volts, stepped down by a small transformer). Current flows through a coil of wire, creating a magnetic field that pulls a metal striker arm against a tone bar or bell, producing the 'ding.' When you release the button, a spring pulls the striker back, often hitting a second tone bar for the 'dong.' The system is intentionally low-voltage so the wires are safe to run through walls without heavy insulation, and pressing the exposed button outdoors poses no shock risk.",
+      "target_lang": "en",
+      "reason": "The doorbell is an elegant minimal example of electromagnetism applied in everyday life"
+    },
+    {
+      "source_text": "Why do water pipes freeze and burst in winter?",
+      "source_lang": "en",
+      "target_text": "Water is unusual among common substances because it expands by about 9% when it freezes. When water inside a pipe freezes, the expanding ice does not directly burst the pipe at the ice plug itself. Instead, the ice blockage traps liquid water between it and a closed faucet, and as more ice forms the pressure on that trapped water increases enormously with nowhere to go, eventually splitting the pipe wall. This is why pipes in unheated exterior walls, crawl spaces, and garages are most vulnerable, and why letting a faucet drip during extreme cold helps: the open faucet relieves the pressure buildup so even if ice forms, the pipe is far less likely to burst.",
+      "target_lang": "en",
+      "reason": "Frozen pipes cause billions of dollars in damage annually and understanding the pressure mechanism explains prevention strategies"
+    },
+    {
+      "source_text": "What is a GFCI outlet and why are they in my bathroom and kitchen?",
+      "source_lang": "en",
+      "target_text": "A GFCI (Ground Fault Circuit Interrupter) outlet constantly monitors the current flowing out on the hot wire and returning on the neutral wire. If it detects even a tiny difference (as little as 4-5 milliamps), it means current is leaking somewhere it should not be, possibly through a person who touched a live wire or dropped an appliance in water. The GFCI trips in about 1/30th of a second, cutting power before the stray current can cause a fatal shock. Building codes require them wherever water and electricity are near each other: bathrooms, kitchens, garages, and outdoor outlets. The 'Test' and 'Reset' buttons on the outlet face let you verify the device is working.",
+      "target_lang": "en",
+      "reason": "GFCI outlets are a critical water-related electrical safety device that people see daily but rarely understand"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "How does electricity actually get from a power plant to my house?",
+      "kind": "url",
+      "locator": "https://www.eia.gov/energyexplained/electricity/delivery-to-consumers.php",
+      "reason": "U.S. Energy Information Administration reference for the electrical grid transmission and distribution system"
+    },
+    {
+      "pair_source": "What does a circuit breaker do, and why does it trip?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/energysaver/electrical-distribution-and-safety",
+      "reason": "Department of Energy explanation of residential circuit breakers and electrical safety"
+    },
+    {
+      "pair_source": "Why do electrical outlets have three holes instead of just two?",
+      "kind": "url",
+      "locator": "https://www.osha.gov/electrical/grounding",
+      "reason": "OSHA reference on electrical grounding and its role in shock prevention"
+    },
+    {
+      "pair_source": "What actually happens when I flip a light switch?",
+      "kind": "url",
+      "locator": "https://electronics.howstuffworks.com/light-switch.htm",
+      "reason": "HowStuffWorks walkthrough of single-pole and three-way switch operation"
+    },
+    {
+      "pair_source": "How does a toilet flush work?",
+      "kind": "url",
+      "locator": "https://home.howstuffworks.com/toilet.htm",
+      "reason": "HowStuffWorks detailed explanation of toilet siphon mechanism and refill cycle"
+    },
+    {
+      "pair_source": "How does clean water get to my faucet when I turn it on?",
+      "kind": "url",
+      "locator": "https://www.epa.gov/dwreginfo/information-about-public-water-systems",
+      "reason": "EPA overview of public water systems, treatment, and distribution"
+    },
+    {
+      "pair_source": "How does a water heater heat the water in my house?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/energysaver/water-heating",
+      "reason": "Department of Energy guide to tank and tankless water heater technologies"
+    },
+    {
+      "pair_source": "How does a refrigerator keep food cold?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/energysaver/refrigerator-and-freezer",
+      "reason": "Department of Energy explanation of the refrigeration vapor-compression cycle"
+    },
+    {
+      "pair_source": "How does an air conditioner cool my house?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/energysaver/central-air-conditioning",
+      "reason": "Department of Energy reference on how residential air conditioning systems operate"
+    },
+    {
+      "pair_source": "How does a smoke detector know there's a fire, and why does it chirp when the battery is low?",
+      "kind": "url",
+      "locator": "https://www.nfpa.org/education-and-research/home-safety/smoke-alarms",
+      "reason": "National Fire Protection Association guide to ionization and photoelectric smoke detector types"
+    },
+    {
+      "pair_source": "How does Wi-Fi work inside my house?",
+      "kind": "url",
+      "locator": "https://www.fcc.gov/consumers/guides/getting-broadband",
+      "reason": "FCC consumer guide covering Wi-Fi frequency bands and signal propagation basics"
+    },
+    {
+      "pair_source": "How does a garbage disposal work if it doesn't have blades?",
+      "kind": "url",
+      "locator": "https://home.howstuffworks.com/garbage-disposal.htm",
+      "reason": "HowStuffWorks explanation of garbage disposal impeller and grind ring mechanism"
+    },
+    {
+      "pair_source": "How does a doorbell ring when I press the button?",
+      "kind": "url",
+      "locator": "https://electronics.howstuffworks.com/doorbell.htm",
+      "reason": "HowStuffWorks walkthrough of electromagnetic doorbell striker mechanism"
+    },
+    {
+      "pair_source": "Why do water pipes freeze and burst in winter?",
+      "kind": "url",
+      "locator": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/winter-storm/frozen-pipes.html",
+      "reason": "American Red Cross explanation of pipe freezing mechanics and prevention"
+    },
+    {
+      "pair_source": "What is a GFCI outlet and why are they in my bathroom and kitchen?",
+      "kind": "url",
+      "locator": "https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/GFCI-Outlets",
+      "reason": "Consumer Product Safety Commission reference on GFCI function and building code requirements"
+    }
+  ]
+}

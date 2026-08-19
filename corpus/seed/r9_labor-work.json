@@ -1,0 +1,315 @@
+{
+  "domain": "labor-work-systems",
+  "pairs": [
+    {
+      "source_text": "The Fair Labor Standards Act of 1938 established the first federal minimum wage in the United States at $0.25 per hour",
+      "source_lang": "en",
+      "target_text": "Signed by President Franklin D. Roosevelt on June 25, 1938, the FLSA set a federal minimum wage of $0.25 per hour, established a 44-hour maximum workweek (later reduced to 40 hours in 1940), and banned most child labor in interstate commerce. The law initially covered about 20% of the workforce, excluding agricultural, domestic, and retail workers. By 2024, the federal minimum wage stood at $7.25 per hour (unchanged since July 2009), though 30 states and numerous cities had enacted higher local minimums. Adjusted for inflation, the 1968 minimum wage of $1.60 would equal roughly $13.50 in 2023 dollars, meaning the real value of the federal minimum has declined substantially over decades.",
+      "target_lang": "en",
+      "reason": "The FLSA remains the foundational US labor law, and the stagnation of the federal minimum wage is a central issue in contemporary wage policy debates"
+    },
+    {
+      "source_text": "The Triangle Shirtwaist Factory fire of 1911 killed 146 garment workers and catalyzed US workplace safety reform",
+      "source_lang": "en",
+      "target_text": "On March 25, 1911, a fire broke out at the Triangle Shirtwaist Factory in Manhattan's Greenwich Village, killing 146 workers — mostly young immigrant women, predominantly Italian and Jewish, aged 14 to 43. Many died jumping from the 8th, 9th, and 10th floors because exit doors had been locked by management to prevent unauthorized breaks and pilferage. The disaster led directly to the creation of the New York Factory Investigating Commission, chaired by Robert F. Wagner and Alfred E. Smith, which produced 36 new labor laws covering fire safety, factory inspection, and sanitation. The fire also energized the International Ladies' Garment Workers' Union (ILGWU) and is widely regarded as a turning point in US labor legislation.",
+      "target_lang": "en",
+      "reason": "The Triangle fire demonstrated how unregulated working conditions could be lethal and remains a touchstone for workplace safety advocacy worldwide"
+    },
+    {
+      "source_text": "The Rana Plaza building collapse in Bangladesh in 2013 killed 1,134 garment workers and exposed global supply chain failures",
+      "source_lang": "en",
+      "target_text": "On April 24, 2013, the eight-story Rana Plaza commercial building in Savar, near Dhaka, Bangladesh, collapsed, killing 1,134 people and injuring approximately 2,500 more. The building housed five garment factories supplying brands including Primark, Benetton, Walmart, and others. Workers had reported cracks in the building the day before but were ordered to return. The disaster was the deadliest garment-factory incident in history. In response, over 200 companies signed the legally binding Accord on Fire and Building Safety in Bangladesh (later the International Accord), which by 2023 had inspected over 1,600 factories and identified more than 150,000 safety hazards, of which over 90% were remediated. Bangladesh's garment sector employs roughly 4 million workers, about 80% of them women, and accounts for over 80% of the country's export earnings.",
+      "target_lang": "en",
+      "reason": "Rana Plaza made supply chain accountability a mainstream consumer and regulatory concern and led to the most significant binding international safety agreement in the garment industry"
+    },
+    {
+      "source_text": "California's AB5 law of 2019 attempted to reclassify gig workers as employees using the ABC test",
+      "source_lang": "en",
+      "target_text": "California Assembly Bill 5 (AB5), signed by Governor Gavin Newsom on September 18, 2019, codified the California Supreme Court's 2018 Dynamex decision, applying the ABC test to determine worker classification. Under this test, a worker is presumed an employee unless the hiring entity proves: (A) the worker is free from the company's control and direction, (B) the work is outside the company's usual business, and (C) the worker has an independently established trade or business. The law directly targeted companies like Uber, Lyft, DoorDash, and Instacart. In response, these companies spent over $200 million on Proposition 22 in November 2020 — the most expensive ballot measure in California history — which passed with 58.6% of the vote, exempting app-based ride-hail and delivery drivers from AB5. In August 2021, a California Superior Court judge ruled Proposition 22 unconstitutional, but a state appeals court reversed that ruling in March 2023, largely upholding the measure.",
+      "target_lang": "en",
+      "reason": "AB5 and Proposition 22 represent the most significant legal battleground over gig worker classification in the US, with implications for millions of platform workers nationwide"
+    },
+    {
+      "source_text": "The European Union adopted a Platform Work Directive in 2024 to establish a presumption of employment for gig workers",
+      "source_lang": "en",
+      "target_text": "On April 24, 2024, the Council of the European Union formally adopted the Platform Work Directive after years of negotiation. The directive creates a legal presumption of employment for platform workers when indicators of control are present (such as setting pay levels, restricting the ability to refuse work, or monitoring performance electronically), shifting the burden of proof to platforms to demonstrate that workers are genuinely self-employed. It also establishes the first EU rules on algorithmic management in the workplace, requiring platforms to inform workers about automated systems used to monitor, evaluate, or make decisions affecting them, and mandating human review of significant decisions. EU member states have two years to transpose the directive into national law. The European Commission estimated that up to 5.5 million of the EU's 28 million platform workers may be misclassified as self-employed.",
+      "target_lang": "en",
+      "reason": "The EU directive represents the most comprehensive regulatory framework for platform work globally and may set a template for jurisdictions worldwide"
+    },
+    {
+      "source_text": "The Luddite movement of 1811-1816 was a worker rebellion against labor-displacing textile machinery in England",
+      "source_lang": "en",
+      "target_text": "Beginning in March 1811 in Nottinghamshire, English textile workers calling themselves Luddites destroyed stocking frames, shearing frames, and power looms that they believed threatened their livelihoods. Named after the possibly mythical Ned Ludd, the movement spread to Yorkshire and Lancashire. Participants were not opposed to technology per se but to the use of machinery to circumvent established labor practices and depress wages. The British government deployed more troops against the Luddites than Wellington had taken to fight Napoleon in the Iberian Peninsula — at one point 14,000 soldiers were stationed in the affected counties. The Frame Breaking Act of 1812 made machine-breaking a capital offense, and 17 men were executed. The term 'Luddite' has since become shorthand for anti-technology sentiment, though historians like Eric Hobsbawm have reframed it as a rational form of collective bargaining by riot in the absence of legal union protections.",
+      "target_lang": "en",
+      "reason": "The Luddite movement is the foundational historical case study for understanding worker resistance to technological displacement, and its mischaracterization as simple technophobia distorts current automation debates"
+    },
+    {
+      "source_text": "McKinsey Global Institute estimated in 2017 that 400-800 million workers globally could be displaced by automation by 2030",
+      "source_lang": "en",
+      "target_text": "McKinsey's December 2017 report 'Jobs Lost, Jobs Gained: Workforce Transitions in a Time of Automation' estimated that between 400 million and 800 million individuals worldwide could be displaced by automation by 2030, with 75 million to 375 million needing to switch occupational categories and learn new skills. The report examined 46 countries and 800+ occupations, finding that activities most susceptible to automation include physical activities in predictable environments (81% automatable) and data processing (69% automatable). Following the rapid deployment of generative AI tools from 2022 onward, subsequent analyses (including Goldman Sachs in March 2023) estimated that generative AI could expose roughly 300 million full-time jobs globally to automation, with the new risk concentrated in white-collar and knowledge work rather than the manual labor previously expected to be most affected. The OECD noted in 2023 that 27% of jobs in OECD countries are in occupations at high risk of automation.",
+      "target_lang": "en",
+      "reason": "Automation displacement projections shape policy debates around education, retraining, and social safety nets, and the arrival of generative AI significantly altered which workers are most at risk"
+    },
+    {
+      "source_text": "Finland conducted a national Universal Basic Income experiment from 2017 to 2018 with 2,000 unemployed participants",
+      "source_lang": "en",
+      "target_text": "From January 2017 to December 2018, Finland's Social Insurance Institution (Kela) conducted the world's first government-sponsored, nationwide randomized controlled trial of UBI. The experiment provided 560 euros per month (tax-free, unconditional) to 2,000 randomly selected unemployed individuals aged 25-58, compared against a control group of roughly 173,000. Final results published in May 2020 showed that UBI recipients worked an average of 6 more days during the two-year period than the control group — a modest but positive employment effect. More strikingly, recipients reported significantly better well-being: higher life satisfaction (scoring 7.32 vs. 6.76 on a 0-10 scale), greater trust in institutions, and lower levels of stress, depression, and loneliness. Critics noted the experiment was limited to unemployed people (not a true universal program), the sample was small, and the payment level was close to existing unemployment benefits, limiting the study's generalizability.",
+      "target_lang": "en",
+      "reason": "The Finland experiment is the most methodologically rigorous national UBI trial to date and provides the best available evidence on UBI's effects on employment and well-being"
+    },
+    {
+      "source_text": "The Stockton Economic Empowerment Demonstration (SEED) gave 125 residents $500 per month from 2019 to 2021",
+      "source_lang": "en",
+      "target_text": "Launched in February 2019 by Mayor Michael Tubbs in Stockton, California, SEED was a privately funded guaranteed income pilot that provided $500 per month in unconditional cash to 125 randomly selected residents living in neighborhoods at or below the city's median household income of about $46,000. Researchers from the University of Pennsylvania and University of Tennessee tracked outcomes against a control group of 200 residents. Key findings published in 2021: full-time employment among recipients rose from 28% to 40% over the first year (versus 32% to 37% in the control group); recipients reported reduced income volatility and psychological distress; and spending went primarily to food (37%), home goods and clothing (22%), utilities (11%), and auto costs (10%), with less than 1% spent on alcohol or tobacco. The program inspired over 100 guaranteed income pilots across the United States by 2023, including programs in Los Angeles, Chicago, and Newark.",
+      "target_lang": "en",
+      "reason": "SEED demonstrated that unconditional cash payments can increase employment and well-being in an American context, challenging the assumption that direct cash transfers reduce work incentives"
+    },
+    {
+      "source_text": "The productivity-pay gap shows that US worker productivity rose 64.7% from 1979 to 2019 while hourly compensation grew only 17.5%",
+      "source_lang": "en",
+      "target_text": "According to the Economic Policy Institute's analysis of Bureau of Labor Statistics and Bureau of Economic Analysis data, net productivity in the United States grew 64.7% from 1979 to 2019 while inflation-adjusted hourly compensation for typical (median) workers rose only 17.5% over the same period — a divergence of roughly 47 percentage points. From 1948 to 1979, by contrast, productivity and hourly compensation grew nearly in lockstep (108.1% vs. 93.2%). The decoupling is attributed to multiple factors: the decline of union density (from about 27% in 1979 to 10.1% in 2023), the erosion of the minimum wage's real value, globalization and offshoring, the rise of shareholder primacy in corporate governance, and policy changes favoring capital over labor income. Some economists (notably at the Heritage Foundation and American Enterprise Institute) dispute the magnitude of the gap, arguing that using different price deflators and including non-wage benefits like healthcare narrows it considerably.",
+      "target_lang": "en",
+      "reason": "The productivity-pay gap is one of the most consequential economic trends of the past half-century and is central to debates over inequality, unionization, and minimum wage policy"
+    },
+    {
+      "source_text": "US CEO-to-worker compensation ratio rose from 21-to-1 in 1965 to 344-to-1 in 2022",
+      "source_lang": "en",
+      "target_text": "The Economic Policy Institute reported that CEO compensation at the top 350 US firms by revenue grew 1,209.2% from 1978 to 2022 (adjusted for inflation), compared with 15.3% growth in typical worker compensation over the same period. The CEO-to-worker pay ratio stood at approximately 21-to-1 in 1965, rose to 61-to-1 in 1989, peaked at 399-to-1 in 2000 during the dot-com bubble, and reached 344-to-1 in 2022. Realized CEO compensation (including exercised stock options) averaged $27.8 million in 2022. Internationally, CEO-to-worker ratios vary: in Japan the ratio is roughly 67-to-1, in Germany approximately 136-to-1, and in the UK about 201-to-1 (as of 2022 estimates from various sources). Critics of these calculations note that including stock-based compensation introduces volatility and that comparing a CEO of a Fortune 350 company to an average worker conflates different labor markets.",
+      "target_lang": "en",
+      "reason": "CEO-worker pay ratios are a widely cited measure of income inequality and feature prominently in proposals for executive compensation reform and progressive taxation"
+    },
+    {
+      "source_text": "The COVID-19 pandemic triggered the largest remote work shift in history, with 35% of US workers working from home full-time by May 2020",
+      "source_lang": "en",
+      "target_text": "According to the Bureau of Labor Statistics and Gallup surveys, the share of US workers performing their jobs entirely from home surged from about 5-6% pre-pandemic to approximately 35% in May 2020 during lockdowns. By 2023, the share had stabilized at roughly 12% fully remote and 28% hybrid (per Gallup's September 2023 data), meaning about 40% of workers capable of remote work were doing so at least part-time. Stanford economist Nicholas Bloom's research found that hybrid work (typically 2-3 days in office) had no negative effect on productivity and reduced quit rates by 35% in a 2022 randomized controlled trial at Trip.com with 1,612 employees. However, a 2023 study published in Nature by Atkin, Schoar, and Shinde found that fully remote workers were 18% less productive than in-office workers in a randomized trial at an Indian data-entry firm. The debate remains unresolved and likely depends on occupation type, management practices, and measurement approach.",
+      "target_lang": "en",
+      "reason": "The remote work shift represents a structural transformation in how and where work happens, with lasting implications for commercial real estate, urban planning, worker autonomy, and productivity measurement"
+    },
+    {
+      "source_text": "The International Labour Organization estimated that 2 billion people — 60% of the global employed population — worked in the informal economy in 2018",
+      "source_lang": "en",
+      "target_text": "The ILO's 2018 report 'Women and Men in the Informal Economy: A Statistical Picture' found that approximately 2 billion workers, or 61% of the world's employed population aged 15 and over, earned their living in the informal economy. The rate varies dramatically by region: in Sub-Saharan Africa, 89.2% of employment is informal; in South Asia, 88.8%; in Latin America, 53.8%; and in Europe and Central Asia, 25.1%. Informal workers typically lack employment contracts, social security coverage, paid leave, and workplace protections. They include domestic workers (estimated at 67 million globally by the ILO in 2021, 80% of them women), street vendors (comprising up to 14% of urban employment in developing countries), waste pickers, home-based workers, and day laborers. The ILO's Recommendation 204, adopted in 2015, was the first international labor standard specifically addressing the transition from the informal to the formal economy.",
+      "target_lang": "en",
+      "reason": "The informal economy encompasses the majority of global workers, and its scale means that formal labor protections — however strong on paper — fail to reach most of the world's working population"
+    },
+    {
+      "source_text": "US union membership declined from 35% of wage and salary workers in 1954 to 10.0% in 2023",
+      "source_lang": "en",
+      "target_text": "According to the Bureau of Labor Statistics, union membership in the United States peaked at approximately 35% of non-agricultural wage and salary workers in 1954, following the passage of the Wagner Act (National Labor Relations Act) of 1935 which guaranteed the right to organize. By 2023, the rate had fallen to 10.0% overall (32.5% in the public sector, 6.0% in the private sector). Key factors in the decline include the Taft-Hartley Act of 1947 (which allowed states to pass right-to-work laws, now in effect in 26 states), deindustrialization, globalization, hostile employer practices, and the shift to service-sector employment. Despite low membership rates, public approval of labor unions reached 67% in Gallup's August 2023 poll — near the highest since 1965. A wave of high-profile organizing efforts emerged in 2021-2023, including Amazon warehouse workers at JFK8 in Staten Island voting to form the Amazon Labor Union in April 2022 (the first US Amazon union), and Starbucks Workers United organizing over 400 stores by late 2023.",
+      "target_lang": "en",
+      "reason": "The long decline of US union density is a central explanatory variable in wage stagnation and rising inequality, while recent organizing surges suggest potential reversal"
+    },
+    {
+      "source_text": "The ILO's Worst Forms of Child Labour Convention (No. 182) became the first ILO convention ratified by all 187 member states in 2020",
+      "source_lang": "en",
+      "target_text": "ILO Convention 182, adopted in 1999, prohibits the worst forms of child labor including slavery, trafficking, forced recruitment for armed conflict, prostitution, drug trafficking, and hazardous work for anyone under 18. On August 4, 2020, when the Kingdom of Tonga deposited its ratification, Convention 182 became the first ILO convention in the organization's 101-year history to achieve universal ratification by all 187 member states. Despite this legal achievement, the ILO and UNICEF estimated in June 2021 that 160 million children aged 5-17 were engaged in child labor worldwide — an increase of 8.4 million since 2016, the first rise in 20 years. Of these, 79 million were in hazardous work. Sub-Saharan Africa had both the highest proportion (23.9% of children) and the largest absolute number (86.6 million). Agriculture accounted for 70% of child labor globally. The COVID-19 pandemic was projected to push an additional 9 million children into child labor by end of 2022.",
+      "target_lang": "en",
+      "reason": "Universal ratification of Convention 182 represents a landmark consensus, but the gap between ratification and enforcement highlights the limits of international law in protecting vulnerable workers"
+    },
+    {
+      "source_text": "GiveDirectly's unconditional cash transfer program in Kenya is the largest and longest-running basic income experiment, reaching over 20,000 people",
+      "source_lang": "en",
+      "target_text": "GiveDirectly, a US-based nonprofit, launched a large-scale basic income study in 2017 in rural Kenya, enrolling over 20,000 individuals across 197 villages in Siaya and Bomet counties. The program uses a randomized controlled design with four arms: one receiving about $0.75 per adult per day (roughly 2,250 Kenyan shillings per month) for 12 years (long-term UBI), one receiving the same amount for 2 years (short-term UBI), one receiving a lump sum equivalent to the 2-year total, and a control group. Interim results published in 2022 by researchers Abhijit Banerjee, Michael Faye, Alan Krueger (posthumously), and Paul Niehaus showed that recipients increased consumption, asset holdings, and small business revenue, while showing no reduction in labor supply. Recipients also reported reduced hunger, illness, and depression. The 12-year arm will run through 2029, making it the longest UBI experiment ever conducted and the most powerful test of whether sustained unconditional transfers create lasting economic improvement in extreme poverty.",
+      "target_lang": "en",
+      "reason": "The GiveDirectly Kenya study provides the strongest evidence base for evaluating UBI in a developing-country context with extreme poverty, and its long duration will answer questions no shorter pilot can"
+    },
+    {
+      "source_text": "The Dodd-Frank Act Section 1502 required US-listed companies to disclose use of conflict minerals from the Democratic Republic of Congo",
+      "source_lang": "en",
+      "target_text": "Section 1502 of the Dodd-Frank Wall Street Reform and Consumer Protection Act of 2010 required companies listed on US stock exchanges to investigate and disclose whether their products contain tin, tantalum, tungsten, or gold (known as 3TG or conflict minerals) originating from the Democratic Republic of Congo or adjoining countries, where armed groups have used mineral proceeds to fund conflict that has killed an estimated 5.4 million people since 1998. The SEC adopted final rules in August 2012, requiring annual conflict minerals reports. By 2023, thousands of companies had filed disclosures, though a 2014 DC Circuit Court ruling (National Association of Manufacturers v. SEC) struck down the requirement that companies describe products as not 'DRC conflict free,' citing First Amendment concerns. The EU adopted its own Conflict Minerals Regulation, which took effect on January 1, 2021, requiring importers of 3TG above certain thresholds to conduct supply chain due diligence according to OECD guidelines. Critics of these regulations note that the Congolese mining sector employs an estimated 2 million artisanal miners, and overly broad bans can harm the livelihoods of people they aim to protect — a phenomenon termed the 'de facto embargo' effect.",
+      "target_lang": "en",
+      "reason": "Conflict mineral regulation illustrates the tension between supply chain transparency and the risk of harming the very workers such laws aim to protect"
+    },
+    {
+      "source_text": "Uber had 5.4 million active drivers and couriers worldwide as of Q4 2023 while classifying virtually all of them as independent contractors",
+      "source_lang": "en",
+      "target_text": "As reported in Uber's Q4 2023 earnings, the company had approximately 5.4 million monthly active drivers and couriers across its ride-hailing and delivery platforms (Uber and Uber Eats) operating in over 70 countries and approximately 10,000 cities. Virtually all were classified as independent contractors, not employees — a classification that generally exempts Uber from providing minimum wage guarantees, overtime pay, health insurance, workers' compensation, unemployment insurance, and paid leave. Uber's gross bookings reached $37.6 billion in Q4 2023. Multiple jurisdictions have challenged the contractor classification: the UK Supreme Court ruled unanimously in February 2021 (Uber BV v. Aslam) that Uber drivers are 'workers' entitled to minimum wage and holiday pay; courts in the Netherlands, France, Spain, and Italy have issued similar rulings. Uber has argued that reclassification would raise costs 20-30% and reduce driver flexibility, while a 2020 UC Berkeley Labor Center study estimated that Uber and Lyft's misclassification saved the companies $413 million per year in California alone through avoided payroll taxes and benefits.",
+      "target_lang": "en",
+      "reason": "Uber's scale makes its worker classification model the defining test case for whether platform companies can build global businesses while externalizing traditional employment costs"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "California's AB5 law of 2019 attempted to reclassify gig workers as employees using the ABC test",
+      "to_source": "The European Union adopted a Platform Work Directive in 2024 to establish a presumption of employment for gig workers",
+      "kind": "refines",
+      "reason": "The EU directive addresses the same worker misclassification problem as AB5 but uses a different legal mechanism (employment presumption based on indicators of control rather than a strict ABC test) and applies across 27 member states, representing an evolution in regulatory approach"
+    },
+    {
+      "from_source": "Uber had 5.4 million active drivers and couriers worldwide as of Q4 2023 while classifying virtually all of them as independent contractors",
+      "to_source": "California's AB5 law of 2019 attempted to reclassify gig workers as employees using the ABC test",
+      "kind": "refines",
+      "reason": "Uber's business model is the primary target of AB5 and similar legislation; understanding Uber's scale and contractor model is essential context for why AB5 was enacted"
+    },
+    {
+      "from_source": "The Luddite movement of 1811-1816 was a worker rebellion against labor-displacing textile machinery in England",
+      "to_source": "McKinsey Global Institute estimated in 2017 that 400-800 million workers globally could be displaced by automation by 2030",
+      "kind": "refines",
+      "reason": "The Luddites represent the first large-scale worker response to automation; the McKinsey estimates show how the same dynamic now operates at global scale with AI and robotics"
+    },
+    {
+      "from_source": "Finland conducted a national Universal Basic Income experiment from 2017 to 2018 with 2,000 unemployed participants",
+      "to_source": "The Stockton Economic Empowerment Demonstration (SEED) gave 125 residents $500 per month from 2019 to 2021",
+      "kind": "refines",
+      "reason": "Both are UBI/guaranteed income pilots but differ in context (Nordic welfare state vs. mid-size American city), design (unemployed-only vs. low-income neighborhoods), and scale, providing complementary evidence"
+    },
+    {
+      "from_source": "The Stockton Economic Empowerment Demonstration (SEED) gave 125 residents $500 per month from 2019 to 2021",
+      "to_source": "GiveDirectly's unconditional cash transfer program in Kenya is the largest and longest-running basic income experiment, reaching over 20,000 people",
+      "kind": "refines",
+      "reason": "The GiveDirectly experiment operates in extreme poverty conditions at a much larger scale and longer duration than SEED, testing whether UBI findings from a US context translate to a developing-country setting"
+    },
+    {
+      "from_source": "The Triangle Shirtwaist Factory fire of 1911 killed 146 garment workers and catalyzed US workplace safety reform",
+      "to_source": "The Rana Plaza building collapse in Bangladesh in 2013 killed 1,134 garment workers and exposed global supply chain failures",
+      "kind": "refines",
+      "reason": "Both are garment industry disasters that catalyzed regulatory reform, but Rana Plaza reveals how safety failures migrated from domestic production to global supply chains over a century, showing that the underlying dynamics persist in new forms"
+    },
+    {
+      "from_source": "US union membership declined from 35% of wage and salary workers in 1954 to 10.0% in 2023",
+      "to_source": "The productivity-pay gap shows that US worker productivity rose 64.7% from 1979 to 2019 while hourly compensation grew only 17.5%",
+      "kind": "refines",
+      "reason": "The decline of union density is one of the primary explanatory factors cited by economists for the divergence of productivity and compensation, as unions historically bargained for workers to share in productivity gains"
+    },
+    {
+      "from_source": "The productivity-pay gap shows that US worker productivity rose 64.7% from 1979 to 2019 while hourly compensation grew only 17.5%",
+      "to_source": "US CEO-to-worker compensation ratio rose from 21-to-1 in 1965 to 344-to-1 in 2022",
+      "kind": "refines",
+      "reason": "Both metrics describe the same underlying phenomenon — the growing capture of economic gains by capital and top management at the expense of typical workers — from complementary angles"
+    },
+    {
+      "from_source": "McKinsey Global Institute estimated in 2017 that 400-800 million workers globally could be displaced by automation by 2030",
+      "to_source": "Finland conducted a national Universal Basic Income experiment from 2017 to 2018 with 2,000 unemployed participants",
+      "kind": "refines",
+      "reason": "Mass automation displacement is one of the primary policy arguments motivating UBI experiments; Finland's pilot was partly motivated by concerns about technological unemployment"
+    },
+    {
+      "from_source": "The Rana Plaza building collapse in Bangladesh in 2013 killed 1,134 garment workers and exposed global supply chain failures",
+      "to_source": "The Dodd-Frank Act Section 1502 required US-listed companies to disclose use of conflict minerals from the Democratic Republic of Congo",
+      "kind": "refines",
+      "reason": "Both involve attempts to use transparency and regulation to address labor and human rights abuses in global supply chains, and both reveal the difficulty of enforcing standards across complex international production networks"
+    },
+    {
+      "from_source": "The International Labour Organization estimated that 2 billion people — 60% of the global employed population — worked in the informal economy in 2018",
+      "to_source": "The ILO's Worst Forms of Child Labour Convention (No. 182) became the first ILO convention ratified by all 187 member states in 2020",
+      "kind": "refines",
+      "reason": "The vast scale of informal employment explains the enforcement gap for child labor conventions — most child labor occurs in informal settings that formal regulation struggles to reach"
+    },
+    {
+      "from_source": "The COVID-19 pandemic triggered the largest remote work shift in history, with 35% of US workers working from home full-time by May 2020",
+      "to_source": "The International Labour Organization estimated that 2 billion people — 60% of the global employed population — worked in the informal economy in 2018",
+      "kind": "contradicts",
+      "reason": "The remote work revolution applies overwhelmingly to formal, white-collar knowledge workers in wealthy countries, while the majority of the world's workers in informal economies have no option to work remotely, highlighting the divergent realities of the global workforce"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "The Fair Labor Standards Act of 1938 established the first federal minimum wage in the United States at $0.25 per hour",
+      "kind": "public_record",
+      "locator": "https://www.dol.gov/agencies/whd/minimum-wage/history",
+      "reason": "US Department of Labor official history of federal minimum wage rates from 1938 to present"
+    },
+    {
+      "pair_source": "The Triangle Shirtwaist Factory fire of 1911 killed 146 garment workers and catalyzed US workplace safety reform",
+      "kind": "public_record",
+      "locator": "https://www.osha.gov/aboutosha/history",
+      "reason": "OSHA's official history documenting the Triangle fire's role in the development of US workplace safety regulation"
+    },
+    {
+      "pair_source": "The Rana Plaza building collapse in Bangladesh in 2013 killed 1,134 garment workers and exposed global supply chain failures",
+      "kind": "public_record",
+      "locator": "https://internationalaccord.org/updates/ten-years-since-the-rana-plaza-disaster/",
+      "reason": "International Accord's retrospective on the disaster and subsequent factory safety inspection outcomes"
+    },
+    {
+      "pair_source": "California's AB5 law of 2019 attempted to reclassify gig workers as employees using the ABC test",
+      "kind": "public_record",
+      "locator": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201920200AB5",
+      "reason": "Official California Legislative Information page for Assembly Bill 5"
+    },
+    {
+      "pair_source": "The European Union adopted a Platform Work Directive in 2024 to establish a presumption of employment for gig workers",
+      "kind": "public_record",
+      "locator": "https://www.consilium.europa.eu/en/press/press-releases/2024/04/24/platform-work-council-confirms-agreement-on-new-rules/",
+      "reason": "European Council press release confirming formal adoption of the Platform Work Directive"
+    },
+    {
+      "pair_source": "The Luddite movement of 1811-1816 was a worker rebellion against labor-displacing textile machinery in England",
+      "kind": "public_record",
+      "locator": "https://www.britannica.com/event/Luddite",
+      "reason": "Encyclopaedia Britannica entry providing historical overview of the Luddite movement and its context"
+    },
+    {
+      "pair_source": "McKinsey Global Institute estimated in 2017 that 400-800 million workers globally could be displaced by automation by 2030",
+      "kind": "public_record",
+      "locator": "https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages",
+      "reason": "McKinsey Global Institute's original report with full methodology and displacement estimates"
+    },
+    {
+      "pair_source": "Finland conducted a national Universal Basic Income experiment from 2017 to 2018 with 2,000 unemployed participants",
+      "kind": "public_record",
+      "locator": "https://www.kela.fi/web/en/basic-income-experiment",
+      "reason": "Kela (Social Insurance Institution of Finland) official page on the basic income experiment design and results"
+    },
+    {
+      "pair_source": "The Stockton Economic Empowerment Demonstration (SEED) gave 125 residents $500 per month from 2019 to 2021",
+      "kind": "public_record",
+      "locator": "https://www.stocktondemonstration.org/",
+      "reason": "Official SEED program website with research design, findings, and published papers"
+    },
+    {
+      "pair_source": "The productivity-pay gap shows that US worker productivity rose 64.7% from 1979 to 2019 while hourly compensation grew only 17.5%",
+      "kind": "public_record",
+      "locator": "https://www.epi.org/productivity-pay-gap/",
+      "reason": "Economic Policy Institute's detailed analysis and interactive data on the productivity-compensation divergence"
+    },
+    {
+      "pair_source": "US CEO-to-worker compensation ratio rose from 21-to-1 in 1965 to 344-to-1 in 2022",
+      "kind": "public_record",
+      "locator": "https://www.epi.org/publication/ceo-pay-in-2022/",
+      "reason": "Economic Policy Institute's annual CEO compensation report with historical ratio data"
+    },
+    {
+      "pair_source": "The COVID-19 pandemic triggered the largest remote work shift in history, with 35% of US workers working from home full-time by May 2020",
+      "kind": "public_record",
+      "locator": "https://news.gallup.com/poll/355907/remote-work-persisting-trending-permanent.aspx",
+      "reason": "Gallup polling data tracking the share of US workers working remotely before, during, and after the pandemic"
+    },
+    {
+      "pair_source": "The International Labour Organization estimated that 2 billion people — 60% of the global employed population — worked in the informal economy in 2018",
+      "kind": "public_record",
+      "locator": "https://www.ilo.org/publications/women-and-men-informal-economy-statistical-picture-third-edition",
+      "reason": "ILO's comprehensive statistical report on informal employment globally, with regional breakdowns"
+    },
+    {
+      "pair_source": "US union membership declined from 35% of wage and salary workers in 1954 to 10.0% in 2023",
+      "kind": "public_record",
+      "locator": "https://www.bls.gov/news.release/union2.nr0.htm",
+      "reason": "Bureau of Labor Statistics annual news release on union membership with current and historical data"
+    },
+    {
+      "pair_source": "The ILO's Worst Forms of Child Labour Convention (No. 182) became the first ILO convention ratified by all 187 member states in 2020",
+      "kind": "public_record",
+      "locator": "https://www.ilo.org/resource/news/ilo-convention-child-labour-achieves-universal-ratification",
+      "reason": "ILO official announcement of Convention 182's universal ratification with background on the convention"
+    },
+    {
+      "pair_source": "GiveDirectly's unconditional cash transfer program in Kenya is the largest and longest-running basic income experiment, reaching over 20,000 people",
+      "kind": "public_record",
+      "locator": "https://www.givedirectly.org/large-scale-basic-income/",
+      "reason": "GiveDirectly's official page on the Kenya basic income study including design, interim results, and published research"
+    },
+    {
+      "pair_source": "The Dodd-Frank Act Section 1502 required US-listed companies to disclose use of conflict minerals from the Democratic Republic of Congo",
+      "kind": "public_record",
+      "locator": "https://www.sec.gov/opa/Article/2012-2012-163htm---background.html",
+      "reason": "SEC official background on the conflict minerals disclosure rule adopted under Dodd-Frank Section 1502"
+    },
+    {
+      "pair_source": "Uber had 5.4 million active drivers and couriers worldwide as of Q4 2023 while classifying virtually all of them as independent contractors",
+      "kind": "public_record",
+      "locator": "https://investor.uber.com/news-events/news/press-release-details/2024/Uber-Announces-Results-for-Fourth-Quarter-and-Full-Year-2023/",
+      "reason": "Uber's official Q4 2023 earnings press release reporting driver and courier counts and financial data"
+    }
+  ]
+}

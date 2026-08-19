@@ -1,0 +1,199 @@
+{
+  "domain": "crossdomain-knowledge-control",
+  "pairs": [
+    {
+      "source_text": "Between 2021 and 2023, US school districts reported over 4,000 book bans targeting titles addressing race, gender identity, and sexuality, while recommendation algorithms on platforms like YouTube and TikTok made billions of content-visibility decisions daily with no public hearing, no disclosed criteria, and no formal appeals process.",
+      "source_lang": "en",
+      "target_text": "Book banning requires visible political action — a school board vote, a public meeting, a list of titles — and can be challenged in court; algorithmic content suppression achieves the same gatekeeping function at vastly greater scale with no public record of what was suppressed, no stated rationale, and no legal framework for contestation, making it the more complete form of information control precisely because it is invisible.",
+      "target_lang": "en",
+      "reason": "Both book banning and algorithmic curation are information gatekeeping, but they operate on opposite visibility spectrums. This pair links the education domain (school library policy) to the AI/infrastructure domain (recommendation systems) by showing that the shift from political censorship to automated curation makes control harder to identify and resist."
+    },
+    {
+      "source_text": "The Open Science Collaboration's 2015 replication of 100 published psychology studies found that only 36 of the 100 produced statistically significant results consistent with the original findings, yet conclusions from many of these same studies had been cited in US federal policy documents on education, criminal justice, and public health interventions.",
+      "source_lang": "en",
+      "target_text": "When policy is justified by invoking 'the science' but the underlying studies cannot replicate, the phrase functions not as an empirical claim but as an authority claim — transferring the prestige of the scientific method to conclusions that may not withstand it, and creating a regime where questioning policy becomes conflated with questioning science itself.",
+      "target_lang": "en",
+      "reason": "The replication crisis reveals that 'evidence-based policy' can become a circular authority structure: policy cites science for legitimacy, science receives funding to support policy, and the feedback loop insulates both from scrutiny. This links education/knowledge (scientific methodology) to law/governance (policy justification) by exposing the gap between scientific rhetoric and scientific rigor."
+    },
+    {
+      "source_text": "Cuba's 1961 Campaña Nacional de Alfabetización sent 270,000 volunteer teachers, many of them teenagers, into rural areas and reduced the national illiteracy rate from 23.6% to 3.9% in a single year, earning recognition from UNESCO; Mao Zedong's Cultural Revolution beginning in 1966 closed Chinese universities for up to four years, sent intellectuals to agricultural labor camps for 're-education,' and replaced existing curricula with political catechism centered on the Little Red Book.",
+      "source_lang": "en",
+      "target_text": "Both campaigns deployed the identical rhetoric of revolutionary education and used the same organizational strategy of mobilizing youth to transform the population, but Cuba's campaign taught people to decode existing texts while Mao's campaign destroyed existing knowledge systems and replaced them with a single approved canon — demonstrating that the language of educational liberation provides no reliable signal about whether a literacy program expands or contracts the range of ideas its graduates can access.",
+      "target_lang": "en",
+      "reason": "Literacy is not inherently liberatory — it depends entirely on what the newly literate are given to read. This pair links historical people (Castro, Mao) to education/knowledge by showing that the same revolutionary framing and mass-mobilization technique can produce opposite epistemic outcomes: expanded access to knowledge in one case, enforced intellectual conformity in the other."
+    },
+    {
+      "source_text": "Internal documents revealed during Minnesota v. Philip Morris (1998) showed that tobacco companies had funded research specifically designed to manufacture scientific uncertainty about the health effects of smoking; by the late 1990s, the same strategy and in several cases the same individual consultants — including physicist Frederick Seitz and astrophysicist Willie Soon — were employed by fossil fuel industry groups to cast doubt on the scientific consensus around anthropogenic climate change.",
+      "source_lang": "en",
+      "target_text": "The tobacco industry's playbook — fund contrarian research, amplify minority scientific positions, attack the credibility of individual researchers, and demand levels of certainty that science structurally cannot provide — demonstrated that the scientific method's own norms of skepticism, qualification, and provisionality could be weaponized against its conclusions when billions of dollars in industry revenue were at stake.",
+      "target_lang": "en",
+      "reason": "This pair shows how scientific norms designed to prevent error (skepticism, replication, qualification of certainty) can be instrumentalized to prevent action. It links education/knowledge (scientific methodology) to environment/climate (denial infrastructure) and economics (corporate profit protection) by tracing a direct personnel and strategic pipeline from tobacco doubt-manufacture to climate denial."
+    },
+    {
+      "source_text": "In 2011, programmer and activist Aaron Swartz downloaded 4.8 million academic articles from the JSTOR digital library and was subsequently indicted on 13 federal felony counts carrying a maximum sentence of 35 years in prison and $1 million in fines; by 2024, Alexandra Elbakyan's Sci-Hub had made over 85 million paywalled research papers freely accessible worldwide and had been sued by publishers Elsevier and the American Chemical Society, yet remained operational from servers outside US jurisdiction.",
+      "source_lang": "en",
+      "target_text": "The criminalization of redistributing publicly funded research reveals that academic publishing's approximately $30 billion annual global revenue depends on controlling access to knowledge produced largely with taxpayer-funded grants, peer-reviewed by unpaid volunteer academics, and locked behind paywalls that most of the world's researchers, clinicians, and policymakers cannot afford — a business model in which the public pays to produce knowledge, then pays again to read it.",
+      "target_lang": "en",
+      "reason": "Academic paywalls are a knowledge-control mechanism disguised as a knowledge-dissemination mechanism. This pair links contemporary people (Aaron Swartz) to economics (publishing industry revenue) and education/knowledge (access to scientific literature) by showing how the infrastructure of scholarly communication functions as rent extraction from publicly funded research."
+    },
+    {
+      "source_text": "The WTO's 1994 Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) required all member nations to enforce minimum 20-year pharmaceutical patent terms; during the early 2000s HIV/AIDS crisis in Sub-Saharan Africa, this meant antiretroviral drugs costing $10,000–$15,000 per patient per year were legally protected from generic competition that Indian manufacturers had demonstrated could produce equivalent treatments for under $350 per patient per year.",
+      "source_lang": "en",
+      "target_text": "Patent systems create a paradox of published inaccessibility: the chemical formula for a life-saving drug is openly disclosed in patent filings — the knowledge is technically public — yet it is legally unusable for the duration of the patent term, establishing a form of knowledge control more complete than secrecy because it operates through law rather than ignorance, and makes the holder's monopoly enforceable by the state.",
+      "target_lang": "en",
+      "reason": "TRIPS transforms scientific knowledge into excludable property enforced by international treaty. This pair links economics (trade agreements, pharmaceutical industry) to education/knowledge (scientific publishing of formulas) and healthcare infrastructure by showing that patent law weaponizes transparency itself — making knowledge public does not make it usable."
+    },
+    {
+      "source_text": "Edward Bernays wrote in his 1928 book Propaganda that 'the conscious and intelligent manipulation of the organized habits and opinions of the masses is an important element in democratic society'; in 2018, investigations revealed that Cambridge Analytica had harvested psychographic profiles from the Facebook data of approximately 87 million users without their informed consent and used those profiles to deliver individually tailored political advertisements during the 2016 US presidential election and the Brexit referendum.",
+      "source_lang": "en",
+      "target_text": "Bernays operated through mass media — newspapers, radio, public spectacles — and could segment audiences only crudely by geography, class, and medium; Cambridge Analytica could target individuals by personality traits inferred from digital behavior, making propaganda not merely more precise but fundamentally different in kind: where Bernays broadcast one persuasive message to millions, algorithmic targeting sends millions of different persuasive messages to individuals, each calibrated to exploit specific psychological vulnerabilities.",
+      "target_lang": "en",
+      "reason": "This pair traces the evolution of propaganda technique across a century to show how the same objective (manufacturing consent) scales with available technology. It links historical people (Bernays) to AI research (psychographic modeling, micro-targeting algorithms) and contemporary people (Zuckerberg/Facebook) by demonstrating that algorithmic personalization is Bernays' program executed at machine speed and individual resolution."
+    },
+    {
+      "source_text": "Carl Brigham, who designed the Scholastic Aptitude Test (SAT) in 1926, had previously developed the Army Alpha and Beta intelligence tests used to sort 1.7 million WWI military recruits and had argued in his 1923 book A Study of American Intelligence that test scores demonstrated the intellectual inferiority of immigrants and Black Americans; Brigham repudiated these racial conclusions in 1930, but the SAT's architecture as a mass sorting instrument for college admissions persisted and expanded to assess over 2.2 million students annually by the 2020s.",
+      "source_lang": "en",
+      "target_text": "Standardized testing translates the eugenicist project of ranking human populations into an apparently neutral technical process: by measuring preparation quality, resource access, and cultural familiarity while claiming to measure innate aptitude, these instruments launder existing social stratification through the language of individual merit, producing a sorting outcome that correlates with parental income and race while bearing the imprimatur of scientific objectivity.",
+      "target_lang": "en",
+      "reason": "The SAT's origin in eugenics-era racial science reveals how a measurement tool's ideological assumptions can persist long after the ideology is repudiated, embedded in the instrument's structure rather than its stated purpose. This links education/knowledge (testing, college admissions) to historical people (Brigham, eugenics movement) and law/governance (meritocratic ideology as social policy)."
+    },
+    {
+      "source_text": "The Catholic Church maintained the Index Librorum Prohibitorum from 1559 to 1966, banning works by Galileo, Copernicus, Descartes, Locke, Voltaire, Hume, and Darwin among thousands of other authors, with each banned work reviewed and deliberated by trained theologians who published their reasoning; Meta's content moderation systems processed over 700 million content enforcement actions in Q4 2022 alone, with appeal rates below 1% of enforcement actions and reversal data that Meta does not fully disaggregate by content category.",
+      "source_lang": "en",
+      "target_text": "The Index required literate experts who read each work, composed a justification, and published the list of forbidden titles; platform content moderation operates through automated classifiers making millions of daily suppression decisions with no published reasoning and no meaningful appeals infrastructure, suggesting that the scale of modern information control has outrun the deliberative capacity that even history's most systematic censorship regimes considered necessary for legitimacy.",
+      "target_lang": "en",
+      "reason": "Comparing the Index to algorithmic moderation reveals a counterintuitive regression: historical censorship was slower but more transparent, while modern content moderation is faster but less accountable. This links education/knowledge (censorship of ideas) to AI research (automated content classification) and law/governance (due process, institutional accountability) by showing that scale has inverted the relationship between censorship power and censorship accountability."
+    },
+    {
+      "source_text": "Kerala achieved a 93.9% literacy rate, life expectancy of 74 years, and infant mortality of 12 per 1,000 live births by 2001 on a per capita income of approximately $300 per year — development outcomes comparable to nations with ten to forty times its wealth — through sustained public investment in universal education and primary healthcare beginning in the 1950s; during the same decades, World Bank structural adjustment programs conditioned emergency loans to borrowing nations on reductions to public education and healthcare spending.",
+      "source_lang": "en",
+      "target_text": "Kerala demonstrated empirically that universal education investment produces life-quality outcomes independent of industrialization or GDP growth, directly contradicting the World Bank's prevailing orthodoxy that nations must achieve economic growth before they can afford broad education spending — revealing the 'grow first, educate later' sequence not as an empirical finding but as an ideological commitment that happened to align with creditor interests in debt repayment over social investment.",
+      "target_lang": "en",
+      "reason": "Kerala is the counter-evidence to the development economics framework that justified cutting education budgets across the developing world. This pair links education/knowledge (universal literacy programs) to economics (structural adjustment, development theory) and law/governance (loan conditionality as policy coercion) by showing that knowledge investment can substitute for capital investment in producing human development."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Between 2021 and 2023, US school districts reported over 4,000 book bans targeting titles addressing race, gender identity, and sexuality, while recommendation algorithms on platforms like YouTube and TikTok made billions of content-visibility decisions daily with no public hearing, no disclosed criteria, and no formal appeals process.",
+      "to_source": "The internet's physical infrastructure depends on approximately 550 submarine fiber-optic cables carrying over 95% of intercontinental data traffic",
+      "kind": "refines",
+      "reason": "Book banning versus algorithmic curation refines the infrastructure-as-chokepoint principle: submarine cables control data flow at the physical layer, while recommendation algorithms control information visibility at the application layer. Both demonstrate that whoever controls the filtering mechanism controls what populations can access."
+    },
+    {
+      "from_source": "The Open Science Collaboration's 2015 replication of 100 published psychology studies found that only 36 of the 100 produced statistically significant results consistent with the original findings, yet conclusions from many of these same studies had been cited in US federal policy documents on education, criminal justice, and public health interventions.",
+      "to_source": "The tobacco industry's deliberate suppression and manipulation of scientific evidence about smoking's health effects, documented through internal memos and litigation discovery, established the modern template for corporate science denial",
+      "kind": "refines",
+      "reason": "The replication crisis refines the tobacco-science connection by showing that even non-fraudulent, well-intentioned research can produce unreliable foundations for policy. Tobacco science was deliberately corrupt; the replication crisis reveals that ordinary publication incentives — positive-result bias, small samples, p-hacking — produce a milder but more pervasive form of unreliable knowledge."
+    },
+    {
+      "from_source": "Cuba's 1961 Campaña Nacional de Alfabetización sent 270,000 volunteer teachers, many of them teenagers, into rural areas and reduced the national illiteracy rate from 23.6% to 3.9% in a single year, earning recognition from UNESCO; Mao Zedong's Cultural Revolution beginning in 1966 closed Chinese universities for up to four years, sent intellectuals to agricultural labor camps for 're-education,' and replaced existing curricula with political catechism centered on the Little Red Book.",
+      "to_source": "Fidel Castro's revolutionary government nationalized US-owned industries and aligned Cuba with the Soviet Union, prompting the 1961 Bay of Pigs invasion and leading to the 1962 Cuban Missile Crisis that brought the world to the brink of nuclear war",
+      "kind": "refines",
+      "reason": "The literacy campaign pair refines the Castro entry by adding a dimension that Cold War framing typically obscures: whatever one's assessment of Castro's political system, the 1961 literacy campaign produced measurable and lasting educational outcomes that even critics acknowledge, complicating simple narratives about the Cuban revolution."
+    },
+    {
+      "from_source": "Internal documents revealed during Minnesota v. Philip Morris (1998) showed that tobacco companies had funded research specifically designed to manufacture scientific uncertainty about the health effects of smoking; by the late 1990s, the same strategy and in several cases the same individual consultants — including physicist Frederick Seitz and astrophysicist Willie Soon — were employed by fossil fuel industry groups to cast doubt on the scientific consensus around anthropogenic climate change.",
+      "to_source": "The fossil fuel industry's own internal research, including Exxon's climate modeling from the 1970s and 1980s, accurately projected global temperature increases that closely match observed warming",
+      "kind": "refines",
+      "reason": "The tobacco-to-climate pipeline refines the Exxon internal research entry by showing that industry doubt-manufacturing was not simply passive denial but active strategic deployment: the same consultants who defended tobacco moved to climate denial, revealing an organized infrastructure for weaponizing scientific uncertainty across industries."
+    },
+    {
+      "from_source": "In 2011, programmer and activist Aaron Swartz downloaded 4.8 million academic articles from the JSTOR digital library and was subsequently indicted on 13 federal felony counts carrying a maximum sentence of 35 years in prison and $1 million in fines; by 2024, Alexandra Elbakyan's Sci-Hub had made over 85 million paywalled research papers freely accessible worldwide and had been sued by publishers Elsevier and the American Chemical Society, yet remained operational from servers outside US jurisdiction.",
+      "to_source": "Aaron Swartz co-authored the RSS 1.0 specification at age 14, co-founded Reddit, and became a leading advocate for open access to information before his death in 2013 at age 26",
+      "kind": "refines",
+      "reason": "The Swartz/Sci-Hub pair refines the existing Swartz biography by contextualizing his JSTOR action not as an isolated act of civil disobedience but as one node in a broader structural conflict between public knowledge production and private knowledge enclosure — a conflict that Sci-Hub's continued operation demonstrates remains unresolved."
+    },
+    {
+      "from_source": "The WTO's 1994 Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) required all member nations to enforce minimum 20-year pharmaceutical patent terms; during the early 2000s HIV/AIDS crisis in Sub-Saharan Africa, this meant antiretroviral drugs costing $10,000–$15,000 per patient per year were legally protected from generic competition that Indian manufacturers had demonstrated could produce equivalent treatments for under $350 per patient per year.",
+      "to_source": "IMF structural adjustment programs imposed on debtor nations in the 1980s and 1990s required privatization of state assets, removal of trade protections, and austerity cuts to public services as conditions for receiving emergency loans.",
+      "kind": "refines",
+      "reason": "TRIPS refines the structural adjustment entry by adding intellectual property enforcement as another mechanism through which international institutions override domestic policy: just as the IMF conditioned loans on austerity, TRIPS conditioned trade access on patent enforcement, both transferring sovereignty from debtor/developing nations to creditor/developed nations through economic instruments."
+    },
+    {
+      "from_source": "Edward Bernays wrote in his 1928 book Propaganda that 'the conscious and intelligent manipulation of the organized habits and opinions of the masses is an important element in democratic society'; in 2018, investigations revealed that Cambridge Analytica had harvested psychographic profiles from the Facebook data of approximately 87 million users without their informed consent and used those profiles to deliver individually tailored political advertisements during the 2016 US presidential election and the Brexit referendum.",
+      "to_source": "Mark Zuckerberg's control of Facebook (Meta) through a dual-class share structure gives him approximately 58% of voting power despite owning roughly 13% of total shares",
+      "kind": "refines",
+      "reason": "The Bernays-to-Cambridge-Analytica evolution refines the Zuckerberg entry by showing that Facebook's governance structure is not merely a corporate curiosity but a concentration of information-control power: one person's voting control over a platform that serves as the primary propaganda delivery infrastructure for billions of users represents Bernays' vision of managed public opinion realized at a scale he could not have imagined."
+    },
+    {
+      "from_source": "Carl Brigham, who designed the Scholastic Aptitude Test (SAT) in 1926, had previously developed the Army Alpha and Beta intelligence tests used to sort 1.7 million WWI military recruits and had argued in his 1923 book A Study of American Intelligence that test scores demonstrated the intellectual inferiority of immigrants and Black Americans; Brigham repudiated these racial conclusions in 1930, but the SAT's architecture as a mass sorting instrument for college admissions persisted and expanded to assess over 2.2 million students annually by the 2020s.",
+      "to_source": "Francis Galton coined the term 'eugenics' in 1883 and established the statistical methods of regression and correlation while pursuing hereditarian theories of human ability that were used to justify forced sterilization programs in over 30 US states",
+      "kind": "refines",
+      "reason": "The SAT origin story refines the Galton/eugenics entry by tracing how eugenicist assumptions survived the repudiation of eugenics itself: Brigham recanted but the SAT persisted, demonstrating that ideological commitments embedded in measurement instruments outlast the ideologies that produced them."
+    },
+    {
+      "from_source": "The Catholic Church maintained the Index Librorum Prohibitorum from 1559 to 1966, banning works by Galileo, Copernicus, Descartes, Locke, Voltaire, Hume, and Darwin among thousands of other authors, with each banned work reviewed and deliberated by trained theologians who published their reasoning; Meta's content moderation systems processed over 700 million content enforcement actions in Q4 2022 alone, with appeal rates below 1% of enforcement actions and reversal data that Meta does not fully disaggregate by content category.",
+      "to_source": "Large language models trained on internet-scale text corpora encode the statistical patterns of their training data, including systematic biases related to gender, race, and cultural representation",
+      "kind": "refines",
+      "reason": "The Index-to-moderation pair refines the LLM bias entry by showing that all knowledge systems embed gatekeeping decisions — the Index did so through explicit theological criteria, LLMs do so through training data selection, and platform moderation does so through automated classifiers. The common mechanism is that someone decides what information is acceptable before it reaches the audience."
+    },
+    {
+      "from_source": "Kerala achieved a 93.9% literacy rate, life expectancy of 74 years, and infant mortality of 12 per 1,000 live births by 2001 on a per capita income of approximately $300 per year — development outcomes comparable to nations with ten to forty times its wealth — through sustained public investment in universal education and primary healthcare beginning in the 1950s; during the same decades, World Bank structural adjustment programs conditioned emergency loans to borrowing nations on reductions to public education and healthcare spending.",
+      "to_source": "IMF structural adjustment programs imposed on debtor nations in the 1980s and 1990s required privatization of state assets, removal of trade protections, and austerity cuts to public services as conditions for receiving emergency loans.",
+      "kind": "contradicts",
+      "reason": "Kerala directly contradicts the development theory underlying structural adjustment: the IMF/World Bank position held that economic growth must precede social investment, but Kerala achieved developed-world health and education outcomes at developing-world income levels, providing empirical evidence that the prescribed sequence was wrong and that education austerity destroyed human capital that would have produced returns exceeding the debt savings."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Between 2021 and 2023, US school districts reported over 4,000 book bans targeting titles addressing race, gender identity, and sexuality, while recommendation algorithms on platforms like YouTube and TikTok made billions of content-visibility decisions daily with no public hearing, no disclosed criteria, and no formal appeals process.",
+      "kind": "public_record",
+      "locator": "https://www.ala.org/advocacy/banning/book-ban-data",
+      "reason": "The American Library Association tracks challenged and banned books in US schools and public libraries, publishing annual reports with title-level data that document the surge in book bans during 2021-2023."
+    },
+    {
+      "pair_source": "The Open Science Collaboration's 2015 replication of 100 published psychology studies found that only 36 of the 100 produced statistically significant results consistent with the original findings, yet conclusions from many of these same studies had been cited in US federal policy documents on education, criminal justice, and public health interventions.",
+      "kind": "public_record",
+      "locator": "https://www.science.org/doi/10.1126/science.aac4716",
+      "reason": "The Open Science Collaboration published 'Estimating the reproducibility of psychological science' in Science (2015), reporting that only 36% of 100 replicated psychology studies yielded significant results consistent with the originals. DOI: 10.1126/science.aac4716."
+    },
+    {
+      "pair_source": "Cuba's 1961 Campaña Nacional de Alfabetización sent 270,000 volunteer teachers, many of them teenagers, into rural areas and reduced the national illiteracy rate from 23.6% to 3.9% in a single year, earning recognition from UNESCO; Mao Zedong's Cultural Revolution beginning in 1966 closed Chinese universities for up to four years, sent intellectuals to agricultural labor camps for 're-education,' and replaced existing curricula with political catechism centered on the Little Red Book.",
+      "kind": "public_record",
+      "locator": "https://unesdoc.unesco.org/ark:/48223/pf0000212702",
+      "reason": "UNESCO's records on the Cuban literacy campaign document the mobilization of volunteer brigadistas and the reduction of illiteracy rates, and UNESCO awarded Cuba the Nadezhda Krupskaya Prize for the campaign in 1961."
+    },
+    {
+      "pair_source": "Internal documents revealed during Minnesota v. Philip Morris (1998) showed that tobacco companies had funded research specifically designed to manufacture scientific uncertainty about the health effects of smoking; by the late 1990s, the same strategy and in several cases the same individual consultants — including physicist Frederick Seitz and astrophysicist Willie Soon — were employed by fossil fuel industry groups to cast doubt on the scientific consensus around anthropogenic climate change.",
+      "kind": "public_record",
+      "locator": "https://www.industrydocuments.ucsf.edu/tobacco/",
+      "reason": "The UCSF Industry Documents Library hosts millions of internal tobacco industry documents obtained through litigation discovery, including those from Minnesota v. Philip Morris, documenting the industry's strategy of manufacturing scientific doubt."
+    },
+    {
+      "pair_source": "In 2011, programmer and activist Aaron Swartz downloaded 4.8 million academic articles from the JSTOR digital library and was subsequently indicted on 13 federal felony counts carrying a maximum sentence of 35 years in prison and $1 million in fines; by 2024, Alexandra Elbakyan's Sci-Hub had made over 85 million paywalled research papers freely accessible worldwide and had been sued by publishers Elsevier and the American Chemical Society, yet remained operational from servers outside US jurisdiction.",
+      "kind": "public_record",
+      "locator": "https://www.justice.gov/usao-ma/pr/alleged-hacker-charged-stealing-over-four-million-documents-mit-network",
+      "reason": "The US Department of Justice press release on Aaron Swartz's indictment details the 13 felony counts and the maximum penalties, documenting the federal government's criminalization of academic article redistribution."
+    },
+    {
+      "pair_source": "The WTO's 1994 Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) required all member nations to enforce minimum 20-year pharmaceutical patent terms; during the early 2000s HIV/AIDS crisis in Sub-Saharan Africa, this meant antiretroviral drugs costing $10,000–$15,000 per patient per year were legally protected from generic competition that Indian manufacturers had demonstrated could produce equivalent treatments for under $350 per patient per year.",
+      "kind": "public_record",
+      "locator": "https://www.wto.org/english/tratop_e/trips_e/trips_e.htm",
+      "reason": "The WTO's official TRIPS page contains the full text of the agreement, including Article 33 mandating the 20-year minimum patent term that became central to the access-to-medicines crisis in developing nations."
+    },
+    {
+      "pair_source": "Edward Bernays wrote in his 1928 book Propaganda that 'the conscious and intelligent manipulation of the organized habits and opinions of the masses is an important element in democratic society'; in 2018, investigations revealed that Cambridge Analytica had harvested psychographic profiles from the Facebook data of approximately 87 million users without their informed consent and used those profiles to deliver individually tailored political advertisements during the 2016 US presidential election and the Brexit referendum.",
+      "kind": "public_record",
+      "locator": "https://www.ftc.gov/news-events/news/press-releases/2019/07/ftc-imposes-5-billion-penalty-sweeping-new-privacy-restrictions-facebook",
+      "reason": "The FTC's $5 billion penalty against Facebook in 2019 resulted from the Cambridge Analytica data harvesting, documenting in a federal enforcement action that approximately 87 million users' data was improperly shared with the political consulting firm."
+    },
+    {
+      "pair_source": "Carl Brigham, who designed the Scholastic Aptitude Test (SAT) in 1926, had previously developed the Army Alpha and Beta intelligence tests used to sort 1.7 million WWI military recruits and had argued in his 1923 book A Study of American Intelligence that test scores demonstrated the intellectual inferiority of immigrants and Black Americans; Brigham repudiated these racial conclusions in 1930, but the SAT's architecture as a mass sorting instrument for college admissions persisted and expanded to assess over 2.2 million students annually by the 2020s.",
+      "kind": "public_record",
+      "locator": "https://archive.org/details/studyofamericani00brigiala",
+      "reason": "Carl Brigham's A Study of American Intelligence (1923) is archived in full text at the Internet Archive, documenting his original racial-hereditarian claims about intelligence test scores that he later repudiated but that shaped the SAT's design as a sorting instrument."
+    },
+    {
+      "pair_source": "The Catholic Church maintained the Index Librorum Prohibitorum from 1559 to 1966, banning works by Galileo, Copernicus, Descartes, Locke, Voltaire, Hume, and Darwin among thousands of other authors, with each banned work reviewed and deliberated by trained theologians who published their reasoning; Meta's content moderation systems processed over 700 million content enforcement actions in Q4 2022 alone, with appeal rates below 1% of enforcement actions and reversal data that Meta does not fully disaggregate by content category.",
+      "kind": "public_record",
+      "locator": "https://transparency.meta.com/reports/community-standards-enforcement/",
+      "reason": "Meta's Community Standards Enforcement Reports provide quarterly data on content enforcement actions across Facebook and Instagram, including action volumes and appeal rates that document the scale and limited contestability of automated content moderation."
+    },
+    {
+      "pair_source": "Kerala achieved a 93.9% literacy rate, life expectancy of 74 years, and infant mortality of 12 per 1,000 live births by 2001 on a per capita income of approximately $300 per year — development outcomes comparable to nations with ten to forty times its wealth — through sustained public investment in universal education and primary healthcare beginning in the 1950s; during the same decades, World Bank structural adjustment programs conditioned emergency loans to borrowing nations on reductions to public education and healthcare spending.",
+      "kind": "public_record",
+      "locator": "https://data.worldbank.org/indicator/SE.ADT.LITR.ZS?locations=IN",
+      "reason": "World Bank development indicators for India include state-level literacy data for Kerala that document its exceptional educational outcomes relative to national averages and per capita income, providing the empirical basis for the 'Kerala model' of development through education investment."
+    }
+  ]
+}

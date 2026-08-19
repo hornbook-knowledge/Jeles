@@ -1,0 +1,293 @@
+{
+  "domain": "people-historical-scientists",
+  "pairs": [
+    {
+      "source_text": "Isaac Newton -- gravity, calculus, optics, and the Principia",
+      "source_lang": "en",
+      "target_text": "Isaac Newton (1642-1727) published the Principia Mathematica in 1687, laying out his laws of motion and universal gravitation, and independently developed calculus in the 1660s (though he did not publish it promptly). His work on optics demonstrated that white light is composed of a spectrum of colors. Newton carried on bitter feuds with Robert Hooke over priority in optics and gravitation and with Gottfried Leibniz over the invention of calculus -- in the latter dispute, Newton stacked the Royal Society investigating committee with allies and secretly wrote its conclusion himself. Appointed Warden of the Royal Mint in 1696 and Master in 1699, he pursued counterfeiters with ruthless zeal, sending several to the gallows. John Maynard Keynes, after purchasing Newton's private papers at auction in 1936, declared him 'the last of the magicians,' noting that roughly a million words of Newton's writings were devoted to alchemy and the search for the philosopher's stone.",
+      "target_lang": "en",
+      "reason": "Comprehensive profile covering Newton's achievements, priority disputes, Mint career, and alchemy obsession"
+    },
+    {
+      "source_text": "Albert Einstein -- special and general relativity, the photoelectric effect, and the Nobel Prize",
+      "source_lang": "en",
+      "target_text": "Albert Einstein (1879-1955) published four revolutionary papers in his 1905 'annus mirabilis' while working as a clerk at the Swiss patent office, including his explanation of the photoelectric effect via light quanta and his theory of special relativity. He completed his general theory of relativity in 1915, predicting the curvature of spacetime by mass. He received the 1921 Nobel Prize in Physics not for relativity but for the photoelectric effect, since the Nobel Committee considered relativity too controversial at the time. His treatment of his first wife, Mileva Maric -- herself a trained physicist -- included a notorious list of conditions she had to accept to remain married, and he later acknowledged neglecting his family. In August 1939, at the urging of Leo Szilard, he signed a letter to President Roosevelt warning that Germany might develop an atomic bomb, a decision he later regretted. He spent his final decades at Princeton opposing the Copenhagen interpretation of quantum mechanics, famously declaring 'God does not play dice,' to which Niels Bohr reportedly replied, 'Stop telling God what to do' -- and experiments by Alain Aspect and others ultimately vindicated Bohr's position.",
+      "target_lang": "en",
+      "reason": "Balanced profile of Einstein including scientific achievements, personal failings, the bomb letter, and his losing battle against quantum mechanics"
+    },
+    {
+      "source_text": "Charles Darwin -- natural selection, the Beagle voyage, and Origin of Species",
+      "source_lang": "en",
+      "target_text": "Charles Darwin (1809-1882) developed his theory of natural selection beginning in the late 1830s after his five-year voyage on HMS Beagle (1831-1836), but did not publish On the Origin of Species until 1859 -- a gap of roughly twenty years. Historians have debated whether this delay stemmed from fear of public backlash or, as scholar John van Wyhe argues, from Darwin's methodical desire to complete other work first and amass overwhelming evidence. The catalyst for publication came in 1858 when Alfred Russel Wallace independently conceived the same theory during a fever in the Malay Archipelago and sent Darwin a manuscript describing it; their ideas were jointly presented at the Linnean Society that year. Darwin's name was later attached to 'Social Darwinism,' a political philosophy he did not invent -- Herbert Spencer coined 'survival of the fittest,' not Darwin. Darwin himself was cautious about applying natural selection to human social arrangements and was deeply troubled by the suffering his theory implied.",
+      "target_lang": "en",
+      "reason": "Profile covering Darwin's delay, Wallace's parallel discovery, and the Social Darwinism misattribution"
+    },
+    {
+      "source_text": "Galileo Galilei -- heliocentrism, telescope observations, and the Inquisition",
+      "source_lang": "en",
+      "target_text": "Galileo Galilei (1564-1642) used an improved telescope to observe the moons of Jupiter, the phases of Venus, and sunspots, providing strong observational evidence for the Copernican heliocentric model. His 1632 Dialogue Concerning the Two Chief World Systems led to a trial by the Roman Inquisition in 1633, during which he was found 'vehemently suspect of heresy' and forced to recant. His sentence of life imprisonment was immediately commuted to house arrest, which he served at his villa in Arcetri near Florence, where he continued working and published his final major work, Two New Sciences, in 1638. The famous story that he muttered 'Eppur si muove' ('And yet it moves') after his recantation is almost certainly apocryphal -- it does not appear in his disciple Vincenzo Viviani's 1655 biography or in any trial records, and first surfaces over a century after the event. The reality of his house arrest was more comfortable than the popular image suggests: he received visitors, corresponded with scientists across Europe, and lived in relative comfort, though he went blind in his final years.",
+      "target_lang": "en",
+      "reason": "Profile separating myth from reality regarding Galileo's trial and the apocryphal 'and yet it moves' story"
+    },
+    {
+      "source_text": "Nicolaus Copernicus -- De Revolutionibus and the heliocentric model",
+      "source_lang": "en",
+      "target_text": "Nicolaus Copernicus (1473-1543) proposed the heliocentric model of the solar system in De Revolutionibus Orbium Coelestium, published in 1543, the year of his death. He had privately circulated an outline of his theory as early as 1514 but delayed formal publication for nearly thirty years -- not primarily from fear of Church persecution, as often claimed, but because he feared ridicule from Aristotelian philosophers and was aware of unresolved scientific problems in his model. His day job was as a canon of the Catholic Church in Warmia, Poland, where he spent about thirty years handling administrative and financial duties and serving as a physician to fellow canons and bishops. Contrary to the popular narrative, the Catholic Church initially tolerated De Revolutionibus; it was not placed on the Index of Forbidden Books until 1616, seventy-three years after publication, in the context of the Galileo controversy. His supporter Georg Joachim Rheticus had to prod Copernicus into allowing publication, and the first printed copy reportedly reached Copernicus on his deathbed.",
+      "target_lang": "en",
+      "reason": "Profile correcting myths about Church persecution and covering his clerical career and true reasons for delayed publication"
+    },
+    {
+      "source_text": "Marie Curie -- radioactivity, two Nobel Prizes, and the barriers she faced",
+      "source_lang": "en",
+      "target_text": "Marie Sklodowska Curie (1867-1934) shared the 1903 Nobel Prize in Physics with her husband Pierre Curie and Henri Becquerel for their work on radioactivity, then won the 1911 Nobel Prize in Chemistry for isolating radium -- becoming the first person to win Nobel Prizes in two different sciences. In January 1911, she was rejected for membership in the French Academy of Sciences, losing to Edouard Branly by two votes in a process openly driven by opposition to admitting women. That same year, her affair with the married physicist Paul Langevin was exposed when his wife leaked their private letters to the right-wing press; three days before her second Nobel was announced, the scandal dominated French newspapers, and the Nobel Committee suggested she skip the ceremony -- she attended anyway. She died on July 4, 1934, of aplastic anemia almost certainly caused by decades of unprotected exposure to radiation; her personal notebooks remain so contaminated that they are stored in lead-lined boxes and require protective clothing to handle.",
+      "target_lang": "en",
+      "reason": "Profile covering Curie's achievements alongside the sexism, scandal, and radiation exposure she faced"
+    },
+    {
+      "source_text": "Antoine Lavoisier -- father of modern chemistry, oxygen, and conservation of mass",
+      "source_lang": "en",
+      "target_text": "Antoine-Laurent Lavoisier (1743-1794) is considered the father of modern chemistry for his role in the Chemical Revolution: he identified and named oxygen, helped systematize chemical nomenclature, and established the law of conservation of mass in chemical reactions. However, Lavoisier was also a shareholder in the Ferme Generale, a private company that collected taxes on behalf of the French crown in exchange for a substantial cut -- a role that made him wealthy but deeply unpopular. During the Reign of Terror, twenty-eight members of the Ferme Generale were arrested; Lavoisier was tried, convicted, and guillotined on May 8, 1794, reportedly in the middle of an ongoing respiration experiment. The mathematician Joseph-Louis Lagrange is said to have remarked: 'It took them only an instant to cut off his head, but France may not produce another such head in a century.' His wife, Marie-Anne Paulze Lavoisier, who had been his laboratory collaborator and scientific illustrator, survived him and later worked to publish his memoirs.",
+      "target_lang": "en",
+      "reason": "Profile covering Lavoisier's chemistry alongside his fatal role as tax collector during the Revolution"
+    },
+    {
+      "source_text": "Rosalind Franklin -- X-ray crystallography, Photo 51, and the DNA structure controversy",
+      "source_lang": "en",
+      "target_text": "Rosalind Franklin (1920-1958) was an expert X-ray crystallographer at King's College London who produced critical data on the structure of DNA, including the famous Photo 51, taken on May 6, 1952, which clearly showed the helical structure of DNA. Her colleague Maurice Wilkins showed Photo 51 and her unpublished data to James Watson without her knowledge or permission in early 1953, and Watson later described this as a pivotal moment in his and Francis Crick's construction of the double-helix model. Recent scholarship, including a 2023 Nature article, has re-examined her notebooks and concluded that Franklin was closer to solving the structure herself than previously recognized, and that her contributions went well beyond a single photograph. In 1962, Watson, Crick, and Wilkins shared the Nobel Prize in Physiology or Medicine; Franklin had died of ovarian cancer in 1958 at age 37, likely caused by radiation exposure, making her ineligible since Nobel Prizes are not awarded posthumously. Watson's 1968 memoir The Double Helix compounded the erasure by portraying Franklin dismissively, a depiction that catalyzed decades of scholarly reassessment of her role.",
+      "target_lang": "en",
+      "reason": "Profile covering Franklin's actual contributions, the data-sharing controversy, and her posthumous rehabilitation"
+    },
+    {
+      "source_text": "The lone genius myth versus collaborative reality in scientific discovery",
+      "source_lang": "en",
+      "target_text": "The image of the lone genius making breakthroughs in isolation is one of science's most persistent and misleading myths. Sociologist Robert Merton documented the phenomenon of 'multiple discovery' -- the observation that the same invention or discovery frequently arises independently in different places within a short time frame -- with examples including calculus (Newton and Leibniz), oxygen (Scheele, Priestley, and Lavoisier), evolution by natural selection (Darwin and Wallace), and non-Euclidean geometry (Bolyai, Lobachevsky, and Gauss). Even the scientists most often cast as solitary geniuses relied on networks: Einstein collaborated on several papers, Darwin corresponded with hundreds of naturalists, and Newton famously (if perhaps sarcastically) acknowledged standing 'on the shoulders of giants.' By 1900, one third of published chemistry papers already had multiple authors; by the end of World War II that figure was 70 percent, and modern breakthroughs like the Higgs boson discovery in 2012 involved thousands of researchers.",
+      "target_lang": "en",
+      "reason": "Thematic pair challenging the lone genius narrative with historical and statistical evidence"
+    },
+    {
+      "source_text": "Scientific priority disputes -- the pattern across centuries",
+      "source_lang": "en",
+      "target_text": "Scientific priority disputes follow a remarkably consistent pattern across centuries: two or more researchers working on similar problems reach similar conclusions near-simultaneously, and the ensuing fight over credit often becomes more memorable than the discovery itself. Newton versus Leibniz over calculus (1699-1712) set the template -- Newton leveraged his presidency of the Royal Society to control the investigation and brand Leibniz a plagiarist, splitting European mathematics for a generation. Lavoisier and Priestley disputed who truly discovered oxygen in the 1770s, with Priestley isolating the gas first but Lavoisier correctly identifying its role in combustion. Darwin and Wallace's 1858 joint presentation at the Linnean Society was arranged by Darwin's influential friends Lyell and Hooker in a way that clearly prioritized Darwin. These disputes reveal that credit in science is not purely meritocratic: institutional power, social networks, nationality, and publication timing all shape whose name attaches to a discovery.",
+      "target_lang": "en",
+      "reason": "Thematic pair showing the recurring structure of priority disputes and the non-meritocratic factors that determine credit"
+    },
+    {
+      "source_text": "How wrong these scientists were about other things -- Newton's alchemy, Einstein on quantum mechanics",
+      "source_lang": "en",
+      "target_text": "The same scientists celebrated for revolutionary insights were often profoundly wrong about other subjects, a fact that complicates any simple narrative of scientific genius. Newton devoted an estimated million words to alchemy and another half of his total output to theology, including attempts to decode biblical prophecy and date the apocalypse -- Keynes concluded that alchemy, not physics, was Newton's true life's work. Einstein spent his last three decades trying to prove quantum mechanics incomplete, producing the 1935 EPR paradox paper as his strongest argument, but Bell's theorem (1964) and Aspect's experiments (1982) confirmed the quantum predictions he rejected. Linus Pauling, who won Nobel Prizes in both chemistry and peace, spent his later years promoting megadose vitamin C as a cure for cancer and the common cold, claims that controlled studies failed to support. These examples do not diminish the scientists' genuine achievements, but they demonstrate that brilliance in one domain confers no immunity from error in another.",
+      "target_lang": "en",
+      "reason": "Thematic pair showing that revolutionary scientists were often wrong about other things, countering hagiographic narratives"
+    },
+    {
+      "source_text": "Newton's personality -- vindictiveness, secrecy, and paranoia",
+      "source_lang": "en",
+      "target_text": "Newton's personality was marked by secrecy, vindictiveness, and an inability to tolerate disagreement that shaped the history of science as much as his intellect did. He delayed publishing his work on calculus for decades, then accused Leibniz of plagiarism when Leibniz published independently; he reportedly had Robert Hooke's portrait removed from the Royal Society after Hooke's death. As Warden and then Master of the Royal Mint, he personally interrogated suspected counterfeiters and showed no mercy -- William Chaloner wrote letters begging Newton for his life before being hanged in 1699. He suffered at least one serious mental breakdown, possibly in 1693, which some historians have linked to mercury poisoning from his alchemical experiments. His biographer Richard Westfall concluded that Newton was 'a tortured man, an extremely neurotic personality who teetered always, at least through middle age, on the verge of breakdown.'",
+      "target_lang": "en",
+      "reason": "Deeper profile of Newton's difficult personality and its consequences, complementing the achievements pair"
+    },
+    {
+      "source_text": "Einstein's personal life -- Mileva Maric, the bomb letter, and pacifism",
+      "source_lang": "en",
+      "target_text": "Einstein's personal life was considerably more complicated than his public image as a kindly, rumpled sage suggested. His relationship with his first wife, Mileva Maric, deteriorated to the point where he issued a written list of conditions for her to accept, including that she 'expect neither intimacy nor fidelity' and 'stop talking to me if I request it' -- they divorced in 1919. The question of whether Maric contributed to his early theoretical work remains hotly debated among historians, though the scholarly consensus holds that the evidence for substantial contributions is thin. His August 1939 letter to President Roosevelt, drafted by Leo Szilard and co-motivated by Eugene Wigner and Edward Teller, warned of the potential for nuclear weapons and helped catalyze the Manhattan Project -- a consequence Einstein, a lifelong pacifist, deeply regretted. After the war, he advocated for international control of nuclear weapons and civil rights, while remaining stubbornly opposed to the probabilistic foundations of quantum mechanics until his death in 1955.",
+      "target_lang": "en",
+      "reason": "Focused profile on Einstein's personal failings and moral complexities to complement the scientific achievements pair"
+    },
+    {
+      "source_text": "Darwin and Social Darwinism -- a misattribution that shaped history",
+      "source_lang": "en",
+      "target_text": "The term 'Social Darwinism' attaches Darwin's name to a political philosophy he did not create and largely did not endorse. Herbert Spencer, not Darwin, coined the phrase 'survival of the fittest' in 1864 after reading On the Origin of Species, and Spencer applied evolutionary concepts to justify laissez-faire capitalism, colonialism, and racial hierarchy. Darwin adopted Spencer's phrase in the fifth edition of the Origin (1869) as an alternative description of natural selection, but he was uncomfortable with its social applications and wrote privately against ranking races as superior or inferior. Nevertheless, political actors from the Gilded Age through the eugenics movement of the early twentieth century invoked Darwin's authority to support programs ranging from forced sterilization to immigration restriction. The persistence of this misattribution illustrates how scientific ideas, once released into public discourse, can be co-opted for purposes their originators neither intended nor approved.",
+      "target_lang": "en",
+      "reason": "Focused pair on the Social Darwinism misattribution, a key nuance in Darwin's legacy"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "The lone genius myth versus collaborative reality in scientific discovery",
+      "to_source": "Scientific priority disputes -- the pattern across centuries",
+      "kind": "refines",
+      "reason": "The multiple discovery phenomenon that undermines the lone genius myth is the same phenomenon that generates priority disputes -- both are consequences of science being a social, collaborative enterprise"
+    },
+    {
+      "from_source": "Rosalind Franklin -- X-ray crystallography, Photo 51, and the DNA structure controversy",
+      "to_source": "The lone genius myth versus collaborative reality in scientific discovery",
+      "kind": "refines",
+      "reason": "Franklin's story is a case study in how the lone genius narrative erases collaborators -- Watson and Crick's model depended on her data, but the credit was distributed unequally"
+    },
+    {
+      "from_source": "How wrong these scientists were about other things -- Newton's alchemy, Einstein on quantum mechanics",
+      "to_source": "Isaac Newton -- gravity, calculus, optics, and the Principia",
+      "kind": "refines",
+      "reason": "Newton's alchemy obsession, detailed in the thematic pair, adds crucial context to his scientific profile by showing the full scope of his intellectual pursuits"
+    },
+    {
+      "from_source": "How wrong these scientists were about other things -- Newton's alchemy, Einstein on quantum mechanics",
+      "to_source": "Albert Einstein -- special and general relativity, the photoelectric effect, and the Nobel Prize",
+      "kind": "refines",
+      "reason": "Einstein's opposition to quantum mechanics, covered in the thematic pair, represents his most consequential scientific error and complicates his legacy"
+    },
+    {
+      "from_source": "Newton's personality -- vindictiveness, secrecy, and paranoia",
+      "to_source": "Isaac Newton -- gravity, calculus, optics, and the Principia",
+      "kind": "refines",
+      "reason": "Newton's personality profile adds depth to the achievements pair by showing how his character shaped the priority disputes and his career at the Mint"
+    },
+    {
+      "from_source": "Einstein's personal life -- Mileva Maric, the bomb letter, and pacifism",
+      "to_source": "Albert Einstein -- special and general relativity, the photoelectric effect, and the Nobel Prize",
+      "kind": "refines",
+      "reason": "Einstein's personal life pair expands on the moral complexities only briefly mentioned in the main achievements pair"
+    },
+    {
+      "from_source": "Darwin and Social Darwinism -- a misattribution that shaped history",
+      "to_source": "Charles Darwin -- natural selection, the Beagle voyage, and Origin of Species",
+      "kind": "refines",
+      "reason": "The Social Darwinism pair unpacks a legacy issue mentioned briefly in Darwin's main profile, showing how his ideas were co-opted"
+    },
+    {
+      "from_source": "Scientific priority disputes -- the pattern across centuries",
+      "to_source": "Rosalind Franklin -- X-ray crystallography, Photo 51, and the DNA structure controversy",
+      "kind": "refines",
+      "reason": "Franklin's case is a modern example of the priority dispute pattern, complicated by gender and institutional power dynamics"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Isaac Newton -- gravity, calculus, optics, and the Principia",
+      "kind": "url",
+      "locator": "https://www.astronomy.com/science/isaac-newton-a-vindictive-secretive-paranoid-genius/",
+      "reason": "Source for Newton's vindictive personality, feuds with Hooke and Leibniz, and pursuit of counterfeiters at the Mint"
+    },
+    {
+      "pair_source": "Isaac Newton -- gravity, calculus, optics, and the Principia",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/9-things-you-may-not-know-about-isaac-newton",
+      "reason": "Source for Newton's alchemy obsession, Mint career, and the Leibniz calculus dispute details"
+    },
+    {
+      "pair_source": "Isaac Newton -- gravity, calculus, optics, and the Principia",
+      "kind": "url",
+      "locator": "https://www.neh.gov/humanities/2011/januaryfebruary/feature/newton-the-last-magician",
+      "reason": "Source for Keynes's 'last of the magicians' quote and the scope of Newton's alchemical writings"
+    },
+    {
+      "pair_source": "Albert Einstein -- special and general relativity, the photoelectric effect, and the Nobel Prize",
+      "kind": "url",
+      "locator": "https://www.nobelprize.org/prizes/physics/1921/einstein/facts/",
+      "reason": "Official Nobel Prize record confirming Einstein's 1921 prize was for the photoelectric effect, not relativity"
+    },
+    {
+      "pair_source": "Albert Einstein -- special and general relativity, the photoelectric effect, and the Nobel Prize",
+      "kind": "url",
+      "locator": "https://time.com/5641891/einstein-szilard-letter/",
+      "reason": "Source for the Einstein-Szilard letter to FDR, its context, and Einstein's later regret"
+    },
+    {
+      "pair_source": "Einstein's personal life -- Mileva Maric, the bomb letter, and pacifism",
+      "kind": "url",
+      "locator": "https://www.openculture.com/2013/12/albert-einstein-imposes-on-his-first-wife-a-cruel-list-of-marital-demands.html",
+      "reason": "Source for Einstein's written list of conditions imposed on Mileva Maric"
+    },
+    {
+      "pair_source": "Charles Darwin -- natural selection, the Beagle voyage, and Origin of Species",
+      "kind": "url",
+      "locator": "https://phys.org/news/2007-03-darwin-myth.html",
+      "reason": "Source for John van Wyhe's revisionist argument that Darwin's delay was methodological, not fear-driven"
+    },
+    {
+      "pair_source": "Charles Darwin -- natural selection, the Beagle voyage, and Origin of Species",
+      "kind": "url",
+      "locator": "https://blog.biodiversitylibrary.org/2013/01/wallace-darwin-and-evolution-real-story",
+      "reason": "Source for Wallace's independent discovery and the 1858 joint Linnean Society presentation"
+    },
+    {
+      "pair_source": "Galileo Galilei -- heliocentrism, telescope observations, and the Inquisition",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/And_yet_it_moves",
+      "reason": "Source for the apocryphal nature of 'Eppur si muove' and its absence from contemporary records"
+    },
+    {
+      "pair_source": "Galileo Galilei -- heliocentrism, telescope observations, and the Inquisition",
+      "kind": "url",
+      "locator": "https://newsroom.ucla.edu/releases/the-truth-about-galileo-and-his-conflict-with-the-catholic-church",
+      "reason": "Source for the reality of Galileo's house arrest conditions and the complexity of the Church conflict"
+    },
+    {
+      "pair_source": "Nicolaus Copernicus -- De Revolutionibus and the heliocentric model",
+      "kind": "url",
+      "locator": "https://historycollection.com/nicolaus-copernicus-heliocentric-theory-delayed-publishing-real-reason/",
+      "reason": "Source for Copernicus's true reasons for delayed publication and his fear of philosophical ridicule"
+    },
+    {
+      "pair_source": "Nicolaus Copernicus -- De Revolutionibus and the heliocentric model",
+      "kind": "url",
+      "locator": "https://www.csmonitor.com/Technology/2013/0219/Copernicus-and-the-Church-What-the-history-books-don-t-say",
+      "reason": "Source for the Church's initial tolerance of De Revolutionibus and the 1616 ban timeline"
+    },
+    {
+      "pair_source": "Marie Curie -- radioactivity, two Nobel Prizes, and the barriers she faced",
+      "kind": "url",
+      "locator": "https://www.npr.org/sections/krulwich/2010/12/14/132031977/don-t-come-to-stockholm-madame-curie-s-nobel-scandal",
+      "reason": "Source for the Langevin scandal, the Nobel Committee's suggestion to skip the ceremony, and Curie's refusal"
+    },
+    {
+      "pair_source": "Marie Curie -- radioactivity, two Nobel Prizes, and the barriers she faced",
+      "kind": "url",
+      "locator": "https://www.pbs.org/newshour/science/the-day-marie-curie-got-snubbed-by-the-french-science-world",
+      "reason": "Source for Curie's January 1911 rejection from the French Academy of Sciences by two votes"
+    },
+    {
+      "pair_source": "Antoine Lavoisier -- father of modern chemistry, oxygen, and conservation of mass",
+      "kind": "url",
+      "locator": "https://www.sciencehistory.org/education/scientific-biographies/antoine-laurent-lavoisier/",
+      "reason": "Source for Lavoisier's chemical contributions, Ferme Generale involvement, and execution"
+    },
+    {
+      "pair_source": "Antoine Lavoisier -- father of modern chemistry, oxygen, and conservation of mass",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Antoine-Lavoisier",
+      "reason": "Source for Lavoisier's systematic chemical nomenclature and the law of conservation of mass"
+    },
+    {
+      "pair_source": "Rosalind Franklin -- X-ray crystallography, Photo 51, and the DNA structure controversy",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/rosalind-franklin-photo-51-dna",
+      "reason": "Source for the Photo 51 story, Wilkins showing it to Watson, and the timeline of events"
+    },
+    {
+      "pair_source": "Rosalind Franklin -- X-ray crystallography, Photo 51, and the DNA structure controversy",
+      "kind": "url",
+      "locator": "https://www.nature.com/articles/d41586-023-01313-5",
+      "reason": "Source for the 2023 Nature reassessment of Franklin's true contributions to the DNA structure discovery"
+    },
+    {
+      "pair_source": "The lone genius myth versus collaborative reality in scientific discovery",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Multiple_discovery",
+      "reason": "Source for Merton's multiple discovery concept and the extensive list of simultaneous discoveries"
+    },
+    {
+      "pair_source": "Scientific priority disputes -- the pattern across centuries",
+      "kind": "url",
+      "locator": "https://www.kroneckerwallis.com/newton-vs-leibniz-the-calculus-priority-dispute-that-divided-mathematics/",
+      "reason": "Source for the Newton-Leibniz calculus dispute timeline and Newton's manipulation of the Royal Society investigation"
+    },
+    {
+      "pair_source": "How wrong these scientists were about other things -- Newton's alchemy, Einstein on quantum mechanics",
+      "kind": "url",
+      "locator": "https://www.researchgate.net/publication/320539441_God_does_not_play_dice_Revisiting_Einstein's_rejection_of_probability_in_quantum_mechanics",
+      "reason": "Source for Einstein's 1926 letter to Born and his sustained opposition to quantum probability"
+    },
+    {
+      "pair_source": "Newton's personality -- vindictiveness, secrecy, and paranoia",
+      "kind": "url",
+      "locator": "https://physicsworld.com/a/newton-egomaniac-or-troubled-genius/",
+      "reason": "Source for Newton's personality analysis, mental breakdown, and biographer Westfall's assessment"
+    },
+    {
+      "pair_source": "Darwin and Social Darwinism -- a misattribution that shaped history",
+      "kind": "url",
+      "locator": "https://www.pewresearch.org/religion/2009/02/04/darwin-and-his-theory-of-evolution/",
+      "reason": "Source for Darwin's theory, Spencer's coinage of 'survival of the fittest,' and the Social Darwinism distinction"
+    }
+  ]
+}
