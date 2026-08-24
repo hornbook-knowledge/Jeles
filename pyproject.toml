@@ -56,7 +56,7 @@ mcp = ["mcp>=2.0.0,<3.0.0"]
 # function that needs it), so installing `jeles[mcp]` alone — without this
 # extra — still runs the server; it just always refuses the `human` rung
 # instead of granting it, exactly as if no evidence had verified.
-nestor = ["nestor @ git+https://github.com/rudi193-cmd/Nestor@v0.2.0"]
+nestor = ["nestor @ git+https://github.com/Die-Namic-Systems/Nestor@v0.2.0"]
 # pyyaml is for tests/test_release_wiring.py, which reads the release
 # workflows. It importorskips, so leaving it out would turn those checks
 # into a silent skip — the exact failure mode they exist to catch. It is a
@@ -67,9 +67,9 @@ dev = ["pytest>=8.0", "pyyaml", "tomli; python_version<'3.11'", "jeles[mcp]", "j
 jeles-corpus-mcp = "jeles.corpus_server:main"
 
 [project.urls]
-Homepage = "https://github.com/rudi193-cmd/Jeles"
-Repository = "https://github.com/rudi193-cmd/Jeles"
-Issues = "https://github.com/rudi193-cmd/Jeles/issues"
+Homepage = "https://github.com/hornbook-knowledge/Jeles"
+Repository = "https://github.com/hornbook-knowledge/Jeles"
+Issues = "https://github.com/hornbook-knowledge/Jeles/issues"
 
 [tool.hatch.version]
 # Derived from the git tag (hatch-vcs). At an exact tag `vX.Y.Z` the version is
