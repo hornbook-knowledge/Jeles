@@ -105,8 +105,13 @@ takes an `app_id` for naming-convention parity with willow-mcp. Four of those
 are the outward hops: the open web, why a search returned what it did, the 61
 institutional and academic collections, and what those collections are. They
 were added without this list being updated, so it said six for as long as there
-were ten; `tests/test_corpus_server.py::test_exactly_the_documented_tools_are_registered`
-now fails when the two drift apart, which is why the count above can be trusted.
+were ten — and again on 2026-08-28, when two tools were registered, tested, added
+to this list, and left out of `corpus_server`'s own module docstring. Three lists
+say what the tools are, so all three are now pinned to the registry:
+`test_exactly_the_documented_tools_are_registered` (a new tool cannot appear
+unnoticed), `test_the_module_docstring_names_every_registered_tool`, and
+`test_the_readme_names_every_registered_tool` — this paragraph included. That is
+why the count above can be trusted.
 
 `corpus_resolve_gap` closes a gap — the queue was write-only before it, so
 nothing could ever say a logged question had been answered. It marks rather than

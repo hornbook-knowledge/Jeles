@@ -37,6 +37,15 @@ The outward hops, for what the verified layer could not answer:
   corpus_search_status        — can either outward hop work? (asks nothing of
                                 the network)
 
+Checking a claim, and knowing whose shelf it came off:
+
+  corpus_verify_claim         — is one claim findable in an institution's
+                                catalogue? Read `overlap` before believing
+                                `matched`; `source_rank` is the publisher's
+                                rank, not the match's quality
+  corpus_host_card            — what a hostname is: publisher, custody,
+                                jurisdiction, and which roles it may play
+
 And the two fleet edges, which fail silently by design and so need a window
 of their own:
 
