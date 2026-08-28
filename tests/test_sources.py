@@ -1295,6 +1295,87 @@ def test_search_writes_the_cache_only_when_there_are_hits(tmp_path, monkeypatch)
     sources.search("q", sources=["loc"])
     records = sources._read_cache()
     assert len(records) == 1 and records[0]["source"] == "loc"
+
+
+# ── question_to_query ───────────────────────────────────────────────────────
+#
+# Exported, documented, and until now called by nothing in this package and
+# covered by no test — a host-facing helper that had never been run in anger.
+# Two defects were sitting in it, both invisible without a test:
+#
+#   * `_LONE_THE` was compiled with re.IGNORECASE, which also folds the
+#     `[A-Z]` in its negative lookahead. The lookahead therefore succeeded
+#     before every word and the pattern stripped nothing — the one article it
+#     exists to remove survived every query.
+#   * `a` sat in the IGNORECASE filler list, so a lone capital letter was
+#     deleted: "drug A" and "drug B" produced the same search. `corpus.py`
+#     already knew this and keeps "a" and "i" out of its stop set.
+
+
+def test_question_words_and_fillers_are_stripped():
+    from jeles.sources import question_to_query
+
+    assert question_to_query("What is the capital of France?") == "capital France"
+    assert question_to_query("Tell me about the primary color in Grove?") == \
+        "primary color Grove"
+
+
+def test_a_lone_capital_letter_survives():
+    """"drug A" and "drug B" must not collapse into the same query — the
+    query-side twin of test_corpus.py::test_single_letters_stay_meaning_bearing.
+    """
+    from jeles.sources import question_to_query
+
+    a = question_to_query("Does drug A interact with X?")
+    b = question_to_query("Does drug B interact with X?")
+    assert a == "drug A interact X"
+    assert a != b
+    assert question_to_query("What is vitamin A deficiency?") == \
+        "vitamin A deficiency"
+
+
+def test_a_lowercase_article_is_still_filler():
+    """Keeping the capital letter must not keep the article it looks like."""
+    from jeles.sources import question_to_query
+
+    assert question_to_query("What is a nugget?") == "nugget"
+
+
+def test_the_is_kept_when_it_introduces_a_proper_noun():
+    """The negative lookahead is the whole mechanism, and it only works
+    case-sensitively — which is why `_LONE_THE` is not IGNORECASE."""
+    from jeles.sources import question_to_query
+
+    assert question_to_query("Tell me about The Hague") == "The Hague"
+    assert question_to_query("Who wrote The Beatles biography?") == \
+        "The Beatles biography"
+    assert question_to_query("How did the Roman Empire fall?") == \
+        "the Roman Empire fall"
+
+
+def test_the_is_dropped_when_it_introduces_nothing():
+    from jeles.sources import question_to_query
+
+    assert question_to_query("What is the answer?") == "answer"
+
+
+def test_a_question_that_reduces_to_nothing_falls_back_to_itself():
+    """The fallback returns the original rather than an empty query — a search
+    for "" is worse than a search for the words the asker actually used."""
+    from jeles.sources import question_to_query
+
+    assert question_to_query("What is a?") == "What is a"
+    assert question_to_query("is of the") == "is of the"
+
+
+def test_punctuation_only_input_is_not_a_query():
+    """Known edge, pinned rather than fixed: nothing survives and the fallback
+    has nothing to fall back to. A caller must not send this to a source."""
+    from jeles.sources import question_to_query
+
+    assert question_to_query("???") == ""
+
+
 def test_zenodo_names_the_repository_not_the_record_owner(monkeypatch):
     """`owners` is a list of dicts, and `[0]` put one in `institution` — a
     field `_result` declares as `str` and every other adapter fills with one.
