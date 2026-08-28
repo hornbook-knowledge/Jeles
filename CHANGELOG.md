@@ -20,6 +20,13 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.10.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.9.0...v0.10.0) (2026-08-28)
+
+
+### Added
+
+* **corpus:** close the gap queue and open a window on both fleet edges ([4cbaaf1](https://github.com/hornbook-knowledge/Jeles/commit/4cbaaf15f2e9c0d7259b05484158c99d5da4a812))
+
 ## [0.9.0](https://github.com/rudi193-cmd/Jeles/compare/v0.8.0...v0.9.0) (2026-08-10)
 
 
