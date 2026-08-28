@@ -30,10 +30,9 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Fixed
 
-* **source_trail:** confidence was the publisher's rank, not the match's ([484b721](https://github.com/hornbook-knowledge/Jeles/commit/484b72164110dc882226a21ffdf97cf8eefd3894))
-* **source_trail:** confidence was the publisher's rank, not the match's ([6b4ae1a](https://github.com/hornbook-knowledge/Jeles/commit/6b4ae1a1801d6e6dfa319afb016475ef6246a7e5))
 * **sources:** question_to_query stripped the wrong words ([4d1317a](https://github.com/hornbook-knowledge/Jeles/commit/4d1317ae1aa5291acf9e56200ef3db0b01959020))
 * **sources:** zenodo called a user account an institution ([22ddeb5](https://github.com/hornbook-knowledge/Jeles/commit/22ddeb5529993cd431be96adc95fbe860eba9a4f))
+* **source_trail:** confidence was the publisher's rank, not the match's ([6b4ae1a](https://github.com/hornbook-knowledge/Jeles/commit/6b4ae1a1801d6e6dfa319afb016475ef6246a7e5))
 
 ## [0.10.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.9.0...v0.10.0) (2026-08-28)
 
