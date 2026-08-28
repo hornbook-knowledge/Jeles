@@ -80,9 +80,8 @@ except ImportError as exc:  # pragma: no cover - exercised by install shape, not
         "SDK 2.x is also what willow-mcp requires, so the two now co-install."
     ) from exc
 
-from urllib.parse import urlparse
-
 from typing import Annotated
+from urllib.parse import urlparse
 
 from pydantic import Field
 

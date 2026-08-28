@@ -283,7 +283,7 @@ def test_a_document_that_shares_only_vocabulary_scores_low(monkeypatch):
     """The measured false positive. The paper is genuinely about function
     calling; the claim is about Gemma 4. The tokens that make the claim
     specific are exactly the ones missing."""
-    monkeypatch.setattr(_st._sources, "search", lambda c, s, l: {"results": {
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
         "crossref": [_hit("Code-Generated Tool Orchestration versus "
                           "Native Function Calling")]}})
     out = verify_claim("Gemma 4 ships with native function calling trained "
@@ -293,7 +293,7 @@ def test_a_document_that_shares_only_vocabulary_scores_low(monkeypatch):
 
 
 def test_a_document_that_names_the_claim_scores_higher(monkeypatch):
-    monkeypatch.setattr(_st._sources, "search", lambda c, s, l: {"results": {
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
         "crossref": [_hit("Attention is All You Need: the Transformer "
                           "architecture introduced")]}})
     out = verify_claim("The Transformer architecture was introduced in the "
@@ -304,10 +304,10 @@ def test_a_document_that_names_the_claim_scores_higher(monkeypatch):
 def test_source_rank_is_about_the_publisher_not_the_match(monkeypatch):
     """Two claims, same journal, wildly different relevance — identical rank.
     That is the whole reason the field could not keep the name `confidence`."""
-    monkeypatch.setattr(_st._sources, "search", lambda c, s, l: {"results": {
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
         "crossref": [_hit("Commentary: do you have any doctors in your family?")]}})
     a = verify_claim("Qwen 3 models have the most stable tool calling")
-    monkeypatch.setattr(_st._sources, "search", lambda c, s, l: {"results": {
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
         "crossref": [_hit("Qwen 3 models have the most stable tool calling")]}})
     b = verify_claim("Qwen 3 models have the most stable tool calling")
     assert a["source_rank"] == b["source_rank"], "rank cannot tell them apart"
@@ -315,7 +315,7 @@ def test_source_rank_is_about_the_publisher_not_the_match(monkeypatch):
 
 
 def test_an_unmatched_claim_reports_both_numbers_as_zero(monkeypatch):
-    monkeypatch.setattr(_st._sources, "search", lambda c, s, l: {"results": {}})
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {}})
     out = verify_claim("nothing indexed anywhere")
     assert out["source_rank"] == 0.0 and out["overlap"] == 0.0
     assert "confidence" not in out, "the misleading name must not survive as an alias"
