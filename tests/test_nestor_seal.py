@@ -91,3 +91,91 @@ def test_refuses_when_the_nestor_extra_is_not_installed(no_nestor):
         {"scheme": _nestor_seal.EVIDENCE_SCHEME, "seal_sig": "not-checkable"})
     assert ok is False
     assert "nestor extra not installed" in reason
+
+
+# ── describe(): the same refusals, asked before a write instead of after ────
+#
+# `describe()` exists so a caller can learn the `human` rung is unreachable
+# without attempting a write to find out. That is only worth anything if the
+# two agree: a status saying "ready" over a write that refuses, or two
+# different explanations for one condition, would be worse than no status at
+# all. These pin them together rather than trusting the docstring's word.
+
+
+def _reason_a_write_would_give():
+    """What `verify_human_write` refuses with in this environment, given
+    evidence shaped well enough to get past the shape checks."""
+    ok, reason = _nestor_seal.verify_human_write(
+        "q?", "a.", "rita",
+        {"scheme": _nestor_seal.EVIDENCE_SCHEME, "seal_sig": "deadbeef"})
+    assert ok is False
+    return reason
+
+
+def _fake_nestor(monkeypatch, **signing_attrs):
+    import types
+
+    module = types.ModuleType("nestor")
+    module.signing = types.SimpleNamespace(**signing_attrs)
+    monkeypatch.setitem(sys.modules, "nestor", module)
+    return module.signing
+
+
+def test_describe_reports_a_missing_extra_exactly_as_a_write_would(no_nestor):
+    described = _nestor_seal.describe()
+    assert described["installed"] is False
+    assert described["ready"] is False
+    assert described["reason"] == _reason_a_write_would_give()
+
+
+def test_describe_reports_an_unconfigured_instance_exactly_as_a_write_would(monkeypatch):
+    _fake_nestor(
+        monkeypatch,
+        signing_enabled=lambda: False,
+        seal_is_valid=lambda *a, **k: pytest.fail(
+            "an unconfigured instance must be refused before seal_is_valid"),
+    )
+    described = _nestor_seal.describe()
+    assert described["installed"] is True
+    assert described["signing_enabled"] is False
+    assert described["ready"] is False
+    assert described["reason"] == _reason_a_write_would_give()
+
+
+def test_describe_is_ready_only_when_something_could_be_checked(monkeypatch):
+    _fake_nestor(
+        monkeypatch,
+        signing_enabled=lambda: True,
+        seal_is_valid=lambda *a, **k: pytest.fail("describe() must verify nothing"),
+    )
+    assert _nestor_seal.describe() == {
+        "scheme": _nestor_seal.EVIDENCE_SCHEME,
+        "installed": True,
+        "signing_enabled": True,
+        "ready": True,
+        "reason": "ok",
+    }
+
+
+def test_describe_reports_a_failing_check_rather_than_raising(monkeypatch):
+    """A caller asking only for a status must not be handed an exception."""
+    def _boom():
+        raise RuntimeError("keyring unreadable")
+
+    _fake_nestor(monkeypatch, signing_enabled=_boom)
+    described = _nestor_seal.describe()
+    assert described["ready"] is False
+    assert "RuntimeError" in described["reason"]
+
+
+def test_describe_names_no_key_material(monkeypatch):
+    """Every field is about *configuration*, never about what it contains."""
+    import json
+
+    monkeypatch.setenv("NESTOR_SEAL_KEY", "s3cr3t-must-not-leak")
+    monkeypatch.setenv("NESTOR_KEYRING", "/home/someone/.nestor/keyring.json")
+    _fake_nestor(monkeypatch, signing_enabled=lambda: True)
+
+    rendered = json.dumps(_nestor_seal.describe())
+    assert "s3cr3t-must-not-leak" not in rendered
+    assert "keyring.json" not in rendered

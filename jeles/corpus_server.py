@@ -25,6 +25,7 @@ Tools:
   corpus_list    — list nuggets, most recently updated first
   corpus_put     — record a nugget as an unchecked assertion
   corpus_gaps    — list logged "I don't know yet" questions
+  corpus_resolve_gap — mark a gap answered, taking it out of that queue
 
 The outward hops, for what the verified layer could not answer:
 
@@ -35,6 +36,12 @@ The outward hops, for what the verified layer could not answer:
   corpus_sources              — which collections exist, and which need a key
   corpus_search_status        — can either outward hop work? (asks nothing of
                                 the network)
+
+And the two fleet edges, which fail silently by design and so need a window
+of their own:
+
+  corpus_fleet_status         — did forwarded gaps reach willow-mcp, and is
+                                the `human` rung reachable via Nestor at all?
 
 Together those are the persona's mandate — local KB → open web → special
 collections — with the confidence ladder intact across all three:
@@ -209,10 +216,46 @@ def corpus_put(
 
 
 @mcp.tool()
-def corpus_gaps(app_id: str, limit: int = 50) -> list:
+def corpus_gaps(app_id: str, limit: int = 50, include_resolved: bool = False) -> list:
     """List logged 'I don't know yet' questions, most-asked first — the
-    corpus's growth queue."""
-    return corpus.list_gaps(limit=limit)
+    corpus's growth queue.
+
+    Resolved gaps are left out unless ``include_resolved`` asks for them. A
+    resolved gap's ``asked_count`` is frozen (once answered, `corpus_ask` hits
+    the nugget and stops logging), so keeping them in a list sorted by that
+    count would park long-answered questions above every newer open one.
+    Pass ``include_resolved=True`` to read the history rather than the queue."""
+    return corpus.list_gaps(limit=limit, include_resolved=include_resolved)
+
+
+@mcp.tool()
+def corpus_resolve_gap(
+    app_id: str,
+    gap_id: str,
+    nugget_id: str = "",
+    resolved_by: str = "",
+) -> dict:
+    """Mark a gap answered, taking it out of the growth queue. Returns
+    ``{id, status, resolved_at}`` or ``{"error": "not_found"}``.
+
+    Until this existed the queue was write-only: `corpus_ask` logged a miss,
+    `corpus_gaps` listed it, and nothing could ever say it had been filled.
+
+    The gap is marked, not deleted — what was asked and how often is the
+    corpus's record of its own blind spots, and it stays readable through
+    ``corpus_gaps(include_resolved=True)``. If the same question misses again
+    later the gap reopens by itself, keeping the earlier resolution alongside a
+    `reopened_at`, so a recurring hole does not read as a new one.
+
+    **This closes a queue; it verifies nothing.** Resolving a gap makes no
+    claim that whatever answers it is true, and moves nothing up the confidence
+    ladder — that is `corpus_put`'s business, and for the `human` rung a
+    signature's (see `corpus_fleet_status`). ``resolved_by`` defaults to the
+    calling ``app_id`` so the record always says who closed it; pass a person's
+    name when a person decided it.
+    """
+    return corpus.resolve_gap(
+        gap_id, resolved_by=resolved_by or app_id, nugget_id=nugget_id)
 
 
 # ── The second hop: the open web ────────────────────────────────────────────
@@ -290,7 +333,10 @@ def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
     written down. Promotion is a person's act.
     """
     out = search_adapter.search_with_status(query)
-    hits = [_web_hit(h, i) for i, h in enumerate(out["hits"][:limit])]
+    # `max(0, limit)` for the same reason `corpus.py` guards every one of its
+    # own slices: a bare [:limit] reads a negative limit as "all but the last
+    # N", so `limit=-1` quietly returns almost everything instead of nothing.
+    hits = [_web_hit(h, i) for i, h in enumerate(out["hits"][: max(0, limit)])]
     return {
         "hits": hits,
         "ok": out["ok"],
@@ -359,9 +405,63 @@ def corpus_institutional_search(
     only thing this hop is for. `source` names the publishing body.
     """
     out = institutional.search_institutional(
-        query, sources_filter=sources, limit_per_source=limit_per_source
+        query, sources_filter=sources,
+        # Guarded before it leaves this process: `limit_per_source` is passed
+        # down into `sources.py`, where each of the 65 source functions slices
+        # its own results with a bare [:limit]. A negative value would reach
+        # every one of them.
+        limit_per_source=max(0, limit_per_source),
     )
-    return {**out, "hits": out["hits"][:limit]}
+    return {**out, "hits": out["hits"][: max(0, limit)]}
+
+
+# ── The fleet edges: willow-mcp and Nestor ──────────────────────────────────
+#
+# `corpus_search_status` answers "can this edge work?" for the two *outward*
+# hops. This package has two more edges and neither could be asked the same
+# question: `willow_mcp_client.forward_status()` was written, tested, and
+# reachable from nothing, and `_nestor_seal` had no status function at all.
+#
+# Both fail silently by design, which is what makes the omission expensive.
+# Gap forwarding is best-effort and never raises, so a fleet that has been
+# refusing every forward for a week looks exactly like a working one. A missing
+# `[nestor]` extra is only discoverable by attempting a write and reading the
+# rung it landed at. Neither is a bug in the hiding — both are correct
+# behaviour that simply had no window.
+
+
+@mcp.tool()
+def corpus_fleet_status(app_id: str) -> dict:
+    """Report whether this instance's two *fleet* connections work, without
+    using either — the companion to ``corpus_search_status``, which answers the
+    same question for the open web and the institutional collections.
+
+    Returns ``{willow_mcp, nestor}``.
+
+    ``willow_mcp`` is where forwarded gaps actually went:
+    ``{enabled, app_id, session_ready, session_error, forwarded, failed,
+    last_error}``. Forwarding is best-effort and never raises into
+    ``corpus_ask``, so ``failed`` climbing while ``forwarded`` stays flat is the
+    only way to see a gate denial — an app_id without ``gap_write``, or no
+    manifest at all. ``session_error`` says why no session exists;
+    ``last_error`` says why the last call failed on a session that does. A
+    local ``corpus.log_gap`` has already succeeded regardless: the local store
+    is the source of truth and the fleet backlog is additive (design principle
+    7), so ``failed`` is a fleet problem, never a lost gap.
+
+    ``nestor`` is whether the ``human`` rung is reachable here at all:
+    ``{scheme, installed, signing_enabled, ready, reason}``. ``ready: false``
+    means ``corpus_put`` cannot mint ``human`` no matter what a caller sends —
+    the write still lands, at ``asserted``. ``reason`` is the same string
+    ``corpus_put`` would refuse with, so the two never disagree. No key, path,
+    or key material appears in any field.
+
+    Neither half asks anything of the network, and neither verifies anything.
+    """
+    return {
+        "willow_mcp": willow_mcp_client.forward_status(),
+        "nestor": _nestor_seal.describe(),
+    }
 
 
 @mcp.tool()
