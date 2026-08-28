@@ -38,7 +38,7 @@ from __future__ import annotations
 
 from typing import Any
 
-__all__ = ["EVIDENCE_SCHEME", "verify_human_write"]
+__all__ = ["EVIDENCE_SCHEME", "describe", "verify_human_write"]
 
 #: The only `evidence["scheme"]` this module currently understands. `evidence`
 #: itself is a free-form dict (see `corpus.py`'s comment above `_KIND_RANK` —
@@ -60,6 +60,60 @@ def _import_nestor():
     except ImportError:
         return None
     return signing
+
+
+def describe() -> dict[str, Any]:
+    """Whether this instance could verify a seal at all — asking nothing of a
+    caller and verifying nothing.
+
+    Returns ``{scheme, installed, signing_enabled, ready, reason}``. ``ready``
+    is True only when a real seal *could* be checked here; ``reason`` is
+    ``"ok"`` then, and otherwise repeats — verbatim — the refusal
+    :func:`verify_human_write` would give for the same condition, so the two
+    can never disagree about why the `human` rung is out of reach.
+
+    This exists because the only way to discover a missing extra or an
+    unconfigured keyring used to be to *attempt a write* and read the rung it
+    landed at. A caller learning "this instance cannot mint `human`" by writing
+    a nugget it did not want has been told the truth by the most expensive
+    route available.
+
+    Never raises, and never names a key, a path, or any key material — the same
+    rule :func:`verify_human_write` follows. ``signing_enabled`` is a boolean
+    about configuration, not a hint about what the configuration is.
+    """
+    signing = _import_nestor()
+    if signing is None:
+        return {
+            "scheme": EVIDENCE_SCHEME,
+            "installed": False,
+            "signing_enabled": False,
+            "ready": False,
+            "reason": 'nestor extra not installed (pip install "jeles[nestor]")',
+        }
+
+    try:
+        enabled = bool(signing.signing_enabled())
+    except Exception as exc:
+        # Mirrors verify_human_write's own posture: an error asking whether we
+        # can verify is a "no", reported, not an exception thrown at a caller
+        # who only wanted a status.
+        return {
+            "scheme": EVIDENCE_SCHEME,
+            "installed": True,
+            "signing_enabled": False,
+            "ready": False,
+            "reason": f"signature check raised {type(exc).__name__}: {exc}",
+        }
+
+    return {
+        "scheme": EVIDENCE_SCHEME,
+        "installed": True,
+        "signing_enabled": enabled,
+        "ready": enabled,
+        "reason": "ok" if enabled
+        else "no NESTOR_SEAL_KEY or keyring configured on this instance",
+    }
 
 
 def verify_human_write(

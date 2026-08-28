@@ -778,6 +778,13 @@ def log_gap(question: str) -> dict[str, Any]:
     earlier question outright, so someone working the queue answered the
     surviving phrasing and the other was gone, still unanswered, its count
     folded into a number that then overstated demand for the one left.
+
+    A new or re-asked gap is written ``status: "open"``. Earlier versions wrote
+    ``"unverified"`` here, which read as a rung on the confidence ladder
+    (``verified``/``corroborated``/``institutional``/``unverified``) when it is
+    nothing of the kind — a gap has no answer to be confident about. Nothing
+    read the field either way, so no consumer changes; see :func:`resolve_gap`,
+    which is what finally gives it a second value to hold.
     """
     question = (question or "").strip()
     if not question:
@@ -801,13 +808,23 @@ def log_gap(question: str) -> dict[str, Any]:
             variants = list(existing.get("variants") or [])
             if question != first and question not in variants:
                 variants = [*variants[: _MAX_GAP_VARIANTS - 1], question]
-            record = _clean({
+            fields = {
                 "question": first,
-                "status": "unverified",
+                "status": "open",
                 "asked_count": int(existing.get("asked_count", 0)) + 1,
                 "first_asked_at": existing.get("first_asked_at") or now,
                 "last_asked_at": now,
-            })
+            }
+            # A resolved gap that misses again is open again — the miss is the
+            # proof that the settled layer stopped covering it. The resolution
+            # is kept rather than dropped, so the record still shows it was
+            # once answered and `reopened_at` says when that stopped holding;
+            # deleting it would make a recurring hole look like a brand new one.
+            if existing.get("status") == "resolved":
+                fields["resolved_at"] = existing.get("resolved_at") or ""
+                fields["resolved_by"] = existing.get("resolved_by") or ""
+                fields["reopened_at"] = now
+            record = _clean(fields)
             if variants:
                 record["variants"] = _clean(variants)
             conn.execute(
@@ -820,7 +837,75 @@ def log_gap(question: str) -> dict[str, Any]:
     return {"id": gap_id, "asked_count": record["asked_count"]}
 
 
-def list_gaps(limit: int = 50) -> list[dict[str, Any]]:
+def resolve_gap(
+    gap_id: str,
+    resolved_by: str = "",
+    nugget_id: str = "",
+) -> dict[str, Any]:
+    """Close a gap: mark it answered so it leaves the growth queue.
+
+    Returns ``{id, status, resolved_at}``, or ``{"error": "not_found"}`` for an
+    id no gap has — the same shape :func:`get_nugget` uses for a miss.
+
+    The record is marked, never deleted. What was asked, how often, and in how
+    many phrasings is the corpus's own history of its blind spots, and it is
+    worth more once the hole is filled than while it is open. ``resolved_by``
+    and ``nugget_id`` are recorded when given, so a reader can tell *who* said
+    this was answered and *what* answers it.
+
+    This closes a queue, it does not verify anything. Marking a gap resolved
+    makes no claim that the nugget answering it is true, and cannot promote
+    anything up the confidence ladder — the rung is decided by
+    :func:`put_nugget` and, for the ``human`` one, by a signature
+    (`jeles._nestor_seal`). A caller that resolves a gap against a worthless
+    nugget has hidden a question, not answered it.
+    """
+    gap_id = (gap_id or "").strip()
+    if not gap_id:
+        return {"error": "gap_id required"}
+    now = _now()
+    with _lock:
+        conn = _conn(GAPS_COLLECTION)
+        with _write(conn):
+            row = conn.execute(
+                "SELECT data FROM records WHERE id = ? AND deleted = 0", (gap_id,)
+            ).fetchone()
+            if row is None:
+                return {"error": "not_found"}
+            record = json.loads(row[0])
+            record["status"] = "resolved"
+            record["resolved_at"] = now
+            if resolved_by:
+                record["resolved_by"] = resolved_by
+            if nugget_id:
+                record["nugget_id"] = nugget_id
+            # A gap resolved after having been reopened is resolved *now*;
+            # leaving the old reopening timestamp behind would date the record
+            # to the last time it was open.
+            record.pop("reopened_at", None)
+            conn.execute(
+                "UPDATE records SET data = ?, updated_at = ? WHERE id = ?",
+                (json.dumps(record), now, gap_id),
+            )
+    return {"id": gap_id, "status": "resolved", "resolved_at": now}
+
+
+def list_gaps(limit: int = 50, include_resolved: bool = False) -> list[dict[str, Any]]:
+    """Gaps, most-asked first — the corpus's growth queue.
+
+    Resolved gaps are left out unless asked for. They stay in the store, but
+    this list is sorted by ``asked_count``, and a resolved gap's count is
+    frozen at whatever it reached: once answered, :func:`ask_corpus` hits the
+    nugget and stops logging. Kept in the list it would sit near the top on a
+    historical number forever, outranking every newer open gap — the queue
+    getting less useful precisely as the corpus got better.
+
+    Anything whose ``status`` is not ``"resolved"`` counts as open, which
+    includes the ``"unverified"`` written by every version of :func:`log_gap`
+    from before a gap could be closed at all.
+    """
     gaps = _all(GAPS_COLLECTION)
+    if not include_resolved:
+        gaps = [g for g in gaps if g.get("status") != "resolved"]
     gaps.sort(key=lambda g: g.get("asked_count", 0), reverse=True)
     return gaps[: max(0, limit)]

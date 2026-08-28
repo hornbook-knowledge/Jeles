@@ -38,12 +38,15 @@ EXPECTED_TOOLS = {
     "corpus_list",
     "corpus_put",
     "corpus_gaps",
+    "corpus_resolve_gap",
     # The second hop.
     "corpus_web_search",
     "corpus_search_status",
     # The third hop.
     "corpus_institutional_search",
     "corpus_sources",
+    # The fleet edges.
+    "corpus_fleet_status",
 }
 
 
@@ -513,3 +516,121 @@ def test_the_confidence_ladder_has_four_distinct_rungs():
              inst_hit["confidence"], web_hit["confidence"]]
     assert rungs == ["verified", "corroborated", "institutional", "unverified"]
     assert len(set(rungs)) == 4
+
+
+# ── Closing a gap ───────────────────────────────────────────────────────────
+
+
+def test_resolve_gap_delegates_and_stamps_the_caller(monkeypatch):
+    """`resolved_by` defaults to the calling app_id, so the record always says
+    who closed the gap even when nobody passed a name."""
+    seen = {}
+
+    def _capture(gap_id, resolved_by="", nugget_id=""):
+        seen.update(gap_id=gap_id, resolved_by=resolved_by, nugget_id=nugget_id)
+        return {"id": gap_id, "status": "resolved", "resolved_at": "now"}
+
+    monkeypatch.setattr(corpus_server.corpus, "resolve_gap", _capture)
+
+    out = corpus_server.corpus_resolve_gap("ask-jeles", "g1", nugget_id="n1")
+    assert out["status"] == "resolved"
+    assert seen == {"gap_id": "g1", "resolved_by": "ask-jeles", "nugget_id": "n1"}
+
+
+def test_an_explicit_resolver_outranks_the_app_id(monkeypatch):
+    """A person deciding is worth recording as the person, not as the tool
+    they happened to be driving."""
+    seen = {}
+    monkeypatch.setattr(
+        corpus_server.corpus, "resolve_gap",
+        lambda gap_id, resolved_by="", nugget_id="": seen.update(by=resolved_by) or {},
+    )
+    corpus_server.corpus_resolve_gap("ask-jeles", "g1", resolved_by="designer")
+    assert seen["by"] == "designer"
+
+
+def test_gaps_hides_resolved_by_default(monkeypatch):
+    seen = {}
+    monkeypatch.setattr(
+        corpus_server.corpus, "list_gaps",
+        lambda limit=50, include_resolved=False: seen.update(
+            limit=limit, include_resolved=include_resolved) or [],
+    )
+    corpus_server.corpus_gaps("app")
+    assert seen["include_resolved"] is False
+    corpus_server.corpus_gaps("app", include_resolved=True)
+    assert seen["include_resolved"] is True
+
+
+# ── The fleet edges ─────────────────────────────────────────────────────────
+
+
+def test_fleet_status_reports_both_edges(monkeypatch):
+    monkeypatch.setattr(
+        corpus_server.willow_mcp_client, "forward_status",
+        lambda: {"enabled": True, "forwarded": 3, "failed": 0},
+    )
+    monkeypatch.setattr(
+        corpus_server._nestor_seal, "describe",
+        lambda: {"installed": True, "ready": True, "reason": "ok"},
+    )
+    out = corpus_server.corpus_fleet_status("app")
+    assert out["willow_mcp"]["forwarded"] == 3
+    assert out["nestor"]["ready"] is True
+
+
+def test_fleet_status_makes_no_request(monkeypatch):
+    """The whole point is to be safe to call before deciding to use an edge."""
+    def _boom(*a, **k):
+        raise AssertionError("fleet status must not touch the network")
+
+    monkeypatch.setattr(corpus_server.willow_mcp_client, "forward_gap", _boom)
+    monkeypatch.setattr(corpus_server.willow_mcp_client, "call_tool", _boom)
+    monkeypatch.setattr(corpus_server._nestor_seal, "verify_human_write", _boom)
+    corpus_server.corpus_fleet_status("app")
+
+
+def test_a_silently_failing_forward_is_visible(monkeypatch):
+    """Gap forwarding never raises into `corpus_ask`, so a gate denial is
+    invisible from every other surface. This is the window onto it."""
+    monkeypatch.setattr(
+        corpus_server.willow_mcp_client, "forward_status",
+        lambda: {"enabled": True, "session_ready": True, "forwarded": 0,
+                 "failed": 12, "last_error": "no manifest for 'ask-jeles'"},
+    )
+    monkeypatch.setattr(corpus_server._nestor_seal, "describe", lambda: {})
+    willow = corpus_server.corpus_fleet_status("app")["willow_mcp"]
+    assert willow["failed"] == 12 and willow["forwarded"] == 0
+    assert "no manifest" in willow["last_error"]
+
+
+# ── A negative limit is not "all but the last N" ────────────────────────────
+
+
+def test_web_search_refuses_a_negative_limit(monkeypatch):
+    """A bare [:limit] reads -1 as "all but the last", so the guard that
+    `corpus.py` applies to every one of its own slices belongs here too."""
+    monkeypatch.setattr(
+        corpus_server.search_adapter, "search_with_status",
+        lambda q: {"hits": [{"title": str(i), "url": f"https://e.org/{i}", "snippet": ""}
+                            for i in range(10)],
+                   "ok": True, "backend": "searxng", "shallow": False, "error": ""},
+    )
+    assert corpus_server.corpus_web_search("app", "q", limit=-1)["hits"] == []
+
+
+def test_institutional_search_refuses_a_negative_limit(monkeypatch):
+    seen = {}
+
+    def _search(query, sources_filter=None, limit_per_source=3):
+        seen["limit_per_source"] = limit_per_source
+        return {"hits": [{"title": str(i)} for i in range(10)], "ok": True}
+
+    monkeypatch.setattr(corpus_server.institutional, "search_institutional", _search)
+
+    out = corpus_server.corpus_institutional_search(
+        "app", "q", limit=-1, limit_per_source=-5)
+    assert out["hits"] == []
+    # Guarded before it reaches sources.py, where 65 source functions each
+    # slice their own results with a bare [:limit].
+    assert seen["limit_per_source"] == 0

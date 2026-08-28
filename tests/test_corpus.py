@@ -725,3 +725,111 @@ def test_single_letters_stay_meaning_bearing(corpus):
     b = corpus.log_gap("Does drug B interact with X?")
     assert a["id"] != b["id"]
     assert len(corpus.list_gaps()) == 2
+
+
+# ── Closing a gap ───────────────────────────────────────────────────────────
+#
+# The gap queue was write-only: `log_gap` wrote it, `list_gaps` read it, and
+# nothing in the package could ever say a question had been answered. Two
+# things followed. The `status` field was written on every record and read by
+# nobody, so it held one value forever; and `list_gaps` sorts by `asked_count`,
+# which freezes once a gap is answered (`ask_corpus` starts hitting the nugget
+# and stops logging) — so an answered question kept its historical count and
+# outranked every newer open gap, the queue decaying exactly as the corpus
+# improved.
+
+
+def test_resolving_a_gap_takes_it_out_of_the_queue(corpus):
+    logged = corpus.log_gap("What is the accent color in Tokyo Night?")
+    assert len(corpus.list_gaps()) == 1
+
+    result = corpus.resolve_gap(logged["id"], resolved_by="designer")
+    assert result["status"] == "resolved"
+    assert result["resolved_at"]
+    assert corpus.list_gaps() == []
+
+
+def test_a_resolved_gap_is_kept_not_deleted(corpus):
+    """The record is the corpus's history of its own blind spots. It is worth
+    more once the hole is filled than while it is open."""
+    logged = corpus.log_gap("What is the accent color in Tokyo Night?")
+    corpus.resolve_gap(logged["id"], resolved_by="designer", nugget_id="n1")
+
+    kept = corpus.list_gaps(include_resolved=True)
+    assert len(kept) == 1
+    assert kept[0]["question"] == "What is the accent color in Tokyo Night?"
+    assert kept[0]["status"] == "resolved"
+    assert kept[0]["resolved_by"] == "designer"
+    assert kept[0]["nugget_id"] == "n1"
+
+
+def test_an_answered_gap_stops_outranking_newer_open_ones(corpus):
+    """The bug this exists for. The resolved gap has the higher `asked_count`
+    and would sit above the open one forever."""
+    old = corpus.log_gap("an old question")
+    for _ in range(9):
+        corpus.log_gap("an old question")
+    corpus.log_gap("a new question")
+
+    assert corpus.list_gaps()[0]["question"] == "an old question"
+    corpus.resolve_gap(old["id"])
+    assert [g["question"] for g in corpus.list_gaps()] == ["a new question"]
+
+
+def test_a_resolved_gap_asked_again_reopens(corpus):
+    """A miss is proof the settled layer stopped covering it. The earlier
+    resolution is kept so a recurring hole does not read as a new one."""
+    logged = corpus.log_gap("What is the accent color in Tokyo Night?")
+    corpus.resolve_gap(logged["id"], resolved_by="designer")
+    assert corpus.list_gaps() == []
+
+    again = corpus.log_gap("What is the accent color in Tokyo Night?")
+    assert again["id"] == logged["id"]
+
+    reopened = corpus.list_gaps()
+    assert len(reopened) == 1
+    assert reopened[0]["status"] == "open"
+    assert reopened[0]["resolved_at"], "the earlier resolution is kept"
+    assert reopened[0]["reopened_at"]
+    assert reopened[0]["asked_count"] == 2
+
+
+def test_resolving_again_after_a_reopen_clears_the_reopen_stamp(corpus):
+    """Otherwise the record is dated to the last time it was open."""
+    logged = corpus.log_gap("a question")
+    corpus.resolve_gap(logged["id"])
+    corpus.log_gap("a question")
+    corpus.resolve_gap(logged["id"])
+
+    record = corpus.list_gaps(include_resolved=True)[0]
+    assert record["status"] == "resolved"
+    assert "reopened_at" not in record
+
+
+def test_resolve_requires_a_real_gap_id(corpus):
+    assert corpus.resolve_gap("") == {"error": "gap_id required"}
+    assert corpus.resolve_gap("does-not-exist") == {"error": "not_found"}
+
+
+def test_a_gap_from_before_gaps_could_be_closed_counts_as_open(corpus):
+    """Records written by earlier versions carry `status: "unverified"`. The
+    rule is "anything not resolved is open", so they stay in the queue rather
+    than vanishing from it on upgrade."""
+    logged = corpus.log_gap("a question")
+    gap = corpus.list_gaps()[0]
+    assert gap["status"] == "open"
+
+    # Rewrite it the way the old code did.
+    import json
+    with corpus._lock:
+        conn = corpus._conn(corpus.GAPS_COLLECTION)
+        record = dict(gap)
+        for key in ("_id", "_created", "_updated"):
+            record.pop(key, None)
+        record["status"] = "unverified"
+        with corpus._write(conn):
+            conn.execute("UPDATE records SET data = ? WHERE id = ?",
+                         (json.dumps(record), logged["id"]))
+
+    assert len(corpus.list_gaps()) == 1
+    assert corpus.list_gaps()[0]["status"] == "unverified"
