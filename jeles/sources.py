@@ -581,7 +581,21 @@ def search_zenodo(query: str, limit: int = 5) -> list[dict]:
             title=meta.get("title", ""),
             url=f"https://doi.org/{doi}" if doi else item.get("links", {}).get("html", ""),
             source="zenodo",
-            institution=item.get("owners", [{}])[0] if item.get("owners") else "Zenodo / CERN",
+            # Always the repository, never the record's owner. Zenodo's
+            # `owners` is a list of *dicts* (`{"id": "1342605"}`), so `[0]`
+            # handed a dict to a parameter `_result` declares as `str`. It did
+            # not crash, which is why it survived: `_text` coerces with
+            # `str(value)`, so the institution became the literal text
+            # "{'id': '1342605'}". That is worse than a crash for the one job
+            # this field has — `verify._identity` counts `institution` to
+            # decide corroboration, so every Zenodo record with an owner
+            # contributed a distinct "institution" whose name is a rendered
+            # dict, and two records by different owners looked like two
+            # independent institutions agreeing.
+            # It was wrong in intent too. An owner id names a *user account*.
+            # `institution` answers "who backs this", and for a Zenodo record
+            # that is the repository that published it.
+            institution="Zenodo / CERN",
             snippet=meta.get("description", "") or "",
             date=meta.get("publication_date", ""),
             rid=doi or str(item.get("id", "")),
@@ -2772,13 +2786,31 @@ _QUESTION_WORDS = re.compile(
     re.IGNORECASE,
 )
 _FILLER_WORDS = re.compile(
-    r"\b(did|was|were|is|are|has|have|had|do|does|a|an|and|or|of|in|on|at|by|"
+    r"\b(did|was|were|is|are|has|have|had|do|does|an|and|or|of|in|on|at|by|"
     r"for|with|about|release|released|make|made|create|created|write|wrote|publish|"
     r"published|appear|appeared|come|came|from|to|into)\b",
     re.IGNORECASE,
 )
+
+#: The article "a", stripped in lowercase only — deliberately NOT part of the
+#: IGNORECASE list above. A lone capital letter carries meaning: "drug A" and
+#: "drug B" are different questions, and "vitamin A" is not "vitamin". Folded
+#: into `_FILLER_WORDS` it matched either case, so "Does drug A interact with
+#: X?" became "drug interact X" and the two drugs asked the same query.
+#: `corpus.py` learned this on the storage side and keeps "a" and "i" out of
+#: its stop set for the same reason (tests/test_corpus.py::
+#: test_single_letters_stay_meaning_bearing); this is that rule on the query
+#: side, which is where the question is still a sentence.
+_LOWERCASE_A = re.compile(r"\ba\b")
 # "the" stripped separately — only remove standalone "the" not preceding a capital (proper noun)
-_LONE_THE = re.compile(r"\bthe\b(?!\s+[A-Z])", re.IGNORECASE)
+#: A lowercase "the" that does not introduce a proper noun. Case-sensitive on
+#: purpose, and that is the whole mechanism: the negative lookahead is what
+#: preserves "The Hague" and "The Beatles". Compiled with `re.IGNORECASE`, as
+#: it was, `[A-Z]` also matched lowercase — so the lookahead succeeded before
+#: every word and this pattern stripped nothing at all except before
+#: punctuation or end-of-string. "What is the capital of France?" came back as
+#: "the capital France", carrying the article it exists to remove.
+_LONE_THE = re.compile(r"\bthe\b(?!\s+[A-Z])")
 
 
 def question_to_query(question: str) -> str:
@@ -2787,6 +2819,7 @@ def question_to_query(question: str) -> str:
     q = question.strip().rstrip("?").rstrip(".")
     q = _QUESTION_WORDS.sub("", q)
     q = _FILLER_WORDS.sub(" ", q)
+    q = _LOWERCASE_A.sub(" ", q)
     q = _LONE_THE.sub(" ", q)
     q = re.sub(r"\s+", " ", q).strip()
     return q or question.rstrip("?")

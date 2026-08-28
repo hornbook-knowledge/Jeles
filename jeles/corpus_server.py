@@ -80,11 +80,28 @@ except ImportError as exc:  # pragma: no cover - exercised by install shape, not
         "SDK 2.x is also what willow-mcp requires, so the two now co-install."
     ) from exc
 
+from typing import Annotated
 from urllib.parse import urlparse
 
+from pydantic import Field
+
 import jeles
-from jeles import _nestor_seal, corpus, institutional, willow_mcp_client
+from jeles import _nestor_seal, cards, corpus, institutional, source_trail, willow_mcp_client
 from jeles.reactions import search_adapter
+
+#: `app_id` is the first parameter of every tool here, and until now it carried
+#: no schema description at all — its meaning lived in this module's docstring,
+#: which a calling model never sees. Measured 2026-08-28 against eight local
+#: models: every one of them filled it wrong, either omitting it, inventing a
+#: value ("design", "your_app_id"), or putting the *subject of the question*
+#: there ("Tokyo Night"). One sentence of description fixed it for four of
+#: them. The lesson generalises past this parameter: a required argument whose
+#: meaning is only in prose the model cannot read is a required argument the
+#: model will guess.
+AppId = Annotated[str, Field(description=(
+    "The calling application's own name, e.g. 'ask-jeles'. Identifies who is "
+    "calling. NOT the subject of the question or search."
+))]
 
 mcp = MCPServer(
     "jeles-corpus",
@@ -99,7 +116,7 @@ mcp = MCPServer(
 
 
 @mcp.tool()
-def corpus_ask(app_id: str, question: str) -> dict:
+def corpus_ask(app_id: AppId, question: str) -> dict:
     """Answer from the verified corpus if a nugget matches; returns
     {found: false} and logs a gap otherwise. The gap also gets a
     best-effort, non-blocking forward to willow-mcp's fleet-wide gap
@@ -116,19 +133,19 @@ def corpus_ask(app_id: str, question: str) -> dict:
 
 
 @mcp.tool()
-def corpus_search(app_id: str, query: str, limit: int = 8) -> list:
+def corpus_search(app_id: AppId, query: str, limit: int = 8) -> list:
     """Ranked nugget search across the corpus. Never logs a gap."""
     return corpus.search_nuggets(query, limit=limit)
 
 
 @mcp.tool()
-def corpus_get(app_id: str, nugget_id: str) -> dict:
+def corpus_get(app_id: AppId, nugget_id: str) -> dict:
     """Fetch a single nugget by id."""
     return corpus.get_nugget(nugget_id)
 
 
 @mcp.tool()
-def corpus_list(app_id: str, limit: int = 50) -> list:
+def corpus_list(app_id: AppId, limit: int = 50) -> list:
     """List nuggets, most recently updated first."""
     return corpus.list_nuggets(limit=limit)
 
@@ -150,7 +167,7 @@ def _trust_tool_writes() -> bool:
 
 @mcp.tool()
 def corpus_put(
-    app_id: str,
+    app_id: AppId,
     question: str,
     answer: str,
     sources: list[str],
@@ -216,7 +233,7 @@ def corpus_put(
 
 
 @mcp.tool()
-def corpus_gaps(app_id: str, limit: int = 50, include_resolved: bool = False) -> list:
+def corpus_gaps(app_id: AppId, limit: int = 50, include_resolved: bool = False) -> list:
     """List logged 'I don't know yet' questions, most-asked first — the
     corpus's growth queue.
 
@@ -230,7 +247,7 @@ def corpus_gaps(app_id: str, limit: int = 50, include_resolved: bool = False) ->
 
 @mcp.tool()
 def corpus_resolve_gap(
-    app_id: str,
+    app_id: AppId,
     gap_id: str,
     nugget_id: str = "",
     resolved_by: str = "",
@@ -310,7 +327,7 @@ def _web_hit(hit: dict, idx: int) -> dict:
 
 
 @mcp.tool()
-def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
+def corpus_web_search(app_id: AppId, query: str, limit: int = 8) -> dict:
     """Search the open web — the corpus's second hop, for questions the
     verified layer could not answer.
 
@@ -347,7 +364,7 @@ def corpus_web_search(app_id: str, query: str, limit: int = 8) -> dict:
 
 
 @mcp.tool()
-def corpus_search_status(app_id: str) -> dict:
+def corpus_search_status(app_id: AppId) -> dict:
     """Report whether the outward hops can work at all, without searching.
 
     Top-level keys describe the open web —
@@ -374,7 +391,7 @@ def corpus_search_status(app_id: str) -> dict:
 
 @mcp.tool()
 def corpus_institutional_search(
-    app_id: str,
+    app_id: AppId,
     query: str,
     limit: int = 12,
     sources: list[str] | None = None,
@@ -431,7 +448,7 @@ def corpus_institutional_search(
 
 
 @mcp.tool()
-def corpus_fleet_status(app_id: str) -> dict:
+def corpus_fleet_status(app_id: AppId) -> dict:
     """Report whether this instance's two *fleet* connections work, without
     using either — the companion to ``corpus_search_status``, which answers the
     same question for the open web and the institutional collections.
@@ -464,8 +481,93 @@ def corpus_fleet_status(app_id: str) -> dict:
     }
 
 
+# ── Checking a claim, and knowing whose shelf it came off ───────────────────
+#
+# `source_trail.verify_claim` and `cards` were both already here — tested,
+# public, and reachable from no tool, like `forward_status` before them. They
+# answer the two questions an agent actually has when handed a sentence and a
+# link: is this backed by anything, and what is the thing it is backed by.
+
+
 @mcp.tool()
-def corpus_sources(app_id: str) -> dict:
+def corpus_verify_claim(
+    app_id: AppId,
+    claim: Annotated[str, Field(description=(
+        "One factual claim, as a single sentence. Not a question, and not a "
+        "whole document - pass one claim per call."))],
+    sources: Annotated[list[str] | None, Field(description=(
+        "Optional: restrict the check to these registered source ids (see "
+        "corpus_sources). Omit to let the claim route itself."))] = None,
+    limit: Annotated[int, Field(description="Results per source. Default 2.")] = 2,
+) -> dict:
+    """Check whether one claim is backed by a real institutional source, and
+    say which. Use this before repeating a fact you did not verify yourself.
+
+    Returns ``{claim, matched, title, url, date, source, institution, tier,
+    source_rank, overlap}``. ``matched: false`` with empty fields means the
+    fan-out returned nothing — which is an answer, not a failure.
+
+    **Read `overlap` before you believe `matched`.** ``matched: true`` means
+    only that a search came back with a document. Nothing compares that
+    document to the claim, so a claim assembled from common academic
+    vocabulary matches *something* in a high-ranked journal every time.
+    Measured 2026-08-28: "Gemma 4 ships with native function calling" was
+    reported ``matched: true`` against an Elsevier paper — a claim about a
+    model that does not exist. ``overlap`` is how much of the claim the
+    document actually says, and it is what separated that case (0.38) from a
+    real one (0.57). It is reported, not enforced: no threshold here has been
+    earned, so a caller that wants a bar must pick one and say so.
+
+    ``source_rank`` is the *publisher's* rank from `sources.py`'s own table —
+    0.9 means "Elsevier is highly ranked", never "this claim is 90%
+    supported". It was called ``confidence`` until the day that distinction
+    was measured.
+
+    **And one witness is not agreement.** The single highest-ranked hit wins;
+    nothing counts how many independent institutions concur. `matched: true`
+    must never be reported as "verified" — the corpus's `verified` rung is a
+    person's act and `corroborated` needs independent domains
+    (`jeles.verify`, `jeles.reactions.conflict_scan`). At best this says a
+    claim is *findable*, which is the weakest of the three answers and the
+    one worth asking first.
+    """
+    return source_trail.verify_claim(
+        claim, sources=sources, limit=max(0, limit))
+
+
+@mcp.tool()
+def corpus_host_card(
+    app_id: AppId,
+    host: Annotated[str, Field(description=(
+        "A hostname, e.g. 'api.crossref.org'. Just the host - not a full URL, "
+        "though a trailing dot and any capitalisation are tolerated."))],
+) -> dict:
+    """Say what a hostname is: who publishes it, who holds custody, whose
+    jurisdiction it sits in, and what roles it may play. Use it when you have
+    a URL and need to know what kind of source you are looking at.
+
+    Returns ``{found: true, card: {...}}``, or ``{found: false, host}`` for a
+    host with no card — which means *this package has no statement about it*,
+    not that the host is untrustworthy. The catalog covers the collections
+    Jeles itself reaches, not the open web.
+
+    ``roles`` is the useful field and it is narrower than the catalog: a host
+    may be a ``query`` endpoint, a ``citation`` target, a ``namespace``, or
+    several. Only some are citable, so "Jeles talks to it" and "you may cite
+    it" are different facts and this is where they part company.
+
+    A card records custody and jurisdiction; it reaches no verdict about
+    whether a host should be trusted. That decision belongs to a policy, and
+    to a person.
+    """
+    found = cards.card(host)
+    if found is None:
+        return {"found": False, "host": (host or "").strip()}
+    return {"found": True, "card": found}
+
+
+@mcp.tool()
+def corpus_sources(app_id: AppId) -> dict:
     """List the registered institutional collections, without searching.
 
     ``{sources: [{id, name, key_required, opt_in}], total, default_count}``.

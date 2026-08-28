@@ -2,7 +2,7 @@
 
 Two things matter here: that `extract_claims` degrades to "no claims" rather
 than raising when the injected model call misbehaves, and that `verify_claim`
-picks the single *highest-confidence* hit rather than the first or the last
+picks the single *highest-ranked* hit rather than the first or the last
 one `sources.search` happens to hand back. Everything else is bookkeeping
 around those two behaviors.
 
@@ -19,6 +19,7 @@ import textwrap
 import pytest
 
 from jeles import source_trail
+from jeles import source_trail as _st
 from jeles.source_trail import PRESS_SOURCES, extract_claims, verify_claim, verify_text
 
 
@@ -83,11 +84,11 @@ def test_verify_claim_matched_false_when_nothing_comes_back(monkeypatch):
     assert out == {
         "claim": "a claim nobody indexed", "matched": False,
         "title": "", "url": "", "date": "", "source": "", "institution": "",
-        "tier": "", "confidence": 0.0,
+        "tier": "", "source_rank": 0.0, "overlap": 0.0,
     }
 
 
-def test_verify_claim_picks_the_highest_confidence_hit_not_the_first(monkeypatch):
+def test_verify_claim_picks_the_highest_ranked_hit_not_the_first(monkeypatch):
     """`zenodo` (0.65) is listed before `pubmed` (0.90) in the fan-out here —
     if this picked the first source with a hit rather than ranking by
     confidence, the low-confidence deposit would win."""
@@ -105,7 +106,7 @@ def test_verify_claim_picks_the_highest_confidence_hit_not_the_first(monkeypatch
     out = verify_claim("some claim")
     assert out["matched"] is True
     assert out["source"] == "pubmed"
-    assert out["confidence"] == pytest.approx(0.90)
+    assert out["source_rank"] == pytest.approx(0.90)
     assert out["tier"] == "academic"
 
 
@@ -145,7 +146,7 @@ def test_verify_claim_skips_routing_when_sources_are_given_explicitly(monkeypatc
     assert searched == [["pubmed", "arxiv"]]
 
 
-def test_verify_claim_falls_back_to_070_confidence_for_an_unranked_source(monkeypatch):
+def test_verify_claim_falls_back_to_070_rank_for_an_unranked_source(monkeypatch):
     monkeypatch.setattr(source_trail._sources, "route_sources", lambda q: ["mystery_source"])
     monkeypatch.setattr(
         source_trail._sources, "search",
@@ -154,7 +155,7 @@ def test_verify_claim_falls_back_to_070_confidence_for_an_unranked_source(monkey
         }},
     )
     out = verify_claim("obscure claim")
-    assert out["confidence"] == pytest.approx(0.70)
+    assert out["source_rank"] == pytest.approx(0.70)
 
 
 def test_verify_claim_passes_limit_through_to_search(monkeypatch):
@@ -260,3 +261,61 @@ def test_source_trail_declares_the_documented_public_api():
     assert source_trail.__all__ == [
         "PRESS_SOURCES", "extract_claims", "verify_claim", "verify_text",
     ]
+
+
+# ── source_rank is the publisher's rank, overlap is the match's quality ─────
+#
+# The field was called `confidence` and read as endorsement. It is a property
+# of the *publisher*: 0.9 means "Elsevier ranks high", never "this claim is
+# 90% supported". Nothing in verify_claim compares the claim to the document
+# that comes back, so a claim built from common academic vocabulary matched
+# something in a high-ranked journal every time and was reported at 0.9.
+# Measured 2026-08-28 with "Gemma 4 ships with native function calling
+# trained into the model" — a claim about a model that does not exist.
+
+
+def _hit(title, snippet=""):
+    return {"title": title, "url": "https://e.org/1", "date": "2026",
+            "institution": "Elsevier BV", "snippet": snippet}
+
+
+def test_a_document_that_shares_only_vocabulary_scores_low(monkeypatch):
+    """The measured false positive. The paper is genuinely about function
+    calling; the claim is about Gemma 4. The tokens that make the claim
+    specific are exactly the ones missing."""
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
+        "crossref": [_hit("Code-Generated Tool Orchestration versus "
+                          "Native Function Calling")]}})
+    out = verify_claim("Gemma 4 ships with native function calling trained "
+                       "into the model")
+    assert out["matched"] is True, "matched still means only that a search returned"
+    assert out["overlap"] < 0.5, "but the overlap says the document is not about it"
+
+
+def test_a_document_that_names_the_claim_scores_higher(monkeypatch):
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
+        "crossref": [_hit("Attention is All You Need: the Transformer "
+                          "architecture introduced")]}})
+    out = verify_claim("The Transformer architecture was introduced in the "
+                       "paper Attention Is All You Need")
+    assert out["overlap"] > 0.5
+
+
+def test_source_rank_is_about_the_publisher_not_the_match(monkeypatch):
+    """Two claims, same journal, wildly different relevance — identical rank.
+    That is the whole reason the field could not keep the name `confidence`."""
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
+        "crossref": [_hit("Commentary: do you have any doctors in your family?")]}})
+    a = verify_claim("Qwen 3 models have the most stable tool calling")
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
+        "crossref": [_hit("Qwen 3 models have the most stable tool calling")]}})
+    b = verify_claim("Qwen 3 models have the most stable tool calling")
+    assert a["source_rank"] == b["source_rank"], "rank cannot tell them apart"
+    assert a["overlap"] < b["overlap"], "overlap can"
+
+
+def test_an_unmatched_claim_reports_both_numbers_as_zero(monkeypatch):
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {}})
+    out = verify_claim("nothing indexed anywhere")
+    assert out["source_rank"] == 0.0 and out["overlap"] == 0.0
+    assert "confidence" not in out, "the misleading name must not survive as an alias"

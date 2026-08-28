@@ -26,7 +26,7 @@ different inputs — see `jeles.verify`'s own module docstring for the
   touching the network itself.
 * `source_trail.verify_text` runs *before* any citation exists. Given raw,
   uncited prose, it finds the claims itself and, for each one, searches
-  `jeles.sources` live, keeping only the single highest-confidence hit. It
+  `jeles.sources` live, keeping only the single highest-*ranked* hit. It
   asks "is anything backing this claim at all", not "how many institutions
   agree" — the two-institution bar `verify.py` applies would round a lone FBI
   Vault or Ig Nobel hit down to nothing, and this module exists for the case
@@ -50,7 +50,11 @@ Public API:
     verify_text(text, llm_respond, sources=None, limit=2) -> dict
 
 Output schema per claim:
-    {claim, matched, title, url, date, source, tier, confidence, institution}
+    {claim, matched, title, url, date, source, tier, source_rank, overlap,
+     institution}
+
+`source_rank` is the publisher's rank, never the match's quality; `overlap` is
+how much of the claim the returned document actually says. See `verify_claim`.
 """
 from __future__ import annotations
 
@@ -58,6 +62,7 @@ import logging
 from collections.abc import Callable, Sequence
 from typing import Any
 
+from jeles import corpus as _corpus
 from jeles import sources as _sources
 
 log = logging.getLogger("jeles.source_trail")
@@ -117,6 +122,44 @@ def extract_claims(text: str, llm_respond: Callable[..., str]) -> list[str]:
         return []
 
 
+def _overlap(claim: str, hit: dict[str, Any]) -> float:
+    """How much of the claim the returned document actually says.
+
+    Deliberately reported and *not* enforced. `verify_claim` picks its winner
+    by source rank alone, with no relevance check between the claim and the
+    document that comes back — so a claim built from common academic
+    vocabulary matches something in a high-ranked journal every time. Measured
+    2026-08-28: "Gemma 4 ships with native function calling trained into the
+    model" returned an Elsevier paper and was reported `matched: true` at
+    0.9, a claim about a model that does not exist. The distinguishing tokens
+    — "gemma", "4" — were exactly the ones the document lacked, which is what
+    this number counts.
+
+    Scored with `corpus._ask_tokens` on purpose rather than a second
+    tokenizer: this package has twice shipped two modules disagreeing about
+    what a word is (`sources.question_to_query` deleting lone capitals that
+    `corpus` deliberately keeps; `search_zenodo` calling a dict an
+    institution). One tokenizer, one rule.
+
+    Coverage only — `corpus._confidence`'s symmetric F1 is the right shape for
+    question-vs-question, where both sides are one sentence, and the wrong one
+    here: a title is far longer than a claim, so precision collapses and every
+    claim scores 0.00, true ones included. Measured across three runs before
+    this was written.
+
+    No threshold is applied because none has been earned. Separating three
+    false positives from one true positive, over a fan-out that returned a
+    different answer for the same CRISPR claim on three consecutive runs, is
+    not an evaluation set. A caller that wants to gate on this must choose its
+    own bar and say so.
+    """
+    asked = set(_corpus._ask_tokens(claim))
+    if not asked:
+        return 0.0
+    doc = f"{hit.get('title') or ''} {hit.get('snippet') or ''}"
+    return round(len(asked & set(_corpus._ask_tokens(doc))) / len(asked), 2)
+
+
 def verify_claim(
     claim: str,
     sources: Sequence[str] | None = None,
@@ -129,14 +172,30 @@ def verify_claim(
     passing an explicit, non-empty list searches only those.
 
     Every hit `sources.search` returns is a candidate, and the **single**
-    highest-confidence one wins — this is not a corroboration count (that is
-    `jeles.verify`'s job). Confidence is looked up per source ID from
+    highest-ranked one wins — this is not a corroboration count (that is
+    `jeles.verify`'s job). The rank is looked up per source ID from
     `sources._SOURCE_CONFIDENCE`, the same table `sources.py` itself ranks
-    adapters by, so "highest confidence" here means the same thing it means
-    everywhere else in this package: primary institutions over peer-reviewed
-    aggregators over community-maintained catalogs. An ID absent from that
-    table (a press adapter added without a confidence entry) falls back to
-    0.70 rather than being skipped, matching upstream.
+    adapters by: primary institutions over peer-reviewed aggregators over
+    community-maintained catalogs. An ID absent from that table (a press
+    adapter added without an entry) falls back to 0.70 rather than being
+    skipped, matching upstream.
+
+    **The rank field is called `source_rank`, and it used to be called
+    `confidence`.** That name was a lie of exactly the kind this package
+    exists to prevent. It is a property of the *publisher*, not of the match:
+    0.9 means "Elsevier is a highly-ranked source", never "this claim is 90%
+    supported". Nothing here compares the claim to the document that comes
+    back, so a claim assembled from common academic vocabulary matches
+    something in a high-ranked journal every time and was reported at 0.9 —
+    a number every consumer reads as endorsement, propagating up a pipeline
+    and gaining credibility at each stage. Renaming it is not cosmetic: the
+    field is consumed by things that decide what to believe.
+
+    `overlap` is reported beside it as the missing half — how much of the
+    claim the document actually says (see `_overlap`). It is **reported, not
+    enforced**: `matched: true` still means only that a search returned
+    something, and a caller that wants a relevance bar must set its own and
+    say what it chose. No threshold here has been earned yet.
 
     Returns the output schema dict — `matched=False` and empty fields if
     nothing in the fan-out backs the claim.
@@ -163,7 +222,8 @@ def verify_claim(
                     "source":      source_id,
                     "institution": hit.get("institution", source_id),
                     "tier":        "press" if source_id in PRESS_SOURCES else "academic",
-                    "confidence":  conf,
+                    "source_rank": conf,
+                    "overlap":     _overlap(claim, hit),
                 }
 
     if best:
@@ -178,7 +238,8 @@ def verify_claim(
         "source":      "",
         "institution": "",
         "tier":        "",
-        "confidence":  0.0,
+        "source_rank": 0.0,
+        "overlap":     0.0,
     }
 
 
