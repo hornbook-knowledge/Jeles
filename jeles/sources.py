@@ -581,7 +581,21 @@ def search_zenodo(query: str, limit: int = 5) -> list[dict]:
             title=meta.get("title", ""),
             url=f"https://doi.org/{doi}" if doi else item.get("links", {}).get("html", ""),
             source="zenodo",
-            institution=item.get("owners", [{}])[0] if item.get("owners") else "Zenodo / CERN",
+            # Always the repository, never the record's owner. Zenodo's
+            # `owners` is a list of *dicts* (`{"id": "1342605"}`), so `[0]`
+            # handed a dict to a parameter `_result` declares as `str`. It did
+            # not crash, which is why it survived: `_text` coerces with
+            # `str(value)`, so the institution became the literal text
+            # "{'id': '1342605'}". That is worse than a crash for the one job
+            # this field has — `verify._identity` counts `institution` to
+            # decide corroboration, so every Zenodo record with an owner
+            # contributed a distinct "institution" whose name is a rendered
+            # dict, and two records by different owners looked like two
+            # independent institutions agreeing.
+            # It was wrong in intent too. An owner id names a *user account*.
+            # `institution` answers "who backs this", and for a Zenodo record
+            # that is the repository that published it.
+            institution="Zenodo / CERN",
             snippet=meta.get("description", "") or "",
             date=meta.get("publication_date", ""),
             rid=doi or str(item.get("id", "")),

@@ -1295,3 +1295,38 @@ def test_search_writes_the_cache_only_when_there_are_hits(tmp_path, monkeypatch)
     sources.search("q", sources=["loc"])
     records = sources._read_cache()
     assert len(records) == 1 and records[0]["source"] == "loc"
+def test_zenodo_names_the_repository_not_the_record_owner(monkeypatch):
+    """`owners` is a list of dicts, and `[0]` put one in `institution` — a
+    field `_result` declares as `str` and every other adapter fills with one.
+
+    It did not raise, which is why it lasted: `_text` coerces with
+    `str(value)`, so the institution silently became the literal text
+    "{'id': '1342605'}". `verify._identity` counts this field to decide
+    corroboration, so each owner rendered as a separate institution and two
+    records by two owners read as two independent institutions agreeing —
+    which is the one thing corroboration is supposed to mean.
+    """
+    _stub_json(monkeypatch, {"hits": {"hits": [{
+        "id": 99,
+        "owners": [{"id": "1342605"}],
+        "metadata": {
+            "title": "A record with an owner",
+            "doi": "10.5281/zenodo.99",
+            "publication_date": "2026-01-01",
+            "description": "body",
+        },
+    }]}})
+    hits = sources.search_zenodo("anything", limit=1)
+    assert hits and set(hits[0]) == CITATION_KEYS
+    assert isinstance(hits[0]["institution"], str), \
+        "institution must be a string whatever the upstream record carries"
+    assert hits[0]["institution"] == "Zenodo / CERN"
+
+
+def test_every_zenodo_hit_names_an_institution_even_with_no_owners(monkeypatch):
+    _stub_json(monkeypatch, {"hits": {"hits": [{
+        "id": 100,
+        "metadata": {"title": "No owners here", "publication_date": "2026-01-01"},
+    }]}})
+    hits = sources.search_zenodo("anything", limit=1)
+    assert hits[0]["institution"] == "Zenodo / CERN"
