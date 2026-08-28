@@ -19,7 +19,7 @@ Jeles' pure core — stdlib only, no MCP, no network, and `tests/test_import_pur
 enforces it (design principle 2 in `README.md`). Nestor is a peer organ, not a
 hard dependency: base `jeles` keeps zero runtime dependencies, and `nestor`
 lives behind its own extra (`pip install "jeles[nestor]"`,
-`nestor @ git+https://github.com/rudi193-cmd/Nestor@v0.2.0`, pinned to a tag
+`nestor @ git+https://github.com/Die-Namic-Systems/Nestor@v0.2.0`, pinned to a tag
 rather than a branch for the same reason every git dependency here is —
 see README's "Prefer a released version" note). Every import of `nestor` in
 this module is therefore lazy, inside the one function that needs it: `import
