@@ -99,7 +99,8 @@ python -m jeles.corpus_server      # stdio; or use the `jeles-corpus-mcp` consol
 
 Tools: `corpus_ask`, `corpus_search`, `corpus_get`, `corpus_list`, `corpus_put`,
 `corpus_gaps`, `corpus_resolve_gap`, `corpus_web_search`, `corpus_search_status`,
-`corpus_institutional_search`, `corpus_sources`, `corpus_fleet_status` — each
+`corpus_institutional_search`, `corpus_sources`, `corpus_verify_claim`,
+`corpus_host_card`, `corpus_fleet_status` — each
 takes an `app_id` for naming-convention parity with willow-mcp. Four of those
 are the outward hops: the open web, why a search returned what it did, the 61
 institutional and academic collections, and what those collections are. They
@@ -110,6 +111,23 @@ now fails when the two drift apart, which is why the count above can be trusted.
 `corpus_resolve_gap` closes a gap — the queue was write-only before it, so
 nothing could ever say a logged question had been answered. It marks rather than
 deletes, and a question that misses again reopens by itself.
+`corpus_verify_claim` asks whether one claim is backed by a real institutional
+source and says which — the weakest of the three answers on the ladder, and the
+one worth asking first. It finds a single witness, not agreement: `matched:
+true` is not `verified`, and never becomes it by being written down.
+`corpus_host_card` says what a hostname *is* — publisher, custody,
+jurisdiction, and which roles it may play, since only 36 of the 84 catalogued
+hosts are citation targets. A card records those facts and reaches no verdict;
+deciding trust stays a policy's job, and a person's.
+
+Every tool's `app_id` now carries a schema description. It did not until
+2026-08-28, when eight local models were pointed at this surface and all eight
+filled it wrong — omitting it, inventing a value, or putting the subject of the
+question there. One sentence fixed it for four of them, and
+`test_app_id_is_described_on_every_tool` keeps it that way. A required argument
+whose meaning lives only in prose the model cannot read is one the model will
+guess at.
+
 `corpus_fleet_status` is `corpus_search_status` for the two *fleet* edges
 instead of the two outward ones: whether forwarded gaps actually reached
 willow-mcp, and whether the `human` rung is reachable through Nestor at all.

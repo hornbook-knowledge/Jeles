@@ -45,6 +45,9 @@ EXPECTED_TOOLS = {
     # The third hop.
     "corpus_institutional_search",
     "corpus_sources",
+    # Checking a claim, and whose shelf it came off.
+    "corpus_verify_claim",
+    "corpus_host_card",
     # The fleet edges.
     "corpus_fleet_status",
 }
@@ -634,3 +637,78 @@ def test_institutional_search_refuses_a_negative_limit(monkeypatch):
     # Guarded before it reaches sources.py, where 65 source functions each
     # slice their own results with a bare [:limit].
     assert seen["limit_per_source"] == 0
+
+
+# ── Every required argument says what it is ─────────────────────────────────
+
+
+def test_app_id_is_described_on_every_tool():
+    """`app_id` carried no schema description for the life of this server, and
+    its meaning lived only in the module docstring — which a calling model
+    never sees. Measured against eight local models on 2026-08-28: all eight
+    filled it wrong, omitting it, inventing a value ("design", "your_app_id"),
+    or putting the subject of the question there ("Tokyo Night"). Adding one
+    sentence fixed it for four of them. This is the regression guard."""
+    undescribed = []
+    for t in _listed_tools():
+        prop = (t.input_schema.get("properties") or {}).get("app_id") or {}
+        if not (prop.get("description") or "").strip():
+            undescribed.append(t.name)
+    assert not undescribed, f"tools whose app_id says nothing: {undescribed}"
+
+
+# ── Checking a claim, and whose shelf it came off ───────────────────────────
+
+
+def test_verify_claim_delegates_and_guards_its_limit(monkeypatch):
+    seen = {}
+    monkeypatch.setattr(
+        corpus_server.source_trail, "verify_claim",
+        lambda claim, sources=None, limit=2: seen.update(
+            claim=claim, sources=sources, limit=limit) or {"matched": False},
+    )
+    corpus_server.corpus_verify_claim("app", "the sky is blue", limit=-3)
+    assert seen["claim"] == "the sky is blue"
+    assert seen["limit"] == 0, "a negative limit must not reach sources.py"
+
+
+def test_verify_claim_reports_an_unbacked_claim_as_an_answer(monkeypatch):
+    """`matched: false` is a finding, not a failure — the caller asked whether
+    anything backs the claim and the answer is no."""
+    monkeypatch.setattr(
+        corpus_server.source_trail, "verify_claim",
+        lambda claim, sources=None, limit=2: {
+            "claim": claim, "matched": False, "title": "", "url": "",
+            "source": "", "institution": "", "tier": "", "confidence": 0.0},
+    )
+    out = corpus_server.corpus_verify_claim("app", "the moon is cheese")
+    assert out["matched"] is False
+    assert out["confidence"] == 0.0
+
+
+def test_host_card_reports_a_known_host():
+    out = corpus_server.corpus_host_card("app", "api.crossref.org")
+    assert out["found"] is True
+    assert out["card"]["host"] == "api.crossref.org"
+    assert "roles" in out["card"]
+
+
+def test_host_card_tolerates_how_hostnames_actually_arrive():
+    """Case and a trailing dot are how a host comes off a parsed URL."""
+    a = corpus_server.corpus_host_card("app", "API.Crossref.ORG.")
+    assert a["found"] is True and a["card"]["host"] == "api.crossref.org"
+
+
+def test_an_uncatalogued_host_is_absent_not_condemned(monkeypatch):
+    """No card means this package makes no statement about the host — which is
+    not the same as saying it should not be trusted."""
+    out = corpus_server.corpus_host_card("app", "example.invalid")
+    assert out == {"found": False, "host": "example.invalid"}
+
+
+def test_host_card_reaches_no_verdict():
+    """A card records custody and jurisdiction. Deciding trust is a policy's
+    job, and a person's — nothing here may look like a ruling."""
+    card = corpus_server.corpus_host_card("app", "api.crossref.org")["card"]
+    for banned in ("trusted", "trustworthy", "safe", "verdict", "allow"):
+        assert banned not in card, f"a card must not carry a {banned!r} field"
