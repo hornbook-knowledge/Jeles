@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Added
 
-* **corpus:** close the gap queue and open a window on both fleet edges ([5b0e3a9](https://github.com/hornbook-knowledge/Jeles/commit/5b0e3a9b6c4787ddc5541c5a911c4af7822a884a))
 * **corpus:** close the gap queue and open a window on both fleet edges ([4cbaaf1](https://github.com/hornbook-knowledge/Jeles/commit/4cbaaf15f2e9c0d7259b05484158c99d5da4a812))
 
 ## [0.9.0](https://github.com/rudi193-cmd/Jeles/compare/v0.8.0...v0.9.0) (2026-08-10)
