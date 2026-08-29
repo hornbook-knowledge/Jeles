@@ -20,6 +20,18 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.13.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.12.0...v0.13.0) (2026-08-29)
+
+
+### Added
+
+* ship the seed corpus and load it with jeles-seed ([c10d50e](https://github.com/hornbook-knowledge/Jeles/commit/c10d50ed467caca29ad6ac23267ad0d7926ba749))
+
+
+### Fixed
+
+* **nestor-seal:** a seal covers the normalized source, not the raw question ([f3617ec](https://github.com/hornbook-knowledge/Jeles/commit/f3617ec6c84678a84e76a9688d3ae1590ef4bfc6))
+
 ## [0.12.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.11.0...v0.12.0) (2026-08-29)
 
 
