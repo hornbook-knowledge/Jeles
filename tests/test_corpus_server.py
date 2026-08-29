@@ -712,3 +712,34 @@ def test_host_card_reaches_no_verdict():
     card = corpus_server.corpus_host_card("app", "api.crossref.org")["card"]
     for banned in ("trusted", "trustworthy", "safe", "verdict", "allow"):
         assert banned not in card, f"a card must not carry a {banned!r} field"
+
+
+def test_the_module_docstring_names_every_registered_tool():
+    """The one list nothing was guarding.
+
+    README records this drift happening once already — "They were added
+    without this list being updated, so it said six for as long as there were
+    ten" — and it happened again in the same file the day that sentence was
+    quoted: `corpus_verify_claim` and `corpus_host_card` were registered,
+    tested, added to the README, and left out of the module docstring.
+
+    `test_exactly_the_documented_tools_are_registered` did not catch it,
+    because EXPECTED_TOOLS lives in this file: it forces a human to notice a
+    *new* tool, not to describe it where a reader of the module would look.
+    """
+    doc = corpus_server.__doc__ or ""
+    missing = [t.name for t in _listed_tools() if t.name not in doc]
+    assert not missing, (
+        f"registered but absent from the module docstring: {missing}")
+
+
+def test_the_readme_names_every_registered_tool():
+    """The third list. README's tool paragraph is the first thing a host reads
+    and the last thing anyone updates — it undercounted for four releases
+    before this, by its own admission."""
+    from pathlib import Path
+
+    readme = Path(__file__).resolve().parent.parent / "README.md"
+    text = readme.read_text(encoding="utf-8")
+    missing = [t.name for t in _listed_tools() if t.name not in text]
+    assert not missing, f"registered but absent from README.md: {missing}"
