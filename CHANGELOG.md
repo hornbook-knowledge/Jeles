@@ -30,7 +30,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Fixed
 
-* **nestor-seal:** a seal covers the normalized source, not the raw question ([b68b703](https://github.com/hornbook-knowledge/Jeles/commit/b68b7034454613f7ab3b9d7c8250faf4667afae9))
 * **nestor-seal:** a seal covers the normalized source, not the raw question ([f3617ec](https://github.com/hornbook-knowledge/Jeles/commit/f3617ec6c84678a84e76a9688d3ae1590ef4bfc6))
 
 ## [0.12.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.11.0...v0.12.0) (2026-08-29)
