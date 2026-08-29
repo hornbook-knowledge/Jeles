@@ -1,0 +1,305 @@
+{
+  "domain": "people-ai-ethics-safety",
+  "pairs": [
+    {
+      "source_text": "Timnit Gebru -- Google AI ethics co-lead fired in 2020, DAIR Institute founder",
+      "source_lang": "en",
+      "target_text": "Timnit Gebru served as co-lead of Google's Ethical AI research team until her firing in December 2020, after she co-authored a paper warning about the environmental costs and racial biases of large language models. The paper, 'On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?', co-written with Emily Bender, Margaret Mitchell, and Angelina McMillan-Major, became a landmark critique of the LLM paradigm. Google's demand that she retract the paper or remove Google employees' names triggered her dismissal, which drew widespread condemnation from thousands of AI researchers and tech workers. In December 2021 she founded the Distributed Artificial Intelligence Research Institute (DAIR), an independent research organization studying AI harms free from corporate constraints, with over $3.7 million in initial funding.",
+      "target_lang": "en",
+      "reason": "Central figure in corporate suppression of AI ethics research; her firing catalyzed debate about academic freedom within tech companies"
+    },
+    {
+      "source_text": "Margaret Mitchell -- Google AI ethics co-lead fired in 2021, model cards creator",
+      "source_lang": "en",
+      "target_text": "Margaret Mitchell founded and co-led Google's Ethical AI group, where she pioneered the concept of 'model cards' -- standardized documentation for machine learning models describing intended use, training data, evaluation metrics, and known limitations, now the de facto standard across the industry including at Hugging Face, Google, and most major model releases. In January 2021, after Gebru's firing, Google revoked Mitchell's corporate access when she used automated scripts to search internal communications for evidence supporting Gebru's discrimination claims. Google fired her in February 2021, citing 'violations of code of conduct and security policies.' She joined Hugging Face as Chief Ethics Scientist, where she leads work on responsible AI development, ML data processing, and operationalizing AI ethics in open-source model ecosystems.",
+      "target_lang": "en",
+      "reason": "Created model cards standard now used across the industry; second ethics lead fired by Google, demonstrating a pattern of corporate retaliation"
+    },
+    {
+      "source_text": "Meredith Whittaker -- Signal president, AI Now Institute co-founder, Google walkout organizer",
+      "source_lang": "en",
+      "target_text": "Meredith Whittaker spent over a decade at Google, where she founded the Open Research Group and co-founded M-Lab, the world's largest source of open internet performance data. In November 2018 she helped organize a 20,000-employee walkout protesting Google's handling of sexual harassment; she later alleged management retaliation, saying her role was 'changed dramatically' and that Google has 'a culture of retaliation which too often works to silence women, people of color, and gender minorities.' She left Google in July 2019, co-founding the AI Now Institute at NYU, which became a leading policy research center studying AI's social implications with a focus on surveillance, labor, and concentrated corporate power. She became president of Signal in 2022, where she advocates for encryption and privacy as countermeasures to AI-driven surveillance, and has advised the White House, FCC, FTC, and European Parliament on AI and internet policy.",
+      "target_lang": "en",
+      "reason": "Bridges labor organizing, AI policy research, and privacy technology; demonstrates how internal dissent leads to external institution-building"
+    },
+    {
+      "source_text": "Stuart Russell -- UC Berkeley professor, 'Human Compatible' author, AI existential risk advocate",
+      "source_lang": "en",
+      "target_text": "Stuart Russell is a Professor of Computer Science at UC Berkeley and co-author of 'Artificial Intelligence: A Modern Approach,' the most widely used AI textbook worldwide. His 2019 book 'Human Compatible: Artificial Intelligence and the Problem of Control' argues that AI systems pursuing misspecified objectives could cause civilizational-scale harm, and proposes designing 'provably beneficial' machines that defer to human preferences rather than optimizing fixed goals. He has become one of the most prominent mainstream AI researchers warning about existential risk, stating in 2026 that 'for governments to allow private entities to essentially play Russian roulette with every human being on earth is a total dereliction of duty.' He serves as president of the International Association for Safe and Ethical AI and has been a key voice arguing that AI risk concerns are not the province of outsiders but of the field's own leading practitioners.",
+      "target_lang": "en",
+      "reason": "Lends mainstream academic credibility to existential risk arguments; his textbook authority makes his safety warnings harder to dismiss"
+    },
+    {
+      "source_text": "Eliezer Yudkowsky -- MIRI founder, AI doom advocate, 'Shut It All Down' proponent",
+      "source_lang": "en",
+      "target_text": "Eliezer Yudkowsky founded the Machine Intelligence Research Institute (MIRI) in Berkeley and has spent over two decades arguing that advanced AI poses an existential threat to humanity. In March 2023 he published a Time op-ed titled 'Pausing AI Developments Isn't Enough. We Need to Shut It All Down,' calling for an international treaty to ban AI development above certain capability thresholds, including the threat of military enforcement against non-compliant nations. His 2025 book 'If Anyone Builds It, Everyone Dies,' co-written with MIRI president Nate Soares, presents a mass-market version of their case that superintelligent AI alignment is an unsolved problem and that continued development risks human extinction. He occupies a polarizing position in AI discourse: his supporters credit him with decades of prescient warnings, while critics argue his absolutist stance -- dismissing safety measures like red-teaming, interpretability research, and model evaluations as meaningless -- undermines practical governance efforts.",
+      "target_lang": "en",
+      "reason": "The most prominent voice for AI moratorium; his maximalist position anchors one end of the AI safety debate spectrum"
+    },
+    {
+      "source_text": "Dario Amodei -- Anthropic CEO, left OpenAI over safety concerns, constitutional AI pioneer",
+      "source_lang": "en",
+      "target_text": "Dario Amodei served as VP of Research at OpenAI before leaving in December 2020, with 14 researchers following over subsequent months, including his sister Daniela Amodei who had been VP of Safety and Policy. He co-founded Anthropic in 2021, driven by a conviction that AI systems were scaling rapidly and that safety research needed to keep pace, but that OpenAI's increasingly commercial focus was undermining that goal. Anthropic developed Constitutional AI, a training technique that steers language models using explicit principles rather than solely relying on human feedback, and has raised billions from Amazon, Google, and individual investors. Amodei has positioned Anthropic as attempting to build powerful AI systems while simultaneously figuring out how to make them safe, though critics note the tension in this 'race to the top' framing, and a leaked 2026 memo accused OpenAI of 'safety theater' in its Pentagon AI deal.",
+      "target_lang": "en",
+      "reason": "Embodies the 'build it safely' approach to AI development; Anthropic's founding represents the most prominent safety-motivated lab split"
+    },
+    {
+      "source_text": "Jan Leike -- OpenAI superalignment team lead, resigned over safety resource disputes",
+      "source_lang": "en",
+      "target_text": "Jan Leike led OpenAI's Superalignment team, which was announced in 2023 with a pledge to dedicate 20% of the company's computing resources over four years to solving the alignment problem for AI systems smarter than humans. He resigned in May 2024, the same week co-lead Ilya Sutskever also departed, publicly stating that 'over the past years, safety culture and processes have taken a backseat to shiny products' and urging OpenAI to 'act with the gravitas appropriate for what you're building.' The Superalignment team was dissolved following their departures, with safety work folded into OpenAI's broader research organization. Leike joined Anthropic in May 2024 to lead a new team focused on scalable oversight, weak-to-strong generalization, and automated alignment research, making his move the most high-profile safety-motivated departure from OpenAI to a competitor.",
+      "target_lang": "en",
+      "reason": "His resignation crystallized the narrative that OpenAI deprioritized safety; the Superalignment team's dissolution became a cautionary tale"
+    },
+    {
+      "source_text": "AI safety vs AI ethics divide -- the two communities and what separates them",
+      "source_lang": "en",
+      "target_text": "The AI safety and AI ethics communities, while both concerned with AI harms, differ sharply in focus, methodology, and institutional roots. AI safety researchers, often influenced by longtermism and effective altruism, prioritize existential risk from superintelligent AI, focusing on alignment, deceptive behaviors, and loss of human control. AI ethics researchers focus on present-day harms: algorithmic bias, surveillance, labor displacement, and the disproportionate impact of AI systems on marginalized communities. A bibliometric analysis of 6,442 papers across 12 major ML and NLP conferences (2020-2025) found that over 83% of collaborations occur within one community exclusively, with only 5% of papers responsible for 85% of cross-community connections. Critics like Timnit Gebru have argued that the existential risk framing diverts attention and funding from documented harms happening now, while safety researchers contend that present-day ethics work, however important, does not address the potential for catastrophic outcomes from increasingly capable systems.",
+      "target_lang": "en",
+      "reason": "Understanding this divide is essential to navigating AI governance debates; the split shapes funding, policy, and public discourse"
+    },
+    {
+      "source_text": "Non-disparagement agreements -- their chilling effect on AI whistleblowers",
+      "source_lang": "en",
+      "target_text": "In May 2024, reporting revealed that OpenAI had been requiring departing employees to sign agreements with broad non-disparagement and non-disclosure provisions, threatening to claw back vested equity -- potentially worth millions -- from those who refused. Anonymous whistleblowers filed a complaint with the SEC alleging violations of the Dodd-Frank Act, documenting that these agreements failed to exempt securities violation disclosures, required prior company consent for communications with federal authorities, and forced employees to waive congressionally mandated whistleblower compensation. After Vox published the story, OpenAI walked back the equity clawback policy, but the chilling effect persisted in company culture. Senator Chuck Grassley introduced the AI Whistleblower Protection Act, which would provide explicit protections for current and former AI employees making disclosures about safety risks, merging existing AI governance and whistleblower protection frameworks.",
+      "target_lang": "en",
+      "reason": "NDAs and equity clawbacks represent a structural mechanism suppressing AI safety disclosures; the OpenAI case triggered legislative action"
+    },
+    {
+      "source_text": "Effective altruism to AI safety pipeline -- the funding and talent network",
+      "source_lang": "en",
+      "target_text": "The effective altruism (EA) movement has channeled over a billion dollars into AI existential risk research and organizations, creating a dense network linking philanthropy, research, and frontier AI labs. Open Philanthropy, founded by Facebook co-founder Dustin Moskovitz and Holden Karnofsky, has donated approximately $2.8 billion total, with roughly $336 million directed to AI safety. Key funders include Moskovitz, Jaan Tallinn (Skype co-founder who co-founded the Centre for the Study of Existential Risk), Vitalik Buterin (Ethereum), and formerly Sam Bankman-Fried before his 2023 fraud conviction. The pipeline extends into labs: Anthropic's founding team came partly from EA-aligned researchers, and Holden Karnofsky works at Anthropic while Luke Muehlhauser, former executive director of MIRI, oversees Open Philanthropy's AI risk program. Critics argue this concentrated funding network creates an echo chamber that elevates existential risk above present-day harms, while supporters contend the EA community identified AI risk early and responsibly allocated resources to address it.",
+      "target_lang": "en",
+      "reason": "The EA-to-AI-safety funding pipeline shapes which research gets done, who gets hired, and which risks receive institutional attention"
+    },
+    {
+      "source_text": "AI safety researchers leaving major labs -- the pattern and reasons",
+      "source_lang": "en",
+      "target_text": "Between 2023 and 2026, a striking pattern emerged of senior AI safety researchers departing major labs, particularly OpenAI. The departures follow a recurring sequence: researchers discover that safety commitments are subordinated to product timelines, they raise internal objections, and ultimately resign. At OpenAI, this included co-founder Ilya Sutskever (who left in May 2024 to found Safe Superintelligence Inc., raising $3 billion), Jan Leike (Superalignment lead, May 2024, joined Anthropic), Miles Brundage (AGI Readiness team leader, October 2024), and Johannes Heidecke (safety systems lead, July 2026). OpenAI eliminated the independent standing of its safety function, folding teams under its Chief Research Officer, and dissolved its Mission Alignment team in February 2026 after just 16 months. The website ethicalaidepartures.fyi now tracks these exits across the industry, documenting what has become a recognized phenomenon in AI governance discourse.",
+      "target_lang": "en",
+      "reason": "The pattern of safety departures is evidence of structural tension between safety commitments and commercial pressures at frontier labs"
+    },
+    {
+      "source_text": "Ilya Sutskever -- OpenAI co-founder, board crisis participant, Safe Superintelligence Inc. founder",
+      "source_lang": "en",
+      "target_text": "Ilya Sutskever co-founded OpenAI and served as its Chief Scientist, where he was instrumental in the organization's technical direction and was a key figure in the November 2023 board crisis that briefly ousted CEO Sam Altman. After Altman's reinstatement and the reconstitution of the board, Sutskever's position at OpenAI became untenable. He departed in May 2024, the same week as Jan Leike, and founded Safe Superintelligence Inc. (SSI) with the singular mission of building safe superintelligent AI without the distraction of products or revenue. SSI raised $3 billion, making it one of the most well-funded AI safety-focused startups, though its approach -- building the very technology it aims to make safe -- draws the same 'race to the top' criticisms directed at Anthropic.",
+      "target_lang": "en",
+      "reason": "His departure from OpenAI marked the most dramatic safety-motivated split at a frontier AI lab; the board crisis revealed governance tensions"
+    },
+    {
+      "source_text": "Stochastic Parrots paper -- the research that cost two Google ethics leads their jobs",
+      "source_lang": "en",
+      "target_text": "The 2021 paper 'On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?' by Emily Bender, Timnit Gebru, Angelina McMillan-Major, and Margaret Mitchell (listed as 'Shmargaret Shmitchell' after Google pressured her to remove her name) warned that large language models encode biases from training data, produce fluent but unreliable text, and carry significant environmental costs. Published at FAccT 2021, the paper became a landmark critique of the scaling paradigm that now dominates AI development. Google's demand that internal co-authors retract or remove their names directly precipitated Gebru's firing in December 2020 and contributed to Mitchell's firing in February 2021, making it possibly the most consequential AI research paper in terms of institutional fallout. The term 'stochastic parrot' entered common usage as shorthand for LLMs that generate plausible text without understanding, though Mitchell herself pushed back on oversimplified readings of the metaphor in a 2026 paper.",
+      "target_lang": "en",
+      "reason": "The paper and its aftermath became the defining case study of corporate suppression of inconvenient AI research"
+    },
+    {
+      "source_text": "Google's Ethical AI team firings -- the institutional pattern of retaliation",
+      "source_lang": "en",
+      "target_text": "Google's firing of Timnit Gebru (December 2020) and Margaret Mitchell (February 2021) from its Ethical AI team, combined with the retaliation against 2018 walkout organizer Meredith Whittaker, established a pattern that chilled internal AI ethics advocacy across the tech industry. Gebru was fired after refusing to retract the Stochastic Parrots paper; Mitchell was fired after searching internal communications for evidence of discrimination; Whittaker's role was 'changed dramatically' after organizing the walkout and she left in July 2019. All three went on to build independent institutions -- DAIR, Hugging Face's ethics practice, and the AI Now Institute -- suggesting that corporate environments were structurally hostile to the ethics work they championed. The firings prompted over 2,600 Google employees and 4,300 external academics to sign letters of protest, and became a reference point in debates about whether AI ethics research can survive inside the companies it is meant to govern.",
+      "target_lang": "en",
+      "reason": "The pattern across three high-profile cases at a single company demonstrated structural incompatibility between corporate interests and internal ethics oversight"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Margaret Mitchell -- Google AI ethics co-lead fired in 2021, model cards creator",
+      "to_source": "Timnit Gebru -- Google AI ethics co-lead fired in 2020, DAIR Institute founder",
+      "kind": "refines",
+      "reason": "Mitchell's firing followed and was directly caused by her attempts to find evidence supporting Gebru's discrimination claims; the two cases form a single narrative of corporate retaliation"
+    },
+    {
+      "from_source": "Stochastic Parrots paper -- the research that cost two Google ethics leads their jobs",
+      "to_source": "Google's Ethical AI team firings -- the institutional pattern of retaliation",
+      "kind": "refines",
+      "reason": "The paper was the proximate cause of the firings; the firings pair adds institutional context and the broader pattern including Whittaker"
+    },
+    {
+      "from_source": "Jan Leike -- OpenAI superalignment team lead, resigned over safety resource disputes",
+      "to_source": "AI safety researchers leaving major labs -- the pattern and reasons",
+      "kind": "refines",
+      "reason": "Leike's resignation is the most prominent individual case within the broader pattern of safety departures documented in the pattern pair"
+    },
+    {
+      "from_source": "Dario Amodei -- Anthropic CEO, left OpenAI over safety concerns, constitutional AI pioneer",
+      "to_source": "Effective altruism to AI safety pipeline -- the funding and talent network",
+      "kind": "refines",
+      "reason": "Anthropic's founding and funding are deeply connected to the EA-to-AI-safety pipeline; Amodei's individual story contextualizes the institutional funding flows"
+    },
+    {
+      "from_source": "Eliezer Yudkowsky -- MIRI founder, AI doom advocate, 'Shut It All Down' proponent",
+      "to_source": "Stuart Russell -- UC Berkeley professor, 'Human Compatible' author, AI existential risk advocate",
+      "kind": "contradicts",
+      "reason": "Both warn about existential AI risk but differ sharply on solutions: Yudkowsky demands total moratorium while Russell advocates for redesigning AI architectures to be provably beneficial"
+    },
+    {
+      "from_source": "AI safety vs AI ethics divide -- the two communities and what separates them",
+      "to_source": "Effective altruism to AI safety pipeline -- the funding and talent network",
+      "kind": "refines",
+      "reason": "The EA funding pipeline is a key structural driver of the safety-ethics divide, directing resources toward existential risk research over present-day harms work"
+    },
+    {
+      "from_source": "Non-disparagement agreements -- their chilling effect on AI whistleblowers",
+      "to_source": "AI safety researchers leaving major labs -- the pattern and reasons",
+      "kind": "refines",
+      "reason": "NDAs and equity clawbacks are one of the mechanisms that shape how and when safety researchers leave, and constrain what they can say publicly after departing"
+    },
+    {
+      "from_source": "Ilya Sutskever -- OpenAI co-founder, board crisis participant, Safe Superintelligence Inc. founder",
+      "to_source": "Jan Leike -- OpenAI superalignment team lead, resigned over safety resource disputes",
+      "kind": "refines",
+      "reason": "Sutskever and Leike co-led the Superalignment team and departed the same week in May 2024; their joint exit caused the team's dissolution"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Timnit Gebru -- Google AI ethics co-lead fired in 2020, DAIR Institute founder",
+      "kind": "url",
+      "locator": "https://www.technologyreview.com/2020/12/04/1013294/google-ai-ethics-research-paper-forced-out-timnit-gebru/",
+      "reason": "MIT Technology Review analysis of the paper that led to Gebru's firing"
+    },
+    {
+      "pair_source": "Timnit Gebru -- Google AI ethics co-lead fired in 2020, DAIR Institute founder",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Distributed_Artificial_Intelligence_Research_Institute",
+      "reason": "Wikipedia article on DAIR Institute founding and mission"
+    },
+    {
+      "pair_source": "Timnit Gebru -- Google AI ethics co-lead fired in 2020, DAIR Institute founder",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2020/12/03/googles-co-lead-of-ethical-ai-team-says-she-was-fired-for-sending-an-email",
+      "reason": "TechCrunch reporting on Gebru's account of her firing"
+    },
+    {
+      "pair_source": "Margaret Mitchell -- Google AI ethics co-lead fired in 2021, model cards creator",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2021/02/19/google-fires-top-ai-ethics-researcher-margaret-mitchell/",
+      "reason": "TechCrunch reporting on Mitchell's firing from Google"
+    },
+    {
+      "pair_source": "Margaret Mitchell -- Google AI ethics co-lead fired in 2021, model cards creator",
+      "kind": "url",
+      "locator": "https://huggingface.co/blog/meg-mitchell-interview",
+      "reason": "Hugging Face interview with Mitchell about her ethics work and role"
+    },
+    {
+      "pair_source": "Meredith Whittaker -- Signal president, AI Now Institute co-founder, Google walkout organizer",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2019/07/15/meredith-whittaker-ai-researcher-and-an-organizer-of-last-years-google-walkout-is-leaving-the-company",
+      "reason": "TechCrunch reporting on Whittaker leaving Google after alleged retaliation"
+    },
+    {
+      "pair_source": "Meredith Whittaker -- Signal president, AI Now Institute co-founder, Google walkout organizer",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Meredith_Whittaker",
+      "reason": "Wikipedia biography covering Whittaker's career and organizational roles"
+    },
+    {
+      "pair_source": "Stuart Russell -- UC Berkeley professor, 'Human Compatible' author, AI existential risk advocate",
+      "kind": "url",
+      "locator": "https://fortune.com/2026/02/18/big-tech-russian-roulette-ai-race-humanity-extinction/",
+      "reason": "Fortune article with Russell's 2026 warning about Big Tech playing 'Russian roulette' with AI"
+    },
+    {
+      "pair_source": "Stuart Russell -- UC Berkeley professor, 'Human Compatible' author, AI existential risk advocate",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Human_Compatible",
+      "reason": "Wikipedia article on Russell's book 'Human Compatible'"
+    },
+    {
+      "pair_source": "Eliezer Yudkowsky -- MIRI founder, AI doom advocate, 'Shut It All Down' proponent",
+      "kind": "url",
+      "locator": "https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/",
+      "reason": "Yudkowsky's 2023 Time op-ed calling for AI shutdown"
+    },
+    {
+      "pair_source": "Eliezer Yudkowsky -- MIRI founder, AI doom advocate, 'Shut It All Down' proponent",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Eliezer_Yudkowsky",
+      "reason": "Wikipedia biography of Yudkowsky covering MIRI founding and positions"
+    },
+    {
+      "pair_source": "Dario Amodei -- Anthropic CEO, left OpenAI over safety concerns, constitutional AI pioneer",
+      "kind": "url",
+      "locator": "https://www.stackumbrella.com/technology/why-anthropic-ceo-dario-amodei-left-openai-the-real-story-behind-the-split-from-sam-altman-12005509",
+      "reason": "Detailed account of Amodei's departure from OpenAI and founding of Anthropic"
+    },
+    {
+      "pair_source": "Jan Leike -- OpenAI superalignment team lead, resigned over safety resource disputes",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2024/05/28/openai-safety-leader-jan-leike-joins-amazon-backed-anthropic.html",
+      "reason": "CNBC reporting on Leike joining Anthropic after OpenAI resignation"
+    },
+    {
+      "pair_source": "Jan Leike -- OpenAI superalignment team lead, resigned over safety resource disputes",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2024/05/17/openai-superalignment-sutskever-leike.html",
+      "reason": "CNBC reporting on OpenAI dissolving the Superalignment team"
+    },
+    {
+      "pair_source": "AI safety vs AI ethics divide -- the two communities and what separates them",
+      "kind": "url",
+      "locator": "https://arxiv.org/abs/2512.10058",
+      "reason": "Bibliometric study quantifying the gap between AI safety and ethics research communities"
+    },
+    {
+      "pair_source": "AI safety vs AI ethics divide -- the two communities and what separates them",
+      "kind": "url",
+      "locator": "https://www.math.chalmers.se/~olleh/AIethicsVSAIsafety.pdf",
+      "reason": "Academic paper by Olle Haggstrom on the troubled relation between AI ethics and AI safety"
+    },
+    {
+      "pair_source": "Non-disparagement agreements -- their chilling effect on AI whistleblowers",
+      "kind": "url",
+      "locator": "https://kkc.com/media/leaked-sec-whistleblower-complaint-challenges-openai-on-illegal-non-disclosure-agreements/",
+      "reason": "Details of the leaked SEC whistleblower complaint against OpenAI's NDAs"
+    },
+    {
+      "pair_source": "Non-disparagement agreements -- their chilling effect on AI whistleblowers",
+      "kind": "url",
+      "locator": "https://www.judiciary.senate.gov/press/rep/releases/grassley-introduces-ai-whistleblower-protection-act",
+      "reason": "Senator Grassley's announcement of the AI Whistleblower Protection Act"
+    },
+    {
+      "pair_source": "Effective altruism to AI safety pipeline -- the funding and talent network",
+      "kind": "url",
+      "locator": "https://www.aipanic.news/p/effective-altruism-funded-the-ai",
+      "reason": "Investigation into EA funding of the AI existential risk ecosystem totaling over half a billion dollars"
+    },
+    {
+      "pair_source": "Effective altruism to AI safety pipeline -- the funding and talent network",
+      "kind": "url",
+      "locator": "https://www.transformernews.ai/p/anthropic-employees-philanthropy-billions-donations-effective-altruism-coefficient-giving-ai-safety",
+      "reason": "Reporting on Anthropic employees' EA-aligned philanthropy commitments"
+    },
+    {
+      "pair_source": "AI safety researchers leaving major labs -- the pattern and reasons",
+      "kind": "url",
+      "locator": "https://www.techtimes.com/articles/320191/20260711/openai-loses-sixth-safety-leader-two-years-folds-team-research.htm",
+      "reason": "Tech Times reporting on OpenAI's sixth safety leadership departure by mid-2026"
+    },
+    {
+      "pair_source": "AI safety researchers leaving major labs -- the pattern and reasons",
+      "kind": "url",
+      "locator": "https://ethicalaidepartures.fyi/",
+      "reason": "Database tracking documented AI safety and ethics departures across the industry"
+    },
+    {
+      "pair_source": "Ilya Sutskever -- OpenAI co-founder, board crisis participant, Safe Superintelligence Inc. founder",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2024/05/17/openai-superalignment-sutskever-leike.html",
+      "reason": "CNBC reporting on Sutskever's departure and the dissolution of the Superalignment team"
+    },
+    {
+      "pair_source": "Stochastic Parrots paper -- the research that cost two Google ethics leads their jobs",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Stochastic_parrot",
+      "reason": "Wikipedia article on the Stochastic Parrots paper and its impact"
+    },
+    {
+      "pair_source": "Google's Ethical AI team firings -- the institutional pattern of retaliation",
+      "kind": "url",
+      "locator": "https://www.nbcnews.com/tech/tech-news/two-google-employees-say-company-retaliated-after-they-organized-walkout-n997266",
+      "reason": "NBC News reporting on Google employees alleging retaliation after walkout"
+    }
+  ]
+}

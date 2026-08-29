@@ -1,0 +1,316 @@
+{
+  "domain": "adversarial-factcheck-tech",
+  "pairs": [
+    {
+      "source_text": "FACTCHECK REFUTED: DOGE officially shut down on July 4, 2025",
+      "source_lang": "en",
+      "target_text": "DOGE officially shut down on July 4, 2026, not 2025. The shutdown date was explicitly tied to the 250th anniversary of American independence (July 4, 1776 + 250 = July 4, 2026), as Musk and Vivek Ramaswamy outlined in their November 2024 Wall Street Journal op-ed. Musk's personal tenure as a special government employee ended after approximately 130 days (around May 2025), but DOGE itself continued operating until July 4, 2026. Multiple sources including The Hill, Newsweek, and WLT Report confirm the July 4, 2026 shutdown date.",
+      "target_lang": "en",
+      "reason": "The claim conflates Musk's personal departure from DOGE (May 2025) with DOGE's official shutdown (July 4, 2026). The year is off by one full year."
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: Named TIME Person of the Year in 2025, Li is one of the most prominent women in AI",
+      "source_lang": "en",
+      "target_text": "Fei-Fei Li was not individually named TIME Person of the Year in 2025. TIME named 'the Architects of AI' as its collective 2025 Person of the Year, featuring eight tech leaders on the cover: Mark Zuckerberg, Elon Musk, Jensen Huang, Sam Altman, Demis Hassabis, Lisa Su, Dario Amodei, and Fei-Fei Li. Saying Li was 'Named TIME Person of the Year' implies she received the honor individually, when she was one of eight people in a collective designation.",
+      "target_lang": "en",
+      "reason": "Misleading attribution. The collective honor is significantly different from being individually named Person of the Year. The claim inflates her individual recognition."
+    },
+    {
+      "source_text": "FACTCHECK REFUTED: closed a record $122 billion funding round at an $852 billion valuation in February 2026",
+      "source_lang": "en",
+      "target_text": "The $122 billion funding round closed on March 31, 2026, not February 2026. In February 2026 (specifically February 27), OpenAI announced $110 billion in commitments from strategic investors that anchored the round. The round then grew to $122 billion with additional investors and formally closed on March 31, 2026. Bloomberg, CNBC, TechCrunch, and OpenAI's own press release all confirm the March 31, 2026 closing date. The $852 billion valuation is correct.",
+      "target_lang": "en",
+      "reason": "The round was announced in stages. February was the initial $110B announcement; the final $122B close was March 31, 2026. The claim uses the wrong month."
+    },
+    {
+      "source_text": "FACTCHECK REFUTED: Anthropic had reached a $9 billion revenue run rate by early 2026",
+      "source_lang": "en",
+      "target_text": "Anthropic's $9 billion revenue run rate was the end-of-2025 figure, not an 'early 2026' figure. By February 2026, when Anthropic closed its $30 billion Series G at a $380 billion valuation, the company's run-rate revenue had already climbed to $14 billion. Revenue then accelerated dramatically: $30 billion by mid-2026, $47 billion by May, and $65 billion by July 2026. Attributing $9 billion to 'early 2026' significantly understates where Anthropic was at that point.",
+      "target_lang": "en",
+      "reason": "The $9B figure is temporally misplaced. By early 2026, Anthropic's revenue had already grown well past $9B to $14B, making the claim materially wrong."
+    },
+    {
+      "source_text": "FACTCHECK REFUTED: Daniela Amodei, who had been VP of Operations at OpenAI",
+      "source_lang": "en",
+      "target_text": "Daniela Amodei's title at OpenAI was Vice President of Safety and Policy, not VP of Operations. In that role she led the safety, policy, communications, and legal teams during the GPT-3 effort and OpenAI's transition to a capped-profit structure. She also served as VP of People, overseeing hiring decisions. Multiple sources including Fast Company, Wikipedia, and BBNT Times confirm the VP of Safety and Policy title. Notably, a separate entry in the same corpus correctly identifies her as 'VP of Safety and Policy,' contradicting this claim.",
+      "target_lang": "en",
+      "reason": "Wrong job title. VP of Operations vs VP of Safety and Policy are materially different roles with different scopes and implications."
+    },
+    {
+      "source_text": "FACTCHECK REFUTED: Elizabeth Holmes was sentenced to 11 years and 3 months in January 2023",
+      "source_lang": "en",
+      "target_text": "Elizabeth Holmes was sentenced on November 18, 2022, not January 2023. U.S. District Judge Edward Davila sentenced her to 135 months (11 years and 3 months) in federal prison. The DOJ press release from the Northern District of California confirms the November 2022 sentencing date. A separate entry in the same corpus correctly states 'in November 2022 was sentenced to 11 years and 3 months,' creating an internal contradiction in the dataset.",
+      "target_lang": "en",
+      "reason": "The sentencing date is off by two months. This appears in the criminal sentencing comparison entry while the individual Holmes entry correctly states November 2022."
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: SSI was valued at $32 billion after raising over $3 billion",
+      "source_lang": "en",
+      "target_text": "The $32 billion valuation is correct, but the total funding figure of 'over $3 billion' is significantly outdated. By mid-2026, SSI had raised at least $6-7 billion in total: a $1 billion seed round in September 2024 at a $5 billion valuation, a $2 billion round (led by Greenoaks) that set the $32 billion valuation, and a subsequent $5 billion strategic investment from Nvidia disclosed in July 2026. Some sources cite total funding as high as $9.1 billion. The claim understates SSI's total capital raised by roughly half.",
+      "target_lang": "en",
+      "reason": "The $3 billion figure was accurate only through early 2025. By 2026, additional rounds (especially Nvidia's $5B) brought the total far higher."
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: Bengio received the 2018 Turing Award principally for his work on sequence learning, attention mechanisms, and generative adversarial networks",
+      "source_lang": "en",
+      "target_text": "The official 2018 ACM Turing Award citation honors Bengio, Hinton, and LeCun 'for conceptual and engineering breakthroughs that have made deep neural networks a critical component of computing.' It does not specifically credit GANs, attention mechanisms, or sequence learning. While Bengio contributed to attention mechanism research and co-authored the original 2014 GAN paper as Ian Goodfellow's doctoral advisor, generative adversarial networks are primarily credited to Ian Goodfellow as his invention. Attributing GANs as a 'principal' reason for Bengio's Turing Award misrepresents both the citation and the attribution of GANs.",
+      "target_lang": "en",
+      "reason": "The official Turing Award citation is broader, and GANs are primarily attributed to Ian Goodfellow, not Bengio. The claim inflates Bengio's connection to GANs."
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: Do Kwon pleaded guilty to conspiracy to commit fraud and wire fraud",
+      "source_lang": "en",
+      "target_text": "Do Kwon's guilty plea and conviction covered more charges than stated. According to the DOJ (Southern District of New York, Case 23 Cr. 151), Kwon was sentenced for committing wire fraud AND conspiring to commit securities fraud, commodities fraud, AND wire fraud. The claim reduces multiple distinct charges to just 'conspiracy to commit fraud and wire fraud,' omitting the securities fraud and commodities fraud conspiracy charges. The DOJ press release specifically titles the case 'Crypto-Enabled Fraudster Sentenced For Orchestrating $40 Billion Fraud.'",
+      "target_lang": "en",
+      "reason": "The claim understates the charges, omitting securities fraud and commodities fraud conspiracy, making Kwon's criminal liability appear narrower than it was."
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: Elon Musk's federal lawsuit concluded in May 2026 with a ruling that the suit was filed too late",
+      "source_lang": "en",
+      "target_text": "The characterization as 'a ruling' is misleading. In May 2026, a unanimous jury in U.S. District Court in Oakland, California (before Judge Yvonne Gonzalez Rogers) found that Musk's claims were barred by the statute of limitations after less than two hours of deliberation. The verdict was advisory, and Judge Rogers confirmed she accepted the jury's findings as her own. This was a jury verdict, not simply a judicial ruling. The jury specifically found Musk was aware of the behavior at issue as early as 2021. Notably, a separate entry in the same corpus more accurately describes this as 'a jury ruled against him in May 2026.'",
+      "target_lang": "en",
+      "reason": "Calling a jury verdict 'a ruling' understates the adversarial process. The case went to trial with a jury, which is materially different from a judge issuing a procedural ruling."
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: Andrej Karpathy joined Anthropic's pre-training team in May 2026",
+      "source_lang": "en",
+      "target_text": "Confirmed. Andrej Karpathy joined Anthropic on May 19, 2026, to lead a new team using Claude to accelerate pre-training research, reporting to Nick Joseph (Anthropic's head of model development). This was confirmed by TechCrunch, multiple AI news outlets, and Karpathy's own public statements. The hire closed a 22-month chapter running Eureka Labs, his AI-native education startup. The claim's description of Karpathy's role as 'manifesting' (breaking down goals for AI agents rather than writing code) is consistent with reporting about his approach at Anthropic.",
+      "target_lang": "en",
+      "reason": "Multiple authoritative sources confirm the May 2026 timing, the pre-training team assignment, and the general framing of Karpathy's new role."
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: Alphabet lost roughly $270 billion in market cap over two trading sessions after the June 2026 DeepMind departures",
+      "source_lang": "en",
+      "target_text": "Confirmed. Alphabet's stock fell roughly 7% on June 22, 2026, erasing an estimated $270 billion in market capitalization across two trading sessions, according to Bloomberg and multiple financial outlets. The departures included Nobel laureate John Jumper (to Anthropic), Gemini co-lead Noam Shazeer (to OpenAI), Jonas Adler (to Anthropic), Alexander Pritzel (to Anthropic), and Arthur Conmy (to Anthropic). The $270 billion figure, the identities of departing researchers, and their destinations are all consistent with multiple independent reports.",
+      "target_lang": "en",
+      "reason": "Multiple financial news sources including Bloomberg confirm the approximately $270 billion market cap loss across two trading sessions."
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: OpenAI converted to a Delaware Public Benefit Corporation in October 2025 with a 25.8 percent equity stake for the OpenAI Foundation",
+      "source_lang": "en",
+      "target_text": "Confirmed. OpenAI completed its conversion to a Delaware Public Benefit Corporation on October 28, 2025, creating the OpenAI Foundation with a reported 25.8% equity stake. The Delaware Division of Corporations approved the Certificate of Incorporation for OpenAI Group PBC. The Foundation's stake was reported as worth roughly $130 billion at the company's then-$500 billion valuation. TechCrunch, Forbes, and OpenAI's own structure page confirm the October 2025 conversion date and the Foundation's equity position.",
+      "target_lang": "en",
+      "reason": "The conversion date, corporate structure details, and Foundation equity stake are confirmed by OpenAI's own announcements and major financial reporting."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "FACTCHECK REFUTED: DOGE officially shut down on July 4, 2025",
+      "to_source": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "kind": "contradicts",
+      "reason": "DOGE shut down on July 4, 2026 (250th anniversary of American independence), not July 4, 2025 as stated in the claim."
+    },
+    {
+      "from_source": "FACTCHECK CORRECTED: Named TIME Person of the Year in 2025, Li is one of the most prominent women in AI",
+      "to_source": "Fei-Fei Li -- ImageNet creator, Stanford HAI co-director, World Labs founder, TIME Person of the Year",
+      "kind": "refines",
+      "reason": "TIME named 'Architects of AI' (eight people) as collective Person of the Year 2025, not Li individually."
+    },
+    {
+      "from_source": "FACTCHECK REFUTED: closed a record $122 billion funding round at an $852 billion valuation in February 2026",
+      "to_source": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "kind": "contradicts",
+      "reason": "The $122 billion round closed on March 31, 2026, not February 2026. February was the initial $110B announcement."
+    },
+    {
+      "from_source": "FACTCHECK REFUTED: Anthropic had reached a $9 billion revenue run rate by early 2026",
+      "to_source": "Dario and Daniela Amodei -- the OpenAI exodus that built Anthropic",
+      "kind": "contradicts",
+      "reason": "The $9B run rate was an end-of-2025 figure; by early 2026, Anthropic's run rate had already reached $14B."
+    },
+    {
+      "from_source": "FACTCHECK REFUTED: Daniela Amodei, who had been VP of Operations at OpenAI",
+      "to_source": "Dario and Daniela Amodei -- the OpenAI exodus that built Anthropic",
+      "kind": "contradicts",
+      "reason": "Daniela Amodei was VP of Safety and Policy, not VP of Operations. A separate entry in the same corpus correctly states the title."
+    },
+    {
+      "from_source": "FACTCHECK REFUTED: Elizabeth Holmes was sentenced to 11 years and 3 months in January 2023",
+      "to_source": "Criminal sentencing outcomes across major tech fraud cases 2022-2026",
+      "kind": "contradicts",
+      "reason": "Holmes was sentenced November 18, 2022, not January 2023. The individual Holmes entry in the corpus correctly says November 2022."
+    },
+    {
+      "from_source": "FACTCHECK CORRECTED: SSI was valued at $32 billion after raising over $3 billion",
+      "to_source": "Ilya Sutskever -- OpenAI co-founder, architect of the boardroom coup, and founder of Safe Superintelligence Inc",
+      "kind": "refines",
+      "reason": "The $3B figure is outdated; by 2026 SSI had raised $6-7B+ including Nvidia's $5B strategic investment."
+    },
+    {
+      "from_source": "FACTCHECK CORRECTED: Bengio received the 2018 Turing Award principally for his work on sequence learning, attention mechanisms, and generative adversarial networks",
+      "to_source": "Yoshua Bengio -- third deep learning pioneer, MILA founder, and AI safety advocate who founded LawZero",
+      "kind": "refines",
+      "reason": "The Turing Award citation does not mention GANs, and GANs are primarily attributed to Ian Goodfellow, not Bengio."
+    },
+    {
+      "from_source": "FACTCHECK CORRECTED: Do Kwon pleaded guilty to conspiracy to commit fraud and wire fraud",
+      "to_source": "Do Kwon -- Terra/Luna algorithmic stablecoin collapse, extradition, and conviction",
+      "kind": "refines",
+      "reason": "The charges were broader: wire fraud and conspiring to commit securities fraud, commodities fraud, and wire fraud."
+    },
+    {
+      "from_source": "FACTCHECK CORRECTED: Elon Musk's federal lawsuit concluded in May 2026 with a ruling that the suit was filed too late",
+      "to_source": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "kind": "refines",
+      "reason": "It was a jury verdict (less than 2 hours deliberation), not merely a judicial ruling. Judge Rogers accepted the advisory verdict."
+    },
+    {
+      "from_source": "FACTCHECK CONFIRMED: Andrej Karpathy joined Anthropic's pre-training team in May 2026",
+      "to_source": "Andrej Karpathy -- Tesla Autopilot lead, OpenAI co-founder, AI educator, now at Anthropic",
+      "kind": "refines",
+      "reason": "Karpathy joining Anthropic on May 19, 2026 confirmed by multiple sources including TechCrunch."
+    },
+    {
+      "from_source": "FACTCHECK CONFIRMED: Alphabet lost roughly $270 billion in market cap over two trading sessions after the June 2026 DeepMind departures",
+      "to_source": "The great talent diaspora -- how departures from Google Brain, DeepMind, and OpenAI reshaped the AI industry",
+      "kind": "refines",
+      "reason": "The $270B market cap loss and the departures of Jumper, Shazeer, and others are confirmed by Bloomberg and financial reporting."
+    },
+    {
+      "from_source": "FACTCHECK CONFIRMED: OpenAI converted to a Delaware Public Benefit Corporation in October 2025 with a 25.8 percent equity stake for the OpenAI Foundation",
+      "to_source": "OpenAI's for-profit conversion -- the nonprofit mission versus commercial reality",
+      "kind": "refines",
+      "reason": "The October 2025 conversion date and Foundation equity stake confirmed by TechCrunch, OpenAI, and Forbes."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "FACTCHECK REFUTED: DOGE officially shut down on July 4, 2025",
+      "kind": "url",
+      "locator": "https://thehill.com/homenews/administration/5955468-doge-shuts-down-operations/",
+      "reason": "The Hill reports DOGE officially shut down on July 4, 2026 (250th anniversary of American independence)."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: DOGE officially shut down on July 4, 2025",
+      "kind": "url",
+      "locator": "https://www.newsweek.com/doge-officially-ends-a-timeline-of-cuts-controversies-12162614",
+      "reason": "Newsweek timeline confirms DOGE's July 4 expiration date in 2026."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Named TIME Person of the Year in 2025, Li is one of the most prominent women in AI",
+      "kind": "url",
+      "locator": "https://www.forbes.com/sites/johnwerner/2025/12/13/its-official-ai-or-ai-people-are-times-person-of-the-year/",
+      "reason": "Forbes confirms TIME named 'Architects of AI' (8 people) as collective Person of the Year, not Li individually."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Named TIME Person of the Year in 2025, Li is one of the most prominent women in AI",
+      "kind": "url",
+      "locator": "https://www.cbsnews.com/news/the-architects-of-ai-are-times-2025-person-of-the-year",
+      "reason": "CBS News confirms the collective 'Architects of AI' designation including eight tech leaders."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: closed a record $122 billion funding round at an $852 billion valuation in February 2026",
+      "kind": "url",
+      "locator": "https://www.bloomberg.com/news/articles/2026-03-31/openai-valued-at-852-billion-after-completing-122-billion-round",
+      "reason": "Bloomberg reports the $122B round closed on March 31, 2026."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: closed a record $122 billion funding round at an $852 billion valuation in February 2026",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html",
+      "reason": "CNBC confirms the March 31, 2026 closing date for the $122B round."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Anthropic had reached a $9 billion revenue run rate by early 2026",
+      "kind": "url",
+      "locator": "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation",
+      "reason": "Anthropic's own February 2026 press release indicates a $14B run rate at the time of the Series G close."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Anthropic had reached a $9 billion revenue run rate by early 2026",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2026/08/17/anthropic-says-annualized-revenue-climbed-to-65-billion-in-july.html",
+      "reason": "CNBC reports Anthropic's revenue trajectory: $9B end-of-2025, $14B February 2026, $65B July 2026."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Daniela Amodei, who had been VP of Operations at OpenAI",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Daniela_Amodei",
+      "reason": "Wikipedia identifies Daniela Amodei's role at OpenAI as VP of Safety and Policy."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Daniela Amodei, who had been VP of Operations at OpenAI",
+      "kind": "url",
+      "locator": "https://www.fastcompany.com/90948058/how-anthropics-daniela-amodei-is-keeping-ai-grounded-in-safety",
+      "reason": "Fast Company profile confirms her OpenAI title as VP of Safety and Policy."
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Elizabeth Holmes was sentenced to 11 years and 3 months in January 2023",
+      "kind": "url",
+      "locator": "https://www.justice.gov/usao-ndca/pr/elizabeth-holmes-sentenced-more-11-years-defrauding-theranos-investors-hundreds",
+      "reason": "DOJ press release confirms Holmes was sentenced on November 18, 2022."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: SSI was valued at $32 billion after raising over $3 billion",
+      "kind": "url",
+      "locator": "https://finance.yahoo.com/technology/ai/articles/ai-startup-roughly-50-employees-133000150.html",
+      "reason": "Yahoo Finance reports SSI's total funding reached $6B+ by 2026, far exceeding the claimed $3B."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: SSI was valued at $32 billion after raising over $3 billion",
+      "kind": "url",
+      "locator": "https://www.calcalistech.com/ctechnews/article/qy9eg5jw4",
+      "reason": "Calcalist Tech reports Nvidia's $5B investment in SSI, bringing total funding well above $3B."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Bengio received the 2018 Turing Award principally for his work on sequence learning, attention mechanisms, and generative adversarial networks",
+      "kind": "url",
+      "locator": "https://awards.acm.org/about/2018-turing",
+      "reason": "Official ACM Turing Award page: citation is 'for conceptual and engineering breakthroughs that have made deep neural networks a critical component of computing.' No mention of GANs."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Do Kwon pleaded guilty to conspiracy to commit fraud and wire fraud",
+      "kind": "url",
+      "locator": "https://www.justice.gov/usao-sdny/pr/crypto-enabled-fraudster-sentenced-orchestrating-40-billion-fraud",
+      "reason": "DOJ confirms charges: wire fraud and conspiring to commit securities fraud, commodities fraud, and wire fraud -- broader than the claim states."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Do Kwon pleaded guilty to conspiracy to commit fraud and wire fraud",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2025/12/12/terrausd-creator-do-kwon-sentenced-to-15-years-over-40-billion-crypto-collapse.html",
+      "reason": "CNBC confirms the full set of charges at sentencing."
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Elon Musk's federal lawsuit concluded in May 2026 with a ruling that the suit was filed too late",
+      "kind": "url",
+      "locator": "https://www.npr.org/2026/05/18/nx-s1-5822366/musk-altman-openai-jury-verdict-claims-dismissed",
+      "reason": "NPR headline explicitly states 'Jury dismisses all claims in Elon Musk's lawsuit against OpenAI CEO Sam Altman.'"
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Elon Musk's federal lawsuit concluded in May 2026 with a ruling that the suit was filed too late",
+      "kind": "url",
+      "locator": "https://www.cnn.com/2026/05/18/tech/openai-musk-lawsuit-verdict",
+      "reason": "CNN confirms the May 2026 jury verdict against Musk, with the jury deliberating for less than two hours."
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Andrej Karpathy joined Anthropic's pre-training team in May 2026",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2026/05/19/openai-co-founder-andrej-karpathy-joins-anthropics-pre-training-team/",
+      "reason": "TechCrunch confirms Karpathy joined Anthropic's pre-training team on May 19, 2026."
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Alphabet lost roughly $270 billion in market cap over two trading sessions after the June 2026 DeepMind departures",
+      "kind": "url",
+      "locator": "https://memeburn.com/google-deepmind-talent-exodus-hits-alphabet-with-270b-loss/",
+      "reason": "Memeburn confirms the $270B market cap loss tied to DeepMind departures."
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Alphabet lost roughly $270 billion in market cap over two trading sessions after the June 2026 DeepMind departures",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html",
+      "reason": "CNBC confirms Noam Shazeer's departure from Google for OpenAI in June 2026."
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: OpenAI converted to a Delaware Public Benefit Corporation in October 2025 with a 25.8 percent equity stake for the OpenAI Foundation",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2025/10/28/openai-completes-its-for-profit-recapitalization/",
+      "reason": "TechCrunch confirms OpenAI completed its for-profit recapitalization on October 28, 2025."
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: OpenAI converted to a Delaware Public Benefit Corporation in October 2025 with a 25.8 percent equity stake for the OpenAI Foundation",
+      "kind": "url",
+      "locator": "https://openai.com/our-structure/",
+      "reason": "OpenAI's own structure page confirms the Public Benefit Corporation structure and Foundation's role."
+    }
+  ]
+}

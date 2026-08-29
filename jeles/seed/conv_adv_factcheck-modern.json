@@ -1,0 +1,352 @@
+{
+  "domain": "adversarial-factcheck-modern",
+  "pairs": [
+    {
+      "source_text": "FACTCHECK REFUTED: Clara Immerwahr's 'their 13-year-old son Hermann found her dying' on the night of May 2, 1915",
+      "source_lang": "en",
+      "target_text": "Hermann Haber was born on June 1, 1902. Clara Immerwahr died on May 2, 1915. This makes Hermann 12 years old at the time of her death, not 13. Multiple biographical sources including Find a Grave, Encyclopedia.com, and Wikipedia confirm his 1902 birth date.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 2024' after the Supreme Court overturned a prior deal",
+      "source_lang": "en",
+      "target_text": "The $7.4 billion settlement was announced on January 23, 2025, not 2024. The Supreme Court overturned the prior settlement in June 2024, but the new $7.4 billion agreement (with $6.5 billion from the Sackler family over 15 years and ~$900 million from Purdue) was reached and announced in January 2025. Bankruptcy court approval came in November 2025. The claim conflates the Supreme Court ruling year with the settlement year.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from opioid overdoses since 1999'",
+      "source_lang": "en",
+      "target_text": "The figure of 'over 500,000' significantly understates the actual toll. CDC data shows approximately 806,000 people died from opioid overdoses in the United States from 1999 through 2023. While '500,000' was accurate around 2020, by the time this claim was written it was outdated by roughly 300,000 deaths. The cumulative toll continues to grow despite recent year-over-year declines (79,358 deaths in 2023, down to 54,045 in 2024).",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst for the FTC's antitrust case against Meta, which went to trial in 2025'",
+      "source_lang": "en",
+      "target_text": "The FTC's antitrust case against Meta (FTC v. Meta) was filed in December 2020, nearly a year BEFORE Haugen's disclosures in October 2021. The FTC case concerned Meta's monopoly through its acquisitions of Instagram (2012) and WhatsApp (2014), not content safety or harm to children. Haugen's disclosures were about algorithmic amplification of harmful content and Instagram's effects on teen mental health -- entirely different issues. The FTC case did go to trial in April 2025 and Zuckerberg testified, but Meta won in November 2025. Haugen's disclosures are more accurately linked to the 42 state attorneys general lawsuits filed in 2023 over harm to children, which is a separate matter.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence -- the longest ever imposed for an unauthorized disclosure to the media at that time'",
+      "source_lang": "en",
+      "target_text": "This claim omits a crucial qualifier. Winner's sentence was the longest ever imposed on a CIVILIAN for leaking classified information to the media, not the longest overall. Chelsea Manning was sentenced to 35 years in 2013 under military law for leaking to WikiLeaks -- a far longer sentence. The ABA Journal and other legal sources specifically describe Winner's as 'the longest sentence ever imposed on a civilian for leaking classified information.' By omitting 'civilian,' the claim contradicts the Manning entry in the same corpus, which also calls Manning's sentence 'the longest ever imposed for a leak to the media at that time.'",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion with only 170 miles under construction in the Central Valley and no completion date in sight; $15.7 billion has been spent with the federal government moving to terminate $4 billion in grants'",
+      "source_lang": "en",
+      "target_text": "The $128 billion figure was already outdated when cited. The California High-Speed Rail Authority's 2026 business plan (April 2026) projects costs of $126.2 billion for the LA-SF line, though an independent analysis cited by Fox LA puts the figure at $231 billion. Furthermore, while $15.7 billion was an earlier spending figure, more recent reports cite $18+ billion spent with no track laid as of early 2026. The federal government did pull $4 billion in funding in July 2025, and Congress permanently rescinded an additional $929 million. The April 2026 plan projects completion in 2039 and operations starting in 2040 -- 20 years past what California voters were told in 2008.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigation by five European countries identified the poison dart frog toxin epibatidine as the cause of death, concluding the Russian government was responsible'",
+      "source_lang": "en",
+      "target_text": "Confirmed. A joint statement from the United Kingdom, France, Germany, Sweden, and the Netherlands (five European countries) announced their finding that analysis of samples from Navalny's body 'conclusively confirmed the presence of epibatidine,' a toxin found in South American poison dart frogs, approximately 200 times stronger than morphine. The governments stated they were 'confident' Russia was responsible. The finding was reported to the Organisation for the Prohibition of Chemical Weapons as a violation of the Chemical Weapons Convention. However, the claim that Navalny was 'sentenced to 19 years on extremism charges' is only partially accurate -- the 19-year extremism sentence was in addition to a prior 9+ year sentence, making his total sentence approximately 30 years.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: Tucker Carlson's 'abrupt departure on April 24, 2023, days after Fox's $787.5 million Dominion settlement'",
+      "source_lang": "en",
+      "target_text": "Confirmed. Fox News announced Tucker Carlson's departure on April 24, 2023. His last show aired April 21, 2023. The Dominion Voting Systems settlement for $787.5 million was reached on April 18, 2023, making the departure announcement six days after the settlement. NPR and other outlets reported the departure was linked to fallout from the settlement and damaging internal messages revealed during litigation.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten years' in December 2025, 'spending three weeks in China after being questioned for two hours at the airport'",
+      "source_lang": "en",
+      "target_text": "Confirmed. In mid-December 2025, Ai Weiwei traveled to Beijing with his son to visit his elderly mother. Upon arrival at Beijing Capital International Airport, he was stopped for nearly two hours of questioning and inspection but faced no further interference during his three-week stay. He described the visit as feeling 'like a phone call suddenly reconnecting.' CNN and multiple art publications reported the story in January 2026.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with government takedown requests surged to 71 percent under Musk, up from 40 percent pre-acquisition'",
+      "source_lang": "en",
+      "target_text": "Confirmed. X released its first transparency report under Elon Musk's ownership in September 2024, covering the first half of 2024. The report showed X received 72,703 government takedown requests and took action in about 71% of cases, a significant increase from approximately 40% compliance before Musk's October 2022 purchase. Japan accounted for the most requests (46,648), followed by Turkey (9,364).",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of its newsroom, after which CEO Will Lewis departed'",
+      "source_lang": "en",
+      "target_text": "Confirmed. The Washington Post laid off approximately one-third of its staff (roughly 300 of 800 journalists) in early February 2026. CEO and publisher Will Lewis resigned on February 7, 2026, days after the layoffs were announced. Controversially, Lewis was photographed at the NFL Honors in San Francisco on the same day journalists protested the layoffs. Jeff D'Onofrio was appointed acting publisher and CEO. The claim that the Post 'lost an estimated $100 million in 2024' also appears in the same entry but was not independently verified in this check.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding whistleblowers, fining a commodities trader $55 million' in 2024",
+      "source_lang": "en",
+      "target_text": "Confirmed. On June 17, 2024, the CFTC announced a $55 million settlement order against Trafigura Trading LLC (Houston-based subsidiary of Trafigura PTE, Ltd.) in its first-ever enforcement action under CFTC Rule 165.19(b) for impeding whistleblower reporting. The company had required employees to sign confidentiality agreements between 2017-2020 that did not include exceptions for communications with law enforcement or regulators. The $55 million covered multiple violations including market manipulation, not solely the whistleblower-impeding conduct.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 'the Court ruled 6-3 that the plaintiffs lacked standing'",
+      "source_lang": "en",
+      "target_text": "Confirmed. On June 26, 2024, the Supreme Court ruled 6-3 in Murthy v. Missouri that the plaintiffs (two states and five individuals) lacked standing to sue federal officials for allegedly pressuring social media platforms to suppress speech. Justice Amy Coney Barrett wrote the majority opinion; Justice Alito dissented, joined by Justices Thomas and Gorsuch. The Court did not rule on the merits of whether government communication with platforms constituted censorship.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    },
+    {
+      "source_text": "FACTCHECK CORRECTED: The claim describes the Sackler family marketing OxyContin with 'misleading claims that OxyContin had less than a 1% addiction risk' without context on the source of that claim",
+      "source_lang": "en",
+      "target_text": "The 'less than 1% addiction risk' language traces to a 1980 letter to the New England Journal of Medicine by Hershel Jick (not a Purdue study) that was later cited by Purdue sales representatives to reassure doctors. While Purdue did aggressively use this figure in marketing, the original claim was not Purdue's own research but a five-sentence letter based on hospital inpatient data that was grossly misapplied to outpatient opioid prescribing. The distinction matters because the claim as written implies Purdue fabricated the statistic rather than selectively weaponized an external source -- both are serious misconduct but different in character.",
+      "target_lang": "en",
+      "reason": "Adversarial fact-check of modern people corpus"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "FACTCHECK REFUTED: Clara Immerwahr's 'their 13-year-old son Hermann found her dying' on the night of May 2, 1915",
+      "kind": "public_record",
+      "locator": "https://www.findagrave.com/memorial/73599028/clara-haber",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: Clara Immerwahr's 'their 13-year-old son Hermann found her dy"
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Clara Immerwahr's 'their 13-year-old son Hermann found her dying' on the night of May 2, 1915",
+      "kind": "public_record",
+      "locator": "https://www.encyclopedia.com/women/encyclopedias-almanacs-transcripts-and-maps/immerwahr-clara-1870-1915",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: Clara Immerwahr's 'their 13-year-old son Hermann found her dy"
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Clara Immerwahr's 'their 13-year-old son Hermann found her dying' on the night of May 2, 1915",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Clara_Immerwahr",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: Clara Immerwahr's 'their 13-year-old son Hermann found her dy"
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 2024' after the Supreme Court overturned a prior deal",
+      "kind": "public_record",
+      "locator": "https://ag.ny.gov/press-release/2025/attorney-general-james-secures-74-billion-purdue-pharma-and-sackler-family",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 20"
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 2024' after the Supreme Court overturned a prior deal",
+      "kind": "public_record",
+      "locator": "https://www.tn.gov/attorneygeneral/news/2025/1/23/pr25-5.html",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 20"
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 2024' after the Supreme Court overturned a prior deal",
+      "kind": "public_record",
+      "locator": "https://www.cbsnews.com/news/sackler-family-purdue-pharma-reach-7-4-billion-with-15-states-over-opioid-crisis/",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 20"
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from opioid overdoses since 1999'",
+      "kind": "public_record",
+      "locator": "https://www.cdc.gov/overdose-prevention/about/understanding-the-opioid-overdose-epidemic.html",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from"
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from opioid overdoses since 1999'",
+      "kind": "public_record",
+      "locator": "https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from"
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from opioid overdoses since 1999'",
+      "kind": "public_record",
+      "locator": "https://drugabusestatistics.org/drug-overdose-deaths/",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from"
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst for the FTC's antitrust case against Meta, which went to trial in 2025'",
+      "kind": "public_record",
+      "locator": "https://www.cnbc.com/2025/04/11/ftc-meta-instagram-whatsapp-lawsuit.html",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst "
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst for the FTC's antitrust case against Meta, which went to trial in 2025'",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/FTC_v._Meta",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst "
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst for the FTC's antitrust case against Meta, which went to trial in 2025'",
+      "kind": "public_record",
+      "locator": "https://www.democracynow.org/2025/4/16/frances_haugen_facebook_meta_antitrust",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst "
+    },
+    {
+      "pair_source": "FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst for the FTC's antitrust case against Meta, which went to trial in 2025'",
+      "kind": "public_record",
+      "locator": "https://www.npr.org/2025/11/18/nx-s1-5612785/meta-beats-ftc-case-wont-have-to-spin-off-whatsapp-instagram",
+      "reason": "Fact-check evidence for: FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst "
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence -- the longest ever imposed for an unauthorized disclosure to the media at that time'",
+      "kind": "public_record",
+      "locator": "https://www.abajournal.com/news/article/reality_winner_given_record_federal_sentence_for_media_leak",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence "
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence -- the longest ever imposed for an unauthorized disclosure to the media at that time'",
+      "kind": "public_record",
+      "locator": "https://www.npr.org/2018/08/23/641229886/reality-winner-sentenced-to-5-years-3-months-for-leaking-classified-info",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence "
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence -- the longest ever imposed for an unauthorized disclosure to the media at that time'",
+      "kind": "public_record",
+      "locator": "https://www.cbsnews.com/news/reality-winner-sentenced-pleaded-guilty-to-leaking-secret-u-s-report-today-2018-08-23",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence "
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion with only 170 miles under construction in the Central Valley and no completion date in sight; $15.7 billion has been spent with the federal government moving to terminate $4 billion in grants'",
+      "kind": "public_record",
+      "locator": "https://ktla.com/news/california/california-high-speed-rail-rising-costs/",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion"
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion with only 170 miles under construction in the Central Valley and no completion date in sight; $15.7 billion has been spent with the federal government moving to terminate $4 billion in grants'",
+      "kind": "public_record",
+      "locator": "https://www.foxla.com/news/california-high-speed-rail-cost-soars-231-billion",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion"
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion with only 170 miles under construction in the Central Valley and no completion date in sight; $15.7 billion has been spent with the federal government moving to terminate $4 billion in grants'",
+      "kind": "public_record",
+      "locator": "https://www.thecentersquare.com/california/article_52c74aa0-0555-4eba-84ee-4d9bf3528279.html",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigation by five European countries identified the poison dart frog toxin epibatidine as the cause of death, concluding the Russian government was responsible'",
+      "kind": "public_record",
+      "locator": "https://time.com/7378735/navalny-poison-frog-toxin-russia/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigatio"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigation by five European countries identified the poison dart frog toxin epibatidine as the cause of death, concluding the Russian government was responsible'",
+      "kind": "public_record",
+      "locator": "https://www.nbcnews.com/world/russia/russian-opposition-leader-alexei-navalny-poisoned-deadly-dart-frog-rcna259064",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigatio"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigation by five European countries identified the poison dart frog toxin epibatidine as the cause of death, concluding the Russian government was responsible'",
+      "kind": "public_record",
+      "locator": "https://www.france24.com/en/europe/20260217-why-russia-may-have-turned-dart%E2%80%91frog-toxin-epibatidine-poison-navalny",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigatio"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Tucker Carlson's 'abrupt departure on April 24, 2023, days after Fox's $787.5 million Dominion settlement'",
+      "kind": "public_record",
+      "locator": "https://www.cnn.com/2023/04/24/media/tucker-carlson-fox-news/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Tucker Carlson's 'abrupt departure on April 24, 2023, days "
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Tucker Carlson's 'abrupt departure on April 24, 2023, days after Fox's $787.5 million Dominion settlement'",
+      "kind": "public_record",
+      "locator": "https://www.npr.org/2023/04/24/1171641969/fox-news-fires-tucker-carlson-in-stunning-move-a-week-after-787-million-settleme",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Tucker Carlson's 'abrupt departure on April 24, 2023, days "
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten years' in December 2025, 'spending three weeks in China after being questioned for two hours at the airport'",
+      "kind": "public_record",
+      "locator": "https://www.cnn.com/2026/01/22/style/ai-weiwei-beijing-visit-hnk-intl-dst",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten ye"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten years' in December 2025, 'spending three weeks in China after being questioned for two hours at the airport'",
+      "kind": "public_record",
+      "locator": "https://www.artasiapacific.com/news/ai-weiwei-returns-to-china-after-10-years/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten ye"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten years' in December 2025, 'spending three weeks in China after being questioned for two hours at the airport'",
+      "kind": "public_record",
+      "locator": "https://news.artnet.com/art-world/ai-weiwei-returns-to-china-10-years-2740171",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten ye"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with government takedown requests surged to 71 percent under Musk, up from 40 percent pre-acquisition'",
+      "kind": "public_record",
+      "locator": "https://www.washingtontimes.com/news/2024/sep/26/transparency-report-shines-light-on-xs-compliance-/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with g"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with government takedown requests surged to 71 percent under Musk, up from 40 percent pre-acquisition'",
+      "kind": "public_record",
+      "locator": "https://siliconangle.com/2024/09/25/x-releases-first-transparency-report-since-elon-musk-took-platform/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with g"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with government takedown requests surged to 71 percent under Musk, up from 40 percent pre-acquisition'",
+      "kind": "public_record",
+      "locator": "https://thehill.com/policy/technology/4898799-x-transparency-report-elon-musk/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with g"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of its newsroom, after which CEO Will Lewis departed'",
+      "kind": "public_record",
+      "locator": "https://www.npr.org/2026/02/07/nx-s1-5705413/washington-post-ceo-resigns-will-lewis",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of it"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of its newsroom, after which CEO Will Lewis departed'",
+      "kind": "public_record",
+      "locator": "https://www.cnn.com/2026/02/07/media/washington-post-will-lewis-publisher-resigns",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of it"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of its newsroom, after which CEO Will Lewis departed'",
+      "kind": "public_record",
+      "locator": "https://www.nbcnews.com/news/us-news/will-lewis-steps-down-publisher-chief-executive-washington-post-rcna158854",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of it"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding whistleblowers, fining a commodities trader $55 million' in 2024",
+      "kind": "public_record",
+      "locator": "https://ogletree.com/insights-resources/blog-posts/cftc-fines-commodities-trader-55-million-in-first-ever-whistleblower-rule-enforcement-action/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding whistleblowers, fining a commodities trader $55 million' in 2024",
+      "kind": "public_record",
+      "locator": "https://www.cftc.gov/PressRoom/PressReleases/8921-24",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding whistleblowers, fining a commodities trader $55 million' in 2024",
+      "kind": "public_record",
+      "locator": "https://natlawreview.com/article/cftc-fines-commodities-trader-55-million-first-ever-whistleblower-rule-enforcement",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 'the Court ruled 6-3 that the plaintiffs lacked standing'",
+      "kind": "public_record",
+      "locator": "https://www.msba.org/site/site/content/News-and-Publications/News/General-News/Murthy_v._Missouri_A_Case_of_Standing.aspx",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 't"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 'the Court ruled 6-3 that the plaintiffs lacked standing'",
+      "kind": "public_record",
+      "locator": "https://www.scotusblog.com/cases/murthy-v-missouri-3/",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 't"
+    },
+    {
+      "pair_source": "FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 'the Court ruled 6-3 that the plaintiffs lacked standing'",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Murthy_v._Missouri",
+      "reason": "Fact-check evidence for: FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 't"
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: The claim describes the Sackler family marketing OxyContin with 'misleading claims that OxyContin had less than a 1% addiction risk' without context on the source of that claim",
+      "kind": "public_record",
+      "locator": "https://www.cdc.gov/overdose-prevention/about/understanding-the-opioid-overdose-epidemic.html",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: The claim describes the Sackler family marketing OxyContin "
+    },
+    {
+      "pair_source": "FACTCHECK CORRECTED: The claim describes the Sackler family marketing OxyContin with 'misleading claims that OxyContin had less than a 1% addiction risk' without context on the source of that claim",
+      "kind": "public_record",
+      "locator": "https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates",
+      "reason": "Fact-check evidence for: FACTCHECK CORRECTED: The claim describes the Sackler family marketing OxyContin "
+    }
+  ]
+}

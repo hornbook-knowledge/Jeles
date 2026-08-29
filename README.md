@@ -46,6 +46,41 @@ pip install "jeles[nestor]" # adds Nestor, to check human-rung seals (below)
 pip install -e ".[dev]"     # editable, with pytest and the SDK
 ```
 
+### The seed corpus
+
+The wheel ships a starting corpus: **74 files, 968 question/answer pairs**, in
+`jeles/seed/`, beside the 84 host cards. It is not loaded on install and not on
+first use — seeding writes to *your* store, and an unrequested write is the
+thing `corpus_put`'s gate exists to refuse. It is a command you type:
+
+```bash
+jeles-seed --dry-run    # report what would be written, write nothing
+jeles-seed              # load it into $WILLOW_STORE_ROOT
+```
+
+**What this batch is.** It was produced by research agents running adversarial
+rounds against themselves — challenge, factcheck, steelman — and the rounds'
+own artifacts ship alongside the answers, so the reasoning is auditable rather
+than summarised. That is real work, and it is still a machine's. So every pair
+loads at `asserted` unless a signature says otherwise, and an `asserted` nugget
+**cannot answer a question**: `corpus_ask` returns it under `candidates` with
+`found: false`. An unsigned seed makes the corpus *searchable*, not *settled*.
+
+**What a signature changes.** A pair carrying a Nestor seal
+(`{"seal_sig": "..."}`, signed over the normalized question, the answer, and
+the signer's name) is verified *on your machine*, against a keyring *you*
+trust, and lands at `verified`. That is the whole reason to ship seals rather
+than a `verified: true` field. A field is a claim by whoever shipped it; a
+signature is evidence you can check without trusting them at all. Seals that do
+not verify here are not discarded — the pair loads at the rung it can prove,
+the signature travels with it for a reviewer, and `jeles-seed` prints how many
+were refused and why.
+
+Signing cannot happen in this package. `jeles._nestor_seal` verifies and never
+signs, and `nestor.keyring` refuses to produce a seal from a public-key entry:
+*"Signing happens where the private key lives."* So the `verified` rung is
+reachable only where a person, out of process, has already earned it.
+
 Or as a host dependency, straight from git — the default branch is `master`,
 and `@main` resolves to nothing here:
 

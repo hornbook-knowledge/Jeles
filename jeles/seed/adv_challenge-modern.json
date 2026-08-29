@@ -1,0 +1,122 @@
+[
+  {
+    "id": "adv-mw-001",
+    "domain": "adversarial-modern-world",
+    "source_claim": "Agriculture uses 70% of the world's freshwater.",
+    "source_topic": "Why does agriculture use 70% of the world's freshwater and how does irrigation work at scale?",
+    "challenge": "The '70% of freshwater' figure is widely repeated but poorly sourced. A 2025 PNAS Nexus citation-network analysis of 3,500 documents found that 60-80% of all citation paths for this statistic lead to sources that lack supporting data or do not even contain the 70% number. Only 1.5% of sources provide original empirical data. The true contribution of irrigation to global freshwater withdrawals could lie anywhere between 45% and 90% depending on methodology and region. Presenting '70%' as settled fact obscures genuine uncertainty and discourages scrutiny of a foundational sustainability claim.",
+    "evidence": "Puy, A. et al., 'Widely cited global irrigation statistics lack empirical support,' PNAS Nexus, Vol 4, Issue 11, November 2025. FAO 2025 AQUASTAT data reports approximately 72% but with wide regional variation. Our World in Data agricultural water withdrawal data shows ranges from under 30% in industrialized Europe to over 90% in South Asia.",
+    "verdict": "misleading_precision",
+    "severity": "high"
+  },
+  {
+    "id": "adv-mw-002",
+    "domain": "adversarial-modern-world",
+    "source_claim": "The electrical grid maintains exactly 50 or 60 Hz frequency.",
+    "source_topic": "How does the grid maintain exactly 50 or 60 Hz frequency and what happens when it fails?",
+    "challenge": "The framing of '50 or 60 Hz' as a binary global standard glosses over Japan, where BOTH frequencies coexist within the same country, split along the Fujigawa River in Shizuoka Prefecture. Eastern Japan (Tokyo) runs at 50 Hz from German-origin generators; western Japan (Osaka) runs at 60 Hz from American-origin generators. The two halves can only exchange about 1.2 GW through frequency converter stations, which became a critical bottleneck after the 2011 Fukushima disaster when western Japan could not easily send surplus power east. Additionally, some countries like Saudi Arabia historically operated parts of their grid at 60 Hz while transitioning to 50 Hz. The 'exactly' framing also misleads: grid frequency continuously fluctuates around the nominal value, and the three US interconnections (Eastern, Western, ERCOT) each drift independently.",
+    "evidence": "Japan Times, 'Japan's incompatible power grids,' July 2011. Shulman Advisory, 'Everything You Need to Know about the Japanese Electricity Grid.' The three US interconnections each run at 60 Hz but are not phase-synchronized, making AC interconnection between them an engineering challenge requiring HVDC converter stations.",
+    "verdict": "oversimplified",
+    "severity": "medium"
+  },
+  {
+    "id": "adv-mw-003",
+    "domain": "adversarial-modern-world",
+    "source_claim": "The merit order determines which power plants run and sets wholesale electricity prices.",
+    "source_topic": "How does the merit order determine which power plants run and set wholesale electricity prices?",
+    "challenge": "The merit order dispatch model describes ONE market design. In reality, US electricity markets are fragmented: about two-thirds of US demand is in RTO/ISO regions, but these use different designs. PJM, NYISO, and ISO-NE have capacity markets that pay generators for being available (not just for energy delivered). CAISO uses state-level Resource Adequacy mandates. ERCOT in Texas operates an energy-only market with NO capacity market, which contributed to the catastrophic February 2021 failure. Meanwhile, roughly one-third of US electricity is still served by vertically integrated utilities outside RTOs, where dispatch follows integrated resource plans, not market clearing. In Europe, many countries layer capacity mechanisms on top of energy-only markets. The textbook merit order also ignores transmission constraints, must-run designations, ancillary service markets, and bilateral contracts that all shape actual dispatch.",
+    "evidence": "ISO-NE, 'How Resources Are Selected and Prices Are Set in the Wholesale Energy Markets.' Eurelectric capacity mechanisms overview. ERCOT 2025 Annual Report documenting energy-only market structure. European Commission energy market reform proposals 2023-2025.",
+    "verdict": "oversimplified",
+    "severity": "high"
+  },
+  {
+    "id": "adv-mw-004",
+    "domain": "adversarial-modern-world",
+    "source_claim": "30-40% of food production is lost or wasted.",
+    "source_topic": "Where does food waste happen in the supply chain and why is 30-40% of production lost?",
+    "challenge": "The '30-40%' figure conflates two very different problems depending on where you are in the world. In low-income countries, the majority of food loss occurs early in the supply chain -- at harvest, during storage, and in transportation -- due to lack of cold chain infrastructure and processing capacity. In high-income countries like the US, consumer and household-level waste is the single largest stage (approximately 39% of total waste by weight), with retail and foodservice contributing another 40%. Presenting a single global percentage obscures these structural differences and misdirects solutions: reducing food waste in Sub-Saharan Africa requires investment in storage and roads, while reducing it in the US requires changing consumer behavior and retail practices. The USDA's own data shows the 30-40% figure applies specifically to the US food supply, not necessarily to global production, though UNEP's Food Waste Index suggests comparable global figures at different stages.",
+    "evidence": "USDA Food Waste FAQs: 'In the United States, food waste is estimated at between 30-40 percent of the food supply.' USDA ERS data showing consumer/household waste at 39% and retail/foodservice at 40% of US total. UNEP Food Waste Index Report 2024. Power Knot supply chain analysis showing stage-by-stage variation.",
+    "verdict": "missing_context",
+    "severity": "medium"
+  },
+  {
+    "id": "adv-mw-005",
+    "domain": "adversarial-modern-world",
+    "source_claim": "Submarine cables carry 99% of intercontinental internet traffic.",
+    "source_topic": "How do undersea submarine cables carry 99% of intercontinental internet traffic?",
+    "challenge": "The '99%' figure, while directionally correct, deserves more nuance than it usually receives. TeleGeography, the primary source for this statistic, has itself published a mythbusting piece noting the range is more accurately 95-99% depending on how 'intercontinental' is defined and whether satellite backhaul for mobile networks in remote areas is counted. The figure also refers specifically to intercontinental traffic -- a crucial qualifier often dropped. Within continents, terrestrial fiber and microwave links carry enormous volumes. Additionally, the statistic is capacity-weighted; by number of connections (especially in remote island nations, maritime vessels, and aircraft), satellite plays a larger role. With Starlink and other LEO satellite constellations expanding rapidly, the satellite share is growing, though submarine cables' total capacity advantage remains overwhelming (thousands of Tbps vs. tens of Tbps for all satellites combined).",
+    "evidence": "TeleGeography, 'Do Submarine Cables Account For Over 99% of Intercontinental Data Traffic?' (2023 mythbusting series). TeleGeography 2026 Submarine Cable Map citing 694 cable systems. NewsBang reporting 95-99% range with 570+ systems in 2025.",
+    "verdict": "misleading_precision",
+    "severity": "low"
+  },
+  {
+    "id": "adv-mw-006",
+    "domain": "adversarial-modern-world",
+    "source_claim": "The Beveridge and Bismarck models describe how healthcare systems work worldwide.",
+    "source_topic": "What are the Beveridge and Bismarck models of healthcare, and which countries use them?",
+    "challenge": "The Beveridge/Bismarck taxonomy (sometimes expanded to four models including National Health Insurance and Out-of-Pocket) is a pedagogical simplification that most health policy scholars consider misleading. In practice, few countries conform neatly to either model. France is classified as Bismarck but has universal coverage with significant government financing. Canada is often called Beveridge-like but uses private physicians paid by provincial insurance. The US itself defies all categories: it simultaneously runs a Beveridge-like system (VA), a Bismarck-like system (employer insurance), a National Health Insurance system (Medicare), and a massive out-of-pocket/uninsured population. Germany, the Bismarck archetype, has both statutory and private insurance tracks. Presenting these as clean categories obscures that real healthcare systems are hybrids shaped by decades of political compromises, and that funding mechanisms (the basis for the taxonomy) are only one dimension of how healthcare systems actually differ in access, quality, and cost.",
+    "evidence": "IPPR, 'Bismarck versus Beveridge Revisited,' April 2026. Adam Smith Institute, 'Of Bismarck and Beveridge.' Physicians for a National Health Program, 'Health Care Systems - Four Basic Models.' Health Parliament, 'Bismarck vs Beveridge: Which Healthcare Model Is Failing Next?' 2025.",
+    "verdict": "oversimplified",
+    "severity": "high"
+  },
+  {
+    "id": "adv-mw-007",
+    "domain": "adversarial-modern-world",
+    "source_claim": "Curbside recycling in the United States recycles a meaningful portion of waste.",
+    "source_topic": "What percentage of curbside recycling in the United States is actually recycled?",
+    "challenge": "The actual US recycling picture is far worse than most educational materials suggest. While 77% of Americans say they recycle, the overall material recycling rate is only about 32-35% according to EPA and WM data (2025). The number is dramatically worse for specific materials: only 5-6% of the 38 million tons of annual US plastic waste is actually recycled. This gap exists because: (1) contamination causes entire loads to be landfilled; (2) China's 2018 National Sword policy ended imports of most recyclable waste, and replacement markets are limited; (3) many items placed in recycling bins are not actually recyclable in local systems; (4) 27% of Americans lack access to curbside recycling at all. The 'say-do gap' means educational content about how recycling works may create false confidence that placing items in a blue bin means they will be recycled.",
+    "evidence": "WM 2025 Recycling Report: 32.1% actual material recycling rate. EPA data corroborating approximately 32% national rate. The Recycling Partnership 2026 State of Recycling Report. Waste Dive, 'By the numbers: How America recycles in 2025.' Biology Insights analysis of plastic-specific recycling rates at 5-6%.",
+    "verdict": "missing_context",
+    "severity": "high"
+  },
+  {
+    "id": "adv-mw-008",
+    "domain": "adversarial-modern-world",
+    "source_claim": "The Haber-Bosch process feeds half the world's population.",
+    "source_topic": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+    "challenge": "The 'feeds half the world' claim is approximately correct but requires significant qualification. The key study (Erisman et al., Nature Geoscience, 2008) estimated synthetic nitrogen fertilizer supported 44% of the global population in 2000 and 48% in 2008. However, 'supported' does not mean 'without Haber-Bosch these people would starve.' The counterfactual is complex: without synthetic nitrogen, agricultural practices would be different (more legume cultivation, more organic fertilizer use, different crop mixes, different diets). Global food production would be lower but not halved, and population growth would have followed a different trajectory. Additionally, the environmental costs of Haber-Bosch -- responsible for approximately 1-2% of global energy consumption, significant N2O emissions (a potent greenhouse gas), and widespread aquatic dead zones from nitrogen runoff -- are often omitted from the heroic framing. The process enabled the Green Revolution but also created a nitrogen pollution crisis that costs billions annually.",
+    "evidence": "Erisman et al., 'How a century of ammonia synthesis changed the world,' Nature Geoscience, 2008. Our World in Data, 'How many people does synthetic fertilizer feed?' GRID-Arendal visualization of nitrogen fertilizer production vs. world population. American Chemical Society on industrialization of Haber-Bosch.",
+    "verdict": "missing_context",
+    "severity": "medium"
+  },
+  {
+    "id": "adv-mw-009",
+    "domain": "adversarial-modern-world",
+    "source_claim": "The duck curve is a problem for grids with lots of solar power.",
+    "source_topic": "What is the duck curve and why does it create problems for grids with lots of solar power?",
+    "challenge": "Describing the duck curve as primarily a 'California problem' -- where it was identified by CAISO in 2012-2013 -- understates its global reach while simultaneously overstating it as an unsolved crisis. The duck curve now appears in Hawaii (where it is more extreme), Australia (which regularly experiences negative wholesale prices during solar peaks), Germany, and increasingly across the US Sun Belt states. However, framing it purely as a problem misses that it is also a market signal driving battery storage investment. California's midday net load dropped to as low as 8,000 MW on sunny spring days with evening ramps of 17,000 MW in 3 hours as of 2024, but battery storage deployment is actively flattening the curve. Australia's experience shows the duck curve can become a 'canyon' -- net demand dropping below zero -- which challenges the entire merit-order pricing model. The real story is not just 'solar causes problems' but 'solar is transforming grid economics in ways that require fundamental market redesign.'",
+    "evidence": "NREL original 2008 identification. CAISO duck curve data showing 46 GW of California solar capacity by 2024. DOE, 'Confronting the Duck Curve.' Wikipedia duck curve article documenting global instances. EticaAG analysis of battery storage addressing the March 29 event.",
+    "verdict": "oversimplified",
+    "severity": "medium"
+  },
+  {
+    "id": "adv-mw-010",
+    "domain": "adversarial-modern-world",
+    "source_claim": "A hospital bill is complex because of the chargemaster pricing system.",
+    "source_topic": "Why is a hospital bill so complex, and what is a chargemaster?",
+    "challenge": "Explaining hospital billing complexity through the chargemaster alone presents a US-specific phenomenon as if it were a universal feature of healthcare. The chargemaster system -- where hospitals maintain databases of 10,000 to 50,000 line items with prices unrelated to costs or market transactions -- is essentially unique to the US healthcare system. In single-payer systems (UK, Canada), patients typically receive no itemized bill at all. In social insurance systems (Germany, France), standardized fee schedules set by negotiation between payers and providers determine prices. Even within the US, the chargemaster explanation oversimplifies: chargemaster amounts are almost never what anyone actually pays. Insurers pay contracted rates, Medicare pays DRG-based rates, and the chargemaster price mainly affects uninsured patients (who may negotiate) and serves as a starting point for out-of-network billing disputes. As of 2026, 37% of US hospitals still do not comply with federal price transparency rules despite mandates effective January 2026.",
+    "evidence": "Medical Bill Rescue chargemaster explainer. CMS Hospital Price Transparency requirements effective January 2026 with April 2026 enforcement. LegalClarity analysis of chargemaster and patient rights. Government audit showing 37% hospital non-compliance with transparency rules.",
+    "verdict": "US_centric",
+    "severity": "high"
+  },
+  {
+    "id": "adv-mw-011",
+    "domain": "adversarial-modern-world",
+    "source_claim": "Emergency room triage decides who gets seen first based on severity.",
+    "source_topic": "How does emergency room triage decide who gets seen first?",
+    "challenge": "Any explanation of ER triage that presents a single system misrepresents a globally fragmented landscape. At least four major triage systems are in wide use: the Emergency Severity Index (ESI, dominant in the US), the Manchester Triage System (MTS, dominant in UK and much of Europe), the Canadian Triage and Acuity Scale (CTAS), and the Australasian Triage Scale (ATS). These differ in fundamental ways: ESI emphasizes predicted resource consumption, MTS uses flowchart-based symptom assessment, CTAS incorporates explicit minute-based time-to-treatment targets, and ATS uses clinician judgment with time benchmarks. They use different numbers of levels (3 to 5), different color-coding conventions, and reflect different philosophies about what constitutes 'urgency' -- immediate life threat vs. time-sensitivity vs. resource requirements. In many low-resource settings worldwide, modified systems like South Africa's SATS (4 levels) or WHO's ETAT guidelines for pediatric triage bear little resemblance to any of these. Presenting triage as a single process obscures these critical design differences.",
+    "evidence": "TriageIQ, 'Emergency Department Triage Systems: A Global Comparison.' Russian Open Medical Journal, 'Comparative analysis of triage systems at emergency departments of different countries.' PMC, 'Modern Triage in the Emergency Department.' Nature Research Intelligence topic summary on ED triage systems.",
+    "verdict": "false_universality",
+    "severity": "medium"
+  },
+  {
+    "id": "adv-mw-012",
+    "domain": "adversarial-modern-world",
+    "source_claim": "BGP routing allows packets to find their way across the global internet.",
+    "source_topic": "How does BGP routing allow packets to find their way across the global internet?",
+    "challenge": "Explaining BGP as the system that 'allows packets to find their way' dramatically understates its fundamental security vulnerability: BGP has NO built-in authentication mechanism. Any autonomous system can announce ownership of any IP address prefix, and other routers will generally believe it. This is not a theoretical concern -- researchers captured 1,394 potential stealthy hijacking incidents over just a two-month window in early 2025, deduplicating to 110 unique incidents. In June 2025, a root DNS server hijack affected eight servers simultaneously. In July 2025, a social-engineering-based BGP hijack bypassed even RPKI protections. The defensive technology (RPKI/ROV) remains in early adoption stages and addresses only origin validation, not path validation. A 'How Things Work' explanation of BGP that emphasizes the elegance of decentralized routing without prominently noting that the system runs on trust -- and that this trust is routinely exploited for surveillance, censorship, and theft -- misses the most important thing about how BGP actually works in practice.",
+    "evidence": "APNIC Blog, 'RPKI vs social engineering: A case study in route hijacking,' March 2026. Anapaya, 'BGP hijacking examples: a timeline of real-world attacks (2017-2026).' ArXiv, 'Understanding the Stealthy BGP Hijacking Risk in the ROV Era,' June 2026 (1,394 incidents in two months). SentinelOne BGP security guide. Kentik BGP hijacking analysis.",
+    "verdict": "missing_context",
+    "severity": "high"
+  }
+]

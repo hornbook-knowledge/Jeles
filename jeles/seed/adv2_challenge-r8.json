@@ -1,0 +1,164 @@
+{
+  "domain": "adversarial-challenge-r8",
+  "pairs": [
+    {
+      "source_text": "Fractional reserve banking allows banks to lend far more than their reserves, amplified by the money multiplier",
+      "source_lang": "en",
+      "target_text": "[HIGH] The textbook money multiplier model -- where a 10% reserve ratio mechanically expands an initial deposit by a factor of 10 through successive rounds of lending -- is not how banking actually works, and the corpus's own first entry contradicts this one. The Bank of England's 2014 paper 'Money Creation in the Modern Economy' explicitly states: 'The money multiplier theory... is not an accurate description of how money is created in practice.' Banks do not wait for deposits and then lend out a fraction; they create loans first, which generate deposits, and then seek reserves after the fact. The reserve requirement was never the binding constraint -- capital requirements, risk appetite, and borrower demand were. Describing the pre-2020 system as 'fractional reserve banking constrained by reserve ratios, then replaced by Basel III capital requirements' presents a sequential transition that misrepresents a simultaneous reality: capital adequacy was always the operative constraint alongside reserve requirements. The corpus contains an internal contradiction: entry 1 correctly states banks create money through lending, while entry 2 describes the money multiplier as if it functioned until 2020.",
+      "target_lang": "en",
+      "reason": "Teaching the money multiplier as historical reality rather than a debunked textbook model perpetuates a fundamental misunderstanding of how banking and credit creation actually work, leading to wrong conclusions about monetary policy effectiveness"
+    },
+    {
+      "source_text": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] The Gini coefficient is presented here as a standard inequality measure alongside Piketty-Saez-Zucman wealth data, but the corpus does not disclose the Gini's well-documented limitations. Two entirely different income distributions can produce identical Gini coefficients -- a society where the middle class is hollowed out and one where a small elite captures gains can score the same. The Gini also cannot distinguish between inequality driven by age demographics (older workers earning more than younger ones in the same cohort over time) and structural inequality. Furthermore, income Gini (reported here as 0.39 for the US) and wealth Gini (approximately 0.85 for the US) tell radically different stories, but the corpus mixes both without flagging the distinction. The Oxfam 'richest 1% captured twice as much new wealth' framing has been criticized by economists including Branko Milanovic for relying on Credit Suisse net wealth data where having zero debt in a developing country makes you 'wealthier' than an indebted Harvard graduate -- a methodological choice that inflates the inequality narrative. Piketty's r > g thesis, while influential, has been challenged by Matthew Rognlie (2015) who showed that the rise in capital's share is almost entirely due to housing wealth, not the broad capital accumulation Piketty implies.",
+      "target_lang": "en",
+      "reason": "Presenting the Gini coefficient without its methodological weaknesses and mixing income and wealth inequality measures without flagging the distinction creates a misleadingly precise picture of a genuinely complex phenomenon"
+    },
+    {
+      "source_text": "Bitcoin uses proof-of-work mining to create a decentralized, immutable transaction ledger without trusted intermediaries",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] The corpus covers Bitcoin, stablecoins, and DeFi but frames the broader crypto ecosystem disproportionately through failures (TerraUST collapse, Tether reserve problems, $3.8 billion in DeFi hacks) while burying Bitcoin's most remarkable fact: the Bitcoin protocol itself has never been successfully attacked or hacked in over 15 years of continuous operation, surviving every prediction of its demise. The stablecoin entry leads with Tether's reserve problems and TerraUST's collapse without noting these are categorically different instruments -- algorithmic stablecoins like Terra had no reserves by design, making the comparison misleading. The DeFi entry reports $3.8 billion stolen in 2022, but this overwhelmingly involves smart contract bugs on third-party applications, not flaws in the underlying blockchain protocols. Meanwhile, the traditional financial system loses far more to fraud annually -- the FTC reported US consumers lost $8.8 billion to fraud in 2022 alone, and the estimated global cost of financial crime exceeds $2 trillion. The framing creates an implicit narrative that crypto is uniquely prone to failure while traditional finance is merely 'captured' rather than also systemically fraudulent.",
+      "target_lang": "en",
+      "reason": "Asymmetric framing of crypto failures versus traditional finance failures creates a misleading risk comparison that obscures genuine assessment of both systems' track records"
+    },
+    {
+      "source_text": "Regulatory capture occurs when regulatory agencies serve the interests of the industries they regulate rather than the public interest",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] Stigler's 1971 capture theory is presented as a well-documented pattern, supported by dramatic examples (Boeing 737 MAX, Deepwater Horizon, revolving door). But this framing is too simple in two ways. First, it cherry-picks spectacular failures while ignoring that the same agencies also function effectively most of the time -- the FAA oversees a commercial aviation system that achieved zero fatal accidents on US airlines between 2009 and 2018, and the FDA blocks roughly 90% of drug applications. Carpenter and Moss's 2013 volume 'Preventing Regulatory Capture' argues the concept has become so elastic it explains everything and therefore nothing: any regulatory outcome the observer dislikes gets labeled 'capture.' Second, the alternative to regulation is not an uncaptured regulator but often no regulation at all -- industries with weak or absent regulators (cryptocurrency exchanges before 2023, social media platforms) have worse consumer outcomes than 'captured' ones. The corpus also treats the revolving door as inherently corrupt, but research by David Zaring (2013) and others shows that agency staff with industry experience often produce better-informed regulation. The concept has migrated from analytical framework to conspiracy frame, where its invocation substitutes for actual evidence of corrupted decision-making.",
+      "target_lang": "en",
+      "reason": "Treating regulatory capture as a universal explanatory framework rather than a specific, evidence-dependent finding undermines the case for effective regulation by implying all regulators are inevitably corrupt"
+    },
+    {
+      "source_text": "The EU's General Data Protection Regulation established the most comprehensive data privacy framework in the world, with extraterritorial reach and significant enforcement penalties",
+      "source_lang": "en",
+      "target_text": "[HIGH] The corpus presents GDPR as a paradigm-shifting success story -- large fines, global 'Brussels Effect,' inspiring legislation worldwide -- without addressing substantial evidence that enforcement has been ineffective for most individuals. The Irish Data Protection Commission (DPC), lead regulator for most major US tech companies due to their EU headquarters being in Ireland, was criticized by the Irish Council for Civil Liberties and multiple EU parliamentarians for systematic delays -- the DPC took an average of 4-5 years to resolve major cases as of 2023. A 2022 report by the civil liberties organization noyb found that 87% of GDPR complaints in Austria were left unresolved after four years. Johnny Ryan's 2023 research documented that EU data protection authorities were collectively underfunded, with most having fewer than 10 tech specialists investigating companies with thousands of engineers. The 'consent' mechanism has degenerated into cookie banner fatigue, where users click 'accept all' to make pop-ups disappear -- a 2020 study in the Proceedings on Privacy Enhancing Technologies found that fewer than 5% of users actively manage cookie preferences. The record fines sound large but represent fractions of revenue (Meta's 1.2 billion euro fine was less than 1% of annual revenue) and are routinely appealed, often reduced, and take years to collect. GDPR may have created a compliance industry more than a privacy-respecting reality.",
+      "target_lang": "en",
+      "reason": "Presenting GDPR primarily through its fines and global influence without its enforcement failures creates a misleadingly positive picture of whether the regulation actually protects individuals' privacy in practice"
+    },
+    {
+      "source_text": "Common law systems derive legal authority primarily from judicial precedent rather than codified statutes",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] The corpus presents common law and civil law as two distinct traditions that map neatly onto different countries, while acknowledging a few 'mixed' systems (Louisiana, Scotland, Quebec) as exceptions. In reality, the binary is increasingly a false one. Common law countries have massive statutory codes -- the US Code contains 54 titles of federal legislation, and most American law is statutory or regulatory, not judge-made. Meanwhile, civil law countries increasingly rely on judicial interpretation: Germany's Federal Constitutional Court effectively makes law through its rulings, and the French Cour de cassation has developed doctrines (like abus de droit) that function as binding precedent in practice even though civil law theory says judicial decisions are not a source of law. As Mathias Reimann and Reinhard Zimmermann argue in the 'Oxford Handbook of Comparative Law' (2019), the convergence of the two traditions has accelerated through international human rights law, EU harmonization, and global commercial practice (UNIDROIT Principles, Vienna Convention on Contracts). Presenting the distinction as the organizing framework for understanding legal systems overstates structural differences and understates functional convergence.",
+      "target_lang": "en",
+      "reason": "Framing global legal systems through a common law versus civil law binary obscures the reality that most modern legal systems are functional hybrids, leading to oversimplified comparative analysis"
+    },
+    {
+      "source_text": "Current extinction rates are estimated at 100 to 1,000 times the background rate, leading scientists to describe the present era as the sixth mass extinction",
+      "source_lang": "en",
+      "target_text": "[HIGH] The '100 to 1,000 times background rate' claim involves comparing estimates that are not methodologically comparable, and the corpus itself hints at but does not fully disclose this problem. The background rate of 0.1-2 E/MSY (extinctions per million species-years) is derived from fossil record data spanning millions of years, primarily for marine invertebrates and vertebrates with hard parts that fossilize well. The current estimated rate is derived from IUCN assessments of a non-random sample of ~157,000 species out of an estimated 8-10 million -- heavily biased toward vertebrates and plants in well-studied regions. A 2011 Nature paper by Fangliang He and Stephen Hubbell showed that standard species-area relationship models used to estimate extinction from habitat loss systematically overestimate extinction rates by up to 160%. The Living Planet Index's '69% decline in monitored vertebrate populations' is a population abundance metric, not an extinction metric, and a 2020 Nature paper by Brian Leung et al. demonstrated that this index is disproportionately driven by extreme declines in a small number of populations rather than representing a broad pattern. This does not mean biodiversity loss is not serious -- it clearly is -- but presenting a range spanning an order of magnitude (100x to 1,000x) as if it were a precise measurement compares apples to oranges across very different methodological frameworks.",
+      "target_lang": "en",
+      "reason": "Presenting extinction rate comparisons without disclosing the fundamental methodological incompatibilities between fossil-record background rates and modern assessment-based current rates undermines scientific credibility and gives ammunition to those who dismiss real biodiversity concerns"
+    },
+    {
+      "source_text": "Fossil fuel subsidies totaled an estimated $7 trillion globally in 2022 according to the IMF, when accounting for both explicit subsidies and unpriced externalities",
+      "source_lang": "en",
+      "target_text": "[HIGH] The $7 trillion figure conflates two fundamentally different things under the single word 'subsidies,' and while the corpus notes the breakdown ($1.3 trillion explicit, $5.7 trillion implicit), it does not adequately flag that calling unpriced externalities 'subsidies' is an analytical choice, not a neutral description. Explicit subsidies are actual fiscal transfers -- governments paying to keep fuel prices below market rates. Implicit subsidies are theoretical calculations of what governments should be charging based on the IMF's estimates of pollution damage, climate costs, traffic congestion, and forgone consumption taxes. These implicit costs are real, but calling them 'subsidies' implies someone is writing a check, when actually the argument is that fossil fuel prices do not include social costs. By the same methodology, you could calculate multi-trillion-dollar 'subsidies' for any activity with unpriced negative externalities: alcohol consumption, sugar, automobile use, or air travel. The framing enables headlines like 'governments spend $7 trillion subsidizing fossil fuels' that imply fiscal profligacy, when most of that figure is a counterfactual about what prices should be. The OECD's more conservative methodology ($1.1 trillion in direct support) and the IEA's consumption subsidy estimate ($1 trillion in 2022) are arguably more actionable policy numbers. The corpus notes critics 'argue that implicit subsidies are theoretical constructs' but buries this caveat deep in the entry.",
+      "target_lang": "en",
+      "reason": "Conflating unpriced externalities with direct fiscal subsidies under one headline number is misleading because it implies government spending rather than a pricing gap, distorting policy debates about both subsidy reform and carbon pricing"
+    },
+    {
+      "source_text": "Climate feedback loops include ice-albedo feedback, permafrost thaw releasing methane, and water vapor amplification, creating risks of cascading tipping points",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] The tipping points framing, while scientifically grounded, is presented with a certainty the underlying research does not support. The Armstrong McKay et al. 2022 Science paper identified 16 tipping elements and 'suggested several could be triggered between 1.5 and 2 degrees C,' but the paper's own confidence levels varied enormously -- some thresholds were assessed with medium confidence (AMOC weakening, permafrost carbon release) while others were low confidence (Amazon dieback, boreal forest shift). The corpus does not convey this heterogeneity. Furthermore, the concept of 'cascading' tipping points -- where one triggers another in a domino effect -- remains largely theoretical. A 2021 Earth System Dynamics paper by Wunderling et al. modeled cascading interactions but acknowledged that the coupling strengths between tipping elements are poorly constrained. The 1.5 degrees C target itself has evolved from a scientific assessment into a political line in the sand -- the IPCC AR6 WG1 SPM shows warming of 1.0-1.8 degrees C even under SSP1-1.9, and global temperatures temporarily exceeded 1.5 degrees C above pre-industrial in 2023-2024 (per Copernicus Climate Change Service), yet no identified tipping point has observably been crossed in response. The gap between modeled tipping risks and observed system behavior deserves acknowledgment alongside the precautionary framing.",
+      "target_lang": "en",
+      "reason": "Presenting tipping points as near-certain cascading dominoes rather than as uncertain possibilities with heterogeneous confidence levels risks either fatalism (too late to act) or credibility loss when thresholds are crossed without immediate catastrophic cascades"
+    },
+    {
+      "source_text": "Mutually Assured Destruction doctrine shaped Cold War strategy but has structural weaknesses",
+      "source_lang": "en",
+      "target_text": "[HIGH] The corpus frames MAD primarily through its near-failures (Petrov 1983, Norwegian rocket 1995, Doomsday Clock at 90 seconds) to argue the doctrine 'has barely survived its own implementation.' This is a one-sided reading of the evidence. MAD has coincided with the longest period without great-power war in modern history -- 79 years and counting since 1945, compared to the two world wars in the 31 years between 1914 and 1945. The near-misses cited actually support the robustness thesis: in every case, human judgment or institutional procedures prevented escalation, which is exactly what a deterrence system with redundant safeguards is designed to do. The Petrov incident shows the system had a human-in-the-loop failsafe that worked. John Lewis Gaddis's 'The Long Peace' (1986) and Ward Wilson's critics both argue from the same data but reach opposite conclusions. The Doomsday Clock is not a scientific measurement but a communications device set by the Bulletin of the Atomic Scientists' board based on subjective judgment -- it was at 2 minutes in 1953, reset to 17 minutes in 1991, and has been below 5 minutes since 2007, making its movements more reflective of editorial anxiety than calibrated risk assessment. Characterizing MAD as irrational when it has empirically prevented the outcome it was designed to prevent is to demand a standard of zero-risk that no security arrangement in history has met.",
+      "target_lang": "en",
+      "reason": "Framing nuclear deterrence primarily through near-misses while downplaying that it has prevented great-power war for nearly eight decades creates a misleadingly negative assessment of the only system that has empirically kept nuclear peace"
+    },
+    {
+      "source_text": "The global arms trade is dominated by a small number of exporters selling to conflict-prone regions",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] The corpus frames the global arms trade as a straightforward pipeline from wealthy exporters to conflict zones, implying a simple causal chain: arms sales cause or enable wars. The reality is considerably more complex. Many of the largest arms recipients -- Saudi Arabia, India, Australia, South Korea, Japan -- are status quo powers purchasing weapons for deterrence, not aggression. India, the second-largest importer, maintains a massive military primarily to deter Pakistan and China, and the India-Pakistan nuclear deterrence has arguably prevented full-scale war since 1999. The corpus highlights Saudi Arabia's Yemen intervention as the paradigmatic case of arms enabling atrocities, but does not note that arms embargoes (as attempted on the former Yugoslavia in the 1990s and Libya in 2011) have their own failures -- the Bosnian arms embargo left Bosniak civilians unable to defend against Serbian forces during the Srebrenica genocide. The corpus presents US arms sales to Saudi Arabia as a moral failure but does not note that the 2019 Senate vote to block Saudi arms sales (vetoed by President Trump) shows democratic accountability mechanisms functioning, even if imperfectly. Arms trade without context is a morality play; arms trade with context is a series of difficult tradeoffs between deterrence, alliance maintenance, economic interests, and humanitarian concerns.",
+      "target_lang": "en",
+      "reason": "Framing the arms trade as a one-directional moral failure without acknowledging the deterrence function and the documented failures of arms embargoes creates a misleadingly simple picture of a genuinely complex security tradeoff"
+    },
+    {
+      "source_text": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] The corpus frames the Geneva Conventions through an enforcement-gap narrative: universal ratification but weak compliance, the ICC's limited track record, and selective justice. While these criticisms have merit, the framing understates the Conventions' actual behavioral impact. Research by James Morrow ('Order within Anarchy,' 2014) demonstrates that reciprocity drives substantial compliance -- states treat POWs humanely in part because they expect reciprocal treatment for their own captured soldiers. The dramatic improvement in POW survival rates from the 19th century to post-1949 conflicts (where both parties ratified the Conventions) is measurable evidence of impact. The corpus notes the ICC has convicted only African defendants, implying racial bias, but does not note that most ICC investigations were referred by African states themselves (Uganda, DRC, Central African Republic, Mali) -- these governments asked the ICC to investigate rebel groups on their own territory. The selective-justice critique, while valid regarding non-member great powers, risks delegitimizing an institution that has provided accountability where national courts could not. The broader point the corpus misses is that international humanitarian law works primarily through norm internalization and military doctrine, not through external enforcement -- most modern militaries train officers on the laws of armed conflict and embed legal advisors in operational planning.",
+      "target_lang": "en",
+      "reason": "Framing the Geneva Conventions primarily through enforcement failure ignores the substantial evidence that IHL shapes military behavior through norm internalization, doctrinal integration, and reciprocity, even absent robust external enforcement"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Fractional reserve banking allows banks to lend far more than their reserves, amplified by the money multiplier",
+      "kind": "public_record",
+      "locator": "https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy",
+      "reason": "Bank of England 2014 quarterly bulletin explicitly stating that the money multiplier model is not an accurate description of money creation in practice"
+    },
+    {
+      "pair_source": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "kind": "public_record",
+      "locator": "https://www.brookings.edu/articles/why-does-piketty-capital-in-the-twenty-first-century-still-matter/",
+      "reason": "Matthew Rognlie's critique showing that the rise in capital share is driven almost entirely by housing, and Branko Milanovic's critique of Oxfam's net wealth methodology"
+    },
+    {
+      "pair_source": "Bitcoin uses proof-of-work mining to create a decentralized, immutable transaction ledger without trusted intermediaries",
+      "kind": "public_record",
+      "locator": "https://www.ftc.gov/reports/consumer-sentinel-network-data-book-2022",
+      "reason": "FTC Consumer Sentinel Network Data Book 2022 reporting $8.8 billion in consumer fraud losses, providing a comparison baseline for the $3.8 billion in crypto hacks"
+    },
+    {
+      "pair_source": "Regulatory capture occurs when regulatory agencies serve the interests of the industries they regulate rather than the public interest",
+      "kind": "public_record",
+      "locator": "https://www.cambridge.org/core/books/preventing-regulatory-capture/5765B4EC7BC8E604AAC77D6C9B06AFEB",
+      "reason": "Carpenter and Moss (2013) 'Preventing Regulatory Capture' arguing that the concept has become too elastic and that capture exists on a spectrum, not as a binary"
+    },
+    {
+      "pair_source": "The EU's General Data Protection Regulation established the most comprehensive data privacy framework in the world, with extraterritorial reach and significant enforcement penalties",
+      "kind": "public_record",
+      "locator": "https://noyb.eu/en/5-years-gdpr-report",
+      "reason": "noyb's report documenting that 87% of GDPR complaints in Austria were unresolved after four years and that data protection authorities across the EU are systematically under-resourced"
+    },
+    {
+      "pair_source": "Common law systems derive legal authority primarily from judicial precedent rather than codified statutes",
+      "kind": "public_record",
+      "locator": "https://global.oup.com/academic/product/the-oxford-handbook-of-comparative-law-9780198810230",
+      "reason": "Reimann and Zimmermann (2019) 'Oxford Handbook of Comparative Law' documenting the accelerating convergence of common law and civil law traditions through globalization, EU harmonization, and international commercial law"
+    },
+    {
+      "pair_source": "Current extinction rates are estimated at 100 to 1,000 times the background rate, leading scientists to describe the present era as the sixth mass extinction",
+      "kind": "public_record",
+      "locator": "https://www.nature.com/articles/nature09985",
+      "reason": "He and Hubbell (2011) Nature paper demonstrating that species-area models used to estimate extinction from habitat loss systematically overestimate extinction rates by up to 160%"
+    },
+    {
+      "pair_source": "Fossil fuel subsidies totaled an estimated $7 trillion globally in 2022 according to the IMF, when accounting for both explicit subsidies and unpriced externalities",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/en/Publications/WP/Issues/2023/08/22/IMF-Fossil-Fuel-Subsidies-Data-2023-Update-537281",
+      "reason": "The IMF's own 2023 working paper where the breakdown between explicit subsidies ($1.3 trillion) and implicit subsidies ($5.7 trillion in unpriced externalities) is detailed, showing the $7 trillion headline conflates fiscal transfers with counterfactual pricing gaps"
+    },
+    {
+      "pair_source": "Climate feedback loops include ice-albedo feedback, permafrost thaw releasing methane, and water vapor amplification, creating risks of cascading tipping points",
+      "kind": "public_record",
+      "locator": "https://www.science.org/doi/10.1126/science.abn7950",
+      "reason": "Armstrong McKay et al. (2022) Science paper showing heterogeneous confidence levels across tipping elements, with some assessed at medium or low confidence rather than the uniform high-risk framing in the corpus"
+    },
+    {
+      "pair_source": "Mutually Assured Destruction doctrine shaped Cold War strategy but has structural weaknesses",
+      "kind": "public_record",
+      "locator": "https://www.jstor.org/stable/2538468",
+      "reason": "John Lewis Gaddis 'The Long Peace' (1986) in International Security arguing that nuclear deterrence, including MAD, produced the longest great-power peace in modern history"
+    },
+    {
+      "pair_source": "The global arms trade is dominated by a small number of exporters selling to conflict-prone regions",
+      "kind": "public_record",
+      "locator": "https://www.sipri.org/publications/2023/sipri-fact-sheets/trends-international-arms-transfers-2022",
+      "reason": "SIPRI fact sheet on 2018-2022 arms transfers showing that major importers include status-quo deterrent powers (India, Australia, South Korea, Japan) rather than exclusively conflict-prone states"
+    },
+    {
+      "pair_source": "The Geneva Conventions form the core of international humanitarian law but enforcement remains weak",
+      "kind": "public_record",
+      "locator": "https://www.cambridge.org/core/books/order-within-anarchy/2E07F27EA97F5424E2B0AAE4FF3A38AA",
+      "reason": "James Morrow 'Order within Anarchy' (2014) demonstrating through quantitative analysis that reciprocity drives substantial Geneva Convention compliance and that IHL measurably reduces wartime suffering between ratifying states"
+    }
+  ]
+}

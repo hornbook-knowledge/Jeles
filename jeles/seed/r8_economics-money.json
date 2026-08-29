@@ -1,0 +1,473 @@
+{
+  "domain": "economics-money-systems",
+  "pairs": [
+    {
+      "source_text": "Commercial banks create most of the money supply through lending, not central banks printing physical currency",
+      "source_lang": "en",
+      "target_text": "In modern economies, approximately 97% of the money supply exists as bank deposits created when commercial banks issue loans. When a bank approves a mortgage, it does not lend out existing deposits; it creates new money by crediting the borrower's account and simultaneously recording a matching asset (the loan). The Bank of England confirmed this mechanism in its 2014 quarterly bulletin 'Money Creation in the Modern Economy,' stating that 'whenever a bank makes a loan, it simultaneously creates a matching deposit in the borrower's bank account, thereby creating new money.' The Federal Reserve system operates similarly: the monetary base (physical currency plus reserves) was about $5.8 trillion in 2023, while M2 (broad money including deposits) was approximately $20.8 trillion, illustrating that the vast majority of 'money' is created by commercial bank lending activity, not by the central bank.",
+      "target_lang": "en",
+      "reason": "Understanding that banks create money through lending, not intermediation of existing savings, is foundational to understanding monetary policy, credit cycles, and financial crises"
+    },
+    {
+      "source_text": "Fractional reserve banking allows banks to lend far more than their reserves, amplified by the money multiplier",
+      "source_lang": "en",
+      "target_text": "Under fractional reserve banking, banks are required to hold only a fraction of their deposits as reserves with the central bank. Historically, the US Federal Reserve required a 10% reserve ratio for transaction accounts, meaning a bank with $100 in deposits needed to hold only $10 in reserve and could lend $90. Through successive rounds of lending and redepositing, an initial deposit could theoretically expand the money supply by a factor of 10 (the money multiplier = 1/reserve ratio). However, in March 2020, the Federal Reserve reduced reserve requirements to zero percent, effectively ending the traditional fractional reserve constraint in the US. In practice, bank lending is now more constrained by capital adequacy requirements under Basel III (minimum Common Equity Tier 1 ratio of 4.5%, total capital ratio of 8%) than by reserve ratios. The European Central Bank requires a 1% minimum reserve ratio. This system creates inherent fragility: if depositors lose confidence and demand withdrawals simultaneously, a bank run occurs because the bank has lent out most deposits.",
+      "target_lang": "en",
+      "reason": "Fractional reserve banking is the core mechanism of modern banking, enabling credit expansion but also creating systemic vulnerability to bank runs and credit crises"
+    },
+    {
+      "source_text": "Modern Monetary Theory (MMT) argues that sovereign currency issuers cannot run out of money, and that the real constraint on spending is inflation, not deficits",
+      "source_lang": "en",
+      "target_text": "Modern Monetary Theory, championed by economists Stephanie Kelton, L. Randall Wray, and Warren Mosler, holds that a government that issues its own fiat currency (like the US, UK, Japan, but not eurozone members individually) can always create more of that currency to pay debts, making sovereign default a political choice rather than a financial necessity. MMT argues that taxes do not fund spending but instead serve to create demand for the currency, manage inflation, and redistribute income. The real constraint on government spending, per MMT, is the economy's productive capacity: spending beyond that capacity causes inflation, not deficits per se. Japan is often cited as partial evidence -- its government debt exceeded 260% of GDP by 2023, yet it experienced decades of deflation rather than hyperinflation. Critics including Paul Krugman and Lawrence Summers argue that MMT underestimates inflation risks and that the theory has been tested disastrously in countries like Zimbabwe (2007-2008 hyperinflation reaching 79.6 billion percent per month) and Venezuela (inflation of 1,698,488% in 2018), though MMT proponents counter that those countries lacked productive capacity and institutional stability, making them poor comparisons.",
+      "target_lang": "en",
+      "reason": "MMT has become a major policy debate, influencing discussions about government spending capacity, fiscal deficits, and the true nature of sovereign currency constraints"
+    },
+    {
+      "source_text": "Stock exchanges match buyers and sellers of securities, with prices set by continuous auction mechanisms",
+      "source_lang": "en",
+      "target_text": "Modern stock exchanges like the New York Stock Exchange (NYSE, founded 1792) and NASDAQ (founded 1971) operate electronic order books that match buy and sell orders. The NYSE listed approximately 2,400 companies with a combined market capitalization exceeding $25 trillion as of 2023. Trading occurs through limit orders (specifying a maximum buy or minimum sell price) and market orders (executing immediately at the best available price). The bid-ask spread -- the difference between the highest price a buyer will pay and the lowest a seller will accept -- represents a transaction cost and measure of liquidity. High-frequency trading (HFT) firms like Citadel Securities and Virtu Financial now account for roughly 50-60% of US equity trading volume, using algorithms that execute trades in microseconds. The Securities and Exchange Commission (SEC), established in 1934, regulates US securities markets. The 'Flash Crash' of May 6, 2010, when the Dow Jones Industrial Average plunged nearly 1,000 points (about 9%) in minutes before recovering, exposed vulnerabilities in algorithmic trading systems and led to circuit breaker reforms.",
+      "target_lang": "en",
+      "reason": "Understanding market microstructure reveals how prices form, the role of liquidity, and why algorithmic trading creates both efficiency and systemic risk"
+    },
+    {
+      "source_text": "Derivatives are financial contracts whose value is derived from underlying assets, and the global derivatives market notional value exceeds world GDP many times over",
+      "source_lang": "en",
+      "target_text": "Derivatives include futures, options, swaps, and other contracts whose value depends on the price of an underlying asset such as stocks, bonds, commodities, interest rates, or currencies. The Bank for International Settlements (BIS) reported the global over-the-counter (OTC) derivatives market had a notional outstanding value of approximately $632 trillion at end of 2022, though the gross market value (actual exposure) was roughly $18.3 trillion. Exchange-traded derivatives added another $80+ trillion in notional value. Credit default swaps (CDS), which act as insurance against debt default, were central to the 2008 financial crisis: AIG had sold approximately $440 billion in CDS protection, primarily on mortgage-backed securities, and when the housing market collapsed, AIG could not cover its obligations, requiring a $182 billion US government bailout. The Dodd-Frank Act of 2010 mandated central clearing for standardized OTC derivatives to reduce counterparty risk. Warren Buffett famously called derivatives 'financial weapons of mass destruction' in his 2002 Berkshire Hathaway shareholder letter.",
+      "target_lang": "en",
+      "reason": "The derivatives market's vast scale and complexity create both valuable risk management tools and systemic risks that contributed to the worst financial crisis since the Great Depression"
+    },
+    {
+      "source_text": "Dark pools are private trading venues that execute large stock orders without public price transparency",
+      "source_lang": "en",
+      "target_text": "Dark pools are alternative trading systems (ATS) that allow institutional investors to trade large blocks of securities without displaying orders publicly before execution. They emerged in the 1980s and grew significantly after the SEC's Regulation NMS in 2005. By 2023, dark pool trading accounted for approximately 40-45% of US equity trading volume, up from about 16% in 2008. Major dark pools include Credit Suisse's Crossfinder (shut down 2016 after a $84.3 million SEC fine for misleading subscribers), Goldman Sachs' Sigma X, and IEX (which was featured in Michael Lewis's 2014 book 'Flash Boys'). Proponents argue dark pools prevent large orders from moving market prices adversely (market impact), benefiting pension funds and mutual funds executing large trades on behalf of retail investors. Critics argue they fragment markets, reduce price discovery on public exchanges, and create information asymmetries. The SEC proposed Regulation ATS-N in 2018 to increase dark pool transparency requirements.",
+      "target_lang": "en",
+      "reason": "Dark pools illustrate the tension between institutional trading efficiency and market transparency, and the challenge regulators face in balancing competing interests in modern financial markets"
+    },
+    {
+      "source_text": "The SWIFT network processes the majority of international interbank financial messaging and has been used as a geopolitical sanctions tool",
+      "source_lang": "en",
+      "target_text": "The Society for Worldwide Interbank Financial Telecommunication (SWIFT), founded in 1973 and headquartered in La Hulpe, Belgium, connects more than 11,000 financial institutions across 200+ countries and territories. SWIFT does not transfer funds but transmits standardized financial messages (approximately 44.8 million messages per day in 2022) instructing banks to credit or debit accounts. In 2012, SWIFT disconnected Iranian banks from its network under EU sanctions pressure, severely limiting Iran's ability to receive payment for oil exports. In February-March 2022, following Russia's invasion of Ukraine, the EU, US, UK, and allies agreed to disconnect select Russian banks from SWIFT, though major energy-transaction banks were initially exempt. This prompted Russia to accelerate development of its SPFS (System for Transfer of Financial Messages) and China to promote its CIPS (Cross-Border Interbank Payment System, launched 2015). SWIFT's use as a sanctions weapon has accelerated interest in alternative payment systems and raised concerns about the 'weaponization' of financial infrastructure.",
+      "target_lang": "en",
+      "reason": "SWIFT's centrality in global finance and its use as a geopolitical tool illustrates how financial infrastructure is inseparable from power politics, driving efforts to create alternative systems"
+    },
+    {
+      "source_text": "Global supply chains concentrate production in a few countries, creating efficiency but also fragility exposed by disruptions",
+      "source_lang": "en",
+      "target_text": "Modern global supply chains evolved through decades of trade liberalization under GATT (1947) and the WTO (established 1995 with 164 member states). China's accession to the WTO in December 2001 accelerated its rise as the 'world's factory': China's share of global manufacturing output grew from about 8% in 2001 to roughly 30% by 2022. The COVID-19 pandemic exposed fragilities: semiconductor shortages beginning in late 2020 cost the global automotive industry an estimated $210 billion in lost revenue in 2021 alone (per AlixPartners). The March 2021 blockage of the Suez Canal by the Ever Given container ship held up an estimated $9.6 billion in trade per day for six days. In response, companies and governments pursued 'nearshoring' and 'friendshoring' strategies. The US CHIPS and Science Act (August 2022) allocated $52.7 billion to boost domestic semiconductor manufacturing. Global merchandise trade was valued at approximately $25.3 trillion in 2022, per WTO data, with services trade adding another $6.8 trillion.",
+      "target_lang": "en",
+      "reason": "Supply chain concentration creates cost efficiency but generates systemic vulnerabilities; recent disruptions have forced a rethinking of just-in-time manufacturing and geographic diversification"
+    },
+    {
+      "source_text": "Tariffs are taxes on imported goods that protect domestic industries but raise costs for consumers and can trigger trade wars",
+      "source_lang": "en",
+      "target_text": "Tariffs are customs duties levied on imports, intended to make foreign goods more expensive and protect domestic producers. The average applied tariff rate globally was about 5.7% in 2021 (WTO data), down from over 8% in the mid-1990s, reflecting decades of trade liberalization. However, the 2018-2019 US-China trade war reversed this trend: the US imposed tariffs on approximately $370 billion of Chinese goods (averaging 19.3%), and China retaliated on about $110 billion of US goods. A Federal Reserve Bank of New York study estimated that US tariffs on China cost American consumers and importers approximately $51 billion per year in higher prices. The Peterson Institute for International Economics found that tariff-protected US industries (like steel) saw job gains, but downstream industries that use steel as an input lost more jobs than were gained. The Smoot-Hawley Tariff Act of 1930, which raised US tariffs on over 20,000 imported goods, is widely regarded by economists as having deepened the Great Depression by triggering retaliatory tariffs and collapsing international trade by roughly 65% between 1929 and 1934.",
+      "target_lang": "en",
+      "reason": "Tariffs remain a central and contentious policy tool, with historical evidence and modern trade wars demonstrating both their protective appeal and their broader economic costs"
+    },
+    {
+      "source_text": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "source_lang": "en",
+      "target_text": "Global wealth inequality is extreme and growing. According to Oxfam's 2023 report 'Survival of the Richest,' the richest 1% captured nearly twice as much new wealth as the rest of the world combined between 2020 and 2022. Credit Suisse's Global Wealth Report 2022 found that the top 1% held 45.6% of global wealth, while the bottom 50% held just 1.2%. In the United States, the top 0.1% held approximately 20% of total wealth in 2021, up from about 7% in 1978 (per Gabriel Zucman and Emmanuel Saez's research). The Gini coefficient, which measures inequality from 0 (perfect equality) to 1 (one person holds everything), ranges widely: South Africa has one of the highest at 0.63, while Scandinavian countries average around 0.27-0.28, and the US sits at approximately 0.39 (all based on income). Thomas Piketty's 2013 book 'Capital in the Twenty-First Century' argued that when the rate of return on capital (r) exceeds economic growth (g), inequality inevitably increases -- the 'r > g' thesis. The World Inequality Database (WID.world), co-directed by Piketty, Saez, and Zucman, provides open-access data on inequality trends across countries.",
+      "target_lang": "en",
+      "reason": "Rising inequality affects political stability, economic growth, social mobility, and democratic governance, making it one of the defining economic challenges of the 21st century"
+    },
+    {
+      "source_text": "Tax havens enable corporations and wealthy individuals to shelter trillions of dollars from taxation",
+      "source_lang": "en",
+      "target_text": "Tax havens -- jurisdictions with very low or zero tax rates, banking secrecy, and minimal reporting requirements -- facilitate large-scale tax avoidance and evasion. Gabriel Zucman estimated in his 2015 book 'The Hidden Wealth of Nations' that approximately $7.6 trillion in household financial wealth was held offshore, costing governments roughly $200 billion per year in lost tax revenue. The Panama Papers leak in 2016 (11.5 million documents from law firm Mossack Fonseca) revealed offshore holdings of 140 politicians and public officials from over 50 countries. The Paradise Papers leak in 2017 (13.4 million documents from Appleby) exposed offshore dealings of corporations like Apple, Nike, and individuals including Queen Elizabeth II's private estate. Common tax haven jurisdictions include the Cayman Islands (hosting approximately 100,000 registered companies for a population of 65,000), Bermuda, Luxembourg, Ireland, the British Virgin Islands, and the Netherlands. Ireland's effective corporate tax rate helped attract Apple, which routed much of its non-US profits through Irish subsidiaries; in 2016, the European Commission ruled Apple owed Ireland 13 billion euros in back taxes (a decision the European Court of Justice upheld in September 2024). The OECD's 2021 global minimum tax agreement, signed by 136 countries, set a 15% minimum corporate tax rate to limit profit shifting, though critics argue 15% is too low to meaningfully curb tax haven usage.",
+      "target_lang": "en",
+      "reason": "Tax havens reduce government revenues needed for public services, exacerbate inequality, and represent a fundamental challenge to the social contract between states and their wealthiest residents and corporations"
+    },
+    {
+      "source_text": "Bitcoin uses proof-of-work mining to create a decentralized, immutable transaction ledger without trusted intermediaries",
+      "source_lang": "en",
+      "target_text": "Bitcoin, launched in January 2009 by the pseudonymous Satoshi Nakamoto, is a peer-to-peer digital currency that operates on a decentralized blockchain. Transactions are validated by 'miners' who compete to solve cryptographic puzzles (SHA-256 hash functions) -- a process called proof-of-work. The first miner to solve the puzzle adds a new block of transactions to the chain and receives a block reward (initially 50 BTC, halving approximately every four years: 25 in 2012, 12.5 in 2016, 6.25 in 2020, 3.125 in April 2024). Bitcoin's maximum supply is hardcoded at 21 million coins, of which approximately 19.6 million had been mined by early 2024. The Cambridge Centre for Alternative Finance estimated Bitcoin's annualized electricity consumption at approximately 90-150 TWh (2023 range), comparable to the energy consumption of countries like Finland or the Philippines. Bitcoin's price has been extremely volatile: from under $1 in 2010 to nearly $69,000 in November 2021, dropping to about $16,000 in November 2022, then surpassing $73,000 in March 2024. The US SEC approved eleven spot Bitcoin ETFs in January 2024, marking a significant step toward mainstream financial integration.",
+      "target_lang": "en",
+      "reason": "Bitcoin represents the first successful implementation of decentralized digital money, challenging state monopolies on currency issuance while raising questions about energy use, volatility, and financial inclusion"
+    },
+    {
+      "source_text": "Stablecoins peg their value to fiat currencies but have faced crises revealing inadequate reserves and systemic risks",
+      "source_lang": "en",
+      "target_text": "Stablecoins are cryptocurrencies designed to maintain a stable value relative to a reference asset, typically the US dollar. Tether (USDT), the largest by market cap (over $90 billion by early 2024), claims each token is backed by equivalent reserves. However, Tether's reserve composition has been questioned: in 2021, the CFTC fined Tether $41 million for misrepresenting its reserves between 2016 and 2019, finding that Tether held sufficient reserves for only 27.6% of the days during one 26-month period. The New York Attorney General's office reached a $18.5 million settlement with Tether's parent company in 2021. USD Coin (USDC), issued by Circle, holds reserves primarily in US Treasury bills and has published monthly attestations. The most dramatic stablecoin failure was the collapse of TerraUSD (UST), an algorithmic stablecoin that maintained its peg through a mint/burn mechanism with its sister token Luna, rather than holding dollar reserves. In May 2022, UST lost its peg and collapsed to near zero within days, erasing approximately $40 billion in combined value and triggering contagion across crypto markets. Terra founder Do Kwon was arrested in Montenegro in March 2023 and convicted of fraud.",
+      "target_lang": "en",
+      "reason": "Stablecoins bridge crypto and traditional finance, but their reserve opacity and algorithmic fragility pose systemic risks to the broader financial system as their market cap grows"
+    },
+    {
+      "source_text": "DeFi (Decentralized Finance) recreates financial services on blockchains without traditional intermediaries but suffers from hacks and exploits",
+      "source_lang": "en",
+      "target_text": "Decentralized Finance (DeFi) uses smart contracts -- self-executing code on blockchains, primarily Ethereum -- to provide lending, borrowing, trading, and insurance without banks or brokerages. Total value locked (TVL) in DeFi protocols peaked at approximately $180 billion in November 2021, dropped below $40 billion by late 2022, and recovered to approximately $90 billion by early 2024. Major protocols include Uniswap (decentralized exchange using automated market makers), Aave and Compound (lending/borrowing platforms), and MakerDAO (which issues the DAI stablecoin). DeFi has been plagued by security exploits: Chainalysis estimated that $3.8 billion was stolen in crypto hacks in 2022, with DeFi protocols accounting for 82% of losses. Notable incidents include the Ronin Network hack ($625 million, March 2022, attributed to North Korea's Lazarus Group by the FBI), the Wormhole bridge hack ($320 million, February 2022), and the Mango Markets exploit ($117 million, October 2022). Smart contract vulnerabilities, oracle manipulation, and flash loan attacks are common attack vectors. Regulatory clarity remains lacking: the SEC has argued most DeFi tokens are securities, while the CFTC has claimed jurisdiction over DeFi derivatives.",
+      "target_lang": "en",
+      "reason": "DeFi demonstrates both the potential for disintermediation in finance and the dangers of unaudited code handling billions in value without consumer protections or regulatory oversight"
+    },
+    {
+      "source_text": "The IMF and World Bank have shaped developing economies through structural adjustment programs, with contested results",
+      "source_lang": "en",
+      "target_text": "The International Monetary Fund (IMF, established 1944, 190 member countries) and World Bank (established 1944) have been the primary institutions of international development finance. The IMF provides balance-of-payments support to countries in financial distress, typically conditional on 'structural adjustment programs' (SAPs) that mandate fiscal austerity, privatization of state enterprises, trade liberalization, and deregulation. Between the 1980s and 2000s, SAPs were imposed on dozens of developing countries. Critics, including Nobel laureate Joseph Stiglitz (former World Bank chief economist), have argued that SAPs increased poverty and inequality: Stiglitz's 2002 book 'Globalization and Its Discontents' detailed how IMF austerity during the 1997-1998 Asian Financial Crisis deepened recessions in Thailand, Indonesia, and South Korea. A 2017 IMF staff paper (Ostry, Loungani, and Furceri, 'Neoliberalism: Oversold?') acknowledged that some policies associated with the neoliberal agenda -- particularly capital account liberalization and fiscal consolidation -- had increased inequality and not consistently delivered higher growth. The World Bank's International Development Association (IDA) has provided over $450 billion in grants and low-interest loans to 78 of the world's poorest countries. China's Belt and Road Initiative (launched 2013, with over $1 trillion in commitments across 140+ countries) has emerged as an alternative to Western-led development financing, though it has faced criticism for creating 'debt traps.'",
+      "target_lang": "en",
+      "reason": "The IMF and World Bank's structural adjustment legacy remains deeply contested, and the rise of alternative development finance models reflects shifting global economic power"
+    },
+    {
+      "source_text": "Microfinance expanded financial access to the poor but has faced criticism for high interest rates and over-indebtedness",
+      "source_lang": "en",
+      "target_text": "Microfinance -- providing small loans, savings, and insurance products to low-income individuals -- gained global prominence through Muhammad Yunus's Grameen Bank, founded in Bangladesh in 1983. Yunus received the Nobel Peace Prize in 2006 for demonstrating that even very poor borrowers could be creditworthy. By 2021, the microfinance industry served approximately 140 million borrowers globally, with a loan portfolio of roughly $181 billion (per the Microfinance Barometer). However, the sector has faced serious criticism. In the Indian state of Andhra Pradesh in 2010, a wave of borrower suicides linked to aggressive collection practices by microfinance institutions triggered a regulatory crisis and near-collapse of the sector. Interest rates on microloans often range from 20-100%+ per year, far exceeding conventional bank rates. A 2015 systematic review by the UK Department for International Development (DFID) found 'no clear evidence' that microfinance consistently reduces poverty, though it may improve some aspects of financial inclusion and consumption smoothing. Randomized controlled trials by Abhijit Banerjee and Esther Duflo (2015 Nobel laureates) across six countries found modest positive effects on business investment but no transformative impacts on income, health, or education.",
+      "target_lang": "en",
+      "reason": "Microfinance illustrates how well-intentioned financial innovations can produce mixed results, highlighting the gap between financial access and genuine poverty reduction"
+    },
+    {
+      "source_text": "The 2008 global financial crisis was triggered by the collapse of the US housing bubble and failures in mortgage-backed securities regulation",
+      "source_lang": "en",
+      "target_text": "The 2008 financial crisis, the worst since the Great Depression, originated in the US subprime mortgage market. Banks and non-bank lenders issued mortgages to borrowers with poor credit (subprime), then bundled them into mortgage-backed securities (MBS) and collateralized debt obligations (CDOs) sold to investors worldwide. Credit rating agencies (Moody's, S&P, Fitch) rated many of these securities AAA despite underlying risk. When US house prices fell starting in 2006, defaults surged: the subprime mortgage delinquency rate reached 25% by late 2008. Lehman Brothers, with $639 billion in assets, filed for bankruptcy on September 15, 2008 -- the largest in US history. The US government's Troubled Asset Relief Program (TARP) authorized $700 billion in bank bailouts (of which approximately $440 billion was disbursed). The Federal Reserve cut interest rates to near zero and launched quantitative easing, eventually purchasing over $4 trillion in securities. Globally, the crisis erased approximately $2 trillion from the world economy, with the IMF estimating total writedowns and losses on US-originated assets at $2.7 trillion. The Financial Crisis Inquiry Commission (2011) concluded the crisis was avoidable and caused by 'widespread failures in financial regulation and supervision.'",
+      "target_lang": "en",
+      "reason": "The 2008 crisis demonstrated the dangers of financial deregulation, securitization without adequate oversight, and misaligned incentives, leading to regulatory reforms that continue to shape financial markets"
+    },
+    {
+      "source_text": "Central bank quantitative easing expanded balance sheets by trillions, fueling debate over whether it primarily aids financial asset holders",
+      "source_lang": "en",
+      "target_text": "Quantitative easing (QE) involves central banks purchasing government bonds and other securities to inject money into the financial system, lowering long-term interest rates and encouraging lending and investment. The Federal Reserve conducted QE in three rounds from 2008-2014, expanding its balance sheet from about $900 billion to $4.5 trillion. During COVID-19, the Fed resumed QE, reaching a peak of $8.96 trillion by April 2022. The European Central Bank's asset purchase programs accumulated over 5 trillion euros in holdings. The Bank of Japan has purchased so extensively that it held over 50% of all outstanding Japanese government bonds by 2023. QE's distributional effects are contested: a Bank of England 2012 analysis estimated its QE program boosted UK asset prices, primarily benefiting the wealthiest 5% of households who held the most financial assets. However, the Fed argued QE lowered unemployment and prevented deflation, benefiting workers. The unwinding of QE ('quantitative tightening') beginning in 2022, combined with rapid interest rate hikes, contributed to stress in the banking sector, including the failures of Silicon Valley Bank, Signature Bank, and First Republic Bank in March-May 2023.",
+      "target_lang": "en",
+      "reason": "QE has become the central bank policy tool of the 21st century, but its unequal distributional impact raises fundamental questions about who benefits from monetary policy interventions"
+    },
+    {
+      "source_text": "The FTX cryptocurrency exchange collapse in November 2022 revealed massive fraud and highlighted failures in crypto market oversight",
+      "source_lang": "en",
+      "target_text": "FTX, founded in 2019 by Sam Bankman-Fried, grew into the world's third-largest cryptocurrency exchange with a valuation of $32 billion in January 2022. On November 11, 2022, FTX filed for bankruptcy after revelations that it had commingled customer funds with its affiliated trading firm Alameda Research. Approximately $8 billion in customer funds were missing. The collapse was triggered by a CoinDesk report on November 2 revealing that Alameda's balance sheet was heavily composed of FTT, FTX's own token, prompting Binance CEO Changpeng Zhao to announce the sale of Binance's FTT holdings. The ensuing bank run drained FTX of liquidity within days. Sam Bankman-Fried was convicted on seven counts of fraud and conspiracy in November 2023 and sentenced to 25 years in prison in March 2024. FTX's auditor, Prager Metis, was a top-25 US accounting firm that the SEC later charged with 'systemic quality control failures.' The collapse drew comparisons to the Enron scandal and intensified calls for comprehensive cryptocurrency regulation. FTX had spent over $70 million on political donations, sports sponsorships (including a $135 million naming rights deal for the Miami Heat arena), and celebrity endorsements.",
+      "target_lang": "en",
+      "reason": "FTX's collapse exposed the risks of unregulated financial intermediaries, the inadequacy of voluntary industry self-regulation, and the gap between crypto marketing narratives and operational reality"
+    },
+    {
+      "source_text": "The WTO's dispute settlement mechanism has resolved hundreds of trade disputes but faces an existential crisis due to US blocking of appellate body appointments",
+      "source_lang": "en",
+      "target_text": "The World Trade Organization's dispute settlement mechanism, established in 1995, has been called 'the jewel in the crown' of the multilateral trading system. Between 1995 and 2023, WTO members initiated over 615 dispute cases covering issues from US steel tariffs to EU agricultural subsidies to Chinese intellectual property practices. The system operates through consultation, panel adjudication, and appeal to the Appellate Body. However, since 2017, the United States has blocked the appointment of new Appellate Body members, citing concerns about judicial overreach and the body exceeding its mandate. With a quorum requirement of three members, the Appellate Body became non-functional in December 2019 when the terms of its last two remaining members expired. This has left over 20 appeals in limbo in what critics call an 'appeal into the void.' In response, the EU and other members established the Multi-Party Interim Appeal Arbitration Arrangement (MPIA) in 2020 as a workaround, now joined by over 50 WTO members. The impasse reflects deeper tensions about whether trade rules can constrain major economic powers and whether the WTO can adapt to address modern challenges like digital trade, subsidies for state-owned enterprises, and climate-related trade measures.",
+      "target_lang": "en",
+      "reason": "The WTO's dispute settlement crisis illustrates the fragility of multilateral institutions when major powers withdraw cooperation, threatening the rules-based international trading order"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Commercial banks create most of the money supply through lending, not central banks printing physical currency",
+      "to_source": "Fractional reserve banking allows banks to lend far more than their reserves, amplified by the money multiplier",
+      "kind": "refines",
+      "reason": "Fractional reserve banking is the regulatory framework within which commercial bank money creation occurs; the reserve system sets the outer bounds of the money multiplier"
+    },
+    {
+      "from_source": "Modern Monetary Theory (MMT) argues that sovereign currency issuers cannot run out of money, and that the real constraint on spending is inflation, not deficits",
+      "to_source": "Commercial banks create most of the money supply through lending, not central banks printing physical currency",
+      "kind": "refines",
+      "reason": "MMT builds on the understanding that money is created endogenously by banks and government spending, challenging the conventional view that governments must first tax or borrow to spend"
+    },
+    {
+      "from_source": "Central bank quantitative easing expanded balance sheets by trillions, fueling debate over whether it primarily aids financial asset holders",
+      "to_source": "Modern Monetary Theory (MMT) argues that sovereign currency issuers cannot run out of money, and that the real constraint on spending is inflation, not deficits",
+      "kind": "refines",
+      "reason": "QE demonstrates the sovereign capacity to create money at scale that MMT describes, while the distributional effects support MMT critics who argue such money creation benefits asset owners disproportionately"
+    },
+    {
+      "from_source": "Central bank quantitative easing expanded balance sheets by trillions, fueling debate over whether it primarily aids financial asset holders",
+      "to_source": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "kind": "refines",
+      "reason": "QE's asset-price-boosting effects disproportionately benefit the wealthy who hold financial assets, contributing to the inequality trend Piketty and others have documented"
+    },
+    {
+      "from_source": "Derivatives are financial contracts whose value is derived from underlying assets, and the global derivatives market notional value exceeds world GDP many times over",
+      "to_source": "The 2008 global financial crisis was triggered by the collapse of the US housing bubble and failures in mortgage-backed securities regulation",
+      "kind": "refines",
+      "reason": "Credit default swaps (a type of derivative) amplified the 2008 crisis by concentrating counterparty risk in firms like AIG, turning a housing downturn into a systemic financial collapse"
+    },
+    {
+      "from_source": "Tax havens enable corporations and wealthy individuals to shelter trillions of dollars from taxation",
+      "to_source": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "kind": "refines",
+      "reason": "Tax havens enable the wealthy to avoid taxation that would otherwise redistribute income, directly contributing to measured inequality and reducing government capacity to address it"
+    },
+    {
+      "from_source": "Bitcoin uses proof-of-work mining to create a decentralized, immutable transaction ledger without trusted intermediaries",
+      "to_source": "The SWIFT network processes the majority of international interbank financial messaging and has been used as a geopolitical sanctions tool",
+      "kind": "contradicts",
+      "reason": "Bitcoin's decentralized architecture is a direct response to the centralized control SWIFT represents; the use of SWIFT as a sanctions tool validates the crypto argument for censorship-resistant payment systems"
+    },
+    {
+      "from_source": "Stablecoins peg their value to fiat currencies but have faced crises revealing inadequate reserves and systemic risks",
+      "to_source": "Bitcoin uses proof-of-work mining to create a decentralized, immutable transaction ledger without trusted intermediaries",
+      "kind": "refines",
+      "reason": "Stablecoins emerged to address Bitcoin's volatility problem but reintroduce centralized trust (in the reserve holder), partially undermining the decentralization promise that motivated Bitcoin's creation"
+    },
+    {
+      "from_source": "The FTX cryptocurrency exchange collapse in November 2022 revealed massive fraud and highlighted failures in crypto market oversight",
+      "to_source": "DeFi (Decentralized Finance) recreates financial services on blockchains without traditional intermediaries but suffers from hacks and exploits",
+      "kind": "refines",
+      "reason": "FTX was a centralized exchange (not DeFi) that collapsed due to traditional fraud; the comparison highlights that both centralized and decentralized crypto platforms face distinct but severe risks -- fraud for centralized, code exploits for decentralized"
+    },
+    {
+      "from_source": "The FTX cryptocurrency exchange collapse in November 2022 revealed massive fraud and highlighted failures in crypto market oversight",
+      "to_source": "The 2008 global financial crisis was triggered by the collapse of the US housing bubble and failures in mortgage-backed securities regulation",
+      "kind": "refines",
+      "reason": "Both FTX and the 2008 crisis involved commingling of funds, lack of regulatory oversight, and auditor failure, demonstrating that the same patterns of financial fraud recur across traditional and crypto markets"
+    },
+    {
+      "from_source": "The IMF and World Bank have shaped developing economies through structural adjustment programs, with contested results",
+      "to_source": "Microfinance expanded financial access to the poor but has faced criticism for high interest rates and over-indebtedness",
+      "kind": "refines",
+      "reason": "Both represent Western-led development interventions with contested impacts: structural adjustment at the macro level and microfinance at the micro level, both criticized for imposing market-oriented solutions that may not reduce poverty"
+    },
+    {
+      "from_source": "Tariffs are taxes on imported goods that protect domestic industries but raise costs for consumers and can trigger trade wars",
+      "to_source": "The WTO's dispute settlement mechanism has resolved hundreds of trade disputes but faces an existential crisis due to US blocking of appellate body appointments",
+      "kind": "refines",
+      "reason": "The WTO dispute mechanism was designed to adjudicate tariff disputes and prevent trade wars; its dysfunction makes the kind of unilateral tariff escalation seen in the US-China trade war more likely"
+    },
+    {
+      "from_source": "Global supply chains concentrate production in a few countries, creating efficiency but also fragility exposed by disruptions",
+      "to_source": "Tariffs are taxes on imported goods that protect domestic industries but raise costs for consumers and can trigger trade wars",
+      "kind": "contradicts",
+      "reason": "Tariffs aim to reshore production and reduce supply chain concentration, but they raise costs and reduce the efficiency that global supply chains were optimized to provide -- a direct tension between resilience and efficiency"
+    },
+    {
+      "from_source": "Dark pools are private trading venues that execute large stock orders without public price transparency",
+      "to_source": "Stock exchanges match buyers and sellers of securities, with prices set by continuous auction mechanisms",
+      "kind": "refines",
+      "reason": "Dark pools emerged as an alternative to public exchanges, fragmenting the price discovery process and raising questions about whether transparent public markets can coexist with opaque private trading venues"
+    },
+    {
+      "from_source": "Fractional reserve banking allows banks to lend far more than their reserves, amplified by the money multiplier",
+      "to_source": "The 2008 global financial crisis was triggered by the collapse of the US housing bubble and failures in mortgage-backed securities regulation",
+      "kind": "refines",
+      "reason": "Fractional reserve banking's credit expansion mechanism enabled the explosive growth in mortgage lending that created the housing bubble, and the leverage amplified losses when the bubble burst"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Commercial banks create most of the money supply through lending, not central banks printing physical currency",
+      "kind": "public_record",
+      "locator": "https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy",
+      "reason": "Bank of England official quarterly bulletin explaining that commercial banks create money through lending, not by intermediating existing deposits"
+    },
+    {
+      "pair_source": "Commercial banks create most of the money supply through lending, not central banks printing physical currency",
+      "kind": "public_record",
+      "locator": "https://www.federalreserve.gov/releases/h6/current/default.htm",
+      "reason": "Federal Reserve statistical release showing M2 money stock data, demonstrating that broad money far exceeds the monetary base"
+    },
+    {
+      "pair_source": "Fractional reserve banking allows banks to lend far more than their reserves, amplified by the money multiplier",
+      "kind": "public_record",
+      "locator": "https://www.federalreserve.gov/monetarypolicy/reservereq.htm",
+      "reason": "Federal Reserve page documenting reserve requirements, including the March 2020 reduction to zero percent"
+    },
+    {
+      "pair_source": "Fractional reserve banking allows banks to lend far more than their reserves, amplified by the money multiplier",
+      "kind": "public_record",
+      "locator": "https://www.bis.org/bcbs/basel3.htm",
+      "reason": "Bank for International Settlements overview of Basel III capital adequacy requirements that now serve as the primary constraint on bank lending"
+    },
+    {
+      "pair_source": "Modern Monetary Theory (MMT) argues that sovereign currency issuers cannot run out of money, and that the real constraint on spending is inflation, not deficits",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Modern_Monetary_Theory",
+      "reason": "Wikipedia overview of MMT including key proponents, core claims, and major criticisms with references to primary sources"
+    },
+    {
+      "pair_source": "Modern Monetary Theory (MMT) argues that sovereign currency issuers cannot run out of money, and that the real constraint on spending is inflation, not deficits",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/external/datamapper/GG_DEBT_GDP@GDD/JPN",
+      "reason": "IMF data showing Japan's government debt-to-GDP ratio exceeding 260%, relevant to MMT's claim that high sovereign debt in a currency-issuing nation need not cause inflation"
+    },
+    {
+      "pair_source": "Stock exchanges match buyers and sellers of securities, with prices set by continuous auction mechanisms",
+      "kind": "public_record",
+      "locator": "https://www.sec.gov/about/reports-publications/special-studies/us-equity-market-structure",
+      "reason": "SEC research and publications on US equity market structure, including HFT participation rates and market microstructure"
+    },
+    {
+      "pair_source": "Stock exchanges match buyers and sellers of securities, with prices set by continuous auction mechanisms",
+      "kind": "public_record",
+      "locator": "https://www.sec.gov/news/studies/2010/marketevents-report.pdf",
+      "reason": "SEC/CFTC joint report on the May 6, 2010 Flash Crash, analyzing causes and recommending circuit breaker reforms"
+    },
+    {
+      "pair_source": "Derivatives are financial contracts whose value is derived from underlying assets, and the global derivatives market notional value exceeds world GDP many times over",
+      "kind": "public_record",
+      "locator": "https://www.bis.org/statistics/derstats.htm",
+      "reason": "BIS semiannual OTC derivatives statistics showing global notional outstanding values and gross market values"
+    },
+    {
+      "pair_source": "Derivatives are financial contracts whose value is derived from underlying assets, and the global derivatives market notional value exceeds world GDP many times over",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/American_International_Group#Government_bailout",
+      "reason": "Details of AIG's $182 billion government bailout resulting from credit default swap exposure during the 2008 financial crisis"
+    },
+    {
+      "pair_source": "Dark pools are private trading venues that execute large stock orders without public price transparency",
+      "kind": "public_record",
+      "locator": "https://www.sec.gov/spotlight/dark-pools",
+      "reason": "SEC information hub on dark pools and alternative trading systems, including regulatory framework and enforcement actions"
+    },
+    {
+      "pair_source": "The SWIFT network processes the majority of international interbank financial messaging and has been used as a geopolitical sanctions tool",
+      "kind": "public_record",
+      "locator": "https://www.swift.com/about-us/discover-swift/fin-traffic-figures",
+      "reason": "SWIFT's published traffic statistics showing daily message volumes and network scope"
+    },
+    {
+      "pair_source": "The SWIFT network processes the majority of international interbank financial messaging and has been used as a geopolitical sanctions tool",
+      "kind": "public_record",
+      "locator": "https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/russia-s-aggression-against-ukraine-eu-bans-certain-russian-banks-from-swift/",
+      "reason": "EU Council official press release announcing the disconnection of select Russian banks from SWIFT in response to the invasion of Ukraine"
+    },
+    {
+      "pair_source": "Global supply chains concentrate production in a few countries, creating efficiency but also fragility exposed by disruptions",
+      "kind": "public_record",
+      "locator": "https://www.wto.org/english/res_e/statis_e/merch_trade_stat_e.htm",
+      "reason": "WTO merchandise trade statistics providing data on global trade volumes and country-level trade shares"
+    },
+    {
+      "pair_source": "Global supply chains concentrate production in a few countries, creating efficiency but also fragility exposed by disruptions",
+      "kind": "public_record",
+      "locator": "https://www.congress.gov/bill/117th-congress/house-bill/4346",
+      "reason": "Text of the CHIPS and Science Act (H.R. 4346), allocating $52.7 billion for domestic semiconductor manufacturing"
+    },
+    {
+      "pair_source": "Tariffs are taxes on imported goods that protect domestic industries but raise costs for consumers and can trigger trade wars",
+      "kind": "public_record",
+      "locator": "https://libertystreeteconomics.newyorkfed.org/2019/05/new-china-tariffs-increase-costs-to-us-households/",
+      "reason": "Federal Reserve Bank of New York analysis estimating the cost of US tariffs on China to American consumers and importers"
+    },
+    {
+      "pair_source": "Tariffs are taxes on imported goods that protect domestic industries but raise costs for consumers and can trigger trade wars",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Smoot%E2%80%93Hawley_Tariff_Act",
+      "reason": "Historical background on the Smoot-Hawley Tariff Act of 1930 and its role in deepening the Great Depression"
+    },
+    {
+      "pair_source": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "kind": "public_record",
+      "locator": "https://wid.world/",
+      "reason": "World Inequality Database providing open-access data on income and wealth inequality across countries and time periods"
+    },
+    {
+      "pair_source": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "kind": "public_record",
+      "locator": "https://www.oxfam.org/en/research/survival-richest",
+      "reason": "Oxfam's 2023 report documenting that the richest 1% captured nearly twice as much new wealth as the rest of the world combined in 2020-2022"
+    },
+    {
+      "pair_source": "Tax havens enable corporations and wealthy individuals to shelter trillions of dollars from taxation",
+      "kind": "public_record",
+      "locator": "https://www.icij.org/investigations/panama-papers/",
+      "reason": "International Consortium of Investigative Journalists (ICIJ) Panama Papers investigation hub, documenting offshore holdings from 11.5 million leaked documents"
+    },
+    {
+      "pair_source": "Tax havens enable corporations and wealthy individuals to shelter trillions of dollars from taxation",
+      "kind": "public_record",
+      "locator": "https://www.oecd.org/tax/beps/statement-on-a-two-pillar-solution-to-address-the-tax-challenges-arising-from-the-digitalisation-of-the-economy-october-2021.htm",
+      "reason": "OECD statement on the global minimum tax agreement signed by 136 countries establishing a 15% minimum corporate tax rate"
+    },
+    {
+      "pair_source": "Bitcoin uses proof-of-work mining to create a decentralized, immutable transaction ledger without trusted intermediaries",
+      "kind": "public_record",
+      "locator": "https://bitcoin.org/bitcoin.pdf",
+      "reason": "Satoshi Nakamoto's original 2008 Bitcoin whitepaper describing the proof-of-work consensus mechanism and peer-to-peer electronic cash system"
+    },
+    {
+      "pair_source": "Bitcoin uses proof-of-work mining to create a decentralized, immutable transaction ledger without trusted intermediaries",
+      "kind": "public_record",
+      "locator": "https://ccaf.io/cbnsi/cbeci",
+      "reason": "Cambridge Centre for Alternative Finance Bitcoin Electricity Consumption Index providing real-time energy usage estimates"
+    },
+    {
+      "pair_source": "Stablecoins peg their value to fiat currencies but have faced crises revealing inadequate reserves and systemic risks",
+      "kind": "public_record",
+      "locator": "https://www.cftc.gov/PressRoom/PressReleases/8450-21",
+      "reason": "CFTC press release announcing the $41 million penalty against Tether for misrepresenting that USDT was fully backed by US dollars"
+    },
+    {
+      "pair_source": "Stablecoins peg their value to fiat currencies but have faced crises revealing inadequate reserves and systemic risks",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Terra_(blockchain)#Collapse",
+      "reason": "Documentation of the TerraUSD/Luna collapse in May 2022, including the approximately $40 billion loss in combined value"
+    },
+    {
+      "pair_source": "DeFi (Decentralized Finance) recreates financial services on blockchains without traditional intermediaries but suffers from hacks and exploits",
+      "kind": "public_record",
+      "locator": "https://www.chainalysis.com/blog/2022-biggest-year-ever-for-crypto-hacking/",
+      "reason": "Chainalysis report documenting $3.8 billion stolen in crypto hacks in 2022, with DeFi protocols accounting for 82% of thefts"
+    },
+    {
+      "pair_source": "DeFi (Decentralized Finance) recreates financial services on blockchains without traditional intermediaries but suffers from hacks and exploits",
+      "kind": "public_record",
+      "locator": "https://www.fbi.gov/news/press-releases/fbi-statement-on-attribution-of-malicious-cyber-activity-posed-by-the-dprk",
+      "reason": "FBI attribution of the $625 million Ronin Network hack to North Korea's Lazarus Group"
+    },
+    {
+      "pair_source": "The IMF and World Bank have shaped developing economies through structural adjustment programs, with contested results",
+      "kind": "public_record",
+      "locator": "https://www.imf.org/external/pubs/ft/fandd/2016/06/ostry.htm",
+      "reason": "IMF Finance and Development article 'Neoliberalism: Oversold?' by IMF staff acknowledging that some structural adjustment policies increased inequality"
+    },
+    {
+      "pair_source": "The IMF and World Bank have shaped developing economies through structural adjustment programs, with contested results",
+      "kind": "public_record",
+      "locator": "https://ida.worldbank.org/en/about",
+      "reason": "World Bank IDA overview showing cumulative lending and grant commitments to the world's poorest countries"
+    },
+    {
+      "pair_source": "Microfinance expanded financial access to the poor but has faced criticism for high interest rates and over-indebtedness",
+      "kind": "public_record",
+      "locator": "https://www.nobelprize.org/prizes/peace/2006/yunus/facts/",
+      "reason": "Nobel Prize committee page documenting Muhammad Yunus's 2006 Peace Prize for pioneering microcredit through Grameen Bank"
+    },
+    {
+      "pair_source": "Microfinance expanded financial access to the poor but has faced criticism for high interest rates and over-indebtedness",
+      "kind": "public_record",
+      "locator": "https://www.povertyactionlab.org/policy-insight/impact-microcredit",
+      "reason": "J-PAL (MIT Poverty Action Lab) synthesis of randomized controlled trials on microcredit impact across six countries, finding modest business effects but no transformative poverty reduction"
+    },
+    {
+      "pair_source": "The 2008 global financial crisis was triggered by the collapse of the US housing bubble and failures in mortgage-backed securities regulation",
+      "kind": "public_record",
+      "locator": "https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf",
+      "reason": "The Financial Crisis Inquiry Commission's 2011 final report concluding the crisis was avoidable and caused by failures in regulation, supervision, and corporate governance"
+    },
+    {
+      "pair_source": "The 2008 global financial crisis was triggered by the collapse of the US housing bubble and failures in mortgage-backed securities regulation",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Troubled_Asset_Relief_Program",
+      "reason": "Overview of the $700 billion TARP program, its disbursements, and outcomes including eventual recovery of most funds"
+    },
+    {
+      "pair_source": "Central bank quantitative easing expanded balance sheets by trillions, fueling debate over whether it primarily aids financial asset holders",
+      "kind": "public_record",
+      "locator": "https://www.federalreserve.gov/monetarypolicy/bst_recenttrends.htm",
+      "reason": "Federal Reserve data showing the trajectory of its balance sheet from approximately $900 billion pre-crisis to nearly $9 trillion at peak"
+    },
+    {
+      "pair_source": "Central bank quantitative easing expanded balance sheets by trillions, fueling debate over whether it primarily aids financial asset holders",
+      "kind": "public_record",
+      "locator": "https://www.bankofengland.co.uk/quarterly-bulletin/2012/q3/the-distributional-effects-of-asset-purchases",
+      "reason": "Bank of England analysis of QE's distributional effects, finding that asset purchases primarily benefited wealthier households who held more financial assets"
+    },
+    {
+      "pair_source": "The FTX cryptocurrency exchange collapse in November 2022 revealed massive fraud and highlighted failures in crypto market oversight",
+      "kind": "public_record",
+      "locator": "https://www.justice.gov/usao-sdny/pr/samuel-bankman-fried-sentenced-25-years-his-orchestration-multiple-fraudulent-schemes",
+      "reason": "US Department of Justice press release on Bankman-Fried's 25-year prison sentence for orchestrating multiple fraud schemes through FTX and Alameda Research"
+    },
+    {
+      "pair_source": "The FTX cryptocurrency exchange collapse in November 2022 revealed massive fraud and highlighted failures in crypto market oversight",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/FTX#Collapse",
+      "reason": "Comprehensive timeline of FTX's rise and November 2022 collapse, including the CoinDesk report that triggered the bank run"
+    },
+    {
+      "pair_source": "The WTO's dispute settlement mechanism has resolved hundreds of trade disputes but faces an existential crisis due to US blocking of appellate body appointments",
+      "kind": "public_record",
+      "locator": "https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm",
+      "reason": "WTO dispute settlement gateway providing status of all 615+ disputes filed since 1995"
+    },
+    {
+      "pair_source": "The WTO's dispute settlement mechanism has resolved hundreds of trade disputes but faces an existential crisis due to US blocking of appellate body appointments",
+      "kind": "public_record",
+      "locator": "https://www.wto.org/english/tratop_e/dispu_e/appellate_body_e.htm",
+      "reason": "WTO Appellate Body page documenting its current non-functional status and the history of member appointment blockage"
+    }
+  ]
+}

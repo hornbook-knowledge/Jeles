@@ -1,0 +1,209 @@
+{
+  "domain": "core-materials-chemistry",
+  "pairs": [
+    {
+      "source_text": "Why does iron rust but stainless steel doesn't?",
+      "source_lang": "en",
+      "target_text": "Iron rusts because oxygen in the air reacts with iron atoms in the presence of water, forming iron oxide -- the flaky reddish-brown coating we call rust. This is oxidation: the iron literally gives electrons to the oxygen. Stainless steel resists rust because it contains about 10-12% chromium, which reacts with oxygen first to form an invisible, self-healing layer of chromium oxide that seals the surface. Galvanized steel uses a similar trick: a coating of zinc sacrifices itself to corrosion before the iron underneath can be attacked, which is why galvanized fences last decades while bare iron nails crumble in a few wet seasons.",
+      "target_lang": "en",
+      "reason": "Oxidation is one of the most fundamental chemical reactions humans encounter daily, and understanding it explains why we choose different metals for different jobs."
+    },
+    {
+      "source_text": "How does soap actually clean grease off your hands?",
+      "source_lang": "en",
+      "target_text": "Each soap molecule is shaped like a tadpole: one end (the head) loves water and the other end (the tail) loves oil and grease. When you lather up, the oil-loving tails burrow into grease on your skin while the water-loving heads stick outward into the rinse water. This forms tiny clusters called micelles that trap grease droplets inside a water-friendly shell, letting the water carry them away. That is why plain water alone will not cut through oily residue on a frying pan, but a drop of dish soap breaks it up almost instantly.",
+      "target_lang": "en",
+      "reason": "Surfactant chemistry is the basis of all cleaning products and understanding it demystifies one of the most routine human activities."
+    },
+    {
+      "source_text": "Why don't oil and water mix?",
+      "source_lang": "en",
+      "target_text": "Water molecules are polar -- their oxygen end carries a slight negative charge and the hydrogen ends carry a slight positive charge, so they cling tightly to each other through hydrogen bonds. Oil molecules are nonpolar: their charges are evenly distributed, so water molecules would rather stick to each other than mingle with oil. This is the 'like dissolves like' rule -- polar substances mix with polar, nonpolar with nonpolar. It is why salad dressing separates into layers, and why you can dissolve sugar (polar) in water but need turpentine (nonpolar) to clean up oil-based paint.",
+      "target_lang": "en",
+      "reason": "Polarity and hydrogen bonding explain the behavior of the most common substance on Earth and govern countless kitchen and industrial processes."
+    },
+    {
+      "source_text": "How is glass made from sand, and why can you see through it?",
+      "source_lang": "en",
+      "target_text": "Glass is made by heating silica sand to roughly 1,700 degrees Celsius until it melts, then cooling it quickly enough that the molecules never arrange into an orderly crystal -- they freeze in a disordered, amorphous state. This lack of internal grain boundaries is what makes glass transparent: visible light passes through without scattering off crystal edges. Adding soda ash lowers the melting point for easier manufacturing, and lime makes it durable enough to hold water. Glass shatters rather than bending because it has no internal slip planes -- once a crack starts, there is nothing to stop it from racing through the entire piece.",
+      "target_lang": "en",
+      "reason": "Glass is everywhere in modern life, and understanding its amorphous structure explains both its transparency and its brittleness."
+    },
+    {
+      "source_text": "What is plastic made of and why doesn't it rot away like wood?",
+      "source_lang": "en",
+      "target_text": "Most plastics start as small molecules derived from petroleum or natural gas, which are chemically linked into extremely long chains called polymers -- polyethylene, for example, is just thousands of ethylene units snapped together like beads on a necklace. These chains are so uniform and tightly bonded that the enzymes bacteria use to digest natural materials (evolved over billions of years to break down cellulose, proteins, and fats) simply cannot latch onto them. A plastic bottle tossed in a landfill can persist for centuries because nothing in the microbial world has had enough evolutionary time to develop tools for dismantling those synthetic bonds. This durability, so useful when the bottle is in your hand, becomes a liability the moment you throw it away.",
+      "target_lang": "en",
+      "reason": "Understanding polymer chemistry is essential to grasping both the utility and the environmental cost of the material that defines modern manufacturing."
+    },
+    {
+      "source_text": "Why is rubber stretchy, and what did vulcanization change?",
+      "source_lang": "en",
+      "target_text": "Natural rubber is made of long, coiled polymer chains (polyisoprene) that can straighten out when pulled and spring back when released, much like stretching and releasing a telephone cord. Raw rubber, however, gets sticky when hot and brittle when cold because the chains slide past each other too freely. In 1839 Charles Goodyear discovered that heating rubber with sulfur -- vulcanization -- creates chemical cross-links between chains, like rungs on a ladder connecting two rails. These cross-links let the chains stretch but prevent them from sliding apart permanently, giving vulcanized rubber the durable elasticity needed for tires, gaskets, and shoe soles.",
+      "target_lang": "en",
+      "reason": "Rubber elasticity illustrates how molecular architecture directly determines a material's macroscopic behavior, a central insight of polymer science."
+    },
+    {
+      "source_text": "How does concrete harden, and why is it so strong?",
+      "source_lang": "en",
+      "target_text": "Concrete is a mixture of cement powder, water, sand, and gravel. When water meets cement, it triggers a chemical reaction called hydration: new mineral crystals grow and interlock, binding the sand and gravel into a solid mass. This means concrete does not harden by drying out -- it hardens by reacting, which is why fresh concrete is kept moist during curing and can even set underwater. The result is a material enormously strong in compression (a concrete column can support a skyscraper) but weak in tension (it cracks easily when pulled), which is why engineers embed steel rebar inside it: the steel handles the pulling forces the concrete cannot.",
+      "target_lang": "en",
+      "reason": "Concrete is the most widely used construction material on Earth, and knowing it sets by chemical reaction, not evaporation, corrects a near-universal misconception."
+    },
+    {
+      "source_text": "How does bleach make stains disappear?",
+      "source_lang": "en",
+      "target_text": "Most stains have color because their molecules contain chains of alternating double bonds (called chromophores) that absorb specific wavelengths of visible light. Bleach works by breaking those bonds through oxidation: chlorine bleach (sodium hypochlorite) releases reactive chlorine that snaps the chromophore apart, while oxygen bleach (sodium percarbonate) releases hydrogen peroxide to do the same job more gently. The stain molecule is still there, but without its chromophore it no longer absorbs colored light, so it looks white. This is why bleach can remove a wine stain from a shirt but will also fade the dye if you leave it on too long -- it cannot tell the difference between a stain's color and the fabric's color.",
+      "target_lang": "en",
+      "reason": "Bleach demonstrates how chemical oxidation governs color at the molecular level, connecting chemistry to something people observe every laundry day."
+    },
+    {
+      "source_text": "Why does ice float instead of sinking?",
+      "source_lang": "en",
+      "target_text": "Almost every substance contracts when it freezes, but water does the opposite: as it cools below 4 degrees Celsius, hydrogen bonds force the molecules into a rigid hexagonal lattice that spaces them farther apart than in liquid water. This makes ice about 9% less dense than liquid water, so it floats. The consequences are enormous for life on Earth: floating ice insulates lakes and oceans from the top, keeping the water below liquid so aquatic organisms survive winter. If ice sank, lakes would freeze solid from the bottom up, and most freshwater life as we know it could not exist.",
+      "target_lang": "en",
+      "reason": "Water's anomalous expansion on freezing is one of the most important quirks in chemistry, with direct consequences for ecology, geology, and climate."
+    },
+    {
+      "source_text": "How does a battery produce electricity?",
+      "source_lang": "en",
+      "target_text": "A battery contains two different materials (electrodes) separated by a chemical paste or liquid (the electrolyte). A chemical reaction at one electrode (the anode) releases electrons, while the other electrode (the cathode) accepts them, but the electrolyte blocks electrons from crossing internally. The only path for those electrons is through the external circuit -- your phone, your flashlight -- and that flow of electrons is the electric current that powers the device. The battery dies when the reacting materials are used up. In a rechargeable battery the reaction is reversible: pushing current back through forces the chemical change to run in reverse, restoring the original materials so the cycle can repeat hundreds of times.",
+      "target_lang": "en",
+      "reason": "Batteries convert chemical energy to electrical energy, and understanding the anode-cathode-electrolyte system is foundational to grasping portable power, electric vehicles, and grid storage."
+    },
+    {
+      "source_text": "Why do metals conduct electricity and heat so well?",
+      "source_lang": "en",
+      "target_text": "In a metal, the outermost electrons of each atom are not bound to any single nucleus -- they drift freely through the entire structure, forming what physicists call an 'electron sea.' When you apply a voltage, these free electrons flow easily from one end to the other, carrying electric current. The same free electrons also carry heat energy by bumping into neighboring atoms and passing vibrations along, which is why the handle of a metal spoon left in hot soup gets warm while a wooden spoon stays cool. Metals that are the best electrical conductors (copper, silver) are also the best heat conductors, precisely because both properties depend on how freely those shared electrons move.",
+      "target_lang": "en",
+      "reason": "The electron-sea model explains two defining properties of metals and connects electrical engineering to everyday thermal experience in a single framework."
+    },
+    {
+      "source_text": "Why does superglue bond things (and fingers) so fast?",
+      "source_lang": "en",
+      "target_text": "Superglue is liquid cyanoacrylate, a monomer that polymerizes -- snaps into long, rigid chains -- almost instantly when it contacts even trace amounts of moisture. Since nearly every surface, including your skin, carries a thin film of water, the glue begins hardening the moment it touches anything. The reaction is exothermic (it releases heat) and needs no mixing, clamping, or drying time; within seconds the polymer chains lock the two surfaces together. This is why superglue bonds your fingers in an instant but stays liquid inside its sealed tube: the tube keeps moisture out, preventing the reaction from starting.",
+      "target_lang": "en",
+      "reason": "Superglue is a vivid example of polymerization triggered by an environmental catalyst, making abstract polymer chemistry tangibly relatable."
+    },
+    {
+      "source_text": "Why does wood burn but rocks don't?",
+      "source_lang": "en",
+      "target_text": "Combustion requires fuel molecules with carbon-hydrogen bonds that can react with oxygen to release energy, producing carbon dioxide and water. Wood is rich in cellulose and lignin -- organic molecules packed with those burnable C-H bonds -- so it ignites readily. Rocks are made of minerals like silicates and oxides where the atoms are already in their lowest-energy, fully oxidized state: there is nothing left for oxygen to react with, so no fire is possible. In essence, rocks are what you get after all the burning is already done. This same principle explains why iron ore does not burn, but iron filings (which have exposed unoxidized metal surfaces) can spark and flare in air.",
+      "target_lang": "en",
+      "reason": "The distinction between combustible organic matter and already-oxidized minerals is central to understanding fire, energy, and the carbon cycle."
+    },
+    {
+      "source_text": "How does paint stick to a wall and keep its color?",
+      "source_lang": "en",
+      "target_text": "Paint is a mixture of three things: pigment particles that provide color, a binder (usually an acrylic or alkyd resin) that glues those particles together, and a solvent (water or mineral spirits) that keeps it liquid enough to spread. When you brush paint onto a wall, the solvent evaporates and the binder hardens into a continuous film with pigment particles locked inside, bonded to the surface. Primer matters because raw drywall or bare wood is porous and uneven; primer seals the surface so the topcoat bonds uniformly instead of soaking in unevenly or peeling away. Without primer, you often need extra coats and the color can look patchy.",
+      "target_lang": "en",
+      "reason": "Paint technology combines suspension chemistry, film formation, and surface adhesion -- principles relevant to coatings of all kinds, from art to corrosion protection."
+    },
+    {
+      "source_text": "How do dyes color fabric permanently?",
+      "source_lang": "en",
+      "target_text": "A dye works by having its molecules form chemical bonds -- ionic, covalent, or hydrogen bonds -- with the fiber molecules in fabric, rather than just sitting on the surface the way pigment in paint does. Different fibers accept different dyes: cotton's cellulose has hydroxyl groups that bond well with reactive dyes, while wool's protein fibers take acid dyes more readily, and synthetic polyester requires disperse dyes forced in under heat and pressure. A mordant, often a metal salt like alum, acts as a chemical bridge between dye and fiber, locking the color so it survives washing and sunlight. This is why a plain cotton T-shirt dyes beautifully in a home dye bath, but a polyester jersey in the same pot barely changes shade.",
+      "target_lang": "en",
+      "reason": "Dyeing illustrates selective molecular bonding in an everyday context and explains why fabric composition determines which coloring methods work."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Why does iron rust but stainless steel doesn't?",
+      "kind": "url",
+      "locator": "https://www.chemistryworld.com/features/the-fight-against-rust/3007158.article",
+      "reason": "Explains the oxidation mechanism of iron rusting and chromium's protective role in stainless steel"
+    },
+    {
+      "pair_source": "Why does iron rust but stainless steel doesn't?",
+      "kind": "url",
+      "locator": "https://www.americanchemistry.com/chemistry-in-america/news-trends/blog-post/2020/the-science-of-corrosion",
+      "reason": "Covers galvanization and sacrificial zinc anodes as corrosion prevention"
+    },
+    {
+      "pair_source": "How does soap actually clean grease off your hands?",
+      "kind": "url",
+      "locator": "https://www.acs.org/education/resources/highschool/chemmatters/past-issues/2020-2021/december-2020/how-does-soap-work.html",
+      "reason": "Explains surfactant molecular structure, micelle formation, and grease removal by the American Chemical Society"
+    },
+    {
+      "pair_source": "Why don't oil and water mix?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/special-topics/water-science-school/science/water-properties-information-topic",
+      "reason": "Covers water's polarity, hydrogen bonding, and the principle that like dissolves like"
+    },
+    {
+      "pair_source": "How is glass made from sand, and why can you see through it?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/glass-material",
+      "reason": "Describes glass manufacture from silica sand, the amorphous structure that causes transparency, and the role of soda ash and lime"
+    },
+    {
+      "pair_source": "What is plastic made of and why doesn't it rot away like wood?",
+      "kind": "url",
+      "locator": "https://www.sciencehistory.org/education/classroom-activities/the-history-and-future-of-plastics/",
+      "reason": "Covers polymerization of petroleum feedstocks and explains why synthetic polymers resist biodegradation"
+    },
+    {
+      "pair_source": "Why is rubber stretchy, and what did vulcanization change?",
+      "kind": "url",
+      "locator": "https://www.acs.org/education/whatischemistry/landmarks/charlesgoodyear.html",
+      "reason": "ACS landmark page on Goodyear's vulcanization process and sulfur cross-linking of rubber"
+    },
+    {
+      "pair_source": "How does concrete harden, and why is it so strong?",
+      "kind": "url",
+      "locator": "https://www.cement.org/learn/concrete-technology/concrete-design-production/how-cement-is-made",
+      "reason": "Portland Cement Association resource explaining cement hydration chemistry and why concrete does not harden by drying"
+    },
+    {
+      "pair_source": "How does bleach make stains disappear?",
+      "kind": "url",
+      "locator": "https://www.compoundchem.com/2014/04/29/the-chemistry-of-stain-removal/",
+      "reason": "Compound Interest infographic explaining how bleach oxidizes chromophores to remove color"
+    },
+    {
+      "pair_source": "Why does ice float instead of sinking?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/special-topics/water-science-school/science/water-density",
+      "reason": "USGS explanation of water's density anomaly, hydrogen bond geometry in ice, and ecological significance"
+    },
+    {
+      "pair_source": "How does a battery produce electricity?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/science/doe-explainsbatteries",
+      "reason": "US Department of Energy explainer on anode-cathode-electrolyte chemistry and rechargeable vs. primary batteries"
+    },
+    {
+      "pair_source": "Why do metals conduct electricity and heat so well?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/metallic-bond",
+      "reason": "Encyclopaedia Britannica entry on the electron sea model of metallic bonding"
+    },
+    {
+      "pair_source": "Why does superglue bond things (and fingers) so fast?",
+      "kind": "url",
+      "locator": "https://www.acs.org/molecule-of-the-week/archive/c/cyanoacrylate.html",
+      "reason": "ACS Molecule of the Week on cyanoacrylate's moisture-triggered polymerization mechanism"
+    },
+    {
+      "pair_source": "Why does wood burn but rocks don't?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/combustion",
+      "reason": "Britannica article on the chemistry of combustion and the requirement for reducible carbon-hydrogen bonds"
+    },
+    {
+      "pair_source": "How does paint stick to a wall and keep its color?",
+      "kind": "url",
+      "locator": "https://www.acs.org/education/resources/highschool/chemmatters/past-issues/archive/paint.html",
+      "reason": "ACS ChemMatters article explaining pigment, binder, and solvent roles in paint film formation"
+    },
+    {
+      "pair_source": "How do dyes color fabric permanently?",
+      "kind": "url",
+      "locator": "https://www.sciencedirect.com/topics/chemistry/textile-dyeing",
+      "reason": "Overview of dye-fiber bonding mechanisms, mordant chemistry, and why different fibers require different dye classes"
+    }
+  ]
+}

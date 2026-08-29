@@ -1,0 +1,237 @@
+{
+  "domain": "adversarial-challenge-ai",
+  "pairs": [
+    {
+      "source_text": "Context window overflow and context drift causing 65% of AI agent failures",
+      "source_lang": "en",
+      "target_text": "[MISLEADING_CONFLATION] The 65% figure conflates two distinct failure modes: context window overflow (running out of tokens) and context drift (quality degradation within available space). These are different problems with different solutions. Overflow is a hard limit; drift is an attention-quality problem that begins at roughly 50% of nominal window capacity. Labeling both as 'overflow' misdiagnoses the dominant failure mechanism and leads teams to chase larger context windows when the real fix is smarter context management.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: high)"
+    },
+    {
+      "source_text": "Hybrid vector-graph memory as minimum viable architecture for production AI agents in 2026",
+      "source_lang": "en",
+      "target_text": "[OVERSTATED] Calling hybrid vector-graph 'minimum viable' overstates what most production agents actually require and raises the barrier to entry. Many production agents run successfully on pure vector stores. The hybrid architecture is the recommended backend for complex workloads involving multi-hop reasoning and entity relationships, but for simpler use cases -- single-domain Q&A, customer support, document retrieval -- a vector store alone remains viable and significantly less complex to operate.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    },
+    {
+      "source_text": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "source_lang": "en",
+      "target_text": "[PARTIALLY_ACCURATE_BUT_OVERGENERALIZED] The benchmark's results are more nuanced than the claim implies. GraphRAG does not uniformly outperform flat retrieval. On simple fact retrieval, graph-based methods scored 60.1 vs. text chunks at 60.9 -- essentially a tie where flat retrieval actually edges ahead. The graph advantage only materializes on complex reasoning (53.4 vs. 42.9) and multi-hop tasks (70.3 vs. 67.0). Presenting GraphRAG as broadly superior based on this benchmark misrepresents the findings: it excels specifically at multi-hop and cross-document reasoning, not at all retrieval tasks.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    },
+    {
+      "source_text": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "source_lang": "en",
+      "target_text": "[OVERSTATED_GENERALIZATION] The claim that knowledge graphs 'reduce hallucination rates' is domain-dependent and varies enormously across benchmarks. One clinical QA study showed hallucination reduced from 63% to 1.7% via RDF/OWL ontology + KG, but this is a best-case result in a highly structured domain. The average hallucination rate in KG-based question answering across broader benchmarks was still 29.65%, demonstrating that KG integration does not eliminate hallucination -- it reduces it in specific structured-domain applications while remaining a significant challenge in general use.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: high)"
+    },
+    {
+      "source_text": "Enterprise multi-agent adoption rates and production failure statistics in 2025-2026",
+      "source_lang": "en",
+      "target_text": "[UNDERSTATED_DIFFICULTY] The framing of multi-agent systems as approaching enterprise readiness understates the severity of the production gap. The data shows that 88% of AI agents never reach production, and Gartner projects over 40% of agentic AI projects will be cancelled by 2027. MIT's Project NANDA found roughly 5% of integrated AI pilots extracting measurable value. These are not early-adoption growing pains; they represent a structural gap between framework capabilities and enterprise deployment reality. The round7 claims risk presenting multi-agent frameworks as mature tools when the production evidence suggests they remain experimental for most organizations.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: high)"
+    },
+    {
+      "source_text": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "source_lang": "en",
+      "target_text": "[UNDERSTATED_RISK] Semantic caching cost savings claims (30-70% commonly cited, up to 86% in optimistic benchmarks) obscure a fundamental correctness risk. A false cache hit returns an answer for a different but similar-looking question. The canonical example: 'How do I upgrade my subscription?' and 'How do I cancel my subscription?' are semantically adjacent but dangerously different in intent. High hit rates do not equal high correctness -- a reckless cache can post an 80% hit rate while half those 'hits' are wrong. LLM non-determinism also affects cached response validity over time. The cost savings narrative dominates discussion while the correctness risk is underappreciated in production deployments.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: high)"
+    },
+    {
+      "source_text": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "source_lang": "en",
+      "target_text": "[FALSE_EQUIVALENCE] Presenting DSPy alongside LangChain, LlamaIndex, and Haystack as peers in a 'maturity comparison' overstates DSPy's production readiness. While DSPy gained traction in early 2026, it requires ML engineering skills that most application developers do not have. LangChain (92k GitHub stars, 350+ integrations), LlamaIndex (purpose-built for retrieval), and Haystack 2.0 (rebuilt with explicit production focus by deepset) are frameworks designed for application developers. DSPy remains a research-originated tool from Stanford that is powerful but occupies a different maturity tier. Grouping them as equals in a framework comparison misleads teams evaluating production options.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    },
+    {
+      "source_text": "How has Mixture of Experts architecture become the dominant LLM design pattern by mid-2026?",
+      "source_lang": "en",
+      "target_text": "[OVERSTATED_SCOPE] While MoE has become the architecture of choice for frontier-scale models, calling it 'the dominant LLM design pattern' overstates its universality. MoE dominates among large open-weight releases (DeepSeek-V3/R1, Qwen3-235B, Llama 4, Mistral Large 3, Grok) and is rumored for GPT-4/GPT-5. However, dense architectures remain dominant for smaller models, edge deployment, fine-tuning workflows, and many enterprise applications. MoE's memory footprint (all experts must be loaded even though only a subset activates) makes it impractical for many deployment scenarios. The claim also elides that MoE introduces routing complexity, load-balancing challenges, and expert collapse risks that dense models avoid.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    },
+    {
+      "source_text": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "source_lang": "en",
+      "target_text": "[OUTDATED_FRAMING] The framing 'when retrieval still beats large context' implies RAG is the default that needs defending against long-context alternatives. The 2026 evidence actually shows a more nuanced landscape: for small, static corpora, long-context models genuinely match or outperform RAG. The real finding is the 'context rot' phenomenon -- accuracy degrades 30-50% before the documented context limit is reached -- which undermines both pure-RAG (long retrieved contexts) and pure-long-context approaches. The 2026 consensus is hybrid: retrieve 50-200K relevant tokens, then long-context-reason over them. Neither approach alone is optimal, and framing this as 'RAG vs. long context' creates a false dichotomy.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    },
+    {
+      "source_text": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "source_lang": "en",
+      "target_text": "[UNDERSTATED_DISRUPTION] Describing the AutoGen situation as a simple 'maintenance mode and succession' understates the fragmentation this created. The project did not cleanly transition; it split three ways: Microsoft Agent Framework (the official successor, reaching 1.0 GA in April 2026), the maintenance AutoGen line (v0.7.x, security patches only), and the community-led AG2 fork. This three-way split left 54,000+ developers uncertain about migration paths. The Microsoft Agent Framework is a fundamentally different product (enterprise SLAs, Azure-integrated) rather than a simple evolution. Calling this 'succession' implies continuity that does not exist for the open-source community.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    },
+    {
+      "source_text": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "source_lang": "en",
+      "target_text": "[UNVERIFIED_SELF_REPORT] Mem0's benchmark claims deserve scrutiny because the benchmark numbers (92.5 on LoCoMo, 94.4 on LongMemEval) and the '+26% accuracy improvement over OpenAI's memory' are primarily self-reported by Mem0 on their own blog and research page. Mem0 is both the framework vendor and the benchmark reporter. Independent reproduction of these results is limited. Additionally, a January 2026 paper (arXiv 2601.00821) on 'Verbatim Chunks Beat Extracted Artifacts' found that simpler memory representations can match or outperform more sophisticated extraction-based approaches in long conversations, challenging the premise that Mem0's hierarchical extraction approach is universally superior.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    },
+    {
+      "source_text": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "source_lang": "en",
+      "target_text": "[FALSE_TELEOLOGY] The 'three evolutionary stages' framing (plugins to graphs to cognitive OS) imposes a teleological narrative on a field that is still fragmented and experimental. It implies a linear progression where each stage supersedes the last, when in reality: (1) simple plugin-based memory remains the most widely deployed approach; (2) graph-based memory has shown advantages only in specific multi-hop reasoning scenarios per GraphRAG-Bench ICLR 2026; and (3) 'cognitive OS' systems like MemOS and Letta are open-source research projects, not production standards. The framing privileges narrative tidiness over the messy reality that most production agents in 2026 use simple vector-store retrieval.",
+      "target_lang": "en",
+      "reason": "Adversarial challenge (severity: medium)"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Context window overflow and context drift causing 65% of AI agent failures",
+      "to_source": "Context window overflow and context drift causing 65% of AI agent failures",
+      "kind": "refines",
+      "reason": "Adversarial challenge: misleading_conflation"
+    },
+    {
+      "from_source": "Hybrid vector-graph memory as minimum viable architecture for production AI agents in 2026",
+      "to_source": "Hybrid vector-graph memory as minimum viable architecture for production AI agents in 2026",
+      "kind": "refines",
+      "reason": "Adversarial challenge: overstated"
+    },
+    {
+      "from_source": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "to_source": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "kind": "refines",
+      "reason": "Adversarial challenge: partially_accurate_but_overgeneralized"
+    },
+    {
+      "from_source": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "to_source": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "kind": "refines",
+      "reason": "Adversarial challenge: overstated_generalization"
+    },
+    {
+      "from_source": "Enterprise multi-agent adoption rates and production failure statistics in 2025-2026",
+      "to_source": "Enterprise multi-agent adoption rates and production failure statistics in 2025-2026",
+      "kind": "refines",
+      "reason": "Adversarial challenge: understated_difficulty"
+    },
+    {
+      "from_source": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "to_source": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "kind": "refines",
+      "reason": "Adversarial challenge: understated_risk"
+    },
+    {
+      "from_source": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "to_source": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "kind": "refines",
+      "reason": "Adversarial challenge: false_equivalence"
+    },
+    {
+      "from_source": "How has Mixture of Experts architecture become the dominant LLM design pattern by mid-2026?",
+      "to_source": "How has Mixture of Experts architecture become the dominant LLM design pattern by mid-2026?",
+      "kind": "refines",
+      "reason": "Adversarial challenge: overstated_scope"
+    },
+    {
+      "from_source": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "to_source": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "kind": "refines",
+      "reason": "Adversarial challenge: outdated_framing"
+    },
+    {
+      "from_source": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "to_source": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "kind": "refines",
+      "reason": "Adversarial challenge: understated_disruption"
+    },
+    {
+      "from_source": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "to_source": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "kind": "refines",
+      "reason": "Adversarial challenge: unverified_self_report"
+    },
+    {
+      "from_source": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "to_source": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "kind": "refines",
+      "reason": "Adversarial challenge: false_teleology"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Context window overflow and context drift causing 65% of AI agent failures",
+      "kind": "public_record",
+      "locator": "Zylos AI research (2026) found context degradation begins at approximately 50% of nominal window capacity, with accuracy drops of 30% or more for information buried in the middle of long context. Mem0",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "Hybrid vector-graph memory as minimum viable architecture for production AI agents in 2026",
+      "kind": "public_record",
+      "locator": "Multiple 2026 production guides (Zylos Research, Knowlee, AgentMarketCap) describe hybrid vector-graph as 'recommended for complex workloads' rather than 'minimum viable.' A minimum viable production ",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "kind": "public_record",
+      "locator": "GraphRAG-Bench (accepted ICLR 2026, January 26 2026; arXiv 2506.02404) reports: simple fact retrieval graph 60.1 vs. text chunks 60.9 (tie/slight text advantage); complex reasoning graph 53.4 vs. chun",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "kind": "public_record",
+      "locator": "ACL 2025 systematic literature review ('Mitigating Hallucination by Integrating Knowledge Graphs into LLM Inference') found improvements are highly domain-specific. The 63% to 1.7% reduction was in cl",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "Enterprise multi-agent adoption rates and production failure statistics in 2025-2026",
+      "kind": "public_record",
+      "locator": "Digital Applied (2026) reports 88% of AI agents never reach production, with primary causes being infrastructure gaps (41%), governance/security barriers (38%), and ROI measurement failures (33%). Gar",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "How does semantic caching work for LLM inference and what cost savings does it deliver in 2026?",
+      "kind": "public_record",
+      "locator": "Spheron Blog (2026) and Redis engineering blog detail the correctness tradeoff explicitly: 'a false hit can directly harm correctness.' AWS research using 63,796 real chatbot queries reports 86% cost ",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "kind": "public_record",
+      "locator": "PECollective (2026) notes DSPy 'requires ML engineering skills that most application developers don't have.' Iternal AI (2026) states DSPy 'is production-ready in the sense that it works and produces ",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "How has Mixture of Experts architecture become the dominant LLM design pattern by mid-2026?",
+      "kind": "public_record",
+      "locator": "TensorOps (2026) confirms MoE is 'the default architecture behind frontier AI' but notes this is specifically among large-scale models. Labellerr (2026) lists the top MoE models as all being 100B+ par",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "kind": "public_record",
+      "locator": "Chroma's July 2025 paper tested 18 frontier models and found performance drops 30-50% well before the documented context limit -- this hurts both RAG (when retrieved context is large) and long-context",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "kind": "public_record",
+      "locator": "AgentMarketCap (April 2026) titled their coverage 'Microsoft Retires AutoGen: The First Major Agent Framework Sunset and What It Means for 54K Developers.' Atlan (2026) describes three distinct paths:",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "kind": "public_record",
+      "locator": "Mem0's benchmark performance numbers appear primarily on mem0.ai/blog and mem0.ai/research -- the vendor's own publications. The '26% accuracy improvement' is from Mem0's comparison against OpenAI's m",
+      "reason": "Adversarial evidence cited inline"
+    },
+    {
+      "pair_source": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "kind": "public_record",
+      "locator": "MemOS (GitHub: MemTensor/MemOS) describes itself as offering 'self-evolving memory OS' but its production adoption data is limited -- it reports 35.24% token savings in benchmarks but is not cited in ",
+      "reason": "Adversarial evidence cited inline"
+    }
+  ]
+}

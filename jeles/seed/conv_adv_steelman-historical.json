@@ -1,0 +1,308 @@
+{
+  "domain": "adversarial-steelman-historical",
+  "pairs": [
+    {
+      "source_text": "Adolf Hitler \u2014 strongest historical explanation for mass support: Hitler was a uniquely evil demagogue who hypnotized a nation through propaganda ",
+      "source_lang": "en",
+      "target_text": "The historical evidence shows Hitler's rise was less about his personal charisma than about structural failures that mainstream parties refused to address. Weimar Germany faced hyperinflation in 1923 that wiped out middle-class savings, then the Great Depression drove unemployment to 30% by 1932. The Treaty of Versailles imposed reparations, territorial losses, and a 'war guilt' clause that virtually every German across the political spectrum considered unjust. The mainstream parties -- the Social Democrats, the Centre Party, the liberal DDP -- failed to form stable coalitions and governed by emergency decree under Article 48, normalizing extraconstitutional rule before Hitler exploited it. The NSDAP vote share rose from 2.6% in 1928 to 37.3% in July 1932, tracking almost perfectly with unemployment. Voters were not choosing genocide; they were choosing the party that promised jobs, national dignity, and an end to political paralysis. The uncomfortable implication is that democratic collapse is driven more by institutional failure and economic despair than by the unique qualities of any one demagogue -- meaning it can happen in any democracy that fails its citizens badly enough. [Does NOT claim: This does not argue that voting for Hitler was justified, that antisemitism was rational, or that th]",
+      "target_lang": "en",
+      "reason": "Steel-man (political-leader-dark) of Adolf Hitler"
+    },
+    {
+      "source_text": "Joseph Stalin \u2014 strongest historical argument for the industrialization thesis: Stalin was a paranoid tyrant whose policies caused millions of deaths through fa",
+      "source_lang": "en",
+      "target_text": "The USSR in 1928 was an agrarian economy with per capita GDP comparable to India's. By 1940, Soviet industrial output had quadrupled, and the country had built the military-industrial capacity that produced the T-34 tank and enabled the Eastern Front victories that accounted for roughly 80% of German military casualties in WWII. Without forced industrialization, the argument goes, the Soviet Union would not have had the steel, armaments, or industrial base to survive Operation Barbarossa in 1941, and Nazi Germany might have won the war. Historian Stephen Kotkin's biography of Stalin documents that even anti-Soviet Western planners acknowledged that the Five-Year Plans achieved in a decade what took Western nations 50-100 years of industrialization. Soviet life expectancy rose from about 32 years in 1926 to 68 by 1955, and literacy went from approximately 50% to near-universal. The counterargument -- that this could have been achieved without mass death -- is plausible but unfalsifiable; what IS falsifiable is the claim that Stalin's policies achieved no material progress, and the data shows they did, at a cost that scholars like Robert Conquest and Timothy Snyder rightly call catastrophic. [Does NOT claim: This does not argue the cost was justified. The Holodomor, the Great Purge, and the Gulag system rep]",
+      "target_lang": "en",
+      "reason": "Steel-man (political-leader-dark) of Joseph Stalin"
+    },
+    {
+      "source_text": "Mao Zedong \u2014 strongest historical argument for revolutionary-era support: Mao was a megalomaniac whose Great Leap Forward and Cultural Revolution caused t",
+      "source_lang": "en",
+      "target_text": "Before 1949, China had endured the Opium Wars, unequal treaties, Japanese invasion (including the Nanjing Massacre), warlordism, and a century of what Chinese historians call national humiliation. The Nationalist government under Chiang Kai-shek was corrupt, ineffective against Japan, and presided over a feudal land system where an estimated 10% of the population owned 70% of arable land while tenant farmers paid rents of 50-70% of their harvest. Mao's land reform between 1949-1953, despite its violence, redistributed land to roughly 300 million peasants. The public health campaigns that followed -- including mass vaccination, barefoot doctors, and sanitation drives -- helped raise life expectancy from approximately 35 years in 1949 to 65 by 1976, one of the fastest sustained improvements in recorded demographic history. Literacy rates rose from approximately 20% to over 65% in the same period. These achievements explain why the CCP retains legitimacy despite officially acknowledging the Great Leap Forward and Cultural Revolution as catastrophic errors. The mass support Mao enjoyed through the 1950s was not irrational; for hundreds of millions of peasants, the revolution delivered land, basic healthcare, and literacy that no prior Chinese government had provided. [Does NOT claim: This does not argue the Great Leap Forward famine (estimated 15-55 million dead) or the Cultural Rev]",
+      "target_lang": "en",
+      "reason": "Steel-man (political-leader-dark) of Mao Zedong"
+    },
+    {
+      "source_text": "Mahatma Gandhi \u2014 strongest honest scholarly criticism: Gandhi's nonviolent resistance defeated the British Empire through moral force, ",
+      "source_lang": "en",
+      "target_text": "The strongest critique of Gandhi's legacy operates on three levels. First, the strategic argument: historian Srinath Raghavan and others have documented that Indian independence owed at least as much to Britain's post-WWII exhaustion -- financially bankrupt, unable to maintain colonial armies, facing a mutiny in the Royal Indian Navy in 1946 -- as to satyagraha. The British withdrew from India, Burma, Ceylon, and Palestine in rapid succession not because nonviolence converted their conscience but because they could no longer afford an empire. Second, the caste argument: B.R. Ambedkar, himself a Dalit and the architect of India's constitution, accused Gandhi of defending the varna system while merely opposing its excesses, arguing that Gandhi's position on caste was 'reform from within' rather than abolition -- a distinction that preserved structural inequality. Ambedkar's 'Annihilation of Caste' (1936) remains the most devastating critique from within the Indian independence movement. Third, the personal argument: Gandhi's documented early racism in South Africa (he argued Indians should not be classified with Black Africans), his refusal of penicillin for his dying wife while accepting quinine for himself, and his estrangement of his son Harilal reveal a pattern of imposing absolute moral standards on those closest to him while exercising pragmatic flexibility for himself. [Does NOT claim: This does not argue that Gandhi was a fraud or that nonviolence is always ineffective. It argues tha]",
+      "target_lang": "en",
+      "reason": "Steel-man (hero) of Mahatma Gandhi"
+    },
+    {
+      "source_text": "Nelson Mandela \u2014 strongest honest scholarly criticism: Mandela's reconciliation healed South Africa and proved that peaceful transition",
+      "source_lang": "en",
+      "target_text": "The strongest critique of Mandela's legacy centers on the gap between political liberation and economic justice. The Truth and Reconciliation Commission, while unprecedented in scope, granted amnesty to perpetrators of torture, murder, and systematic brutality in exchange for testimony -- a bargain that victims' families frequently rejected as unjust. More structurally, the ANC's 1996 pivot from the redistributive RDP to the neoliberal GEAR strategy -- which prioritized macroeconomic stability, privatization, and investor confidence -- effectively preserved apartheid-era economic structures. South Africa's Gini coefficient remains among the world's highest. White South Africans still own a disproportionate share of land and capital. Economist Sampie Terreblanche argued in 'A History of Inequality in South Africa' that the negotiated transition amounted to a deal where the white minority surrendered political power in exchange for keeping economic power intact. Political scientist William Gumede documented in 'Thabo Mbeki and the Battle for the Soul of the ANC' that Mandela's concessions during the transition were shaped by the collapse of the Soviet Union removing the ANC's leverage, and by pressure from the IMF, World Bank, and South African business interests. The result was formal equality without substantive redistribution -- what some scholars call 'elite transition.' [Does NOT claim: This does not argue that Mandela should have pursued violent redistribution or that the transition w]",
+      "target_lang": "en",
+      "reason": "Steel-man (hero) of Nelson Mandela"
+    },
+    {
+      "source_text": "Martin Luther King Jr. \u2014 strongest honest scholarly criticism: King's nonviolent movement achieved civil rights through moral persuasion and th",
+      "source_lang": "en",
+      "target_text": "The strongest critique of King's legacy has two prongs: effectiveness and sanitization. On effectiveness, political scientist Malcolm X and later scholars like Charles Cobb ('This Nonviolent Stuff'll Get You Killed,' 2014) documented that armed self-defense by local Black communities -- the Deacons for Defense, Robert F. Williams's Monroe NAACP chapter -- provided the security infrastructure that made nonviolent protest physically survivable. The argument is not that King was wrong about nonviolence but that the standard narrative erases the armed protection that made his marches possible, and that the implicit threat of groups like the Black Panthers strengthened King's negotiating position by making him the moderate alternative. On sanitization, historian Jeanne Theoharis and others have documented how King's legacy was systematically defanged after his death: the radical King of 1967-1968 -- who called the U.S. 'the greatest purveyor of violence in the world,' demanded a guaranteed annual income, and had a 75% unfavorable rating among white Americans -- was replaced by the safe King of 'I Have a Dream,' whose words are now invoked by the very institutions he opposed to counsel patience to contemporary protesters. The sanitization itself serves a political function: it transforms a critic of capitalism, militarism, and structural racism into a symbol of patience and gradual progress. [Does NOT claim: This does not argue that King was ineffective or that his nonviolent philosophy was wrong. It argues]",
+      "target_lang": "en",
+      "reason": "Steel-man (hero) of Martin Luther King Jr."
+    },
+    {
+      "source_text": "Karl Marx \u2014 steel-man the critique his own followers would hate: Marx was a brilliant analyst of capitalism whose insights remain essential to un",
+      "source_lang": "en",
+      "target_text": "The critique Marxists least want to engage with is not that communism 'failed in practice' -- that can be deflected as misapplication -- but that Marx's core economic theory is wrong on its own terms. The labor theory of value, which holds that the value of a commodity is determined by the socially necessary labor time required to produce it, was rejected by mainstream economics after the marginal revolution of the 1870s (Jevons, Menger, Walras). The marginalists showed that value is determined by subjective utility at the margin, not by labor input -- a diamond found on the ground is worth the same as one extracted by years of mining. Marx's theory cannot account for why a bottle of wine gains value by aging in a cellar (no labor added), why identical labor produces goods of wildly different value, or why automation increases rather than destroys value. Even sympathetic Marxist economists like Ian Steedman ('Marx After Sraffa,' 1977) demonstrated that Marx's transformation problem -- converting labor values into market prices -- is mathematically inconsistent. Furthermore, Marx predicted that capitalism would immiserate the proletariat and produce falling rates of profit leading to collapse; instead, real wages in capitalist economies rose substantially over the 20th century, and capitalism has proved far more adaptable than Marx anticipated. His historical and sociological analysis may retain value, but his economics -- the part he considered most scientific -- is the weakest link. [Does NOT claim: This does not argue that Marx had nothing useful to say about capitalism, alienation, or class. It a]",
+      "target_lang": "en",
+      "reason": "Steel-man (thinker) of Karl Marx"
+    },
+    {
+      "source_text": "Adam Smith \u2014 steel-man the critique his own followers would hate: Adam Smith is the intellectual father of free-market capitalism and the invisibl",
+      "source_lang": "en",
+      "target_text": "The critique that free-market devotees least want to hear is that their own patron saint would not recognize -- and would likely oppose -- the ideology promoted in his name. The phrase 'invisible hand' appears exactly once in 'The Wealth of Nations' (Book IV, Chapter 2), once in 'The Theory of Moral Sentiments,' and once in an early essay on astronomy -- three total uses across his entire published corpus. In none of these instances does Smith argue for unregulated markets. In 'The Wealth of Nations,' he warned that merchants 'seldom meet together, even for merriment and diversion, but the conversation ends in a conspiracy against the public'; he supported public education funded by the state; he advocated progressive taxation ('It is not very unreasonable that the rich should contribute to the public expense, not only in proportion to their revenue, but something more than in that proportion'); he endorsed regulation of banking and interest rates; and he argued that workers' wages should be high enough to support a family. His earlier 'Theory of Moral Sentiments' grounded all economic behavior in sympathy and the judgment of an 'impartial spectator' -- an internalized standard of fairness -- meaning Smith never conceived of self-interest as operating in a moral vacuum. Economist Gavin Kennedy spent decades documenting how the 'invisible hand' was inflated from a minor metaphor into a foundational principle by 20th-century economists, particularly Paul Samuelson's influential textbook. The 'Adam Smith' of libertarian think tanks is, in significant respects, a fabrication. [Does NOT claim: This does not argue that Smith was a socialist or that markets are bad. It argues that the selective]",
+      "target_lang": "en",
+      "reason": "Steel-man (thinker) of Adam Smith"
+    },
+    {
+      "source_text": "Confucius \u2014 steel-man the critique his own followers would hate: Confucius taught moral self-cultivation, benevolent governance, and harmonious s",
+      "source_lang": "en",
+      "target_text": "The critique that Confucian revivalists least want to confront is that Confucianism's institutional history is primarily a history of authoritarian legitimation, and that this is not an accident but a structural feature of the philosophy itself. Confucius emphasized hierarchical relationships -- ruler-subject, father-son, husband-wife -- and while he stressed that these are reciprocal (the ruler must be virtuous), he provided no mechanism for subjects to hold rulers accountable when they are not. The 'rectification of names' doctrine, which insists that social roles carry fixed obligations, was deployed for two millennia to suppress dissent: questioning the emperor was not political opposition but a failure of filial and civic propriety. The imperial examination system, built on mastery of Confucian texts, created a bureaucratic elite whose legitimacy depended on perpetuating the very ideology that justified the imperial system. Feminist scholars including Li-Hsiang Lisa Rosenlee have documented that the Confucian framework systematically subordinated women, with the 'Three Obediences' (to father, husband, then son) and foot-binding both justified through Confucian propriety. When 'Asian values' discourse emerged in the 1990s under Lee Kuan Yew and Mahathir Mohamad, Confucianism was explicitly invoked to argue that East Asian societies did not need Western-style democracy or human rights -- the same authoritarian instrumentalization that has characterized Confucianism's political deployment since the Han dynasty. The question is whether a philosophy built on hierarchy and deference can ever be separated from its two-thousand-year record of serving power. [Does NOT claim: This does not argue that Confucius personally endorsed tyranny, foot-binding, or the suppression of ]",
+      "target_lang": "en",
+      "reason": "Steel-man (thinker) of Confucius"
+    },
+    {
+      "source_text": "John Locke \u2014 steel-man the critique his own followers would hate: Locke is the father of liberal democracy, natural rights, and government by cons",
+      "source_lang": "en",
+      "target_text": "The critique that Lockean liberals find most uncomfortable is not that Locke was personally a hypocrite but that his philosophy was structurally designed to exclude. Philosopher Charles Mills argued in 'The Racial Contract' (1997) that the social contract tradition -- Locke foremost -- established a framework of universal rights whose universality was always implicitly restricted to white, propertied European men. Locke's labor theory of property (mixing labor with nature creates ownership) was deployed immediately to justify colonial land seizure: because Indigenous peoples were deemed not to have 'improved' their land through European-style agriculture, their territories could be claimed as terra nullius. This was not a misapplication; Locke explicitly discussed America in the Second Treatise and concluded that land there was available for appropriation. His personal investments in the Royal African Company (which held England's monopoly on the slave trade) and his role drafting the Fundamental Constitutions of Carolina -- which granted slaveholders 'absolute power and authority over negro slaves' -- demonstrate that he saw no contradiction between natural rights and racial slavery. James Farr has argued that Locke's principles, consistently applied, would condemn slavery; but the point is that Locke himself did not apply them consistently, and the tradition he founded did not either, for centuries. Liberal universalism was not born universal; it was born exclusionary and was universalized later, under pressure from the very people it originally excluded. [Does NOT claim: This does not argue that natural rights are a bad idea or that liberalism is irredeemable. It argues]",
+      "target_lang": "en",
+      "reason": "Steel-man (thinker) of John Locke"
+    },
+    {
+      "source_text": "Winston Churchill \u2014 strongest honest scholarly criticism of the 'savior of democracy': Churchill saved Western civilization by standing alone against Hitler when all s",
+      "source_lang": "en",
+      "target_text": "Churchill's wartime record in Europe is genuinely heroic -- his refusal to negotiate with Hitler in May-June 1940 was consequential and courageous. But the strongest critique is that the 'savior of democracy' was simultaneously an enemy of democracy for the majority of the world's population. He opposed Indian self-governance for decades, stating in 1943 that Indians were 'a beastly people with a beastly religion.' During the Bengal famine of 1943, which killed an estimated 2-3 million people, his government continued food exports from India, diverted grain shipments to already well-supplied European destinations, and rejected urgent pleas for relief from the Viceroy Lord Linlithgow and Secretary of State Leo Amery, who wrote in his diary that Churchill's attitude toward India was 'not far from Hitler's.' Madhusree Mukerjee's 'Churchill's Secret War' (2010) documents that the famine was not caused by crop failure but by wartime policy decisions including inflation, speculation, and denial of imports. Historian Richard Toye's 'Churchill's Empire' (2010) catalogues a career-long pattern of racial hierarchy thinking that was extreme even by the standards of British imperialism. The uncomfortable synthesis is that Churchill defended democracy for white Europeans while actively opposing it for the colonized majority of humanity -- a contradiction that the standard narrative resolves by simply not mentioning the colonial record. [Does NOT claim: This does not argue that Churchill's wartime leadership in Europe was unimportant or that resisting ]",
+      "target_lang": "en",
+      "reason": "Steel-man (hero-with-dark-record) of Winston Churchill"
+    },
+    {
+      "source_text": "Pablo Picasso \u2014 strongest honest critique of the celebrated genius: Picasso was the most important artist of the 20th century, a revolutionary who s",
+      "source_lang": "en",
+      "target_text": "The critique Picasso admirers find most difficult has two edges. The first is that Cubism -- his signature achievement -- was built on unacknowledged appropriation from African and Iberian sculptural traditions. The faces in 'Les Demoiselles d'Avignon' (1907) are directly modeled on African masks from the Trocadero museum in Paris, objects that arrived through colonial extraction. Picasso alternately acknowledged and denied this debt throughout his life, and the resulting movement was marketed as a purely European innovation. African artists received no recognition, no compensation, and no influence over how their formal innovations -- geometric abstraction, non-perspectival space, conceptual representation -- were used. As Ugandan artist Francis Nnaggenda stated: 'People tell me my work looks like Picasso, but they have it wrong -- it is Picasso who looks like me, like Africa.' The second edge is personal: Picasso's treatment of the women in his life was not merely flawed but systematically destructive. His granddaughter Marina Picasso wrote that 'he submitted them to his animal sexuality, tamed them, bewitched them, ingested them, and crushed them onto his canvas.' Two of his partners -- Marie-Therese Walter and Jacqueline Roque -- died by suicide. The art world's willingness to separate the art from the artist in Picasso's case, while applying harsher standards to less powerful figures, reveals how genius mythologies function as shields for abuse. [Does NOT claim: This does not argue that Cubism was unoriginal or that Picasso had no talent. It argues that the sta]",
+      "target_lang": "en",
+      "reason": "Steel-man (artist) of Pablo Picasso"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Adolf Hitler \u2014 strongest historical explanation for mass support: Hitler was a uniquely evil demagogue who hypnotized a nation through propaganda ",
+      "kind": "public_record",
+      "locator": "https://archive.org/details/risefallofthirdr00shir",
+      "reason": "Shirer, William L. 'The Rise and Fall of the Third Reich.' Simon & Schuster, 1960."
+    },
+    {
+      "pair_source": "Adolf Hitler \u2014 strongest historical explanation for mass support: Hitler was a uniquely evil demagogue who hypnotized a nation through propaganda ",
+      "kind": "public_record",
+      "locator": "https://www.penguinrandomhouse.com/books/292025/the-coming-of-the-third-reich-by-richard-j-evans/",
+      "reason": "Evans, Richard J. 'The Coming of the Third Reich.' Penguin, 2003."
+    },
+    {
+      "pair_source": "Adolf Hitler \u2014 strongest historical explanation for mass support: Hitler was a uniquely evil demagogue who hypnotized a nation through propaganda ",
+      "kind": "public_record",
+      "locator": "https://gking.harvard.edu/publications/ordinary-economic-voting-behavior-extraordinary-election-adolf-hitler",
+      "reason": "King, Gary et al. 'Ordinary Economic Voting Behavior in the Extraordinary Election of Adolf Hitler.' Journal of Economic History, 2008."
+    },
+    {
+      "pair_source": "Joseph Stalin \u2014 strongest historical argument for the industrialization thesis: Stalin was a paranoid tyrant whose policies caused millions of deaths through fa",
+      "kind": "public_record",
+      "locator": "https://www.penguinrandomhouse.com/books/78543/stalin-by-stephen-kotkin/",
+      "reason": "Kotkin, Stephen. 'Stalin: Paradoxes of Power, 1878-1928.' Penguin, 2014."
+    },
+    {
+      "pair_source": "Joseph Stalin \u2014 strongest historical argument for the industrialization thesis: Stalin was a paranoid tyrant whose policies caused millions of deaths through fa",
+      "kind": "public_record",
+      "locator": "https://press.princeton.edu/books/paperback/9780691144313/farm-to-factory",
+      "reason": "Allen, Robert C. 'Farm to Factory: A Reinterpretation of the Soviet Industrial Revolution.' Princeton University Press, 2003."
+    },
+    {
+      "pair_source": "Joseph Stalin \u2014 strongest historical argument for the industrialization thesis: Stalin was a paranoid tyrant whose policies caused millions of deaths through fa",
+      "kind": "public_record",
+      "locator": "https://www.cambridge.org/core/books/economics-of-world-war-ii/3B1D5F5B6BD1D19E35A4F1F0A7EB16F9",
+      "reason": "Harrison, Mark. 'The Economics of World War II: Six Great Powers in International Comparison.' Cambridge University Press, 1998."
+    },
+    {
+      "pair_source": "Mao Zedong \u2014 strongest historical argument for revolutionary-era support: Mao was a megalomaniac whose Great Leap Forward and Cultural Revolution caused t",
+      "kind": "public_record",
+      "locator": "https://www.bloomsbury.com/us/tragedy-of-liberation-9781620403471/",
+      "reason": "Dikotter, Frank. 'The Tragedy of Liberation: A History of the Chinese Revolution 1945-1957.' Bloomsbury, 2013."
+    },
+    {
+      "pair_source": "Mao Zedong \u2014 strongest historical argument for revolutionary-era support: Mao was a megalomaniac whose Great Leap Forward and Cultural Revolution caused t",
+      "kind": "public_record",
+      "locator": "https://www.sup.org/books/title/?id=2609",
+      "reason": "Banister, Judith. 'China's Changing Population.' Stanford University Press, 1987."
+    },
+    {
+      "pair_source": "Mao Zedong \u2014 strongest historical argument for revolutionary-era support: Mao was a megalomaniac whose Great Leap Forward and Cultural Revolution caused t",
+      "kind": "public_record",
+      "locator": "https://mitpress.mit.edu/9780262534796/the-chinese-economy/",
+      "reason": "Naughton, Barry. 'The Chinese Economy: Adaptation and Growth.' MIT Press, 2018."
+    },
+    {
+      "pair_source": "Mahatma Gandhi \u2014 strongest honest scholarly criticism: Gandhi's nonviolent resistance defeated the British Empire through moral force, ",
+      "kind": "public_record",
+      "locator": "https://www.basicbooks.com/titles/srinath-raghavan/indias-war/9780465030224/",
+      "reason": "Raghavan, Srinath. 'India's War: World War II and the Making of Modern South Asia.' Basic Books, 2016."
+    },
+    {
+      "pair_source": "Mahatma Gandhi \u2014 strongest honest scholarly criticism: Gandhi's nonviolent resistance defeated the British Empire through moral force, ",
+      "kind": "public_record",
+      "locator": "https://www.navayana.org/product/annihilation-of-caste-2/",
+      "reason": "Ambedkar, B.R. 'Annihilation of Caste.' 1936. (Annotated critical edition by S. Anand, Navayana, 2014.)"
+    },
+    {
+      "pair_source": "Mahatma Gandhi \u2014 strongest honest scholarly criticism: Gandhi's nonviolent resistance defeated the British Empire through moral force, ",
+      "kind": "public_record",
+      "locator": "https://www.sup.org/books/title/?id=25003",
+      "reason": "Desai, Ashwin and Vahed, Goolam. 'The South African Gandhi: Stretcher-Bearer of Empire.' Stanford University Press, 2015."
+    },
+    {
+      "pair_source": "Nelson Mandela \u2014 strongest honest scholarly criticism: Mandela's reconciliation healed South Africa and proved that peaceful transition",
+      "kind": "public_record",
+      "locator": "https://www.amazon.com/History-Inequality-South-Africa-1652-2002/dp/0869809849",
+      "reason": "Terreblanche, Sampie. 'A History of Inequality in South Africa, 1652-2002.' University of Natal Press, 2002."
+    },
+    {
+      "pair_source": "Nelson Mandela \u2014 strongest honest scholarly criticism: Mandela's reconciliation healed South Africa and proved that peaceful transition",
+      "kind": "public_record",
+      "locator": "https://www.bloomsbury.com/us/thabo-mbeki-and-the-battle-for-the-soul-of-the-anc-9781842778968/",
+      "reason": "Gumede, William. 'Thabo Mbeki and the Battle for the Soul of the ANC.' Zed Books, 2007."
+    },
+    {
+      "pair_source": "Nelson Mandela \u2014 strongest honest scholarly criticism: Mandela's reconciliation healed South Africa and proved that peaceful transition",
+      "kind": "public_record",
+      "locator": "https://www.plutobooks.com/9780745334837/elite-transition/",
+      "reason": "Bond, Patrick. 'Elite Transition: From Apartheid to Neoliberalism in South Africa.' Pluto Press, 2014."
+    },
+    {
+      "pair_source": "Martin Luther King Jr. \u2014 strongest honest scholarly criticism: King's nonviolent movement achieved civil rights through moral persuasion and th",
+      "kind": "public_record",
+      "locator": "https://www.basicbooks.com/titles/charles-e-cobb-jr/this-nonviolent-stuffll-get-you-killed/9780465033102/",
+      "reason": "Cobb, Charles E. Jr. 'This Nonviolent Stuff'll Get You Killed: How Guns Made the Civil Rights Movement Possible.' Basic Books, 2014."
+    },
+    {
+      "pair_source": "Martin Luther King Jr. \u2014 strongest honest scholarly criticism: King's nonviolent movement achieved civil rights through moral persuasion and th",
+      "kind": "public_record",
+      "locator": "https://www.beacon.org/A-More-Beautiful-and-Terrible-History-P1390.aspx",
+      "reason": "Theoharis, Jeanne. 'A More Beautiful and Terrible History: The Uses and Misuses of Civil Rights History.' Beacon Press, 2018."
+    },
+    {
+      "pair_source": "Martin Luther King Jr. \u2014 strongest honest scholarly criticism: King's nonviolent movement achieved civil rights through moral persuasion and th",
+      "kind": "public_record",
+      "locator": "https://kinginstitute.stanford.edu/encyclopedia/beyond-vietnam",
+      "reason": "King, Martin Luther Jr. 'Beyond Vietnam: A Time to Break Silence.' April 4, 1967. Riverside Church, New York."
+    },
+    {
+      "pair_source": "Karl Marx \u2014 steel-man the critique his own followers would hate: Marx was a brilliant analyst of capitalism whose insights remain essential to un",
+      "kind": "public_record",
+      "locator": "https://www.versobooks.com/products/1126-marx-after-sraffa",
+      "reason": "Steedman, Ian. 'Marx After Sraffa.' NLB, 1977."
+    },
+    {
+      "pair_source": "Karl Marx \u2014 steel-man the critique his own followers would hate: Marx was a brilliant analyst of capitalism whose insights remain essential to un",
+      "kind": "public_record",
+      "locator": "https://archive.org/details/karlmarxcloseohi00bohm",
+      "reason": "Bohm-Bawerk, Eugen von. 'Karl Marx and the Close of His System.' 1896. (Reprinted by Martino Fine Books, 2007.)"
+    },
+    {
+      "pair_source": "Karl Marx \u2014 steel-man the critique his own followers would hate: Marx was a brilliant analyst of capitalism whose insights remain essential to un",
+      "kind": "public_record",
+      "locator": "https://www.jstor.org/stable/2721055",
+      "reason": "Samuelson, Paul. 'Understanding the Marxian Notion of Exploitation: A Summary of the So-Called Transformation Problem.' Journal of Economic Literature, 1971."
+    },
+    {
+      "pair_source": "Adam Smith \u2014 steel-man the critique his own followers would hate: Adam Smith is the intellectual father of free-market capitalism and the invisibl",
+      "kind": "public_record",
+      "locator": "https://econjwatch.org/articles/adam-smith-and-the-invisible-hand-from-metaphor-to-myth",
+      "reason": "Kennedy, Gavin. 'Adam Smith and the Invisible Hand: From Metaphor to Myth.' Econ Journal Watch, 2009."
+    },
+    {
+      "pair_source": "Adam Smith \u2014 steel-man the critique his own followers would hate: Adam Smith is the intellectual father of free-market capitalism and the invisibl",
+      "kind": "public_record",
+      "locator": "https://press.princeton.edu/books/hardcover/9780691177014/the-infidel-and-the-professor",
+      "reason": "Rasmussen, Dennis C. 'The Infidel and the Professor: David Hume, Adam Smith, and the Friendship That Shaped Modern Thought.' Princeton University Press, 2017."
+    },
+    {
+      "pair_source": "Adam Smith \u2014 steel-man the critique his own followers would hate: Adam Smith is the intellectual father of free-market capitalism and the invisibl",
+      "kind": "public_record",
+      "locator": "https://www.hup.harvard.edu/books/9780674008373",
+      "reason": "Rothschild, Emma. 'Economic Sentiments: Adam Smith, Condorcet, and the Enlightenment.' Harvard University Press, 2001."
+    },
+    {
+      "pair_source": "Confucius \u2014 steel-man the critique his own followers would hate: Confucius taught moral self-cultivation, benevolent governance, and harmonious s",
+      "kind": "public_record",
+      "locator": "https://sunypress.edu/Books/C/Confucianism-and-Women",
+      "reason": "Rosenlee, Li-Hsiang Lisa. 'Confucianism and Women: A Philosophical Interpretation.' SUNY Press, 2006."
+    },
+    {
+      "pair_source": "Confucius \u2014 steel-man the critique his own followers would hate: Confucius taught moral self-cultivation, benevolent governance, and harmonious s",
+      "kind": "public_record",
+      "locator": "https://press.princeton.edu/books/paperback/9780691145853/chinas-new-confucianism",
+      "reason": "Bell, Daniel A. 'China's New Confucianism: Politics and Everyday Life in a Changing Society.' Princeton University Press, 2008."
+    },
+    {
+      "pair_source": "Confucius \u2014 steel-man the critique his own followers would hate: Confucius taught moral self-cultivation, benevolent governance, and harmonious s",
+      "kind": "public_record",
+      "locator": "https://www.ucpress.edu/book/9780520215092",
+      "reason": "Elman, Benjamin A. 'A Cultural History of Civil Examinations in Late Imperial China.' University of California Press, 2000."
+    },
+    {
+      "pair_source": "John Locke \u2014 steel-man the critique his own followers would hate: Locke is the father of liberal democracy, natural rights, and government by cons",
+      "kind": "public_record",
+      "locator": "https://www.cornellpress.cornell.edu/book/9780801484636/the-racial-contract/",
+      "reason": "Mills, Charles W. 'The Racial Contract.' Cornell University Press, 1997."
+    },
+    {
+      "pair_source": "John Locke \u2014 steel-man the critique his own followers would hate: Locke is the father of liberal democracy, natural rights, and government by cons",
+      "kind": "public_record",
+      "locator": "https://www.jstor.org/stable/20452639",
+      "reason": "Farr, James. 'Locke, Natural Law, and New World Slavery.' Political Theory, 2008."
+    },
+    {
+      "pair_source": "John Locke \u2014 steel-man the critique his own followers would hate: Locke is the father of liberal democracy, natural rights, and government by cons",
+      "kind": "public_record",
+      "locator": "https://global.oup.com/academic/product/john-locke-and-america-9780198279679",
+      "reason": "Arneil, Barbara. 'John Locke and America: The Defence of English Colonialism.' Oxford University Press, 1996."
+    },
+    {
+      "pair_source": "Winston Churchill \u2014 strongest honest scholarly criticism of the 'savior of democracy': Churchill saved Western civilization by standing alone against Hitler when all s",
+      "kind": "public_record",
+      "locator": "https://www.basicbooks.com/titles/madhusree-mukerjee/churchills-secret-war/9780465024810/",
+      "reason": "Mukerjee, Madhusree. 'Churchill's Secret War: The British Empire and the Ravaging of India During World War II.' Basic Books, 2010."
+    },
+    {
+      "pair_source": "Winston Churchill \u2014 strongest honest scholarly criticism of the 'savior of democracy': Churchill saved Western civilization by standing alone against Hitler when all s",
+      "kind": "public_record",
+      "locator": "https://us.macmillan.com/books/9780805087567/churchillsempire",
+      "reason": "Toye, Richard. 'Churchill's Empire: The World That Made Him and the World He Made.' Henry Holt, 2010."
+    },
+    {
+      "pair_source": "Winston Churchill \u2014 strongest honest scholarly criticism of the 'savior of democracy': Churchill saved Western civilization by standing alone against Hitler when all s",
+      "kind": "public_record",
+      "locator": "https://www.nytimes.com/2019/01/17/opinion/sunday/brexit-british-empire.html",
+      "reason": "Mishra, Pankaj. 'The Malign Incompetence of the British Ruling Class.' The New York Times, January 2019."
+    },
+    {
+      "pair_source": "Pablo Picasso \u2014 strongest honest critique of the celebrated genius: Picasso was the most important artist of the 20th century, a revolutionary who s",
+      "kind": "public_record",
+      "locator": "https://www.ucpress.edu/book/9780520215030",
+      "reason": "Flam, Jack and Deutch, Miriam, eds. 'Primitivism and Twentieth-Century Art: A Documentary History.' University of California Press, 2003."
+    },
+    {
+      "pair_source": "Pablo Picasso \u2014 strongest honest critique of the celebrated genius: Picasso was the most important artist of the 20th century, a revolutionary who s",
+      "kind": "public_record",
+      "locator": "https://www.nyrb.com/products/life-with-picasso",
+      "reason": "Gilot, Francoise. 'Life with Picasso.' McGraw-Hill, 1964."
+    },
+    {
+      "pair_source": "Pablo Picasso \u2014 strongest honest critique of the celebrated genius: Picasso was the most important artist of the 20th century, a revolutionary who s",
+      "kind": "public_record",
+      "locator": "https://www.penguinrandomhouse.com/books/98218/picasso-by-marina-picasso/",
+      "reason": "Picasso, Marina. 'Picasso: My Grandfather.' Riverhead Books, 2001."
+    }
+  ]
+}

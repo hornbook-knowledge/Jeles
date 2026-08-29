@@ -1,0 +1,203 @@
+{
+  "domain": "core-food-body",
+  "pairs": [
+    {
+      "source_text": "Why does bread rise when you bake it?",
+      "source_lang": "en",
+      "target_text": "Yeast in bread dough feeds on sugars and produces carbon dioxide gas as a byproduct. The protein gluten, formed when you knead flour with water, creates an elastic network that traps those gas bubbles like tiny balloons. Kneading develops the gluten so it becomes stretchy enough to hold the gas without tearing. When the dough goes into the hot oven, the gas expands rapidly and the gluten sets, giving bread its airy, spongy texture.",
+      "target_lang": "en",
+      "reason": "Bread is one of the oldest and most universal foods; understanding leavening connects basic chemistry to everyday cooking."
+    },
+    {
+      "source_text": "What actually happens to food after you swallow it?",
+      "source_lang": "en",
+      "target_text": "Your mouth breaks food down mechanically with teeth and chemically with saliva enzymes that start digesting starches. The stomach then churns it in hydrochloric acid strong enough to dissolve metal, killing most bacteria and breaking proteins apart. The small intestine is where the real absorption happens -- its walls are covered in tiny finger-like projections called villi that give it a surface area roughly the size of a tennis court, pulling nutrients into your blood. The large intestine absorbs water from what's left and houses trillions of bacteria that ferment remaining fiber, and the rest exits as waste.",
+      "target_lang": "en",
+      "reason": "Digestion is the body's most fundamental daily process; understanding it demystifies nutrition, illness, and gut health."
+    },
+    {
+      "source_text": "Why do you need to cook chicken thoroughly but can eat raw salmon in sushi?",
+      "source_lang": "en",
+      "target_text": "Chicken commonly harbors Salmonella and Campylobacter bacteria throughout its muscle tissue, not just on the surface, so only thorough cooking -- reaching 74 C (165 F) internally -- kills them reliably. Many fish used for sushi are ocean species where harmful parasites are less common than in land animals, and commercial sushi-grade fish is flash-frozen to minus 20 C or colder for days, which kills any parasites present. Cooking works by denaturing proteins in both the food and in any microbes, essentially unraveling their molecular machinery so they can no longer function. This is also why properly handled beef can be eaten rare: surface bacteria are killed by searing, and the interior of a solid cut is typically sterile.",
+      "target_lang": "en",
+      "reason": "Safe food handling prevents millions of cases of foodborne illness yearly; knowing why some meats need cooking is practical survival knowledge."
+    },
+    {
+      "source_text": "How does a fever actually help you fight an infection?",
+      "source_lang": "en",
+      "target_text": "When your immune system detects an invader, it releases chemicals called pyrogens that signal the hypothalamus in your brain to raise your body's temperature set point. The higher temperature speeds up immune cell activity, makes it harder for many bacteria and viruses to reproduce, and increases production of infection-fighting proteins. A mild fever of 38-39 C (100-102 F) is generally your body doing its job. It becomes dangerous above about 40 C (104 F), because at that point your own proteins can start to denature and your organs, especially the brain, can be damaged.",
+      "target_lang": "en",
+      "reason": "Fever is one of the most common symptoms people experience; understanding its purpose helps people make informed decisions about when to treat it."
+    },
+    {
+      "source_text": "Why does a cut stop bleeding on its own?",
+      "source_lang": "en",
+      "target_text": "When a blood vessel is damaged, tiny cell fragments called platelets rush to the site and stick together like a living patch, forming a temporary plug within seconds. Then a chain reaction called the clotting cascade kicks in: a series of proteins in your blood activate each other in sequence, ultimately producing fibrin threads that weave through the platelet plug to form a stable clot. This is why hemophilia, where one protein in that cascade is missing, causes dangerous bleeding from even small injuries. Deep or wide cuts may need stitches because the wound edges are too far apart for this natural clotting process to bridge the gap effectively.",
+      "target_lang": "en",
+      "reason": "Wound healing is a universal human experience; understanding clotting explains first aid decisions and bleeding disorders."
+    },
+    {
+      "source_text": "How do vaccines teach your body to fight a disease it has never had?",
+      "source_lang": "en",
+      "target_text": "A vaccine introduces your immune system to a harmless version of a pathogen -- it might be a weakened or killed virus, or just a distinctive piece of its surface protein. Your immune system mounts a full response, producing antibodies and, crucially, creating memory cells that persist for years or decades. If the real pathogen shows up later, those memory cells recognize it immediately and launch a massive, rapid response before you get seriously ill. When enough people in a community are vaccinated, the pathogen can't find enough unprotected hosts to spread through, which is called herd immunity and protects people who genuinely cannot be vaccinated.",
+      "target_lang": "en",
+      "reason": "Vaccination is one of the most impactful medical interventions in history; understanding the mechanism counters misinformation and informs public health choices."
+    },
+    {
+      "source_text": "Why does food go bad if you leave it out, and how does a refrigerator help?",
+      "source_lang": "en",
+      "target_text": "Food spoils because bacteria, molds, and yeasts are everywhere -- on surfaces, in the air, on your hands -- and food is an ideal growth medium full of moisture and nutrients. At room temperature, bacteria can double their population every 20 minutes, meaning a single bacterium can become millions in just hours. Refrigeration at around 4 C (40 F) slows bacterial metabolism dramatically but does not stop it, which is why even refrigerated food eventually spoils. A 'use by' date is a safety deadline, especially for perishables like meat and dairy, while a 'best by' date is about quality -- the food is usually still safe to eat after that date, just potentially less fresh in taste or texture.",
+      "target_lang": "en",
+      "reason": "Food spoilage affects every household daily; understanding it reduces both food waste and foodborne illness."
+    },
+    {
+      "source_text": "How does salt preserve food and keep it from rotting?",
+      "source_lang": "en",
+      "target_text": "Salt preserves food through osmosis: when you pack food in salt or soak it in brine, the high salt concentration outside bacterial cells draws water out of them, essentially dehydrating and killing them. This is the principle behind curing ham, salting cod, and making pickles. The ocean doesn't rot for the same fundamental reason -- its roughly 3.5% salt concentration is hostile enough to prevent the unchecked bacterial growth that causes decay on land. Ancient civilizations valued salt so highly that Roman soldiers were sometimes paid with it, giving us the word 'salary.'",
+      "target_lang": "en",
+      "reason": "Salt preservation is one of the oldest food technologies; understanding osmosis connects a kitchen staple to biology and history."
+    },
+    {
+      "source_text": "Why do onions make you cry when you cut them?",
+      "source_lang": "en",
+      "target_text": "When you slice an onion, you break open its cells and release enzymes that rapidly convert sulfur compounds into a volatile gas called syn-propanethial-S-oxide. This gas drifts up to your eyes, dissolves in the moisture on their surface, and forms a mild sulfuric acid that irritates your nerve endings. Your eyes respond by producing tears to flush out the irritant -- it's a defensive reflex. Cutting onions under running water or chilling them first helps because the water washes away the gas before it reaches your eyes, and cold temperatures slow down the enzyme reaction that produces it.",
+      "target_lang": "en",
+      "reason": "This is a universally experienced kitchen puzzle; the answer illustrates how plants evolved chemical defenses against being eaten."
+    },
+    {
+      "source_text": "How does caffeine wake you up, and why do you crash later?",
+      "source_lang": "en",
+      "target_text": "Throughout the day, a chemical called adenosine gradually builds up in your brain and binds to receptors that make you feel sleepy -- it's your body's way of tracking how long you've been awake. Caffeine molecules are shaped enough like adenosine to fit into the same receptors, but without triggering the sleepiness signal, effectively blocking the 'tired' message. The crash comes because adenosine keeps accumulating behind the blockade; when the caffeine wears off after a few hours, all that built-up adenosine floods the receptors at once and you feel even more tired than before. With regular use, your brain grows extra adenosine receptors to compensate, which is why habitual coffee drinkers need more caffeine to feel the same effect -- that's tolerance.",
+      "target_lang": "en",
+      "reason": "Caffeine is the world's most widely consumed psychoactive substance; understanding its mechanism explains daily energy patterns and dependency."
+    },
+    {
+      "source_text": "Why do you get thirsty, and what happens if you ignore it?",
+      "source_lang": "en",
+      "target_text": "Your brain has specialized sensors in the hypothalamus that constantly monitor the concentration of dissolved salts in your blood -- its osmolarity. When you lose water through sweat, breathing, or urination, your blood becomes more concentrated, and these sensors trigger the sensation of thirst while also releasing antidiuretic hormone (ADH), which tells your kidneys to reabsorb more water instead of sending it to your bladder. Even mild dehydration of 1-2% body water loss impairs concentration and physical performance. Severe dehydration is dangerous because your blood volume drops, your heart has to work harder to circulate thickened blood, and your organs can begin to shut down.",
+      "target_lang": "en",
+      "reason": "Thirst is the body's most fundamental survival signal; understanding it helps people recognize and prevent dehydration."
+    },
+    {
+      "source_text": "Why does it take so long for your eyes to adjust when you walk into a dark room?",
+      "source_lang": "en",
+      "target_text": "Your retina has two types of light-detecting cells: cones for color vision in bright light, and rods for sensitive black-and-white vision in dim light. Rods rely on a light-sensitive pigment called rhodopsin, which gets bleached and broken apart by bright light. When you enter darkness, your eyes need to chemically regenerate that rhodopsin, and this process takes about 20 to 30 minutes to complete fully. This is why sailors and astronomers traditionally used red light at night -- red wavelengths don't bleach rhodopsin as much, so your dark adaptation is preserved.",
+      "target_lang": "en",
+      "reason": "Dark adaptation is a nightly experience; understanding it reveals how biological chemistry governs perception on a timescale we can actually feel."
+    },
+    {
+      "source_text": "Why are your muscles sore the day after a hard workout instead of right away?",
+      "source_lang": "en",
+      "target_text": "The soreness you feel 24 to 72 hours after intense or unfamiliar exercise is called delayed onset muscle soreness (DOMS), and it's caused by microscopic tears in your muscle fibers, especially from eccentric movements like running downhill or lowering weights. Your body's inflammatory response to repair these micro-tears is what produces the pain and stiffness -- immune cells flood the area, clean up damaged tissue, and stimulate rebuilding. Contrary to popular belief, it's not caused by lactic acid buildup; lactic acid is cleared from muscles within an hour of exercise. The good news is that the repair process makes the muscle fibers stronger and more resistant, which is why the same workout hurts less the second time.",
+      "target_lang": "en",
+      "reason": "Exercise soreness is universally experienced and widely misunderstood; correcting the lactic acid myth is a classic example of updating folk knowledge with science."
+    },
+    {
+      "source_text": "How do antibiotics kill bacteria without harming your own cells?",
+      "source_lang": "en",
+      "target_text": "Antibiotics exploit structural differences between bacterial cells and human cells. For example, penicillin blocks the construction of bacterial cell walls -- a rigid outer layer that bacteria need to survive but that human cells don't have at all. Other antibiotics target bacterial ribosomes (their protein-making machinery), which are a different size and shape from human ribosomes. This selectivity is why antibiotics don't work on viruses: viruses have no cell walls, no ribosomes of their own, and instead hijack your own cells' machinery to reproduce, so there's nothing for the antibiotic to target without harming you.",
+      "target_lang": "en",
+      "reason": "Antibiotic resistance is a growing global health crisis; understanding how antibiotics work explains why misuse accelerates resistance and why they are useless against colds and flu."
+    },
+    {
+      "source_text": "Why does an egg become solid when you cook it, and why can't you uncook it?",
+      "source_lang": "en",
+      "target_text": "A raw egg is mostly water with proteins floating in it, and those proteins are tightly folded into compact shapes held together by weak chemical bonds. Heat breaks those bonds and causes the proteins to unfold and then tangle together into a dense, interconnected mesh -- a process called denaturation. This tangled mesh traps water and turns the liquid egg white opaque and firm. You can't uncook an egg because re-folding each protein back into its original precise shape would require undoing millions of random tangles -- it's like trying to unscramble a scrambled egg, which is in fact the same process at a larger scale.",
+      "target_lang": "en",
+      "reason": "Protein denaturation is one of the most fundamental concepts in both cooking and biology; the egg is the perfect everyday demonstration of irreversible chemical change."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Why does bread rise when you bake it?",
+      "kind": "url",
+      "locator": "https://www.kingarthurbaking.com/blog/2017/04/07/how-yeast-works",
+      "reason": "Explains the role of yeast fermentation, CO2 production, and gluten structure in bread rising"
+    },
+    {
+      "pair_source": "What actually happens to food after you swallow it?",
+      "kind": "url",
+      "locator": "https://www.niddk.nih.gov/health-information/digestive-diseases/digestive-system-how-it-works",
+      "reason": "NIH overview of the digestive process from mouth through large intestine, including villi and absorption"
+    },
+    {
+      "pair_source": "Why do you need to cook chicken thoroughly but can eat raw salmon in sushi?",
+      "kind": "url",
+      "locator": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-fresh-and-frozen-seafood-safely",
+      "reason": "FDA guidance on parasite destruction through freezing for raw fish consumption and safe cooking temperatures"
+    },
+    {
+      "pair_source": "How does a fever actually help you fight an infection?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK279457/",
+      "reason": "InformedHealth.org review of fever mechanisms, pyrogens, hypothalamic set point, and when fever becomes dangerous"
+    },
+    {
+      "pair_source": "Why does a cut stop bleeding on its own?",
+      "kind": "url",
+      "locator": "https://www.hematology.org/education/patients/blood-clots",
+      "reason": "American Society of Hematology explanation of platelet plugs, the clotting cascade, and fibrin formation"
+    },
+    {
+      "pair_source": "How do vaccines teach your body to fight a disease it has never had?",
+      "kind": "url",
+      "locator": "https://www.who.int/news-room/feature-stories/detail/how-do-vaccines-work",
+      "reason": "WHO explanation of adaptive immunity, memory cells, and herd immunity in vaccination"
+    },
+    {
+      "pair_source": "Why does food go bad if you leave it out, and how does a refrigerator help?",
+      "kind": "url",
+      "locator": "https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely",
+      "reason": "FDA guidance on bacterial growth rates at various temperatures and the meaning of date labels on food"
+    },
+    {
+      "pair_source": "How does salt preserve food and keep it from rotting?",
+      "kind": "url",
+      "locator": "https://www.scienceofcooking.com/how_does_salt_preserve_food.htm",
+      "reason": "Explains osmotic dehydration of bacteria through salt concentration and the history of salt curing"
+    },
+    {
+      "pair_source": "Why do onions make you cry when you cut them?",
+      "kind": "url",
+      "locator": "https://www.loc.gov/everyday-mysteries/chemistry/item/why-does-chopping-an-onion-make-you-cry/",
+      "reason": "Library of Congress explanation of syn-propanethial-S-oxide production and tear reflex mechanism"
+    },
+    {
+      "pair_source": "How does caffeine wake you up, and why do you crash later?",
+      "kind": "url",
+      "locator": "https://www.sleepfoundation.org/nutrition/caffeine-and-sleep",
+      "reason": "Explains adenosine receptor blocking, caffeine half-life, crash mechanism, and tolerance development"
+    },
+    {
+      "pair_source": "Why do you get thirsty, and what happens if you ignore it?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK555956/",
+      "reason": "StatPearls review of osmolarity sensing, ADH release, and physiological effects of dehydration"
+    },
+    {
+      "pair_source": "Why does it take so long for your eyes to adjust when you walk into a dark room?",
+      "kind": "url",
+      "locator": "https://www.aao.org/eye-health/anatomy/rods",
+      "reason": "American Academy of Ophthalmology description of rod cells, rhodopsin regeneration, and dark adaptation timeline"
+    },
+    {
+      "pair_source": "Why are your muscles sore the day after a hard workout instead of right away?",
+      "kind": "url",
+      "locator": "https://www.acsm.org/blog-detail/acsm-blog/2019/10/01/delayed-onset-muscle-soreness-doms",
+      "reason": "ACSM explanation of DOMS mechanism, micro-tear repair, and debunking the lactic acid myth"
+    },
+    {
+      "pair_source": "How do antibiotics kill bacteria without harming your own cells?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK535443/",
+      "reason": "StatPearls overview of antibiotic mechanisms targeting cell walls and bacterial ribosomes, and why viruses are unaffected"
+    },
+    {
+      "pair_source": "Why does an egg become solid when you cook it, and why can't you uncook it?",
+      "kind": "url",
+      "locator": "https://www.exploratorium.edu/cooking/eggs/eggscience.html",
+      "reason": "Exploratorium science of cooking explanation of protein denaturation, unfolding, and irreversible aggregation in eggs"
+    }
+  ]
+}
