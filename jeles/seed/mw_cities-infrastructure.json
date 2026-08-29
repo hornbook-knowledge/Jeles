@@ -1,0 +1,300 @@
+{
+  "domain": "modern-world-cities",
+  "pairs": [
+    {
+      "source_text": "How does a municipal water treatment plant turn river water into safe drinking water?",
+      "source_lang": "en",
+      "target_text": "Municipal water treatment follows a multi-stage process: screening removes large debris, then coagulants like alum or ferric chloride cause suspended particles to clump into 'flocs' during coagulation and flocculation. These clumps settle out in sedimentation basins, and the water passes through sand and activated-carbon filters to catch remaining particles. Finally, disinfection with chlorine, chloramine, or UV light kills pathogens. The EPA sets enforceable Maximum Contaminant Levels for over 90 substances. A large plant like the Jardine Water Purification Plant in Chicago can treat up to one billion gallons per day, serving roughly five million people.",
+      "target_lang": "en",
+      "reason": "Water treatment is the invisible foundation of urban public health, preventing cholera and other waterborne diseases that devastated cities before the 20th century."
+    },
+    {
+      "source_text": "What do water towers actually do, and how does gravity create water pressure?",
+      "source_lang": "en",
+      "target_text": "Water towers act as giant pressure batteries. Pumps fill the tower during low-demand hours (typically overnight), and gravity feeds that stored water back into the distribution system during peak use. The physics is simple: every 2.31 feet of water height produces one pound per square inch (PSI) of pressure. A typical water tower stands about 165 feet tall and delivers 50 to 100 PSI to household taps, enough for showers on upper floors and for fire hydrants. This gravity-driven system means a city can maintain pressure even if pumps fail temporarily, providing a critical buffer during power outages and emergencies.",
+      "target_lang": "en",
+      "reason": "Water towers are one of the most visible pieces of urban infrastructure, yet most people do not understand why they are elevated or how they maintain pressure without constant pumping."
+    },
+    {
+      "source_text": "Why do US water mains keep breaking, and how much does it cost to fix them?",
+      "source_lang": "en",
+      "target_text": "A water main breaks somewhere in the United States roughly every two minutes, totaling about 240,000 breaks per year and wasting over six billion gallons of treated water daily. The root cause is age: approximately 33 percent of water mains in the US and Canada are more than 50 years old, and the average age of a failing main is 53 years. Many cast-iron pipes installed in the early 1900s have corroded past their design life. The American Society of Civil Engineers estimates it will cost $452 billion to replace the roughly 770,000 miles of mains that have exceeded their useful life, at roughly $1 million per mile. The American Water Works Association projects total underground pipe restoration costs of at least $1 trillion over 25 years.",
+      "target_lang": "en",
+      "reason": "Aging water infrastructure is a slow-motion crisis affecting every American city, and the scale of deferred maintenance determines future water rates and service reliability."
+    },
+    {
+      "source_text": "What happens to sewage after you flush the toilet in a city?",
+      "source_lang": "en",
+      "target_text": "When you flush, wastewater flows by gravity through a lateral pipe from your building to a city sewer main, typically 6 to 10 feet underground. It travels to a wastewater treatment plant, where primary treatment uses settling tanks to remove solids, secondary treatment uses bacteria in aeration basins to consume organic matter, and tertiary treatment may add filtration and chemical disinfection. The cleaned effluent is discharged to a river, lake, or ocean outfall. Separated solids, called biosolids, are digested, dewatered, and either landfilled, incinerated, or applied as agricultural fertilizer. A large plant like DC Water's Blue Plains in Washington, DC processes up to 384 million gallons per day, making it the largest advanced wastewater treatment plant in the world.",
+      "target_lang": "en",
+      "reason": "Wastewater treatment is the unsung counterpart to drinking water treatment, and understanding the process explains why sewer fees appear on water bills and why certain items must never be flushed."
+    },
+    {
+      "source_text": "What is a combined sewer overflow, and why do some cities dump raw sewage when it rains?",
+      "source_lang": "en",
+      "target_text": "About 860 US municipalities, mostly in the Northeast and Great Lakes region, use combined sewer systems that carry both stormwater and sewage in a single pipe. These systems were built in the mid-to-late 1800s when cities were smaller and treatment was minimal. During heavy rain, the volume overwhelms pipe and plant capacity, and a relief valve releases untreated sewage mixed with stormwater directly into rivers and lakes. These combined sewer overflows (CSOs) discharge bacteria, viruses, pharmaceuticals, and debris into waterways. In April 2026, the EPA announced roughly $81 million in grants through its Sewer Overflow and Stormwater Reuse Municipal Grant Program to help cities build storage tunnels, green infrastructure, and separated pipes to reduce overflows.",
+      "target_lang": "en",
+      "reason": "CSOs are one of the largest remaining sources of urban water pollution and explain why beach closures happen after rainstorms in many cities."
+    },
+    {
+      "source_text": "How do modern sanitary landfills contain waste and capture methane gas?",
+      "source_lang": "en",
+      "target_text": "A modern sanitary landfill is engineered with multiple containment layers. At the bottom, a composite liner of compacted clay topped by high-density polyethylene (HDPE) plastic prevents liquids from seeping into groundwater. Above the liner, perforated pipes in a gravel drainage layer collect leachate, the contaminated liquid that forms as rain filters through decomposing waste, and pump it to a treatment facility. As buried organic waste breaks down without oxygen, it produces landfill gas that is roughly 50 percent methane and 50 percent carbon dioxide. Gas extraction wells drilled into the waste mass capture this methane, which is either flared or piped to generators that convert it into electricity. Each day, operators compact incoming trash and cover it with six inches of soil to control odors and deter pests.",
+      "target_lang": "en",
+      "reason": "Landfills are where most municipal waste ends up, and understanding their engineering shows why they are far more sophisticated than the open dumps they replaced."
+    },
+    {
+      "source_text": "What percentage of curbside recycling in the United States is actually recycled?",
+      "source_lang": "en",
+      "target_text": "According to WM's 2025 Recycling Report, the actual material recycling rate in the United States is 32.1 percent, despite 77 percent of Americans believing they recycle. Rates vary dramatically by material: cardboard leads at 53.5 percent recovery, glass at 41.4 percent, aluminum at 36.9 percent, and PET plastic bottles at just 23.2 percent. For plastics overall, the US recycles only about 5 percent, one of the lowest rates among developed nations. The gap is caused by contamination (food residue, mixed materials), the low commodity value of many plastics, and the 2018 loss of China as an export market after its National Sword policy banned imports of most recycled materials. Single-stream collection, where all recyclables go in one bin, increased participation but also raised contamination rates.",
+      "target_lang": "en",
+      "reason": "The gap between recycling intention and actual outcomes is one of the most misunderstood aspects of municipal waste management, directly affecting environmental policy debates."
+    },
+    {
+      "source_text": "How do subway and metro train systems get electricity and stay on schedule?",
+      "source_lang": "en",
+      "target_text": "Most subway systems draw power from an electrified third rail running alongside the track at 600 to 750 volts DC. A contact shoe on the underside of each car slides along this rail, feeding current to traction motors on the axles. Substations placed every 1 to 3 miles convert high-voltage AC from the grid to the DC the trains use. When braking, motors reverse into generator mode and feed energy back into the third rail for other trains, a process called regenerative braking that recovers up to 30 percent of traction energy. Scheduling relies on signaling: older systems use fixed-block signals where a train occupies a 'block' of track and the signal behind it turns red, while modern Communications-Based Train Control (CBTC) uses continuous radio communication to track each train's exact position, allowing trains to run closer together and increasing line capacity by 20 to 30 percent.",
+      "target_lang": "en",
+      "reason": "Subways move millions of people daily and their power and signaling systems determine capacity limits that shape the growth of entire metropolitan areas."
+    },
+    {
+      "source_text": "How do adaptive traffic signals reduce congestion compared to fixed-timer lights?",
+      "source_lang": "en",
+      "target_text": "Traditional traffic lights operate on pre-programmed timing plans, cycling through green, yellow, and red at intervals set months or years in advance regardless of actual traffic. Adaptive Signal Control Technology (ASCT) replaces those fixed plans with real-time optimization: sensors embedded in the pavement, cameras, or radar units detect vehicle queues and adjust green-time allocations every few minutes. The Federal Highway Administration reports that ASCT improves travel times by more than 10 percent on average, and in corridors with particularly outdated timing, improvements can reach 50 percent. Advanced systems can create synchronized 'green waves' along arterial roads, allowing vehicles to travel miles without stopping. By 2026, cities are deploying AI-driven systems that use video analytics and vehicle-density estimation to predict demand rather than simply reacting to it.",
+      "target_lang": "en",
+      "reason": "Traffic signals are the most pervasive form of automated urban infrastructure, and their efficiency directly determines commute times, fuel consumption, and air quality."
+    },
+    {
+      "source_text": "How does zoning decide what can be built in a city, and what is NIMBYism?",
+      "source_lang": "en",
+      "target_text": "Zoning divides a city into districts, each with rules about permitted land uses (residential, commercial, industrial), building heights, setbacks, lot coverage, and density. The legal foundation is the 1926 Supreme Court case Village of Euclid v. Ambler Realty Co., which upheld a city's power to separate land uses. This 'Euclidean zoning' dominated American planning for a century and produced car-dependent suburbs by restricting roughly 75 percent of land in many US cities to detached single-family homes. NIMBYism ('Not In My Backyard') describes organized resistance by existing residents to new development, especially denser housing, affordable housing, or shelters, typically citing traffic, property values, or neighborhood character. As of 2025, at least 33 US states have passed reforms allowing more density in formerly single-family-only zones, reflecting a growing counter-movement sometimes called YIMBYism ('Yes In My Backyard').",
+      "target_lang": "en",
+      "reason": "Zoning determines the physical shape of cities, housing costs, commute distances, and economic segregation, making it one of the most consequential and contested municipal powers."
+    },
+    {
+      "source_text": "How do building codes prevent buildings from collapsing, and who enforces them?",
+      "source_lang": "en",
+      "target_text": "The International Building Code (IBC), published by the International Code Council (ICC), is adopted in all 50 US states and several territories. It prescribes minimum structural, fire-safety, plumbing, electrical, and accessibility standards. The code is updated on a three-year cycle through a consensus process involving architects, engineers, fire officials, and public hearings. Enforcement happens locally: before construction, a builder submits plans to the city or county building department for plan review against the adopted code. During construction, inspectors visit at key stages (foundation, framing, mechanical, electrical, plumbing, and final) and can halt work for violations. A project cannot advance to the next stage until the inspector signs off. This layered system of prescriptive rules, plan review, and staged inspections is why structural building collapses in the US are extremely rare outside of natural disasters.",
+      "target_lang": "en",
+      "reason": "Building codes are invisible to most people but are the reason modern buildings are safe; understanding them explains the cost and time of construction permitting."
+    },
+    {
+      "source_text": "How does calling 911 actually work, from dialing to a first responder arriving?",
+      "source_lang": "en",
+      "target_text": "When you dial 911, the call routes to the nearest Public Safety Answering Point (PSAP), a regional dispatch center staffed around the clock. A trained telecommunicator answers, determines the emergency type, and enters information into a Computer-Aided Dispatch (CAD) system that tracks the real-time location and status of all police, fire, and EMS units. CAD recommends the closest available unit, and the dispatcher sends it. The National Fire Protection Association targets six minutes from call to arrival for fire/EMS, 90 percent of the time: one minute for dispatch, one minute for crew turnout, and four minutes of drive time. Cell phone location is provided through Enhanced 911 (E911), mandated by the Wireless Communications and Public Safety Act of 1999. Next Generation 911 (NG911), being deployed across the US through 2026, replaces the analog infrastructure with IP-based systems that accept text messages, photos, and video alongside voice calls.",
+      "target_lang": "en",
+      "reason": "The 911 system is the critical link between emergencies and response, and its technology and staffing determine whether help arrives in time to save lives."
+    },
+    {
+      "source_text": "Why are cities several degrees hotter than surrounding countryside, and what can be done about it?",
+      "source_lang": "en",
+      "target_text": "The urban heat island (UHI) effect makes cities 2 to 8 degrees Fahrenheit warmer than nearby rural areas. Dark asphalt and roofing absorb solar radiation instead of reflecting it, concrete and brick store heat and release it at night, vehicle engines and air conditioners generate waste heat, and sparse vegetation means less cooling from evapotranspiration. Mitigation strategies include cool roofs with reflective coatings that increase albedo, urban tree canopy expansion, permeable pavements, and green roofs. However, a January 2026 study found that in very dry cities, planting vegetation can actually worsen the heat island if species require irrigation that raises humidity without enough evaporative cooling to offset it, suggesting cities must tailor greening to local climate. Heat-related mortality kills more Americans annually than any other weather hazard, making UHI mitigation a public health priority.",
+      "target_lang": "en",
+      "reason": "Urban heat islands intensify climate change impacts in the places where most people live, and the solutions involve rethinking materials and design choices across an entire city."
+    },
+    {
+      "source_text": "How do property taxes work, and how does the millage rate determine what a homeowner pays?",
+      "source_lang": "en",
+      "target_text": "Property taxes are the primary revenue source for most local governments, representing approximately 26 percent of a typical city's total revenue and funding police, fire, schools, parks, and infrastructure. A property's tax bill is calculated by multiplying its assessed value by the millage rate. One mill equals $1 of tax per $1,000 of assessed value. Local assessors estimate a property's market value, often applying an assessment ratio (for example, a home worth $300,000 assessed at 80 percent has an assessed value of $240,000). Each taxing authority, including city, county, and school district, sets its own millage rate based on budget needs divided by the total tax base. The formula is: assessed value times total mills divided by 1,000 equals annual tax. This creates a feedback loop: rising property values can increase revenue without a rate change, or allow rate cuts, while declining values force rate increases or service cuts.",
+      "target_lang": "en",
+      "reason": "Property taxes are the financial engine of city services, and understanding the millage system explains why tax bills change, why assessment appeals matter, and how municipal budgets work."
+    },
+    {
+      "source_text": "How does bus rapid transit work, and why is it faster than a regular city bus?",
+      "source_lang": "en",
+      "target_text": "Bus Rapid Transit (BRT) combines five design features to achieve subway-like speed and reliability at a fraction of the cost. First, dedicated lanes physically separated from general traffic eliminate delays from congestion. Second, off-board fare collection at stations means passengers pay before boarding, cutting dwell time at stops. Third, platform-level boarding with raised platforms eliminates steps, speeding wheelchair and stroller access. Fourth, traffic signal priority lets approaching buses extend green lights or trigger early greens. Fifth, intersection treatments like queue jumps let buses bypass waiting cars. Together, these features make BRT 30 to 80 percent faster than conventional buses on the same corridor. The Institute for Transportation and Development Policy reports that over 180 cities worldwide now operate BRT systems, and construction costs run $10 to $30 million per mile compared to $200 million or more per mile for underground rail.",
+      "target_lang": "en",
+      "reason": "BRT represents a pragmatic middle ground in urban transit, offering rail-quality service at bus-level cost, and is the fastest-growing form of mass transit worldwide."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "How does a municipal water treatment plant turn river water into safe drinking water?",
+      "to_source": "What do water towers actually do, and how does gravity create water pressure?",
+      "kind": "refines",
+      "reason": "Treatment plants produce clean water, and water towers store and pressurize it for distribution, forming sequential stages of the same supply chain."
+    },
+    {
+      "from_source": "What do water towers actually do, and how does gravity create water pressure?",
+      "to_source": "Why do US water mains keep breaking, and how much does it cost to fix them?",
+      "kind": "refines",
+      "reason": "Water towers maintain pressure in the distribution network, but that network's aging pipes are the weak link where treated water is lost to breaks."
+    },
+    {
+      "from_source": "What happens to sewage after you flush the toilet in a city?",
+      "to_source": "What is a combined sewer overflow, and why do some cities dump raw sewage when it rains?",
+      "kind": "refines",
+      "reason": "Normal wastewater treatment is the intended path; combined sewer overflows are the failure mode when storm volume exceeds the system's capacity."
+    },
+    {
+      "from_source": "How do modern sanitary landfills contain waste and capture methane gas?",
+      "to_source": "What percentage of curbside recycling in the United States is actually recycled?",
+      "kind": "refines",
+      "reason": "Low recycling rates determine how much material ends up in landfills; the two topics together explain the full lifecycle of municipal solid waste."
+    },
+    {
+      "from_source": "How does zoning decide what can be built in a city, and what is NIMBYism?",
+      "to_source": "How do building codes prevent buildings from collapsing, and who enforces them?",
+      "kind": "refines",
+      "reason": "Zoning determines what may be built where, while building codes determine how it must be built; both require permits and govern the same construction process."
+    },
+    {
+      "from_source": "How do subway and metro train systems get electricity and stay on schedule?",
+      "to_source": "How does bus rapid transit work, and why is it faster than a regular city bus?",
+      "kind": "refines",
+      "reason": "Subways and BRT are complementary transit modes; BRT often serves corridors where subway construction would be prohibitively expensive."
+    },
+    {
+      "from_source": "How do adaptive traffic signals reduce congestion compared to fixed-timer lights?",
+      "to_source": "How does bus rapid transit work, and why is it faster than a regular city bus?",
+      "kind": "refines",
+      "reason": "Traffic signal priority is one of BRT's five core features; adaptive signal technology is the mechanism that enables bus-priority green waves."
+    },
+    {
+      "from_source": "How do property taxes work, and how does the millage rate determine what a homeowner pays?",
+      "to_source": "How does zoning decide what can be built in a city, and what is NIMBYism?",
+      "kind": "refines",
+      "reason": "Zoning decisions affect property values, which in turn determine the tax base from which property taxes are calculated, creating a fiscal feedback loop."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "How does a municipal water treatment plant turn river water into safe drinking water?",
+      "kind": "url",
+      "locator": "https://www.springwellwater.com/how-do-cities-treat-drinking-water-explained/",
+      "reason": "Details the step-by-step municipal water treatment process including coagulation, flocculation, sedimentation, filtration, and disinfection."
+    },
+    {
+      "pair_source": "How does a municipal water treatment plant turn river water into safe drinking water?",
+      "kind": "url",
+      "locator": "https://sensorex.com/municipal-water-treatment-applications/",
+      "reason": "Explains municipal water treatment stages and the distribution system that follows treatment."
+    },
+    {
+      "pair_source": "What do water towers actually do, and how does gravity create water pressure?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/How-Do-Water-Towers-Work",
+      "reason": "Explains the hydrostatic pressure principle (2.31 feet per PSI) and how water towers maintain pressure through gravity."
+    },
+    {
+      "pair_source": "What do water towers actually do, and how does gravity create water pressure?",
+      "kind": "url",
+      "locator": "https://practical.engineering/blog/2019/3/9/how-water-towers-work",
+      "reason": "Provides engineering details on water tower operation as pressure-equalization devices in distribution networks."
+    },
+    {
+      "pair_source": "Why do US water mains keep breaking, and how much does it cost to fix them?",
+      "kind": "url",
+      "locator": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2024/04/breaking-water-mains-present-us-canada-with-$452b-problem",
+      "reason": "Confirms the $452 billion replacement cost estimate, 770,000 miles of aging mains, and the average failure age of 53 years."
+    },
+    {
+      "pair_source": "What happens to sewage after you flush the toilet in a city?",
+      "kind": "url",
+      "locator": "https://earth911.com/business-policy/how-landfills-work/",
+      "reason": "Explains the primary, secondary, and tertiary stages of municipal wastewater treatment."
+    },
+    {
+      "pair_source": "What is a combined sewer overflow, and why do some cities dump raw sewage when it rains?",
+      "kind": "url",
+      "locator": "https://www.epa.gov/npdes/combined-sewer-overflows-csos",
+      "reason": "EPA's authoritative page on CSOs, confirming approximately 860 affected municipalities and the overflow mechanism."
+    },
+    {
+      "pair_source": "What is a combined sewer overflow, and why do some cities dump raw sewage when it rains?",
+      "kind": "url",
+      "locator": "https://www.epa.gov/cwsrf/sewer-overflow-and-stormwater-reuse-municipal-grants-program",
+      "reason": "Documents the April 2026 announcement of $81 million in EPA grants for CSO mitigation."
+    },
+    {
+      "pair_source": "How do modern sanitary landfills contain waste and capture methane gas?",
+      "kind": "url",
+      "locator": "https://www.dumpsters.com/blog/how-do-modern-landfills-work",
+      "reason": "Details the liner system, leachate collection, methane capture, and daily cover operations of modern sanitary landfills."
+    },
+    {
+      "pair_source": "What percentage of curbside recycling in the United States is actually recycled?",
+      "kind": "url",
+      "locator": "https://sustainabilitymag.com/news/wms-recycling-report-do-americans-really-recycle",
+      "reason": "Reports the 32.1 percent actual recycling rate from WM's 2025 report and material-specific recovery rates."
+    },
+    {
+      "pair_source": "What percentage of curbside recycling in the United States is actually recycled?",
+      "kind": "url",
+      "locator": "https://recyclingpartnership.org/residential-recycling-report/",
+      "reason": "The Recycling Partnership's 2026 State of Recycling Report with current national recycling statistics."
+    },
+    {
+      "pair_source": "How do subway and metro train systems get electricity and stay on schedule?",
+      "kind": "url",
+      "locator": "https://science.howstuffworks.com/engineering/civil/subway3.htm",
+      "reason": "Explains third-rail power delivery, traction motors, regenerative braking, and signaling systems in subway operations."
+    },
+    {
+      "pair_source": "How do adaptive traffic signals reduce congestion compared to fixed-timer lights?",
+      "kind": "url",
+      "locator": "https://www.fhwa.dot.gov/innovation/everydaycounts/edc-1/asct.cfm",
+      "reason": "Federal Highway Administration source confirming ASCT improves travel times by more than 10 percent on average."
+    },
+    {
+      "pair_source": "How does zoning decide what can be built in a city, and what is NIMBYism?",
+      "kind": "url",
+      "locator": "https://www.lincolninst.edu/publications/land-lines-magazine/articles/how-zoning-won/",
+      "reason": "Lincoln Institute analysis of Euclidean zoning history, the 75 percent single-family restriction, and recent reform trends."
+    },
+    {
+      "pair_source": "How does zoning decide what can be built in a city, and what is NIMBYism?",
+      "kind": "url",
+      "locator": "https://shelterforce.org/2021/11/17/what-is-nimbyism-and-how-do-affordable-housing-developers-respond-to-it/",
+      "reason": "Defines NIMBYism and documents its mechanisms and effects on housing development."
+    },
+    {
+      "pair_source": "How do building codes prevent buildings from collapsing, and who enforces them?",
+      "kind": "url",
+      "locator": "https://www.construction-physics.com/p/how-building-codes-work-in-the-us",
+      "reason": "Detailed explanation of the IBC adoption process, plan review, staged inspections, and enforcement authority."
+    },
+    {
+      "pair_source": "How does calling 911 actually work, from dialing to a first responder arriving?",
+      "kind": "url",
+      "locator": "https://rapidsos.com/blog/how-does-911-work/",
+      "reason": "Explains the call routing to PSAPs, CAD systems, and the Enhanced 911 location technology."
+    },
+    {
+      "pair_source": "How does calling 911 actually work, from dialing to a first responder arriving?",
+      "kind": "url",
+      "locator": "https://www.911.gov/issues/ng911/",
+      "reason": "Official federal source on Next Generation 911 deployment, IP-based architecture, and multimedia capabilities."
+    },
+    {
+      "pair_source": "Why are cities several degrees hotter than surrounding countryside, and what can be done about it?",
+      "kind": "url",
+      "locator": "https://www.nlc.org/article/2023/02/13/urban-heat-island-effect-solutions-and-funding/",
+      "reason": "National League of Cities source documenting UHI causes, temperature differentials, and mitigation strategies including cool roofs and urban greening."
+    },
+    {
+      "pair_source": "Why are cities several degrees hotter than surrounding countryside, and what can be done about it?",
+      "kind": "url",
+      "locator": "https://phys.org/news/2026-01-vegetation-exacerbate-urban-island-effect.html",
+      "reason": "Reports the January 2026 finding that vegetation can worsen UHI in very dry cities if not adapted to local climate."
+    },
+    {
+      "pair_source": "How do property taxes work, and how does the millage rate determine what a homeowner pays?",
+      "kind": "url",
+      "locator": "https://www.rocketmoney.com/learn/personal-finance/mill-rate",
+      "reason": "Explains millage rate calculation, the $1-per-$1,000 formula, and how taxing authorities set rates based on budget needs."
+    },
+    {
+      "pair_source": "How does bus rapid transit work, and why is it faster than a regular city bus?",
+      "kind": "url",
+      "locator": "https://itdp.org/2025/04/17/what-is-brt-and-why-do-cities-need-it/",
+      "reason": "Institute for Transportation and Development Policy overview of BRT's five essential features and global adoption."
+    },
+    {
+      "pair_source": "How does bus rapid transit work, and why is it faster than a regular city bus?",
+      "kind": "url",
+      "locator": "https://cms7.fta.dot.gov/research-innovation/bus-rapid-transit",
+      "reason": "Federal Transit Administration source on BRT definitions, design elements, and performance characteristics."
+    }
+  ]
+}

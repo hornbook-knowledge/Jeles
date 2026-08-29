@@ -1,0 +1,288 @@
+{
+  "domain": "modern-world-food",
+  "pairs": [
+    {
+      "source_text": "How does precision agriculture use GPS and sensors to run a modern farm?",
+      "source_lang": "en",
+      "target_text": "Precision agriculture uses GPS-guided tractors, combines, and sprayers that steer themselves across fields with centimeter-level accuracy, allowing a single operator to farm thousands of acres. Soil sensors, drone imagery, and satellite data create detailed maps of field conditions — moisture, nutrient levels, pest pressure — so inputs like fertilizer and water are applied in variable rates rather than uniformly. The global precision agriculture market reached roughly $13 billion in 2025, with GPS/GNSS systems holding a 38% market share. Autosteer adoption for fertilizer and chemical application rose from 78% to 90% among large U.S. farms. A modern combine harvester can cover 20 acres per hour, and the entire U.S. crop is grown by about 2% of the population, down from 90% in 1800, almost entirely because of mechanization.",
+      "target_lang": "en",
+      "reason": "Precision agriculture is the technological backbone that makes it possible for a small number of farmers to feed billions."
+    },
+    {
+      "source_text": "How does the cold chain keep perishable food safe over thousands of miles?",
+      "source_lang": "en",
+      "target_text": "The cold chain is an unbroken sequence of refrigerated storage and transport that moves perishable food from farm to consumer. It begins at harvest with pre-cooling (hydrocooling, forced-air cooling, or vacuum cooling), continues through refrigerated trucks and rail cars, cold-storage warehouses, refrigerated shipping containers (reefers) on cargo vessels, and finally reaches refrigerated display cases in retail stores. Each link maintains a product-specific temperature — fresh meat at 0-2 degrees Celsius, frozen goods at minus 18 degrees Celsius or below, bananas at 13-14 degrees Celsius. The global cold chain logistics market was valued at roughly $436 billion in 2025 and is projected to nearly triple by 2035. A single break in the chain — a truck compressor failure, a loading dock left open too long — can spoil an entire shipment, which is why IoT temperature sensors now track conditions in real time throughout transit.",
+      "target_lang": "en",
+      "reason": "The cold chain is what makes it possible for consumers in northern cities to eat fresh produce and meat year-round from distant sources."
+    },
+    {
+      "source_text": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+      "source_lang": "en",
+      "target_text": "The Haber-Bosch process is an industrial method that converts atmospheric nitrogen gas (N2) and hydrogen into ammonia (NH3) under high temperature (400-500 degrees Celsius) and pressure (150-300 atmospheres) using an iron catalyst. Invented by Fritz Haber and scaled by Carl Bosch in 1913, it produces roughly 130 million metric tons of synthetic nitrogen fertilizer per year. Without it, crop yields would plummet because nitrogen is the nutrient most limiting to plant growth. Independent estimates published in Our World in Data show that synthetic nitrogen fertilizers support approximately half the current global population — around 4 billion people could not be fed without them. The process consumes about 1-2% of global energy and uses natural gas as its primary hydrogen source, making fertilizer prices tightly coupled to energy prices.",
+      "target_lang": "en",
+      "reason": "The Haber-Bosch process is arguably the most consequential invention of the 20th century for human survival, yet most people have never heard of it."
+    },
+    {
+      "source_text": "How do agricultural commodity futures markets set the price of food?",
+      "source_lang": "en",
+      "target_text": "Agricultural commodity prices are largely set on futures exchanges, primarily the Chicago Mercantile Exchange (CME Group), where standardized contracts for wheat, corn, soybeans, cattle, and other products are traded. A futures contract is a binding agreement to buy or sell a specific quantity of a commodity at a set price on a future date — for example, 5,000 bushels of corn for December delivery. Farmers use futures to 'hedge,' locking in a sale price months before harvest to protect against falling prices; food companies buy futures to lock in input costs. Speculators and institutional investors provide liquidity. Prices move based on weather forecasts, USDA crop reports, geopolitical events, and currency fluctuations. Government subsidies add complexity: the OECD estimates U.S. farm policy raises food costs by roughly $12 billion annually through programs like the Conservation Reserve Program that encourage land retirement, even as other commodity subsidies push prices down.",
+      "target_lang": "en",
+      "reason": "Most people assume food prices are set by grocery stores, but the real price discovery happens on commodity exchanges months before food reaches shelves."
+    },
+    {
+      "source_text": "Where does food waste happen in the supply chain and why is 30-40% of production lost?",
+      "source_lang": "en",
+      "target_text": "Roughly one-third of all food produced globally is lost or wasted — about 1.3 billion metric tons per year. The FAO reports that 13.2% is lost post-harvest before reaching retail (due to inadequate storage, poor roads, and lack of cold chain in developing countries), and another 19% is wasted at retail, food service, and household levels. UNEP's 2024 Food Waste Index found 1.05 billion tonnes wasted at the consumer stage in 2022 alone: households generated 60% of that (631 million tonnes), food service 28% (290 million tonnes), and retail 12%. In wealthy countries, waste concentrates at the consumer end — cosmetic standards reject imperfect produce, portion sizes are too large, and consumers overbuy. In developing countries, losses concentrate post-harvest due to lack of refrigeration and infrastructure. Food loss and waste accounts for 8-10% of global greenhouse gas emissions.",
+      "target_lang": "en",
+      "reason": "Understanding where food waste occurs reveals that solutions differ radically between rich and poor countries and between different points in the supply chain."
+    },
+    {
+      "source_text": "How does HACCP keep the food supply safe from farm to table?",
+      "source_lang": "en",
+      "target_text": "HACCP (Hazard Analysis and Critical Control Points) is a systematic food safety framework built on seven principles that identify and control biological, chemical, and physical hazards in food production. First, a team analyzes every step for potential hazards. Then it identifies Critical Control Points — specific steps like cooking, pasteurization, or metal detection where failure could make food unsafe. For each CCP, measurable critical limits are set (e.g., chicken must reach an internal temperature of 74 degrees Celsius). Monitoring procedures verify these limits are met continuously; if a deviation occurs, predetermined corrective actions kick in — the product is held, retested, or destroyed. Verification procedures and detailed record-keeping complete the system. HACCP became mandatory for U.S. meat and poultry in 1996 and for seafood in 1997. The newer FSMA Rule 204 extends traceability by requiring electronic records with traceability lot codes for high-risk foods, so the FDA can trace contamination within hours rather than weeks during a recall.",
+      "target_lang": "en",
+      "reason": "HACCP is the invisible safety system that prevents most foodborne illness outbreaks before they happen, and understanding it explains how modern food can be produced at massive scale and remain safe."
+    },
+    {
+      "source_text": "Who are the world's largest food exporters and how does global food trade work?",
+      "source_lang": "en",
+      "target_text": "Global food trade is dominated by a handful of agricultural superpowers. The United States is the largest agricultural exporter at roughly $170 billion per year, leading in corn (producing about one-third of the world supply) and ranking among the top producers of soybeans and wheat. Brazil is the world's largest soybean exporter, accounting for roughly 60% of global shipments, and is a major beef and sugar exporter. Russia has become the dominant wheat exporter, shipping roughly 44 million tonnes in the 2025-2026 season. India exports about 40% of global rice. China, paradoxically the world's largest agricultural producer ($1.65 trillion in 2025), is also the biggest importer — bringing in over $100 billion worth of goods annually, especially soybeans for animal feed. About 90% of this trade moves by sea through chokepoints: 15% of maritime trade passes through the Suez Canal, while the Panama Canal handles 5-6% and is critical for U.S. grain exports to Asia.",
+      "target_lang": "en",
+      "reason": "Global food security depends on a surprisingly concentrated set of exporting countries and vulnerable shipping routes."
+    },
+    {
+      "source_text": "How do grocery stores manage inventory so shelves stay stocked with fresh food?",
+      "source_lang": "en",
+      "target_text": "Modern grocery chains use just-in-time (JIT) inventory systems that keep only four to six weeks of supply on hand, down from months of inventory in earlier decades. Products flow from regional distribution centers — large warehouses of 300,000 to 700,000 square feet — to individual stores, often with daily or thrice-weekly deliveries for perishables. Stores use point-of-sale data and demand-forecasting algorithms to generate automated reorders: when a product scans at checkout, the system adjusts inventory counts and triggers replenishment. McKinsey estimates that optimized JIT reduces storage costs by 15-25%. The tradeoff is fragility — a late truck or a supply disruption means empty shelves within hours. A typical U.S. supermarket stocks 30,000 to 50,000 distinct items (SKUs), and the average product travels 1,500 miles from farm to store. Perishable items like milk and produce follow first-in-first-out (FIFO) rotation to minimize spoilage.",
+      "target_lang": "en",
+      "reason": "The just-in-time grocery system is an engineering marvel that most shoppers take entirely for granted, and its fragility was exposed during COVID-19."
+    },
+    {
+      "source_text": "Why does agriculture use 70% of the world's freshwater and how does irrigation work at scale?",
+      "source_lang": "en",
+      "target_text": "Agriculture accounts for approximately 72% of global freshwater withdrawals according to the FAO's 2025 AQUASTAT data, making it by far the largest consumer of water on Earth. About 23% of the world's cultivated land is equipped for irrigation (up from 21.5% in 2015), but that irrigated land produces roughly 40% of the world's food because water is the primary constraint on crop yield. Major irrigation methods include flood irrigation (oldest, least efficient at 40-50% water use), sprinkler systems (75% efficient), and drip irrigation (90-95% efficient, delivering water directly to plant roots). Center-pivot irrigation systems — the giant rotating arms visible as green circles in satellite photos of the U.S. Great Plains — each cover about 130 acres. Global renewable freshwater per capita fell 7% between 2015 and 2022, intensifying pressure to adopt more efficient methods, especially in water-stressed regions of South Asia, the Middle East, and sub-Saharan Africa.",
+      "target_lang": "en",
+      "reason": "Water is the most underappreciated input in food production, and growing scarcity makes irrigation efficiency one of the most important challenges for future food security."
+    },
+    {
+      "source_text": "What does 'organic' actually mean on a food label and how do organic yields compare to conventional?",
+      "source_lang": "en",
+      "target_text": "In the United States, the USDA Organic label means crops were grown without synthetic pesticides, synthetic fertilizers, GMO seeds, or irradiation, and livestock were raised without antibiotics or growth hormones with access to the outdoors. Farms must follow these rules for three years before certification and pass annual inspections. A comprehensive meta-analysis published in Nature found organic yields average about 25% lower than conventional, with the gap reaching 34% when systems are most comparable and narrowing to 5% for rain-fed legumes and perennials. However, the Rodale Institute's 30-year trial found that after a 3-5 year transition, organic corn and soybean yields matched conventional, and during drought years organic corn yielded 31% more due to better soil water retention. Organic farmland represents about 1.6% of global agricultural land. The 'natural' label, by contrast, has no standardized legal definition for most products and requires no certification.",
+      "target_lang": "en",
+      "reason": "The organic label is one of the most discussed but least understood certifications in food — knowing what it requires and its actual yield implications cuts through marketing claims."
+    },
+    {
+      "source_text": "How does food processing turn raw agricultural products into shelf-stable grocery items?",
+      "source_lang": "en",
+      "target_text": "Food processing encompasses everything from washing and cutting fresh produce to the complex industrial transformation of raw ingredients into packaged goods. Key preservation methods include thermal processing (canning food at 121 degrees Celsius to kill Clostridium botulinum spores), pasteurization (heating milk to 72 degrees Celsius for 15 seconds), dehydration (removing moisture to below 10-15% to inhibit microbial growth), and chemical preservation (adding substances like sodium benzoate or citric acid). Ultra-high-temperature (UHT) processing heats milk to 135 degrees Celsius for 2-5 seconds, allowing shelf storage for 6-9 months without refrigeration. A 2025 Northeastern University study found that roughly 73% of packaged food products in U.S. grocery stores qualify as ultra-processed — containing industrial ingredients like emulsifiers, high-fructose corn syrup, or artificial colors not found in home kitchens. The food processing industry transforms about 10 billion tonnes of raw agricultural output into the products that fill supermarket shelves worldwide.",
+      "target_lang": "en",
+      "reason": "Most food consumed in developed countries undergoes significant processing, and understanding the methods explains both the benefits (safety, shelf life) and concerns (nutrition, additives)."
+    },
+    {
+      "source_text": "How does the scale of modern industrial farming feed 8 billion people with fewer farmers than ever?",
+      "source_lang": "en",
+      "target_text": "The average U.S. farm has grown to 469 acres, but most food comes from much larger operations — farms over 2,000 acres produce the majority of commodity crops like corn, soybeans, and wheat. The United States has about 2 million farms covering 893 million acres, yet only about 2% of Americans work in agriculture, compared to 90% in 1800. This is possible because a single modern combine harvester covers 20 acres per hour and can harvest an entire field that once required dozens of workers. Global crop production reached nearly 10 billion tonnes in 2023, with cereals alone accounting for one-third. The world produced 1.44 billion metric tons of animal feed in 2025. Three countries — China, the United States, and Brazil — account for 47.7% of global feed production. This consolidation creates extraordinary efficiency but also concentration risk: disruptions to any one of these agricultural powers ripple across global food markets.",
+      "target_lang": "en",
+      "reason": "The sheer scale of modern farming is difficult to grasp without specific numbers, and understanding consolidation explains both the system's efficiency and its vulnerabilities."
+    },
+    {
+      "source_text": "How do weather events and climate disruptions affect food prices worldwide?",
+      "source_lang": "en",
+      "target_text": "Weather is the single largest short-term driver of food prices because crops are biologically tethered to rainfall, temperature, and growing seasons. A drought in the U.S. Midwest or a heatwave in the Black Sea wheat belt can move futures prices 20-40% in weeks. The 2012 U.S. drought cut corn yields by 27% and spiked global corn prices by over 50%. El Nino events disrupt monsoon patterns in South and Southeast Asia, affecting rice production for billions. Climate change is amplifying these shocks: rising temperatures, shifting precipitation patterns, and more frequent extreme events reduce average yields by an estimated 2-6% per decade for major staples. Russia's 2010 wheat export ban after a severe drought triggered panic buying that doubled global wheat prices and contributed to political instability in import-dependent countries in the Middle East and North Africa. Because commodity markets are globally connected, a localized weather event in one exporting nation transmits price shocks to consumers thousands of miles away within days.",
+      "target_lang": "en",
+      "reason": "Weather-driven price volatility reveals how interconnected and fragile the global food system is, and why climate change is fundamentally a food security issue."
+    },
+    {
+      "source_text": "What are the major shipping chokepoints that global food trade depends on?",
+      "source_lang": "en",
+      "target_text": "Global food trade funnels through a handful of narrow waterways whose disruption can spike prices and create shortages. The Suez Canal, an artificial 193-kilometer waterway in Egypt, carries about 15% of global maritime trade, including roughly 77% of wheat exports from Russia, Ukraine, and Kazakhstan headed to markets in Asia and Africa. The Panama Canal, an 82-kilometer passage connecting the Atlantic and Pacific, handles 5-6% of world trade and is critical for U.S. corn and soybean exports to East Asia. The Strait of Malacca, between Malaysia and Indonesia, is the shortest sea route between the Indian and Pacific Oceans, carrying about 25% of all traded goods. In 2024, simultaneous disruptions hit both major canals — Houthi attacks in the Red Sea forced ships to reroute around Africa, adding 10-14 days to voyages, while drought reduced Panama Canal daily transits from 36 to as few as 24. These disruptions drove up freight costs and delayed agricultural shipments, demonstrating the fragility of sea-lane-dependent food supply chains.",
+      "target_lang": "en",
+      "reason": "Most people do not realize that their food supply depends on a few narrow waterways, and recent disruptions have shown how quickly these chokepoints can affect global food availability and prices."
+    },
+    {
+      "source_text": "How does the FDA's food traceability system track products from origin to store shelf?",
+      "source_lang": "en",
+      "target_text": "The FDA's food traceability system, formalized under FSMA Rule 204 (the Food Traceability Final Rule), requires companies handling high-risk foods to maintain electronic records linking each product to its origin through traceability lot codes (TLCs). The rule defines Critical Tracking Events (CTEs) — growing, receiving, transforming, creating, and shipping — at which businesses must record Key Data Elements (KDEs) such as the product description, lot code, quantity, origin location, and date. These records must be kept for two years and provided to the FDA in an electronic sortable spreadsheet within 24 hours during an outbreak investigation. Before this rule, tracing a contaminated product to its source could take weeks; the goal is to reduce that to hours. The Food Traceability List covers items frequently linked to outbreaks, including leafy greens, fresh-cut fruits, shell eggs, nut butters, and certain cheeses and seafood. The compliance deadline was originally January 2026 but has been extended to July 2028.",
+      "target_lang": "en",
+      "reason": "Food traceability is the mechanism that connects farm-level data to consumer safety, and understanding it explains how recalls work and why some outbreaks are contained faster than others."
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "How does precision agriculture use GPS and sensors to run a modern farm?",
+      "to_source": "How does the scale of modern industrial farming feed 8 billion people with fewer farmers than ever?",
+      "kind": "refines",
+      "reason": "Precision agriculture is the technology layer that enables the scale described in industrial farming — GPS guidance and sensors are what allow one person to manage thousands of acres."
+    },
+    {
+      "from_source": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+      "to_source": "Why does agriculture use 70% of the world's freshwater and how does irrigation work at scale?",
+      "kind": "refines",
+      "reason": "Nitrogen fertilizer and water are the two most critical inputs to crop production — together they explain why modern yields are many times higher than historical levels."
+    },
+    {
+      "from_source": "How does the cold chain keep perishable food safe over thousands of miles?",
+      "to_source": "Where does food waste happen in the supply chain and why is 30-40% of production lost?",
+      "kind": "refines",
+      "reason": "Cold chain failures are a major cause of post-harvest food loss, especially in developing countries where refrigerated infrastructure is lacking."
+    },
+    {
+      "from_source": "How do agricultural commodity futures markets set the price of food?",
+      "to_source": "How do weather events and climate disruptions affect food prices worldwide?",
+      "kind": "refines",
+      "reason": "Weather events transmit their impact on food prices through the futures markets, where traders price in crop damage before harvests are even completed."
+    },
+    {
+      "from_source": "Who are the world's largest food exporters and how does global food trade work?",
+      "to_source": "What are the major shipping chokepoints that global food trade depends on?",
+      "kind": "refines",
+      "reason": "The trade flows described in the exporter pair physically travel through the chokepoints described here — they are the same system viewed at different levels."
+    },
+    {
+      "from_source": "How does HACCP keep the food supply safe from farm to table?",
+      "to_source": "How does the FDA's food traceability system track products from origin to store shelf?",
+      "kind": "refines",
+      "reason": "HACCP is the preventive safety framework; FSMA 204 traceability is the complementary system that enables rapid response when HACCP controls fail and contamination reaches the market."
+    },
+    {
+      "from_source": "What does 'organic' actually mean on a food label and how do organic yields compare to conventional?",
+      "to_source": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+      "kind": "contradicts",
+      "reason": "Organic farming rejects synthetic nitrogen fertilizer — the very input that the Haber-Bosch process provides and that feeds half the world — creating a fundamental tension between organic principles and global food production scale."
+    },
+    {
+      "from_source": "How do grocery stores manage inventory so shelves stay stocked with fresh food?",
+      "to_source": "How does the cold chain keep perishable food safe over thousands of miles?",
+      "kind": "refines",
+      "reason": "Grocery store inventory management is the final link of the cold chain — the last-mile logistics that connect distribution centers to consumer-facing refrigerated shelves."
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "How does precision agriculture use GPS and sensors to run a modern farm?",
+      "kind": "url",
+      "locator": "https://www.fortunebusinessinsights.com/precision-agriculture-market-102431",
+      "reason": "Provides the $12.86 billion 2025 market valuation and GNSS/GPS 38% market share statistics."
+    },
+    {
+      "pair_source": "How does precision agriculture use GPS and sensors to run a modern farm?",
+      "kind": "url",
+      "locator": "https://media.market.us/precision-farming-statistics/",
+      "reason": "Confirms autosteer adoption rates and combine harvester productivity figures."
+    },
+    {
+      "pair_source": "How does the cold chain keep perishable food safe over thousands of miles?",
+      "kind": "url",
+      "locator": "https://www.precedenceresearch.com/cold-chain-logistics-market",
+      "reason": "Confirms the $436 billion 2025 market valuation and growth projections to 2035."
+    },
+    {
+      "pair_source": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+      "kind": "url",
+      "locator": "https://ourworldindata.org/how-many-people-does-synthetic-fertilizer-feed",
+      "reason": "Provides the estimate that synthetic nitrogen feeds approximately half the global population."
+    },
+    {
+      "pair_source": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+      "kind": "url",
+      "locator": "https://www.instituteformindfulagriculture.org/the-haber-bosch-process",
+      "reason": "Confirms 130 million metric tons annual production and 1-2% of global energy consumption."
+    },
+    {
+      "pair_source": "How do agricultural commodity futures markets set the price of food?",
+      "kind": "url",
+      "locator": "https://www.cmegroup.com/markets/agriculture",
+      "reason": "Primary source for CME Group agricultural commodity futures contracts and trading specifications."
+    },
+    {
+      "pair_source": "How do agricultural commodity futures markets set the price of food?",
+      "kind": "url",
+      "locator": "https://www.heritage.org/agriculture/report/how-farm-subsidies-harm-taxpayers-consumers-and-farmers-too",
+      "reason": "Provides the OECD estimate that U.S. farm policy raises food costs by $12 billion annually."
+    },
+    {
+      "pair_source": "Where does food waste happen in the supply chain and why is 30-40% of production lost?",
+      "kind": "url",
+      "locator": "https://www.unep.org/news-and-stories/press-release/world-squanders-over-1-billion-meals-day-un-report",
+      "reason": "UNEP Food Waste Index 2024 data: 1.05 billion tonnes wasted, breakdown by household/food service/retail."
+    },
+    {
+      "pair_source": "Where does food waste happen in the supply chain and why is 30-40% of production lost?",
+      "kind": "url",
+      "locator": "https://www.fao.org/policy-support/policy-themes/food-loss-and-food-waste/fao-policy-series--food-loss---food-waste",
+      "reason": "FAO source for the 13.2% post-harvest loss figure before retail stage."
+    },
+    {
+      "pair_source": "How does HACCP keep the food supply safe from farm to table?",
+      "kind": "url",
+      "locator": "https://www.fda.gov/food/hazard-analysis-critical-control-point-haccp/haccp-principles-application-guidelines",
+      "reason": "FDA's official HACCP principles and application guidelines — the authoritative source for the seven principles."
+    },
+    {
+      "pair_source": "Who are the world's largest food exporters and how does global food trade work?",
+      "kind": "url",
+      "locator": "https://andamanpartners.com/2025/07/global-agriculture-producing-and-trading-the-worlds-food-and-strategic-implications-for-agri-businesses/",
+      "reason": "Provides 2025 export values, country rankings, and China's $1.65 trillion production figure."
+    },
+    {
+      "pair_source": "How do grocery stores manage inventory so shelves stay stocked with fresh food?",
+      "kind": "url",
+      "locator": "https://www.economicsonline.co.uk/behavioural_economics/economic-efficiency-and-inventory-turnover-how-grocery-stores-use-just-in-time-jit-systems-to-reduce-costs-and-waste-2.html/",
+      "reason": "Explains JIT grocery systems, inventory turnover rates, and the shift from months to weeks of supply."
+    },
+    {
+      "pair_source": "Why does agriculture use 70% of the world's freshwater and how does irrigation work at scale?",
+      "kind": "url",
+      "locator": "https://smartwatermagazine.com/news/smart-water-magazine/global-water-under-pressure-what-aquastat-2025-reveals-about-agriculture",
+      "reason": "FAO AQUASTAT 2025 data confirming agriculture's 72% share of freshwater withdrawals and irrigation coverage statistics."
+    },
+    {
+      "pair_source": "What does 'organic' actually mean on a food label and how do organic yields compare to conventional?",
+      "kind": "url",
+      "locator": "https://www.nature.com/articles/nature11069",
+      "reason": "The Nature meta-analysis finding organic yields average 25% lower than conventional, with ranges from 5% to 34%."
+    },
+    {
+      "pair_source": "How does food processing turn raw agricultural products into shelf-stable grocery items?",
+      "kind": "url",
+      "locator": "https://news.northeastern.edu/2025/01/14/ultraprocessed-foods-grocery-stores/",
+      "reason": "Northeastern University 2025 study finding 73% of U.S. grocery store products are ultra-processed."
+    },
+    {
+      "pair_source": "How does the scale of modern industrial farming feed 8 billion people with fewer farmers than ever?",
+      "kind": "url",
+      "locator": "https://www.aquafeed.com/newsroom/reports/global-feed-production-rises-29-to-144-billion-tons-in-2025-alltech-survey-finds/",
+      "reason": "Alltech 2025 survey data: 1.44 billion metric tons of global feed production, top-three country concentration."
+    },
+    {
+      "pair_source": "What are the major shipping chokepoints that global food trade depends on?",
+      "kind": "url",
+      "locator": "https://www.shipfinex.com/blog/14-major-sea-routes-in-world",
+      "reason": "Provides data on Suez Canal's 15% of maritime trade and Panama Canal's 5-6% share."
+    },
+    {
+      "pair_source": "What are the major shipping chokepoints that global food trade depends on?",
+      "kind": "url",
+      "locator": "https://www.agri-pulse.com/articles/20565-suez-panama-canal-disruptions-drive-up-freight-rates-slow-ag-shipping",
+      "reason": "Documents the 2024 simultaneous canal disruptions and their impact on agricultural freight costs."
+    },
+    {
+      "pair_source": "How does the FDA's food traceability system track products from origin to store shelf?",
+      "kind": "url",
+      "locator": "https://www.food-safety.com/articles/10245-fda-delays-fsma-204-traceability-rule-compliance-date-by-30-months",
+      "reason": "Confirms the compliance date extension from January 2026 to July 2028."
+    },
+    {
+      "pair_source": "How does the FDA's food traceability system track products from origin to store shelf?",
+      "kind": "url",
+      "locator": "https://www.registrarcorp.com/blog/food-beverage/fsma/food-traceability/",
+      "reason": "Explains the CTEs, KDEs, and TLC framework of the FSMA Rule 204 traceability system."
+    },
+    {
+      "pair_source": "How do weather events and climate disruptions affect food prices worldwide?",
+      "kind": "url",
+      "locator": "https://www.business-standard.com/world-news/global-sea-routes-trade-oil-shipping-geopolitics-explained-126042400356_1.html",
+      "reason": "Covers how geopolitical and climate disruptions to shipping routes transmit food price shocks globally."
+    }
+  ]
+}

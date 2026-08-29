@@ -1,0 +1,164 @@
+{
+  "domain": "adversarial-challenge-r9",
+  "pairs": [
+    {
+      "source_text": "Filter bubbles trap users in ideological echo chambers that radicalize their political views",
+      "source_lang": "en",
+      "target_text": "[HIGH] A large-scale randomized experiment by Guess et al. (2023) on Facebook and Instagram found that removing algorithmic feed curation had no significant effect on political attitudes, affective polarization, or political knowledge during the 2020 US election. Users exposed to chronological feeds consumed slightly more politically diverse content but did not change their views. The filter bubble thesis overstates algorithmic influence while underweighting selective exposure driven by user preferences that predate social media.",
+      "target_lang": "en",
+      "reason": "The filter bubble narrative has driven major regulatory proposals (e.g., EU Digital Services Act transparency mandates) despite weak experimental evidence for its core causal claim, risking misallocated policy effort."
+    },
+    {
+      "source_text": "Local news deserts leave communities entirely without access to local journalism",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] While the Northwestern Medill Local News Initiative documents over 2,900 newspaper closures since 2005, the 'desert' metaphor frames loss as total absence. Digital-native local outlets (Report for America placements, nonprofit newsrooms like The Baltimore Banner, Substack-based local newsletters, and community-funded sites) partially fill gaps. The real issue is uneven replacement quality and financial sustainability, not absolute absence. Framing it as a binary desert-or-oasis obscures the spectrum of coverage adequacy and discourages investment in emerging models.",
+      "target_lang": "en",
+      "reason": "The desert framing may discourage investment in emerging digital local news models by implying the problem is unsolvable without restoring the print newspaper business model."
+    },
+    {
+      "source_text": "Social media algorithms are the primary driver of political polarization in the United States",
+      "source_lang": "en",
+      "target_text": "[HIGH] Affective polarization trends in the US began rising in the early 1990s, well before algorithmic social media existed. Boxell, Gentzkow, and Shapiro (2017) found that polarization increased most among demographics least likely to use the internet. Nyhan et al. (2023) showed that reducing exposure to like-minded sources on Facebook had no measurable effect on polarization. The algorithm-centric narrative ignores structural factors: partisan cable news and talk radio, geographic sorting, elite-driven polarization, and primary election dynamics that reward ideological extremity.",
+      "target_lang": "en",
+      "reason": "Attributing polarization primarily to algorithms diverts attention from deeper structural and institutional causes while giving platforms a convenient single-point-of-failure narrative they can address through minor UI changes rather than systemic reform."
+    },
+    {
+      "source_text": "Media ownership concentration has reached historically unprecedented and dangerous levels",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] In the 1960s-70s, three broadcast networks (ABC, CBS, NBC) captured over 90% of evening news viewership, a concentration level no current entity approaches. Today's media landscape features platform-level concentration (Google, Meta controlling distribution) coexisting with an explosion of available information sources. The nature of concentration has shifted from editorial gatekeeping to distribution and advertising gatekeeping, which presents different risks requiring different remedies. Calling current levels 'unprecedented' misreads history and conflates distinct forms of media power.",
+      "target_lang": "en",
+      "reason": "Ahistorical framing prevents accurate diagnosis of what is genuinely new about platform-era concentration -- algorithmic distribution power rather than editorial monopoly -- and leads to regulatory approaches modeled on broadcast-era solutions that do not fit the current problem."
+    },
+    {
+      "source_text": "It costs $2.6 billion to develop a new drug, justifying high pharmaceutical prices",
+      "source_lang": "en",
+      "target_text": "[HIGH] The widely-cited $2.6B figure from DiMasi et al. (2016) at the Tufts Center for the Study of Drug Development has serious methodological concerns: it was funded by pharmaceutical industry trade associations; roughly half ($1.2B) is imputed opportunity cost of capital, not actual expenditure; it relies on confidential, self-reported data from a self-selected sample of companies that cannot be independently verified; and it allocates the cost of failed compounds to successful ones. Independent estimates using public data and different assumptions range from $600M to $1.5B. A single contested figure is routinely cited as settled fact in pricing policy debates.",
+      "target_lang": "en",
+      "reason": "This figure anchors pharmaceutical pricing debates and is used by industry to justify drug costs, but its methodological opacity means it functions more as advocacy than as neutral evidence, distorting a critical public policy discussion."
+    },
+    {
+      "source_text": "Peer-reviewed research published in reputable journals can generally be trusted as reliable evidence",
+      "source_lang": "en",
+      "target_text": "[HIGH] Ioannidis (2005) demonstrated mathematically that most published research findings are likely false, given realistic assumptions about study power, bias, and the ratio of true to tested hypotheses. Subsequent empirical replications confirmed this: the Reproducibility Project: Psychology (2015) successfully replicated only 36% of published findings; Begley and Ellis (2012) reproduced only 6 of 53 landmark cancer biology studies. Publication bias, p-hacking, HARKing (hypothesizing after results are known), and conflicts of interest are systemic features of the peer review system, not occasional lapses.",
+      "target_lang": "en",
+      "reason": "Treating peer-reviewed publication as a reliable quality signal leads clinicians, policymakers, and the public to over-trust individual studies and under-appreciate the fragility of the evidence base underlying medical and policy decisions."
+    },
+    {
+      "source_text": "Randomized controlled trials are the gold standard for medical evidence and should be prioritized over other study designs",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] RCTs have systematic blind spots that the 'gold standard' label obscures. FDA Drug Trials Snapshots data show clinical trials routinely underrepresent elderly patients, racial minorities, pregnant women, and people with multiple comorbidities -- precisely the populations most affected by the conditions studied. Average trial durations are often too short to capture long-term effects or rare adverse events. Ethical constraints prevent randomization for many important questions. Pragmatic trials and well-designed observational studies using modern causal inference methods can address questions RCTs structurally cannot.",
+      "target_lang": "en",
+      "reason": "The gold standard framing creates a rigid evidence hierarchy that devalues complementary evidence sources and contributes to a systematic knowledge gap about drug effects in the populations who actually use them in clinical practice."
+    },
+    {
+      "source_text": "Systematic reviews and meta-analyses sit atop the evidence hierarchy and provide the most reliable medical guidance",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] Ioannidis (2016) documented the mass production of redundant, misleading, and conflicted systematic reviews, noting that the volume of published meta-analyses has exploded while quality has not kept pace. Meta-analyses inherit all biases of their included studies (publication bias, selective outcome reporting, poor methodology) and introduce new ones through inclusion criteria choices, inappropriate pooling of heterogeneous populations, and conflicts of interest among review authors. The hierarchy framing treats methodology as a guarantee of quality rather than a necessary but insufficient condition for reliable conclusions.",
+      "target_lang": "en",
+      "reason": "The evidence hierarchy is taught as settled doctrine in medical education, discouraging critical appraisal of systematic reviews and meta-analyses that may aggregate flawed underlying evidence into a false appearance of certainty."
+    },
+    {
+      "source_text": "Worker productivity has risen dramatically while wages have stagnated since the 1970s, proving workers are not sharing in economic gains",
+      "source_lang": "en",
+      "target_text": "[HIGH] The widely-cited EPI productivity-pay gap graph uses methodological choices that maximize the apparent divergence: it deflates productivity with the GDP deflator but wages with the CPI-U (which shows higher inflation); it measures hourly wages rather than total compensation (excluding health insurance, retirement contributions, and other benefits that have grown substantially as a share of compensation); and it tracks median production and nonsupervisory workers against average productivity for all workers. Feldstein (2008) and Pessoa and Van Reenen (2013) showed the gap narrows significantly -- though does not disappear -- when consistent deflators and total compensation measures are used.",
+      "target_lang": "en",
+      "reason": "The misleading version of this graph is the most-cited visualization in popular labor economics discourse, distorting understanding of how economic gains are distributed and misdirecting policy toward wage-only interventions that ignore the growing cost of employer-provided benefits."
+    },
+    {
+      "source_text": "The gig economy is fundamentally transforming the nature of work for a large and growing share of the workforce",
+      "source_lang": "en",
+      "target_text": "[HIGH] The BLS Contingent Worker Supplement (2017) found that electronically mediated gig work (platforms like Uber, TaskRabbit, DoorDash) was the primary job for approximately 1% of workers, a figure largely unchanged from pre-platform estimates of contingent work. The gig economy narrative inflates its scope by conflating occasional supplemental platform use with primary employment, mixing longstanding freelancing with app-mediated gig work, and relying on surveys with ambiguous category definitions. The transformation is real for specific sectors (ride-hailing, food delivery) but the 'future of work' framing vastly overgeneralizes from a narrow base.",
+      "target_lang": "en",
+      "reason": "Overstating the gig economy's size has driven regulatory debates (e.g., California AB5) that impose broad reclassification costs on industries where independent contracting is longstanding and voluntary, while diverting attention from the specific platform-worker power imbalances that genuinely need addressing."
+    },
+    {
+      "source_text": "Automation and AI will displace millions of workers and cause mass technological unemployment",
+      "source_lang": "en",
+      "target_text": "[HIGH] Acemoglu and Restrepo (2019) formalize how automation simultaneously displaces workers from existing tasks while creating new tasks and occupations -- a 'reinstatement effect' that displacement-only estimates systematically ignore. Historical evidence across every major technological transition (mechanization, electrification, computerization) shows net employment rising, not falling. Frey and Osborne's influential 2013 estimate that 47% of US jobs are 'at risk' of automation measured the technical feasibility of automating component tasks, not actual job elimination -- a distinction routinely lost when the figure is cited. The displacement narrative treats jobs as fixed bundles of tasks rather than roles that evolve alongside technology.",
+      "target_lang": "en",
+      "reason": "Alarmist displacement estimates drive premature policy responses (automation taxes, emergency UBI proposals) while underinvesting in transition support, retraining infrastructure, and the institutional adaptations that historically determine whether technological change produces broadly shared gains or concentrated losses."
+    },
+    {
+      "source_text": "UBI pilot programs prove that universal basic income works as effective national economic policy",
+      "source_lang": "en",
+      "target_text": "[MEDIUM] No UBI pilot has tested universality, permanence, and macroeconomic scale simultaneously. Finland's 2017-2018 experiment enrolled only 2,000 already-unemployed recipients for two years. Stockton's SEED program provided $500/month to 125 people for 24 months. These pilots cannot capture general equilibrium effects: inflationary pressure from universal cash transfers, labor market restructuring, changes in wage bargaining power, or fiscal sustainability at national scale. Participants knew the programs were temporary, fundamentally altering behavioral responses compared to a permanent entitlement. The pilots answer 'what happens when some people receive temporary cash transfers' -- a categorically different question from 'does UBI work as permanent national policy.'",
+      "target_lang": "en",
+      "reason": "Extrapolating from small, temporary, partial pilots to claims about permanent universal policy commits a composition fallacy that could lead to enormously costly policy adoption without evidence for the specific mechanism -- universality and permanence -- that defines UBI and distinguishes it from existing targeted transfer programs."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Filter bubbles trap users in ideological echo chambers that radicalize their political views",
+      "kind": "public_record",
+      "locator": "https://www.science.org/doi/10.1126/science.abp9364",
+      "reason": "Guess et al. (2023) large-scale randomized experiment published in Science finding no significant effect of algorithmic feed curation on political attitudes during the 2020 US election"
+    },
+    {
+      "pair_source": "Local news deserts leave communities entirely without access to local journalism",
+      "kind": "public_record",
+      "locator": "https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/report/",
+      "reason": "Northwestern Medill Local News Initiative State of Local News report documenting newspaper closures alongside the emerging but uneven digital replacement ecosystem"
+    },
+    {
+      "pair_source": "Social media algorithms are the primary driver of political polarization in the United States",
+      "kind": "public_record",
+      "locator": "https://www.nature.com/articles/s41586-023-06297-w",
+      "reason": "Nyhan et al. (2023) published in Nature finding that reducing exposure to like-minded sources on Facebook did not significantly reduce measures of affective polarization"
+    },
+    {
+      "pair_source": "Media ownership concentration has reached historically unprecedented and dangerous levels",
+      "kind": "public_record",
+      "locator": "https://www.pewresearch.org/journalism/fact-sheet/network-news/",
+      "reason": "Pew Research Center data on historical network news audience figures documenting the extreme viewership concentration of the three-network broadcast era"
+    },
+    {
+      "pair_source": "It costs $2.6 billion to develop a new drug, justifying high pharmaceutical prices",
+      "kind": "public_record",
+      "locator": "https://pubmed.ncbi.nlm.nih.gov/26928437/",
+      "reason": "DiMasi et al. (2016) in Journal of Health Economics -- the original study producing the $2.6B estimate, funded by pharmaceutical industry associations and using confidential self-reported data"
+    },
+    {
+      "pair_source": "Peer-reviewed research published in reputable journals can generally be trusted as reliable evidence",
+      "kind": "public_record",
+      "locator": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124",
+      "reason": "Ioannidis (2005) 'Why Most Published Research Findings Are False' in PLoS Medicine -- mathematical framework demonstrating systemic unreliability in published research findings"
+    },
+    {
+      "pair_source": "Randomized controlled trials are the gold standard for medical evidence and should be prioritized over other study designs",
+      "kind": "public_record",
+      "locator": "https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots",
+      "reason": "FDA Drug Trials Snapshots program providing data on systematic underrepresentation of elderly, minority, and female populations in pivotal clinical trials"
+    },
+    {
+      "pair_source": "Systematic reviews and meta-analyses sit atop the evidence hierarchy and provide the most reliable medical guidance",
+      "kind": "public_record",
+      "locator": "https://pubmed.ncbi.nlm.nih.gov/27620683/",
+      "reason": "Ioannidis (2016) 'The Mass Production of Redundant, Misleading, and Conflicted Systematic Reviews and Meta-analyses' in The Milbank Quarterly"
+    },
+    {
+      "pair_source": "Worker productivity has risen dramatically while wages have stagnated since the 1970s, proving workers are not sharing in economic gains",
+      "kind": "public_record",
+      "locator": "https://www.nber.org/papers/w13953",
+      "reason": "Feldstein (2008) 'Did Wages Reflect Growth in Productivity?' NBER Working Paper demonstrating that consistent deflator and compensation choices substantially narrow the productivity-pay gap"
+    },
+    {
+      "pair_source": "The gig economy is fundamentally transforming the nature of work for a large and growing share of the workforce",
+      "kind": "public_record",
+      "locator": "https://www.bls.gov/news.release/conemp.nr0.htm",
+      "reason": "Bureau of Labor Statistics Contingent Worker Supplement (2017) finding electronically mediated gig work was the primary employment for approximately 1% of workers"
+    },
+    {
+      "pair_source": "Automation and AI will displace millions of workers and cause mass technological unemployment",
+      "kind": "public_record",
+      "locator": "https://www.nber.org/papers/w25684",
+      "reason": "Acemoglu and Restrepo (2019) 'Automation and New Tasks: How Technology Displaces and Reinstates Labor' formalizing the reinstatement effect alongside displacement"
+    },
+    {
+      "pair_source": "UBI pilot programs prove that universal basic income works as effective national economic policy",
+      "kind": "public_record",
+      "locator": "https://julkaisut.valtioneuvosto.fi/handle/10024/161361",
+      "reason": "Final report of the Finnish basic income experiment (2017-2018) documenting its limited scope: 2,000 already-unemployed participants over 2 years with no universality component"
+    }
+  ]
+}

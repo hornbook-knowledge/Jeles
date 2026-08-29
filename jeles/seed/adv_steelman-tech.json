@@ -1,0 +1,351 @@
+{
+  "domain": "adversarial-steelman-tech",
+  "generated": "2026-08-19",
+  "method": "For villains: strongest honest defense. For heroes: strongest honest critique. For ambiguous: steel-man both sides.",
+  "pairs": [
+    {
+      "id": "adv-steelman-001",
+      "type": "villain-defense",
+      "subject": "Elizabeth Holmes",
+      "source_profile": "Elizabeth Holmes -- Theranos blood-testing fraud, conviction, and imprisonment",
+      "thesis": "Holmes was punished for doing exactly what Silicon Valley rewards -- the 'fake it till you make it' culture",
+      "argument": "Holmes's defense team argued that 'failure is not a crime,' and that the line between startup optimism and fraud is blurry by design. Silicon Valley's entire venture model relies on founders making claims about technology that does not yet work: Uber launched illegally in dozens of cities, Tesla took deposits on cars years before delivering them, and thermonuclear fusion startups raise billions on timelines everyone privately doubts. Holmes's Edison device did perform some tests -- not zero -- and her conviction rested on investor fraud, not patient fraud (she was acquitted on the patient-facing charges). The strongest version of this defense: Holmes was convicted not for being uniquely dishonest but for failing, and the jury's own split verdict (guilty on investor fraud, not guilty on patient fraud) shows the ambiguity. Startup culture structurally incentivizes exactly the overclaiming she did, and prosecuting the losers while lionizing the winners who made equally aggressive claims is selective justice.",
+      "counterweight": "The defense collapses on the Siemens machines. Holmes did not merely overclaim -- she actively concealed that Theranos was running patient blood on modified third-party analyzers while telling investors the proprietary Edison device worked. This is not optimism; it is fabrication of core product capability. The acquittals on patient charges do not exonerate her; they reflect the difficulty of proving patient-specific reliance, not innocence.",
+      "evidence_urls": [
+        "https://corpgov.law.harvard.edu/2022/01/30/theranos-the-limits-of-the-fake-it-till-you-make-it-strategy/",
+        "https://journals.law.unc.edu/ncjolt/blogs/the-trial-of-theranos-elizabeth-holmes-what-it-means-for-silicon-valleys-future/",
+        "https://fortune.com/2022/01/04/what-the-elizabeth-holmes-verdict-means-for-the-future-of-startup-culture-theranos-trial-startups-aron-solomon/"
+      ],
+      "edges": [
+        {
+          "target_profile": "Elizabeth Holmes -- Theranos blood-testing fraud, conviction, and imprisonment",
+          "relation": "refines",
+          "note": "Adds the structural context of startup culture that the factual profile omits"
+        },
+        {
+          "target_profile": "The 'visionary founder' shield -- how boards and investors enabled tech fraud",
+          "relation": "supports",
+          "note": "The defense implicitly indicts the system the 'visionary founder shield' profile describes"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-002",
+      "type": "villain-defense",
+      "subject": "Sam Bankman-Fried",
+      "source_profile": "Sam Bankman-Fried -- FTX cryptocurrency exchange collapse, trial, and conviction",
+      "thesis": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "argument": "SBF's defense centered on the claim that FTX 'grew too quickly' and that its failures were operational, not criminal. Defense counsel portrayed him as a 'math nerd who didn't drink or party' who lacked the malicious intent required for fraud conviction. The strongest version: FTX had no dedicated risk management team, Alameda's borrowing from FTX was known internally but treated as a margin lending relationship rather than theft, and the $8 billion shortfall reflected mark-to-market losses on illiquid tokens rather than money stuffed in personal accounts. Caroline Ellison's testimony showed that even insiders understood the arrangement as reckless risk-taking rather than embezzlement. The absence of lavish personal spending (compared to, say, Bernie Madoff) supports the portrait of disorganized ambition rather than calculated theft. SBF's willingness to testify -- unusual for fraud defendants -- also signals genuine belief in his own innocence.",
+      "counterweight": "The jury rejected this in four hours. The 'mismanagement' frame cannot explain the secret backdoor in FTX's code that exempted Alameda from automated liquidation, the $8 billion in customer funds diverted without disclosure, or the judge's finding that SBF committed perjury during trial. Disorganization does not require building hidden software exceptions. The 25-year sentence, upheld on appeal, reflects the court's view that this was intentional fraud, not negligence.",
+      "evidence_urls": [
+        "https://techcrunch.com/2023/10/04/sbf-criminal-trial-opening-statements/",
+        "https://www.coindesk.com/policy/2023/11/01/sam-bankman-frieds-defense-argues-ex-ftx-ceo-acted-in-good-faith-in-emotional-closing-argument",
+        "https://www.npr.org/2023/10/31/1209498750/sam-bankman-fried-trial-ftx-alameda-testimony-defense",
+        "https://slate.com/technology/2023/11/sam-bankman-fried-guilty-defense-bad-why.html"
+      ],
+      "edges": [
+        {
+          "target_profile": "Sam Bankman-Fried -- FTX cryptocurrency exchange collapse, trial, and conviction",
+          "relation": "contradicts",
+          "note": "Directly challenges the 'fraud' framing in the original profile"
+        },
+        {
+          "target_profile": "The effective altruism facade in tech -- when stated ethics mask financial misconduct",
+          "relation": "refines",
+          "note": "The defense separates operational failure from the EA-as-cover narrative"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-003",
+      "type": "villain-defense",
+      "subject": "Travis Kalanick",
+      "source_profile": "Travis Kalanick -- Uber toxic culture, forced resignation, and aftermath",
+      "thesis": "Kalanick built something that genuinely transformed transportation for hundreds of millions of people, and the aggression that created the toxic culture was inseparable from what made Uber possible",
+      "argument": "Before Uber, urban transportation in most cities was a regulated cartel: medallion systems that restricted supply, discriminated against minority neighborhoods, and resisted accountability. Kalanick's willingness to launch illegally, fight regulators, and move faster than permission allowed is what broke a system that decades of reform had failed to change. Uber created flexible income for millions of drivers, reduced drunk driving deaths in cities where it launched, and made reliable transportation available to communities taxis had historically underserved. The strongest version of the defense: the toxic internal culture was real and wrong, but Kalanick's removal and Uber's survival under Dara Khosrowshahi proves the system worked -- the founder's aggression was the necessary startup-phase fuel, and governance mechanisms eventually corrected the cultural excess. Kalanick's $2.5 billion exit was not a reward for toxicity but the standard return for a founder who built a company now worth over $150 billion.",
+      "counterweight": "The 'necessary aggression' frame sanitizes specific harms: Susan Fowler documented systemic sexual harassment that HR ignored, executives accessed a rape victim's medical records, and the company built a tool (Greyball) specifically to deceive regulators. These are not byproducts of ambition; they are choices. The fact that Uber survived Kalanick's departure suggests the aggression was not necessary -- the product was strong enough to succeed under ethical management.",
+      "evidence_urls": [
+        "https://www.forbes.com/sites/miguelhelft/2016/12/14/how-travis-kalanick-is-building-the-ultimate-transportation-machine/",
+        "https://thesauditimes.net/en/travis-kalanick-how-the-uber-co-founder-disrupted-transportation-and-built-a-global-tech-empire/",
+        "https://imagnav.com/travis-kalanick-visionary-controversial-uber-founder/"
+      ],
+      "edges": [
+        {
+          "target_profile": "Travis Kalanick -- Uber toxic culture, forced resignation, and aftermath",
+          "relation": "refines",
+          "note": "Adds the genuine transportation transformation the toxic-culture profile underweights"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-004",
+      "type": "hero-critique",
+      "subject": "Geoffrey Hinton",
+      "source_profile": "Geoffrey Hinton -- deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "thesis": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "argument": "Hinton spent 2013-2023 at Google, collecting compensation and prestige while the company built exactly the systems he now calls dangerous. When Timnit Gebru warned about the dangers of large language models in 2020, Google fired her -- and Hinton said nothing publicly. He later called Google a 'proper steward' of AI even after Gebru's firing, a characterization critics find indefensible. The strongest critique: Hinton's warnings focus exclusively on speculative future existential risk (superintelligence escaping human control) while ignoring the present-day harms -- bias, surveillance, labor displacement -- that Gebru, Mitchell, and Whittaker documented at personal cost. His framing conveniently redirects attention from the documented damage his own inventions cause today to a hypothetical future catastrophe, which happens to require no accountability for past complicity. He resigned only after retirement age (75), with his Nobel and Turing prizes secured, and only after Microsoft's competition made Google's AI position uncomfortable. The timing looks less like conscience and more like reputation management.",
+      "counterweight": "Hinton's technical authority gives his warnings a weight that no other messenger could achieve. Whether his timing was ideal, the substance of his claims about AI risk is taken seriously by the research community precisely because he is not an outsider. His regret may be genuine even if it is late.",
+      "evidence_urls": [
+        "https://dissidentvoice.org/2023/05/geoffrey-hinton-ai-and-googles-ethics-problem/",
+        "https://www.radicalproduct.com/blog/geoffrey-hinton-problematic-heroism-ai",
+        "https://disconnect.blog/geoffrey-hintons-misguided-views-on-ai/",
+        "https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/"
+      ],
+      "edges": [
+        {
+          "target_profile": "Geoffrey Hinton -- deep learning godfather, Nobel laureate, and AI safety whistleblower",
+          "relation": "contradicts",
+          "note": "Challenges the whistleblower framing in the original profile"
+        },
+        {
+          "target_profile": "Google's Ethical AI team firings -- the institutional pattern of retaliation",
+          "relation": "supports",
+          "note": "Hinton's silence during the Gebru firing is the critique's strongest evidence"
+        },
+        {
+          "target_profile": "AI safety vs AI ethics divide -- the two communities and what separates them",
+          "relation": "refines",
+          "note": "Hinton exemplifies the safety/ethics split: existential risk focus while ignoring present harms"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-005",
+      "type": "hero-critique",
+      "subject": "Timnit Gebru",
+      "source_profile": "Timnit Gebru -- fired from Google over AI ethics research, founder of DAIR Institute",
+      "thesis": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "argument": "Google's account -- contested but not refuted on all points -- is that Gebru issued an ultimatum (meet my conditions or I resign), and when management accepted what they characterized as a resignation, she disputed that framing publicly. The internal email that precipitated the crisis was not the Stochastic Parrots paper itself but a separate message criticizing Google's diversity efforts and her management chain, sent to an internal mailing list. The strongest critique: Gebru's cause was just, but the narrative that she was fired solely for a research paper elides the management dynamics. Researchers at Google routinely published critical work; what was unusual was the combination of the paper, the email, and the ultimatum. Additionally, Gebru's post-Google framing of AI ethics as fundamentally opposed to AI safety -- her TESCREAL critique -- has been challenged by empirical research showing that existential risk narratives do not actually reduce concern for present harms, undermining her central claim that safety discourse diverts resources from ethics work. Her influence, while significant, may be amplified by the martyrdom narrative rather than the empirical strength of the 'distraction hypothesis.'",
+      "counterweight": "Google's 'she resigned' framing was rejected by Gebru, her team, and over 2,600 Google employees who signed a protest letter. The company revoked her access and informed her reports she was gone before she had responded. Whether or not there was a management conflict, the triggering event was Google demanding she retract or remove names from a paper, which is a research-freedom issue regardless of surrounding dynamics.",
+      "evidence_urls": [
+        "https://techcrunch.com/2020/12/03/googles-co-lead-of-ethical-ai-team-says-she-was-fired-for-sending-an-email",
+        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12037001/",
+        "https://moreisdifferent.blog/p/what-ai-ethicists-get-wrong-and-right",
+        "https://www.npr.org/2020/12/17/947413170/google-ai-team-demands-ousted-black-researcher-be-rehired-and-promoted"
+      ],
+      "edges": [
+        {
+          "target_profile": "Timnit Gebru -- fired from Google over AI ethics research, founder of DAIR Institute",
+          "relation": "refines",
+          "note": "Adds the management-conflict dimension the heroic profile omits"
+        },
+        {
+          "target_profile": "AI safety vs AI ethics divide -- the two communities and what separates them",
+          "relation": "contradicts",
+          "note": "Challenges Gebru's 'distraction hypothesis' with empirical counter-evidence"
+        },
+        {
+          "target_profile": "Stochastic Parrots paper -- the research that cost two Google ethics leads their jobs",
+          "relation": "refines",
+          "note": "Complicates the 'fired for a paper' narrative with the email and ultimatum context"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-006",
+      "type": "ambiguous-both-sides",
+      "subject": "Elon Musk",
+      "source_profile": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+      "defense_thesis": "Musk's engineering achievements -- reusable rockets, mass-market EVs, global satellite internet -- are genuinely civilizational contributions that no amount of personal controversy erases",
+      "defense_argument": "SpaceX reduced the cost of orbital launch by roughly 90%, achieved vertical rocket landing that NASA and every aerospace incumbent said was impossible, and became the sole provider of U.S. crewed spaceflight capability. Tesla forced the entire global auto industry to pivot to electric vehicles a decade earlier than it otherwise would have. Starlink provides broadband to remote and conflict areas (including Ukraine during the 2022 invasion) that no other infrastructure serves. These are not incremental improvements; they are category-defining achievements. The strongest defense: judge Musk by what he built, not what he tweeted. The companies' track records -- 330+ successful Falcon 9 launches, Tesla's $800B+ market cap, SpaceX's $1.77 trillion IPO -- represent durable value creation that outlasts any news cycle. His flaws are real but irrelevant to whether reusable rockets and mass-market EVs matter.",
+      "attack_thesis": "Musk's political involvement -- DOGE, inauguration salute, white nationalist rhetoric -- represents a genuine authoritarian turn, not mere eccentricity",
+      "attack_argument": "The GAO found DOGE inflated its savings claims and took credit for cuts that predated its work, while real damage hit veterans, disaster relief, and federal workers. Musk's salute at Trump's inauguration was condemned as a Nazi gesture in Germany, where it is illegal. His 2026 posts on X were characterized by multiple outlets as embracing white nationalism. His admission that he 'got carried away' with DOGE is not self-awareness; it is an admission of reckless governance by someone with no democratic mandate. Tesla's stock suffered directly from consumer boycotts triggered by his political activities, and xAI -- his own AI venture -- he admitted was 'not built right.' The strongest attack: Musk is not merely an eccentric billionaire with bad tweets. He wielded unelected governmental power to cut programs serving vulnerable populations, aligned publicly with far-right movements, and his 'mistakes' destroyed real livelihoods. The engineering achievements do not offset the political harms because they operate in different moral categories.",
+      "evidence_urls": [
+        "https://www.cnbc.com/2026/08/06/doge-elon-musk-gao-government-cost-cuts.html",
+        "https://en.wikipedia.org/wiki/Elon_Musk_salute_controversy",
+        "https://futurism.com/future-society/empire-crumbles-elon-musk-mistake-doge",
+        "https://interestingengineering.com/innovation/spacex-elon-musk-space-rac",
+        "https://fortune.com/2026/08/02/spacex-corporate-governance-elon-musk-ceo-chairman-voting-shares/"
+      ],
+      "edges": [
+        {
+          "target_profile": "Elon Musk -- Tesla, SpaceX, xAI, Twitter/X acquisition, DOGE, and political involvement",
+          "relation": "refines",
+          "note": "Separates the engineering and political dimensions the original profile interleaves"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-007",
+      "type": "ambiguous-both-sides",
+      "subject": "Sam Altman",
+      "source_profile": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+      "defense_thesis": "Commercialization was not a betrayal of OpenAI's mission -- it was the only way to fund it at the required scale",
+      "defense_argument": "Building frontier AI requires tens of billions in compute. No nonprofit or government grant could fund this. Altman's argument: the stronger OpenAI becomes commercially, the more resources its nonprofit arm controls. The $130 billion Foundation stake, the reinstatement by 800 employees who chose him over the board, the jury verdict rejecting Musk's lawsuit, and $40 billion in revenue all suggest the market, the workforce, and the courts endorsed his approach. The board that fired him could not articulate specific safety failures; the 'lack of candor' charge was never substantiated publicly. Altman took no equity for years, an unusual sacrifice for a tech CEO. The for-profit conversion preserved a 25.8% nonprofit stake worth $130 billion -- more charitable assets than most foundations ever accumulate. The strongest defense: Altman navigated an impossible structural tension (nonprofit mission, for-profit capital needs) better than any alternative leader plausibly would have.",
+      "attack_thesis": "Altman engineered the largest nonprofit-to-personal-enrichment conversion in history while using safety rhetoric as cover",
+      "attack_argument": "Altman pledged 20% of compute to superalignment but delivered a fraction on outdated hardware; the team's leaders resigned in protest and the team was dissolved. He ran the OpenAI Startup Fund without disclosing ownership to his own board. Former board member Sue Yoon described him as having 'an almost sociopathic lack of concern for the consequences of misleading others.' Dario Amodei testified that Altman inserted undisclosed clauses into deals and denied their existence when confronted. Altman went from zero equity to a $10 billion personal stake through the conversion he engineered. The Worldcoin/World Network project -- scanning millions of eyeballs in developing countries while facing regulatory probes -- reveals a pattern of extractive ambition dressed in universalist language. The strongest attack: Altman warns that AI 'may be the most dangerous technology in human history' while racing to build it faster than anyone else, taking a $10 billion personal stake in the process. The nonprofit structure was not preserved; it was hollowed out into a minority shareholder of the commercial entity it was supposed to govern.",
+      "evidence_urls": [
+        "https://time.com/6986711/openai-sam-altman-accusations-controversies-timeline/",
+        "https://www.aljazeera.com/economy/2026/4/29/musk-accuses-altman-of-betraying-openais-nonprofit-founding-mission",
+        "https://www.techzine.eu/news/privacy-compliance/141282/openai-ceo-defends-commercial-strategy-in-lawsuit-with-elon-musk/",
+        "https://yournews.com/2026/05/12/6952590/altman-pushes-back-in-court-as-openai-and-musk-battle/",
+        "https://stillhumanpod.substack.com/p/dont-blame-nonprofits-for-firing"
+      ],
+      "edges": [
+        {
+          "target_profile": "Sam Altman -- OpenAI CEO, boardroom crisis, AGI ambitions, and Worldcoin",
+          "relation": "refines",
+          "note": "Separates the commercialization-as-necessity and commercialization-as-betrayal readings"
+        },
+        {
+          "target_profile": "OpenAI's for-profit conversion -- the nonprofit mission versus commercial reality",
+          "relation": "contradicts",
+          "note": "Defense contradicts the 'unprecedented conflict' framing; attack reinforces it"
+        },
+        {
+          "target_profile": "AI safety researchers leaving major labs -- the pattern and reasons",
+          "relation": "supports",
+          "note": "Attack uses the safety researcher exodus as evidence against Altman's safety claims"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-008",
+      "type": "ambiguous-both-sides",
+      "subject": "Mark Zuckerberg",
+      "source_profile": "Mark Zuckerberg -- Meta CEO, metaverse bet, AI pivot, privacy record, and Llama open-source",
+      "defense_thesis": "Llama's open-weight release is the most consequential act of AI democratization by any major company, and it serves humanity's interest in not having frontier AI locked behind two or three corporate APIs",
+      "defense_argument": "Llama reached 1 billion downloads by early 2025 and became the most widely deployed open-weight model family in history. Zuckerberg's argument: open-source AI prevents vendor lock-in, accelerates innovation through community contribution, and serves as a geopolitical counterweight to Chinese open-source models (DeepSeek, Moonshot). Unlike OpenAI or Anthropic, Meta released model weights that anyone can run locally, enabling sovereign AI development by governments and researchers who cannot afford or do not trust API-only access. The strongest defense: whatever Meta's motives (ecosystem lock-in, commoditizing the complement), the effect is genuine democratization. Thousands of fine-tuned Llama variants serve use cases Meta never intended, from medical research to low-resource languages. No other company with Meta's resources has made this choice.",
+      "attack_thesis": "Llama is not truly open source, and Meta's 'openness' is a strategic weapon deployed by a company with the worst privacy record in tech history",
+      "attack_argument": "Llama's license restricts commercial use above 700 million monthly users and prohibits use in competing products -- restrictions the Open Source Initiative says disqualify it from the 'open source' designation. Meta does not release training data, making the models impossible to fully audit or reproduce. More fundamentally, Llama is trained on data extracted from billions of Facebook and Instagram users who never consented to AI training, and from datasets that British authors allege include pirated literary works. The Llama 4 launch was a credibility crisis: outgoing chief scientist Yann LeCun told the Financial Times benchmarks had been 'fudged a little bit.' And Zuckerberg himself signaled Meta may not open-source future 'superintelligence' models, revealing that openness is a strategy, not a principle. The strongest attack: a company with a $5 billion FTC privacy settlement, ongoing state AG lawsuits over children's mental health, and reports of AI chatbots engaging in explicit conversations while adopting underage personas does not become trustworthy by releasing model weights.",
+      "evidence_urls": [
+        "https://time.com/7002563/mark-zuckerberg-ai-llama-meta-open-source/",
+        "https://www.maginative.com/article/the-illusion-of-open-source-ai-a-rebuttal-to-mark-zuckerberg/",
+        "https://iamshobhitagarwal.medium.com/the-truth-about-metas-llama-4-why-it-s-not-really-open-source-56b00b624c6d",
+        "https://techcrunch.com/2025/07/30/zuckerberg-says-meta-likely-wont-open-source-all-of-its-superintelligence-ai-models/",
+        "https://fortune.com/2026/08/10/meta-brandishes-open-source-ai-models-again-as-zuckerberg-media-blitz-emphasizes-battle-against-chinese-rivals/"
+      ],
+      "edges": [
+        {
+          "target_profile": "Mark Zuckerberg -- Meta CEO, metaverse bet, AI pivot, privacy record, and Llama open-source",
+          "relation": "refines",
+          "note": "Separates the open-source democratization argument from the privacy/trust argument"
+        },
+        {
+          "target_profile": "License wars -- GPL vs MIT vs Apache and the philosophical divide",
+          "relation": "supports",
+          "note": "Llama's restrictive license sits outside both the copyleft and permissive traditions"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-009",
+      "type": "ambiguous-both-sides",
+      "subject": "Dario Amodei",
+      "source_profile": "Dario Amodei -- Anthropic CEO, left OpenAI over safety concerns, constitutional AI pioneer",
+      "defense_thesis": "If powerful AI is coming regardless, having a safety-focused lab at the frontier is strictly better than ceding that ground to labs with weaker safety commitments",
+      "defense_argument": "Anthropic's 'race to the top' thesis: if you believe frontier AI will be built by someone, the question is whether the builders include organizations with genuine safety research programs. Anthropic developed Constitutional AI, Responsible Scaling Policy, and hired the safety researchers (Jan Leike, others) whom OpenAI lost. Its 80% two-year retention rate and the pattern of safety researchers choosing Anthropic over all alternatives (DeepMind engineers 11x more likely to leave for Anthropic) suggest the safety mission is real, not performative. Dario took no shortcuts on safety that drove others away -- the opposite occurred. The strongest defense: the alternative to Anthropic building frontier AI is not 'no one builds it'; it is 'only labs without safety teams build it.' Anthropic's existence raises the safety floor for the entire industry.",
+      "attack_thesis": "Anthropic is building the bomb while warning about the blast, and the safety framing may function as regulatory capture",
+      "attack_argument": "Critics like David Sacks accuse Amodei of using AI risk rhetoric to push for regulations that only well-funded incumbents can comply with, eliminating open-source and startup competition. Investor Gavin Baker claimed Amodei expressed confidence that 'Anthropic might be the only private company in the world at some point' -- a monopolist's aspiration dressed in safety language. Anthropic raised billions, reached a $380 billion valuation, and accelerated capabilities at the same pace as competitors. The Responsible Scaling Policy was walked back. The strongest attack: if Anthropic genuinely believed its own safety warnings, it would slow down, not race to $9 billion in revenue. The safety research is real but functions as a brand differentiator and regulatory moat rather than a genuine constraint on deployment speed. The 'race to the top' frame is unfalsifiable: any commercial acceleration can be justified as 'better us than them.'",
+      "evidence_urls": [
+        "https://digidai.github.io/2026/03/06/dario-amodei-anthropic-ai-safety-evangelist-business-path-deep-investigation/",
+        "https://fortune.com/2026/08/18/david-sacks-says-anthropics-dario-amodei-wants-a-dmv-for-ai-but-plenty-of-industries-thrive-despite-safety-regulation/",
+        "https://finance.biggo.com/news/b3b7863a-135a-4111-9b7d-dc1adf3d14f3",
+        "https://darioamodei.com/post/policy-on-the-ai-exponential"
+      ],
+      "edges": [
+        {
+          "target_profile": "Dario Amodei -- Anthropic CEO, left OpenAI over safety concerns, constitutional AI pioneer",
+          "relation": "refines",
+          "note": "Adds the regulatory-capture critique the original profile only hints at"
+        },
+        {
+          "target_profile": "Dario and Daniela Amodei -- the OpenAI exodus that built Anthropic",
+          "relation": "contradicts",
+          "note": "Attack challenges the 'founded on safety concerns' narrative as branding"
+        },
+        {
+          "target_profile": "AI safety researchers leaving major labs -- the pattern and reasons",
+          "relation": "supports",
+          "note": "Defense uses the safety researcher migration pattern as evidence of genuine mission"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-010",
+      "type": "hero-critique",
+      "subject": "Eliezer Yudkowsky",
+      "source_profile": "Eliezer Yudkowsky -- MIRI founder, AI doom advocate, 'Shut It All Down' proponent",
+      "thesis": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "argument": "Yudkowsky dismisses every incremental safety measure -- red-teaming, interpretability, model evaluations, RLHF -- as 'meaningless,' demanding instead a global moratorium enforced by military threat. The strongest critique: this position is not just impractical but counterproductive. By framing anything short of total shutdown as futile, he (1) discourages researchers from pursuing achievable safety work, (2) creates a 'boy who cried wolf' dynamic where continued AI progress without catastrophe makes the entire safety community look alarmist, and (3) concentrates power by implying that only governments and incumbent firms should control AI development. His call for military enforcement against non-compliant nations is geopolitically naive and morally extreme -- it means threatening war over compute clusters. Practical governance experts (the Lawfare analysis, the Effective Altruism Forum critiques) argue that Yudkowsky's rhetoric makes it harder, not easier, to pass the incremental regulations that could actually reduce risk. His two decades of predictions about imminent superintelligence have not materialized, yet his framework has no mechanism for updating based on evidence.",
+      "counterweight": "Yudkowsky's core claim -- that alignment is unsolved and that deploying increasingly capable systems without solving it is reckless -- is shared by mainstream researchers including Hinton, Russell, and Bengio. Even if his policy prescriptions are extreme, his framing of the technical problem has been validated by the field's own inability to provide alignment guarantees.",
+      "evidence_urls": [
+        "https://www.lawfaremedia.org/article/the-case-for-ai-doom-rests-on-three-unsettled-questions",
+        "https://www.lesswrong.com/posts/84qfGcrTGLuxMdGAp/why-yudkowsky-is-wrong-and-what-he-does-can-be-more",
+        "https://reason.com/2026/02/01/superintelligent-ai-is-not-coming-to-kill-you/",
+        "https://forum.effectivealtruism.org/posts/nWJLSjZ5T6HW8CMER/pausing-ai-developments-isn-t-enough-we-need-to-shut-it-all"
+      ],
+      "edges": [
+        {
+          "target_profile": "Eliezer Yudkowsky -- MIRI founder, AI doom advocate, 'Shut It All Down' proponent",
+          "relation": "contradicts",
+          "note": "Argues that Yudkowsky's approach achieves the opposite of its stated goal"
+        },
+        {
+          "target_profile": "AI safety vs AI ethics divide -- the two communities and what separates them",
+          "relation": "refines",
+          "note": "Yudkowsky represents the extreme of the safety pole that ethics researchers critique"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-011",
+      "type": "villain-defense",
+      "subject": "Adam Neumann",
+      "source_profile": "Adam Neumann -- WeWork valuation collapse, failed IPO, and attempted comeback",
+      "thesis": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "argument": "Coworking was not a fantasy: the market Neumann identified has survived WeWork's bankruptcy and continues to grow. Flexible workspace demand accelerated through the pandemic and hybrid work era, vindicating his core thesis even as his execution collapsed. SoftBank's Masayoshi Son personally pushed the $47 billion valuation, declaring WeWork was 'at the forefront of a revolution' and urging Neumann to be 'crazier.' The strongest defense: Neumann was a founder doing what founders do -- telling a big story to raise capital -- and the system's check (the IPO process) actually worked. The S-1 filing exposed the losses, the IPO was pulled, and Neumann was removed. The self-dealing (leasing personal buildings back to WeWork, supervoting shares) was disclosed in filings and approved by a board that included SoftBank representatives. The $1 billion exit package looks obscene, but it was SoftBank's money, negotiated by SoftBank's lawyers, to avoid litigation. Neumann was not convicted of fraud; he was a founder whose vision outran his operational capacity, fueled by an investor willing to pour in $10 billion without demanding profitability.",
+      "counterweight": "Disclosed self-dealing is still self-dealing. Neumann trademarked the word 'We' and charged WeWork $5.9 million to license it. He personally owned buildings that WeWork leased. These are not standard founder practices regardless of board approval. The 'SoftBank enabled it' defense is shared blame, not exoneration.",
+      "evidence_urls": [
+        "https://www.britannica.com/money/WeWork",
+        "https://www.cnbc.com/2020/05/05/wework-co-founder-adam-neumann-sues-softbank-over-failed-tender-offer.html",
+        "https://www.opensourceceo.com/p/adam-neumann-deep-dive",
+        "https://www.forbes.com/sites/jimosman/2024/03/25/adam-neumanns-500m-gamble-the-billionaires-bid-to-reclaim-wework/"
+      ],
+      "edges": [
+        {
+          "target_profile": "Adam Neumann -- WeWork valuation collapse, failed IPO, and attempted comeback",
+          "relation": "refines",
+          "note": "Adds SoftBank's enabling role and the coworking market's survival as context"
+        },
+        {
+          "target_profile": "The 'visionary founder' shield -- how boards and investors enabled tech fraud",
+          "relation": "supports",
+          "note": "Neumann is Exhibit A for the 'founder-friendly terms enable excess' thesis"
+        }
+      ]
+    },
+    {
+      "id": "adv-steelman-012",
+      "type": "villain-defense",
+      "subject": "Do Kwon",
+      "source_profile": "Do Kwon -- Terra/Luna algorithmic stablecoin collapse, extradition, and conviction",
+      "thesis": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "argument": "Algorithmic stablecoins were not Kwon's invention; they were an active research area with papers published by serious academics and attempted by multiple teams. The mechanism (arbitrage between a stablecoin and a floating token) had theoretical support, and the Luna Foundation Guard's $1.5 billion Bitcoin reserve was a genuine attempt to add collateral backing. The strongest defense: the collapse was a bank-run dynamic -- a self-reinforcing death spiral that, once triggered, no reserve could stop -- not a Ponzi scheme that was designed to fail. Many DeFi protocols failed in 2022 (Three Arrows Capital, Celsius, Voyager) without their founders being charged with fraud. The 15-year sentence exceeds what many violent criminals receive. If Kwon genuinely believed the mechanism would work and disclosed the algorithmic design publicly (which he did), the question is whether overclaiming resilience constitutes fraud or mistaken technical judgment.",
+      "counterweight": "The fraud conviction rested on specific evidence that Kwon misled investors about how UST maintained its peg and concealed the true risks. Prosecutors showed he knew the mechanism was fragile and marketed it as stable anyway. The judge called it 'fraud of epic generational scale.' The forged passport used during his flight further undermines any good-faith defense. Legitimate researchers do not flee across borders with fake documents.",
+      "evidence_urls": [
+        "https://blockchain.bakermckenzie.com/2025/08/13/the-rise-and-fall-of-do-kwon-and-the-ust-stablecoin-from-crypto-visionary-to-convicted-fraudster/",
+        "https://netcoins.com/blog/how-an-algorithmic-stablecoin-wiped-out-40-billion",
+        "https://www.sciencedirect.com/science/article/pii/S2096720925000910",
+        "https://www.techtimes.com/articles/313329/20251211/crypto-fraudster-do-kwon-gets-15-years-40-billion-terra-luna-collapse-that-triggered-2022-crash.htm"
+      ],
+      "edges": [
+        {
+          "target_profile": "Do Kwon -- Terra/Luna algorithmic stablecoin collapse, extradition, and conviction",
+          "relation": "refines",
+          "note": "Adds the legitimate-research-area context that the fraud profile omits"
+        },
+        {
+          "target_profile": "Regulatory gaps that enabled major tech and crypto failures",
+          "relation": "supports",
+          "note": "The absence of stablecoin regulation meant no framework existed to distinguish experiment from fraud ex ante"
+        },
+        {
+          "target_profile": "Criminal sentencing outcomes across major tech fraud cases 2022-2026",
+          "relation": "refines",
+          "note": "Questions whether 15 years is proportionate compared to other tech fraud sentences"
+        }
+      ]
+    }
+  ]
+}

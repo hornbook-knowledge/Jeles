@@ -1,0 +1,293 @@
+{
+  "domain": "ai-rag-systems",
+  "pairs": [
+    {
+      "source_text": "Production RAG pipeline architecture: multi-stage retrieval with hybrid search and reranking (2026)",
+      "source_lang": "en",
+      "target_text": "The 2026 reference RAG architecture treats retrieval as a multi-stage pipeline rather than a single similarity query. The online query path runs query rewriting, hybrid retrieval (BM25 plus dense embeddings fused with Reciprocal Rank Fusion), cross-encoder reranking, context assembly, generation, and citation extraction. A cross-encoder reranker on top of hybrid retrieval adds 5 to 15 points of MRR on hard query sets, making it the single highest-ROI quality improvement after basic retrieval. Production systems target Time-to-First-Token p90 under 2 seconds and 99.9% uptime SLAs, with separated indexing and query pipelines.",
+      "target_lang": "en",
+      "reason": "Defines the canonical production RAG architecture as of mid-2026, showing how the field has moved beyond naive retrieve-and-generate"
+    },
+    {
+      "source_text": "RAG chunking strategies: semantic chunking, contextual retrieval, and late chunking techniques (2024-2026)",
+      "source_lang": "en",
+      "target_text": "The 2026 default chunking strategy is 512 to 1024 tokens with 50 to 100 tokens of overlap, plus a semantic re-chunker that respects section boundaries. Anthropic's contextual retrieval technique (introduced 2024) prefixes every chunk with a model-generated one-sentence summary of its parent document, lifting retrieval precision by 35 to 50 percent on their benchmark. Jina AI's late chunking approach encodes all tokens of an entire document through a long-context embedding model first, then segments into chunks via mean pooling, so each chunk embedding retains full document context. Semantic chunking improves recall up to 9% over fixed-size approaches, and 80% of RAG failures trace back to the ingestion and chunking layer, not the LLM.",
+      "target_lang": "en",
+      "reason": "Chunking is the most impactful stage in the RAG pipeline and the primary source of retrieval failures"
+    },
+    {
+      "source_text": "Hybrid search combining BM25 sparse and dense vector retrieval as production RAG standard (2025-2026)",
+      "source_lang": "en",
+      "target_text": "Hybrid retrieval combining sparse keyword search (BM25) with dense vector embeddings has become the de facto production standard for RAG as of 2025-2026. BM25 matches exact terms like product codes and identifiers while dense search captures semantic meaning. On the WANDS e-commerce benchmark, tuned hybrid search reaches NDCG of 0.7497, a 7.4% lift over BM25 alone (0.6983) or pure vector search (0.6953). Simple weighted fusion of dense and sparse achieves up to 580% improvement in Recall@10 on MS MARCO over dense-only retrieval. Results are typically fused using Reciprocal Rank Fusion (RRF). Eight of the ten major vector databases now support hybrid search natively, including Weaviate, Qdrant, and Pinecone.",
+      "target_lang": "en",
+      "reason": "Hybrid search is the most significant retrieval quality improvement in production RAG, with strong benchmark evidence"
+    },
+    {
+      "source_text": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "source_lang": "en",
+      "target_text": "As of mid-2026, the RAG framework ecosystem has four major players. LlamaIndex leads for document-centric RAG over PDFs and knowledge bases with robust indexing strategies and deep document handling. LangChain excels at rapid prototyping with 50K+ integrations and 3x faster development time, and its LangGraph extension handles agent-driven workflows. Haystack provides a strict pipeline abstraction favored in regulated industries like finance, healthcare, and legal. DSPy (Stanford, 25K+ GitHub stars) treats LLM interactions as programmable modules and auto-optimizes prompts using typed signatures, used in production by Cursor, Mistral, and Databricks. The recommended 2026 pattern is to combine LlamaIndex for ingestion/retrieval with LangChain/LangGraph for orchestration.",
+      "target_lang": "en",
+      "reason": "Understanding the framework landscape is essential for teams choosing their RAG stack"
+    },
+    {
+      "source_text": "RAG evaluation metrics and the RAGAS framework for measuring retrieval and generation quality (2026)",
+      "source_lang": "en",
+      "target_text": "Six metrics anchor a 2026 RAG evaluation program: faithfulness (whether the answer is supported by retrieved context), context precision (whether retrieved chunks are relevant), context recall (whether all needed chunks were retrieved), groundedness (per-sentence faithfulness), answer relevance (whether the answer addresses the query), and hallucination detection (reference-free safety net). RAGAS is the most widely adopted open-source evaluation framework, Python-native with integration across LLM providers, pioneering the four-metric pattern (context precision, context recall, faithfulness, answer relevancy). RAGAS includes synthetic test generation that reduces manual curation by up to 90%. Production 2026 frameworks ship 6 to 12 RAG-specific metrics across five categories.",
+      "target_lang": "en",
+      "reason": "Evaluation is critical because RAG systems fail silently without proper metrics across both retrieval and generation"
+    },
+    {
+      "source_text": "RAG hallucination failure modes: retrieval miss, context leak, and generation drift in enterprise systems",
+      "source_lang": "en",
+      "target_text": "RAG hallucination has three distinct failure modes: retrieval miss (the correct chunk was never returned), context leak (the model pulls in parametric knowledge that contradicts retrieved text), and generation drift (the retrieved chunk was correct but the model rephrased it in meaning-altering ways). A 2025 Galileo analysis found that RAG systems in enterprise settings still hallucinate at rates exceeding 10% on real-world queries, with legal and medical domains pushing past 20%. Models with strong retrieval still ignore retrieved context, fabricate citations, or blend retrieved facts with parametric knowledge in authoritative-sounding but incorrect ways. A single answer can pass a groundedness check while failing factuality or consistency checks, requiring separate evaluation for each failure mode.",
+      "target_lang": "en",
+      "reason": "Understanding specific failure modes is essential for building reliable RAG systems that avoid the most dangerous hallucination patterns"
+    },
+    {
+      "source_text": "Agentic RAG: multi-step retrieval patterns with iterative tool use and reasoning loops (2025-2026)",
+      "source_lang": "en",
+      "target_text": "Agentic RAG treats retrieval as one of many tools an autonomous agent can invoke repeatedly, not a one-shot preprocessing step. Five canonical patterns cover most production use cases: iterative retrieval (re-querying based on initial results), query decomposition (breaking complex questions into sub-queries), hypothesis-driven retrieval (generating hypotheses then seeking evidence), cross-corpus triangulation (searching multiple sources), and evidence-weighted synthesis (combining retrieved evidence with confidence scores). Multi-step reflection loops typically consume 3 to 10 times the tokens of classic RAG. Without explicit iteration budgets and confidence thresholds, agentic RAG loops run away on cost. Every step emits an observability span carrying evaluator scores, rolling up into four key metrics: faithfulness rate, retrieves-per-correct-answer, latency p95, and cost-per-correct-answer.",
+      "target_lang": "en",
+      "reason": "Agentic RAG represents the frontier of production retrieval, enabling complex multi-hop reasoning at the cost of higher token usage"
+    },
+    {
+      "source_text": "Microsoft GraphRAG and community-based knowledge graph retrieval for complex document corpora (2024-2026)",
+      "source_lang": "en",
+      "target_text": "Microsoft's GraphRAG, open-sourced in July 2024 and reaching 29,800+ GitHub stars by December 2024, extracts knowledge graphs from raw text, builds hierarchical community structures, and generates LLM summaries for each community to enable holistic reasoning about document corpora. Global Search uses community summaries to answer questions about themes spanning the entire dataset, while Local Search targets specific entities and relationships. LazyGraphRAG, announced by Microsoft Research, reduces costs by deferring LLM summarization to query time. However, GraphRAG's heavy reliance on frequent LLM calls and extensive summarization makes it expensive for practical deployment. As of June 2025, LazyGraphRAG was integrated into Microsoft Discovery and Azure Local services as a public preview.",
+      "target_lang": "en",
+      "reason": "GraphRAG introduced a paradigm shift for complex document understanding where answers involve relationships rather than isolated paragraphs"
+    },
+    {
+      "source_text": "LightRAG and efficient graph-based retrieval alternatives to Microsoft GraphRAG (2025-2026)",
+      "source_lang": "en",
+      "target_text": "LightRAG (published at EMNLP 2025) integrates lightweight knowledge graphs with vector-based text indexing and a dual-level retrieval framework. Low-level retrieval targets specific entities and relationships for fine-grained queries, while high-level retrieval covers broader topics and themes. Compared to Microsoft's GraphRAG, LightRAG supports incremental updates without full graph reconstruction, reducing operational costs significantly. In March 2026, LightRAG integrated OpenSearch as a unified storage backend and added reranker support, document deletion, multimodal data handling, and citation functionality. MiniRAG (Fan et al., 2025) further simplified the approach by unifying text and entity indexing into a single semantic-aware graph with lightweight topology-enhanced search.",
+      "target_lang": "en",
+      "reason": "Efficient alternatives to GraphRAG address its prohibitive cost while preserving structured retrieval benefits"
+    },
+    {
+      "source_text": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "source_lang": "en",
+      "target_text": "Context windows did not kill RAG; they opened a complementary architectural option. A July 2025 Chroma paper showed that across 18 frontier models tested, accuracy drops non-uniformly as input length grows, sometimes by 30 to 50 percent well before the documented context limit (a phenomenon called 'context rot'). Studies across four QA task types and three long-context types with 11 LLMs found that RAG wins on dialogue and generic queries, while long context wins on Wikipedia-style QA. The 2026 default is hybrid: retrieve 50K to 200K relevant tokens via RAG, then long-context-reason over them. Long context outperforms RAG on holistic tasks requiring reasoning across an entire document, while RAG is more accurate on queries requiring synthesis across documents from different time periods.",
+      "target_lang": "en",
+      "reason": "The RAG vs long context debate is central to modern LLM system architecture decisions and the answer is nuanced, not binary"
+    },
+    {
+      "source_text": "Vector database market consolidation: Pinecone, Weaviate, Qdrant, and Chroma positioning (2026)",
+      "source_lang": "en",
+      "target_text": "The 2026 vector database market has consolidated around four major products. Pinecone completed its transition to serverless as the default deployment model in 2025 (pod-based indexes are now legacy) and launched Pinecone Assistant in January 2025, wrapping chunking, embedding, vector search, reranking, and answer generation behind a single endpoint. Weaviate is the hybrid search champion, delivering native BM25 plus dense vectors plus metadata filtering in a single query. Qdrant offers the best price-performance ratio, with self-hosted deployments on a small VPS handling millions of vectors at $30-50/month. ChromaDB targets prototyping and MVPs with an object-storage backend and collection forking for lightweight production use. RAG is the primary use case driving vector database adoption in 2026.",
+      "target_lang": "en",
+      "reason": "Vector databases are the infrastructure backbone of RAG and their capabilities directly shape what retrieval patterns are feasible"
+    },
+    {
+      "source_text": "RAG cost and latency optimization: semantic caching, embedding economics, and autoscaling (2025-2026)",
+      "source_lang": "en",
+      "target_text": "Key cost drivers in production RAG include ingestion/embedding, vector storage, reranking, and LLM token usage. Re-embedding 1 million documents weekly using a paid embedding API costs approximately $4,000/month just on embeddings. Vector storage economics are a central constraint: keeping all embeddings in a hot, low-latency index can scale to thousands of dollars monthly at high vector counts. Semantic caching cuts LLM costs by up to 68.8% in typical production workloads by deduplicating semantically similar queries. Adding a reranker typically lifts top-3 precision by 12 to 25 points, making it the largest single quality improvement without changing the base model. Production targets include Time-to-First-Token p90 under 2 seconds, with autoscaling triggers for latency violations.",
+      "target_lang": "en",
+      "reason": "Cost and latency are the primary constraints that determine which RAG architecture a production system can actually afford"
+    },
+    {
+      "source_text": "DSPy programmatic prompt optimization for RAG pipeline tuning (Stanford, 2024-2026)",
+      "source_lang": "en",
+      "target_text": "DSPy, developed by Stanford's Hazy Research group, treats LLM interactions as programmable modules with typed signatures rather than hand-tuned prompts. Its optimizers (called Teleprompters) automatically tune prompts and few-shot examples using labeled training data, often outperforming manually tuned RAG prompts because the optimizer learns which examples and instructions work best with retrieved context. DSPy 3, updated in August 2026, lets developers build LLM pipelines as code, then evaluate and optimize them with measurable objectives. The framework has reached 25K+ GitHub stars and is used in production by agent and RAG teams at Cursor, Mistral, and Databricks. DSPy represents a shift from prompt engineering to prompt programming, optimizing the full RAG pipeline end-to-end.",
+      "target_lang": "en",
+      "reason": "DSPy changes how RAG pipelines are developed by replacing manual prompt tuning with automated optimization"
+    },
+    {
+      "source_text": "Embedding model landscape for RAG: best models and contextual embedding advances (2025-2026)",
+      "source_lang": "en",
+      "target_text": "The RAG embedding landscape in 2026 features specialized models optimized for retrieval tasks. Jina AI's jina-embeddings-v3 introduced native late chunking support, encoding entire documents through long-context (8192-token) embedding models before segmenting, so each chunk retains full document context. Anthropic's contextual retrieval approach prepends a model-generated document summary to each chunk before embedding, improving retrieval precision by 35-50%. The combination of contextual enrichment at the chunk level with cross-encoder reranking at query time represents the current best practice. Embedding costs scale linearly with corpus size and refresh frequency, making embedding model choice a critical cost-performance tradeoff in production RAG systems.",
+      "target_lang": "en",
+      "reason": "Embedding quality is the foundation of RAG retrieval, and advances in contextual embedding have materially improved production accuracy"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "RAG chunking strategies: semantic chunking, contextual retrieval, and late chunking techniques (2024-2026)",
+      "to_source": "Production RAG pipeline architecture: multi-stage retrieval with hybrid search and reranking (2026)",
+      "kind": "refines",
+      "reason": "Chunking is the ingestion stage that feeds into the multi-stage retrieval pipeline; 80% of failures trace to chunking"
+    },
+    {
+      "from_source": "Hybrid search combining BM25 sparse and dense vector retrieval as production RAG standard (2025-2026)",
+      "to_source": "Production RAG pipeline architecture: multi-stage retrieval with hybrid search and reranking (2026)",
+      "kind": "refines",
+      "reason": "Hybrid search is the retrieval component within the broader multi-stage pipeline architecture"
+    },
+    {
+      "from_source": "Agentic RAG: multi-step retrieval patterns with iterative tool use and reasoning loops (2025-2026)",
+      "to_source": "Production RAG pipeline architecture: multi-stage retrieval with hybrid search and reranking (2026)",
+      "kind": "refines",
+      "reason": "Agentic RAG extends the base pipeline with iterative retrieval loops, adding complexity and cost for complex queries"
+    },
+    {
+      "from_source": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "to_source": "Production RAG pipeline architecture: multi-stage retrieval with hybrid search and reranking (2026)",
+      "kind": "refines",
+      "reason": "The long context debate shapes when the RAG pipeline is needed versus when direct context stuffing suffices"
+    },
+    {
+      "from_source": "RAG hallucination failure modes: retrieval miss, context leak, and generation drift in enterprise systems",
+      "to_source": "RAG evaluation metrics and the RAGAS framework for measuring retrieval and generation quality (2026)",
+      "kind": "refines",
+      "reason": "Failure modes define what evaluation metrics must detect; each failure mode requires a separate metric check"
+    },
+    {
+      "from_source": "LightRAG and efficient graph-based retrieval alternatives to Microsoft GraphRAG (2025-2026)",
+      "to_source": "Microsoft GraphRAG and community-based knowledge graph retrieval for complex document corpora (2024-2026)",
+      "kind": "supersedes",
+      "reason": "LightRAG addresses GraphRAG's prohibitive cost with incremental updates and lighter graph structures while preserving structured retrieval"
+    },
+    {
+      "from_source": "DSPy programmatic prompt optimization for RAG pipeline tuning (Stanford, 2024-2026)",
+      "to_source": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "kind": "refines",
+      "reason": "DSPy's automated optimization approach is a distinct paradigm within the framework ecosystem, complementing rather than replacing orchestration frameworks"
+    },
+    {
+      "from_source": "Vector database market consolidation: Pinecone, Weaviate, Qdrant, and Chroma positioning (2026)",
+      "to_source": "Hybrid search combining BM25 sparse and dense vector retrieval as production RAG standard (2025-2026)",
+      "kind": "refines",
+      "reason": "Vector databases are the infrastructure layer that enables hybrid search; 8 of 10 major databases now support it natively"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Production RAG pipeline architecture: multi-stage retrieval with hybrid search and reranking (2026)",
+      "kind": "url",
+      "locator": "https://futureagi.com/blog/rag-architecture-llm-2025/",
+      "reason": "Describes multi-stage RAG architecture patterns including reranking and hybrid retrieval with evaluation metrics"
+    },
+    {
+      "pair_source": "Production RAG pipeline architecture: multi-stage retrieval with hybrid search and reranking (2026)",
+      "kind": "url",
+      "locator": "https://dev.to/young_gao/rag-is-not-dead-advanced-retrieval-patterns-that-actually-work-in-2026-2gbo",
+      "reason": "Confirms advanced retrieval patterns and production architecture requirements including latency targets"
+    },
+    {
+      "pair_source": "RAG chunking strategies: semantic chunking, contextual retrieval, and late chunking techniques (2024-2026)",
+      "kind": "url",
+      "locator": "https://www.anthropic.com/engineering/contextual-retrieval",
+      "reason": "Primary source for Anthropic's contextual retrieval technique showing 35-50% retrieval improvement"
+    },
+    {
+      "pair_source": "RAG chunking strategies: semantic chunking, contextual retrieval, and late chunking techniques (2024-2026)",
+      "kind": "url",
+      "locator": "https://jina.ai/news/late-chunking-in-long-context-embedding-models/",
+      "reason": "Primary source for Jina AI's late chunking approach using long-context embedding models"
+    },
+    {
+      "pair_source": "Hybrid search combining BM25 sparse and dense vector retrieval as production RAG standard (2025-2026)",
+      "kind": "url",
+      "locator": "https://denser.ai/blog/hybrid-search-for-rag/",
+      "reason": "Provides WANDS benchmark results showing 7.4% NDCG lift and MS MARCO Recall@10 improvements"
+    },
+    {
+      "pair_source": "Hybrid search combining BM25 sparse and dense vector retrieval as production RAG standard (2025-2026)",
+      "kind": "url",
+      "locator": "https://www.digitalapplied.com/blog/hybrid-search-bm25-vector-reranking-reference-2026",
+      "reason": "Reference guide for hybrid search architecture with BM25, vector, and reranking in 2026"
+    },
+    {
+      "pair_source": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "kind": "url",
+      "locator": "https://iternal.ai/blockify-rag-frameworks",
+      "reason": "Comparative analysis of LangChain, LlamaIndex, and DSPy with production recommendations"
+    },
+    {
+      "pair_source": "RAG framework ecosystem: LangChain vs LlamaIndex vs Haystack vs DSPy maturity comparison (2026)",
+      "kind": "url",
+      "locator": "https://langcopilot.com/posts/2025-09-18-best-rag-frameworks-2026",
+      "reason": "Framework comparison including Haystack and RAGFlow with industry-specific recommendations"
+    },
+    {
+      "pair_source": "RAG evaluation metrics and the RAGAS framework for measuring retrieval and generation quality (2026)",
+      "kind": "url",
+      "locator": "https://futureagi.com/blog/what-is-rag-evaluation-2026/",
+      "reason": "Defines the six core RAG evaluation metrics and quality gates for 2026"
+    },
+    {
+      "pair_source": "RAG evaluation metrics and the RAGAS framework for measuring retrieval and generation quality (2026)",
+      "kind": "url",
+      "locator": "https://superlinked.com/blog/evaluating-retrieval-augmented-generation-ragas",
+      "reason": "Details RAGAS framework metrics and synthetic test generation capabilities"
+    },
+    {
+      "pair_source": "RAG hallucination failure modes: retrieval miss, context leak, and generation drift in enterprise systems",
+      "kind": "url",
+      "locator": "https://www.cmarix.com/blog/rag-ai-statistics/",
+      "reason": "Provides enterprise hallucination rate statistics including 10%+ rates and domain-specific failure data"
+    },
+    {
+      "pair_source": "RAG hallucination failure modes: retrieval miss, context leak, and generation drift in enterprise systems",
+      "kind": "url",
+      "locator": "https://ragaboutit.com/9-rag-benchmarks-prove-67-hallucination-still-ships/",
+      "reason": "Benchmark data on hallucination rates in production RAG systems"
+    },
+    {
+      "pair_source": "Agentic RAG: multi-step retrieval patterns with iterative tool use and reasoning loops (2025-2026)",
+      "kind": "url",
+      "locator": "https://futureagi.com/blog/agentic-rag-systems-2025/",
+      "reason": "Covers agentic RAG patterns, observability requirements, and cost considerations for multi-step retrieval"
+    },
+    {
+      "pair_source": "Microsoft GraphRAG and community-based knowledge graph retrieval for complex document corpora (2024-2026)",
+      "kind": "url",
+      "locator": "https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/",
+      "reason": "Microsoft Research blog on LazyGraphRAG reducing GraphRAG costs by deferring summarization to query time"
+    },
+    {
+      "pair_source": "Microsoft GraphRAG and community-based knowledge graph retrieval for complex document corpora (2024-2026)",
+      "kind": "url",
+      "locator": "https://microsoft.github.io/graphrag/",
+      "reason": "Official Microsoft GraphRAG documentation and open-source project"
+    },
+    {
+      "pair_source": "LightRAG and efficient graph-based retrieval alternatives to Microsoft GraphRAG (2025-2026)",
+      "kind": "url",
+      "locator": "https://github.com/hkuds/lightrag",
+      "reason": "LightRAG open-source repository with EMNLP 2025 publication and March 2026 OpenSearch integration"
+    },
+    {
+      "pair_source": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "kind": "url",
+      "locator": "https://glasp.co/articles/context-rot-rag-long-context-hybrid",
+      "reason": "Covers the context rot phenomenon and the hybrid RAG plus long context approach as 2026 default"
+    },
+    {
+      "pair_source": "RAG vs long context windows: when retrieval still beats large context models (2025-2026)",
+      "kind": "url",
+      "locator": "https://arxiv.org/pdf/2501.01880",
+      "reason": "Research paper evaluating long context vs RAG across four QA task types and 11 LLMs"
+    },
+    {
+      "pair_source": "Vector database market consolidation: Pinecone, Weaviate, Qdrant, and Chroma positioning (2026)",
+      "kind": "url",
+      "locator": "https://www.marktechpost.com/2026/05/10/best-vector-databases-in-2026-pricing-scale-limits-and-architecture-tradeoffs-across-nine-leading-systems/",
+      "reason": "Comparative analysis of pricing, scale limits, and architecture tradeoffs across vector databases in 2026"
+    },
+    {
+      "pair_source": "RAG cost and latency optimization: semantic caching, embedding economics, and autoscaling (2025-2026)",
+      "kind": "url",
+      "locator": "https://redis.io/blog/rag-at-scale/",
+      "reason": "Redis production guide covering semantic caching, cost drivers, and autoscaling for RAG at scale"
+    },
+    {
+      "pair_source": "RAG cost and latency optimization: semantic caching, embedding economics, and autoscaling (2025-2026)",
+      "kind": "url",
+      "locator": "https://blog.vespa.ai/eliminating-the-precision-latency-trade-off-in-large-scale-rag/",
+      "reason": "Vespa blog on eliminating the precision-latency tradeoff in large-scale RAG deployments"
+    },
+    {
+      "pair_source": "DSPy programmatic prompt optimization for RAG pipeline tuning (Stanford, 2024-2026)",
+      "kind": "url",
+      "locator": "https://singularitymoments.com/dspy-framework-guide/",
+      "reason": "Guide covering DSPy framework programming model and production usage at Cursor, Mistral, Databricks"
+    },
+    {
+      "pair_source": "Embedding model landscape for RAG: best models and contextual embedding advances (2025-2026)",
+      "kind": "url",
+      "locator": "https://www.stackai.com/insights/best-embedding-models-for-rag-in-2026-a-comparison-guide",
+      "reason": "Comparison guide of embedding models for RAG in 2026 with performance benchmarks"
+    }
+  ]
+}

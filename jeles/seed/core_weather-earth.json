@@ -1,0 +1,203 @@
+{
+  "domain": "core-weather-earth",
+  "pairs": [
+    {
+      "source_text": "Why does it rain?",
+      "source_lang": "en",
+      "target_text": "The sun heats water in oceans, lakes, and rivers, turning it into water vapor that rises into the atmosphere. As the vapor climbs, it cools and condenses onto tiny particles of dust or pollen, forming clouds made of billions of microscopic water droplets. When those droplets collide and merge until they're too heavy for the air to support — typically about a million times larger than a cloud droplet — they fall as rain. A single raindrop needs roughly a million cloud droplets to form, which is why clouds can hang in the sky for hours before producing rain.",
+      "target_lang": "en",
+      "reason": "Understanding the water cycle is fundamental to grasping weather, agriculture, and freshwater availability."
+    },
+    {
+      "source_text": "How do thunder and lightning actually work?",
+      "source_lang": "en",
+      "target_text": "Inside a thunderstorm cloud, ice crystals and water droplets collide violently, stripping electrons and creating a charge separation — positive charges collect near the top and negative charges near the bottom. When the electrical potential difference becomes large enough (millions of volts), the air breaks down and a channel of electricity rips through the atmosphere at roughly 270,000 km/h, superheating it to about 30,000 degrees Celsius. That extreme heat causes the air to expand explosively, producing the sound wave we hear as thunder. Because light travels nearly a million times faster than sound, you can estimate a lightning strike's distance by counting seconds between the flash and the thunder — every five seconds is roughly one mile.",
+      "target_lang": "en",
+      "reason": "Lightning is one of the most dramatic natural phenomena, and the counting trick is practical safety knowledge."
+    },
+    {
+      "source_text": "Why do we have seasons? Is it because Earth gets closer to the sun in summer?",
+      "source_lang": "en",
+      "target_text": "Seasons are caused by Earth's axis being tilted about 23.5 degrees relative to its orbit around the sun — not by changing distance. When the Northern Hemisphere tilts toward the sun, sunlight strikes at a steeper angle and days are longer, concentrating more energy on each patch of ground, which makes summer. Six months later, that hemisphere tilts away, sunlight arrives at a shallow angle and spreads over more area, producing winter. The common misconception about distance is actually backwards for the Northern Hemisphere: Earth is closest to the sun in early January, during northern winter.",
+      "target_lang": "en",
+      "reason": "This corrects one of the most widespread misconceptions in science and is essential to understanding climate patterns."
+    },
+    {
+      "source_text": "What causes earthquakes?",
+      "source_lang": "en",
+      "target_text": "Earth's outer shell is broken into about 15 major tectonic plates that float on a slowly churning layer of semi-molten rock beneath them. Where these plates grind past, push into, or pull away from each other, stress builds along the boundary over years or centuries. When the accumulated stress exceeds the friction holding the rocks together, the plates suddenly lurch — sometimes just centimeters, sometimes meters — releasing energy as seismic waves that shake the surface. Scientists measure earthquake size using the moment magnitude scale, where each whole number represents roughly 32 times more energy: a magnitude 7 earthquake releases about 1,000 times more energy than a magnitude 5.",
+      "target_lang": "en",
+      "reason": "Earthquakes affect billions of people worldwide, and understanding plate tectonics is foundational to geology."
+    },
+    {
+      "source_text": "Why do volcanoes erupt?",
+      "source_lang": "en",
+      "target_text": "Beneath Earth's crust, rock can partially melt into magma when conditions are right — typically where tectonic plates converge and one dives beneath another, or where plates pull apart and reduce pressure on the mantle below. As magma is less dense than the solid rock around it, it rises through cracks and collects in underground chambers. When pressure from dissolved gases (mainly water vapor and carbon dioxide) builds up enough, the magma forces its way to the surface in an eruption. Some volcanoes, like those in Hawaii, sit over stationary 'hotspots' where a plume of unusually hot rock rises from deep in the mantle, punching through the plate above regardless of plate boundaries.",
+      "target_lang": "en",
+      "reason": "Volcanism shaped Earth's atmosphere, created islands, and remains an active hazard — understanding the mechanism connects plate tectonics to everyday geography."
+    },
+    {
+      "source_text": "How does the Moon cause tides, and why are there two high tides each day?",
+      "source_lang": "en",
+      "target_text": "The Moon's gravity pulls on Earth's oceans, creating a bulge of water on the side facing the Moon. But there's also a bulge on the opposite side, because the Moon pulls the solid Earth slightly away from the water on the far side (or equivalently, inertia keeps the far-side water from keeping up). As Earth rotates through these two bulges roughly every 24 hours, most coastlines experience two high tides and two low tides each day. When the Sun and Moon align during full and new moons, their gravitational pulls combine to produce extra-large 'spring tides,' while at quarter moons their pulls partially cancel, producing smaller 'neap tides.'",
+      "target_lang": "en",
+      "reason": "Tides affect coastal ecosystems, navigation, fishing, and increasingly tidal energy — the two-bulge explanation resolves a common confusion."
+    },
+    {
+      "source_text": "What causes wind?",
+      "source_lang": "en",
+      "target_text": "Wind is simply air moving from areas of higher atmospheric pressure to areas of lower pressure. The sun heats Earth's surface unevenly — dark pavement absorbs more than a grassy field, and land warms faster than water — so the air above warm spots rises, creating low-pressure zones that surrounding higher-pressure air rushes in to fill. On a large scale, Earth's rotation deflects these air flows sideways through the Coriolis effect, which is why large weather systems spiral counterclockwise in the Northern Hemisphere and clockwise in the Southern. A simple example: the sea breeze you feel at the beach on a summer afternoon happens because the land heats faster than the ocean, warm air rises over the land, and cooler ocean air flows in to replace it.",
+      "target_lang": "en",
+      "reason": "Wind drives weather patterns, ocean currents, and renewable energy — pressure-gradient flow is one of the most universal principles in atmospheric science."
+    },
+    {
+      "source_text": "How does a rainbow form, and why is it always opposite the sun?",
+      "source_lang": "en",
+      "target_text": "A rainbow forms when sunlight enters a raindrop, slows down and bends (refracts), bounces off the back of the drop, then bends again as it exits — splitting white light into its component colors because each wavelength bends at a slightly different angle. Red light exits at about 42 degrees from the incoming sunlight and violet at about 40 degrees, which is why you always see red on the outer edge. Because the geometry requires light to bounce back toward the observer, a rainbow always appears in the part of the sky opposite the sun, centered on the shadow of your head. Double rainbows occur when light bounces twice inside the drop, producing a fainter second arc with the color order reversed.",
+      "target_lang": "en",
+      "reason": "Rainbows are a universally recognized phenomenon that elegantly demonstrates how light interacts with matter — refraction and dispersion in a single everyday example."
+    },
+    {
+      "source_text": "Why do leaves change color in autumn?",
+      "source_lang": "en",
+      "target_text": "Leaves are actually full of yellow and orange pigments (carotenoids) all year long, but during spring and summer these are masked by the dominant green of chlorophyll, which the tree produces abundantly for photosynthesis. As days shorten in autumn, trees form a corky layer at the base of each leaf stem that cuts off water and nutrient flow, and the chlorophyll breaks down without being replaced — revealing the yellows and oranges that were hidden underneath. The vivid reds and purples come from anthocyanins, which some trees actively produce in autumn, possibly as a sunscreen to protect the leaf's remaining nutrients while the tree reabsorbs them. So the fall show is mostly an unmasking of hidden colors, not the creation of new ones.",
+      "target_lang": "en",
+      "reason": "This corrects the common assumption that leaves 'turn' color and reveals an elegant biological process of resource recovery."
+    },
+    {
+      "source_text": "How do fossils form, and why are they so rare?",
+      "source_lang": "en",
+      "target_text": "When an organism dies, it usually decays completely or is eaten by scavengers, leaving nothing behind. On rare occasions, remains get quickly buried by sediment — mud, sand, volcanic ash — which shields them from decomposition. Over millions of years, mineral-rich groundwater seeps through the sediment and gradually replaces the original bone or shell with minerals like silica or calcite, atom by atom, turning the remains to stone while preserving their shape. Fossilization requires such a specific chain of lucky events — rapid burial, the right chemistry, stability for millions of years — that paleontologists estimate less than one-tenth of one percent of all species that have ever lived are represented in the fossil record.",
+      "target_lang": "en",
+      "reason": "Fossils are our primary window into deep evolutionary history, and understanding their rarity explains gaps in the record that are sometimes misrepresented."
+    },
+    {
+      "source_text": "Why is the ocean salty but most lakes are not?",
+      "source_lang": "en",
+      "target_text": "Rivers continuously dissolve small amounts of minerals and salts from the rocks and soil they flow over, carrying them into the ocean. While water constantly leaves the ocean through evaporation (which leaves the salt behind), rivers keep adding more dissolved minerals, so the ocean has been growing saltier over billions of years. Lakes stay fresh because they're just way stations in this process — water flows through them relatively quickly, carrying dissolved salts downstream before they can accumulate. Exceptions prove the rule: landlocked lakes with no outlet, like the Great Salt Lake or the Dead Sea, do accumulate salt and can become even saltier than the ocean.",
+      "target_lang": "en",
+      "reason": "Ocean salinity drives global circulation, supports marine ecosystems, and illustrates a simple but profound geochemical cycle."
+    },
+    {
+      "source_text": "How do caves and stalactites form?",
+      "source_lang": "en",
+      "target_text": "Rainwater absorbs carbon dioxide from the atmosphere and soil, forming a weak carbonic acid. When this slightly acidic water seeps through cracks in limestone bedrock, it slowly dissolves the calcium carbonate, widening the cracks into passages and eventually large chambers over tens of thousands to millions of years. Stalactites form when water carrying dissolved calcium carbonate drips from the ceiling of a cave: as each drop hangs and partially evaporates or releases CO2 into the cave air, it deposits a tiny ring of mineral, building a hollow stone 'icicle' that grows roughly one centimeter every century. Stalagmites build up from the floor where the drops land, and given enough time, the two can merge into a column.",
+      "target_lang": "en",
+      "reason": "Cave formation demonstrates how weak forces acting over vast timescales can reshape landscapes — a key intuition for understanding geological processes."
+    },
+    {
+      "source_text": "What causes fog, and why is it usually worst in the morning?",
+      "source_lang": "en",
+      "target_text": "Fog is essentially a cloud that forms at ground level. The most common type, radiation fog, forms on clear, calm nights when the ground radiates away the heat it absorbed during the day, cooling the air just above the surface until its moisture condenses into tiny suspended water droplets. Fog tends to be thickest in the early morning because the ground has been cooling all night and temperatures reach their lowest point just before and around sunrise. Once the sun rises and warms the ground again, the fog 'burns off' — it doesn't actually burn, but the droplets evaporate back into invisible water vapor as the air temperature rises above the dew point. Advection fog, by contrast, forms when warm, moist air blows over a cold surface, like San Francisco's famous fog rolling in off the cold Pacific current.",
+      "target_lang": "en",
+      "reason": "Fog affects transportation safety, agriculture, and water collection in arid regions — distinguishing its types connects everyday observation to atmospheric science."
+    },
+    {
+      "source_text": "Why is it colder at the top of a mountain even though you're closer to the sun?",
+      "source_lang": "en",
+      "target_text": "The sun's rays don't heat the air directly very much — they heat the ground, which then warms the air above it through contact and radiation. As you go higher, there are fewer air molecules and lower pressure, so air that rises expands and cools at a predictable rate called the lapse rate, roughly 6.5 degrees Celsius for every 1,000 meters of elevation gain. This is the same principle that makes a can of compressed air feel cold when you spray it: expanding gas cools down. The tiny difference in distance to the sun (a few kilometers out of 150 million) is completely negligible. This is why Mount Kilimanjaro, sitting nearly on the equator, has glaciers at its summit — altitude trumps latitude.",
+      "target_lang": "en",
+      "reason": "The altitude-temperature relationship governs mountain climates, aviation, and weather systems, and the compressed-gas analogy makes thermodynamics tangible."
+    },
+    {
+      "source_text": "How does soil actually form?",
+      "source_lang": "en",
+      "target_text": "Soil begins as solid rock that is slowly broken down by weathering — freezing water expands in cracks and splits rock apart, plant roots pry into crevices, and slightly acidic rainwater chemically dissolves minerals at the surface. Over centuries, this produces a layer of mineral fragments that mixes with decaying organic matter from dead plants, animals, fungi, and bacteria to create true soil. A single centimeter of topsoil can take 200 to 1,000 years to form, yet it can be eroded away in a single heavy rainstorm on unprotected farmland. This is why topsoil conservation matters enormously for agriculture: it contains the bulk of the nutrients, microorganisms, and organic material that plants need to grow, and once it's gone, it won't come back in a human lifetime.",
+      "target_lang": "en",
+      "reason": "Soil is the foundation of terrestrial food production, and its slow formation versus rapid loss is one of the most critical environmental asymmetries."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "Why does it rain?",
+      "kind": "url",
+      "locator": "https://www.noaa.gov/education/resource-collections/weather-atmosphere/water-cycle",
+      "reason": "NOAA educational resource explaining the water cycle, evaporation, condensation, and precipitation processes."
+    },
+    {
+      "pair_source": "How do thunder and lightning actually work?",
+      "kind": "url",
+      "locator": "https://www.nssl.noaa.gov/education/svrwx101/lightning/",
+      "reason": "NOAA National Severe Storms Laboratory explanation of charge separation, lightning formation, and thunder."
+    },
+    {
+      "pair_source": "Why do we have seasons? Is it because Earth gets closer to the sun in summer?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/resource/why-earth-has-seasons/",
+      "reason": "NASA resource explaining axial tilt as the cause of seasons and debunking the distance misconception."
+    },
+    {
+      "pair_source": "What causes earthquakes?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/programs/earthquake-hazards/science-earthquakes",
+      "reason": "USGS primer on tectonic plates, fault mechanics, and earthquake measurement scales."
+    },
+    {
+      "pair_source": "Why do volcanoes erupt?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/programs/volcano-hazards/about-volcanoes",
+      "reason": "USGS overview of magma formation, eruption mechanisms, and volcanic hotspots."
+    },
+    {
+      "pair_source": "How does the Moon cause tides, and why are there two high tides each day?",
+      "kind": "url",
+      "locator": "https://oceanservice.noaa.gov/education/tutorial_tides/tides01_intro.html",
+      "reason": "NOAA Ocean Service tutorial explaining tidal forces, the two-bulge model, and spring/neap tide cycles."
+    },
+    {
+      "pair_source": "What causes wind?",
+      "kind": "url",
+      "locator": "https://www.noaa.gov/jetstream/wind",
+      "reason": "NOAA JetStream educational module on pressure gradients, the Coriolis effect, and wind patterns."
+    },
+    {
+      "pair_source": "How does a rainbow form, and why is it always opposite the sun?",
+      "kind": "url",
+      "locator": "https://scijinks.gov/rainbow/",
+      "reason": "NOAA SciJinks explanation of light refraction, dispersion in raindrops, and rainbow geometry."
+    },
+    {
+      "pair_source": "Why do leaves change color in autumn?",
+      "kind": "url",
+      "locator": "https://www.fs.usda.gov/visit/fall-colors/science-of-fall-colors",
+      "reason": "USDA Forest Service explanation of chlorophyll breakdown, carotenoid unmasking, and anthocyanin production."
+    },
+    {
+      "pair_source": "How do fossils form, and why are they so rare?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/special-topics/fossils",
+      "reason": "USGS overview of fossilization processes including permineralization, replacement, and preservation conditions."
+    },
+    {
+      "pair_source": "Why is the ocean salty but most lakes are not?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/special-topics/water-science-school/science/why-ocean-salty",
+      "reason": "USGS Water Science School article on the geochemical cycle that concentrates salts in the ocean."
+    },
+    {
+      "pair_source": "How do caves and stalactites form?",
+      "kind": "url",
+      "locator": "https://www.nps.gov/subjects/caves/cave-formation.htm",
+      "reason": "National Park Service explanation of limestone dissolution, speleothem growth, and cave formation timescales."
+    },
+    {
+      "pair_source": "What causes fog, and why is it usually worst in the morning?",
+      "kind": "url",
+      "locator": "https://www.noaa.gov/jetstream/fog",
+      "reason": "NOAA JetStream educational resource covering radiation fog, advection fog, and diurnal fog patterns."
+    },
+    {
+      "pair_source": "Why is it colder at the top of a mountain even though you're closer to the sun?",
+      "kind": "url",
+      "locator": "https://www.weather.gov/jetstream/ll_atmos",
+      "reason": "NWS JetStream resource on atmospheric layers, lapse rate, and the relationship between altitude and temperature."
+    },
+    {
+      "pair_source": "How does soil actually form?",
+      "kind": "url",
+      "locator": "https://www.nrcs.usda.gov/conservation-basics/natural-resource-concerns/soils",
+      "reason": "USDA Natural Resources Conservation Service overview of soil formation, weathering processes, and topsoil importance."
+    }
+  ]
+}

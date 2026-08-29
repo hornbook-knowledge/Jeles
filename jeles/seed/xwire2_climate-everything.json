@@ -1,0 +1,199 @@
+{
+  "domain": "crossdomain-climate-everything",
+  "pairs": [
+    {
+      "source_text": "Climate change as a threat multiplier for conflict -- the Syrian drought-civil war nexus and Pentagon doctrine",
+      "source_lang": "en",
+      "target_text": "A 2015 PNAS study by Kelley et al. linked Syria's 2006-2010 drought -- the worst in the instrumental record for the Fertile Crescent, made two to three times more likely by anthropogenic warming -- to the internal displacement of approximately 1.5 million farmers to urban peripheries already strained by Iraqi refugee inflows. This displacement compounded governance failures under the Assad regime, contributing to the social instability that preceded the 2011 uprising. The US Department of Defense formalized the concept in its 2014 Climate Change Adaptation Roadmap and 2021 Climate Risk Analysis, designating climate change a 'threat multiplier' that exacerbates existing vulnerabilities rather than creating entirely new categories of conflict. The CNA Military Advisory Board, a group of retired flag officers, had reached the same conclusion in 2007. Crucially, no serious analyst argues climate caused the Syrian war; the mechanism is indirect amplification of pre-existing fragility through resource stress, migration pressure, and state incapacity -- a pattern the World Bank identified across the Sahel, the Lake Chad Basin, and Central America's Northern Triangle.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with war-security by showing climate as a structural accelerant of conflict rather than a direct cause, connecting atmospheric science to defense doctrine"
+    },
+    {
+      "source_text": "Fossil fuel infrastructure lock-in -- how existing power plants and pipelines commit future emissions regardless of policy",
+      "source_lang": "en",
+      "target_text": "A 2019 Nature study by Tong et al. calculated that existing fossil fuel infrastructure -- operating power plants, industrial facilities, and transport systems -- would, if used to the end of its expected economic life, emit approximately 658 gigatons of CO2, enough alone to push warming past 1.5 degrees C above pre-industrial levels. A 2022 update in Environmental Research Letters raised the estimate to over 850 GtCO2 when including planned infrastructure. This 'committed emissions' framework reveals that climate policy is not primarily a question of preventing new fossil fuel construction but of deciding whether to strand functional capital before it has been amortized. The average coal plant has a 40-year lifetime and recoups its construction costs over roughly 20 years; premature retirement means writing off billions in investment. China, which built roughly 60% of its coal fleet after 2005, faces the most acute version of this dilemma: its plants are young enough to lock in emissions for decades. Meanwhile, the International Energy Agency's 2021 Net Zero by 2050 roadmap concluded that no new oil and gas fields beyond those already approved can be developed if the world is to reach net zero -- a finding that directly threatens the asset valuations of every major fossil fuel company.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with energy infrastructure and economics by showing how sunk capital in physical infrastructure creates path dependency that policy alone cannot easily override"
+    },
+    {
+      "source_text": "Aboriginal Australian fire management and the rediscovery of cultural burning as climate adaptation",
+      "source_lang": "en",
+      "target_text": "Aboriginal Australians practiced controlled mosaic burning -- 'cool burning' at low intensity across small patches in rotation -- for at least 50,000 years, maintaining open woodland ecosystems, reducing fuel loads, and promoting biodiversity. European colonization systematically suppressed these practices, and by the mid-20th century, fuel accumulation in Australian forests had increased dramatically. After the catastrophic 2019-2020 Black Summer bushfires burned over 18.6 million hectares, killed an estimated 3 billion animals, and blanketed Sydney in smoke for weeks, Australian fire agencies accelerated adoption of Aboriginal burning techniques. Victor Steffensen, a Tagalaka man, became a leading advocate through his 2020 book 'Fire Country,' training both Indigenous and non-Indigenous fire practitioners. In California, the Karuk and Yurok tribes' prescribed fire programs have influenced state legislation: California's SB 332 (2021) reduced liability barriers to prescribed burns. The convergence of indigenous knowledge systems with Western fire science represents one of the rare cases where colonized peoples' suppressed practices are being formally reintegrated into state resource management -- though critics note this often occurs without adequate recognition, compensation, or return of land management authority to Indigenous communities.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with historical people and indigenous knowledge systems, showing how colonial suppression of land management practices directly contributed to modern climate-amplified wildfire catastrophes"
+    },
+    {
+      "source_text": "Climate litigation as a new branch of law -- Urgenda, Shell, and the judicialization of emissions targets",
+      "source_lang": "en",
+      "target_text": "The 2019 Dutch Supreme Court ruling in Urgenda Foundation v. State of the Netherlands ordered the Dutch government to reduce greenhouse gas emissions by at least 25% below 1990 levels by the end of 2020, holding that the state's duty of care under Articles 2 and 8 of the European Convention on Human Rights required climate action. This was the first time a court ordered a national government to meet a specific emissions target based on human rights obligations. In May 2021, the Hague District Court went further in Milieudefensie v. Royal Dutch Shell, ordering Shell to reduce its worldwide CO2 emissions by 45% by 2030 relative to 2019 levels -- extending climate liability from governments to private corporations. In the United States, Juliana v. United States (filed 2015) argued that the federal government's promotion of fossil fuels violated young plaintiffs' constitutional rights, though the case was dismissed on standing grounds in 2020. By 2024, the Grantham Research Institute tracked over 2,600 climate litigation cases worldwide across 50+ jurisdictions. Montana's Held v. State of Montana (2023) was the first US state case where a court ruled that government permitting of fossil fuel projects violated a state constitutional right to a clean environment. These cases collectively establish climate obligations as justiciable -- no longer merely political questions but enforceable legal duties.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with law-governance by showing how courts are creating enforceable climate obligations that legislatures and executives have failed to deliver, reshaping the boundary between judicial and political authority"
+    },
+    {
+      "source_text": "AI's climate paradox -- accelerating both climate science and climate-destructive energy consumption",
+      "source_lang": "en",
+      "target_text": "The International Energy Agency projected in its January 2024 report that global data center electricity consumption could double from approximately 460 TWh in 2022 to over 1,000 TWh by 2026, driven largely by AI workloads -- equivalent to adding the entire electricity consumption of Japan. Training GPT-4 consumed an estimated 50 GWh of electricity, and Google's 2024 environmental report revealed its greenhouse gas emissions had risen 48% since 2019, attributing the increase to AI-driven data center expansion. Yet the same technology accelerates climate solutions: Google DeepMind's GraphCast weather model (2023) produces 10-day forecasts more accurate than the European Centre for Medium-Range Weather Forecasts' HRES model at a fraction of the computational cost; DeepMind's earlier application to Google's data centers reduced cooling energy by 40%; and AI-driven materials science has identified novel catalysts for green hydrogen production and carbon capture sorbents. Microsoft, despite committing to be carbon-negative by 2030, reported a 29% increase in emissions in its 2024 sustainability report. The paradox is structural: the companies best positioned to apply AI to climate solutions are the same ones whose AI infrastructure is driving emissions growth, and no governance framework currently requires that the climate benefits of AI applications exceed the climate costs of the compute required to run them.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with AI research and contemporary tech leaders by exposing the unresolved tension between AI as a climate tool and AI as a climate burden"
+    },
+    {
+      "source_text": "The Haber-Bosch process as the bridge between feeding four billion people and destabilizing the nitrogen cycle",
+      "source_lang": "en",
+      "target_text": "Fritz Haber's 1909 synthesis of ammonia from atmospheric nitrogen, scaled to industrial production by Carl Bosch at BASF in 1913, now fixes approximately 150 million tonnes of reactive nitrogen per year -- more than all natural terrestrial nitrogen fixation combined. This single industrial process supports roughly half the world's food production, meaning approximately four billion people alive today owe their existence to synthetic nitrogen fertilizer. However, only about 50% of applied nitrogen is taken up by crops; the rest enters waterways as nitrate (causing eutrophication and hypoxic dead zones, including the 15,000 km2 Gulf of Mexico dead zone) or is emitted as nitrous oxide (N2O), a greenhouse gas 273 times more potent than CO2 over a 100-year period. Agriculture accounts for approximately 74% of global N2O emissions, making the Haber-Bosch process a direct link between food security and climate destabilization. The IPCC AR6 Working Group III identified N2O emission reduction from agriculture as one of the most cost-effective mitigation opportunities available. The process also consumes 1-2% of global energy and uses natural gas as its primary hydrogen source, coupling fertilizer prices to fossil fuel markets and making food costs a derivative of energy policy.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with food systems and historical scientists by showing how a single chemical process connects food security, the nitrogen cycle, greenhouse gas emissions, and energy markets in an inseparable system"
+    },
+    {
+      "source_text": "Colonial resource extraction as the origin of both modern wealth concentration and environmental destruction -- rubber, copper, and carbon debt",
+      "source_lang": "en",
+      "target_text": "King Leopold II's exploitation of the Congo Free State (1885-1908) extracted rubber and ivory through a forced labor regime that killed an estimated 10 million people while clear-cutting vast tracts of tropical forest. Britain's colonial copper mining in Zambia (Northern Rhodesia) and tin mining in Malaya stripped landscapes and created toxic legacies that persist today. The broader pattern is quantifiable: research by Jason Hickel published in New Political Economy (2021) estimated that the Global North has appropriated resources worth approximately $152 trillion from the Global South since 1960 through unequal exchange. The carbon dimension is equally stark: the US, EU, and UK are responsible for roughly 50% of cumulative CO2 emissions since 1850, while Africa has contributed approximately 3%. This historical ledger directly informed the Loss and Damage fund agreed at COP27 in Sharm el-Sheikh (November 2022), which acknowledged for the first time that wealthy nations bear financial responsibility for climate impacts on vulnerable states. Yet the fund's initial pledges of approximately $700 million represent less than 0.2% of the estimated $400 billion annual loss and damage costs faced by developing countries. The concept of 'carbon colonialism' -- where wealthy nations offset their emissions by acquiring forest carbon credits in the Global South without addressing the structural economic relationships that caused the emissions -- extends this pattern into the present.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with economics, historical people, and law-governance by tracing how colonial extraction created both wealth inequality and environmental destruction, and how climate reparations attempt to address the resulting debt"
+    },
+    {
+      "source_text": "The 2003 European heat wave and climate change as a driver of excess mortality in wealthy nations with advanced healthcare",
+      "source_lang": "en",
+      "target_text": "The 2003 European heat wave killed an estimated 70,000 people across Western Europe, with France alone recording approximately 15,000 excess deaths in the first three weeks of August -- many of them elderly people who died alone in apartments without air conditioning while the country's healthcare workforce was on August vacation. A 2004 attribution study by Stott, Stone, and Allen in Nature was the first to formally link a specific extreme weather event to anthropogenic climate change, finding that human influence had at least doubled the probability of such a heat wave. The Lancet Countdown on Health and Climate Change, which tracks the relationship annually, reported in its 2023 report that heat-related mortality among people over 65 increased by 85% between 2000-2004 and 2018-2022 globally. The 2022 European heat wave killed over 60,000 people across the continent despite improved early warning systems. Vector-borne disease expansion compounds the threat: Aedes albopictus mosquitoes, which transmit dengue and chikungunya, have established populations in southern France, Spain, and Italy, with locally acquired dengue cases reported in France in 2022 and 2023. The WHO estimates climate change will cause approximately 250,000 additional deaths per year between 2030 and 2050 from malnutrition, malaria, diarrhea, and heat stress alone.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with healthcare systems by showing that climate-driven mortality is not confined to developing nations but is already causing mass casualty events in countries with the world's most advanced medical systems"
+    },
+    {
+      "source_text": "Mark Carney's 'Tragedy of the Horizon' and the integration of climate risk into central bank financial stability frameworks",
+      "source_lang": "en",
+      "target_text": "In September 2015, Bank of England Governor Mark Carney delivered a speech at Lloyd's of London titled 'Breaking the Tragedy of the Horizon,' warning that climate change poses systemic risks to financial stability through three channels: physical risks (damage from extreme weather), transition risks (asset revaluation as economies decarbonize), and liability risks (compensation claims against emitters). He argued that the catastrophic impacts of climate change would be felt 'beyond the traditional horizons of most actors,' making them nobody's problem until they became everybody's crisis. This speech catalyzed the creation of the Task Force on Climate-related Financial Disclosures (TCFD) in December 2015, which by 2023 had been adopted by organizations responsible for assets worth over $200 trillion. The Network for Greening the Financial System (NGFS), founded by eight central banks in 2017, had grown to 134 members and observers by 2024, integrating climate scenarios into stress testing. Carbon Tracker Initiative's 2011 'Unburnable Carbon' report had earlier quantified the concept of 'stranded assets': if the world limits warming to 2 degrees C, approximately 80% of proven fossil fuel reserves cannot be burned, implying trillions in potential write-downs for fossil fuel companies and their investors. This framework has shifted climate change from an environmental issue to a financial stability concern, bringing it within the institutional mandate of central banks and financial regulators.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with economics and money systems by showing how climate risk has been translated into the language of financial stability, making central banks and investors actors in climate governance"
+    },
+    {
+      "source_text": "Singapore's urban climate adaptation model -- how mandatory green building codes and urban canopy requirements embed resilience into city infrastructure",
+      "source_lang": "en",
+      "target_text": "Singapore, a tropical city-state where temperatures regularly exceed 34 degrees C and the urban heat island effect adds 2-4 degrees C above surrounding waters, has integrated climate adaptation into its building and planning codes more systematically than any comparable city. The Building and Construction Authority's Green Mark scheme, mandatory for all new buildings since 2008, requires energy efficiency standards, green roofs, and natural ventilation features. The '80-80-80' target mandates that 80% of new buildings achieve super-low energy standards by 2030. Singapore's urban canopy covers approximately 47% of the island despite extreme population density (over 8,000 people per km2), maintained through the National Parks Board's requirement to replace every tree removed with at least one new planting. The Biophilic City designation reflects parks built into infrastructure: the Marina Bay area uses a centralized district cooling system that reduces energy use by 40% compared to individual building cooling. By contrast, Phoenix, Arizona -- where temperatures exceeded 43 degrees C for a record 31 consecutive days in July 2023, and 645 heat-related deaths were recorded in Maricopa County that year -- has only recently begun requiring shade structures in new developments. The disparity illustrates how urban planning choices made decades earlier determine a city's resilience to climate impacts that are now unavoidable.",
+      "target_lang": "en",
+      "reason": "Bridges environment-climate with cities and infrastructure by contrasting proactive and reactive urban climate adaptation, showing that resilience is an infrastructure design choice made years before the crisis arrives"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Climate change as a threat multiplier for conflict -- the Syrian drought-civil war nexus and Pentagon doctrine",
+      "to_source": "Water scarcity contributes to geopolitical tensions, with transboundary river basins shared by 153 countries and notable disputes over the Nile, Tigris-Euphrates, Indus, and Colorado systems",
+      "kind": "refines",
+      "reason": "The threat-multiplier pair demonstrates that climate-driven water scarcity does not merely create geopolitical tensions at borders but can destabilize entire states from within, as the Syrian drought-displacement-conflict chain shows"
+    },
+    {
+      "from_source": "Fossil fuel infrastructure lock-in -- how existing power plants and pipelines commit future emissions regardless of policy",
+      "to_source": "Global renewable energy capacity additions set records in 2023, with solar PV alone adding roughly 420 GW, but fossil fuels still supplied about 80% of primary energy",
+      "kind": "refines",
+      "reason": "The lock-in pair explains why the gap between record renewable deployment and continued fossil fuel dominance persists: committed emissions from existing infrastructure create path dependency that new renewable capacity alone cannot overcome"
+    },
+    {
+      "from_source": "Aboriginal Australian fire management and the rediscovery of cultural burning as climate adaptation",
+      "to_source": "Nelson Mandela -- anti-apartheid struggle, armed resistance, and the limits of political liberation",
+      "kind": "refines",
+      "reason": "Both pairs address the gap between formal recognition and material restitution: just as political liberation in South Africa did not dismantle economic apartheid, the adoption of indigenous fire practices occurs without restoring land management authority to Indigenous peoples"
+    },
+    {
+      "from_source": "Climate litigation as a new branch of law -- Urgenda, Shell, and the judicialization of emissions targets",
+      "to_source": "Judicial review -- the power of courts to invalidate legislation as unconstitutional -- is not universal and its scope varies dramatically across democracies",
+      "kind": "refines",
+      "reason": "Climate litigation extends judicial review into a new domain: courts are not merely reviewing legislation but ordering specific policy outcomes (emissions targets) that legislatures have failed to deliver, testing the boundaries of judicial power"
+    },
+    {
+      "from_source": "AI's climate paradox -- accelerating both climate science and climate-destructive energy consumption",
+      "to_source": "Jensen Huang -- NVIDIA CEO, GPU dominance in AI, and trillion-dollar valuation",
+      "kind": "refines",
+      "reason": "NVIDIA's GPU dominance is the hardware chokepoint of the AI climate paradox: the same chips that enable climate-beneficial AI applications drive the data center energy consumption surge that the IEA projects will double electricity demand by 2026"
+    },
+    {
+      "from_source": "The Haber-Bosch process as the bridge between feeding four billion people and destabilizing the nitrogen cycle",
+      "to_source": "What is the Haber-Bosch process and why does half the world depend on it for food?",
+      "kind": "refines",
+      "reason": "The food-systems pair establishes that Haber-Bosch feeds half the world; the crossdomain pair reveals the hidden climate cost -- that the same process is a major greenhouse gas source through N2O emissions and fossil fuel consumption, making food security and climate stability structurally opposed"
+    },
+    {
+      "from_source": "Colonial resource extraction as the origin of both modern wealth concentration and environmental destruction -- rubber, copper, and carbon debt",
+      "to_source": "Wealth inequality has increased dramatically in most countries since the 1980s, with extreme concentration at the top",
+      "kind": "refines",
+      "reason": "The colonial extraction pair traces modern wealth concentration to its historical origin in resource extraction that was simultaneously an act of environmental destruction, adding a climate dimension to Piketty's r > g framework"
+    },
+    {
+      "from_source": "The 2003 European heat wave and climate change as a driver of excess mortality in wealthy nations with advanced healthcare",
+      "to_source": "Climate feedback loops include ice-albedo feedback, permafrost thaw releasing methane, and water vapor amplification, creating risks of cascading tipping points",
+      "kind": "refines",
+      "reason": "The heat wave mortality pair demonstrates that feedback loops are not abstract future risks but have already produced mass casualty events, translating the physics of amplification into documented human consequences"
+    },
+    {
+      "from_source": "Mark Carney's 'Tragedy of the Horizon' and the integration of climate risk into central bank financial stability frameworks",
+      "to_source": "Fossil fuel subsidies totaled an estimated $7 trillion globally in 2022 according to the IMF, when accounting for both explicit subsidies and unpriced externalities",
+      "kind": "contradicts",
+      "reason": "Central banks integrating climate risk into financial stability frameworks directly contradicts the continued $7 trillion in fossil fuel subsidies: financial regulators are pricing climate risk into the system while fiscal policy continues to subsidize the source of that risk"
+    },
+    {
+      "from_source": "Singapore's urban climate adaptation model -- how mandatory green building codes and urban canopy requirements embed resilience into city infrastructure",
+      "to_source": "Why do US water mains keep breaking, and how much does it cost to fix them?",
+      "kind": "refines",
+      "reason": "Both pairs illustrate the infrastructure maintenance dilemma: Singapore shows proactive climate-resilient design reduces future costs, while US water main failures show the compounding price of deferred maintenance -- climate adaptation is an infrastructure investment problem"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Climate change as a threat multiplier for conflict -- the Syrian drought-civil war nexus and Pentagon doctrine",
+      "kind": "public_record",
+      "locator": "https://www.pnas.org/doi/10.1073/pnas.1421533112",
+      "reason": "Kelley et al. (2015) 'Climate change in the Fertile Crescent and implications of the recent Syrian drought' in PNAS, the study linking the 2006-2010 drought to displacement and conflict onset"
+    },
+    {
+      "pair_source": "Fossil fuel infrastructure lock-in -- how existing power plants and pipelines commit future emissions regardless of policy",
+      "kind": "public_record",
+      "locator": "https://www.nature.com/articles/s41586-019-1364-3",
+      "reason": "Tong et al. (2019) 'Committed emissions from existing energy infrastructure jeopardize 1.5C climate target' in Nature, quantifying committed emissions at approximately 658 GtCO2"
+    },
+    {
+      "pair_source": "Aboriginal Australian fire management and the rediscovery of cultural burning as climate adaptation",
+      "kind": "public_record",
+      "locator": "https://www.publish.csiro.au/wf/WF19110",
+      "reason": "Williamson et al. (2020) in International Journal of Wildland Fire documenting the integration of Aboriginal burning practices into Australian fire management after the 2019-2020 Black Summer fires"
+    },
+    {
+      "pair_source": "Climate litigation as a new branch of law -- Urgenda, Shell, and the judicialization of emissions targets",
+      "kind": "public_record",
+      "locator": "https://www.urgenda.nl/en/themas/climate-case/",
+      "reason": "Urgenda Foundation's official case page documenting the Dutch Supreme Court's 2019 ruling ordering the Netherlands to cut emissions by 25% by 2020 under ECHR obligations"
+    },
+    {
+      "pair_source": "AI's climate paradox -- accelerating both climate science and climate-destructive energy consumption",
+      "kind": "public_record",
+      "locator": "https://www.iea.org/reports/electricity-2024",
+      "reason": "International Energy Agency 'Electricity 2024' report projecting data center electricity consumption could exceed 1,000 TWh by 2026, driven by AI workloads"
+    },
+    {
+      "pair_source": "The Haber-Bosch process as the bridge between feeding four billion people and destabilizing the nitrogen cycle",
+      "kind": "public_record",
+      "locator": "https://www.ipcc.ch/report/ar6/wg3/",
+      "reason": "IPCC AR6 Working Group III (2022) identifying agricultural N2O emission reduction as a cost-effective mitigation opportunity and quantifying nitrogen fertilizer's contribution to greenhouse gas emissions"
+    },
+    {
+      "pair_source": "Colonial resource extraction as the origin of both modern wealth concentration and environmental destruction -- rubber, copper, and carbon debt",
+      "kind": "public_record",
+      "locator": "https://unfccc.int/topics/adaptation-and-resilience/workstreams/loss-and-damage/santiago-network/loss-and-damage-fund-702",
+      "reason": "UNFCCC documentation of the Loss and Damage fund agreed at COP27 (November 2022) in Sharm el-Sheikh, acknowledging wealthy nations' financial responsibility for climate impacts on vulnerable states"
+    },
+    {
+      "pair_source": "The 2003 European heat wave and climate change as a driver of excess mortality in wealthy nations with advanced healthcare",
+      "kind": "public_record",
+      "locator": "https://www.nature.com/articles/nature03089",
+      "reason": "Stott, Stone, and Allen (2004) 'Human contribution to the European heatwave of 2003' in Nature, the first formal attribution study linking a specific extreme weather event to anthropogenic climate change"
+    },
+    {
+      "pair_source": "Mark Carney's 'Tragedy of the Horizon' and the integration of climate risk into central bank financial stability frameworks",
+      "kind": "public_record",
+      "locator": "https://www.bankofengland.co.uk/speech/2015/breaking-the-tragedy-of-the-horizon-climate-change-and-financial-stability",
+      "reason": "Mark Carney's September 2015 speech at Lloyd's of London introducing the 'tragedy of the horizon' framing and catalyzing the creation of the TCFD"
+    },
+    {
+      "pair_source": "Singapore's urban climate adaptation model -- how mandatory green building codes and urban canopy requirements embed resilience into city infrastructure",
+      "kind": "public_record",
+      "locator": "https://www1.bca.gov.sg/buildsg/sustainability/green-mark-certification-scheme",
+      "reason": "Singapore Building and Construction Authority's Green Mark certification scheme page documenting the mandatory green building standards for all new buildings since 2008"
+    }
+  ]
+}

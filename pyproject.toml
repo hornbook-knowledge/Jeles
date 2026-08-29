@@ -65,6 +65,9 @@ dev = ["pytest>=8.0", "pyyaml", "tomli; python_version<'3.11'", "jeles[mcp]", "j
 
 [project.scripts]
 jeles-corpus-mcp = "jeles.corpus_server:main"
+# Loads the seed that ships in the wheel. A command someone types, never a
+# side effect of installing - seeding writes to a user's store.
+jeles-seed = "jeles.seed_loader:main"
 
 [project.urls]
 Homepage = "https://github.com/hornbook-knowledge/Jeles"

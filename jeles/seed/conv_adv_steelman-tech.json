@@ -1,0 +1,549 @@
+{
+  "domain": "adversarial-steelman-tech",
+  "pairs": [
+    {
+      "source_text": "Holmes was punished for doing exactly what Silicon Valley rewards -- the 'fake it till you make it' culture",
+      "source_lang": "en",
+      "target_text": "Holmes's defense team argued that 'failure is not a crime,' and that the line between startup optimism and fraud is blurry by design. Silicon Valley's entire venture model relies on founders making claims about technology that does not yet work: Uber launched illegally in dozens of cities, Tesla took deposits on cars years before delivering them, and thermonuclear fusion startups raise billions on timelines everyone privately doubts. Holmes's Edison device did perform some tests -- not zero -- and her conviction rested on investor fraud, not patient fraud (she was acquitted on the patient-facing charges). The strongest version of this defense: Holmes was convicted not for being uniquely dishonest but for failing, and the jury's own split verdict (guilty on investor fraud, not guilty on patient fraud) shows the ambiguity. Startup culture structurally incentivizes exactly the overclaiming she did, and prosecuting the losers while lionizing the winners who made equally aggressive claims is selective justice. [Counterweight: The defense collapses on the Siemens machines. Holmes did not merely overclaim -- she actively concealed that Theranos was running patient blood on modified third-party analyzers while telling investors the proprietary Edison device worked. This is not optimism; it is fabrication of core product capability. The acquittals on patient charges do not exonerate her; they reflect the difficulty of proving patient-specific reliance, not innocence.]",
+      "target_lang": "en",
+      "reason": "Steel-man (villain-defense) of Elizabeth Holmes"
+    },
+    {
+      "source_text": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "source_lang": "en",
+      "target_text": "SBF's defense centered on the claim that FTX 'grew too quickly' and that its failures were operational, not criminal. Defense counsel portrayed him as a 'math nerd who didn't drink or party' who lacked the malicious intent required for fraud conviction. The strongest version: FTX had no dedicated risk management team, Alameda's borrowing from FTX was known internally but treated as a margin lending relationship rather than theft, and the $8 billion shortfall reflected mark-to-market losses on illiquid tokens rather than money stuffed in personal accounts. Caroline Ellison's testimony showed that even insiders understood the arrangement as reckless risk-taking rather than embezzlement. The absence of lavish personal spending (compared to, say, Bernie Madoff) supports the portrait of disorganized ambition rather than calculated theft. SBF's willingness to testify -- unusual for fraud defendants -- also signals genuine belief in his own innocence. [Counterweight: The jury rejected this in four hours. The 'mismanagement' frame cannot explain the secret backdoor in FTX's code that exempted Alameda from automated liquidation, the $8 billion in customer funds diverted without disclosure, or the judge's finding that SBF committed perjury during trial. Disorganization does not require building hidden software exceptions. The 25-year sentence, upheld on appeal, reflects the court's view that this was intentional fraud, not negligence.]",
+      "target_lang": "en",
+      "reason": "Steel-man (villain-defense) of Sam Bankman-Fried"
+    },
+    {
+      "source_text": "Kalanick built something that genuinely transformed transportation for hundreds of millions of people, and the aggression that created the toxic culture was inseparable from what made Uber possible",
+      "source_lang": "en",
+      "target_text": "Before Uber, urban transportation in most cities was a regulated cartel: medallion systems that restricted supply, discriminated against minority neighborhoods, and resisted accountability. Kalanick's willingness to launch illegally, fight regulators, and move faster than permission allowed is what broke a system that decades of reform had failed to change. Uber created flexible income for millions of drivers, reduced drunk driving deaths in cities where it launched, and made reliable transportation available to communities taxis had historically underserved. The strongest version of the defense: the toxic internal culture was real and wrong, but Kalanick's removal and Uber's survival under Dara Khosrowshahi proves the system worked -- the founder's aggression was the necessary startup-phase fuel, and governance mechanisms eventually corrected the cultural excess. Kalanick's $2.5 billion exit was not a reward for toxicity but the standard return for a founder who built a company now worth over $150 billion. [Counterweight: The 'necessary aggression' frame sanitizes specific harms: Susan Fowler documented systemic sexual harassment that HR ignored, executives accessed a rape victim's medical records, and the company built a tool (Greyball) specifically to deceive regulators. These are not byproducts of ambition; they are choices. The fact that Uber survived Kalanick's departure suggests the aggression was not necessary -- the product was strong enough to succeed under ethical management.]",
+      "target_lang": "en",
+      "reason": "Steel-man (villain-defense) of Travis Kalanick"
+    },
+    {
+      "source_text": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "source_lang": "en",
+      "target_text": "Hinton spent 2013-2023 at Google, collecting compensation and prestige while the company built exactly the systems he now calls dangerous. When Timnit Gebru warned about the dangers of large language models in 2020, Google fired her -- and Hinton said nothing publicly. He later called Google a 'proper steward' of AI even after Gebru's firing, a characterization critics find indefensible. The strongest critique: Hinton's warnings focus exclusively on speculative future existential risk (superintelligence escaping human control) while ignoring the present-day harms -- bias, surveillance, labor displacement -- that Gebru, Mitchell, and Whittaker documented at personal cost. His framing conveniently redirects attention from the documented damage his own inventions cause today to a hypothetical future catastrophe, which happens to require no accountability for past complicity. He resigned only after retirement age (75), with his Nobel and Turing prizes secured, and only after Microsoft's competition made Google's AI position uncomfortable. The timing looks less like conscience and more like reputation management. [Counterweight: Hinton's technical authority gives his warnings a weight that no other messenger could achieve. Whether his timing was ideal, the substance of his claims about AI risk is taken seriously by the research community precisely because he is not an outsider. His regret may be genuine even if it is late.]",
+      "target_lang": "en",
+      "reason": "Steel-man (hero-critique) of Geoffrey Hinton"
+    },
+    {
+      "source_text": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "source_lang": "en",
+      "target_text": "Google's account -- contested but not refuted on all points -- is that Gebru issued an ultimatum (meet my conditions or I resign), and when management accepted what they characterized as a resignation, she disputed that framing publicly. The internal email that precipitated the crisis was not the Stochastic Parrots paper itself but a separate message criticizing Google's diversity efforts and her management chain, sent to an internal mailing list. The strongest critique: Gebru's cause was just, but the narrative that she was fired solely for a research paper elides the management dynamics. Researchers at Google routinely published critical work; what was unusual was the combination of the paper, the email, and the ultimatum. Additionally, Gebru's post-Google framing of AI ethics as fundamentally opposed to AI safety -- her TESCREAL critique -- has been challenged by empirical research showing that existential risk narratives do not actually reduce concern for present harms, undermining her central claim that safety discourse diverts resources from ethics work. Her influence, while significant, may be amplified by the martyrdom narrative rather than the empirical strength of the 'distraction hypothesis.' [Counterweight: Google's 'she resigned' framing was rejected by Gebru, her team, and over 2,600 Google employees who signed a protest letter. The company revoked her access and informed her reports she was gone before she had responded. Whether or not there was a management conflict, the triggering event was Google demanding she retract or remove names from a paper, which is a research-freedom issue regardless of surrounding dynamics.]",
+      "target_lang": "en",
+      "reason": "Steel-man (hero-critique) of Timnit Gebru"
+    },
+    {
+      "source_text": "Elon Musk",
+      "source_lang": "en",
+      "target_text": " [Counterweight: ]",
+      "target_lang": "en",
+      "reason": "Steel-man (ambiguous-both-sides) of Elon Musk"
+    },
+    {
+      "source_text": "Sam Altman",
+      "source_lang": "en",
+      "target_text": " [Counterweight: ]",
+      "target_lang": "en",
+      "reason": "Steel-man (ambiguous-both-sides) of Sam Altman"
+    },
+    {
+      "source_text": "Mark Zuckerberg",
+      "source_lang": "en",
+      "target_text": " [Counterweight: ]",
+      "target_lang": "en",
+      "reason": "Steel-man (ambiguous-both-sides) of Mark Zuckerberg"
+    },
+    {
+      "source_text": "Dario Amodei",
+      "source_lang": "en",
+      "target_text": " [Counterweight: ]",
+      "target_lang": "en",
+      "reason": "Steel-man (ambiguous-both-sides) of Dario Amodei"
+    },
+    {
+      "source_text": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "source_lang": "en",
+      "target_text": "Yudkowsky dismisses every incremental safety measure -- red-teaming, interpretability, model evaluations, RLHF -- as 'meaningless,' demanding instead a global moratorium enforced by military threat. The strongest critique: this position is not just impractical but counterproductive. By framing anything short of total shutdown as futile, he (1) discourages researchers from pursuing achievable safety work, (2) creates a 'boy who cried wolf' dynamic where continued AI progress without catastrophe makes the entire safety community look alarmist, and (3) concentrates power by implying that only governments and incumbent firms should control AI development. His call for military enforcement against non-compliant nations is geopolitically naive and morally extreme -- it means threatening war over compute clusters. Practical governance experts (the Lawfare analysis, the Effective Altruism Forum critiques) argue that Yudkowsky's rhetoric makes it harder, not easier, to pass the incremental regulations that could actually reduce risk. His two decades of predictions about imminent superintelligence have not materialized, yet his framework has no mechanism for updating based on evidence. [Counterweight: Yudkowsky's core claim -- that alignment is unsolved and that deploying increasingly capable systems without solving it is reckless -- is shared by mainstream researchers including Hinton, Russell, and Bengio. Even if his policy prescriptions are extreme, his framing of the technical problem has been validated by the field's own inability to provide alignment guarantees.]",
+      "target_lang": "en",
+      "reason": "Steel-man (hero-critique) of Eliezer Yudkowsky"
+    },
+    {
+      "source_text": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "source_lang": "en",
+      "target_text": "Coworking was not a fantasy: the market Neumann identified has survived WeWork's bankruptcy and continues to grow. Flexible workspace demand accelerated through the pandemic and hybrid work era, vindicating his core thesis even as his execution collapsed. SoftBank's Masayoshi Son personally pushed the $47 billion valuation, declaring WeWork was 'at the forefront of a revolution' and urging Neumann to be 'crazier.' The strongest defense: Neumann was a founder doing what founders do -- telling a big story to raise capital -- and the system's check (the IPO process) actually worked. The S-1 filing exposed the losses, the IPO was pulled, and Neumann was removed. The self-dealing (leasing personal buildings back to WeWork, supervoting shares) was disclosed in filings and approved by a board that included SoftBank representatives. The $1 billion exit package looks obscene, but it was SoftBank's money, negotiated by SoftBank's lawyers, to avoid litigation. Neumann was not convicted of fraud; he was a founder whose vision outran his operational capacity, fueled by an investor willing to pour in $10 billion without demanding profitability. [Counterweight: Disclosed self-dealing is still self-dealing. Neumann trademarked the word 'We' and charged WeWork $5.9 million to license it. He personally owned buildings that WeWork leased. These are not standard founder practices regardless of board approval. The 'SoftBank enabled it' defense is shared blame, not exoneration.]",
+      "target_lang": "en",
+      "reason": "Steel-man (villain-defense) of Adam Neumann"
+    },
+    {
+      "source_text": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "source_lang": "en",
+      "target_text": "Algorithmic stablecoins were not Kwon's invention; they were an active research area with papers published by serious academics and attempted by multiple teams. The mechanism (arbitrage between a stablecoin and a floating token) had theoretical support, and the Luna Foundation Guard's $1.5 billion Bitcoin reserve was a genuine attempt to add collateral backing. The strongest defense: the collapse was a bank-run dynamic -- a self-reinforcing death spiral that, once triggered, no reserve could stop -- not a Ponzi scheme that was designed to fail. Many DeFi protocols failed in 2022 (Three Arrows Capital, Celsius, Voyager) without their founders being charged with fraud. The 15-year sentence exceeds what many violent criminals receive. If Kwon genuinely believed the mechanism would work and disclosed the algorithmic design publicly (which he did), the question is whether overclaiming resilience constitutes fraud or mistaken technical judgment. [Counterweight: The fraud conviction rested on specific evidence that Kwon misled investors about how UST maintained its peg and concealed the true risks. Prosecutors showed he knew the mechanism was fragile and marketed it as stable anyway. The judge called it 'fraud of epic generational scale.' The forged passport used during his flight further undermines any good-faith defense. Legitimate researchers do not flee across borders with fake documents.]",
+      "target_lang": "en",
+      "reason": "Steel-man (villain-defense) of Do Kwon"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Holmes was punished for doing exactly what Silicon Valley rewards -- the 'fake it till you make it' culture",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Holmes was punished for doing exactly what Silicon Valley rewards -- the 'fake it till you make it' culture",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Kalanick built something that genuinely transformed transportation for hundreds of millions of people, and the aggression that created the toxic culture was inseparable from what made Uber possible",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Elon Musk",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Sam Altman",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Sam Altman",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Sam Altman",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Mark Zuckerberg",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Mark Zuckerberg",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Dario Amodei",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Dario Amodei",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Dario Amodei",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    },
+    {
+      "from_source": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "to_source": "",
+      "kind": "refines",
+      "reason": "adversarial steel-man edge"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Holmes was punished for doing exactly what Silicon Valley rewards -- the 'fake it till you make it' culture",
+      "kind": "public_record",
+      "locator": "https://corpgov.law.harvard.edu/2022/01/30/theranos-the-limits-of-the-fake-it-till-you-make-it-strategy/",
+      "reason": "Evidence for steel-man of Elizabeth Holmes"
+    },
+    {
+      "pair_source": "Holmes was punished for doing exactly what Silicon Valley rewards -- the 'fake it till you make it' culture",
+      "kind": "public_record",
+      "locator": "https://journals.law.unc.edu/ncjolt/blogs/the-trial-of-theranos-elizabeth-holmes-what-it-means-for-silicon-valleys-future/",
+      "reason": "Evidence for steel-man of Elizabeth Holmes"
+    },
+    {
+      "pair_source": "Holmes was punished for doing exactly what Silicon Valley rewards -- the 'fake it till you make it' culture",
+      "kind": "public_record",
+      "locator": "https://fortune.com/2022/01/04/what-the-elizabeth-holmes-verdict-means-for-the-future-of-startup-culture-theranos-trial-startups-aron-solomon/",
+      "reason": "Evidence for steel-man of Elizabeth Holmes"
+    },
+    {
+      "pair_source": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "kind": "public_record",
+      "locator": "https://techcrunch.com/2023/10/04/sbf-criminal-trial-opening-statements/",
+      "reason": "Evidence for steel-man of Sam Bankman-Fried"
+    },
+    {
+      "pair_source": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "kind": "public_record",
+      "locator": "https://www.coindesk.com/policy/2023/11/01/sam-bankman-frieds-defense-argues-ex-ftx-ceo-acted-in-good-faith-in-emotional-closing-argument",
+      "reason": "Evidence for steel-man of Sam Bankman-Fried"
+    },
+    {
+      "pair_source": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "kind": "public_record",
+      "locator": "https://www.npr.org/2023/10/31/1209498750/sam-bankman-fried-trial-ftx-alameda-testimony-defense",
+      "reason": "Evidence for steel-man of Sam Bankman-Fried"
+    },
+    {
+      "pair_source": "FTX's problems were rapid-growth mismanagement by an inexperienced team, not a premeditated fraud scheme",
+      "kind": "public_record",
+      "locator": "https://slate.com/technology/2023/11/sam-bankman-fried-guilty-defense-bad-why.html",
+      "reason": "Evidence for steel-man of Sam Bankman-Fried"
+    },
+    {
+      "pair_source": "Kalanick built something that genuinely transformed transportation for hundreds of millions of people, and the aggression that created the toxic culture was inseparable from what made Uber possible",
+      "kind": "public_record",
+      "locator": "https://www.forbes.com/sites/miguelhelft/2016/12/14/how-travis-kalanick-is-building-the-ultimate-transportation-machine/",
+      "reason": "Evidence for steel-man of Travis Kalanick"
+    },
+    {
+      "pair_source": "Kalanick built something that genuinely transformed transportation for hundreds of millions of people, and the aggression that created the toxic culture was inseparable from what made Uber possible",
+      "kind": "public_record",
+      "locator": "https://thesauditimes.net/en/travis-kalanick-how-the-uber-co-founder-disrupted-transportation-and-built-a-global-tech-empire/",
+      "reason": "Evidence for steel-man of Travis Kalanick"
+    },
+    {
+      "pair_source": "Kalanick built something that genuinely transformed transportation for hundreds of millions of people, and the aggression that created the toxic culture was inseparable from what made Uber possible",
+      "kind": "public_record",
+      "locator": "https://imagnav.com/travis-kalanick-visionary-controversial-uber-founder/",
+      "reason": "Evidence for steel-man of Travis Kalanick"
+    },
+    {
+      "pair_source": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "kind": "public_record",
+      "locator": "https://dissidentvoice.org/2023/05/geoffrey-hinton-ai-and-googles-ethics-problem/",
+      "reason": "Evidence for steel-man of Geoffrey Hinton"
+    },
+    {
+      "pair_source": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "kind": "public_record",
+      "locator": "https://www.radicalproduct.com/blog/geoffrey-hinton-problematic-heroism-ai",
+      "reason": "Evidence for steel-man of Geoffrey Hinton"
+    },
+    {
+      "pair_source": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "kind": "public_record",
+      "locator": "https://disconnect.blog/geoffrey-hintons-misguided-views-on-ai/",
+      "reason": "Evidence for steel-man of Geoffrey Hinton"
+    },
+    {
+      "pair_source": "Hinton's safety alarm is convenient timing from someone who profited for a decade at Google while colleagues were fired for raising the same concerns",
+      "kind": "public_record",
+      "locator": "https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/",
+      "reason": "Evidence for steel-man of Geoffrey Hinton"
+    },
+    {
+      "pair_source": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "kind": "public_record",
+      "locator": "https://techcrunch.com/2020/12/03/googles-co-lead-of-ethical-ai-team-says-she-was-fired-for-sending-an-email",
+      "reason": "Evidence for steel-man of Timnit Gebru"
+    },
+    {
+      "pair_source": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "kind": "public_record",
+      "locator": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12037001/",
+      "reason": "Evidence for steel-man of Timnit Gebru"
+    },
+    {
+      "pair_source": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "kind": "public_record",
+      "locator": "https://moreisdifferent.blog/p/what-ai-ethicists-get-wrong-and-right",
+      "reason": "Evidence for steel-man of Timnit Gebru"
+    },
+    {
+      "pair_source": "The firing was not purely about the paper -- it was also about a management conflict that Gebru's supporters prefer not to foreground",
+      "kind": "public_record",
+      "locator": "https://www.npr.org/2020/12/17/947413170/google-ai-team-demands-ousted-black-researcher-be-rehired-and-promoted",
+      "reason": "Evidence for steel-man of Timnit Gebru"
+    },
+    {
+      "pair_source": "Elon Musk",
+      "kind": "public_record",
+      "locator": "https://www.cnbc.com/2026/08/06/doge-elon-musk-gao-government-cost-cuts.html",
+      "reason": "Evidence for steel-man of Elon Musk"
+    },
+    {
+      "pair_source": "Elon Musk",
+      "kind": "public_record",
+      "locator": "https://en.wikipedia.org/wiki/Elon_Musk_salute_controversy",
+      "reason": "Evidence for steel-man of Elon Musk"
+    },
+    {
+      "pair_source": "Elon Musk",
+      "kind": "public_record",
+      "locator": "https://futurism.com/future-society/empire-crumbles-elon-musk-mistake-doge",
+      "reason": "Evidence for steel-man of Elon Musk"
+    },
+    {
+      "pair_source": "Elon Musk",
+      "kind": "public_record",
+      "locator": "https://interestingengineering.com/innovation/spacex-elon-musk-space-rac",
+      "reason": "Evidence for steel-man of Elon Musk"
+    },
+    {
+      "pair_source": "Elon Musk",
+      "kind": "public_record",
+      "locator": "https://fortune.com/2026/08/02/spacex-corporate-governance-elon-musk-ceo-chairman-voting-shares/",
+      "reason": "Evidence for steel-man of Elon Musk"
+    },
+    {
+      "pair_source": "Sam Altman",
+      "kind": "public_record",
+      "locator": "https://time.com/6986711/openai-sam-altman-accusations-controversies-timeline/",
+      "reason": "Evidence for steel-man of Sam Altman"
+    },
+    {
+      "pair_source": "Sam Altman",
+      "kind": "public_record",
+      "locator": "https://www.aljazeera.com/economy/2026/4/29/musk-accuses-altman-of-betraying-openais-nonprofit-founding-mission",
+      "reason": "Evidence for steel-man of Sam Altman"
+    },
+    {
+      "pair_source": "Sam Altman",
+      "kind": "public_record",
+      "locator": "https://www.techzine.eu/news/privacy-compliance/141282/openai-ceo-defends-commercial-strategy-in-lawsuit-with-elon-musk/",
+      "reason": "Evidence for steel-man of Sam Altman"
+    },
+    {
+      "pair_source": "Sam Altman",
+      "kind": "public_record",
+      "locator": "https://yournews.com/2026/05/12/6952590/altman-pushes-back-in-court-as-openai-and-musk-battle/",
+      "reason": "Evidence for steel-man of Sam Altman"
+    },
+    {
+      "pair_source": "Sam Altman",
+      "kind": "public_record",
+      "locator": "https://stillhumanpod.substack.com/p/dont-blame-nonprofits-for-firing",
+      "reason": "Evidence for steel-man of Sam Altman"
+    },
+    {
+      "pair_source": "Mark Zuckerberg",
+      "kind": "public_record",
+      "locator": "https://time.com/7002563/mark-zuckerberg-ai-llama-meta-open-source/",
+      "reason": "Evidence for steel-man of Mark Zuckerberg"
+    },
+    {
+      "pair_source": "Mark Zuckerberg",
+      "kind": "public_record",
+      "locator": "https://www.maginative.com/article/the-illusion-of-open-source-ai-a-rebuttal-to-mark-zuckerberg/",
+      "reason": "Evidence for steel-man of Mark Zuckerberg"
+    },
+    {
+      "pair_source": "Mark Zuckerberg",
+      "kind": "public_record",
+      "locator": "https://iamshobhitagarwal.medium.com/the-truth-about-metas-llama-4-why-it-s-not-really-open-source-56b00b624c6d",
+      "reason": "Evidence for steel-man of Mark Zuckerberg"
+    },
+    {
+      "pair_source": "Mark Zuckerberg",
+      "kind": "public_record",
+      "locator": "https://techcrunch.com/2025/07/30/zuckerberg-says-meta-likely-wont-open-source-all-of-its-superintelligence-ai-models/",
+      "reason": "Evidence for steel-man of Mark Zuckerberg"
+    },
+    {
+      "pair_source": "Mark Zuckerberg",
+      "kind": "public_record",
+      "locator": "https://fortune.com/2026/08/10/meta-brandishes-open-source-ai-models-again-as-zuckerberg-media-blitz-emphasizes-battle-against-chinese-rivals/",
+      "reason": "Evidence for steel-man of Mark Zuckerberg"
+    },
+    {
+      "pair_source": "Dario Amodei",
+      "kind": "public_record",
+      "locator": "https://digidai.github.io/2026/03/06/dario-amodei-anthropic-ai-safety-evangelist-business-path-deep-investigation/",
+      "reason": "Evidence for steel-man of Dario Amodei"
+    },
+    {
+      "pair_source": "Dario Amodei",
+      "kind": "public_record",
+      "locator": "https://fortune.com/2026/08/18/david-sacks-says-anthropics-dario-amodei-wants-a-dmv-for-ai-but-plenty-of-industries-thrive-despite-safety-regulation/",
+      "reason": "Evidence for steel-man of Dario Amodei"
+    },
+    {
+      "pair_source": "Dario Amodei",
+      "kind": "public_record",
+      "locator": "https://finance.biggo.com/news/b3b7863a-135a-4111-9b7d-dc1adf3d14f3",
+      "reason": "Evidence for steel-man of Dario Amodei"
+    },
+    {
+      "pair_source": "Dario Amodei",
+      "kind": "public_record",
+      "locator": "https://darioamodei.com/post/policy-on-the-ai-exponential",
+      "reason": "Evidence for steel-man of Dario Amodei"
+    },
+    {
+      "pair_source": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "kind": "public_record",
+      "locator": "https://www.lawfaremedia.org/article/the-case-for-ai-doom-rests-on-three-unsettled-questions",
+      "reason": "Evidence for steel-man of Eliezer Yudkowsky"
+    },
+    {
+      "pair_source": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "kind": "public_record",
+      "locator": "https://www.lesswrong.com/posts/84qfGcrTGLuxMdGAp/why-yudkowsky-is-wrong-and-what-he-does-can-be-more",
+      "reason": "Evidence for steel-man of Eliezer Yudkowsky"
+    },
+    {
+      "pair_source": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "kind": "public_record",
+      "locator": "https://reason.com/2026/02/01/superintelligent-ai-is-not-coming-to-kill-you/",
+      "reason": "Evidence for steel-man of Eliezer Yudkowsky"
+    },
+    {
+      "pair_source": "Yudkowsky's absolutism actively undermines the practical AI governance efforts his own warnings should motivate",
+      "kind": "public_record",
+      "locator": "https://forum.effectivealtruism.org/posts/nWJLSjZ5T6HW8CMER/pausing-ai-developments-isn-t-enough-we-need-to-shut-it-all",
+      "reason": "Evidence for steel-man of Eliezer Yudkowsky"
+    },
+    {
+      "pair_source": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "kind": "public_record",
+      "locator": "https://www.britannica.com/money/WeWork",
+      "reason": "Evidence for steel-man of Adam Neumann"
+    },
+    {
+      "pair_source": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "kind": "public_record",
+      "locator": "https://www.cnbc.com/2020/05/05/wework-co-founder-adam-neumann-sues-softbank-over-failed-tender-offer.html",
+      "reason": "Evidence for steel-man of Adam Neumann"
+    },
+    {
+      "pair_source": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "kind": "public_record",
+      "locator": "https://www.opensourceceo.com/p/adam-neumann-deep-dive",
+      "reason": "Evidence for steel-man of Adam Neumann"
+    },
+    {
+      "pair_source": "Neumann identified a real market transformation in how people work, and the excess was enabled by SoftBank's $10 billion bet, not created by him alone",
+      "kind": "public_record",
+      "locator": "https://www.forbes.com/sites/jimosman/2024/03/25/adam-neumanns-500m-gamble-the-billionaires-bid-to-reclaim-wework/",
+      "reason": "Evidence for steel-man of Adam Neumann"
+    },
+    {
+      "pair_source": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "kind": "public_record",
+      "locator": "https://blockchain.bakermckenzie.com/2025/08/13/the-rise-and-fall-of-do-kwon-and-the-ust-stablecoin-from-crypto-visionary-to-convicted-fraudster/",
+      "reason": "Evidence for steel-man of Do Kwon"
+    },
+    {
+      "pair_source": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "kind": "public_record",
+      "locator": "https://netcoins.com/blog/how-an-algorithmic-stablecoin-wiped-out-40-billion",
+      "reason": "Evidence for steel-man of Do Kwon"
+    },
+    {
+      "pair_source": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "kind": "public_record",
+      "locator": "https://www.sciencedirect.com/science/article/pii/S2096720925000910",
+      "reason": "Evidence for steel-man of Do Kwon"
+    },
+    {
+      "pair_source": "Algorithmic stablecoins were a legitimate area of cryptographic research, and the line between failed experiment and fraud depends on what Kwon knew and when",
+      "kind": "public_record",
+      "locator": "https://www.techtimes.com/articles/313329/20251211/crypto-fraudster-do-kwon-gets-15-years-40-billion-terra-luna-collapse-that-triggered-2022-crash.htm",
+      "reason": "Evidence for steel-man of Do Kwon"
+    }
+  ]
+}

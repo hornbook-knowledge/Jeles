@@ -1,0 +1,203 @@
+{
+  "domain": "core-transportation",
+  "pairs": [
+    {
+      "source_text": "How does a car engine actually make a car move?",
+      "source_lang": "en",
+      "target_text": "A car engine works by mixing fuel with air inside a cylinder, then igniting it with a spark plug. The explosion forces a piston downward, and that up-and-down motion turns a crankshaft, which is a rod that converts the piston's pumping into spinning motion. That spinning motion eventually reaches the wheels through the transmission and axle. A typical four-cylinder engine fires its cylinders in sequence so the crankshaft gets a smooth, continuous push rather than one big jolt.",
+      "target_lang": "en",
+      "reason": "Internal combustion is the foundational technology that powered personal transportation for over a century"
+    },
+    {
+      "source_text": "How do brakes stop a car that weighs thousands of pounds?",
+      "source_lang": "en",
+      "target_text": "When you press the brake pedal, you push fluid through a sealed hydraulic line, which multiplies your foot's force and transmits it to all four wheels. At each wheel, that pressure squeezes friction pads against a spinning metal disc (or inside a drum), and the friction converts the car's kinetic energy into heat. This is why brakes get hot after heavy use — a car going 60 mph has roughly the same kinetic energy as a small stick of dynamite, and all of that energy has to go somewhere. If brakes overheat, the pads can temporarily lose grip, which is called brake fade.",
+      "target_lang": "en",
+      "reason": "Understanding braking is essential safety knowledge and a clear demonstration of energy conversion"
+    },
+    {
+      "source_text": "How does something as heavy as an airplane stay up in the air?",
+      "source_lang": "en",
+      "target_text": "An airplane wing is shaped so that air moves faster over the curved top than across the flatter bottom, which creates lower pressure above the wing and higher pressure below it — that pressure difference pushes the wing upward. The wing also meets the oncoming air at a slight upward tilt called the angle of attack, which deflects air downward and, by Newton's third law, pushes the wing up. Engines provide thrust to keep the plane moving fast enough for the wings to generate this lift, while the streamlined shape minimizes drag. A Boeing 747's wings generate roughly 900,000 pounds of lift at cruising speed — enough to hold the plane, passengers, cargo, and fuel aloft.",
+      "target_lang": "en",
+      "reason": "Flight is one of the most counterintuitive everyday phenomena and illustrates core physics principles"
+    },
+    {
+      "source_text": "How does a jet engine produce enough thrust to push an airplane forward?",
+      "source_lang": "en",
+      "target_text": "A jet engine works in four steps sometimes called suck-squeeze-bang-blow. First, a large fan sucks air into the engine. Compressor blades then squeeze that air to many times its normal pressure. Fuel is sprayed into the compressed air and ignited, producing a violent expansion of hot gas. That gas blasts out the back at high speed, and Newton's third law means the engine — and the airplane attached to it — is pushed forward. A single modern turbofan engine can produce over 100,000 pounds of thrust.",
+      "target_lang": "en",
+      "reason": "Jet engines are the dominant technology enabling global air travel and cargo transport"
+    },
+    {
+      "source_text": "How does a ship's propeller push a huge vessel through water?",
+      "source_lang": "en",
+      "target_text": "A ship's propeller has twisted blades that work like rotating wings. As the propeller spins, each blade is angled to push water backward, and by Newton's third law, the water pushes the ship forward. The blades are twisted because the tip of the propeller moves faster than the hub, so each part of the blade needs a different angle to push water efficiently. A large container ship's propeller can be 30 feet across, weigh over 100 tons, and move the ship at speeds of 20-25 knots despite the vessel weighing over 200,000 tons.",
+      "target_lang": "en",
+      "reason": "Ship propulsion underpins global trade, with over 80% of world goods moving by sea"
+    },
+    {
+      "source_text": "How do traffic lights know when to change, and why do you sometimes hit green lights in a row?",
+      "source_lang": "en",
+      "target_text": "Many intersections have sensor loops — coils of wire buried in the pavement that detect the metal in a car above them, telling the controller that someone is waiting. The controller runs through a cycle of green, yellow, and red for each direction, adjusting timing based on demand. Cities coordinate neighboring lights into \"green waves\" so that if you drive at the target speed, you arrive at each intersection just as it turns green. A central traffic management system monitors and adjusts these patterns in real time, responding to rush hour, accidents, or special events.",
+      "target_lang": "en",
+      "reason": "Traffic signal coordination is an invisible system that millions interact with daily without understanding"
+    },
+    {
+      "source_text": "How does GPS know exactly where I am?",
+      "source_lang": "en",
+      "target_text": "Your GPS receiver listens for signals from satellites orbiting about 12,550 miles above Earth. Each satellite broadcasts its precise position and the exact time the signal was sent, stamped by an onboard atomic clock accurate to billionths of a second. Your receiver compares the arrival time to the send time, multiplies the difference by the speed of light, and calculates its distance from that satellite. With distance measurements from four or more satellites, the receiver can pinpoint your location through a process called trilateration — essentially finding the one spot in three-dimensional space where all those distance spheres overlap.",
+      "target_lang": "en",
+      "reason": "GPS is a ubiquitous technology whose underlying physics (relativity, atomic clocks, speed of light) are rarely understood"
+    },
+    {
+      "source_text": "How does an elevator carry people up and down a tall building?",
+      "source_lang": "en",
+      "target_text": "An elevator car hangs from steel cables that run over a pulley at the top of the shaft and connect to a heavy counterweight on the other side. The counterweight typically equals the car's weight plus about 40% of its maximum passenger load, so the motor only has to work against the difference, not lift the full weight. An electric motor turns the pulley to move the car up or down. If the cables ever break, a mechanical safety brake — invented by Elisha Otis in 1854 — clamps onto the guide rails and locks the car in place, which is why elevator free-falls essentially never happen in modern buildings.",
+      "target_lang": "en",
+      "reason": "Elevators made skyscrapers and dense urban living possible, and their safety mechanism is an elegant engineering story"
+    },
+    {
+      "source_text": "How does a bicycle stay upright instead of tipping over?",
+      "source_lang": "en",
+      "target_text": "Contrary to popular belief, the gyroscopic effect of spinning wheels plays only a minor role in keeping a bicycle upright. The main factor is a geometry feature called trail: the front wheel's contact point on the ground sits behind the point where the steering axis intersects the ground, which makes the front wheel naturally steer into a lean, like a shopping cart caster that swings to follow the direction of push. When you start to tip left, this geometry nudges the front wheel left, moving the bike's base of support back under you. Riders make constant small, mostly unconscious steering corrections to maintain balance.",
+      "target_lang": "en",
+      "reason": "Bicycle stability is a common misconception topic and illustrates how intuitive explanations can be wrong"
+    },
+    {
+      "source_text": "Why do trains use steel wheels on steel rails instead of rubber tires on pavement?",
+      "source_lang": "en",
+      "target_text": "Steel wheels on steel rails produce remarkably low friction — roughly one-fifth the rolling resistance of rubber tires on asphalt — which means a single locomotive can haul thousands of tons of freight using far less energy than trucks would need. The wheels have a raised flange on the inner edge that prevents them from sliding off the rail. At junctions, movable track sections called switches (or points) guide the flanged wheels onto one path or another. The trade-off for this efficiency is that trains cannot steer freely or stop quickly, which is why rail lines need dedicated right-of-way and long stopping distances.",
+      "target_lang": "en",
+      "reason": "Rail transport is the most energy-efficient land freight system, and its physics explain why rail networks are structured as they are"
+    },
+    {
+      "source_text": "What does a transmission do, and why does a car need different gears?",
+      "source_lang": "en",
+      "target_text": "A transmission is a set of gears between the engine and the wheels that trades speed for torque or vice versa, much like shifting gears on a bicycle. In first gear, a small gear drives a large one, multiplying the engine's twisting force so the car can accelerate from a stop, but the wheels turn slowly. In higher gears, the ratio reverses: the engine's speed is multiplied at the wheels for highway cruising, but with less torque. A manual transmission requires the driver to select gears with a stick shift; an automatic uses fluid pressure and sensors to shift on its own. Without a transmission, an engine would either stall at low speed or over-rev at high speed.",
+      "target_lang": "en",
+      "reason": "Transmissions solve a fundamental engineering problem — matching a narrow engine speed range to a wide range of driving conditions"
+    },
+    {
+      "source_text": "How do tires grip the road, and why are bald tires dangerous in the rain?",
+      "source_lang": "en",
+      "target_text": "A tire grips the road through its rubber compound, which deforms around tiny irregularities in the pavement, creating friction at a molecular level. The tread pattern — those grooves and channels cut into the rubber — exists mainly to deal with water: the channels act as escape routes, pumping water out from under the tire so rubber can contact the road surface. A tire at highway speed can displace several gallons of water per second. When tires are bald, there are no channels left, so water builds up as a film between tire and road, and the tire rides on top of the water instead of touching pavement — this is hydroplaning, and it means you have almost zero steering or braking control.",
+      "target_lang": "en",
+      "reason": "Tire grip is fundamental safety knowledge that directly connects to real-world driving decisions"
+    },
+    {
+      "source_text": "How is an electric car different from a gasoline car under the hood?",
+      "source_lang": "en",
+      "target_text": "An electric car replaces the engine, fuel tank, and most of the transmission with a battery pack and one or more electric motors. Electric motors deliver full torque instantly from a standstill, so they do not need a multi-speed transmission — most use a single fixed gear ratio. When the driver brakes or coasts, the motors run in reverse as generators, converting the car's momentum back into electricity and feeding it to the battery, a process called regenerative braking. This simpler drivetrain has far fewer moving parts — no pistons, valves, spark plugs, or exhaust system — which reduces maintenance but shifts the engineering challenge to battery capacity, weight, and charging speed.",
+      "target_lang": "en",
+      "reason": "Electric vehicles represent the most significant shift in automotive technology in a century, and understanding the differences matters as adoption accelerates"
+    },
+    {
+      "source_text": "How did the shipping container change global trade?",
+      "source_lang": "en",
+      "target_text": "Before the 1950s, cargo was loaded onto ships piece by piece by dockworkers — a slow, expensive, theft-prone process called break-bulk shipping. Malcolm McLean's standardized steel shipping container, introduced in 1956, changed everything: goods are packed into a uniform 20- or 40-foot box at the factory, then that same box is lifted by crane onto a ship, a train, or a truck chassis without ever being opened. This intermodal system slashed loading time from days to hours and cut shipping costs by over 90%. Today, roughly 60,000 container ships carry about 800 million containers per year, which is a major reason a product manufactured in China can be sold for a few dollars in a store halfway around the world.",
+      "target_lang": "en",
+      "reason": "Containerization is one of the most impactful and least appreciated innovations of the 20th century, enabling modern globalization"
+    },
+    {
+      "source_text": "How does a suspension bridge hold up a roadway across a wide span?",
+      "source_lang": "en",
+      "target_text": "A suspension bridge works by hanging the road deck from vertical cables attached to two massive main cables that drape between tall towers. The main cables are in tension — they pull rather than push — and they transfer the deck's weight to the towers, which bear that load in compression, pressing straight down into their foundations. The cables are anchored at each end into enormous concrete blocks buried in the ground. This design can span distances over a mile because cables in tension are extremely strong relative to their weight. Suspension bridges do sway in wind, which is intentional: the flexibility prevents the structure from cracking under stress, though engineers add stiffening trusses and aerodynamic shaping to keep the movement within safe limits.",
+      "target_lang": "en",
+      "reason": "Suspension bridges are iconic engineering achievements that elegantly demonstrate the interplay of tension and compression forces"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "How does a car engine actually make a car move?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/eere/vehicles/articles/internal-combustion-engine-basics",
+      "reason": "U.S. Department of Energy overview of internal combustion engine principles"
+    },
+    {
+      "pair_source": "How do brakes stop a car that weighs thousands of pounds?",
+      "kind": "url",
+      "locator": "https://auto.howstuffworks.com/auto-parts/brakes/brake-types/disc-brake.htm",
+      "reason": "HowStuffWorks detailed explanation of disc brake hydraulics and friction mechanics"
+    },
+    {
+      "pair_source": "How does something as heavy as an airplane stay up in the air?",
+      "kind": "url",
+      "locator": "https://www.grc.nasa.gov/www/k-12/airplane/lift1.html",
+      "reason": "NASA Glenn Research Center explanation of how lift is generated by aircraft wings"
+    },
+    {
+      "pair_source": "How does a jet engine produce enough thrust to push an airplane forward?",
+      "kind": "url",
+      "locator": "https://www.grc.nasa.gov/www/k-12/airplane/turbfan.html",
+      "reason": "NASA educational resource on turbofan engine operation and thrust production"
+    },
+    {
+      "pair_source": "How does a ship's propeller push a huge vessel through water?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/propeller-mechanics",
+      "reason": "Encyclopaedia Britannica reference on propeller blade mechanics and Newton's third law application"
+    },
+    {
+      "pair_source": "How do traffic lights know when to change, and why do you sometimes hit green lights in a row?",
+      "kind": "url",
+      "locator": "https://auto.howstuffworks.com/traffic-light.htm",
+      "reason": "HowStuffWorks explanation of traffic signal sensors, controllers, and coordination systems"
+    },
+    {
+      "pair_source": "How does GPS know exactly where I am?",
+      "kind": "url",
+      "locator": "https://www.gps.gov/systems/gps/performance/accuracy/",
+      "reason": "Official U.S. government GPS resource explaining satellite-based positioning and trilateration"
+    },
+    {
+      "pair_source": "How does an elevator carry people up and down a tall building?",
+      "kind": "url",
+      "locator": "https://science.howstuffworks.com/transport/engines-equipment/elevator.htm",
+      "reason": "HowStuffWorks overview of elevator counterweight systems and Otis safety brake history"
+    },
+    {
+      "pair_source": "How does a bicycle stay upright instead of tipping over?",
+      "kind": "url",
+      "locator": "https://www.science.org/doi/10.1126/science.1201959",
+      "reason": "Science journal paper demonstrating that gyroscopic and caster effects are not required for bicycle stability"
+    },
+    {
+      "pair_source": "Why do trains use steel wheels on steel rails instead of rubber tires on pavement?",
+      "kind": "url",
+      "locator": "https://www.railway-technical.com/trains/rolling-stock/wheels/",
+      "reason": "Railway Technical Web Pages reference on steel wheel-rail interaction, flanges, and friction properties"
+    },
+    {
+      "pair_source": "What does a transmission do, and why does a car need different gears?",
+      "kind": "url",
+      "locator": "https://auto.howstuffworks.com/transmission.htm",
+      "reason": "HowStuffWorks guide to manual and automatic transmission gear ratios and operation"
+    },
+    {
+      "pair_source": "How do tires grip the road, and why are bald tires dangerous in the rain?",
+      "kind": "url",
+      "locator": "https://www.nhtsa.gov/equipment/tires/tire-safety",
+      "reason": "NHTSA safety information on tire tread function, hydroplaning risk, and maintenance"
+    },
+    {
+      "pair_source": "How is an electric car different from a gasoline car under the hood?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/eere/vehicles/articles/electric-car-basics",
+      "reason": "U.S. Department of Energy comparison of electric and combustion drivetrains"
+    },
+    {
+      "pair_source": "How did the shipping container change global trade?",
+      "kind": "url",
+      "locator": "https://www.worldshipping.org/about-the-industry/history-of-containerization",
+      "reason": "World Shipping Council historical overview of containerization and its economic impact"
+    },
+    {
+      "pair_source": "How does a suspension bridge hold up a roadway across a wide span?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/suspension-bridge",
+      "reason": "Encyclopaedia Britannica reference on suspension bridge structural mechanics and design"
+    }
+  ]
+}

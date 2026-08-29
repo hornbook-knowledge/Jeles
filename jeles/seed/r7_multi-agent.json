@@ -1,0 +1,313 @@
+{
+  "domain": "ai-multi-agent-coordination",
+  "pairs": [
+    {
+      "source_text": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "source_lang": "en",
+      "target_text": "AutoGen entered maintenance mode in October 2025, with Microsoft Agent Framework reaching 1.0 GA in April 2026. Microsoft merged AutoGen with Semantic Kernel into a unified enterprise-grade framework. AutoGen's core coordination patterns — RoundRobinGroupChat and SelectorGroupChat — were superseded by a typed-graph workflow model. AG2 (the community fork) continues active development, retaining GroupChat as its primary coordination pattern where a selector determines which agent speaks next. New projects are directed to the Microsoft Agent Framework.",
+      "target_lang": "en",
+      "reason": "AutoGen was the most-cited multi-agent framework; its succession reshapes the coordination landscape"
+    },
+    {
+      "source_text": "CrewAI role-based architecture and Flows orchestration layer as of early 2026",
+      "source_lang": "en",
+      "target_text": "CrewAI uses a hierarchical delegation model with a single manager agent (planner) and multiple worker agents (executors), each with precisely defined roles and tool access. It enforces strict hub-and-spoke communication, avoiding peer-to-peer agent traffic. In 2025, CrewAI introduced Flows — an event-driven orchestration layer that wraps Crews, handling state persistence, conditional routing, and multi-crew coordination. CrewAI also rebuilt its memory system in 2025, replacing separate short-term, long-term, and entity memory stores with a unified Memory class. As of early 2026, CrewAI reports use by 60% of the US Fortune 500 and approximately 450 million agent executions per month.",
+      "target_lang": "en",
+      "reason": "CrewAI is one of the dominant production multi-agent frameworks with a distinctive hub-and-spoke coordination model"
+    },
+    {
+      "source_text": "LangGraph graph-based state management and reducer-driven orchestration in 2025-2026",
+      "source_lang": "en",
+      "target_text": "LangGraph models multi-agent workflows as directed acyclic graphs (DAGs), with nodes representing agents, functions, or decision points, and edges dictating data flow. A centralized StateGraph maintains overall context, storing intermediate results and metadata. Its state management uses explicit, reducer-driven state schemas with robust checkpointing for persistent memory and safe parallel execution. Conditional edges route execution based on agent outputs, and parallel execution enables multiple agents to handle the same input with results merging at downstream nodes. The v1.1 release (December 2025) introduced model retry middleware with configurable exponential backoff and content moderation middleware for production reliability.",
+      "target_lang": "en",
+      "reason": "LangGraph represents the graph-based approach to agent coordination with fine-grained state control"
+    },
+    {
+      "source_text": "Google Agent2Agent (A2A) protocol timeline from v0.3 to v1.0 and Linux Foundation governance",
+      "source_lang": "en",
+      "target_text": "Google introduced the Agent2Agent (A2A) Protocol in April 2025 under Apache-2.0 licensing for direct agent-to-agent communication across organizations. It uses Agent Cards as a discovery mechanism — machine-readable descriptions of each agent's capabilities, input/output modalities, and authentication requirements. Built on HTTP(S), JSON-RPC, Server-Sent Events (SSE), and OAuth 2.0. The protocol evolved from v0.3.0 (July 2025, streaming-first transport) to v1.0.0 (January 2026, production-ready status) to v1.0.1 (May 2026, extension mechanism). As of April 2026, over 150 organizations support A2A, including Google, Microsoft, AWS, Salesforce, SAP, ServiceNow, Workday, and IBM. A2A is now governed by the Linux Foundation.",
+      "target_lang": "en",
+      "reason": "A2A is the leading horizontal agent-to-agent protocol standard, complementary to MCP's vertical agent-to-tool model"
+    },
+    {
+      "source_text": "Model Context Protocol (MCP) adoption and role as agent-to-tool standard by 2026",
+      "source_lang": "en",
+      "target_text": "Anthropic introduced MCP in November 2024 as a stateful, session-based protocol built on JSON-RPC 2.0, designed for LLM needs: context window management, dynamic tool discovery, and sampling. MCP defines three primitive types — Tools, Resources, and Prompts — exposed by MCP servers and consumed by MCP clients. By 2025, the open marketplace MCP.so listed over 16,800 public servers spanning data analytics to cloud infrastructure. The Python and TypeScript SDKs see roughly 97 million monthly downloads. In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation. MCP is described as 'USB-C for tool connectivity' (vertical, agent-to-tool) while A2A serves as 'HTTP for agent collaboration' (horizontal, agent-to-agent).",
+      "target_lang": "en",
+      "reason": "MCP is the dominant agent-to-tool protocol enabling multi-agent systems to share tool access"
+    },
+    {
+      "source_text": "IBM Agent Communication Protocol (ACP) merger into A2A in August 2025",
+      "source_lang": "en",
+      "target_text": "IBM launched the Agent Communication Protocol (ACP) in May 2025 as part of BeeAI, an experimental platform for orchestrating open-source AI agents. Cisco separately launched Agent Connect Protocol and open-sourced AGNTCY through its Outshift incubator in March 2025, donating it to the Linux Foundation that July with discovery, identity, messaging, and observability infrastructure. On August 29, 2025, IBM's ACP merged into the A2A protocol, and IBM's documentation now directs ACP users to migrate to A2A. The 2025-2026 landscape converged on four complementary protocols: A2A (Google, agent-to-agent), MCP (Anthropic, agent-to-tool), ACP/A2A (IBM, merged), and ANP (community, decentralized agent networks).",
+      "target_lang": "en",
+      "reason": "Shows protocol consolidation trend — multiple competing standards merging under Linux Foundation governance"
+    },
+    {
+      "source_text": "MetaGPT structured SOP approach and MGX product launch in 2025",
+      "source_lang": "en",
+      "target_text": "MetaGPT simulates a complete software company by assigning specialized roles (Product Manager, Architect, Engineer, QA) to AI agents, following the philosophy 'Code = SOP(Team)'. Every step produces a structured artifact — a document, diagram, or code file. On February 19, 2025, MetaGPT launched MGX (MetaGPT X), described as the world's first AI agent development team for natural language programming. Its AFlow paper ('Automating Agentic Workflow Generation') was accepted as an oral presentation (top 1.8%) at ICLR 2025. In code generation benchmarks, MetaGPT achieves 85.9% and 87.7% Pass@1 rates.",
+      "target_lang": "en",
+      "reason": "MetaGPT demonstrates the structured-artifact coordination pattern where agents communicate through deliverables"
+    },
+    {
+      "source_text": "OpenAI Agents SDK replacing Swarm with production handoff patterns in 2025-2026",
+      "source_lang": "en",
+      "target_text": "OpenAI released the Agents SDK in March 2025, replacing the experimental Swarm framework with production-grade tooling. The core abstraction is the handoff: agents transfer control explicitly, carrying conversation context through the system. Handoffs compile into synthetic tools — a triage_agent with handoffs=[billing_agent, refund_agent] sees transfer_to_billing_agent and transfer_to_refund_agent on its decision surface. The SDK includes guardrails, built-in tracing (OpenTelemetry-compatible), sessions, hosted tools, and Responses API support. Swarm is officially deprecated. As of May 2026, the SDK ships v0.17.1 with a regular release cadence.",
+      "target_lang": "en",
+      "reason": "The handoff pattern is a distinctive coordination approach where agents transfer control explicitly"
+    },
+    {
+      "source_text": "Orchestration versus choreography trade-offs in multi-agent systems as of 2026",
+      "source_lang": "en",
+      "target_text": "Orchestration uses a central controller to decide which agent runs, in what order, and what each receives, providing centralized visibility, auditing, and traceable failure attribution but creating a single point of failure. Choreography uses events and a message bus where each agent is autonomous and loosely coupled, with coordinated behavior emerging from reactions to shared events — ideal for parallel task streams that need little coordination. In 2026, hybrid approaches dominate: high-level orchestrators handle strategic coordination while local mesh networks execute tactically. The practical industry recommendation is to start with the supervisor pattern, which has the widest native framework support and best-understood failure modes.",
+      "target_lang": "en",
+      "reason": "The orchestration/choreography distinction is the fundamental architectural decision for multi-agent system design"
+    },
+    {
+      "source_text": "Blackboard pattern and shared memory approaches in LLM multi-agent systems 2025-2026",
+      "source_lang": "en",
+      "target_text": "The blackboard pattern is a centralized coordination model where a common memory space holds system state, with specialized agents watching for processable information and writing results back. Frameworks such as PC-Agent (Liu et al., 2025) adopt this design, with a manager agent maintaining evolving global task state and worker agents completing role-specific sub-tasks. Modern implementations organize memory as labeled blocks with metadata about contributor, timestamp, and data type. External memory stores (shared databases, knowledge graphs, vector stores) persist beyond context windows. Advanced 2026 approaches include access-governed shared memory with explicit authority controls, multi-user collaborative memory with dynamic access-control gates, and role-aware context routing that governs which memory subset each agent sees.",
+      "target_lang": "en",
+      "reason": "Shared memory and blackboard patterns are the primary mechanisms for context sharing without re-derivation"
+    },
+    {
+      "source_text": "Claude Code deterministic workflow orchestration with sub-agents in 2026",
+      "source_lang": "en",
+      "target_text": "Claude Code implements multi-agent orchestration by having the main session act as an orchestrator that delegates specific tasks to sub-agents, waits for results, and uses them without carrying the full working history of each sub-task. Orchestration code is written as plain JavaScript that determines what runs, when, and in what order, with each step delegated to a fresh subagent — making the control flow deterministic while only the work inside each agent() call is model-powered. For parallel execution, explicit delegation instructions and clear task boundaries are required; without them, Claude defaults to serial execution. For lighter-weight delegation that does not need inter-agent communication, sub-agents remain the preferred tool over full agent teams.",
+      "target_lang": "en",
+      "reason": "Claude Code's approach shows how deterministic orchestration can wrap non-deterministic agent execution"
+    },
+    {
+      "source_text": "Hierarchical caching architectures for reducing tool execution overhead in agentic workflows",
+      "source_lang": "en",
+      "target_text": "Research published in 2025-2026 proposes hierarchical caching that operates at both workflow and tool levels to capture coarse and fine-grained redundancies. The architecture integrates four components: (1) hierarchical caching at workflow and tool levels, (2) dependency-aware invalidation using graph-based techniques to maintain consistency when writes affect cached reads, (3) category-specific TTL policies tailored to data types (weather APIs, user location, database queries, filesystem tasks), and (4) session isolation for multi-tenant cache safety. Complementary work includes KVFlow, which prioritizes cache eviction based on agent execution order and eliminates miss overhead via overlapped prefetching, and agentic plan caching that reuses execution plans across semantically similar workflows, targeting the plan stage which incurs the majority of LLM compute cost.",
+      "target_lang": "en",
+      "reason": "Caching is the primary technical mechanism for avoiding redundant work across agent fleets"
+    },
+    {
+      "source_text": "OpenTelemetry GenAI semantic conventions for multi-agent tracing as of 2026",
+      "source_lang": "en",
+      "target_text": "As of OpenTelemetry v1.41, the GenAI semantic conventions define agent, workflow, tool, and model spans plus required latency and token-usage metrics, though attribute names remain at Development stability and may change without major version bumps. Native framework adapters exist for OpenAI Agents SDK, LangGraph, Mastra, Pydantic AI, LangChain, CrewAI, and Vercel AI SDK. Agent observability differs fundamentally from service observability — it needs intent visibility, not just execution visibility. Multi-turn failures are invisible at the individual call level and only visible in full-session causal traces. The recommended minimum viable observability stack in 2026 is Langfuse for trace capture and debugging UI, structured logging, and cost accumulation per session.",
+      "target_lang": "en",
+      "reason": "OpenTelemetry-based tracing is the convergent standard for debugging multi-agent coordination"
+    },
+    {
+      "source_text": "Enterprise multi-agent adoption rates and production failure statistics in 2025-2026",
+      "source_lang": "en",
+      "target_text": "73% of Fortune 500 companies now deploy multi-agent workflows, with enterprise multi-agent adoption growing 340% year-over-year. Gartner projects that 40% of enterprise applications will include task-specific AI agents by 2026, up from less than 5% in 2024. Multi-agent systems are in production across finance, healthcare, logistics, retail, energy, and professional services, with primary deployment areas including BFSI operations, customer service, internal IT, supply chain, and developer tooling. However, 62% of early multi-agent deployments fail to reach production due to orchestration complexity, state management failures, and observability gaps. The framework landscape matured from experimental scaffolding to production-hardened infrastructure between 2024 and 2026.",
+      "target_lang": "en",
+      "reason": "Production adoption statistics reveal the gap between framework capabilities and deployment success"
+    },
+    {
+      "source_text": "DAG-based task decomposition and aggregator bottleneck in multi-agent systems 2026",
+      "source_lang": "en",
+      "target_text": "Many modern multi-agent systems use DAG-based planning where specialized planning agents decompose tasks into directed acyclic graphs, with nodes as computational tasks and edges encoding dependencies. Runtime-structured task decomposition was presented at the ACM Workshop on Agentic Software Engineering (ACM CAIS 2026). The aggregation step — reconciling contradictory findings, deduplicating information, and producing coherent output — is described as the single biggest bottleneck in production multi-agent systems in 2026, requiring either a dedicated aggregator agent or a deterministic merge function. Agent registries with versioned entries and CI/CD pipelines for coordinated rollouts help ensure all agents use consistent interfaces.",
+      "target_lang": "en",
+      "reason": "Task decomposition and result aggregation are the bookend challenges of multi-agent coordination"
+    },
+    {
+      "source_text": "Agent interoperability protocol governance gaps identified in 2026 research",
+      "source_lang": "en",
+      "target_text": "A June 2026 paper (arXiv:2606.31498) identifies governance gaps across MCP, A2A, and ACP — what these protocols cannot express. While A2A, MCP, and ACP address different communication layers (tool access, enterprise collaboration, decentralized marketplaces), none fully covers authorization delegation, audit trails for multi-hop agent chains, or liability attribution when composed agents produce harmful outputs. Security threat modeling (arXiv:2602.11327) analyzes MCP, A2A, Agora, and ANP, finding that mutual authentication and capability-based access control remain inconsistently implemented. The convergence toward Linux Foundation governance (A2A, MCP, ACP all donated by mid-2026) addresses organizational governance but not protocol-level authorization gaps.",
+      "target_lang": "en",
+      "reason": "Protocol gaps reveal what current coordination standards still cannot handle in production"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Google Agent2Agent (A2A) protocol timeline from v0.3 to v1.0 and Linux Foundation governance",
+      "to_source": "Model Context Protocol (MCP) adoption and role as agent-to-tool standard by 2026",
+      "kind": "refines",
+      "reason": "A2A and MCP are complementary protocols — A2A handles horizontal agent-to-agent communication while MCP handles vertical agent-to-tool connectivity"
+    },
+    {
+      "from_source": "IBM Agent Communication Protocol (ACP) merger into A2A in August 2025",
+      "to_source": "Google Agent2Agent (A2A) protocol timeline from v0.3 to v1.0 and Linux Foundation governance",
+      "kind": "supersedes",
+      "reason": "ACP merged into A2A, showing protocol consolidation where competing standards converge"
+    },
+    {
+      "from_source": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "to_source": "LangGraph graph-based state management and reducer-driven orchestration in 2025-2026",
+      "kind": "refines",
+      "reason": "AutoGen's deprecation shifted adoption toward LangGraph and other actively maintained frameworks"
+    },
+    {
+      "from_source": "OpenAI Agents SDK replacing Swarm with production handoff patterns in 2025-2026",
+      "to_source": "Orchestration versus choreography trade-offs in multi-agent systems as of 2026",
+      "kind": "refines",
+      "reason": "The handoff pattern is a specific implementation of orchestration where control transfer is explicit"
+    },
+    {
+      "from_source": "OpenTelemetry GenAI semantic conventions for multi-agent tracing as of 2026",
+      "to_source": "Enterprise multi-agent adoption rates and production failure statistics in 2025-2026",
+      "kind": "refines",
+      "reason": "Observability gaps are a primary cause of the 62% deployment failure rate that OTel conventions aim to address"
+    },
+    {
+      "from_source": "Hierarchical caching architectures for reducing tool execution overhead in agentic workflows",
+      "to_source": "DAG-based task decomposition and aggregator bottleneck in multi-agent systems 2026",
+      "kind": "refines",
+      "reason": "Caching addresses the compute overhead that DAG-based decomposition creates through repeated tool calls"
+    },
+    {
+      "from_source": "Blackboard pattern and shared memory approaches in LLM multi-agent systems 2025-2026",
+      "to_source": "CrewAI role-based architecture and Flows orchestration layer as of early 2026",
+      "kind": "refines",
+      "reason": "CrewAI's unified Memory class is a production implementation of the blackboard/shared-memory pattern"
+    },
+    {
+      "from_source": "Agent interoperability protocol governance gaps identified in 2026 research",
+      "to_source": "Google Agent2Agent (A2A) protocol timeline from v0.3 to v1.0 and Linux Foundation governance",
+      "kind": "refines",
+      "reason": "Governance gap research identifies what A2A and other protocols still cannot express despite reaching production status"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "kind": "url",
+      "locator": "https://sparkco.ai/blog/deep-dive-into-autogen-multi-agent-patterns-2025",
+      "reason": "Documents AutoGen's coordination patterns before maintenance mode"
+    },
+    {
+      "pair_source": "AutoGen maintenance mode and Microsoft Agent Framework succession in 2025-2026",
+      "kind": "url",
+      "locator": "https://www.langchain.com/resources/langchain-vs-autogen",
+      "reason": "Reports on the AutoGen maintenance announcement and its impact on the framework landscape"
+    },
+    {
+      "pair_source": "CrewAI role-based architecture and Flows orchestration layer as of early 2026",
+      "kind": "url",
+      "locator": "https://www.jahanzaib.ai/blog/crewai-flows-production-multi-agent-guide",
+      "reason": "Details CrewAI Flows architecture and production deployment patterns"
+    },
+    {
+      "pair_source": "CrewAI role-based architecture and Flows orchestration layer as of early 2026",
+      "kind": "url",
+      "locator": "https://mastra.ai/articles/crewai",
+      "reason": "Analyzes CrewAI's hub-and-spoke communication model and hierarchical delegation"
+    },
+    {
+      "pair_source": "LangGraph graph-based state management and reducer-driven orchestration in 2025-2026",
+      "kind": "url",
+      "locator": "https://latenode.com/blog/langgraph-ai-framework-2025-complete-architecture-guide-multi-agent-orchestration-analysis",
+      "reason": "Comprehensive architecture guide for LangGraph's DAG-based state management and orchestration"
+    },
+    {
+      "pair_source": "Google Agent2Agent (A2A) protocol timeline from v0.3 to v1.0 and Linux Foundation governance",
+      "kind": "url",
+      "locator": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
+      "reason": "Google's official announcement of the A2A protocol"
+    },
+    {
+      "pair_source": "Google Agent2Agent (A2A) protocol timeline from v0.3 to v1.0 and Linux Foundation governance",
+      "kind": "url",
+      "locator": "https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year",
+      "reason": "Linux Foundation press release confirming 150+ organization adoption and production use"
+    },
+    {
+      "pair_source": "Model Context Protocol (MCP) adoption and role as agent-to-tool standard by 2026",
+      "kind": "url",
+      "locator": "https://workos.com/blog/everything-your-team-needs-to-know-about-mcp-in-2026",
+      "reason": "Comprehensive overview of MCP adoption, architecture, and Linux Foundation governance as of 2026"
+    },
+    {
+      "pair_source": "IBM Agent Communication Protocol (ACP) merger into A2A in August 2025",
+      "kind": "url",
+      "locator": "https://lfaidata.foundation/communityblog/2025/08/29/acp-joins-forces-with-a2a-under-the-linux-foundations-lf-ai-data/",
+      "reason": "Official announcement of ACP merging into A2A under Linux Foundation governance"
+    },
+    {
+      "pair_source": "MetaGPT structured SOP approach and MGX product launch in 2025",
+      "kind": "url",
+      "locator": "https://github.com/FoundationAgents/MetaGPT",
+      "reason": "Official MetaGPT repository documenting MGX launch and benchmark results"
+    },
+    {
+      "pair_source": "OpenAI Agents SDK replacing Swarm with production handoff patterns in 2025-2026",
+      "kind": "url",
+      "locator": "https://www.respan.ai/articles/openai-agents-sdk-vs-swarm",
+      "reason": "Migration guide detailing handoff pattern and Swarm deprecation"
+    },
+    {
+      "pair_source": "Orchestration versus choreography trade-offs in multi-agent systems as of 2026",
+      "kind": "url",
+      "locator": "https://www.kore.ai/blog/choosing-the-right-orchestration-pattern-for-multi-agent-systems",
+      "reason": "Analysis of orchestration vs choreography trade-offs with production guidance"
+    },
+    {
+      "pair_source": "Orchestration versus choreography trade-offs in multi-agent systems as of 2026",
+      "kind": "url",
+      "locator": "https://www.digitalapplied.com/blog/multi-agent-orchestration-5-patterns-that-work",
+      "reason": "Documents five production orchestration patterns including hybrid approaches"
+    },
+    {
+      "pair_source": "Blackboard pattern and shared memory approaches in LLM multi-agent systems 2025-2026",
+      "kind": "url",
+      "locator": "https://mem0.ai/blog/multi-agent-memory-systems",
+      "reason": "Production guide for designing multi-agent memory systems including access-governed shared memory"
+    },
+    {
+      "pair_source": "Blackboard pattern and shared memory approaches in LLM multi-agent systems 2025-2026",
+      "kind": "url",
+      "locator": "https://fast.io/resources/multi-agent-context-sharing-patterns/",
+      "reason": "Developer guide for context sharing patterns across multi-agent systems"
+    },
+    {
+      "pair_source": "Claude Code deterministic workflow orchestration with sub-agents in 2026",
+      "kind": "url",
+      "locator": "https://alexop.dev/posts/claude-code-workflows-deterministic-orchestration/",
+      "reason": "Explains Claude Code's deterministic orchestration model with sub-agent delegation"
+    },
+    {
+      "pair_source": "Claude Code deterministic workflow orchestration with sub-agents in 2026",
+      "kind": "url",
+      "locator": "https://hidekazu-konishi.com/entry/claude_code_subagents_and_orchestration_guide.html",
+      "reason": "Guide to Claude Code subagents, parallel fan-out, and custom agent definitions"
+    },
+    {
+      "pair_source": "Hierarchical caching architectures for reducing tool execution overhead in agentic workflows",
+      "kind": "url",
+      "locator": "https://www.mdpi.com/2504-4990/8/2/30",
+      "reason": "Primary research paper on hierarchical caching with dependency-aware invalidation"
+    },
+    {
+      "pair_source": "OpenTelemetry GenAI semantic conventions for multi-agent tracing as of 2026",
+      "kind": "url",
+      "locator": "https://opentelemetry.io/blog/2025/ai-agent-observability/",
+      "reason": "OpenTelemetry official blog post on evolving standards for AI agent observability"
+    },
+    {
+      "pair_source": "OpenTelemetry GenAI semantic conventions for multi-agent tracing as of 2026",
+      "kind": "url",
+      "locator": "https://futureagi.com/blog/trace-debug-multi-agent-systems-observability-guide/",
+      "reason": "Details traceAI, OTel span hierarchy, and multi-agent debugging in 2026"
+    },
+    {
+      "pair_source": "Enterprise multi-agent adoption rates and production failure statistics in 2025-2026",
+      "kind": "url",
+      "locator": "https://medium.com/@Micheal-Lanham/multi-agent-in-production-in-2026-what-actually-survived-f86de8bb1cd1",
+      "reason": "Reports on which multi-agent patterns survived production deployment"
+    },
+    {
+      "pair_source": "DAG-based task decomposition and aggregator bottleneck in multi-agent systems 2026",
+      "kind": "url",
+      "locator": "https://zylos.ai/research/2026-03-08-ai-agent-delegation-team-coordination-patterns/",
+      "reason": "Research on delegation frameworks, coordination topologies, and task decomposition strategies"
+    },
+    {
+      "pair_source": "Agent interoperability protocol governance gaps identified in 2026 research",
+      "kind": "url",
+      "locator": "https://arxiv.org/pdf/2606.31498",
+      "reason": "Academic paper identifying governance gaps in MCP, A2A, and ACP protocols"
+    },
+    {
+      "pair_source": "Agent interoperability protocol governance gaps identified in 2026 research",
+      "kind": "url",
+      "locator": "https://arxiv.org/pdf/2602.11327",
+      "reason": "Security threat modeling for MCP, A2A, Agora, and ANP protocols"
+    }
+  ]
+}

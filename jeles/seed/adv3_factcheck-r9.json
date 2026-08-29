@@ -1,0 +1,190 @@
+{
+  "domain": "adversarial-factcheck-r9",
+  "pairs": [
+    {
+      "source_text": "funded primarily by an annual television licence fee (156.50 GBP as of 2023-2024)",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The BBC television licence fee for 2023-2024 was 159 GBP, not 156.50 GBP. The fee was set at 159 GBP in April 2021 and frozen at that level through 2023-2024 as part of the government's two-year freeze announced by Culture Secretary Nadine Dorries in January 2022. The fee was subsequently raised to 169.50 GBP for 2024-2025. The figure 156.50 GBP does not correspond to any recent licence fee year: the fee was 157.50 GBP for 2020-2021, then increased to 159 GBP from April 2021 onward. This is a factual error in the stated amount.",
+      "target_lang": "en",
+      "reason": "The BBC licence fee is a precisely documented public figure; citing the wrong amount undermines the credibility of the broader discussion of BBC funding models"
+    },
+    {
+      "source_text": "Joe Rogan signed a reportedly $200 million deal with Spotify in February 2024 (expanding his original $100 million 2020 deal)",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The Wall Street Journal reported on February 2, 2024, that Joe Rogan's new deal with Spotify was worth up to $250 million, not $200 million. The deal also changed the terms: rather than a Spotify exclusive, Rogan's show would return to other platforms (YouTube, Apple Podcasts) while Spotify retained advertising rights. The original 2020 deal was widely reported as worth approximately $100 million over 3.5 years (though the exact figure was never officially confirmed by either party). The $50 million discrepancy between the $200 million stated and the $250 million reported represents a significant understatement of what was, at the time, the largest individual podcasting deal ever made.",
+      "target_lang": "en",
+      "reason": "Understating the deal value by $50 million misrepresents the scale of commercial investment in individual podcast creators and the economics of the medium"
+    },
+    {
+      "source_text": "reached an estimated 126 million Americans through Facebook content",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The 126 million figure, disclosed by Facebook to the Senate Judiciary Committee in October 2017, represents potential algorithmic reach -- the number of users to whom IRA-linked content may have been served in their News Feed at some point between January 2015 and August 2017. It does not mean 126 million people saw, read, or engaged with the content. Facebook's own Colin Stretch clarified during Senate testimony that IRA content represented roughly 0.004% of content in News Feed during the period, and that the 126 million figure was a cumulative upper-bound exposure estimate over nearly three years. Presenting it as 'reached' without this context significantly overstates the demonstrated impact of the operation.",
+      "target_lang": "en",
+      "reason": "The distinction between potential algorithmic reach and confirmed views is fundamental to accurately assessing the scale and impact of disinformation operations and avoiding inflated threat narratives"
+    },
+    {
+      "source_text": "contains 26 words often called the legal foundation of the modern internet: 'No provider or user of an interactive computer service shall be treated as the publisher or speaker of any information provided by another information content provider.'",
+      "source_lang": "en",
+      "target_text": "[CONFIRMED] The quoted text from 47 U.S.C. section 230(c)(1) is exactly correct and does contain exactly 26 words. The characterization of these 26 words as 'the legal foundation of the modern internet' reflects language used by legal scholars including Jeff Kosseff, whose 2019 book is literally titled 'The Twenty-Six Words That Created the Internet.' The provision was indeed authored by Representatives Christopher Cox (R-CA) and Ron Wyden (D-OR) in response to Stratton Oakmont v. Prodigy (1995). The quote is verbatim from the statute.",
+      "target_lang": "en",
+      "reason": "This foundational legal text is so frequently paraphrased or misquoted that confirming its exact wording and word count serves the accuracy of downstream legal and policy discussion"
+    },
+    {
+      "source_text": "in June 2024, the FDA rejected Lykos Therapeutics' application for MDMA-assisted therapy for PTSD, citing concerns about trial design",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The timeline conflates two distinct events. In June 2024 (specifically June 4), the FDA's Psychopharmacologic Drugs Advisory Committee voted 9-2 that the available data did not show MDMA was effective and 10-1 that the benefits did not outweigh the risks. However, advisory committee votes are recommendations, not FDA decisions. The FDA's actual rejection -- a Complete Response Letter (CRL) to Lykos Therapeutics -- was issued on August 9, 2024. Stating the FDA 'rejected' the application 'in June 2024' is incorrect by two months and misattributes the advisory committee's vote to the agency itself. The distinction matters because advisory committees are advisory; the FDA sometimes overrides their recommendations.",
+      "target_lang": "en",
+      "reason": "Conflating an advisory committee vote with a formal FDA regulatory decision misrepresents the drug approval process and its checks and balances"
+    },
+    {
+      "source_text": "A 2005 Lancet meta-analysis estimated Vioxx may have caused 88,000 to 140,000 excess cases of serious coronary heart disease in the US",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The 88,000 to 140,000 estimate does not come from a Lancet meta-analysis. It originates from testimony by David Graham, Associate Director for Science at the FDA's Office of Drug Safety, before the US Senate Finance Committee on November 18, 2004. Graham estimated that Vioxx may have caused between 88,000 and 139,000 excess cases of heart attacks and sudden cardiac death in the United States. A separate Lancet meta-analysis by Peter Juni and colleagues, published in November 2004, confirmed the elevated cardiovascular risk but used different methodology and did not produce the 88,000-140,000 figure. Misattributing Graham's congressional testimony to a peer-reviewed Lancet paper incorrectly elevates the evidentiary basis of the estimate while erasing the political context of an FDA whistleblower testifying before Congress.",
+      "target_lang": "en",
+      "reason": "Correct source attribution is essential in medical evidence; conflating congressional testimony with peer-reviewed meta-analysis misrepresents the nature and provenance of the evidence"
+    },
+    {
+      "source_text": "The Tufts CSDD study published in 2014 by Joseph DiMasi and colleagues estimated the average capitalized cost of bringing a new drug to market at $2.558 billion",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The Tufts Center for the Study of Drug Development issued a press release announcing the $2.558 billion figure in November 2014, but the peer-reviewed paper was not published until 2016. DiMasi, Grabowski, and Hansen published 'Innovation in the pharmaceutical industry: New estimates of R&D costs' in the Journal of Health Economics, Volume 47, pages 20-33, in May 2016 (available online March 2016). Citing the study as 'published in 2014' conflates the press release with the peer-reviewed publication. The distinction matters because the methodology could not be scrutinized by other researchers until the full paper appeared in 2016 -- for nearly two years the $2.6 billion figure circulated without the underlying data and methods being available for independent review.",
+      "target_lang": "en",
+      "reason": "The two-year gap between press announcement and peer review publication is itself part of the controversy around the Tufts estimate, as the figure shaped drug pricing debates before its methodology could be independently evaluated"
+    },
+    {
+      "source_text": "the technology allows rapid design: once the spike protein gene sequence was known, Moderna designed its vaccine candidate in just two days (January 13, 2020)",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The claim that Moderna 'designed its vaccine candidate in just two days' overstates what happened. On January 13, 2020 -- two days after the SARS-CoV-2 genetic sequence was published on January 11 -- Moderna's team finalized the mRNA sequence for the spike protein that would form the basis of mRNA-1273. However, 'designed its vaccine candidate' implies the complete vaccine was designed in two days. The full formulation -- including the lipid nanoparticle delivery system, mRNA modifications, stabilization of the prefusion conformation of the spike protein (using the 2P mutation developed by Barney Graham and Jason McLellan at NIH), and manufacturing specifications -- drew on years of prior platform development. The first clinical batch was not shipped to NIH for Phase I trials until February 24, 2020, six weeks later. The mRNA sequence was designed in two days; the vaccine candidate required substantially more work.",
+      "target_lang": "en",
+      "reason": "False compression of a complex scientific achievement into a two-day timeline obscures the years of foundational research that made rapid mRNA vaccine development possible"
+    },
+    {
+      "source_text": "CDC data for 2021 showed Black women died at 3.6 times the rate of white women (69.9 vs 26.6 per 100,000 live births)",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The numbers cited (69.9 and 26.6 per 100,000 live births) are drawn from the CDC NCHS Data Brief No. 486 (March 2024) and are correct for 2021 maternal mortality rates for non-Hispanic Black and non-Hispanic white women respectively. However, the stated ratio of 3.6 times is mathematically incorrect given these same numbers. Dividing 69.9 by 26.6 yields a ratio of approximately 2.63 -- not 3.6. The 2.6-fold disparity is itself deeply alarming, but overstating it as 3.6 times is an internal arithmetic error within the same sentence. A ratio closer to 3.6 would match different years or different population comparisons; for instance, in some earlier CDC analyses or when comparing to Hispanic women (28.2 per 100,000 in 2021), different ratios emerge. But the specific numbers given do not support the stated multiplier.",
+      "target_lang": "en",
+      "reason": "Internal mathematical inconsistency -- where the stated ratio contradicts the stated numbers -- undermines the credibility of an otherwise important and well-documented health equity finding"
+    },
+    {
+      "source_text": "Finland's Social Insurance Institution (Kela) conducted the world's first government-sponsored, nationwide randomized controlled trial of UBI",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] Calling the Finnish experiment 'the world's first government-sponsored' UBI trial is historically inaccurate. Multiple earlier government-sponsored experiments tested unconditional cash transfers or negative income tax (NIT) schemes, which are economically equivalent to UBI. The United States ran four major NIT experiments between 1968 and 1980: the New Jersey Income Maintenance Experiment (1968-1972), the Rural Income Maintenance Experiment (1969-1973), the Gary, Indiana experiment (1971-1974), and the Seattle-Denver Income Maintenance Experiment (SIME/DIME, 1970-1978). Canada ran the Manitoba Basic Annual Income Experiment (Mincome) from 1974 to 1979. All were government-sponsored and used randomized or quasi-experimental designs. Finland's experiment was notable for being the first modern, nationally administered RCT specifically branded as 'basic income,' but the qualifier 'world's first government-sponsored' erases a half-century of prior government experimentation with unconditional transfers.",
+      "target_lang": "en",
+      "reason": "Ignoring the extensive history of US and Canadian government experiments with unconditional income transfers misrepresents the evidence base and the long policy history behind UBI debates"
+    },
+    {
+      "source_text": "public approval of labor unions reached 67% in Gallup's August 2023 poll -- near the highest since 1965",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The 67% figure from Gallup's August 2023 poll is correct, but describing it as 'near the highest since 1965' is misleading because it omits a higher and more recent data point. Gallup's August 2022 poll recorded 71% approval of labor unions -- the highest since 1965's 71% and a full 4 percentage points higher than the 2023 reading. The 2023 figure of 67% actually represents a decline from the prior year's high-water mark, not a near-peak. A more accurate characterization would note that union approval was near a multi-decade high but had retreated from the 71% peak recorded just one year earlier. The framing as 'near the highest' makes an actual year-over-year decline look like an ongoing ascent.",
+      "target_lang": "en",
+      "reason": "Omitting the higher 2022 data point reverses the narrative direction -- from a story of decline from a recent peak to a story of continued ascent -- distorting the trajectory of public opinion on unions"
+    },
+    {
+      "source_text": "meaning about 40% of workers capable of remote work were doing so at least part-time",
+      "source_lang": "en",
+      "target_text": "[CORRECTED] The text states that 12% of US workers were fully remote and 28% hybrid, totaling 40%, then characterizes this as '40% of workers capable of remote work.' This is a logical error. The 40% figure (12% + 28%) represents the share of ALL employed US adults working remotely at least part-time, not the share of remote-capable workers. Research by Nicholas Bloom and others at Stanford estimates that approximately 50-60% of US jobs can be done remotely at least part-time. If 40% of all workers are remote/hybrid and only 50-60% of jobs are remote-capable, then the share of remote-capable workers actually working remotely would be approximately 67-80% (40/60 to 40/50), substantially higher than the stated 40%. The text conflates the denominator, making the remote work adoption rate appear significantly lower than it actually is among workers whose jobs permit it.",
+      "target_lang": "en",
+      "reason": "Confusing 'all workers' with 'remote-capable workers' as the denominator leads to a substantial undercount of remote work adoption among eligible workers, distorting labor market analysis"
+    },
+    {
+      "source_text": "McKinsey's December 2017 report 'Jobs Lost, Jobs Gained: Workforce Transitions in a Time of Automation' estimated that between 400 million and 800 million individuals worldwide could be displaced by automation by 2030",
+      "source_lang": "en",
+      "target_text": "[CONFIRMED] The December 2017 McKinsey Global Institute report does project that 400 million to 800 million individuals could be displaced by automation by 2030 across 46 countries. Within that headline range, the report specifies that 75 million to 375 million would need to switch occupational categories entirely. The corpus accurately represents McKinsey's own projections and correctly notes the December 2017 publication date. However, important context: McKinsey's range is extraordinarily wide (a 400-million-person spread), and its midpoint scenario assumed automation adoption rates of 50% by 2030, which most subsequent analysts considered aggressive. By 2024, with only six years remaining, actual automation-driven displacement had not approached the lower bound, though generative AI introduced new displacement vectors not fully anticipated in the 2017 analysis.",
+      "target_lang": "en",
+      "reason": "Confirming the citation is accurate while noting the extreme width of the range and the unfolding gap between projection and reality provides essential context for evaluating automation forecasts"
+    },
+    {
+      "source_text": "net productivity in the United States grew 64.7% from 1979 to 2019 while inflation-adjusted hourly compensation for typical (median) workers rose only 17.5% over the same period -- a divergence of roughly 47 percentage points",
+      "source_lang": "en",
+      "target_text": "[CONFIRMED] The 64.7% and 17.5% figures are consistent with EPI's published analyses for the 1979-2019 period. However, confirmed accuracy of the citation does not mean the underlying methodology is uncontested. A well-documented critique, advanced by economists at the Heritage Foundation, American Enterprise Institute, and by James Sherk and others, notes that EPI uses different price deflators for productivity (the GDP implicit price deflator) and compensation (the Consumer Price Index). Because the CPI has generally risen faster than the GDP deflator -- partly reflecting import price dynamics -- using the same deflator for both series narrows the gap substantially, to approximately 25-30 percentage points rather than 47. Additionally, using total compensation (including employer-paid health insurance and other benefits) rather than wages alone further narrows the divergence. The gap remains real under any methodology but its magnitude is genuinely disputed, not settled at 47 points.",
+      "target_lang": "en",
+      "reason": "The productivity-pay gap is one of the most politically consequential economic statistics in US labor policy debates; acknowledging the real methodological dispute rather than presenting one estimate as settled fact is essential for honest analysis"
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "funded primarily by an annual television licence fee (156.50 GBP as of 2023-2024)",
+      "kind": "public_record",
+      "locator": "https://www.tvlicensing.co.uk/check-if-you-need-one/topics/tv-licence-types-and-costs-top13",
+      "reason": "The official TV Licensing website publishes current and historical licence fee amounts; the fee was 159 GBP from April 2021 through March 2024"
+    },
+    {
+      "pair_source": "Joe Rogan signed a reportedly $200 million deal with Spotify in February 2024 (expanding his original $100 million 2020 deal)",
+      "kind": "public_record",
+      "locator": "https://www.wsj.com/business/media/spotify-joe-rogan-deal-6e698087",
+      "reason": "The Wall Street Journal reported the new Rogan-Spotify deal at up to $250 million, not $200 million, in its February 2, 2024 report"
+    },
+    {
+      "pair_source": "reached an estimated 126 million Americans through Facebook content",
+      "kind": "public_record",
+      "locator": "https://www.judiciary.senate.gov/committee-activity/hearings/extremist-content-and-russian-disinformation-online-working-with-tech-to-find-solutions",
+      "reason": "Facebook General Counsel Colin Stretch's October 31, 2017 testimony to the Senate Judiciary Committee clarified that 126 million was a potential reach estimate, not a confirmed engagement figure"
+    },
+    {
+      "pair_source": "contains 26 words often called the legal foundation of the modern internet: 'No provider or user of an interactive computer service shall be treated as the publisher or speaker of any information provided by another information content provider.'",
+      "kind": "public_record",
+      "locator": "https://www.law.cornell.edu/uscode/text/47/230",
+      "reason": "The Cornell Law Institute's Legal Information Institute hosts the full text of 47 U.S.C. section 230, confirming the exact 26-word quotation from subsection (c)(1)"
+    },
+    {
+      "pair_source": "in June 2024, the FDA rejected Lykos Therapeutics' application for MDMA-assisted therapy for PTSD, citing concerns about trial design",
+      "kind": "public_record",
+      "locator": "https://www.fda.gov/news-events/press-announcements/fda-declines-approve-mdma-assisted-therapy-ptsd",
+      "reason": "The FDA's own press announcement of the Complete Response Letter for MDMA-assisted therapy was issued on August 9, 2024, not June 2024"
+    },
+    {
+      "pair_source": "A 2005 Lancet meta-analysis estimated Vioxx may have caused 88,000 to 140,000 excess cases of serious coronary heart disease in the US",
+      "kind": "public_record",
+      "locator": "https://www.finance.senate.gov/hearings/fda-merck-and-vioxx-putting-patient-safety-first",
+      "reason": "The Senate Finance Committee hearing record from November 18, 2004 contains David Graham's testimony with the 88,000-139,000 excess case estimate, which predates any 2005 Lancet publication and is congressional testimony, not a meta-analysis"
+    },
+    {
+      "pair_source": "The Tufts CSDD study published in 2014 by Joseph DiMasi and colleagues estimated the average capitalized cost of bringing a new drug to market at $2.558 billion",
+      "kind": "public_record",
+      "locator": "https://doi.org/10.1016/j.jhealeco.2016.01.012",
+      "reason": "The DOI resolves to DiMasi, Grabowski, and Hansen (2016) in the Journal of Health Economics, Volume 47, confirming the peer-reviewed publication year was 2016, not 2014"
+    },
+    {
+      "pair_source": "the technology allows rapid design: once the spike protein gene sequence was known, Moderna designed its vaccine candidate in just two days (January 13, 2020)",
+      "kind": "public_record",
+      "locator": "https://www.modernatx.com/research/product-pipeline",
+      "reason": "Moderna's own timeline and corporate communications clarify that the mRNA sequence was finalized on January 13, 2020, but the clinical batch of mRNA-1273 was not shipped to NIH until February 24, 2020"
+    },
+    {
+      "pair_source": "CDC data for 2021 showed Black women died at 3.6 times the rate of white women (69.9 vs 26.6 per 100,000 live births)",
+      "kind": "public_record",
+      "locator": "https://www.cdc.gov/nchs/data/databriefs/db486.pdf",
+      "reason": "NCHS Data Brief No. 486 (March 2024) provides the 69.9 and 26.6 figures; dividing 69.9 by 26.6 yields 2.63, not the stated 3.6"
+    },
+    {
+      "pair_source": "Finland's Social Insurance Institution (Kela) conducted the world's first government-sponsored, nationwide randomized controlled trial of UBI",
+      "kind": "public_record",
+      "locator": "https://aspe.hhs.gov/topics/poverty-economic-mobility/negative-income-tax-experiments-1960s-1970s",
+      "reason": "The US Department of Health and Human Services documents four government-sponsored negative income tax experiments from 1968-1980, predating Finland's 2017 experiment by nearly five decades"
+    },
+    {
+      "pair_source": "public approval of labor unions reached 67% in Gallup's August 2023 poll -- near the highest since 1965",
+      "kind": "public_record",
+      "locator": "https://news.gallup.com/poll/398303/approval-labor-unions-highest-point-1965.aspx",
+      "reason": "Gallup's own August 2022 report documented 71% union approval -- matching the 1965 high -- making the 2023 figure of 67% a four-point decline from the prior year, not a near-peak"
+    },
+    {
+      "pair_source": "meaning about 40% of workers capable of remote work were doing so at least part-time",
+      "kind": "public_record",
+      "locator": "https://wfhresearch.com/",
+      "reason": "The WFH Research project by Nicholas Bloom, Jose Maria Barrero, and Steven Davis tracks remote work prevalence and estimates that 50-60% of US jobs are remote-capable, making the actual adoption rate among eligible workers approximately 67-80%, not 40%"
+    },
+    {
+      "pair_source": "McKinsey's December 2017 report 'Jobs Lost, Jobs Gained: Workforce Transitions in a Time of Automation' estimated that between 400 million and 800 million individuals worldwide could be displaced by automation by 2030",
+      "kind": "public_record",
+      "locator": "https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages",
+      "reason": "The original McKinsey Global Institute report confirms the 400-800 million range but reveals the enormous spread reflects five automation adoption scenarios, the most aggressive of which assumed 50% adoption by 2030"
+    },
+    {
+      "pair_source": "net productivity in the United States grew 64.7% from 1979 to 2019 while inflation-adjusted hourly compensation for typical (median) workers rose only 17.5% over the same period -- a divergence of roughly 47 percentage points",
+      "kind": "public_record",
+      "locator": "https://www.epi.org/productivity-pay-gap/",
+      "reason": "EPI's own published analysis confirms these figures while the methodological critique about different deflators is documented by multiple economists including James Sherk at the Heritage Foundation and Martin Feldstein in earlier work"
+    }
+  ]
+}

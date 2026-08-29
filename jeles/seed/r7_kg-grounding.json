@@ -1,0 +1,313 @@
+{
+  "domain": "ai-knowledge-graph-grounding",
+  "pairs": [
+    {
+      "source_text": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "source_lang": "en",
+      "target_text": "Knowledge graphs reduce LLM hallucination by grounding model outputs in structured, verifiable facts. The ReGraM framework achieved a 42.9% hallucination reduction overall in medical QA, reducing inconsistency scores from 46.2 to 26.4, with reductions up to 47.8% on multi-hop datasets. Ontology-grounded KGs for clinical QA achieved 98% accuracy versus 37% for ungrounded ChatGPT-4, with hallucination dropping from 63% to 1.7% using RDF/OWL ontology constraints. A 2025 ACL systematic literature review confirmed that KG integration into LLM inference consistently improves factuality, reasoning, and explainability across domains.",
+      "target_lang": "en",
+      "reason": "Establishes the core quantitative case for KG grounding as a hallucination mitigation strategy"
+    },
+    {
+      "source_text": "Microsoft GraphRAG architecture and the Leiden community detection approach",
+      "source_lang": "en",
+      "target_text": "Microsoft's GraphRAG uses a three-phase pipeline: (1) entity extraction via GPT-4 with specialized prompts, (2) relationship mapping through co-occurrence analysis and semantic similarity, and (3) community detection using the Leiden algorithm for hierarchical clustering. It pre-generates summaries at multiple hierarchy levels. On the VIINA dataset, GraphRAG achieved 72-83% comprehensiveness and 62-82% diversity for global cross-document queries, where baseline vector RAG failed entirely. A January 2025 update introduced Dynamic Community Selection, reducing token usage by 79% while maintaining answer quality. The project, first released in July 2024, is largely in maintenance mode as of 2025-2026.",
+      "target_lang": "en",
+      "reason": "Documents the most influential GraphRAG implementation and its actual production-tested results"
+    },
+    {
+      "source_text": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "source_lang": "en",
+      "target_text": "GraphRAG-Bench was published as a conference paper at ICLR 2026, providing the first comprehensive benchmark for evaluating GraphRAG models. The benchmark evaluates Microsoft GraphRAG (local and global), LightRAG, Fast-GraphRAG, LinearRAG, and HippoRAG2 alongside flat baselines. Key finding: graph-based methods show clear advantages on multi-fact aggregation questions requiring cross-document reasoning, but NaiveRAG remains competitive on single-fact retrieval and achieves higher recall on summary tasks due to broader context coverage. LightRAG uses a dual-layer graph-plus-vector index with incremental updates at roughly the same indexing cost as embedding text alone.",
+      "target_lang": "en",
+      "reason": "Provides the authoritative peer-reviewed benchmark for when GraphRAG wins versus when flat retrieval suffices"
+    },
+    {
+      "source_text": "Neo4j GraphRAG Python package and graph database AI integration features",
+      "source_lang": "en",
+      "target_text": "Neo4j released the official neo4j-graphrag Python package (renamed from neo4j-genai), providing graph retrieval augmented generation with long-term support. The package supports knowledge graph creation through an entity extraction pipeline, embedding generation, and graph construction. It integrates with LLM providers including Anthropic, OpenAI, Google, Mistral, Cohere, and Ollama, plus vector databases like Pinecone, Qdrant, and Weaviate. In late 2025, Neo4j introduced vectors as a native data type and new AI-specific Cypher procedures, enabling GraphRAG capabilities directly in query language. The ecosystem includes the Knowledge Graph Builder for unstructured text transformation and NeoConverse for natural language queries.",
+      "target_lang": "en",
+      "reason": "Documents the leading graph database vendor's production-ready AI integration tooling"
+    },
+    {
+      "source_text": "Amazon Neptune repositioning for AI and GraphRAG in 2025-2026",
+      "source_lang": "en",
+      "target_text": "Amazon Neptune was repositioned in 2026 around 'Graphs for AI,' offering GraphRAG and long-term agent memory through Amazon Bedrock Knowledge Bases. Neptune is now two products: Neptune Database for transactional graph storage and Neptune Analytics for in-memory GraphRAG with vector search, both supporting Gremlin, openCypher, and SPARQL. In February 2026, AWS released Sample GenAI Agents for Prototyping on Neptune. Neptune's RDF support provides semantic consistency when ingesting data from multiple sources, while Neo4j often offers a simpler developer experience for application-centric relationship services. Graphiti (Zep's framework) added Neptune Database Cluster and Neptune Analytics support alongside Neo4j 5.26 and FalkorDB 1.1.2.",
+      "target_lang": "en",
+      "reason": "Covers the major cloud provider's graph database strategy for AI workloads"
+    },
+    {
+      "source_text": "Ontology-aware retrieval versus flat vector search performance comparison",
+      "source_lang": "en",
+      "target_text": "Research comparing ontology-guided knowledge graphs against vector retrieval baselines found that ontology-aware GraphRAG achieved exact match accuracy of 0.48 with faithfulness 0.933, coherence 0.874, and answer score 0.968, outperforming all baselines. Vector RAG's core limitation is fragmentation: chunking severs natural links between related content and similarity search cannot reconstruct those connections, leading to incomplete or misleading answers. Ontology-guided KGs built from relational databases offer a dual advantage: a one-time ontology learning process that substantially reduces LLM usage costs, and avoidance of the ontology merging complexity inherent in text-based approaches. However, flat vector search remains competitive for single-fact retrieval where relationship traversal is unnecessary.",
+      "target_lang": "en",
+      "reason": "Helps practitioners decide when structured ontology retrieval is worth the investment over simpler vector approaches"
+    },
+    {
+      "source_text": "Automated knowledge graph construction from unstructured text using LLMs in 2025-2026",
+      "source_lang": "en",
+      "target_text": "LLM-driven KG construction reached production maturity in 2024-2025, with organizations reporting 300-320% ROI across finance, healthcare, and manufacturing. Key innovations include AutoSchemaKG, which enables autonomous KG construction without predefined schemas by dynamically inducing schemas from text. Leading open-source tools in 2026 are Cognee (most complete for document-centric KG construction with automated ontology generation and cross-document entity resolution), LlamaIndex, Graphiti, and LangChain. The LLM-TEXT2KG workshop reached its 5th iteration in 2026, exploring LLM-integrated KG generation. NeOn-GPT introduced end-to-end prompt-driven ontology construction for complex scientific domains, and KARMA demonstrated multi-agent LLM systems for automated KG enrichment.",
+      "target_lang": "en",
+      "reason": "Documents the state of automating KG construction, a prerequisite for scaling KG-grounded AI"
+    },
+    {
+      "source_text": "Graphiti and Zep temporal knowledge graphs for AI agent memory",
+      "source_lang": "en",
+      "target_text": "Zep AI's Graphiti is an open-source framework for temporal knowledge graphs (Context Graphs) for AI agents, stored in Neo4j. Unlike static KGs, every fact carries bi-temporal metadata: when it became true, when it stopped being true, and its provenance. Graphiti performs real-time incremental graph updates with no batch recomputation, so relationships evolve as data changes. In the DMR benchmark, Zep demonstrated 94.8% performance versus 93.4% for alternatives. The old self-hosted Zep Community Edition was deprecated in April 2025; options are now Zep Cloud or self-hosting Graphiti directly. In 2026, agent memory splits into two camps: temporal KGs (Zep, Graphiti, Cognee) and memory operating systems (Letta, MemOS).",
+      "target_lang": "en",
+      "reason": "Covers the leading temporal KG framework enabling real-time grounding for agentic AI systems"
+    },
+    {
+      "source_text": "Enterprise knowledge graph market size and adoption patterns 2025-2035",
+      "source_lang": "en",
+      "target_text": "The Enterprise Knowledge Graph Market was valued at USD 2.10 billion in 2025 and is projected to reach USD 21.95 billion by 2035, a CAGR of 26.47%. LLMs answering enterprise questions without KG grounding achieve only 16.7% accuracy on complex queries; with KG grounding, accuracy reaches 54.2%, a 37.5 percentage point improvement. Despite this, fewer than 15% of enterprises have moved EKG projects beyond pilot stage, with 67% of abandoned projects citing lack of internal graph expertise. Gartner projects that by 2028, more than 50% of AI agent systems will leverage context graphs as foundational infrastructure. ZipDo reports 65-78% of large enterprises are already using or piloting knowledge graphs.",
+      "target_lang": "en",
+      "reason": "Provides market context showing strong growth trajectory but significant adoption barriers"
+    },
+    {
+      "source_text": "Wikidata Embedding Project and open knowledge graphs for LLM grounding",
+      "source_lang": "en",
+      "target_text": "In October 2025, Wikimedia Deutschland launched the Wikidata Embedding Project, making 120 million Wikidata items available as multilingual vector representations using Jina Embeddings V3, stored in DataStax Astra DB (an IBM company). The infrastructure boosts query speed 30x and cuts build time by 90% compared to raw Wikidata access. The FrOG (Framework of Open GraphRAG) research project combines LLMs with Wikidata and DBpedia KGs for trustworthy QA. Wikimedia is building MCP (Model Context Protocol) integration for Wikidata and exploring GraphRAG for complex queries. The Wikontic pipeline constructs KGs from open-domain text by extracting triplets with qualifiers and enforcing Wikidata-based type and relation constraints.",
+      "target_lang": "en",
+      "reason": "Documents how the world's largest open knowledge graph is being made accessible for AI grounding"
+    },
+    {
+      "source_text": "Hybrid knowledge graph plus vector store architectures in production 2025-2026",
+      "source_lang": "en",
+      "target_text": "Hybrid vector-plus-graph patterns became the standard production architecture by 2026: vector retrieval provides recall, graph traversal provides precision. The dominant pattern uses a knowledge graph for entity models and relationships alongside a vector store for unstructured content, indexed by shared canonical IDs. A NeurIPS 2025 workshop on 'Knowledge Graphs & Agentic Reasoning' was dedicated to this convergence. The KG-RAG-Agent framework demonstrated that combining KGs with agentic retrieval significantly improved multi-hop QA accuracy over both pure vector RAG and static GraphRAG. Production stacks typically combine query rewriting, hybrid BM25 plus dense embedding search, a cross-encoder reranker, and an LLM generator.",
+      "target_lang": "en",
+      "reason": "Describes the converged architecture that most production deployments now use"
+    },
+    {
+      "source_text": "Knowledge graph grounding in biomedical and clinical AI applications",
+      "source_lang": "en",
+      "target_text": "Biomedical KG grounding shows the strongest results of any domain. Combining LLMs and KGs for biomedical QA achieved F1 scores of 91.1% on MedQA and 86.0% on custom biomedical datasets using domain-fine-tuned models like Llama-3.1-8B-UltraMedical with a LangChain framework and query-checking algorithm for Cypher queries. ReGraM's region-first KG reasoning achieved 47.0-47.8% hallucination reduction on medical diagnostic datasets. Ontology-grounded clinical QA reduced hallucination from 63% to 1.7% using RDF/OWL ontology combined with KG, achieving 98% accuracy. These results make healthcare one of the highest-ROI domains for KG-grounded AI deployment.",
+      "target_lang": "en",
+      "reason": "Healthcare is the most advanced domain for KG grounding with the strongest quantitative evidence"
+    },
+    {
+      "source_text": "LightRAG dual-level graph-vector index architecture and incremental updates",
+      "source_lang": "en",
+      "target_text": "LightRAG constructs a dual-level entity-relation graph coupled with vector retrieval, enabling multi-stage evidence expansion across low-level entities and high-level concepts. Its key differentiator is incremental index updates without requiring full re-indexing, at roughly the same indexing cost as embedding text alone. This contrasts with Microsoft GraphRAG, which requires batch reprocessing of the entire corpus for updates. LightRAG was evaluated in the WildGraphBench benchmark (2025) alongside Microsoft GraphRAG, Fast-GraphRAG, LinearRAG, and HippoRAG2. LinearRAG, released October 2025, introduced a relation-free method for efficient GraphRAG, removing the relationship extraction step to reduce computation while maintaining competitive accuracy.",
+      "target_lang": "en",
+      "reason": "Documents practical alternatives to Microsoft GraphRAG with different cost-performance tradeoffs"
+    },
+    {
+      "source_text": "KGHaluBench benchmark for evaluating LLM knowledge breadth and depth against knowledge graphs",
+      "source_lang": "en",
+      "target_text": "KGHaluBench is a knowledge graph-based hallucination benchmark released in 2025 for evaluating both the breadth and depth of LLM knowledge. It uses knowledge graphs as ground truth references to systematically test whether LLMs hallucinate on factual questions at varying levels of specificity. The benchmark complements HalluLens (presented at ACL 2025), which provides dynamic test set generation for hallucination evaluation. Together these benchmarks establish KGs as the authoritative reference for measuring and reducing LLM hallucination, moving beyond simple accuracy metrics to structured evaluation of knowledge depth across domains.",
+      "target_lang": "en",
+      "reason": "Shows how KGs serve not just as grounding sources but as evaluation infrastructure for hallucination measurement"
+    },
+    {
+      "source_text": "Cognee framework for automated document-centric knowledge graph construction in 2026",
+      "source_lang": "en",
+      "target_text": "Cognee emerged as the most complete open-source solution for document-centric knowledge graph construction in 2026. It provides automated ontology generation, cross-document entity resolution, and integration with multiple graph backends. Unlike LlamaIndex and LangChain which require more manual configuration for KG pipelines, Cognee offers an end-to-end workflow from document ingestion to queryable knowledge graph. The tool landscape for building KGs from unstructured documents in 2026 includes Cognee, LlamaIndex, Graphiti, LangChain, and Neo4j's Knowledge Graph Builder, each optimizing for different use cases from real-time agent memory to batch document processing.",
+      "target_lang": "en",
+      "reason": "Identifies the leading tools practitioners can use to build KGs for grounding today"
+    },
+    {
+      "source_text": "Query refinement techniques for knowledge graph-grounded LLM question answering",
+      "source_lang": "en",
+      "target_text": "A 2025 hybrid approach using the LangChain framework combines query refinement with KG grounding: an algorithm checks and corrects LLM-generated Cypher queries before executing them against the knowledge graph, ensuring answers are grounded in verified KG data. This approach achieved F1 rates of 91.1% on MedQA and 86.0% on custom biomedical datasets with Llama-3.1-8B-UltraMedical. Research on grounding LLM reasoning with KGs showed +26.5% improvement over Chain-of-Thought baselines by linking each reasoning step to graph-structured data. These techniques address the gap between raw LLM generation and structured knowledge verification.",
+      "target_lang": "en",
+      "reason": "Documents specific techniques that bridge LLM generation with KG verification in practice"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Microsoft GraphRAG architecture and the Leiden community detection approach",
+      "to_source": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "kind": "refines",
+      "reason": "The ICLR 2026 benchmark formally evaluates Microsoft GraphRAG alongside alternatives, establishing when its community-based approach actually outperforms simpler methods"
+    },
+    {
+      "from_source": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "to_source": "Ontology-aware retrieval versus flat vector search performance comparison",
+      "kind": "refines",
+      "reason": "Both compare structured graph methods against flat retrieval but from different angles: benchmark evaluation versus ontology-theoretic analysis"
+    },
+    {
+      "from_source": "LightRAG dual-level graph-vector index architecture and incremental updates",
+      "to_source": "Microsoft GraphRAG architecture and the Leiden community detection approach",
+      "kind": "supersedes",
+      "reason": "LightRAG's incremental update capability addresses Microsoft GraphRAG's key limitation of requiring full corpus reprocessing for any update"
+    },
+    {
+      "from_source": "Hybrid knowledge graph plus vector store architectures in production 2025-2026",
+      "to_source": "Ontology-aware retrieval versus flat vector search performance comparison",
+      "kind": "refines",
+      "reason": "The hybrid architecture resolves the ontology-vs-vector debate by combining both: vector for recall, graph for precision"
+    },
+    {
+      "from_source": "Automated knowledge graph construction from unstructured text using LLMs in 2025-2026",
+      "to_source": "Cognee framework for automated document-centric knowledge graph construction in 2026",
+      "kind": "refines",
+      "reason": "Cognee is the specific leading tool implementing the broader automated KG construction capabilities described"
+    },
+    {
+      "from_source": "Enterprise knowledge graph market size and adoption patterns 2025-2035",
+      "to_source": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "kind": "refines",
+      "reason": "Market adoption data contextualizes the hallucination reduction benchmarks with real-world enterprise deployment outcomes"
+    },
+    {
+      "from_source": "Graphiti and Zep temporal knowledge graphs for AI agent memory",
+      "to_source": "Amazon Neptune repositioning for AI and GraphRAG in 2025-2026",
+      "kind": "refines",
+      "reason": "Graphiti's support for Neptune as a backend connects the temporal KG framework to AWS's cloud graph infrastructure"
+    },
+    {
+      "from_source": "Wikidata Embedding Project and open knowledge graphs for LLM grounding",
+      "to_source": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "kind": "refines",
+      "reason": "Wikidata embeddings provide a concrete, freely available implementation of KG grounding at scale with 120M entities"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "kind": "url",
+      "locator": "https://aclanthology.org/2025.acl-srw.53/",
+      "reason": "ACL 2025 systematic literature review on mitigating hallucination by integrating KGs into LLM inference"
+    },
+    {
+      "pair_source": "How do knowledge graphs reduce LLM hallucination rates according to 2025 benchmarks",
+      "kind": "url",
+      "locator": "https://arxiv.org/html/2311.07914v2",
+      "reason": "Survey paper on whether knowledge graphs can reduce hallucinations in LLMs"
+    },
+    {
+      "pair_source": "Microsoft GraphRAG architecture and the Leiden community detection approach",
+      "kind": "url",
+      "locator": "https://github.com/microsoft/graphrag",
+      "reason": "Official Microsoft GraphRAG repository with architecture documentation and source code"
+    },
+    {
+      "pair_source": "Microsoft GraphRAG architecture and the Leiden community detection approach",
+      "kind": "url",
+      "locator": "https://www.paperclipped.de/en/blog/graph-rag-production/",
+      "reason": "Production comparison of Microsoft GraphRAG vs LightRAG vs Neo4j Graphiti with cost and architecture details"
+    },
+    {
+      "pair_source": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "kind": "url",
+      "locator": "https://openreview.net/pdf?id=i9q9xDMjG7",
+      "reason": "ICLR 2026 conference paper providing the comprehensive GraphRAG benchmark"
+    },
+    {
+      "pair_source": "GraphRAG-Bench ICLR 2026 benchmark comparing graph-based and flat retrieval methods",
+      "kind": "url",
+      "locator": "https://github.com/GraphRAG-Bench/GraphRAG-Benchmark",
+      "reason": "Official GraphRAG-Bench repository with evaluation code and results"
+    },
+    {
+      "pair_source": "Neo4j GraphRAG Python package and graph database AI integration features",
+      "kind": "url",
+      "locator": "https://neo4j.com/docs/neo4j-graphrag-python/current/",
+      "reason": "Official Neo4j GraphRAG Python package documentation"
+    },
+    {
+      "pair_source": "Neo4j GraphRAG Python package and graph database AI integration features",
+      "kind": "url",
+      "locator": "https://medium.com/neo4j/new-cypher-ai-procedures-6b8c3177d56d",
+      "reason": "December 2025 announcement of new Cypher AI procedures enabling GraphRAG in pure Cypher"
+    },
+    {
+      "pair_source": "Amazon Neptune repositioning for AI and GraphRAG in 2025-2026",
+      "kind": "url",
+      "locator": "https://atlan.com/know/ai-agent/knowledge-graph/amazon-neptune-graph-database/",
+      "reason": "2026 overview of Amazon Neptune's repositioning for AI use cases and limitations"
+    },
+    {
+      "pair_source": "Ontology-aware retrieval versus flat vector search performance comparison",
+      "kind": "url",
+      "locator": "https://arxiv.org/abs/2511.05991",
+      "reason": "Research paper comparing ontology learning approaches and their impact on RAG performance"
+    },
+    {
+      "pair_source": "Automated knowledge graph construction from unstructured text using LLMs in 2025-2026",
+      "kind": "url",
+      "locator": "https://arxiv.org/html/2510.20345v1",
+      "reason": "Comprehensive survey on LLM-empowered knowledge graph construction"
+    },
+    {
+      "pair_source": "Automated knowledge graph construction from unstructured text using LLMs in 2025-2026",
+      "kind": "url",
+      "locator": "https://arxiv.org/pdf/2505.23628",
+      "reason": "AutoSchemaKG paper on autonomous KG construction through dynamic schema induction"
+    },
+    {
+      "pair_source": "Graphiti and Zep temporal knowledge graphs for AI agent memory",
+      "kind": "url",
+      "locator": "https://arxiv.org/abs/2501.13956",
+      "reason": "Zep paper describing the temporal knowledge graph architecture for agent memory"
+    },
+    {
+      "pair_source": "Graphiti and Zep temporal knowledge graphs for AI agent memory",
+      "kind": "url",
+      "locator": "https://github.com/getzep/graphiti",
+      "reason": "Official Graphiti open-source repository for building real-time knowledge graphs"
+    },
+    {
+      "pair_source": "Enterprise knowledge graph market size and adoption patterns 2025-2035",
+      "kind": "url",
+      "locator": "https://www.globenewswire.com/news-release/2026/08/18/3346781/0/en/enterprise-knowledge-graph-market-to-reach-21-95-billion-by-2035-as-ai-and-generative-ai-adoption-accelerate-research-by-sns-insider.html",
+      "reason": "SNS Insider market research report with USD 2.10B to USD 21.95B projection"
+    },
+    {
+      "pair_source": "Wikidata Embedding Project and open knowledge graphs for LLM grounding",
+      "kind": "url",
+      "locator": "https://www.wikidata.org/wiki/Wikidata:Embedding_Project/October_1_2025_Release",
+      "reason": "Official Wikidata Embedding Project release page with technical details"
+    },
+    {
+      "pair_source": "Wikidata Embedding Project and open knowledge graphs for LLM grounding",
+      "kind": "url",
+      "locator": "https://diff.wikimedia.org/2025/07/23/making-question-answering-systems-smarter-with-knowledge-graphs-using-frog-a-wikidata-research-fund-2024-highlight/",
+      "reason": "FrOG framework combining LLMs with Wikidata and DBpedia for trustworthy QA"
+    },
+    {
+      "pair_source": "Hybrid knowledge graph plus vector store architectures in production 2025-2026",
+      "kind": "url",
+      "locator": "https://futureagi.com/blog/vector-databases-knowledge-graphs-rag-2025/",
+      "reason": "2026 guide comparing vector DBs vs knowledge graphs for RAG with hybrid architecture patterns"
+    },
+    {
+      "pair_source": "Knowledge graph grounding in biomedical and clinical AI applications",
+      "kind": "url",
+      "locator": "https://www.authorea.com/doi/full/10.22541/au.174491149.99244128/v1",
+      "reason": "Research on enhancing LLM accuracy and reducing hallucinations using query refinement and KGs in biomedical domain"
+    },
+    {
+      "pair_source": "Knowledge graph grounding in biomedical and clinical AI applications",
+      "kind": "url",
+      "locator": "https://arxiv.org/pdf/2601.09280",
+      "reason": "ReGraM paper on region-first knowledge graph reasoning for medical QA with 42.9% hallucination reduction"
+    },
+    {
+      "pair_source": "LightRAG dual-level graph-vector index architecture and incremental updates",
+      "kind": "url",
+      "locator": "https://arxiv.org/html/2602.02053v1",
+      "reason": "WildGraphBench paper benchmarking LightRAG and other GraphRAG methods with wild-source corpora"
+    },
+    {
+      "pair_source": "KGHaluBench benchmark for evaluating LLM knowledge breadth and depth against knowledge graphs",
+      "kind": "url",
+      "locator": "https://arxiv.org/pdf/2602.19643",
+      "reason": "KGHaluBench paper presenting the KG-based hallucination benchmark methodology"
+    },
+    {
+      "pair_source": "Cognee framework for automated document-centric knowledge graph construction in 2026",
+      "kind": "url",
+      "locator": "https://www.opensourceaireview.com/blog/knowledge-graph-from-documents-2026",
+      "reason": "2026 comparison of tools for building knowledge graphs from unstructured documents including Cognee"
+    },
+    {
+      "pair_source": "Query refinement techniques for knowledge graph-grounded LLM question answering",
+      "kind": "url",
+      "locator": "http://dx.doi.org/10.3390/biomedinformatics5040070",
+      "reason": "Paper on combining LLMs and KGs with query refinement to reduce hallucinations in biomedical QA"
+    }
+  ]
+}

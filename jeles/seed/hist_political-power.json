@@ -1,0 +1,305 @@
+{
+  "domain": "people-historical-political",
+  "pairs": [
+    {
+      "source_text": "Adolf Hitler — rise to power, Nazi state, Holocaust, and how democracy voted itself into dictatorship",
+      "source_lang": "en",
+      "target_text": "Adolf Hitler (1889-1945) rose from failed artist and World War I corporal to chancellor of Germany in January 1933, exploiting economic despair, nationalist resentment over the Versailles Treaty, and the structural weaknesses of the Weimar Republic. The Enabling Act of March 23, 1933, passed by the Reichstag 444-94 with SA troops intimidating legislators and Communist deputies barred from voting, effectively ended German democracy by granting Hitler's cabinet the power to legislate without parliament. The Nazi regime systematically murdered six million Jews and millions of others -- including Roma, disabled people, political opponents, and Soviet POWs -- in what became the Holocaust, industrializing genocide through extermination camps like Auschwitz, Treblinka, and Sobibor. Hitler's war of aggression launched World War II, which killed an estimated 70-85 million people worldwide, roughly 3% of the global population. His case remains the most studied example of how a democracy can legally dismantle itself from within, and of how propaganda, scapegoating, and institutional erosion can enable totalitarian rule.",
+      "target_lang": "en",
+      "reason": "Core profile covering both the mechanism of democratic collapse and the resulting atrocities, anchored in specific legislation and verified death toll estimates"
+    },
+    {
+      "source_text": "Joseph Stalin — industrialization, WWII Eastern Front, Great Purge, Holodomor, and Gulag system",
+      "source_lang": "en",
+      "target_text": "Joseph Stalin (1878-1953) transformed the Soviet Union from an agrarian state into an industrial and military superpower through forced collectivization and Five-Year Plans, but at an enormous human cost. The Holodomor of 1932-1933, a man-made famine concentrated in Ukraine, killed an estimated 3-7 million people as grain was confiscated from starving peasants to fund industrialization and export commitments. During the Great Purge of 1936-1938, at least 750,000 people were executed for political charges, with 681,692 judicial executions in 1937-1938 alone, while the Gulag system processed roughly 18 million prisoners between 1930 and 1953, of whom 1.5-1.7 million died in custody. Stalin's leadership during World War II was critical to the defeat of Nazi Germany on the Eastern Front, where the Soviet Union suffered 26-27 million dead -- the highest toll of any nation. Scholarly estimates of total excess deaths attributable to Stalin's rule range from 6 to 20 million, with the variation stemming from whether famines are counted as deliberate policy, differing archival interpretations, and the inclusion of wartime decisions.",
+      "target_lang": "en",
+      "reason": "Balances Stalin's industrialization and wartime role against the documented toll of his repressive apparatus, using archival-era estimates rather than Cold War polemics"
+    },
+    {
+      "source_text": "Mao Zedong — Chinese Revolution, People's Republic, Great Leap Forward, and Cultural Revolution",
+      "source_lang": "en",
+      "target_text": "Mao Zedong (1893-1976) led the Chinese Communist Party to victory in a decades-long civil war, founding the People's Republic of China in 1949 and ending a century of foreign domination and internal fragmentation. The Great Leap Forward (1958-1962), his campaign to rapidly industrialize China through collectivized agriculture and backyard steel production, caused the Great Chinese Famine, with most scholarly estimates placing excess deaths between 15 and 55 million, commonly clustering around 30-45 million -- making it the deadliest famine in recorded history. The Cultural Revolution (1966-1976) unleashed Red Guard militias against perceived class enemies, intellectuals, and party rivals, destroying cultural heritage, devastating education, and killing an estimated 500,000 to 2 million people. Despite these catastrophes, Mao's legacy in China remains officially summarized as '70 percent correct, 30 percent wrong,' and the Chinese Communist Party still derives its legitimacy partly from the revolution he led. His lasting influence includes land reform that ended feudal tenancy for hundreds of millions, a public health system that raised life expectancy from 35 to 65 years by 1976, and a political model that continues to shape Chinese governance.",
+      "target_lang": "en",
+      "reason": "Addresses both Mao's revolutionary achievements and the staggering human cost of his campaigns, noting the contested legacy within China itself"
+    },
+    {
+      "source_text": "Winston Churchill — wartime leadership, Bengal famine, racial views, and colonial record",
+      "source_lang": "en",
+      "target_text": "Winston Churchill (1874-1965) is widely credited with sustaining British morale during World War II through his 'finest hour' speeches and refusing to negotiate with Nazi Germany when Britain stood alone in 1940-1941, a period many historians regard as decisive for the outcome of the war. However, his record on empire and race complicates the heroic narrative considerably. The Bengal famine of 1943 killed an estimated 2-3 million people; a 2019 study concluded it was not caused by drought but by policy failure, and Churchill's government delayed grain imports, continued food exports from India, and rejected urgent requests from the Viceroy for relief. Churchill held views common to imperialists of his era but extreme even by those standards: historian Richard Toye has documented that Churchill saw races in a hierarchy with white Protestants at the top, opposed Indian self-governance for decades, and made dehumanizing statements about Indian and African peoples. His legacy thus sits at the intersection of genuine wartime courage and an imperial worldview that contributed to the suffering of millions of colonial subjects.",
+      "target_lang": "en",
+      "reason": "Presents Churchill's indispensable wartime role alongside documented evidence of his responsibility in colonial atrocities and racial attitudes"
+    },
+    {
+      "source_text": "Franklin D. Roosevelt — New Deal, WWII leadership, Japanese internment, and court-packing",
+      "source_lang": "en",
+      "target_text": "Franklin D. Roosevelt (1882-1945) served an unprecedented four terms as president, guiding the United States through the Great Depression with New Deal programs that created Social Security, federal jobs programs, banking reform, and labor protections -- fundamentally reshaping the relationship between the American government and its citizens. His wartime leadership helped forge the Allied coalition that defeated Nazi Germany and Imperial Japan, and he championed the creation of the United Nations. However, Executive Order 9066, signed on February 19, 1942, authorized the forced internment of approximately 120,000 Japanese Americans, two-thirds of whom were U.S. citizens, in ten remote camps where 1,862 people died -- an act the U.S. government formally acknowledged as unjust in 1988 with the Civil Liberties Act and $20,000 reparation payments to survivors. His 1937 court-packing plan, which proposed adding up to six Supreme Court justices to overcome opposition to New Deal legislation, was defeated in Congress and remains a cautionary example of executive overreach. Roosevelt also carefully concealed the severity of his polio-related paralysis from the public, raising lasting questions about transparency and disability in political leadership.",
+      "target_lang": "en",
+      "reason": "Covers FDR's transformative domestic and wartime achievements alongside the civil liberties violations of internment, the institutional threat of court-packing, and the concealment of disability"
+    },
+    {
+      "source_text": "Napoleon Bonaparte — Napoleonic Code, revolutionary ideals, wars, and reinstatement of slavery",
+      "source_lang": "en",
+      "target_text": "Napoleon Bonaparte (1769-1821) rose from minor Corsican nobility to Emperor of France, reshaping the political map of Europe and leaving an institutional legacy that endures to this day. The Napoleonic Code of 1804 established principles of civil law -- equality before the law, secular authority over marriage, property rights, and the abolition of feudal privileges -- that became the foundation for legal systems in dozens of countries across Europe, Latin America, and beyond. Yet Napoleon's wars, spanning 1803-1815 (building on Revolutionary Wars from 1792), killed an estimated 3.25 to 6.5 million people, with military deaths between 2.5 and 3.5 million and civilian casualties from 750,000 to 3 million, devastating a generation of European men. In 1802, Napoleon reinstated slavery in French colonies, reversing the 1794 revolutionary abolition; he sent nearly 50,000 troops to Saint-Domingue (Haiti) to crush the slave revolt led by Toussaint Louverture, a campaign that failed catastrophically due to Haitian resistance and yellow fever, leading to Haitian independence in 1804. His rule exemplifies the tension between Enlightenment ideals spread at gunpoint and the autocratic methods used to spread them.",
+      "target_lang": "en",
+      "reason": "Balances Napoleon's lasting legal and institutional contributions against the human cost of his wars and the betrayal of revolutionary principles through the reinstatement of slavery"
+    },
+    {
+      "source_text": "Julius Caesar — military conquests, political reforms, assassination, and the Gallic Wars' toll",
+      "source_lang": "en",
+      "target_text": "Gaius Julius Caesar (100-44 BCE) was a Roman general and statesman whose military campaigns, political maneuvering, and assassination fundamentally transformed the Roman Republic into what would become the Roman Empire. His conquest of Gaul (58-50 BCE) was, by ancient accounts, devastating: Plutarch, citing Caesar's own dispatches, reported one million Gauls killed, one million enslaved, 300 tribes subjugated, and 800 towns destroyed -- figures that, even if exaggerated for propaganda in his Commentarii de Bello Gallico, represent a campaign of extraordinary violence against a population estimated at 5-8 million. Caesar's political reforms -- including land redistribution, the Julian calendar, extension of citizenship, and public works -- addressed genuine crises of the late Republic but were enacted through increasingly autocratic means, culminating in his appointment as dictator perpetuo in 44 BCE. His assassination on the Ides of March by senators led by Brutus and Cassius, intended to restore the Republic, instead triggered civil wars that ended it permanently. Caesar's career illustrates how a republic's failure to reform its institutions peacefully can create the conditions for a strongman to seize power -- and how removing that strongman does not restore what was lost.",
+      "target_lang": "en",
+      "reason": "Contextualizes Caesar within the broader story of republican collapse while honestly addressing the scale of violence in Gaul and using ancient sources critically"
+    },
+    {
+      "source_text": "The 'great man' theory of history vs. structural and systemic explanations",
+      "source_lang": "en",
+      "target_text": "The 'great man' theory, popularized by Thomas Carlyle in the 1840s, holds that history is primarily shaped by exceptional individuals whose intellect, charisma, or will drives events -- a framework that dominated professional historiography into the twentieth century and still dominates popular narratives about political power. Herbert Spencer and later structural historians countered that leaders are products of their social conditions rather than their creators: without the economic devastation of the Weimar Republic, Hitler would have remained a fringe agitator; without the institutional decay of the Roman Republic, Caesar would have been just another ambitious senator. Modern historiography increasingly favors models that integrate individual agency with structural factors -- Fernand Braudel's longue duree approach, Marxist historical materialism emphasizing economic forces, and social network analysis all treat leaders as nodes in larger systems rather than prime movers. The debate matters practically because 'great man' framing implies that preventing atrocities requires identifying and stopping dangerous individuals, while structural analysis suggests that institutional safeguards, economic stability, and democratic norms are the real bulwarks against tyranny.",
+      "target_lang": "en",
+      "reason": "Frames the historiographical debate with concrete examples from the corpus and draws out its practical implications for understanding political power"
+    },
+    {
+      "source_text": "How totalitarian leaders consolidate power — common patterns across regimes",
+      "source_lang": "en",
+      "target_text": "Comparative analysis of Hitler, Stalin, Mao, and other totalitarian leaders reveals a remarkably consistent pattern of power consolidation: the exploitation of a crisis (real or manufactured) to justify emergency powers, as with the Reichstag fire in February 1933 or Stalin's use of the Kirov assassination in 1934 to launch the Great Purge. Each regime established single-party rule, dismantled independent judiciary and press, and created a pervasive security apparatus -- the Gestapo, NKVD, and Chinese secret police respectively -- to surveil and terrorize the population. Personality cults replaced institutional loyalty with personal devotion, using propaganda, rallies, and controlled media to create an emotional bond between leader and masses. The systematic identification of scapegoats -- Jews in Nazi Germany, 'kulaks' and 'wreckers' in the USSR, 'rightists' and 'counter-revolutionaries' in China -- served to unify supporters, justify repression, and deflect blame for policy failures. The elimination of rivals within the ruling party itself, from the Night of the Long Knives to the Moscow Trials to the purging of Liu Shaoqi, ensured that no alternative center of power could emerge. These patterns persist in modern authoritarian regimes, making them essential study for anyone concerned with democratic resilience.",
+      "target_lang": "en",
+      "reason": "Synthesizes cross-regime patterns with specific examples drawn from the individual leader profiles in this corpus"
+    },
+    {
+      "source_text": "The body count debate — how historians count atrocity deaths and why numbers vary",
+      "source_lang": "en",
+      "target_text": "Death toll estimates for major atrocities vary enormously -- Stalin's victims are cited at anywhere from 6 to 20 million, Mao's Great Leap Forward from 15 to 55 million -- and these ranges reflect genuine methodological challenges rather than mere political spin. Historians rely on four primary approaches: archival records (camp registers, execution orders, transport lists), demographic reconstruction (comparing pre- and post-event census data), survivor testimony, and indirect inference from mortality and birth-rate anomalies. Each method has inherent limitations: Nazi Germany kept meticulous records but destroyed many before liberation; Soviet archives opened after 1991 revealed lower execution counts than Cold War estimates but did not capture deaths from disease and starvation in transit; China's census data from the Great Leap Forward era is distorted by local officials who falsified reports to meet quotas. A further complication is the boundary question: should famine deaths from policy negligence count the same as deliberate executions? The Holodomor is recognized as genocide by some nations but not others, precisely because this classification depends on proving intent. Despite these difficulties, scholars broadly agree on orders of magnitude, and the very act of counting serves a moral purpose -- as historian Timothy Snyder has argued, to reduce victims to statistics is a failing, but to refuse to count them at all is to complete the perpetrators' work of erasure.",
+      "target_lang": "en",
+      "reason": "Explains the methodology behind contested death tolls referenced throughout the corpus, helping readers evaluate the numbers critically rather than treating them as precise or dismissing them as unknowable"
+    },
+    {
+      "source_text": "Democratic leaders with authoritarian legacies — the uncomfortable middle ground",
+      "source_lang": "en",
+      "target_text": "The binary of 'democratic hero' versus 'authoritarian villain' breaks down under historical scrutiny, as many leaders celebrated for defending democracy also expanded executive power in troubling ways. Roosevelt's Japanese internment and court-packing attempt, Churchill's resistance to Indian independence and wartime censorship, and Abraham Lincoln's suspension of habeas corpus during the Civil War all represent democratic leaders wielding authoritarian tools under the justification of existential crisis. The pattern extends beyond wartime: France's Charles de Gaulle created the Fifth Republic largely to concentrate power in the presidency; Singapore's Lee Kuan Yew built a prosperous city-state while suppressing press freedom and political opposition for decades. What distinguishes these cases from full totalitarianism is usually the presence of institutional constraints -- an independent judiciary, a free press, term limits, or a tradition of peaceful power transfer -- that eventually checked or reversed the overreach. The uncomfortable lesson is that democratic norms are not self-enforcing: they survive only when citizens and institutions actively defend them, and the same leaders who protect democracy from external threats may simultaneously erode it from within.",
+      "target_lang": "en",
+      "reason": "Bridges the individual leader profiles by examining the gray zone between democratic and authoritarian governance, drawing on cases from the corpus"
+    },
+    {
+      "source_text": "World War II — total death toll, geographic distribution, and why estimates range from 70 to 85 million",
+      "source_lang": "en",
+      "target_text": "World War II (1939-1945) killed an estimated 70-85 million people, approximately 3-3.7% of the world's population at the time, making it the deadliest conflict in human history. Deaths directly caused by combat and deliberate violence account for roughly 50-56 million, with an additional 19-28 million attributed to war-related disease and famine. The toll was disproportionately borne by civilians: an estimated 50-55 million civilian deaths compared to 21-25 million military deaths. The Soviet Union suffered the highest national losses at 26-27 million dead, followed by China with approximately 15-20 million. The wide range in total estimates reflects incomplete wartime records, the destruction of documentation in Eastern Europe and Asia, methodological debates over whether to include indirect deaths from famine and disease, and the difficulty of disentangling concurrent atrocities -- the Holocaust, Japanese war crimes in China, Soviet reprisals -- from battlefield casualties.",
+      "target_lang": "en",
+      "reason": "Provides the overarching conflict context for multiple leader profiles (Hitler, Stalin, Churchill, Roosevelt) with verified casualty breakdowns"
+    },
+    {
+      "source_text": "The Enabling Act of 1933 — the legal mechanism by which democracy dismantled itself",
+      "source_lang": "en",
+      "target_text": "The Enabling Act (Ermaechtigungsgesetz) of March 23, 1933, formally titled the 'Law to Remedy the Distress of the People and the Reich,' is the single most consequential piece of legislation in the destruction of the Weimar Republic. Passed just weeks after the Reichstag fire -- which the Nazis used to justify emergency decrees suspending civil liberties -- the act transferred legislative power from parliament to Hitler's cabinet, permitted laws that deviated from the constitution, and gave the executive control over the national budget. The vote was 444 to 94, with only the Social Democrats opposing; Communist deputies had already been arrested or barred, and SA stormtroopers surrounded the building to intimidate the remaining legislators. The Centre Party's decision to vote yes, secured by Hitler's false promise to respect the churches and the presidency, illustrates how democratic actors can enable their own system's destruction through miscalculation and appeasement. Within months, all other political parties were banned, trade unions dissolved, and the free press eliminated. The Enabling Act remains a case study in constitutional law and political science for how legal procedures can provide a veneer of legitimacy to the abolition of the rule of law.",
+      "target_lang": "en",
+      "reason": "Detailed examination of the specific legal mechanism referenced in the Hitler profile, serving as a standalone entry on democratic self-destruction"
+    },
+    {
+      "source_text": "Mao Zedong's Cultural Revolution — ideology, violence, and lasting impact on Chinese society",
+      "source_lang": "en",
+      "target_text": "The Cultural Revolution (1966-1976) was launched by Mao Zedong to reassert his authority after the catastrophe of the Great Leap Forward had sidelined him within the Chinese Communist Party leadership. Mao mobilized millions of young Red Guards to attack the 'Four Olds' -- old customs, culture, habits, and ideas -- resulting in the destruction of temples, libraries, and cultural artifacts, the persecution of intellectuals and teachers, and the forced relocation of urban youth to the countryside. Estimates of deaths range from 500,000 to 2 million, with millions more subjected to public humiliation, imprisonment, torture, and forced labor. Senior party leaders including Liu Shaoqi (who died in detention in 1969) and Deng Xiaoping (purged twice but later restored) were among the prominent victims. The Cultural Revolution devastated Chinese education for a decade, created a 'lost generation' of young people denied schooling, and left deep social scars that the Chinese Communist Party itself officially acknowledged in 1981 when it declared the movement 'responsible for the most severe setback and the heaviest losses suffered by the Party, the country, and the people since the founding of the People's Republic.' Its legacy continues to influence Chinese politics, with the party using its memory both as justification for maintaining strict social order and as a cautionary tale against political chaos.",
+      "target_lang": "en",
+      "reason": "Expands on the Cultural Revolution referenced in the Mao profile, providing the detail needed to understand its distinct character from the Great Leap Forward"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "How totalitarian leaders consolidate power — common patterns across regimes",
+      "to_source": "Adolf Hitler — rise to power, Nazi state, Holocaust, and how democracy voted itself into dictatorship",
+      "kind": "refines",
+      "reason": "The consolidation patterns entry generalizes the specific mechanisms Hitler used (Reichstag fire, Enabling Act, scapegoating Jews) into a cross-regime analytical framework"
+    },
+    {
+      "from_source": "The Enabling Act of 1933 — the legal mechanism by which democracy dismantled itself",
+      "to_source": "Adolf Hitler — rise to power, Nazi state, Holocaust, and how democracy voted itself into dictatorship",
+      "kind": "refines",
+      "reason": "The Enabling Act entry provides granular detail on the single most critical legislative step summarized in the Hitler profile"
+    },
+    {
+      "from_source": "The 'great man' theory of history vs. structural and systemic explanations",
+      "to_source": "How totalitarian leaders consolidate power — common patterns across regimes",
+      "kind": "contradicts",
+      "reason": "The great man theory attributes historical change to individual leaders, while the consolidation patterns entry implicitly supports structural analysis by showing that different individuals follow the same systemic playbook"
+    },
+    {
+      "from_source": "The body count debate — how historians count atrocity deaths and why numbers vary",
+      "to_source": "Joseph Stalin — industrialization, WWII Eastern Front, Great Purge, Holodomor, and Gulag system",
+      "kind": "refines",
+      "reason": "The body count methodology entry explains why Stalin's death toll ranges from 6 to 20 million, contextualizing the range given in the Stalin profile"
+    },
+    {
+      "from_source": "The body count debate — how historians count atrocity deaths and why numbers vary",
+      "to_source": "Mao Zedong — Chinese Revolution, People's Republic, Great Leap Forward, and Cultural Revolution",
+      "kind": "refines",
+      "reason": "The methodology entry explains the 15-55 million range for Great Leap Forward deaths and the role of falsified local reports in distorting Chinese census data"
+    },
+    {
+      "from_source": "Democratic leaders with authoritarian legacies — the uncomfortable middle ground",
+      "to_source": "Winston Churchill — wartime leadership, Bengal famine, racial views, and colonial record",
+      "kind": "refines",
+      "reason": "The middle-ground entry frames Churchill's wartime censorship and resistance to Indian independence as examples of democratic leaders wielding authoritarian tools"
+    },
+    {
+      "from_source": "Democratic leaders with authoritarian legacies — the uncomfortable middle ground",
+      "to_source": "Franklin D. Roosevelt — New Deal, WWII leadership, Japanese internment, and court-packing",
+      "kind": "refines",
+      "reason": "The middle-ground entry contextualizes FDR's internment order and court-packing as specific instances of democratic overreach under crisis justification"
+    },
+    {
+      "from_source": "Mao Zedong's Cultural Revolution — ideology, violence, and lasting impact on Chinese society",
+      "to_source": "Mao Zedong — Chinese Revolution, People's Republic, Great Leap Forward, and Cultural Revolution",
+      "kind": "refines",
+      "reason": "The Cultural Revolution entry provides detailed treatment of a topic summarized in the main Mao profile, including specific victims, the 1981 party verdict, and the lost generation"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Adolf Hitler — rise to power, Nazi state, Holocaust, and how democracy voted itself into dictatorship",
+      "kind": "url",
+      "locator": "https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution",
+      "reason": "United States Holocaust Memorial Museum documentation of Holocaust victim counts, including the 6 million Jewish victims figure and total victim estimates"
+    },
+    {
+      "pair_source": "Adolf Hitler — rise to power, Nazi state, Holocaust, and how democracy voted itself into dictatorship",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/World_War_II_casualties",
+      "reason": "Comprehensive sourced breakdown of World War II death toll estimates by country and category, supporting the 70-85 million total figure"
+    },
+    {
+      "pair_source": "The Enabling Act of 1933 — the legal mechanism by which democracy dismantled itself",
+      "kind": "url",
+      "locator": "https://encyclopedia.ushmm.org/content/en/article/the-enabling-act",
+      "reason": "Holocaust Encyclopedia account of the Enabling Act's passage, the 444-94 vote, and its role in establishing Hitler's dictatorship"
+    },
+    {
+      "pair_source": "The Enabling Act of 1933 — the legal mechanism by which democracy dismantled itself",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Enabling-Act",
+      "reason": "Britannica reference on the Enabling Act's provisions and its role in ending the Weimar Republic"
+    },
+    {
+      "pair_source": "Joseph Stalin — industrialization, WWII Eastern Front, Great Purge, Holodomor, and Gulag system",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Excess_mortality_in_the_Soviet_Union_under_Joseph_Stalin",
+      "reason": "Comprehensive Wikipedia article summarizing scholarly estimates of Stalin-era excess mortality from multiple sources, including archival and demographic approaches"
+    },
+    {
+      "pair_source": "Joseph Stalin — industrialization, WWII Eastern Front, Great Purge, Holodomor, and Gulag system",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/great-purge",
+      "reason": "History.com overview of the Great Purge, its timeline, execution figures, and political context"
+    },
+    {
+      "pair_source": "Mao Zedong — Chinese Revolution, People's Republic, Great Leap Forward, and Cultural Revolution",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Great_Leap_Forward",
+      "reason": "Wikipedia article on the Great Leap Forward with sourced death toll estimates ranging from 15 to 55 million and discussion of varying methodologies"
+    },
+    {
+      "pair_source": "Mao Zedong — Chinese Revolution, People's Republic, Great Leap Forward, and Cultural Revolution",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Great_Chinese_Famine",
+      "reason": "Detailed article on the Great Chinese Famine with demographic data and scholarly estimates of excess mortality"
+    },
+    {
+      "pair_source": "Winston Churchill — wartime leadership, Bengal famine, racial views, and colonial record",
+      "kind": "url",
+      "locator": "https://www.aljazeera.com/news/2019/4/1/churchills-policies-to-blame-for-1943-bengal-famine-study",
+      "reason": "Coverage of the 2019 study concluding that the Bengal famine was caused by policy failure rather than drought, implicating Churchill's government"
+    },
+    {
+      "pair_source": "Winston Churchill — wartime leadership, Bengal famine, racial views, and colonial record",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Racial_views_of_Winston_Churchill",
+      "reason": "Documented overview of Churchill's racial views with sourced quotations and scholarly assessment, including Richard Toye's analysis"
+    },
+    {
+      "pair_source": "Franklin D. Roosevelt — New Deal, WWII leadership, Japanese internment, and court-packing",
+      "kind": "url",
+      "locator": "https://www.archives.gov/education/lessons/japanese-relocation",
+      "reason": "National Archives primary source documentation on Executive Order 9066 and the Japanese American internment, including the number of internees"
+    },
+    {
+      "pair_source": "Franklin D. Roosevelt — New Deal, WWII leadership, Japanese internment, and court-packing",
+      "kind": "url",
+      "locator": "https://www.history.com/this-day-in-history/february-19/fdr-signs-executive-order-9066",
+      "reason": "History.com account of the signing of Executive Order 9066, the 120,000 internees, and subsequent redress"
+    },
+    {
+      "pair_source": "Napoleon Bonaparte — Napoleonic Code, revolutionary ideals, wars, and reinstatement of slavery",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Napoleonic_Wars_casualties",
+      "reason": "Comprehensive casualty estimates for the Napoleonic Wars, supporting the 3.25-6.5 million total death toll range"
+    },
+    {
+      "pair_source": "Napoleon Bonaparte — Napoleonic Code, revolutionary ideals, wars, and reinstatement of slavery",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Reinstatement_of_slavery_by_Napoleon",
+      "reason": "Detailed account of Napoleon's 1802 reinstatement of slavery in French colonies, reversing the revolutionary abolition"
+    },
+    {
+      "pair_source": "Napoleon Bonaparte — Napoleonic Code, revolutionary ideals, wars, and reinstatement of slavery",
+      "kind": "url",
+      "locator": "https://www.napoleon.org/en/history-of-the-two-empires/articles/napoleon-the-dark-side-the-human-cost-of-the-napoleonic-wars-3-min-read/",
+      "reason": "Napoleon.org assessment of the human cost of the Napoleonic wars, including military and civilian death estimates by region"
+    },
+    {
+      "pair_source": "Julius Caesar — military conquests, political reforms, assassination, and the Gallic Wars' toll",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Gallic_Wars",
+      "reason": "Wikipedia overview of the Gallic Wars including Plutarch's death toll figures, Caesar's own accounts, and modern scholarly assessment"
+    },
+    {
+      "pair_source": "Julius Caesar — military conquests, political reforms, assassination, and the Gallic Wars' toll",
+      "kind": "url",
+      "locator": "https://historycollection.com/conquest-of-julius-caesar/",
+      "reason": "Historical analysis of Caesar's Gallic conquest toll, including the one million killed and one million enslaved figures from Plutarch"
+    },
+    {
+      "pair_source": "The 'great man' theory of history vs. structural and systemic explanations",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Great_man_theory",
+      "reason": "Overview of the great man theory, its origins in Thomas Carlyle's work, Herbert Spencer's critique, and modern historiographical alternatives"
+    },
+    {
+      "pair_source": "How totalitarian leaders consolidate power — common patterns across regimes",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/totalitarianism",
+      "reason": "Britannica reference article on totalitarianism covering common characteristics, mechanisms of control, and historical examples"
+    },
+    {
+      "pair_source": "How totalitarian leaders consolidate power — common patterns across regimes",
+      "kind": "url",
+      "locator": "https://sociology.institute/political-sociology/mechanisms-total-control-totalitarian-governments/",
+      "reason": "Academic analysis of mechanisms of total control across totalitarian governments, including propaganda, surveillance, and party structure"
+    },
+    {
+      "pair_source": "The body count debate — how historians count atrocity deaths and why numbers vary",
+      "kind": "url",
+      "locator": "https://necrometrics.com/pre1700a.htm",
+      "reason": "Matthew White's Necrometrics project, a major reference for historical body count estimates with transparent methodology discussion"
+    },
+    {
+      "pair_source": "World War II — total death toll, geographic distribution, and why estimates range from 70 to 85 million",
+      "kind": "url",
+      "locator": "https://worldpopulationreview.com/country-rankings/world-war-two-casualties-by-country",
+      "reason": "Country-by-country breakdown of World War II casualties with sourced estimates for military and civilian deaths"
+    },
+    {
+      "pair_source": "Mao Zedong's Cultural Revolution — ideology, violence, and lasting impact on Chinese society",
+      "kind": "url",
+      "locator": "https://www.thecollector.com/mao-great-leap-forward-killed-millions/",
+      "reason": "Historical overview of the Great Leap Forward and its relationship to the Cultural Revolution, including Mao's motivations for launching the latter"
+    },
+    {
+      "pair_source": "Democratic leaders with authoritarian legacies — the uncomfortable middle ground",
+      "kind": "url",
+      "locator": "https://jstribune.com/heilbrunn-learning-from-the-democratic-and-authoritarian-leaders-of-the-recent-past/",
+      "reason": "Jerusalem Strategic Tribune analysis of lessons from democratic and authoritarian leaders, examining the spectrum between democratic governance and authoritarian tendencies"
+    },
+    {
+      "pair_source": "Democratic leaders with authoritarian legacies — the uncomfortable middle ground",
+      "kind": "url",
+      "locator": "https://constitutioncenter.org/blog/a-controversial-order-leads-to-internment-camps",
+      "reason": "National Constitution Center analysis of Executive Order 9066 as an example of democratic executive overreach during wartime crisis"
+    }
+  ]
+}

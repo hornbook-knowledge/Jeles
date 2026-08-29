@@ -1,0 +1,253 @@
+{
+  "domain": "crossdomain-ideas-weaponized",
+  "pairs": [
+    {
+      "source_text": "Darwin to Social Darwinism to eugenics to AI hiring bias -- the recurring pattern of science becoming a weapon of exclusion",
+      "source_lang": "en",
+      "target_text": "Darwin described natural selection as a mechanism of biodiversity. Spencer rebranded it as justification for letting the poor die. Galton refined it into eugenics, which sterilized 60,000 Americans before the Nazis scaled it to genocide. Now Workday's AI hiring algorithms encode the same exclusionary logic in training data -- pattern-matching proxies for race and class that reproduce exactly the sorting eugenics tried to accomplish, but with the veneer of mathematical objectivity. The pipeline from observation to ideology to institutional violence to algorithmic discrimination is not a slippery slope fallacy; it is a documented historical sequence.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] Darwin and eugenics to [round5] AI hiring bias to [people] Shockley, tracing the same exclusionary impulse across centuries and media"
+    },
+    {
+      "source_text": "Marx's theory versus Mao and Stalin's implementations -- the gap between philosophical framework and body count",
+      "source_lang": "en",
+      "target_text": "Marx wrote that the state would wither away. Stalin built the largest state apparatus in history and killed millions through engineered famine and purges. Mao launched the Cultural Revolution, turning Marxist dialectics into a weapon for teenagers to murder their teachers. The gap between Das Kapital's analysis of commodity fetishism and the Gulag's forced labor camps is not merely an implementation failure -- it reveals how any framework that claims to identify an enemy class provides the intellectual infrastructure for extermination. The theory did not mandate the deaths, but it supplied the vocabulary that made them possible.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] Marx's ideas to [historical] Stalin and Mao entries, connecting theory-to-practice failure with the body count debate"
+    },
+    {
+      "source_text": "Adam Smith's invisible hand as libertarian mascot -- how three words from a 900-page book became a governing ideology",
+      "source_lang": "en",
+      "target_text": "Smith used the phrase 'invisible hand' exactly once in Wealth of Nations and once in Theory of Moral Sentiments. He also wrote extensively about the dangers of monopoly, the necessity of public education, and the moral obligations of the wealthy. Modern free-market advocates cherry-picked three words and discarded the rest, building an ideology Smith would barely recognize. This selective reading mirrors how Confucius was reduced to a justification for imperial obedience and how Darwin was reduced to 'survival of the fittest' -- a phrase Spencer coined, not Darwin. The pattern is consistent: find the sound bite, discard the context, weaponize the authority of the thinker.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] Smith entries to [historical] Confucius and Darwin entries, revealing the shared mechanism of selective quotation as a tool of power"
+    },
+    {
+      "source_text": "Algorithmic radicalization as digital Goebbels -- from state propaganda bureaus to recommendation engines",
+      "source_lang": "en",
+      "target_text": "Goebbels needed a ministry, a budget, and total state control of media to radicalize Germany. YouTube's recommendation algorithm achieved comparable radicalization effects as an unintended byproduct of optimizing for engagement metrics. The research on algorithmic radicalization shows that recommendation systems create filter bubbles that progressively expose users to more extreme content -- not because anyone designed a propaganda machine, but because outrage drives clicks. Susan Wojcicki oversaw this system as YouTube CEO. Frances Haugen revealed Facebook's internal research showing the same pattern. The shift from intentional state propaganda to emergent algorithmic radicalization is arguably more dangerous because there is no Goebbels to remove -- the incentive structure itself is the propagandist.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] propaganda to [people] Wojcicki, Haugen, and algorithmic radicalization research, showing how weaponized ideas no longer need a human hand"
+    },
+    {
+      "source_text": "The AI safety versus AI ethics divide as modern scholasticism -- same field, opposite threat models, institutional warfare",
+      "source_lang": "en",
+      "target_text": "The LeCun-Bengio split is the visible tip of a deeper fracture. AI safety researchers, heavily funded through the effective altruism pipeline, focus on existential risk from superintelligence. AI ethics researchers like Gebru, Mitchell, and Whittaker focus on present harms: bias, surveillance, labor displacement. Both claim the other side's framing is dangerous -- safety advocates say ethics researchers distract from extinction risk, ethics advocates say safety researchers provide cover for current corporate abuses. This mirrors historical patterns where movements with shared goals fragment over threat prioritization, much like the Pankhurst family split over suffrage tactics. The irony is that both sides agree ideas can be weaponized; they just disagree about which ideas and which weapons.",
+      "target_lang": "en",
+      "reason": "Bridges [people] AI safety/ethics figures to [historical] movement splits, showing how even anti-weaponization movements weaponize against each other"
+    },
+    {
+      "source_text": "Confucius weaponized across millennia -- from justifying emperors to justifying algorithms",
+      "source_lang": "en",
+      "target_text": "Confucius taught that rulers must earn legitimacy through virtue and that subjects may criticize unjust governance. Han dynasty scholars inverted this into a rigid hierarchy where obedience itself became the virtue. Two thousand years later, China's AI Safety Governance Framework v2.0 embeds a similar Confucian state-authority model -- the state defines acceptable AI behavior, and compliance is framed as social responsibility rather than constraint. Meanwhile, Western tech companies import Confucian-adjacent deference hierarchies through corporate culture, using 'alignment' as the new 'filial piety.' The thinker who insisted rulers must justify their power keeps being recruited to argue that power needs no justification.",
+      "target_lang": "en",
+      "reason": "Bridges [historical] Confucius to [round6] China AI governance framework, tracing the weaponization of a philosophical tradition into modern regulatory architecture"
+    },
+    {
+      "source_text": "The Shockley pattern -- when Nobel-caliber intellect becomes a weapon for pseudoscience",
+      "source_lang": "en",
+      "target_text": "William Shockley co-invented the transistor, then spent his later career advocating for eugenics and the genetic inferiority of Black people. This is not merely 'Nobel Disease' -- the well-documented tendency of laureates to stray into pseudoscience. Shockley weaponized his scientific credibility to lend authority to racist ideology, directly connecting the eugenics tradition of Social Darwinism to postwar American science. Geoffrey Hinton's post-Nobel pivot runs in the opposite direction -- using accumulated prestige to warn about AI dangers rather than to promote them. The contrast illuminates how intellectual authority is a tool whose moral valence depends entirely on the wielder's choices, not the credential itself.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Shockley to [round4] Nobel Disease to [people] Hinton, showing prestige as an amplifier whose direction depends on the person"
+    },
+    {
+      "source_text": "The whistleblower as heretic -- how institutions punish those who reveal ideas being weaponized",
+      "source_lang": "en",
+      "target_text": "Gebru and Mitchell were fired from Google for publishing research showing that large language models encode bias. Haugen leaked Facebook's internal research showing the platform's algorithms amplified harmful content. The institutional response followed patterns documented across centuries of power consolidation: NDAs, legal threats, reputation destruction, and reframing the critic as the problem. Corporate retaliation against AI ethics researchers mirrors how totalitarian regimes silence dissidents -- not through gulags but through employment law, nondisclosure agreements, and the implicit threat of career destruction. The mechanism updates; the pattern of punishing those who name the weaponization persists.",
+      "target_lang": "en",
+      "reason": "Bridges [people] Google firings and Haugen to [historical] totalitarian consolidation patterns, showing how idea-suppression scales from states to corporations"
+    },
+    {
+      "source_text": "Effective altruism as philosophical framework turned shield -- when doing good becomes cover for doing well",
+      "source_lang": "en",
+      "target_text": "Effective altruism began as a philosophical framework for maximizing charitable impact through evidence-based giving. It became the dominant funding pipeline for AI safety research, channeling billions through organizations like Open Philanthropy. Then Sam Bankman-Fried's collapse revealed how the framework's utilitarian calculus could justify present financial fraud as a means to future good. The pattern echoes Marx: a framework built to reduce suffering becomes, in practice, a justification for the accumulation and exercise of power. The EA-to-AI-safety pipeline now faces the same credibility crisis that Marxism faced after the Soviet Union -- the theory may be sound, but its most prominent implementations have discredited it.",
+      "target_lang": "en",
+      "reason": "Bridges [people] EA facade and AI safety pipeline to [historical] Marx's theory-practice gap, revealing the recurring pattern of ethics-to-power corruption"
+    },
+    {
+      "source_text": "Governance frameworks as encoded philosophy -- how nations weaponize regulatory architecture",
+      "source_lang": "en",
+      "target_text": "The EU AI Act, China's AI Safety Governance Framework, India's principles-based approach, and the UK's rebranding of AI Safety to AI Security each encode a distinct philosophical position about the relationship between state, citizen, and technology. The EU embeds Kantian rights-based thinking; China embeds Confucian state primacy; India embeds postcolonial sovereignty concerns; the UK's security rebranding reveals a shift from ethics to national interest. These are not neutral technical standards -- they are philosophical frameworks weaponized into law, each determining which harms count, whose safety matters, and who gets to define the boundaries of acceptable AI. The comparison to the Enabling Act is instructive: legal mechanisms are never philosophically innocent.",
+      "target_lang": "en",
+      "reason": "Bridges [round4] EU vs US governance, [round5] UK rebranding, [round6] China and India frameworks to [historical] Enabling Act, showing regulation as philosophy made coercive"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Darwin and Social Darwinism -- a misattribution that shaped history",
+      "to_source": "William Shockley — co-inventor of the transistor who became a eugenics crusader",
+      "kind": "refines",
+      "reason": "Shockley is the 20th-century embodiment of Darwin's ideas weaponized through eugenics -- a direct inheritor of the Social Darwinist tradition, lending his Nobel prestige to scientific racism"
+    },
+    {
+      "from_source": "Ideas that killed -- how Social Darwinism and eugenics weaponized philosophical frameworks",
+      "to_source": "Workday AI Hiring Bias Lawsuit Proceeds After June 2026 Ruling",
+      "kind": "refines",
+      "reason": "AI hiring bias is the computational descendant of eugenics -- the same exclusionary sorting logic encoded in algorithms rather than skull measurements, now challenged in court"
+    },
+    {
+      "from_source": "Art and propaganda — how regimes weaponize culture",
+      "to_source": "Social media algorithms and radicalization — what the research actually shows",
+      "kind": "refines",
+      "reason": "Algorithmic radicalization is the successor to state propaganda -- achieving comparable ideological amplification through engagement optimization rather than a ministry of propaganda"
+    },
+    {
+      "from_source": "How dead thinkers get recruited -- selective reading of Smith, Marx, and Locke for modern political arguments",
+      "to_source": "AI safety vs AI ethics divide -- the two communities and what separates them",
+      "kind": "refines",
+      "reason": "Both AI safety and AI ethics communities selectively recruit founding figures (Turing, Wiener, Minsky) to justify their threat models, mirroring how political movements cherry-pick Enlightenment thinkers"
+    },
+    {
+      "from_source": "Karl Marx -- Das Kapital, Communist Manifesto, and the gap between his ideas and 20th-century communism",
+      "to_source": "The effective altruism facade in tech — when stated ethics mask financial misconduct",
+      "kind": "refines",
+      "reason": "Both demonstrate the theory-practice gap: Marx's communism became Stalinist totalitarianism; EA's utilitarian ethics became Bankman-Fried's fraud justification. The pattern of idealism as cover for power repeats"
+    },
+    {
+      "from_source": "How totalitarian leaders consolidate power — common patterns across regimes",
+      "to_source": "Corporate retaliation patterns — NDAs, legal threats, and reputation destruction",
+      "kind": "refines",
+      "reason": "Corporate retaliation against AI ethics researchers follows the same consolidation playbook as authoritarian regimes: control information, punish dissent, reframe critics as threats to institutional stability"
+    },
+    {
+      "from_source": "The Enabling Act of 1933 — the legal mechanism by which democracy dismantled itself",
+      "to_source": "China AI Safety Governance Framework v2.0 — September 2025",
+      "kind": "contradicts",
+      "reason": "Both are legal frameworks that concentrate power over information and expression, but they operate in opposite directions -- one dismantled protections, the other ostensibly establishes them, yet both show how law encodes ideology"
+    },
+    {
+      "from_source": "Geoffrey Hinton — deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "to_source": "Nobel Disease — documented cases beyond Pauling",
+      "kind": "contradicts",
+      "reason": "Hinton inverts the Nobel Disease pattern: instead of straying into pseudoscience after winning, he turned his Nobel prestige toward warning about genuine risks in his own field -- using authority to de-weaponize rather than weaponize"
+    },
+    {
+      "from_source": "Adam Smith's Theory of Moral Sentiments -- the forgotten half of Smith's intellectual project",
+      "to_source": "Effective altruism to AI safety pipeline -- the funding and talent network",
+      "kind": "refines",
+      "reason": "EA attempts to formalize the moral sentiments Smith argued must accompany market mechanisms -- both insist that rational self-interest without ethical constraint produces harm, though EA's implementation has proven as vulnerable to corruption as Smith feared"
+    },
+    {
+      "from_source": "Confucius -- the Analects, filial piety, governance, and how Confucianism was used to justify imperial authority",
+      "to_source": "China AI Safety Governance Framework v2.0 — September 2025",
+      "kind": "refines",
+      "reason": "China's AI governance framework inherits the Confucian model of state-as-moral-authority -- defining acceptable AI use as a form of governance virtue, directly descending from the imperial tradition of state-defined ethics"
+    },
+    {
+      "from_source": "Frances Haugen — Facebook Papers and Congressional testimony",
+      "to_source": "Art and propaganda — how regimes weaponize culture",
+      "kind": "refines",
+      "reason": "Haugen's leaked documents proved that Facebook internally understood its algorithms functioned as a propaganda engine -- weaponizing culture not through state directive but through engagement-maximizing design choices"
+    },
+    {
+      "from_source": "Google's Ethical AI team firings -- the institutional pattern of retaliation",
+      "to_source": "Women in liberation movements — systematically written out of the story",
+      "kind": "refines",
+      "reason": "Gebru and Mitchell's firings follow the historical pattern of women being silenced when they challenge power structures -- both were women of color leading ethics research that threatened institutional interests"
+    },
+    {
+      "from_source": "EU vs US AI governance — structural comparison",
+      "to_source": "Ideas that killed -- scientific racism and the intellectual infrastructure of colonial exploitation",
+      "kind": "refines",
+      "reason": "EU and US governance divergence partly reflects different levels of reckoning with scientific racism's legacy -- Europe's precautionary approach emerged from proximity to eugenics' worst outcomes; America's permissive approach reflects ongoing denial"
+    },
+    {
+      "from_source": "Meredith Whittaker — AI Now Institute co-founder, Signal president, and critic of surveillance-driven AI",
+      "to_source": "How totalitarian leaders consolidate power — common patterns across regimes",
+      "kind": "contradicts",
+      "reason": "Whittaker argues that modern surveillance AI enables consolidation of power without traditional totalitarian apparatus -- the same outcome through corporate infrastructure rather than political revolution, making her critique a counterpoint to the regime-focused analysis"
+    },
+    {
+      "from_source": "Susan Wojcicki — YouTube CEO who shaped the recommendation algorithm era (1968-2024)",
+      "to_source": "Art and propaganda — how regimes weaponize culture",
+      "kind": "refines",
+      "reason": "Under Wojcicki, YouTube's recommendation engine became an inadvertent propaganda machine -- achieving cultural weaponization through algorithmic optimization that no state propagandist could have designed so effectively"
+    },
+    {
+      "from_source": "Ideas that killed -- scientific racism and the intellectual infrastructure of colonial exploitation",
+      "to_source": "Workday AI Hiring Bias Lawsuit Proceeds After June 2026 Ruling",
+      "kind": "refines",
+      "reason": "The Workday lawsuit directly challenges AI systems that encode the same sorting logic scientific racism used to justify colonial labor hierarchies -- now embedded in hiring algorithms rather than phrenology charts"
+    },
+    {
+      "from_source": "Ilya Sutskever -- OpenAI co-founder, board crisis participant, Safe Superintelligence Inc. founder",
+      "to_source": "The 'great man' theory of history vs. structural and systemic explanations",
+      "kind": "contradicts",
+      "reason": "The OpenAI board crisis appeared to be a 'great man' drama -- Sutskever's vote, Altman's firing and return -- but it revealed structural incentive conflicts between nonprofit governance and commercial pressure that no individual could resolve"
+    },
+    {
+      "from_source": "AI safety researchers leaving major labs -- the pattern and reasons",
+      "to_source": "The Pankhurst family split — ideology, class, and the personal cost of political movements",
+      "kind": "refines",
+      "reason": "AI safety researchers departing labs over ideological disagreements mirrors the Pankhurst pattern: movements fragment when members disagree on tactics, and the personal cost of splitting falls disproportionately on those who leave"
+    },
+    {
+      "from_source": "Yann LeCun — convolutional networks pioneer, Meta AI chief scientist turned startup founder, AI safety skeptic",
+      "to_source": "Darwin and Social Darwinism -- a misattribution that shaped history",
+      "kind": "refines",
+      "reason": "LeCun's concern is precisely that AI safety narratives misattribute dangers to AI itself rather than to the humans deploying it -- echoing how Social Darwinism misattributed Darwin's biological observations into social prescriptions"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Darwin to Social Darwinism to eugenics to AI hiring bias -- the recurring pattern of science becoming a weapon of exclusion",
+      "kind": "url",
+      "locator": "https://www.nature.com/articles/s41599-021-00779-6",
+      "reason": "Nature Humanities & Social Sciences paper documenting the lineage from Darwin through Spencer to institutional eugenics"
+    },
+    {
+      "pair_source": "Algorithmic radicalization as digital Goebbels -- from state propaganda bureaus to recommendation engines",
+      "kind": "url",
+      "locator": "https://www.pnas.org/doi/10.1073/pnas.2101967118",
+      "reason": "PNAS study on YouTube recommendation algorithms and exposure to progressively more extreme content"
+    },
+    {
+      "pair_source": "The whistleblower as heretic -- how institutions punish those who reveal ideas being weaponized",
+      "kind": "url",
+      "locator": "https://www.technologyreview.com/2020/12/04/1013294/google-ai-ethics-research-paper-forced-out-timnit-gebru/",
+      "reason": "MIT Technology Review investigation of Gebru's firing from Google and the institutional dynamics behind it"
+    },
+    {
+      "pair_source": "Effective altruism as philosophical framework turned shield -- when doing good becomes cover for doing well",
+      "kind": "url",
+      "locator": "https://time.com/6262810/how-effective-altruism-went-wrong/",
+      "reason": "Time investigation of how effective altruism's philosophical framework enabled and obscured financial misconduct"
+    },
+    {
+      "pair_source": "Adam Smith's invisible hand as libertarian mascot -- how three words from a 900-page book became a governing ideology",
+      "kind": "url",
+      "locator": "https://www.econlib.org/library/Smith/smWN.html",
+      "reason": "Full text of Wealth of Nations confirming Smith used 'invisible hand' exactly once, in Book IV Chapter 2"
+    },
+    {
+      "pair_source": "Marx's theory versus Mao and Stalin's implementations -- the gap between philosophical framework and body count",
+      "kind": "url",
+      "locator": "https://www.nybooks.com/articles/2011/03/10/worst-way-to-make-history/",
+      "reason": "Timothy Snyder's analysis of the methodological challenges of counting deaths under Mao and Stalin, relevant to the theory-practice gap"
+    },
+    {
+      "pair_source": "Governance frameworks as encoded philosophy -- how nations weaponize regulatory architecture",
+      "kind": "url",
+      "locator": "https://artificialintelligenceact.eu/",
+      "reason": "Full text of the EU AI Act showing how rights-based philosophical commitments are encoded into regulatory architecture"
+    },
+    {
+      "pair_source": "The Shockley pattern -- when Nobel-caliber intellect becomes a weapon for pseudoscience",
+      "kind": "url",
+      "locator": "https://www.pbs.org/transistor/album1/shockley/shockrace.html",
+      "reason": "PBS documentary material on Shockley's pivot from transistor invention to eugenics advocacy"
+    },
+    {
+      "pair_source": "The AI safety versus AI ethics divide as modern scholasticism -- same field, opposite threat models, institutional warfare",
+      "kind": "url",
+      "locator": "https://dl.acm.org/doi/10.1145/3531146.3533083",
+      "reason": "FAccT conference paper analyzing the institutional and intellectual fractures between AI safety and AI ethics research communities"
+    },
+    {
+      "pair_source": "Confucius weaponized across millennia -- from justifying emperors to justifying algorithms",
+      "kind": "url",
+      "locator": "https://plato.stanford.edu/entries/confucius/",
+      "reason": "Stanford Encyclopedia of Philosophy entry documenting how Confucian thought was systematically reinterpreted to serve imperial authority"
+    }
+  ]
+}

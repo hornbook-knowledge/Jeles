@@ -1,0 +1,209 @@
+{
+  "domain": "core-digital-communication",
+  "pairs": [
+    {
+      "source_text": "How does a computer store information using just 0s and 1s?",
+      "source_lang": "en",
+      "target_text": "Every piece of information in a computer is stored as a pattern of tiny electrical signals that are either on (1) or off (0) -- these are called bits. Eight bits grouped together make a byte, which is enough to represent a single character like the letter 'A' (stored as 01000001). A kilobyte is about a thousand bytes, a megabyte about a million, and so on. Every photo, song, document, and video on your device is ultimately just an enormous sequence of these 0s and 1s, interpreted in different ways by software.",
+      "target_lang": "en",
+      "reason": "Binary representation is the absolute foundation of all digital technology; understanding it demystifies how machines handle text, images, and sound."
+    },
+    {
+      "source_text": "How does a transistor work, and why are there billions of them in a processor?",
+      "source_lang": "en",
+      "target_text": "A transistor is a tiny electronic switch that can be turned on or off by a small electrical signal. When it is on, current flows through -- that represents a 1; when it is off, no current flows -- that represents a 0. By wiring billions of these switches together in clever arrangements, engineers build circuits that can add numbers, compare values, and follow instructions millions of times per second. A modern processor chip the size of a fingernail can contain over 10 billion transistors, each one smaller than a virus.",
+      "target_lang": "en",
+      "reason": "Transistors are the physical building blocks that make binary computation possible; grasping them connects the abstract idea of bits to real hardware."
+    },
+    {
+      "source_text": "How does a touchscreen know exactly where my finger is?",
+      "source_lang": "en",
+      "target_text": "Most modern touchscreens use capacitive sensing. The screen has a grid of tiny, invisible electrical conductors beneath the glass, and a mild electrical field runs across them. Your finger is slightly conductive because of the water in your skin, so when you touch the glass, you disturb the electrical field at that spot. The screen's controller measures where the disturbance happened and calculates the precise coordinates of your touch. This is also why touchscreens usually do not respond to a gloved finger or a plastic stylus -- they lack the conductivity to change the field.",
+      "target_lang": "en",
+      "reason": "Touchscreens are the primary interface for billions of people; understanding capacitive sensing explains everyday quirks like glove incompatibility."
+    },
+    {
+      "source_text": "How does a digital camera actually take a photo?",
+      "source_lang": "en",
+      "target_text": "When you press the shutter button, the camera opens a sensor to light. That sensor is a grid of millions of tiny light-sensitive spots called photosites, each one capturing the brightness and color of light hitting it; together they form the pixels of your image. A 12-megapixel camera has 12 million of these spots. More megapixels means more detail in theory, but image quality also depends on how large each photosite is -- a bigger photosite collects more light and produces less noise, which is why a professional camera with 12 megapixels can take better photos than a phone with 48.",
+      "target_lang": "en",
+      "reason": "Digital photography is universal; understanding sensors and pixels dispels the marketing myth that higher megapixel counts always mean better pictures."
+    },
+    {
+      "source_text": "How does a cell phone make a call when there are no wires?",
+      "source_lang": "en",
+      "target_text": "Your phone communicates by sending and receiving radio waves to the nearest cell tower, which might be a few hundred meters to several kilometers away. The area each tower covers is called a cell -- hence 'cell phone.' When you move during a call, your phone automatically hands off to the next tower along your path without you noticing. The tower connects to the wider telephone network through cables, routing your voice to the other person's nearest tower, which beams it to their phone by radio. Different carriers use different radio frequency bands, which is why coverage can vary between providers in the same location.",
+      "target_lang": "en",
+      "reason": "Cellular communication is how most of humanity stays connected; understanding towers, cells, and handoffs explains coverage gaps and dropped calls."
+    },
+    {
+      "source_text": "What actually happens when I send a text message?",
+      "source_lang": "en",
+      "target_text": "A traditional SMS text travels from your phone via radio waves to the nearest cell tower, then through the carrier's network to a switching center that figures out where the recipient is. The switching center forwards the message to the tower nearest the recipient, which transmits it to their phone. If they are offline, the network holds the message and delivers it when they reconnect. Modern messaging apps like iMessage or WhatsApp skip this system entirely -- they send your message as data packets over the internet, which is why they can include photos, videos, and read receipts that old-style SMS cannot.",
+      "target_lang": "en",
+      "reason": "Texting is one of the most common digital actions; understanding SMS vs data-based messaging clarifies why some messages cost money and others need Wi-Fi."
+    },
+    {
+      "source_text": "How does streaming video work without downloading the whole file first?",
+      "source_lang": "en",
+      "target_text": "When you stream a video, the server breaks it into small chunks -- usually a few seconds each -- and sends them to your device one after another. Your device plays the first chunk while the next ones are still arriving, which is called buffering. If your internet connection slows down, the streaming service automatically lowers the video quality so it keeps playing smoothly rather than stopping; when the connection improves, it raises the quality back up. This trick is called adaptive bitrate streaming, and it is why a video might look blurry for a moment on a slow connection and then sharpen up.",
+      "target_lang": "en",
+      "reason": "Streaming is how most people consume media today; understanding buffering and adaptive bitrate explains common viewing experiences like quality fluctuations."
+    },
+    {
+      "source_text": "How does encryption keep my messages private?",
+      "source_lang": "en",
+      "target_text": "Encryption scrambles your message using a mathematical formula and a secret key, turning readable text into what looks like random gibberish. Only someone with the matching key can unscramble it back into the original message. Modern messaging apps use a clever system called public-key cryptography: each person has two keys -- a public one they share openly (like a mailbox anyone can drop letters into) and a private one only they know (like the key that opens the mailbox). The sender locks the message with the recipient's public key, and only the recipient's private key can unlock it, so even the company running the service cannot read what you wrote.",
+      "target_lang": "en",
+      "reason": "Encryption underpins all digital privacy and commerce; understanding public-key cryptography is essential digital literacy for an era of online communication."
+    },
+    {
+      "source_text": "How does a hard drive store files, and how is an SSD different?",
+      "source_lang": "en",
+      "target_text": "A traditional hard drive stores data as tiny magnetic spots on spinning metal platters. A read/write head floats just nanometers above the surface, flipping the magnetization of each spot to represent a 0 or a 1. Because the platters spin at thousands of revolutions per minute, the head can reach any spot quickly, but the mechanical parts make the drive vulnerable to shocks. A solid-state drive (SSD) has no moving parts at all -- it stores data by trapping electrons in microscopic cells of flash memory. This makes SSDs faster, quieter, and more durable, which is why most modern laptops and phones use them.",
+      "target_lang": "en",
+      "reason": "Storage is a core computing concept; understanding the mechanical-vs-electronic distinction explains why SSDs transformed device speed and reliability."
+    },
+    {
+      "source_text": "How does a QR code store information in that little square?",
+      "source_lang": "en",
+      "target_text": "A QR code is a grid of black and white squares where each square represents a bit -- black for 1, white for 0. The three large squares in the corners help a scanner determine the code's orientation and size, so it can be read at any angle. The rest of the pattern encodes data such as a website address, a phone number, or text. QR codes also include built-in error correction: extra data is added so that even if up to 30 percent of the code is damaged or obscured, a scanner can still reconstruct the full message.",
+      "target_lang": "en",
+      "reason": "QR codes are ubiquitous in payments, menus, and ticketing; understanding their structure and error correction explains their remarkable reliability."
+    },
+    {
+      "source_text": "How does a printer put text and images onto paper?",
+      "source_lang": "en",
+      "target_text": "An inkjet printer works by spraying thousands of microscopic droplets of liquid ink onto the paper through tiny nozzles, each droplet smaller than the diameter of a human hair. By mixing cyan, magenta, yellow, and black inks in different amounts, it can produce millions of colors. A laser printer works differently: it uses a laser beam to draw the page's image onto a light-sensitive drum as a pattern of static electricity, then fine powder called toner sticks to the charged areas. The paper passes over the drum, picks up the toner, and runs through a hot fuser that melts it permanently onto the page -- which is why pages come out warm from a laser printer.",
+      "target_lang": "en",
+      "reason": "Printing bridges the digital and physical worlds; understanding inkjet vs laser explains differences in cost, speed, and output quality."
+    },
+    {
+      "source_text": "How does Bluetooth connect my headphones to my phone without wires?",
+      "source_lang": "en",
+      "target_text": "Bluetooth uses short-range radio waves -- typically reaching about 10 meters -- on a frequency band around 2.4 gigahertz. When you pair two devices, they exchange security keys and agree on a communication pattern, hopping between 79 different channels up to 1,600 times per second to avoid interference from other wireless signals. The technology is named after Harald Bluetooth, a 10th-century Viking king who united warring Danish tribes, because the inventors saw it as a technology that would unite different types of devices. Modern Bluetooth Low Energy uses very little power, which is why small devices like fitness trackers can run for months on a tiny battery.",
+      "target_lang": "en",
+      "reason": "Bluetooth is in nearly every consumer device; understanding pairing, frequency hopping, and power profiles explains connection quirks and battery life."
+    },
+    {
+      "source_text": "How does a barcode work at the supermarket checkout?",
+      "source_lang": "en",
+      "target_text": "A barcode is a pattern of thick and thin black lines separated by white spaces, each combination representing a digit. The scanner shines a laser or LED light across the barcode and measures the pattern of light reflected back -- black bars absorb light while white spaces reflect it. A decoder chip translates that pattern of reflections into a number, typically 12 or 13 digits, which the store's computer looks up in a database to find the product name, price, and inventory information. The barcode itself does not contain the price -- it is just an ID number that points to a record in the store's system.",
+      "target_lang": "en",
+      "reason": "Barcodes are encountered daily in commerce; understanding that they are just ID numbers dispels the common misconception that price is stored in the stripes."
+    },
+    {
+      "source_text": "How does autocorrect know what I meant to type?",
+      "source_lang": "en",
+      "target_text": "Autocorrect compares what you type against a built-in dictionary and looks for the closest matching real word, factoring in which letters are near each other on the keyboard -- so if you type 'thr' it guesses 'the' because 'r' is right next to 'e.' It also uses frequency data: common words are suggested before rare ones, and it learns from your personal typing habits over time. Modern systems go further, using machine learning models trained on billions of sentences to predict not just the current word but the next word you are likely to type, based on the context of the whole sentence.",
+      "target_lang": "en",
+      "reason": "Predictive text is used billions of times daily; understanding dictionary matching plus contextual machine learning explains both its helpfulness and its amusing failures."
+    },
+    {
+      "source_text": "How do fiber optic cables carry internet data using light?",
+      "source_lang": "en",
+      "target_text": "A fiber optic cable contains one or more glass strands, each thinner than a human hair, that carry data as rapid pulses of laser light. The light stays inside the glass because of a principle called total internal reflection -- when light hits the boundary of the glass at a shallow angle, it bounces back inward rather than escaping, so it zigzags along the strand even around gentle curves. A single fiber can carry billions of bits per second over hundreds of kilometers with almost no signal loss. This is why undersea fiber optic cables, not satellites, carry over 95 percent of intercontinental internet traffic.",
+      "target_lang": "en",
+      "reason": "Fiber optics form the backbone of global communication; understanding total internal reflection and capacity explains why fiber is replacing copper for internet infrastructure."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "How does a computer store information using just 0s and 1s?",
+      "kind": "url",
+      "locator": "https://computer.howstuffworks.com/bytes.htm",
+      "reason": "Explains binary representation, bits, bytes, and how characters are encoded in binary."
+    },
+    {
+      "pair_source": "How does a transistor work, and why are there billions of them in a processor?",
+      "kind": "url",
+      "locator": "https://www.explainthatstuff.com/howtransistorswork.html",
+      "reason": "Accessible explanation of transistors as electronic switches and their role in computing."
+    },
+    {
+      "pair_source": "How does a touchscreen know exactly where my finger is?",
+      "kind": "url",
+      "locator": "https://computer.howstuffworks.com/touchscreen.htm",
+      "reason": "Covers capacitive and resistive touchscreen technology and how touch position is detected."
+    },
+    {
+      "pair_source": "How does a digital camera actually take a photo?",
+      "kind": "url",
+      "locator": "https://www.cambridgeincolour.com/tutorials/camera-sensors.htm",
+      "reason": "Detailed explanation of digital camera sensors, photosites, and why sensor size matters more than megapixel count."
+    },
+    {
+      "pair_source": "How does a cell phone make a call when there are no wires?",
+      "kind": "url",
+      "locator": "https://computer.howstuffworks.com/cell-phone.htm",
+      "reason": "Explains cellular network architecture, radio transmission, cell towers, and handoff between cells."
+    },
+    {
+      "pair_source": "What actually happens when I send a text message?",
+      "kind": "url",
+      "locator": "https://computer.howstuffworks.com/e-mail-messaging/sms.htm",
+      "reason": "Describes the SMS message path from phone through carrier network to recipient."
+    },
+    {
+      "pair_source": "How does streaming video work without downloading the whole file first?",
+      "kind": "url",
+      "locator": "https://www.cloudflare.com/learning/video/what-is-streaming/",
+      "reason": "Explains video streaming mechanics including buffering, chunked delivery, and adaptive bitrate."
+    },
+    {
+      "pair_source": "How does encryption keep my messages private?",
+      "kind": "url",
+      "locator": "https://www.cloudflare.com/learning/ssl/what-is-encryption/",
+      "reason": "Accessible overview of encryption, symmetric and asymmetric keys, and public-key cryptography."
+    },
+    {
+      "pair_source": "How does a hard drive store files, and how is an SSD different?",
+      "kind": "url",
+      "locator": "https://www.explainthatstuff.com/harddrive.html",
+      "reason": "Covers magnetic storage on spinning platters, read/write heads, and contrasts with solid-state flash memory."
+    },
+    {
+      "pair_source": "How does a QR code store information in that little square?",
+      "kind": "url",
+      "locator": "https://www.explainthatstuff.com/how-data-matrix-codes-work.html",
+      "reason": "Explains 2D barcode encoding, orientation markers, and error correction in QR and data matrix codes."
+    },
+    {
+      "pair_source": "How does a printer put text and images onto paper?",
+      "kind": "url",
+      "locator": "https://computer.howstuffworks.com/inkjet-printer.htm",
+      "reason": "Describes inkjet nozzle technology, droplet formation, and color mixing in printing."
+    },
+    {
+      "pair_source": "How does a printer put text and images onto paper?",
+      "kind": "url",
+      "locator": "https://computer.howstuffworks.com/laser-printer.htm",
+      "reason": "Explains laser printing process including the photosensitive drum, toner, and fuser mechanism."
+    },
+    {
+      "pair_source": "How does Bluetooth connect my headphones to my phone without wires?",
+      "kind": "url",
+      "locator": "https://www.bluetooth.com/learn-about-bluetooth/tech-overview/",
+      "reason": "Official Bluetooth SIG overview of frequency hopping, pairing, and Bluetooth Low Energy specifications."
+    },
+    {
+      "pair_source": "How does a barcode work at the supermarket checkout?",
+      "kind": "url",
+      "locator": "https://computer.howstuffworks.com/upc.htm",
+      "reason": "Explains UPC barcode structure, laser scanning, and how the number maps to a product database."
+    },
+    {
+      "pair_source": "How does autocorrect know what I meant to type?",
+      "kind": "url",
+      "locator": "https://www.wired.com/story/the-science-of-autocorrect/",
+      "reason": "Covers dictionary matching, keyboard proximity algorithms, and machine learning in predictive text systems."
+    },
+    {
+      "pair_source": "How do fiber optic cables carry internet data using light?",
+      "kind": "url",
+      "locator": "https://www.explainthatstuff.com/fiberoptics.html",
+      "reason": "Explains total internal reflection, fiber construction, and why fiber optics dominate long-distance data transmission."
+    }
+  ]
+}

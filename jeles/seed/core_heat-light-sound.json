@@ -1,0 +1,190 @@
+{
+  "domain": "core-heat-light-sound",
+  "pairs": [
+    {
+      "source_text": "How does a thermos keep coffee hot for hours — or keep iced tea cold?",
+      "source_lang": "en",
+      "target_text": "A thermos fights all three ways heat moves. It has a double wall with a vacuum between the layers, which blocks conduction (heat traveling through material) and convection (heat carried by moving air). The inner walls are coated with reflective silver to bounce radiant heat back inward. The result is that whatever temperature you put in stays close to that temperature for hours, whether hot or cold — the thermos doesn't know the difference; it just slows the transfer.",
+      "target_lang": "en",
+      "reason": "Thermoses are used daily by billions of people and illustrate all three heat-transfer mechanisms in a single object."
+    },
+    {
+      "source_text": "Why does a metal railing feel colder than a wooden bench on the same winter morning?",
+      "source_lang": "en",
+      "target_text": "Both the metal and the wood are actually the same temperature — the outdoor air temperature. The difference is how fast each material conducts heat away from your skin. Metal has high thermal conductivity, so it pulls heat out of your hand quickly, making it feel cold. Wood conducts heat poorly, so your skin stays warm where it touches. You are not sensing the object's temperature; you are sensing the rate at which your body loses heat to it.",
+      "target_lang": "en",
+      "reason": "This everyday illusion teaches that human thermal perception measures heat flow, not temperature — a foundational concept in thermodynamics."
+    },
+    {
+      "source_text": "How does a microwave oven heat food, and why does the plate sometimes stay cool?",
+      "source_lang": "en",
+      "target_text": "A microwave oven produces electromagnetic waves at a frequency (about 2.45 GHz) that is especially good at making water molecules spin back and forth. This rapid molecular vibration is what we feel as heat. Since the microwaves target water, fat, and sugar molecules in the food, a dry ceramic plate that contains little water absorbs almost no energy and stays cool. Metal, on the other hand, reflects microwaves and can concentrate electric charges at sharp edges, causing sparks — which is why you keep forks out of the microwave.",
+      "target_lang": "en",
+      "reason": "Microwave ovens are in most kitchens worldwide; understanding the mechanism explains common safety rules and cooking behavior."
+    },
+    {
+      "source_text": "How does a mirror reflect your image, and why does it seem to flip left and right but not up and down?",
+      "source_lang": "en",
+      "target_text": "A mirror works because a thin, very smooth coating of metal (usually aluminum) on glass bounces light rays back at the same angle they arrive, preserving the pattern your eyes interpret as an image. The mirror does not actually reverse left and right. What it reverses is front and back — it flips the axis perpendicular to its surface. When you raise your right hand, the image raises the hand on the same side of your field of view; we call it 'left' only because we imagine the reflection as another person who has turned to face us. If you wrote a word on your forehead, it would appear backward because the near-far axis is reversed, not the left-right axis.",
+      "target_lang": "en",
+      "reason": "Mirrors are the most common optical device; the left-right puzzle is one of the most frequently asked questions in physics and reveals how spatial reasoning can mislead."
+    },
+    {
+      "source_text": "How do lenses in eyeglasses, cameras, and your own eye focus light?",
+      "source_lang": "en",
+      "target_text": "A lens is a piece of transparent material (glass or plastic) with curved surfaces that bend light rays as they pass through — a process called refraction. A convex (outward-bulging) lens bends rays inward so they converge to a focal point, which is how a magnifying glass concentrates sunlight and how your eye's lens projects a tiny, upside-down image onto your retina. A concave (inward-curving) lens spreads rays apart, helping nearsighted people whose eyes focus too strongly. Cameras mimic the eye: a lens at the front focuses light onto a sensor (the camera's 'retina'), and adjusting the lens position changes what is in focus.",
+      "target_lang": "en",
+      "reason": "Lenses underlie eyeglasses, cameras, microscopes, and human vision itself — understanding refraction explains a huge category of everyday technology."
+    },
+    {
+      "source_text": "Why is the sky blue during the day but red and orange at sunset?",
+      "source_lang": "en",
+      "target_text": "Sunlight contains all colors (wavelengths). When it hits Earth's atmosphere, tiny nitrogen and oxygen molecules scatter short-wavelength blue light much more than longer-wavelength red light — a process called Rayleigh scattering. During the day you see scattered blue light coming from all directions, so the sky looks blue. At sunset, sunlight travels through a much thicker slice of atmosphere to reach your eyes, so nearly all the blue light has been scattered away before it arrives, leaving the longer red and orange wavelengths to dominate the sky.",
+      "target_lang": "en",
+      "reason": "The color of the sky is one of the most universally observed natural phenomena, and explaining it teaches the basics of light scattering and wavelength."
+    },
+    {
+      "source_text": "How does sound travel, and why can't you hear anything in outer space?",
+      "source_lang": "en",
+      "target_text": "Sound is a pressure wave: a vibrating object (a guitar string, your vocal cords) pushes on the air molecules next to it, which push on their neighbors, creating a chain of compressions and expansions that ripples outward. Your ear detects these pressure changes and your brain interprets them as sound. In outer space there is essentially no air, so there are no molecules to pass the wave along — which is why space is silent. Sound in air travels at about 343 meters per second (767 mph), far slower than light at 300,000 kilometers per second, which is why you see lightning before you hear thunder.",
+      "target_lang": "en",
+      "reason": "Sound is central to speech, music, and warning signals; the contrast with light speed explains a phenomenon everyone has noticed with storms."
+    },
+    {
+      "source_text": "How does a speaker turn an electrical signal into sound you can hear?",
+      "source_lang": "en",
+      "target_text": "Inside a typical speaker is a coil of wire attached to a lightweight cone, sitting in front of a permanent magnet. When an electrical audio signal flows through the coil, it creates a varying magnetic field that pushes and pulls against the permanent magnet, making the coil — and the cone attached to it — vibrate back and forth. Those vibrations push air and create the pressure waves you hear as sound. A microphone works on the same principle in reverse: sound waves vibrate a diaphragm attached to a coil near a magnet, generating a small electrical signal.",
+      "target_lang": "en",
+      "reason": "Speakers and microphones are in every phone, headphone, and smart device; understanding the electromagnetic principle reveals that the two devices are mirror images of each other."
+    },
+    {
+      "source_text": "Why can you hear someone talking around a corner, but you can't see them?",
+      "source_lang": "en",
+      "target_text": "This comes down to a property of waves called diffraction — the tendency of a wave to bend around obstacles and spread through openings. Diffraction is most pronounced when the wavelength is similar to or larger than the obstacle. Sound waves in speech range have wavelengths from about 0.2 to 2 meters, comparable to doorways and walls, so they bend around corners easily. Visible light has wavelengths around 0.0005 millimeters — thousands of times smaller than everyday objects — so it effectively travels in straight lines and casts sharp shadows.",
+      "target_lang": "en",
+      "reason": "This everyday puzzle teaches the concept of diffraction and why wavelength matters, connecting hearing and vision through a single wave principle."
+    },
+    {
+      "source_text": "How does insulation in walls, jackets, and double-pane windows keep heat in?",
+      "source_lang": "en",
+      "target_text": "Most insulation works by trapping small pockets of still air (or another gas). Air is a poor conductor of heat, and when it is trapped in tiny spaces — between fiberglass fibers, inside the fluffy clusters of a down jacket, or between two panes of window glass — it cannot circulate to carry heat away by convection either. The material itself (fiberglass, feathers, foam) mostly serves as a scaffold to keep the air still. That is why compressing a down jacket makes it less warm: you squeeze out the trapped air that was doing the real insulating.",
+      "target_lang": "en",
+      "reason": "Insulation is critical for housing, clothing, and energy efficiency; understanding the role of trapped air unifies building science and outdoor-gear design."
+    },
+    {
+      "source_text": "What actually happens in a flame — why does a match burn?",
+      "source_lang": "en",
+      "target_text": "A flame is a visible sign of a rapid chemical reaction called combustion, which requires three ingredients known as the fire triangle: fuel (the wood of the match), oxygen (from the air), and heat (the friction of striking). The initial heat breaks molecules in the fuel apart; those fragments react with oxygen, releasing more heat and light, which sustains the reaction. The yellow glow comes from tiny soot particles heated to incandescence. Remove any one side of the triangle — smother the fire (no oxygen), douse it with water (removes heat), or let the fuel run out — and the flame dies.",
+      "target_lang": "en",
+      "reason": "Fire is one of the oldest and most important technologies humans use; the combustion triangle explains both how fires start and how to extinguish them."
+    },
+    {
+      "source_text": "Why does hot air rise, and how does that heat an entire room?",
+      "source_lang": "en",
+      "target_text": "When air is heated it expands, becoming less dense (lighter per unit volume) than the cooler air around it. Buoyancy pushes this lighter air upward, while denser cool air sinks to take its place. This creates a circular flow called a convection current. A radiator or baseboard heater in a room warms the air near it; that air rises to the ceiling, drifts across, cools, and sinks on the far side, setting up a loop that gradually heats the whole room. The same principle drives sea breezes, cumulus clouds, and the movement of tectonic plates in Earth's mantle.",
+      "target_lang": "en",
+      "reason": "Convection explains home heating, weather patterns, and many cooking techniques — it is one of the most broadly applicable physical principles in daily life."
+    },
+    {
+      "source_text": "Why does mixing red and blue paint make purple, but mixing red and blue light make magenta — and why is mixing light different from mixing paint?",
+      "source_lang": "en",
+      "target_text": "Paint and light use opposite mixing systems. Paint works by subtraction: each pigment absorbs (subtracts) certain wavelengths and reflects the rest. Mixing red and blue paint means each absorbs more of the spectrum, leaving only the overlapping wavelengths both reflect — which we see as a dark purple. Light works by addition: when red and blue light hit your eye together, your red and blue cone cells both fire, and your brain perceives magenta. Additive primaries (red, green, blue) combine to make white light; subtractive primaries (cyan, magenta, yellow) combine to make black. This is why your screen uses RGB pixels and your printer uses CMYK ink.",
+      "target_lang": "en",
+      "reason": "Color mixing affects painting, printing, photography, and screen design; understanding additive vs. subtractive color demystifies both art and technology."
+    },
+    {
+      "source_text": "How does a prism split white light into a rainbow?",
+      "source_lang": "en",
+      "target_text": "White light is a mix of all visible wavelengths. When it enters a glass prism at an angle, it slows down and bends — a process called refraction. The key is that shorter wavelengths (violet, blue) slow down slightly more than longer ones (red), so they bend at a steeper angle. This fans the beam out into its component colors, from red on one edge to violet on the other. A rainbow in the sky works the same way: each raindrop acts as a tiny prism, refracting and reflecting sunlight back to your eyes at slightly different angles for each color.",
+      "target_lang": "en",
+      "reason": "Prisms and rainbows are iconic demonstrations of the nature of light; the explanation ties together refraction, wavelength, and the composition of white light."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "How does a thermos keep coffee hot for hours — or keep iced tea cold?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/vacuum-flask",
+      "reason": "Describes the vacuum flask's double-wall construction and how it blocks conduction, convection, and radiation."
+    },
+    {
+      "pair_source": "Why does a metal railing feel colder than a wooden bench on the same winter morning?",
+      "kind": "url",
+      "locator": "https://www.scientificamerican.com/article/why-does-metal-feel-cold/",
+      "reason": "Explains thermal conductivity and why perceived temperature differs from actual temperature."
+    },
+    {
+      "pair_source": "How does a microwave oven heat food, and why does the plate sometimes stay cool?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/microwave-oven",
+      "reason": "Covers the 2.45 GHz frequency, water molecule excitation, and why certain materials are microwave-transparent."
+    },
+    {
+      "pair_source": "How does a mirror reflect your image, and why does it seem to flip left and right but not up and down?",
+      "kind": "url",
+      "locator": "https://physics.stackexchange.com/questions/8227/why-does-a-mirror-reverse-left-and-right",
+      "reason": "Detailed physics discussion of the front-back reversal that is misperceived as left-right reversal."
+    },
+    {
+      "pair_source": "How do lenses in eyeglasses, cameras, and your own eye focus light?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/lens-optics",
+      "reason": "Covers convex and concave lens operation, focal length, and applications in vision correction and cameras."
+    },
+    {
+      "pair_source": "Why is the sky blue during the day but red and orange at sunset?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/Rayleigh-scattering",
+      "reason": "Defines Rayleigh scattering and its wavelength dependence, explaining both blue sky and red sunsets."
+    },
+    {
+      "pair_source": "How does sound travel, and why can't you hear anything in outer space?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/sound-physics",
+      "reason": "Covers sound as a mechanical pressure wave, its speed in air, and the requirement for a medium."
+    },
+    {
+      "pair_source": "How does a speaker turn an electrical signal into sound you can hear?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/technology/loudspeaker",
+      "reason": "Describes the voice-coil-and-magnet design of dynamic speakers and the reverse principle in microphones."
+    },
+    {
+      "pair_source": "Why can you hear someone talking around a corner, but you can't see them?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/diffraction",
+      "reason": "Explains diffraction and its dependence on the ratio of wavelength to obstacle size."
+    },
+    {
+      "pair_source": "How does insulation in walls, jackets, and double-pane windows keep heat in?",
+      "kind": "url",
+      "locator": "https://www.energy.gov/energysaver/insulation",
+      "reason": "U.S. Department of Energy resource on how insulation materials trap air to resist heat flow."
+    },
+    {
+      "pair_source": "What actually happens in a flame — why does a match burn?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/combustion",
+      "reason": "Defines the combustion reaction, the fire triangle, and the role of heat, fuel, and oxygen."
+    },
+    {
+      "pair_source": "Why does hot air rise, and how does that heat an entire room?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/convection",
+      "reason": "Explains convection currents driven by density differences in heated fluids and gases."
+    },
+    {
+      "pair_source": "Why does mixing red and blue paint make purple, but mixing red and blue light make magenta — and why is mixing light different from mixing paint?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/color",
+      "reason": "Covers additive vs. subtractive color mixing, RGB primaries, and CMYK printing."
+    },
+    {
+      "pair_source": "How does a prism split white light into a rainbow?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/refraction",
+      "reason": "Explains how different wavelengths refract at different angles, producing spectral dispersion."
+    }
+  ]
+}

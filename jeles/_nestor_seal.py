@@ -47,6 +47,41 @@ __all__ = ["EVIDENCE_SCHEME", "describe", "verify_human_write"]
 EVIDENCE_SCHEME = "nestor-seal-v1"
 
 
+def _normalize_source(question: str):
+    """The question as Nestor signed it, or `None` if `nestor` is absent.
+
+    **A seal covers the NORMALIZED source, not the raw text.** `nestor.memory`
+    states the contract where the pair is built — "A seal signature covers
+    (source_norm, target_text, verifier)" — and stores `source_text` and
+    `source_norm` as two separate columns. Passing the raw question to
+    `seal_is_valid` therefore checks a signature over a string nobody signed.
+
+    That was this module's behaviour until 2026-08-29, and it meant a real,
+    valid seal was refused: measured against a genuine ed25519 seal from the
+    operator's own Nestor store, raw returned False and normalized returned
+    True. So `corpus_put` could never accept a seal, and the `human` rung was
+    unreachable by the one mechanism built to reach it. Nestor's own decision
+    e7837efc ("Can a bridged nugget be sealed through the human surface?" —
+    "Not correctly, today") recorded the symptom; this is the cause.
+
+    The tests did not catch it because they signed the raw string and verified
+    the raw string — self-consistent, and never once agreeing with Nestor.
+
+    Normalization is a property of the *matcher* that sealed the pair, and
+    `StringMatcher` is Nestor's default and what its own decision store uses.
+    A pair sealed under a different matcher will not verify here, which is the
+    honest outcome: this module cannot know which matcher signed, and guessing
+    would mean accepting a signature over something other than what it checked.
+    Imported rather than reimplemented for the reason this package has learned
+    twice over — two copies of one rule drift, and the drift is silent.
+    """
+    try:
+        from nestor.matcher import StringMatcher
+    except ImportError:
+        return None
+    return StringMatcher().normalize(question)
+
+
 def _import_nestor():
     """`nestor.signing`, or `None` if the `[nestor]` extra is not installed.
 
@@ -151,10 +186,13 @@ def verify_human_write(
        "cannot verify" and "refuse" must be the same outcome, so this checks
        `signing_enabled()` first and refuses outright if it is False, never
        reaching the code path that would accept an unconfigured instance.
-    4. ``nestor.signing.seal_is_valid(question, answer, verified_by, seal_sig)``
-       returns True — an HMAC or ed25519 signature over exactly
-       ``(question, answer, verified_by)``, checked under the key registered
-       to ``verified_by`` (or the shared key, with no keyring installed).
+    4. ``nestor.signing.seal_is_valid(source_norm, answer, verified_by,
+       seal_sig)`` returns True — an HMAC or ed25519 signature over exactly
+       ``(source_norm, answer, verified_by)``, checked under the key
+       registered to ``verified_by`` (or the shared key, with no keyring
+       installed). Note the **first** field: the signature covers the question
+       *normalized*, not as typed, and this module normalizes before checking
+       (see `_normalize_source`, and the bug it records).
        Binding the signature to all three fields is what refuses a
        *transplanted* signature: a valid seal signed for a different
        question, a different answer, or a different name will not verify
@@ -184,7 +222,11 @@ def verify_human_write(
             # seal_is_valid's own unconfigured-instance default (accept,
             # with a warning) decide for us.
             return False, "no NESTOR_SEAL_KEY or keyring configured on this instance"
-        ok = signing.seal_is_valid(question, answer, verified_by, seal_sig)
+        source_norm = _normalize_source(question)
+        if source_norm is None:
+            return False, "nestor.matcher unavailable; cannot normalize the source"
+        # The normalized source, never the raw question — see `_normalize_source`.
+        ok = signing.seal_is_valid(source_norm, answer, verified_by, seal_sig)
     except Exception as exc:  # keyring/key errors are refusals, not crashes
         return False, f"signature check raised {type(exc).__name__}: {exc}"
 

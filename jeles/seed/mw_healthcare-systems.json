@@ -1,0 +1,300 @@
+{
+  "domain": "modern-world-healthcare",
+  "pairs": [
+    {
+      "source_text": "How does emergency room triage decide who gets seen first?",
+      "source_lang": "en",
+      "target_text": "Emergency departments use the Emergency Severity Index (ESI), a five-level system where Level 1 is the most critical (immediate life threat) and Level 5 is the least urgent (minor complaint). A specially trained triage nurse assesses each arriving patient's vital signs, symptoms, medical history, and overall appearance within minutes. Patients with chest pain, stroke symptoms, or major trauma are categorized Level 1 or 2 and go straight to treatment. Many hospitals also run a 'fast track' area dedicating roughly 20% of beds to Level 4 and 5 patients with minor issues like sprains or earaches, which significantly cuts their wait times. Triage is not a one-time stamp: if your condition worsens while waiting, a nurse can reassess and elevate your priority level at any time.",
+      "target_lang": "en",
+      "reason": "Understanding triage explains why ER wait times vary and why someone who arrived after you may be seen first"
+    },
+    {
+      "source_text": "How do hospitals staff doctors and nurses, and what are safe patient ratios?",
+      "source_lang": "en",
+      "target_text": "Hospitals staff through layered models: hospitalists (doctors who work only inside the hospital) manage general inpatients, while intensivists specialize in ICU patients. The Society of Critical Care Medicine recommends an intensivist-to-patient ratio of 1:14, though in practice one intensivist may oversee 15 to 20 patients. For nurses, ICU ratios are typically 1:2, while general medical-surgical floors range from 1:4 to 1:6. California is the only U.S. state that has mandated specific nurse-to-patient ratios since 2004, though other states have followed with their own legislation. Research shows that safe nursing levels are associated with a 14% reduction in hospital mortality, 18% higher patient satisfaction, and average ICU stays shortened by 1.5 days. Most hospitals use 12-hour nursing shifts (7am-7pm and 7pm-7am) to ensure continuous coverage.",
+      "target_lang": "en",
+      "reason": "Staffing ratios directly affect patient safety and outcomes, and explain why hospitals face capacity constraints"
+    },
+    {
+      "source_text": "How does a surgery get scheduled in a hospital operating room?",
+      "source_lang": "en",
+      "target_text": "Most hospitals use a 'block scheduling' system where specific surgeons or surgical groups are assigned recurring blocks of operating room time, typically weeks or months in advance. A surgeon who has a Tuesday 7am-3pm block can fill that time with their elective cases. If block time goes unused, hospitals enforce 'release rules' -- for instance, unreserved time must be released 72 hours before the scheduled date so other surgeons can claim it. Hospitals track each surgeon's 'utilization rate' (percentage of block time actually used), and surgeons who consistently underuse their blocks may lose them. Emergency surgeries bypass the block system entirely, with dedicated emergency ORs or the ability to bump elective cases. The perioperative team -- surgeon, anesthesiologist, scrub nurses, and support staff -- must all be coordinated, making OR scheduling one of the most complex logistics challenges in healthcare.",
+      "target_lang": "en",
+      "reason": "Operating room scheduling is a hidden logistics system that determines how efficiently a hospital uses its most expensive resource"
+    },
+    {
+      "source_text": "What are the Beveridge and Bismarck models of healthcare, and which countries use them?",
+      "source_lang": "en",
+      "target_text": "The world's healthcare systems generally follow four models. In the Beveridge model (used by the UK, Spain, Scandinavia, and New Zealand), the government owns most hospitals, employs many doctors, and pays for care through taxation -- there is no insurance bill because the system is funded like a public service. In the Bismarck model (Germany, France, Japan, Switzerland, Belgium), employers and employees fund nonprofit 'sickness funds' through payroll deductions; Germany alone has about 240 such funds. Doctors and hospitals remain private, but insurers must cover everyone and cannot make a profit on basic coverage. Canada and Taiwan use the National Health Insurance model, which has private providers but a single government-run insurer. The fourth model, the out-of-pocket model, prevails in much of rural Africa and South Asia, where most people simply pay cash for whatever care they can access. The United States uniquely blends all four: Medicare resembles National Health Insurance, the VA is Beveridge-style, employer coverage is Bismarck-like, and the uninsured face the out-of-pocket model.",
+      "target_lang": "en",
+      "reason": "Understanding these models explains why healthcare costs and access vary dramatically between countries"
+    },
+    {
+      "source_text": "How does a new drug go from discovery to pharmacy shelves through FDA clinical trials?",
+      "source_lang": "en",
+      "target_text": "A new drug typically takes 10 to 15 years and over $2 billion to develop. It begins with preclinical research -- lab and animal studies testing safety and mechanism. If promising, the company files an Investigational New Drug (IND) application; the FDA has 30 days to review before human trials can start. Phase I trials test the drug in 20-100 healthy volunteers for safety and dosing over several months. Phase II expands to 100-300 patients with the target condition to assess effectiveness. Phase III enrolls 1,000-3,000 patients across multiple sites to confirm efficacy versus existing treatments, and these trials can run 1-4 years. If Phase III succeeds, the company submits a New Drug Application (NDA) with all accumulated data. The FDA completes a standard review in about 10 months or a priority review in 6 months. After approval, Phase IV post-marketing surveillance monitors for rare or long-term side effects in the general population. Only about 12% of drugs entering clinical trials ultimately win FDA approval.",
+      "target_lang": "en",
+      "reason": "The drug development pipeline explains why medications are expensive, why breakthroughs take years, and why safety recalls happen"
+    },
+    {
+      "source_text": "How do generic drugs get approved, and why are they cheaper than brand-name drugs?",
+      "source_lang": "en",
+      "target_text": "Generic drugs are approved through an Abbreviated New Drug Application (ANDA), a pathway created by the Hatch-Waxman Act of 1984. Unlike a full New Drug Application, an ANDA does not require new preclinical or clinical safety and efficacy trials. Instead, the manufacturer must demonstrate 'bioequivalence' -- that the generic delivers the same active ingredient, at the same dose, into the bloodstream at essentially the same rate and extent as the original brand-name (reference listed) drug. The generic must also use the same route of administration and dosage form. Because ANDA applicants skip the years of clinical trials that cost the original developer billions, generics can be priced 80-85% lower on average. Brand-name drugs are protected by patents typically lasting 20 years from filing, and manufacturers may also receive additional exclusivity periods. Once these expire, any manufacturer meeting bioequivalence standards can produce the generic version.",
+      "target_lang": "en",
+      "reason": "Generic drugs represent about 90% of US prescriptions filled and are central to making medications affordable"
+    },
+    {
+      "source_text": "What is the difference between FDA 510(k) clearance and PMA approval for medical devices?",
+      "source_lang": "en",
+      "target_text": "The FDA classifies medical devices into three risk classes, and the regulatory pathway depends on that classification. Class I and II devices (thermometers, powered wheelchairs, pregnancy tests) typically go through 510(k) clearance, where the manufacturer must show the device is 'substantially equivalent' to a predicate device already legally marketed. This requires lab testing but usually not human clinical trials, and FDA review takes 90 to 150 days. Class III devices (artificial hearts, implantable defibrillators, replacement joints) require Premarket Approval (PMA), the most rigorous pathway. PMA demands extensive clinical trial data proving safety and effectiveness, and review can take a year or more. About 99% of devices entering the US market come through the 510(k) pathway. The 510(k) process has been criticized because it allows devices to be cleared based on similarity to older devices rather than independent proof of safety, creating chains of predicates that can stretch back decades.",
+      "target_lang": "en",
+      "reason": "Medical device regulation affects everything from surgical implants to diagnostic equipment, and the two pathways have very different safety implications"
+    },
+    {
+      "source_text": "How do electronic health records work, and why is interoperability still a challenge?",
+      "source_lang": "en",
+      "target_text": "Electronic Health Records (EHRs) are digital systems that store a patient's medical history, diagnoses, medications, lab results, and imaging. Epic Systems dominates the US market, running in roughly 43% of acute-care hospitals and covering about 57% of hospital beds as of 2025. Oracle Health (formerly Cerner) is the second-largest vendor. Despite widespread digitization, different EHR systems historically could not easily share data -- a patient transferring from an Epic hospital to an Oracle Health hospital might arrive with incomplete records. The HL7 FHIR (Fast Healthcare Interoperability Resources) standard, now mandated by the 21st Century Cures Act, provides a common language (standardized APIs) for EHRs to exchange data. The TEFCA (Trusted Exchange Framework and Common Agreement) establishes rules for nationwide health information exchange. The Cures Act also prohibits 'information blocking' -- providers and vendors can no longer deliberately prevent data sharing. Despite these advances, practical interoperability remains difficult because hospitals encode the same clinical concepts differently and legacy systems require costly upgrades.",
+      "target_lang": "en",
+      "reason": "EHR interoperability determines whether your doctor can see your full medical history, affecting diagnostic accuracy and patient safety"
+    },
+    {
+      "source_text": "How does wastewater surveillance detect disease outbreaks before hospitals do?",
+      "source_lang": "en",
+      "target_text": "The CDC's National Wastewater Surveillance System (NWSS), launched during COVID-19, monitors sewage from treatment plants across the United States to detect pathogens circulating in communities. People shed viral genetic material in their stool, often before they feel sick or seek medical care, so wastewater can reveal an outbreak days to weeks earlier than clinical testing. As of 2025-2026, the NWSS tracks SARS-CoV-2, influenza A, RSV, measles, avian influenza A (H5), and monkeypox, with data updated every Friday. Wastewater samples are tested using RT-qPCR (reverse transcription quantitative polymerase chain reaction), which amplifies and quantifies viral RNA. The system complements traditional surveillance methods like physician reporting and sentinel laboratory networks. One key advantage is that wastewater captures data from an entire community, including asymptomatic people who never visit a doctor. By May 2025, more than a third of reporting partners were meeting the CDC's goal of submitting sample data within seven days of collection.",
+      "target_lang": "en",
+      "reason": "Wastewater surveillance is a powerful public health tool that provides early warning of disease outbreaks at the community level"
+    },
+    {
+      "source_text": "Why is a hospital bill so complex, and what is a chargemaster?",
+      "source_lang": "en",
+      "target_text": "Every US hospital maintains a chargemaster (also called a Charge Description Master or CDM), a comprehensive internal price list containing 10,000 to 50,000 line items covering every service, drug, supply, and procedure the facility offers. Chargemaster prices are set well above actual costs and serve as the starting point for negotiations with private insurers. However, Medicare does not use the chargemaster at all -- for inpatient stays, Medicare pays hospitals a fixed amount based on Diagnosis-Related Groups (DRGs), where each diagnosis category has a predetermined payment regardless of how many bandages or X-rays were actually used. This means the same hospital stay can generate different bills depending on who is paying: a private insurer negotiates a discount off chargemaster rates (often 40-60% off), Medicare pays its DRG-based rate, and an uninsured patient may face the full chargemaster price. Since 2021, federal rules require hospitals to post their prices publicly, but compliance and usability of this data remain inconsistent.",
+      "target_lang": "en",
+      "reason": "Hospital billing complexity is a major source of medical debt and public confusion about healthcare costs in the US"
+    },
+    {
+      "source_text": "How are vaccines manufactured and distributed at scale using the cold chain?",
+      "source_lang": "en",
+      "target_text": "Vaccine manufacturing begins with producing the antigen (the component that triggers immunity), which varies by technology: traditional vaccines grow viruses in eggs or cell cultures, while mRNA vaccines like Pfizer-BioNTech's use an enzymatic process where a polymerase follows a DNA template to build mRNA strands, which are then encapsulated in lipid nanoparticles. Pfizer's three-plant network illustrates the scale: DNA templates are made in St. Louis, mRNA is synthesized in Andover, Massachusetts, and lipid nanoparticle assembly, sterilization, and vial filling happen in Kalamazoo, Michigan. After manufacturing, vaccines enter the 'cold chain' -- an unbroken temperature-controlled supply line from factory to patient. Traditional vaccines require storage at 2-8 degrees Celsius, while Pfizer's mRNA vaccine initially required ultra-cold storage at minus 70 degrees Celsius. Distribution flows from national depots to regional hubs to local clinics, with temperature monitored at every step. A break in the cold chain can render an entire shipment ineffective, making vaccine logistics one of the most demanding supply chains in healthcare.",
+      "target_lang": "en",
+      "reason": "Vaccine manufacturing and cold-chain logistics determine how quickly immunization campaigns can reach populations worldwide"
+    },
+    {
+      "source_text": "How does the 911 emergency medical services system work from dispatch to trauma center?",
+      "source_lang": "en",
+      "target_text": "When someone dials 911, a trained dispatcher at a Public Safety Answering Point (PSAP) uses the Medical Priority Dispatch System (MPDS) to assess urgency through a standardized set of questions. Based on responses, they dispatch either Basic Life Support (BLS) units staffed by EMTs or Advanced Life Support (ALS) units staffed by paramedics who can administer medications, intubate, and perform advanced procedures. Paramedics follow pre-established medical protocols approved by a physician medical director. For trauma patients, EMS crews assess injury severity on scene and transport to the appropriate facility based on a five-level trauma center designation system. Level I trauma centers provide the highest level of care with 24/7 surgical teams, neurosurgeons, and research programs. Level II centers offer similar surgical care but may lack some subspecialties. Levels III through V provide increasing degrees of stabilization before transferring patients to higher-level facilities. Air medical transport (helicopter EMS) is activated when ground transport time exceeds 20-30 minutes or when the patient's injuries demand immediate Level I care.",
+      "target_lang": "en",
+      "reason": "EMS is the critical first link in emergency care, and understanding its structure explains response time variations and survival outcomes"
+    },
+    {
+      "source_text": "How do pharmacies process a prescription and what role do PBMs and formularies play?",
+      "source_lang": "en",
+      "target_text": "When a doctor writes a prescription, it is transmitted electronically (e-prescribing) to the pharmacy, where the pharmacist performs several verification steps. First, the pharmacy's system checks the patient's insurance eligibility through a Pharmacy Benefit Manager (PBM) -- a third-party administrator that processes drug claims for insurers. The PBM checks the drug against the patient's formulary, a tiered list of covered medications where Tier 1 (generics) has the lowest copay and Tier 3 or 4 (brand-name or specialty drugs) has the highest. If the prescribed drug is not on formulary, the pharmacist may contact the doctor to suggest an alternative, or the doctor can file a prior authorization request. The pharmacist also performs a Drug Utilization Review (DUR), checking for dangerous interactions with the patient's other medications, duplicate therapies, and appropriate dosing. The three largest PBMs -- CVS Caremark, Express Scripts (Cigna), and OptumRx (UnitedHealth) -- control roughly 80% of the US prescription market and negotiate rebates with drug manufacturers that influence which drugs appear on formularies.",
+      "target_lang": "en",
+      "reason": "The pharmacy-PBM-formulary system determines what drugs patients can access and at what cost, making it a hidden gatekeeper of healthcare"
+    },
+    {
+      "source_text": "How does the FDA's drug approval process differ from the European Medicines Agency's?",
+      "source_lang": "en",
+      "target_text": "The FDA (United States) and EMA (European Union) both require rigorous clinical trials but differ in structure and process. The FDA is a single national agency that grants approval for marketing in the US, with standard review taking about 10 months and priority review 6 months. The EMA coordinates a decentralized system across EU member states: its Committee for Medicinal Products for Human Use (CHMP) evaluates applications over 210 days, after which individual countries grant national marketing authorizations. The FDA tends to approve drugs slightly faster on average and has more flexible accelerated pathways including Breakthrough Therapy designation, Fast Track, and Accelerated Approval for serious conditions. The EMA offers a similar Conditional Marketing Authorization. One key difference is that the EMA often requires post-approval Health Technology Assessments at the national level for pricing and reimbursement, while in the US pricing is largely set by the manufacturer and negotiated by insurers. Both agencies increasingly coordinate through mutual recognition and parallel scientific advice programs.",
+      "target_lang": "en",
+      "reason": "Comparing regulatory agencies reveals why drugs may be available in one country but not another and why prices differ globally"
+    },
+    {
+      "source_text": "How does public health disease reporting work from a doctor's office to the CDC and WHO?",
+      "source_lang": "en",
+      "target_text": "Disease reporting follows a mandatory chain of notification. When a physician diagnoses a condition on the nationally notifiable diseases list (which includes tuberculosis, measles, cholera, and about 120 others), they are legally required to report it to their local or state health department, typically within 24 hours for urgent conditions. State health departments then forward case data to the CDC through the National Notifiable Diseases Surveillance System (NNDSS). The CDC aggregates this data and publishes weekly summaries in the Morbidity and Mortality Weekly Report (MMWR). For diseases with international implications, the US reports to the World Health Organization under the International Health Regulations (IHR), a binding agreement among 196 countries that requires notification of events that may constitute a Public Health Emergency of International Concern (PHEIC). The WHO has declared PHEICs seven times since the regulations took effect in 2007, including for H1N1 (2009), Ebola (2014), Zika (2016), and COVID-19 (2020). This reporting chain is complemented by syndromic surveillance, which monitors patterns in emergency department visits and pharmacy sales to detect outbreaks before formal diagnoses are made.",
+      "target_lang": "en",
+      "reason": "Disease reporting infrastructure is the backbone of outbreak detection and pandemic response worldwide"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "How does a new drug go from discovery to pharmacy shelves through FDA clinical trials?",
+      "to_source": "How do generic drugs get approved, and why are they cheaper than brand-name drugs?",
+      "kind": "refines",
+      "reason": "Generic approval via ANDA is an abbreviated version of the full NDA process, skipping the clinical trial phases that make brand-name development so expensive"
+    },
+    {
+      "from_source": "How does emergency room triage decide who gets seen first?",
+      "to_source": "How does the 911 emergency medical services system work from dispatch to trauma center?",
+      "kind": "refines",
+      "reason": "EMS triage in the field and ER triage at the hospital are sequential steps in the same emergency care continuum"
+    },
+    {
+      "from_source": "How do electronic health records work, and why is interoperability still a challenge?",
+      "to_source": "How do pharmacies process a prescription and what role do PBMs and formularies play?",
+      "kind": "refines",
+      "reason": "E-prescribing from EHR systems is a key data flow that connects hospital records to pharmacy processing"
+    },
+    {
+      "from_source": "Why is a hospital bill so complex, and what is a chargemaster?",
+      "to_source": "What are the Beveridge and Bismarck models of healthcare, and which countries use them?",
+      "kind": "refines",
+      "reason": "The chargemaster/DRG billing complexity is specific to the US multi-payer system; single-payer Beveridge models avoid it entirely"
+    },
+    {
+      "from_source": "How does wastewater surveillance detect disease outbreaks before hospitals do?",
+      "to_source": "How does public health disease reporting work from a doctor's office to the CDC and WHO?",
+      "kind": "refines",
+      "reason": "Wastewater surveillance complements traditional physician-based disease reporting by detecting outbreaks before clinical diagnoses are made"
+    },
+    {
+      "from_source": "How does a new drug go from discovery to pharmacy shelves through FDA clinical trials?",
+      "to_source": "How does the FDA's drug approval process differ from the European Medicines Agency's?",
+      "kind": "refines",
+      "reason": "The EMA comparison contextualizes the FDA process by showing how the same drug may reach patients at different times in different regulatory systems"
+    },
+    {
+      "from_source": "How are vaccines manufactured and distributed at scale using the cold chain?",
+      "to_source": "How does a new drug go from discovery to pharmacy shelves through FDA clinical trials?",
+      "kind": "refines",
+      "reason": "Vaccine development follows the same clinical trial phases (I-III) as drugs but adds unique manufacturing and cold-chain distribution challenges"
+    },
+    {
+      "from_source": "How do hospitals staff doctors and nurses, and what are safe patient ratios?",
+      "to_source": "How does a surgery get scheduled in a hospital operating room?",
+      "kind": "refines",
+      "reason": "Staffing availability directly constrains OR scheduling since each surgery requires coordinated teams of surgeons, anesthesiologists, and nurses"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "How does emergency room triage decide who gets seen first?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK557583/",
+      "reason": "StatPearls reference on the Emergency Severity Index and five-level triage system used in US emergency departments"
+    },
+    {
+      "pair_source": "How does emergency room triage decide who gets seen first?",
+      "kind": "url",
+      "locator": "https://www.news4jax.com/health/2026/03/11/how-the-triage-process-works-for-determining-the-order-that-patients-are-seen-in-ers/",
+      "reason": "2026 reporting on how the ER triage process works in practice, including fast-track areas for minor cases"
+    },
+    {
+      "pair_source": "How do hospitals staff doctors and nurses, and what are safe patient ratios?",
+      "kind": "url",
+      "locator": "https://nursa.com/blog/rn-to-patient-staffing-ratios",
+      "reason": "2026 guide to state-by-state nurse staffing ratio laws and federal guidelines"
+    },
+    {
+      "pair_source": "How do hospitals staff doctors and nurses, and what are safe patient ratios?",
+      "kind": "url",
+      "locator": "https://intercepttelehealth.com/blog/icu-patient-ratios-everything-you-need-to-know/",
+      "reason": "Details on intensivist-to-patient ratios and the SCCM's 1:14 recommendation"
+    },
+    {
+      "pair_source": "How does a surgery get scheduled in a hospital operating room?",
+      "kind": "url",
+      "locator": "https://hospitalmedicaldirector.com/operating-room-block-scheduling-versus-open-scheduling/",
+      "reason": "Medical director perspective on block vs. open OR scheduling and utilization management"
+    },
+    {
+      "pair_source": "What are the Beveridge and Bismarck models of healthcare, and which countries use them?",
+      "kind": "url",
+      "locator": "https://pnhp.org/resource/health-care-systems-four-basic-models/",
+      "reason": "Physicians for a National Health Program overview of the four basic healthcare system models and which countries use each"
+    },
+    {
+      "pair_source": "How does a new drug go from discovery to pharmacy shelves through FDA clinical trials?",
+      "kind": "url",
+      "locator": "https://www.drugs.com/fda-approval-process.html",
+      "reason": "Step-by-step FDA approval timeline including IND application, Phase I-III trials, NDA submission, and review periods"
+    },
+    {
+      "pair_source": "How does a new drug go from discovery to pharmacy shelves through FDA clinical trials?",
+      "kind": "url",
+      "locator": "https://www.fdareview.org/issues/the-drug-development-and-approval-process/",
+      "reason": "FDAReview.org detailed analysis of the drug development pipeline and approval statistics"
+    },
+    {
+      "pair_source": "How do generic drugs get approved, and why are they cheaper than brand-name drugs?",
+      "kind": "url",
+      "locator": "https://www.fda.gov/drugs/types-applications/abbreviated-new-drug-application-anda",
+      "reason": "Official FDA page on the ANDA process and bioequivalence requirements for generic drugs"
+    },
+    {
+      "pair_source": "What is the difference between FDA 510(k) clearance and PMA approval for medical devices?",
+      "kind": "url",
+      "locator": "https://www.thefdagroup.com/blog/pma-vs-510k",
+      "reason": "2026 comparison of 510(k) and PMA pathways including timelines, requirements, and which device classes use each"
+    },
+    {
+      "pair_source": "How do electronic health records work, and why is interoperability still a challenge?",
+      "kind": "url",
+      "locator": "https://www.techtarget.com/searchhealthit/feature/Epic-controls-42-of-the-US-EHR-market-Does-that-help-or-hurt-interoperability",
+      "reason": "Analysis of Epic's 42% market share and how market concentration affects interoperability"
+    },
+    {
+      "pair_source": "How do electronic health records work, and why is interoperability still a challenge?",
+      "kind": "url",
+      "locator": "https://www.fiercehealthcare.com/health-tech/epic-continues-grow-ehr-market-share-it-makes-gains-small-health-systems",
+      "reason": "2025 reporting on Epic's growing EHR footprint and FHIR-based interoperability developments"
+    },
+    {
+      "pair_source": "How does wastewater surveillance detect disease outbreaks before hospitals do?",
+      "kind": "url",
+      "locator": "https://www.cdc.gov/wastewater/about/index.html",
+      "reason": "CDC official page on the National Wastewater Surveillance System and how it detects pathogens before clinical testing"
+    },
+    {
+      "pair_source": "How does wastewater surveillance detect disease outbreaks before hospitals do?",
+      "kind": "url",
+      "locator": "https://wwwnc.cdc.gov/eid/article/32/13/26-0301_article",
+      "reason": "2026 CDC Emerging Infectious Diseases article on building national wastewater surveillance infrastructure"
+    },
+    {
+      "pair_source": "Why is a hospital bill so complex, and what is a chargemaster?",
+      "kind": "url",
+      "locator": "https://www.medicalbillersandcoders.com/blog/how-drg-based-payments-shape-hospital-billing-and-reimbursement/",
+      "reason": "Explanation of how DRG-based payments work and how they differ from chargemaster pricing"
+    },
+    {
+      "pair_source": "Why is a hospital bill so complex, and what is a chargemaster?",
+      "kind": "url",
+      "locator": "https://medicalbillrescue.com/resources/chargemasters-explained",
+      "reason": "Consumer-facing explanation of what hospital chargemasters are and why they lead to high bills for uninsured patients"
+    },
+    {
+      "pair_source": "How are vaccines manufactured and distributed at scale using the cold chain?",
+      "kind": "url",
+      "locator": "https://www.susupport.com/blogs/biopharmaceutical-products/mrna-manufacturing-the-5-process-steps-of-mrna-production",
+      "reason": "Technical overview of the five process steps in mRNA vaccine production"
+    },
+    {
+      "pair_source": "How are vaccines manufactured and distributed at scale using the cold chain?",
+      "kind": "url",
+      "locator": "https://cen.acs.org/articles/98/i46/Pfizer-Moderna-ready-vaccine-manufacturing.html",
+      "reason": "Chemical & Engineering News report on Pfizer and Moderna's manufacturing networks and cold chain requirements"
+    },
+    {
+      "pair_source": "How does the 911 emergency medical services system work from dispatch to trauma center?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK560553/",
+      "reason": "StatPearls reference on trauma center designation levels and criteria for each level"
+    },
+    {
+      "pair_source": "How does the 911 emergency medical services system work from dispatch to trauma center?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK201058/",
+      "reason": "National Academies review of prehospital EMS care including dispatch, BLS/ALS staffing, and transport protocols"
+    },
+    {
+      "pair_source": "How do pharmacies process a prescription and what role do PBMs and formularies play?",
+      "kind": "url",
+      "locator": "https://www.commonwealthfund.org/publications/explainer/2025/mar/what-pharmacy-benefit-managers-do-how-they-contribute-drug-spending",
+      "reason": "2025 Commonwealth Fund explainer on PBM functions, formulary management, and market concentration"
+    },
+    {
+      "pair_source": "How does the FDA's drug approval process differ from the European Medicines Agency's?",
+      "kind": "url",
+      "locator": "https://synergbiopharma.com/blog/phases-fda-approval-drug-development/",
+      "reason": "Overview of FDA accelerated pathways including Breakthrough Therapy and Fast Track designations"
+    },
+    {
+      "pair_source": "How does public health disease reporting work from a doctor's office to the CDC and WHO?",
+      "kind": "url",
+      "locator": "https://www.cdc.gov/wastewater/respiratory-viruses/national.html",
+      "reason": "CDC national surveillance data page showing how respiratory virus monitoring integrates wastewater and clinical data streams"
+    }
+  ]
+}

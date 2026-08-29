@@ -1,0 +1,318 @@
+{
+  "domain": "ai-agent-memory",
+  "pairs": [
+    {
+      "source_text": "Three-tier memory taxonomy for AI agents in 2025-2026: episodic, semantic, and procedural",
+      "source_lang": "en",
+      "target_text": "By 2025-2026, the AI agent ecosystem converged on a three-tier memory taxonomy mirroring cognitive science: episodic memory (remembering past interactions and events with temporal context), semantic memory (storing atemporal facts and knowledge believed to be currently true), and procedural memory (learned behavioral patterns and skills). This classification has been adopted across major frameworks including LangChain's LangGraph, Letta, and CrewAI. Semantic memory is largely atemporal, representing what the agent believes to be currently true, while episodic memory retains temporal ordering critical for user-facing copilots that must recall past conversations in sequence.",
+      "target_lang": "en",
+      "reason": "Foundational taxonomy that organizes how all modern agent memory systems classify and store information"
+    },
+    {
+      "source_text": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "source_lang": "en",
+      "target_text": "Mem0, backed by a $24M Series A (October 2025) and Y Combinator, has approximately 48,000 GitHub stars as of mid-2026 and is the most widely deployed semantic memory layer for AI agents. It combines vector search, knowledge graph storage, and key-value caching into a single API, organizing memory into four scoped layers: conversation, session, user, and organizational memory. In April 2026, Mem0 released a token-efficient algorithm using single-pass hierarchical extraction and multi-signal retrieval, scoring 91.6 on LoCoMo and 93.4 on LongMemEval at roughly 6,900 tokens per query, with temporal reasoning improving +29.6 points and multi-hop reasoning +23.1 points over the previous algorithm.",
+      "target_lang": "en",
+      "reason": "Mem0 is the dominant commercial memory-as-a-service framework in 2026, setting benchmark standards"
+    },
+    {
+      "source_text": "Letta (formerly MemGPT) OS-inspired tiered memory architecture for AI agents",
+      "source_lang": "en",
+      "target_text": "Letta, evolved from UC Berkeley's MemGPT research project, treats LLM context like virtual memory in an operating system. Its three-tier architecture consists of core memory (always in-context, analogous to RAM, holding user persona and current task), recall memory (conversation history buffer), and archival memory (external vector store, analogous to disk, for long-term facts retrieved on demand). By 2026, Letta shipped a desktop app (April 2026), archived the standalone LettaBot in May 2026 and folded it into Letta Code as Channels, and rebuilt its pricing around the Letta Code product. Unlike Mem0's plug-in approach, Letta is a full agent runtime where agents run inside the Letta platform with memory as a built-in, coherent system.",
+      "target_lang": "en",
+      "reason": "Letta's OS-inspired approach is the primary alternative paradigm to Mem0's memory-as-a-service model"
+    },
+    {
+      "source_text": "Zep AI temporal knowledge graphs and Graphiti for agent memory",
+      "source_lang": "en",
+      "target_text": "Zep AI's Graphiti framework provides temporally-aware knowledge graph memory for AI agents, stored in Neo4j, dynamically synthesizing unstructured conversational data and structured business data while maintaining historical relationships. Zep outperformed Mem0 by 15 points on LongMemEval in 2026 benchmarks, achieving accuracy improvements of up to 18.5% with 90% latency reduction versus baseline implementations. The open-source Graphiti library (MIT license, 20,000+ GitHub stars, 35+ contributors) powers Zep Cloud. However, Zep deprecated its self-hosted Community Edition in April 2025; teams wanting to self-host must now run raw Graphiti with Neo4j, FalkorDB, or Kuzu backends directly.",
+      "target_lang": "en",
+      "reason": "Zep's graph-based approach demonstrates that temporal knowledge graphs outperform vector-only memory on relationship-heavy tasks"
+    },
+    {
+      "source_text": "LangChain and LangMem memory types for conversational AI agents",
+      "source_lang": "en",
+      "target_text": "LangChain provides multiple memory types: ConversationBufferMemory (stores full conversation history), ConversationBufferWindowMemory (keeps last k exchanges), ConversationSummaryMemory (LLM-generated running summaries), ConversationSummaryBufferMemory (hybrid of recent messages plus older summaries), and ConversationEntityMemory (tracks entities and their attributes). LangMem, launched early 2025 as the official long-term memory SDK for LangGraph, has reached approximately 746K monthly PyPI downloads and 5M+ total by June 2026 (still pre-1.0 at version 0.0.30). LangMem stores semantic memory as JSON objects scoped to user, session, or agent namespaces with automatic semantic deduplication, though its p95 search latency of 59.82 seconds limits it to offline processing rather than real-time retrieval.",
+      "target_lang": "en",
+      "reason": "LangChain's memory types are the most widely taught patterns and LangMem is LangChain's path to persistent cross-session memory"
+    },
+    {
+      "source_text": "Context window overflow and context drift causing 65% of AI agent failures",
+      "source_lang": "en",
+      "target_text": "A 2025 analysis of enterprise AI deployments found that nearly 65% of agent failures were attributable to context drift or memory loss during multi-step reasoning, not to underlying model incapability. Chroma Research's Context Rot study tested 18 frontier models and found every single one degraded as input length grew, with models hitting accuracy cliffs well before their rated window limits. Despite vendors racing toward massive context windows (1M+ tokens), the field has converged on compression techniques rather than larger windows as the solution: anchored iterative summarization, failure-driven guideline optimization (ACON), provider-native compaction APIs, and the Memory Pointer Pattern that stores data externally and passes references into context.",
+      "target_lang": "en",
+      "reason": "Context overflow is the central engineering constraint driving all memory architecture decisions"
+    },
+    {
+      "source_text": "Hybrid vector-graph memory as minimum viable architecture for production AI agents in 2026",
+      "source_lang": "en",
+      "target_text": "By 2026, the consensus in production AI agent deployment is that hybrid memory combining vector databases and knowledge graphs is the minimum viable architecture. Vector memory retrieves semantically similar facts but lacks temporal awareness (a six-month-old fact and a yesterday fact are equally 'similar' to a query), while graph memory retrieves through entity relationships but misses fuzzy semantic matches. Production agents combine two or three memory architectures, routing queries to the best-suited store. The distinction between RAG (retrieves from a corpus that changes infrequently) and agent memory (retrieves from a corpus that changes every session) is now well-understood, with correct architectures composing both for external knowledge grounding and persistent identity.",
+      "target_lang": "en",
+      "reason": "The vector-graph hybrid pattern is the de facto standard for production agent memory in 2026"
+    },
+    {
+      "source_text": "Selective forgetting mechanisms for AI agent memory management",
+      "source_lang": "en",
+      "target_text": "The FSFM framework (April 2026) established a taxonomy of forgetting mechanisms for AI agents: passive decay-based (memories weaken over time), active deletion-based (explicit removal), safety-triggered (removing sensitive data), and adaptive reinforcement-based (strengthening accessed memories while weakening unused ones). Research integrating ACT-R cognitive architecture with LLMs created dialogue agents that dynamically retrieve and forget memories based on context, time, and usage frequency. Important memories that are frequently accessed, emotionally significant, or semantically relevant decay more slowly. The 2025-2026 literature emphasizes that well-designed forgetting is as crucial as remembering for efficiency, security, and effectiveness.",
+      "target_lang": "en",
+      "reason": "Forgetting strategies are essential for keeping agent memory systems efficient and preventing information overload"
+    },
+    {
+      "source_text": "MemOS memory operating system abstraction for LLM agents",
+      "source_lang": "en",
+      "target_text": "MemOS treats agent memory as an operating system concern, coordinating different stores (facts, summaries, experiences) under a single abstraction, similar to how an OS manages hardware resources. Released as open source, MemOS supports multi-modal memory (text, images, tool traces, personas), multi-cube knowledge base management for isolation and controlled sharing across users and projects, and asynchronous ingestion via MemScheduler with millisecond-level latency for production stability. MemOS reports 35.24% token savings through its hybrid-retrieval and cross-task skill reuse capabilities. The project represents the third evolutionary stage of agent memory: from extraction plugins, to structured graph memory, to cognitive architectures treating memory as an OS.",
+      "target_lang": "en",
+      "reason": "MemOS represents the frontier of memory architecture thinking, treating memory as a full operating system layer"
+    },
+    {
+      "source_text": "Multi-agent memory sharing via Model Context Protocol (MCP) in 2026",
+      "source_lang": "en",
+      "target_text": "The Model Context Protocol (MCP) is emerging as the standard interface for memory-sharing between agents in multi-agent systems, with dedicated memory MCP servers providing persistent memory accessible to any MCP-compatible agent regardless of framework. Memory is being extracted from individual frameworks into a shared infrastructure layer, evidenced by CrewAI's four-to-one memory unification, Mem0's memory-as-a-service, and MemOS's OS abstraction. Graph-enhanced memory approaches -- Mem0's graph memory (January 2026), Graphiti with FalkorDB's knowledge graph MCP server, and MemOS's graph structures -- point toward relational knowledge representation becoming standard alongside vector embeddings for cross-agent knowledge sharing.",
+      "target_lang": "en",
+      "reason": "MCP-based memory sharing solves the critical problem of multi-agent knowledge synchronization"
+    },
+    {
+      "source_text": "CrewAI memory system redesign from four types to unified Memory class",
+      "source_lang": "en",
+      "target_text": "CrewAI underwent a significant memory redesign in 2025, replacing four separate memory types (short-term, long-term, entity, and contextual memory) with a single unified Memory class. This simplification addressed the most frequently cited friction points in community feedback: non-OpenAI integration difficulties and memory system connection breakages during framework upgrades. The unification reflects a broader industry trend toward treating memory as infrastructure rather than a collection of separate subsystems. Microsoft also announced its Agent Framework in October 2025 as the unified successor to AutoGen and Semantic Kernel, combining multi-agent conversational abstractions with enterprise features including session-based state management.",
+      "target_lang": "en",
+      "reason": "CrewAI's redesign and Microsoft's unification show the industry consolidating fragmented memory approaches"
+    },
+    {
+      "source_text": "AI agent memory benchmark standards: LoCoMo, LongMemEval, and BEAM",
+      "source_lang": "en",
+      "target_text": "Three benchmarks have become the primary standards for evaluating agent memory architectures in 2026: LoCoMo (Long Conversation Memory), LongMemEval (long-term memory evaluation), and BEAM. Independent benchmarks show up to 15-point accuracy gaps between architectures on temporal queries, making architecture choice consequential for production deployments. The largest performance gaps appear in tasks requiring integration of evidence across multiple conversations: multi-hop reasoning, temporal questions, knowledge updates, and assistant-specific context. Mem0's 2026 State of AI Agent Memory report and third-party analyses from vectorize.io, preuve.ai, and agentmarketcap.ai all use these benchmarks as the shared evaluation framework.",
+      "target_lang": "en",
+      "reason": "Standardized benchmarks make memory architecture comparisons objective and reproducible for the first time"
+    },
+    {
+      "source_text": "Context engineering discipline for AI agents: choosing which tokens enter the context window",
+      "source_lang": "en",
+      "target_text": "Context engineering has emerged as a formal discipline in 2025-2026, defined as deciding exactly which tokens -- system instructions, tool definitions, retrieved documents, conversation history -- earn a place in an AI agent's limited context window at each step. Production techniques include sliding window compression, hierarchical summarization of older turns, and memory offloading to external stores. The Memory Pointer Pattern stores data externally and passes references (pointers) into the context, showing dramatic token savings. Factory.ai and other agent platforms have published detailed playbooks on context engineering, treating it as a core competency distinct from prompt engineering.",
+      "target_lang": "en",
+      "reason": "Context engineering is the practical discipline that operationalizes memory architecture decisions at inference time"
+    },
+    {
+      "source_text": "Dual-store memory architectures combining vector databases and knowledge graphs for AI agents",
+      "source_lang": "en",
+      "target_text": "Dual-store architectures that combine vector databases and knowledge graphs are now the standard production pattern for agent memory in 2026. Extraction pipelines convert conversation messages into atomic memory facts scoped to users, sessions, or agents. Vector backends include Qdrant, Chroma, Milvus, pgvector, and Redis, while graph backends include Neo4j, FalkorDB, and Kuzu. Mem0 supports all major vector backends and adds graph storage in its Pro tier for structured traversal beyond pure similarity search. At the start of each new session, relevant memories are retrieved using semantic similarity, keyword matching, and entity matching, then injected into the context window.",
+      "target_lang": "en",
+      "reason": "Understanding the concrete storage technologies and retrieval strategies is essential for implementing agent memory"
+    },
+    {
+      "source_text": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "source_lang": "en",
+      "target_text": "A 2025 industry review identified three broad stages of agent memory evolution. Stage 1: extraction-oriented memory plugins that bolt simple fact extraction onto existing agents (early LangChain memory types). Stage 2: structured or graph-based memory systems like Zep's Graphiti and Mem0's graph tier that maintain entity relationships and temporal awareness. Stage 3: cognitive architectures that treat memory as an operating system rather than a database, exemplified by MemOS and Letta's runtime approach. As of mid-2026, most production deployments are at Stage 2, with Stage 3 systems gaining traction in research and early adoption for complex multi-agent and companion AI use cases.",
+      "target_lang": "en",
+      "reason": "This evolutionary framework contextualizes where each memory system sits in the maturity landscape"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "to_source": "Zep AI temporal knowledge graphs and Graphiti for agent memory",
+      "kind": "contradicts",
+      "reason": "Zep's graph-based approach outperforms Mem0 by 15 points on LongMemEval, showing vector-first and graph-first architectures have different strengths"
+    },
+    {
+      "from_source": "Hybrid vector-graph memory as minimum viable architecture for production AI agents in 2026",
+      "to_source": "Dual-store memory architectures combining vector databases and knowledge graphs for AI agents",
+      "kind": "refines",
+      "reason": "The dual-store pair provides concrete implementation details for the hybrid architecture pattern described at the strategic level"
+    },
+    {
+      "from_source": "Context window overflow and context drift causing 65% of AI agent failures",
+      "to_source": "Context engineering discipline for AI agents: choosing which tokens enter the context window",
+      "kind": "refines",
+      "reason": "Context engineering is the discipline that emerged specifically to solve the context overflow problem"
+    },
+    {
+      "from_source": "MemOS memory operating system abstraction for LLM agents",
+      "to_source": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "kind": "refines",
+      "reason": "MemOS is the concrete implementation of the Stage 3 cognitive OS pattern described in the evolutionary framework"
+    },
+    {
+      "from_source": "Letta (formerly MemGPT) OS-inspired tiered memory architecture for AI agents",
+      "to_source": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "kind": "contradicts",
+      "reason": "Letta requires adopting its full runtime while Mem0 plugs into existing agents -- fundamentally different integration philosophies"
+    },
+    {
+      "from_source": "Selective forgetting mechanisms for AI agent memory management",
+      "to_source": "Three-tier memory taxonomy for AI agents in 2025-2026: episodic, semantic, and procedural",
+      "kind": "refines",
+      "reason": "Forgetting mechanisms operate differently across episodic (time-decayed), semantic (fact-updated), and procedural (skill-pruned) memory tiers"
+    },
+    {
+      "from_source": "Multi-agent memory sharing via Model Context Protocol (MCP) in 2026",
+      "to_source": "CrewAI memory system redesign from four types to unified Memory class",
+      "kind": "supersedes",
+      "reason": "MCP-based shared memory infrastructure is replacing framework-specific memory implementations like CrewAI's internal system"
+    },
+    {
+      "from_source": "LangChain and LangMem memory types for conversational AI agents",
+      "to_source": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "kind": "refines",
+      "reason": "LangChain's original memory types exemplify Stage 1 extraction plugins while LangMem represents their evolution toward Stage 2"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Three-tier memory taxonomy for AI agents in 2025-2026: episodic, semantic, and procedural",
+      "kind": "url",
+      "locator": "https://atlan.com/know/types-of-ai-agent-memory/",
+      "reason": "Comprehensive taxonomy of episodic, semantic, and procedural memory types for AI agents"
+    },
+    {
+      "pair_source": "Three-tier memory taxonomy for AI agents in 2025-2026: episodic, semantic, and procedural",
+      "kind": "url",
+      "locator": "https://zylos.ai/research/2026-04-05-ai-agent-memory-architectures-persistent-knowledge/",
+      "reason": "Research overview of memory architecture convergence on the three-tier taxonomy"
+    },
+    {
+      "pair_source": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "kind": "url",
+      "locator": "https://mem0.ai/blog/state-of-ai-agent-memory-2026",
+      "reason": "Official Mem0 2026 benchmark report with LoCoMo and LongMemEval scores"
+    },
+    {
+      "pair_source": "Mem0 memory framework architecture and 2026 benchmark performance",
+      "kind": "url",
+      "locator": "https://vectorize.io/articles/best-ai-agent-memory-systems",
+      "reason": "Independent comparison of 8 memory frameworks including Mem0 benchmarks and architecture details"
+    },
+    {
+      "pair_source": "Letta (formerly MemGPT) OS-inspired tiered memory architecture for AI agents",
+      "kind": "url",
+      "locator": "https://vectorize.io/articles/mem0-vs-letta",
+      "reason": "Detailed comparison of Mem0 vs Letta architectures including tiered memory design"
+    },
+    {
+      "pair_source": "Letta (formerly MemGPT) OS-inspired tiered memory architecture for AI agents",
+      "kind": "url",
+      "locator": "https://rywalker.com/research/letta",
+      "reason": "Research overview of Letta's evolution from MemGPT including 2026 product changes"
+    },
+    {
+      "pair_source": "Zep AI temporal knowledge graphs and Graphiti for agent memory",
+      "kind": "url",
+      "locator": "https://arxiv.org/abs/2501.13956",
+      "reason": "Original Zep temporal knowledge graph architecture paper"
+    },
+    {
+      "pair_source": "Zep AI temporal knowledge graphs and Graphiti for agent memory",
+      "kind": "url",
+      "locator": "https://neo4j.com/blog/developer/graphiti-knowledge-graph-memory/",
+      "reason": "Neo4j coverage of Graphiti knowledge graph memory for agents"
+    },
+    {
+      "pair_source": "LangChain and LangMem memory types for conversational AI agents",
+      "kind": "url",
+      "locator": "https://atlan.com/know/long-term-memory-langchain-agents/",
+      "reason": "Guide to long-term memory for LangChain agents using LangGraph and LangMem"
+    },
+    {
+      "pair_source": "LangChain and LangMem memory types for conversational AI agents",
+      "kind": "url",
+      "locator": "https://pypi.org/project/langmem/",
+      "reason": "Official LangMem PyPI page with download statistics and version history"
+    },
+    {
+      "pair_source": "Context window overflow and context drift causing 65% of AI agent failures",
+      "kind": "url",
+      "locator": "https://factory.ai/news/context-window-problem",
+      "reason": "Factory.ai analysis of the context window problem including enterprise failure statistics"
+    },
+    {
+      "pair_source": "Context window overflow and context drift causing 65% of AI agent failures",
+      "kind": "url",
+      "locator": "https://sparkco.ai/blog/agent-context-windows-in-2026-how-to-stop-your-ai-from-forgetting-everything",
+      "reason": "Practical guide to context window management including Chroma Research context rot findings"
+    },
+    {
+      "pair_source": "Selective forgetting mechanisms for AI agent memory management",
+      "kind": "url",
+      "locator": "https://arxiv.org/abs/2604.20300",
+      "reason": "FSFM paper establishing taxonomy of biologically-inspired forgetting mechanisms for agent memory"
+    },
+    {
+      "pair_source": "Selective forgetting mechanisms for AI agent memory management",
+      "kind": "url",
+      "locator": "https://dl.acm.org/doi/10.1145/3765766.3765803",
+      "reason": "ACT-R-inspired memory architecture paper on human-like remembering and forgetting in LLM agents"
+    },
+    {
+      "pair_source": "MemOS memory operating system abstraction for LLM agents",
+      "kind": "url",
+      "locator": "https://github.com/MemTensor/MemOS",
+      "reason": "Official MemOS GitHub repository with architecture documentation and performance claims"
+    },
+    {
+      "pair_source": "MemOS memory operating system abstraction for LLM agents",
+      "kind": "url",
+      "locator": "https://www.testingcatalog.com/memos-2-0-brings-open-source-memory-os-to-ai-agents/",
+      "reason": "MemOS 2.0 release coverage with feature details"
+    },
+    {
+      "pair_source": "Multi-agent memory sharing via Model Context Protocol (MCP) in 2026",
+      "kind": "url",
+      "locator": "https://zylos.ai/research/2026-03-09-multi-agent-memory-architectures-shared-isolated-hierarchical/",
+      "reason": "Research on shared, isolated, and hierarchical memory architectures for multi-agent systems"
+    },
+    {
+      "pair_source": "CrewAI memory system redesign from four types to unified Memory class",
+      "kind": "url",
+      "locator": "https://dev.to/pockit_tools/langgraph-vs-crewai-vs-autogen-the-complete-multi-agent-ai-orchestration-guide-for-2026-2d63",
+      "reason": "Comparison of multi-agent frameworks including CrewAI memory redesign details"
+    },
+    {
+      "pair_source": "CrewAI memory system redesign from four types to unified Memory class",
+      "kind": "url",
+      "locator": "https://mem0.ai/blog/crewai-guide-multi-agent-ai-teams",
+      "reason": "Guide to CrewAI multi-agent teams with memory integration details"
+    },
+    {
+      "pair_source": "AI agent memory benchmark standards: LoCoMo, LongMemEval, and BEAM",
+      "kind": "url",
+      "locator": "https://mem0.ai/blog/ai-memory-benchmarks-in-2026",
+      "reason": "Detailed walkthrough of the three primary memory benchmarks and their evaluation criteria"
+    },
+    {
+      "pair_source": "AI agent memory benchmark standards: LoCoMo, LongMemEval, and BEAM",
+      "kind": "url",
+      "locator": "https://preuve.ai/blog/ai-memory-systems-statistics-2026",
+      "reason": "60+ statistics on AI memory systems in 2026 including benchmark comparisons"
+    },
+    {
+      "pair_source": "Context engineering discipline for AI agents: choosing which tokens enter the context window",
+      "kind": "url",
+      "locator": "https://agentmarketcap.ai/blog/2026/04/11/agent-context-engineering-sliding-windows-memory-2026",
+      "reason": "Technical guide to context engineering including sliding windows and memory offloading techniques"
+    },
+    {
+      "pair_source": "Hybrid vector-graph memory as minimum viable architecture for production AI agents in 2026",
+      "kind": "url",
+      "locator": "https://sparkco.ai/blog/ai-agent-memory-in-2026-comparing-rag-vector-stores-and-graph-based-approaches",
+      "reason": "Comparative analysis of RAG, vector stores, and graph-based memory approaches for production agents"
+    },
+    {
+      "pair_source": "Dual-store memory architectures combining vector databases and knowledge graphs for AI agents",
+      "kind": "url",
+      "locator": "https://datapace.ai/blog/ai-agent-memory-tools-2026",
+      "reason": "Comparison of Mem0, Zep, and Letta with details on vector and graph backend support"
+    },
+    {
+      "pair_source": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "kind": "url",
+      "locator": "https://medium.com/@vektormemory/the-state-of-ai-agent-memory-in-2026-what-the-research-actually-shows-0b77063c2c2b",
+      "reason": "Research-grounded overview of agent memory evolution identifying three architectural stages"
+    },
+    {
+      "pair_source": "Three evolutionary stages of AI agent memory: plugins to graphs to cognitive OS",
+      "kind": "url",
+      "locator": "https://machinelearningmastery.com/the-6-best-ai-agent-memory-frameworks-you-should-try-in-2026/",
+      "reason": "Framework comparison showing the range from simple memory plugins to cognitive OS architectures"
+    }
+  ]
+}

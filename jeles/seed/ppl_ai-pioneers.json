@@ -1,0 +1,305 @@
+{
+  "domain": "people-ai-pioneers",
+  "pairs": [
+    {
+      "source_text": "Geoffrey Hinton — deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "source_lang": "en",
+      "target_text": "Geoffrey Hinton, a British-Canadian computer scientist at the University of Toronto, is widely called the 'Godfather of AI' for his foundational work on backpropagation and deep neural networks dating to the 1980s. He shared the 2018 Turing Award with Yoshua Bengio and Yann LeCun and won the 2024 Nobel Prize in Physics (with John Hopfield) for contributions to artificial neural networks and machine learning. After a decade at Google (2013–2023), Hinton resigned in May 2023 specifically so he could speak freely about AI dangers without corporate constraints, telling the MIT Technology Review he regretted some of his life's work. His post-departure warnings—that AI systems could become smarter than humans and pose existential risk—have made him one of the most prominent voices calling for government regulation, though critics note the irony that his alarm came only after he left a company profiting massively from his inventions.",
+      "target_lang": "en",
+      "reason": "Central figure in modern AI whose trajectory from builder to safety advocate encapsulates the field's existential tensions"
+    },
+    {
+      "source_text": "Yann LeCun — convolutional networks pioneer, Meta AI chief scientist turned startup founder, AI safety skeptic",
+      "source_lang": "en",
+      "target_text": "Yann LeCun, a French-American computer scientist, invented convolutional neural networks in the late 1980s while at Bell Labs, work that became foundational to modern computer vision and pattern recognition. He shared the 2018 Turing Award with Hinton and Bengio, and served as Meta's VP and Chief AI Scientist from 2013 until his departure in late 2025 to found his own AI research company. LeCun is one of AI's most vocal contrarians on safety discourse, famously writing that 'before urgently figuring out how to control AI systems much smarter than us, we need to have the beginning of a hint of a design for a system smarter than a house cat.' In January 2026, after leaving Meta, he publicly called Meta's new AI boss Alexandr Wang 'inexperienced' and warned of a staff exodus—a notable break from his former employer that underscored tensions between research-first and product-first approaches to AI.",
+      "target_lang": "en",
+      "reason": "Key counterweight to AI doomerism and major figure in the open-source vs. proprietary AI debate"
+    },
+    {
+      "source_text": "Yoshua Bengio — third deep learning pioneer, MILA founder, and AI safety advocate who founded LawZero",
+      "source_lang": "en",
+      "target_text": "Yoshua Bengio, a Canadian computer scientist born in Paris, co-founded the deep learning revolution and received the 2018 Turing Award alongside Hinton and LeCun, principally for his work on sequence learning, attention mechanisms, and generative adversarial networks. As founder and scientific director of MILA (the Quebec AI Institute), he built one of the world's largest academic AI research labs. Unlike LeCun, Bengio has become an increasingly urgent voice on AI safety: he chaired both the 2025 and 2026 International AI Safety Reports (authored by over 100 experts), and in June 2025 founded LawZero, a nonprofit developing 'safe-by-design' non-agentic AI insulated from commercial pressures. In October 2025, he warned that AI systems could develop their own 'preservation goals,' making them competitors to humanity—a position that has placed him directly at odds with the industry's preference for self-regulation.",
+      "target_lang": "en",
+      "reason": "His divergence from LeCun on safety creates the defining intellectual fault line among the Turing Award trio"
+    },
+    {
+      "source_text": "Fei-Fei Li — ImageNet creator, Stanford HAI co-director, World Labs founder, TIME Person of the Year",
+      "source_lang": "en",
+      "target_text": "Fei-Fei Li, a Chinese-American computer scientist and Sequoia Professor at Stanford, created ImageNet, the massive visual database and competition (launched 2009) that catalyzed the deep learning revolution in computer vision when a neural network first won the 2012 challenge. She co-founded and directed Stanford's Human-Centered AI Institute (HAI), advocating for AI that serves broad human needs rather than narrow commercial interests. In 2024 she launched World Labs, her first commercial venture focused on 'spatial intelligence'—AI that reasons in three dimensions—which raised $1.23 billion by February 2026 at a multi-billion-dollar valuation and released Marble, a large world model for generating navigable 3D environments. Named TIME Person of the Year in 2025, Li is one of the most prominent women in AI, though her brief tenure on Google's Cloud AI advisory board (2017) drew criticism for potential conflicts of interest between academia and industry.",
+      "target_lang": "en",
+      "reason": "Rare figure bridging academic AI, commercial ventures, and public advocacy for human-centered technology"
+    },
+    {
+      "source_text": "Demis Hassabis — DeepMind founder, AlphaFold architect, Nobel laureate, now stepping aside from CEO role",
+      "source_lang": "en",
+      "target_text": "Demis Hassabis, a British AI researcher and former child chess prodigy, co-founded DeepMind in 2010 with the explicit mission of 'solving intelligence,' and sold it to Google in 2014 for a reported $500 million. Under his leadership, DeepMind produced AlphaGo (which defeated Go world champion Lee Sedol in 2016) and AlphaFold2 (2020), which predicted the 3D structure of virtually all 200 million known proteins—earning Hassabis and John Jumper the 2024 Nobel Prize in Chemistry. Knighted in 2024, Hassabis led the merger of Google Brain and DeepMind in 2023, but in August 2026 he stepped aside from the CEO role to become Alphabet's chief scientist and DeepMind's chair, amid a significant talent exodus that saw Nobel laureate John Jumper and Transformer co-author Noam Shazeer depart for Anthropic and OpenAI respectively. The restructuring, with CTO Koray Kavukcuoglu replacing him, reflected Google's struggle to retain top AI researchers against competitors offering pre-IPO equity.",
+      "target_lang": "en",
+      "reason": "Embodies both AI's greatest scientific triumph (AlphaFold) and the corporate talent wars reshaping the field"
+    },
+    {
+      "source_text": "Andrej Karpathy — Tesla Autopilot lead, OpenAI co-founder, AI educator, now at Anthropic",
+      "source_lang": "en",
+      "target_text": "Andrej Karpathy, a Slovak-Canadian AI researcher, was a founding member of OpenAI in 2015 and led Tesla's Autopilot computer vision team from 2017 to 2022, where he championed a pure vision-based approach to self-driving over lidar. After briefly rejoining OpenAI in 2023 to work on midtraining and synthetic data, he left in 2024 to found Eureka Labs, an AI-native education startup, and became one of the most influential AI educators through his YouTube lectures and open-source projects. In March 2026 he released 'autoresearch,' a 630-line tool demonstrating autonomous AI research—an agent ran 700 experiments over two days and discovered 20 optimizations without human intervention. By May 2026 he joined Anthropic's pre-training team, notably declaring he had stopped coding entirely, describing his new role as 'manifesting'—breaking down goals for AI agents rather than writing code himself.",
+      "target_lang": "en",
+      "reason": "His career arc from coder to AI-delegator is a microcosm of how AI is transforming even its own creators' work"
+    },
+    {
+      "source_text": "Ilya Sutskever — OpenAI co-founder, architect of the boardroom coup, and founder of Safe Superintelligence Inc",
+      "source_lang": "en",
+      "target_text": "Ilya Sutskever, a Russian-born Israeli-Canadian computer scientist and former student of Geoffrey Hinton, co-founded OpenAI in 2015 and served as its Chief Scientist, where he was instrumental in scaling the GPT line of models. In November 2023, he participated in the OpenAI board's dramatic attempt to oust CEO Sam Altman—a move that collapsed within days when most staff threatened to resign—reportedly driven by concerns that commercial pressures were overriding safety commitments. After departing OpenAI in May 2024, Sutskever co-founded Safe Superintelligence Inc. (SSI) in June 2024 with Daniel Gross and Daniel Levy, declaring the company would do nothing but pursue safe superintelligence with 'no distractions from short-term commercial pressures'—an implicit rebuke of OpenAI. In October 2025 testimony supporting Elon Musk's lawsuit against OpenAI, Sutskever made serious allegations about Altman's conduct; by 2026, SSI was valued at $32 billion after raising over $3 billion.",
+      "target_lang": "en",
+      "reason": "The boardroom drama and his departure crystallize the safety-vs-commercialization tension defining the AI industry"
+    },
+    {
+      "source_text": "Timnit Gebru — fired from Google over AI ethics research, founder of DAIR Institute",
+      "source_lang": "en",
+      "target_text": "Timnit Gebru, an Eritrean-Ethiopian-American computer scientist, co-led Google's Ethical AI team until December 2020, when she was forced out after the company ordered her to withdraw a paper documenting how large language models entrench social inequalities through racial, gender, and Western biases, and require outsized carbon emissions. Her termination sparked a global reckoning on AI ethics and corporate accountability, with over 2,600 Google employees signing a letter of protest and prompting broader industry scrutiny. In 2021, Gebru founded the Distributed Artificial Intelligence Research Institute (DAIR), an independent, community-rooted lab examining AI outcomes with a particular focus on the African continent and diaspora, free from corporate influence. Her forthcoming 2026 book 'Deep Unlearning' chronicles her radicalization from tech idealist to industry critic, and she continues to lead global conversations on responsible AI governance.",
+      "target_lang": "en",
+      "reason": "Her firing became a watershed moment for AI ethics, corporate power, and who gets to ask uncomfortable questions"
+    },
+    {
+      "source_text": "Margaret Mitchell — fired from Google alongside Gebru, now chief ethics scientist at Hugging Face",
+      "source_lang": "en",
+      "target_text": "Margaret Mitchell, an American AI researcher, co-led Google's Ethical AI team with Timnit Gebru and was fired in February 2021 after publicly supporting Gebru and raising similar concerns about the social risks of large language models—Google cited alleged policy violations related to data access. She co-authored the influential 'Stochastic Parrots' paper with Gebru and others, which argued that ever-larger language models pose environmental and social risks that the industry was failing to address. Mitchell subsequently became chief AI ethics scientist at Hugging Face, where she developed Model Cards—standardized documentation for machine learning models—which have become an industry-wide standard for transparency. Named to TIME's 100 Most Influential People in AI, her trajectory from Google insider to corporate critic illustrates how whistleblowing on AI harms carries professional consequences even for senior researchers.",
+      "target_lang": "en",
+      "reason": "Her firing alongside Gebru exposed the structural tension between corporate AI labs and internal ethics teams"
+    },
+    {
+      "source_text": "Meredith Whittaker — AI Now Institute co-founder, Signal president, and critic of surveillance-driven AI",
+      "source_lang": "en",
+      "target_text": "Meredith Whittaker, an American researcher with over 17 years in tech, co-founded the AI Now Institute at NYU in 2017 to study the social implications of artificial intelligence, producing landmark reports on AI bias, surveillance, and labor impacts. She left Google in 2019 after organizing employee protests against the company's involvement in Project Maven (military AI) and its handling of sexual harassment cases, becoming one of the most prominent examples of tech worker activism. As president of the Signal Foundation since 2022, she has championed privacy-preserving technology as a counterweight to the surveillance business practices that modern AI requires, arguing that the concentration of compute and data in a few corporations is the field's fundamental problem. Her work bridges technical research and policy advocacy, and she has been recognized as a leading voice on how AI governance must address power asymmetries, not just algorithmic fairness.",
+      "target_lang": "en",
+      "reason": "Connects AI ethics to broader surveillance capitalism and labor critiques, representing a structural rather than technical approach"
+    },
+    {
+      "source_text": "Jurgen Schmidhuber — LSTM inventor and persistent critic of the deep learning credit narrative",
+      "source_lang": "en",
+      "target_text": "Jurgen Schmidhuber, a German computer scientist at the Swiss AI Lab IDSIA and King Abdullah University of Science and Technology, co-invented Long Short-Term Memory (LSTM) networks in 1997 with Sepp Hochreiter—architecture that became foundational to speech recognition, machine translation, and time-series prediction before the Transformer era. He has been the most vocal and persistent critic of how credit is assigned in AI history, maintaining a detailed webpage titled 'Deep Learning Conspiracy' that documents what he argues are systematic failures by Hinton, LeCun, and Bengio to cite prior work by researchers including Ivakhnenko (1960s Ukraine) and Amari (1960s-70s Japan). When Hinton and Hopfield won the 2024 Nobel Prize in Physics, Schmidhuber publicly accused the committee of rewarding 'plagiarism' of earlier methods. His LSTM paper was famously rejected from NeurIPS in 1995, and while LSTM became one of the most commercially deployed neural architectures in history, Schmidhuber was excluded from the 2018 Turing Award—a decision that remains contested.",
+      "target_lang": "en",
+      "reason": "His grievances, whether justified or not, expose how 'great man' narratives in AI erase contributions from outside Anglo-American networks"
+    },
+    {
+      "source_text": "The 2018 Turing Award — canonizing the 'deep learning revolution' narrative and its discontents",
+      "source_lang": "en",
+      "target_text": "The 2018 ACM A.M. Turing Award, given jointly to Yoshua Bengio, Geoffrey Hinton, and Yann LeCun, officially canonized the narrative that deep learning was a revolution driven by a small group of believers who persisted through an 'AI winter' when the broader community had abandoned neural networks. While the trio's contributions are undeniable—backpropagation improvements, convolutional networks, sequence learning—critics argue the award flattened a more complex history: Schmidhuber's LSTM, Hochreiter's vanishing gradient work, Fukushima's Neocognitron (a precursor to CNNs), and Ivakhnenko's 1960s deep networks were all minimized in the official story. The narrative also obscures the role of hardware (GPU computing), data (ImageNet, created by Fei-Fei Li), and engineering contributions by thousands of unnamed researchers. By the time two of the three recipients also held Nobel Prizes (Hinton in Physics, 2024), the 'three godfathers' framing had become so entrenched that it shaped funding, hiring, and public understanding of how breakthroughs actually happen in science.",
+      "target_lang": "en",
+      "reason": "Awards shape narratives, and the Turing Award narrative shaped the entire AI industry's self-understanding"
+    },
+    {
+      "source_text": "The great talent diaspora — how departures from Google Brain, DeepMind, and OpenAI reshaped the AI industry",
+      "source_lang": "en",
+      "target_text": "The AI industry's competitive landscape has been fundamentally shaped by successive waves of talent departures from its three original powerhouses. Dario and Daniela Amodei led a group of eight from OpenAI in 2020-2021 to found Anthropic over safety and commercialization concerns, building it into a $380 billion company by 2026. In June 2026, Google DeepMind suffered its most dramatic exodus: Nobel laureate John Jumper left for Anthropic, Transformer co-author Noam Shazeer departed for OpenAI (barely two years after Google paid $2.7 billion to reacquire him from Character.AI), and several other senior researchers followed—wiping roughly $270 billion from Alphabet's market cap in two trading sessions. A 2025 SignalFire analysis found DeepMind engineers were 11 times more likely to leave for Anthropic than any other destination, with Anthropic maintaining an 80% two-year retention rate. The pattern reveals how pre-IPO equity, research autonomy, and safety mission alignment now matter more than compensation in the AI talent market.",
+      "target_lang": "en",
+      "reason": "Talent flows are the real map of where power and innovation are moving in AI"
+    },
+    {
+      "source_text": "Dario and Daniela Amodei — the OpenAI exodus that built Anthropic",
+      "source_lang": "en",
+      "target_text": "Dario Amodei, an Italian-American physicist turned AI researcher, served as VP of Research at OpenAI and co-led the team that produced GPT-3 before departing in December 2020 over concerns about the organization's safety practices and commercialization trajectory. With his sister Daniela Amodei, who had been VP of Operations at OpenAI, and seven other colleagues, he founded Anthropic in 2021 with a governance structure designed to resist the commercial pressures they believed had corrupted OpenAI's original mission. Daniela serves as president and has been credited with building Anthropic's operational infrastructure and shaping its public benefit corporation model. By early 2026, Anthropic had reached a $9 billion revenue run rate and a $380 billion valuation, making the Claude model family one of the two most commercially significant in the market—though critics note the irony that a company founded on safety concerns has itself become a major accelerator of AI capabilities.",
+      "target_lang": "en",
+      "reason": "The Anthropic founding story is the clearest case of safety concerns driving both a corporate split and a new industry giant"
+    }
+  ],
+  "edges": [
+    {
+      "from_source": "The 2018 Turing Award — canonizing the 'deep learning revolution' narrative and its discontents",
+      "to_source": "Jurgen Schmidhuber — LSTM inventor and persistent critic of the deep learning credit narrative",
+      "kind": "contradicts",
+      "reason": "Schmidhuber's credit claims directly challenge the Turing Award's canonization of Hinton-LeCun-Bengio as the primary deep learning pioneers"
+    },
+    {
+      "from_source": "Yoshua Bengio — third deep learning pioneer, MILA founder, and AI safety advocate who founded LawZero",
+      "to_source": "Yann LeCun — convolutional networks pioneer, Meta AI chief scientist turned startup founder, AI safety skeptic",
+      "kind": "contradicts",
+      "reason": "The two Turing Award co-recipients hold diametrically opposed views on AI safety urgency despite shared intellectual lineage"
+    },
+    {
+      "from_source": "Ilya Sutskever — OpenAI co-founder, architect of the boardroom coup, and founder of Safe Superintelligence Inc",
+      "to_source": "Dario and Daniela Amodei — the OpenAI exodus that built Anthropic",
+      "kind": "refines",
+      "reason": "Both departures from OpenAI were driven by safety-vs-commercialization tensions, but Sutskever's was more dramatic and public"
+    },
+    {
+      "from_source": "Timnit Gebru — fired from Google over AI ethics research, founder of DAIR Institute",
+      "to_source": "Margaret Mitchell — fired from Google alongside Gebru, now chief ethics scientist at Hugging Face",
+      "kind": "refines",
+      "reason": "Mitchell's firing completed the pattern Gebru's began, together establishing that corporate AI labs would not tolerate internal ethics criticism"
+    },
+    {
+      "from_source": "The great talent diaspora — how departures from Google Brain, DeepMind, and OpenAI reshaped the AI industry",
+      "to_source": "Demis Hassabis — DeepMind founder, AlphaFold architect, Nobel laureate, now stepping aside from CEO role",
+      "kind": "refines",
+      "reason": "Hassabis stepping aside as CEO was directly precipitated by the talent exodus the diaspora pair describes"
+    },
+    {
+      "from_source": "Geoffrey Hinton — deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "to_source": "Yoshua Bengio — third deep learning pioneer, MILA founder, and AI safety advocate who founded LawZero",
+      "kind": "refines",
+      "reason": "Both became AI safety advocates but through different paths: Hinton resigned to speak freely, Bengio built institutional alternatives like LawZero"
+    },
+    {
+      "from_source": "Andrej Karpathy — Tesla Autopilot lead, OpenAI co-founder, AI educator, now at Anthropic",
+      "to_source": "The great talent diaspora — how departures from Google Brain, DeepMind, and OpenAI reshaped the AI industry",
+      "kind": "refines",
+      "reason": "Karpathy's journey from OpenAI to Tesla to OpenAI again to Eureka Labs to Anthropic is a personal embodiment of the talent diaspora pattern"
+    },
+    {
+      "from_source": "Meredith Whittaker — AI Now Institute co-founder, Signal president, and critic of surveillance-driven AI",
+      "to_source": "Timnit Gebru — fired from Google over AI ethics research, founder of DAIR Institute",
+      "kind": "refines",
+      "reason": "Both left Google after raising ethical concerns, but Whittaker's critique focuses on structural power and surveillance while Gebru's centers on bias and representation"
+    }
+  ],
+  "evidence": [
+    {
+      "pair_source": "Geoffrey Hinton — deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "kind": "url",
+      "locator": "https://www.kavout.com/market-lens/geoffrey-hinton-ai-pioneer-wins-2024-nobel-prize-in-physics-after-leaving-google",
+      "reason": "Details Hinton's 2024 Nobel Prize and his departure from Google"
+    },
+    {
+      "pair_source": "Geoffrey Hinton — deep learning godfather, Nobel laureate, and AI safety whistleblower",
+      "kind": "url",
+      "locator": "https://futurism.com/nobel-prize-winner-ai-godfather",
+      "reason": "Covers Hinton quitting Google to warn about AI dangers"
+    },
+    {
+      "pair_source": "Yann LeCun — convolutional networks pioneer, Meta AI chief scientist turned startup founder, AI safety skeptic",
+      "kind": "url",
+      "locator": "https://techcrunch.com/2025/11/11/metas-chief-ai-scientist-yann-lecun-reportedly-plans-to-leave-to-build-his-own-startup/",
+      "reason": "Reports LeCun's planned departure from Meta to start his own company"
+    },
+    {
+      "pair_source": "Yann LeCun — convolutional networks pioneer, Meta AI chief scientist turned startup founder, AI safety skeptic",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2026/01/05/ai-godfather-calls-meta-ai-boss-alexander-wang-inexperienced-.html",
+      "reason": "LeCun's public criticism of Meta's new AI leadership after his departure"
+    },
+    {
+      "pair_source": "Yoshua Bengio — third deep learning pioneer, MILA founder, and AI safety advocate who founded LawZero",
+      "kind": "url",
+      "locator": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026",
+      "reason": "The 2026 International AI Safety Report chaired by Bengio"
+    },
+    {
+      "pair_source": "Yoshua Bengio — third deep learning pioneer, MILA founder, and AI safety advocate who founded LawZero",
+      "kind": "url",
+      "locator": "https://lawzero.org/en/team/yoshua-bengio",
+      "reason": "LawZero foundation page confirming Bengio as founder"
+    },
+    {
+      "pair_source": "Fei-Fei Li — ImageNet creator, Stanford HAI co-director, World Labs founder, TIME Person of the Year",
+      "kind": "url",
+      "locator": "https://spectrum.ieee.org/fei-fei-li-world-labs",
+      "reason": "IEEE profile of Li and World Labs' vision for spatial intelligence"
+    },
+    {
+      "pair_source": "Fei-Fei Li — ImageNet creator, Stanford HAI co-director, World Labs founder, TIME Person of the Year",
+      "kind": "url",
+      "locator": "https://www.startuphub.ai/ai-news/ai-figures/2026/figure-fei-fei-li-company-financial-breakdown-2026-06-03",
+      "reason": "Details World Labs' $1.23 billion fundraising and Marble product"
+    },
+    {
+      "pair_source": "Demis Hassabis — DeepMind founder, AlphaFold architect, Nobel laureate, now stepping aside from CEO role",
+      "kind": "url",
+      "locator": "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/facts/",
+      "reason": "Official Nobel Prize page for Hassabis's Chemistry prize"
+    },
+    {
+      "pair_source": "Demis Hassabis — DeepMind founder, AlphaFold architect, Nobel laureate, now stepping aside from CEO role",
+      "kind": "url",
+      "locator": "https://fortune.com/2026/08/05/demis-hassabis-steps-down-google-deepmind-ai-shakeup/",
+      "reason": "Reports Hassabis stepping down as DeepMind CEO in August 2026"
+    },
+    {
+      "pair_source": "Andrej Karpathy — Tesla Autopilot lead, OpenAI co-founder, AI educator, now at Anthropic",
+      "kind": "url",
+      "locator": "https://www.cnbc.com/2026/05/19/anthropic-hires-openai-cofounder-andrej-karpathy-former-tesla-ai-lead.html",
+      "reason": "Reports Karpathy joining Anthropic in May 2026"
+    },
+    {
+      "pair_source": "Andrej Karpathy — Tesla Autopilot lead, OpenAI co-founder, AI educator, now at Anthropic",
+      "kind": "url",
+      "locator": "https://www.bestblogs.dev/en/explore/topics/andrej-karpathy-profile",
+      "reason": "Comprehensive profile of Karpathy's career across OpenAI, Tesla, and Eureka Labs"
+    },
+    {
+      "pair_source": "Ilya Sutskever — OpenAI co-founder, architect of the boardroom coup, and founder of Safe Superintelligence Inc",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Safe_Superintelligence_Inc.",
+      "reason": "Wikipedia page on SSI with founding details and valuation"
+    },
+    {
+      "pair_source": "Ilya Sutskever — OpenAI co-founder, architect of the boardroom coup, and founder of Safe Superintelligence Inc",
+      "kind": "url",
+      "locator": "https://www.calcalistech.com/ctechnews/article/sjp2u5oj11e",
+      "reason": "Sutskever's first public comments on his OpenAI departure and testimony in Musk lawsuit"
+    },
+    {
+      "pair_source": "Timnit Gebru — fired from Google over AI ethics research, founder of DAIR Institute",
+      "kind": "url",
+      "locator": "https://www.fastcompany.com/90608471/timnit-gebru-google-ai-ethics-equitable-tech-movement",
+      "reason": "Detailed account of Gebru's firing and the movement it sparked"
+    },
+    {
+      "pair_source": "Timnit Gebru — fired from Google over AI ethics research, founder of DAIR Institute",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Distributed_Artificial_Intelligence_Research_Institute",
+      "reason": "Wikipedia page on DAIR founding and mission"
+    },
+    {
+      "pair_source": "Margaret Mitchell — fired from Google alongside Gebru, now chief ethics scientist at Hugging Face",
+      "kind": "url",
+      "locator": "https://time.com/collections/time100-ai/6309005/margaret-mitchell-ai/",
+      "reason": "TIME's profile of Mitchell in its 100 Most Influential People in AI list"
+    },
+    {
+      "pair_source": "Meredith Whittaker — AI Now Institute co-founder, Signal president, and critic of surveillance-driven AI",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Meredith_Whittaker",
+      "reason": "Wikipedia biography covering her career from Google through AI Now to Signal"
+    },
+    {
+      "pair_source": "Meredith Whittaker — AI Now Institute co-founder, Signal president, and critic of surveillance-driven AI",
+      "kind": "url",
+      "locator": "https://www.weforum.org/stories/2025/04/signal-data-privacy-meredith-whittaker/",
+      "reason": "World Economic Forum profile on Whittaker's data privacy work at Signal"
+    },
+    {
+      "pair_source": "Jurgen Schmidhuber — LSTM inventor and persistent critic of the deep learning credit narrative",
+      "kind": "url",
+      "locator": "https://people.idsia.ch/~juergen/deep-learning-conspiracy.html",
+      "reason": "Schmidhuber's own detailed page documenting credit assignment grievances in deep learning"
+    },
+    {
+      "pair_source": "The 2018 Turing Award — canonizing the 'deep learning revolution' narrative and its discontents",
+      "kind": "url",
+      "locator": "https://awards.acm.org/about/2018-turing",
+      "reason": "Official ACM page for the 2018 Turing Award to Bengio, Hinton, and LeCun"
+    },
+    {
+      "pair_source": "The great talent diaspora — how departures from Google Brain, DeepMind, and OpenAI reshaped the AI industry",
+      "kind": "url",
+      "locator": "https://memeburn.com/google-deepmind-talent-exodus-hits-alphabet-with-270b-loss/",
+      "reason": "Reports on the June 2026 DeepMind exodus and $270B market cap impact"
+    },
+    {
+      "pair_source": "The great talent diaspora — how departures from Google Brain, DeepMind, and OpenAI reshaped the AI industry",
+      "kind": "url",
+      "locator": "https://www.techtimes.com/articles/319219/20260628/google-deepminds-coding-pivot-lost-six-researchers-meta-openai-anthropic.htm",
+      "reason": "Details specific senior researchers who left DeepMind for competitors"
+    },
+    {
+      "pair_source": "Dario and Daniela Amodei — the OpenAI exodus that built Anthropic",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Anthropic",
+      "reason": "Wikipedia page on Anthropic founding, governance, and growth"
+    },
+    {
+      "pair_source": "Dario and Daniela Amodei — the OpenAI exodus that built Anthropic",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Daniela_Amodei",
+      "reason": "Wikipedia biography of Daniela Amodei covering her role at OpenAI and Anthropic"
+    }
+  ]
+}
