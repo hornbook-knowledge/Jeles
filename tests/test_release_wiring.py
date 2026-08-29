@@ -61,6 +61,28 @@ def _package_config() -> dict:
     return _json(_CONFIG)["packages"]["."]
 
 
+
+# A credential whose events actually trigger workflows. Either form is
+# acceptable; what is NOT acceptable is GITHUB_TOKEN, whose events GitHub
+# suppresses — the release PR merges, no tag workflow fires, nothing publishes.
+#
+# This originally pinned the literal RELEASE_PLEASE_TOKEN, which named the
+# mechanism rather than the property. The willow-ci App satisfies the same
+# property (an installation token is not GITHUB_TOKEN) and adds hourly expiry,
+# so the check accepts either. The GITHUB_TOKEN prohibitions below are
+# unchanged — that is the half that guards the failure jeles paid three
+# releases for.
+NON_SUPPRESSED_CREDENTIALS = (
+    "RELEASE_PLEASE_TOKEN",              # fine-grained PAT (being retired)
+    "steps.app-token.outputs.token",     # willow-ci App installation token
+)
+
+
+def _names_a_non_suppressed_credential(value: object) -> bool:
+    text = str(value)
+    return any(c in text for c in NON_SUPPRESSED_CREDENTIALS)
+
+
 def test_the_tag_release_please_creates_matches_what_release_yml_listens_for():
     """With `include-component-in-tag` unset it defaults to *true*, and the tag
     becomes `<package-name>-vX.Y.Z` — which `v*` does not match, so the publish
@@ -123,12 +145,14 @@ def test_release_automation_uses_the_pat_everywhere():
     # Match `secrets.X` references only. A plain substring search would flag
     # prose that names GITHUB_TOKEN while explaining why it is wrong.
     used: set[str] = set()
+    values: list[str] = []
     for step in steps:
         for value in list((step.get("env") or {}).values()) + \
                      list((step.get("with") or {}).values()):
+            values.append(str(value))
             used.update(re.findall(r"secrets\.([A-Z_]+)", str(value)))
 
-    assert "RELEASE_PLEASE_TOKEN" in used, used
+    assert any(_names_a_non_suppressed_credential(v) for v in values), used
     assert "GITHUB_TOKEN" not in used, (
         "release-please and the auto-merge arming must both use the PAT — "
         f"events generated with GITHUB_TOKEN start no workflow runs. Found: {used}"
@@ -189,7 +213,7 @@ def test_a_changelog_bail_does_not_block_the_release():
     run = step["run"]
     assert "::warning::" in run, "a bail must warn"
     assert 'status" = "2"' in run, "exit 2 must be handled explicitly, not by set -e"
-    assert "RELEASE_PLEASE_TOKEN" in str(step.get("env")), "pushes need the PAT"
+    assert _names_a_non_suppressed_credential(step.get("env"))
     assert "GITHUB_TOKEN" not in str(step.get("env"))
 
 
@@ -280,7 +304,7 @@ def test_the_checkout_uses_the_pat_so_its_pushes_are_not_gated():
     checkout = next(s for s in steps
                     if str(s.get("uses", "")).startswith("actions/checkout"))
     token = str((checkout.get("with") or {}).get("token", ""))
-    assert "RELEASE_PLEASE_TOKEN" in token, (
-        "checkout must use the PAT — its credential is what the changelog "
-        f"step pushes with. Got: {token!r}")
+    assert _names_a_non_suppressed_credential(token), (
+        "checkout must carry a credential whose events trigger workflows. "
+        f"Got: {token!r}")
     assert "GITHUB_TOKEN" not in token
