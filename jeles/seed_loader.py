@@ -119,14 +119,25 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
         answer = (pair.get("target_text") or "").strip()
         if not question or not answer:
             # Not malformed — a different artifact under the same key. 36 of
-            # the shipped entries are *steelman* records ({steelman, thesis,
-            # argument, counterweight, attack_argument/defense_argument}):
-            # the adversarial rounds' arguments, which share `pairs` but not
-            # the pair shape. They are reasoning about claims, not claims, and
-            # a steelman filed as a nugget would answer a question with an
-            # argument nobody asked for. Counted apart from `errors`, because
-            # "this row is broken" and "this row is not a Q/A pair" call for
-            # different responses and only the first is a defect.
+            # the shipped entries are the adversarial rounds' *reasoning*,
+            # sharing `pairs` without the pair shape, in four distinct forms:
+            #
+            #   12  category, conventional_frame, direction, figure, steelman,
+            #       what_this_does_NOT_claim
+            #   12  argument, role_in_corpus, steelman_type, target, title
+            #    8  argument, counterweight, source_profile, subject, thesis
+            #    4  attack_argument, attack_thesis, defense_argument,
+            #       defense_thesis, source_profile, subject
+            #
+            # Look at `what_this_does_NOT_claim`. Filed as a nugget, that field
+            # becomes a verified answer stating what is explicitly *not* being
+            # claimed — the corpus asserting the negation of its own
+            # disclaimer, and under a human's signature if the batch is sealed.
+            # These are reasoning about claims, not claims.
+            #
+            # Counted apart from `errors`, because "this row is broken" and
+            # "this row is not a Q/A pair" call for different responses and
+            # only the first is a defect.
             out["not_pairs"] += 1
             continue
 
