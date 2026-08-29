@@ -85,6 +85,7 @@ def test_verify_claim_matched_false_when_nothing_comes_back(monkeypatch):
         "claim": "a claim nobody indexed", "matched": False,
         "title": "", "url": "", "date": "", "source": "", "institution": "",
         "tier": "", "source_rank": 0.0, "overlap": 0.0,
+        "relevance": "unjudged",
     }
 
 
@@ -319,3 +320,93 @@ def test_an_unmatched_claim_reports_both_numbers_as_zero(monkeypatch):
     out = verify_claim("nothing indexed anywhere")
     assert out["source_rank"] == 0.0 and out["overlap"] == 0.0
     assert "confidence" not in out, "the misleading name must not survive as an alias"
+
+
+# ── The relevance judge: it may demote, never promote ───────────────────────
+#
+# Counting shared words could not separate the measured false positive from a
+# true one - 0.50 against 0.57 on a live run - because a paper about function
+# calling and a claim about a named product genuinely share vocabulary. A
+# model reading both says "this is not about Gemma" without hesitation, so the
+# judge is the answer overlap was not. It is injected, optional, and one-way.
+
+
+def _judge(verdict):
+    """A stand-in for the model. Records what it was asked."""
+    asked = []
+
+    def judge(system, history, text):
+        asked.append(text)
+        return verdict
+
+    judge.asked = asked
+    return judge
+
+
+def _returns(monkeypatch, title):
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {
+        "crossref": [{"title": title, "url": "https://e.org/1", "date": "2026",
+                      "institution": "Elsevier BV", "snippet": ""}]}})
+
+
+def test_the_judge_demotes_a_document_that_only_shares_vocabulary(monkeypatch):
+    _returns(monkeypatch, "Code-Generated Tool Orchestration versus Native "
+                          "Function Calling")
+    out = verify_claim("Gemma 4 ships with native function calling",
+                       judge=_judge("UNRELATED"))
+    assert out["relevance"] == "unrelated"
+    assert out["matched"] is False, "an unrelated document does not back a claim"
+    assert out["title"], "what was found and rejected stays visible"
+    assert out["source_rank"] == pytest.approx(0.90), \
+        "the publisher's rank is unchanged - it was never the thing at issue"
+
+
+def test_the_judge_cannot_promote_a_claim_nothing_returned(monkeypatch):
+    """The safety argument for putting a model here at all. Nothing it says
+    can turn a False into a True, so the ladder stays decided by arithmetic
+    and a model talked into agreeing has no way to act on it."""
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {}})
+    out = verify_claim("anything at all", judge=_judge("SUPPORTS"))
+    assert out["matched"] is False
+    assert out["relevance"] == "unjudged", "with nothing found there is nothing to judge"
+
+
+def test_a_supporting_verdict_leaves_the_match_alone(monkeypatch):
+    _returns(monkeypatch, "Attention is All You Need")
+    out = verify_claim("The Transformer was introduced in Attention Is All You Need",
+                       judge=_judge("SUPPORTS"))
+    assert out["relevance"] == "supports" and out["matched"] is True
+
+
+def test_no_judge_means_no_model_and_no_change(monkeypatch):
+    """The base install has zero runtime dependencies and this function stays
+    as pure as it was. Omitting the judge must change nothing."""
+    _returns(monkeypatch, "Something tangentially related")
+    out = verify_claim("a claim", judge=None)
+    assert out["matched"] is True and out["relevance"] == "unjudged"
+
+
+def test_a_broken_judge_changes_nothing(monkeypatch):
+    """A model outage must not quietly become a policy that rejects everything."""
+    def explode(system, history, text):
+        raise RuntimeError("ollama is down")
+
+    _returns(monkeypatch, "Something")
+    out = verify_claim("a claim", judge=explode)
+    assert out["relevance"] == "unjudged"
+    assert out["matched"] is True, "an absent judge demotes nothing"
+
+
+def test_an_unreadable_verdict_is_unjudged_not_a_refusal(monkeypatch):
+    """'The judge said no' and 'the judge never answered' are different facts."""
+    _returns(monkeypatch, "Something")
+    out = verify_claim("a claim", judge=_judge("Well, it depends on context..."))
+    assert out["relevance"] == "unjudged" and out["matched"] is True
+
+
+def test_the_judge_is_shown_the_claim_and_the_document(monkeypatch):
+    _returns(monkeypatch, "A Paper About Fish")
+    j = _judge("UNRELATED")
+    verify_claim("Gemma 4 ships with function calling", judge=j)
+    assert "Gemma 4 ships with function calling" in j.asked[0]
+    assert "A Paper About Fish" in j.asked[0]

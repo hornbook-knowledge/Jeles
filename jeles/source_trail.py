@@ -46,12 +46,12 @@ package promises not to have, so the call becomes a parameter here instead.
 
 Public API:
     extract_claims(text, llm_respond) -> list[str]
-    verify_claim(claim, sources=None, limit=2) -> dict
+    verify_claim(claim, sources=None, limit=2, judge=None) -> dict
     verify_text(text, llm_respond, sources=None, limit=2) -> dict
 
 Output schema per claim:
     {claim, matched, title, url, date, source, tier, source_rank, overlap,
-     institution}
+     institution, relevance}
 
 `source_rank` is the publisher's rank, never the match's quality; `overlap` is
 how much of the claim the returned document actually says. See `verify_claim`.
@@ -122,6 +122,48 @@ def extract_claims(text: str, llm_respond: Callable[..., str]) -> list[str]:
         return []
 
 
+_JUDGE_SYSTEM = (
+    "You decide whether a document is about a claim. You will be given a CLAIM "
+    "and a DOCUMENT (its title, and sometimes a short description).\n"
+    "Answer with exactly one word:\n"
+    "SUPPORTS - the document is about this claim's specific subject.\n"
+    "UNRELATED - the document is about something else, even if it shares "
+    "vocabulary with the claim.\n"
+    "Sharing general words is not enough. A paper about function calling is "
+    "UNRELATED to a claim about a specific named product unless it names that "
+    "product. When unsure, answer UNRELATED.\n"
+    "One word. No punctuation, no explanation."
+)
+
+
+def _ask_judge(claim: str, hit: dict[str, Any], judge: Callable[..., str]) -> str:
+    """Put one claim and one document to the injected model. Never raises.
+
+    Returns ``"supports"``, ``"unrelated"``, or ``"unjudged"`` — the last for
+    a model that errored, timed out, or answered something this cannot read.
+    Kept as its own value rather than folded into either verdict because
+    "the judge said no" and "the judge never answered" are different facts,
+    and collapsing them is how a model outage turns into a silent policy
+    change. Same reasoning `institutional.py` applies to `failed` versus
+    `skipped` versus `timed_out`.
+    """
+    doc = f"{hit.get('title') or ''}\n{(hit.get('snippet') or '')[:400]}".strip()
+    if not doc:
+        return "unjudged"
+    try:
+        raw = judge(_JUDGE_SYSTEM, [], f"CLAIM: {claim}\n\nDOCUMENT: {doc}")
+    except Exception as exc:
+        log.warning("relevance judge failed: %s", exc)
+        return "unjudged"
+    answer = (raw or "").strip().upper()
+    if "UNRELATED" in answer:
+        return "unrelated"
+    if "SUPPORTS" in answer:
+        return "supports"
+    log.warning("relevance judge gave an unreadable verdict: %r", raw[:80])
+    return "unjudged"
+
+
 def _overlap(claim: str, hit: dict[str, Any]) -> float:
     """How much of the claim the returned document actually says.
 
@@ -164,6 +206,7 @@ def verify_claim(
     claim: str,
     sources: Sequence[str] | None = None,
     limit: int = 2,
+    judge: Callable[..., str] | None = None,
 ) -> dict[str, Any]:
     """Verify a single claim against `jeles.sources`.
 
@@ -193,9 +236,30 @@ def verify_claim(
 
     `overlap` is reported beside it as the missing half — how much of the
     claim the document actually says (see `_overlap`). It is **reported, not
-    enforced**: `matched: true` still means only that a search returned
-    something, and a caller that wants a relevance bar must set its own and
-    say what it chose. No threshold here has been earned yet.
+    enforced**: no threshold on it has been earned. Counting shared words was
+    not enough to separate the measured false positive from a true one (0.50
+    against 0.57 on a live run), because a paper about function calling and a
+    claim about a named product that does nothing else share real vocabulary.
+
+    `judge` is the answer to that, and it is optional. Pass a callable with
+    `extract_claims`' signature — ``judge(system, history, text) -> str`` —
+    and the single winning hit is put to it as "is this document about this
+    claim". The verdict lands in `relevance` as ``supports``, ``unrelated``,
+    or ``unjudged``. Omit it and nothing changes: no model, no network, and
+    `relevance` stays ``unjudged``, so the base install keeps its promise of
+    zero runtime dependencies and this function stays as pure as it was.
+
+    **The judge may only demote.** ``unrelated`` flips `matched` to False;
+    nothing it can say will flip a False to True. That asymmetry is the whole
+    safety argument for putting a model here at all: the confidence ladder
+    stays decided by arithmetic, and a model that has been talked into
+    agreeing with a claim cannot promote anything — it can only refuse. It is
+    also where the errors actually are: the three failures measured on
+    2026-08-28 were all false positives, none false negatives.
+
+    A judge that errors, times out, or answers unreadably returns
+    ``unjudged`` and changes nothing, so a model outage cannot quietly become
+    a policy that rejects everything.
 
     Returns the output schema dict — `matched=False` and empty fields if
     nothing in the fan-out backs the claim.
@@ -224,9 +288,18 @@ def verify_claim(
                     "tier":        "press" if source_id in PRESS_SOURCES else "academic",
                     "source_rank": conf,
                     "overlap":     _overlap(claim, hit),
+                    "relevance":   "unjudged",
                 }
 
     if best:
+        if judge is not None:
+            best["relevance"] = _ask_judge(claim, best, judge)
+            if best["relevance"] == "unrelated":
+                # Demote only. The judge can take a match away; it can never
+                # hand one out, and the fields describing what was found stay
+                # put so "nothing came back" and "something came back and was
+                # rejected" remain different answers.
+                best["matched"] = False
         return best
 
     return {
@@ -240,6 +313,7 @@ def verify_claim(
         "tier":        "",
         "source_rank": 0.0,
         "overlap":     0.0,
+        "relevance":   "unjudged",
     }
 
 
