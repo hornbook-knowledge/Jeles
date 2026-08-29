@@ -20,6 +20,15 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.12.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.11.0...v0.12.0) (2026-08-29)
+
+
+### Added
+
+* **reactions:** nugget drafting, where the model may phrase but not source ([e61f2fc](https://github.com/hornbook-knowledge/Jeles/commit/e61f2fc5de3d1aa6d33f13d510b0c06f815ce1d2))
+* **reactions:** gap triage, proposing groupings and writing nothing ([608d23f](https://github.com/hornbook-knowledge/Jeles/commit/608d23f2bba2eed37c55ab75da47b7e44f37c8c3))
+* **source_trail:** a relevance judge that may only demote ([c90536a](https://github.com/hornbook-knowledge/Jeles/commit/c90536a950e17499b23d1163c70b68e18c48dad2))
+
 ## [0.11.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.10.0...v0.11.0) (2026-08-28)
 
 
