@@ -21,6 +21,22 @@ from nestor import signing as nestor_signing
 from jeles import _nestor_seal
 
 
+def _norm(question: str) -> str:
+    """Sign the source the way Nestor really does.
+
+    A seal covers `source_norm`, not the raw question (`nestor.memory`: "A
+    seal signature covers (source_norm, target_text, verifier)"). Until
+    2026-08-29 every test in this file signed the raw string and verified the
+    raw string — self-consistent, and never once agreeing with Nestor, which
+    is why `_nestor_seal` refused genuine seals for as long as it did. Signing
+    through the same normalizer the module verifies through is what makes
+    these tests about the bridge instead of about themselves.
+    """
+    from nestor.matcher import StringMatcher
+
+    return StringMatcher().normalize(question)
+
+
 @pytest.fixture(autouse=True)
 def _clean_nestor_signing_state(monkeypatch):
     """Isolate every test here from whatever NESTOR_SEAL_KEY/NESTOR_KEYRING
@@ -49,7 +65,7 @@ def test_refuses_when_nothing_is_configured_to_verify_against(monkeypatch):
     working). This module must not inherit that default — a claim arriving
     at Jeles over a tool call has no unsigned-deployment history to be
     backward compatible with."""
-    sig = nestor_signing.sign_seal("q?", "a.", "rita", key=b"some-key-nobody-configured")
+    sig = nestor_signing.sign_seal(_norm("q?"), "a.", "rita", key=b"some-key-nobody-configured")
     ok, reason = _nestor_seal.verify_human_write("q?", "a.", "rita", _seal_evidence(sig))
     assert ok is False
     assert "configured" in reason
@@ -73,7 +89,7 @@ def test_refuses_a_forged_signature_under_a_shared_key(monkeypatch):
 
 def test_a_real_seal_verifies_under_a_shared_key(monkeypatch):
     monkeypatch.setenv("NESTOR_SEAL_KEY", "the-deployment-secret")
-    sig = nestor_signing.sign_seal("q?", "a.", "rita")
+    sig = nestor_signing.sign_seal(_norm("q?"), "a.", "rita")
     ok, reason = _nestor_seal.verify_human_write("q?", "a.", "rita", _seal_evidence(sig))
     assert (ok, reason) == (True, "ok")
 
@@ -88,7 +104,7 @@ def test_a_real_seal_verifies_under_a_keyring_entry():
     kr.add("rita", kind="hmac")
     nestor_keyring.set_keyring(kr)
 
-    sig = nestor_signing.sign_seal("q?", "a.", "rita")
+    sig = nestor_signing.sign_seal(_norm("q?"), "a.", "rita")
     ok, reason = _nestor_seal.verify_human_write("q?", "a.", "rita", _seal_evidence(sig))
     assert (ok, reason) == (True, "ok")
 
@@ -102,7 +118,7 @@ def test_an_unregistered_verifier_cannot_seal():
     # producing anything, so the caller here has no real signature to try.
     # Simulate the attempted forgery directly: rita's own valid signature,
     # claimed under sam's name.
-    rita_sig = nestor_signing.sign_seal("q?", "a.", "rita")
+    rita_sig = nestor_signing.sign_seal(_norm("q?"), "a.", "rita")
     ok, reason = _nestor_seal.verify_human_write("q?", "a.", "sam", _seal_evidence(rita_sig))
     assert ok is False
     assert "does not verify" in reason
@@ -111,7 +127,7 @@ def test_an_unregistered_verifier_cannot_seal():
 def test_a_revoked_compromised_key_no_longer_verifies():
     kr = nestor_keyring.Keyring()
     kr.add("rita", kind="hmac")
-    sig = nestor_signing.sign_seal("q?", "a.", "rita", key=kr.get("rita").key)
+    sig = nestor_signing.sign_seal(_norm("q?"), "a.", "rita", key=kr.get("rita").key)
     kr.revoke("rita", compromised=True)
     nestor_keyring.set_keyring(kr)
 
@@ -132,7 +148,7 @@ def test_a_valid_seal_does_not_verify_a_different_answer():
     kr.add("rita", kind="hmac")
     nestor_keyring.set_keyring(kr)
 
-    sig = nestor_signing.sign_seal("q?", "the real answer.", "rita")
+    sig = nestor_signing.sign_seal(_norm("q?"), "the real answer.", "rita")
     ok, reason = _nestor_seal.verify_human_write(
         "q?", "a different answer entirely.", "rita", _seal_evidence(sig))
     assert ok is False
@@ -144,7 +160,7 @@ def test_a_valid_seal_does_not_verify_a_different_question():
     kr.add("rita", kind="hmac")
     nestor_keyring.set_keyring(kr)
 
-    sig = nestor_signing.sign_seal("what colour?", "a.", "rita")
+    sig = nestor_signing.sign_seal(_norm("what colour?"), "a.", "rita")
     ok, reason = _nestor_seal.verify_human_write(
         "what shape?", "a.", "rita", _seal_evidence(sig))
     assert ok is False
@@ -160,7 +176,62 @@ def test_a_valid_seal_does_not_verify_a_different_claimed_name():
     kr.add("sam", kind="hmac")
     nestor_keyring.set_keyring(kr)
 
-    sig = nestor_signing.sign_seal("q?", "a.", "rita")
+    sig = nestor_signing.sign_seal(_norm("q?"), "a.", "rita")
     ok, reason = _nestor_seal.verify_human_write("q?", "a.", "sam", _seal_evidence(sig))
     assert ok is False
     assert "does not verify" in reason
+
+
+# ── The bridge: a seal made by Nestor, checked through Jeles ────────────────
+
+
+def test_a_seal_over_the_normalized_source_verifies_a_raw_question():
+    """The regression this file existed for and did not cover.
+
+    Nestor signs `source_norm`. A caller passes `corpus_put` the question as
+    typed — capitals, punctuation and all. If this module checks the raw
+    string, a genuine seal is refused and the `human` rung is unreachable by
+    the one mechanism built to reach it. Measured 2026-08-29 against a real
+    ed25519 seal from the operator's own store: raw returned False,
+    normalized returned True.
+    """
+    kr = nestor_keyring.Keyring()
+    kr.add("rita", kind="hmac")
+    nestor_keyring.set_keyring(kr)
+
+    asked = "What colour is Grove's primary?"
+    answer = "White (#ffffff)."
+    sig = nestor_signing.sign_seal(_norm(asked), answer, "rita")
+
+    ok, reason = _nestor_seal.verify_human_write(
+        asked, answer, "rita", _seal_evidence(sig))
+    assert (ok, reason) == (True, "ok"), \
+        "a seal signed the way Nestor signs must verify a question as typed"
+
+
+def test_punctuation_and_case_do_not_change_the_verdict():
+    """Normalization is what makes the seal survive the difference between
+    how a fact was sealed and how it is later asked."""
+    kr = nestor_keyring.Keyring()
+    kr.add("rita", kind="hmac")
+    nestor_keyring.set_keyring(kr)
+
+    sig = nestor_signing.sign_seal(_norm("what colour is grove"), "White.", "rita")
+    for phrasing in ("What colour is Grove?", "what colour is grove",
+                     "What  colour   is Grove!"):
+        ok, _ = _nestor_seal.verify_human_write(
+            phrasing, "White.", "rita", _seal_evidence(sig))
+        assert ok is True, f"{phrasing!r} normalizes to the sealed source"
+
+
+def test_a_different_question_still_refuses_after_normalizing():
+    """Normalizing must not blur two questions into one. Only formatting is
+    discarded; a different content word is still a different claim."""
+    kr = nestor_keyring.Keyring()
+    kr.add("rita", kind="hmac")
+    nestor_keyring.set_keyring(kr)
+
+    sig = nestor_signing.sign_seal(_norm("what colour is Grove?"), "White.", "rita")
+    ok, reason = _nestor_seal.verify_human_write(
+        "what colour is Tokyo Night?", "White.", "rita", _seal_evidence(sig))
+    assert ok is False and "does not verify" in reason
