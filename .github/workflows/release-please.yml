@@ -57,6 +57,27 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      # Mints a short-lived installation token for the willow-ci GitHub App
+      # (org variable WILLOW_CI_APP_ID + org secret WILLOW_CI_PRIVATE_KEY).
+      #
+      # GitHub suppresses workflow runs for events generated with GITHUB_TOKEN,
+      # so a tag cut with it starts no release workflow and nothing reaches
+      # PyPI — everything reads as fine. An App installation token is not
+      # GITHUB_TOKEN, so its tag triggers workflows normally, exactly as the
+      # PAT did. Unlike the PAT it is minted per run and expires in an hour;
+      # its sibling ENGINE_PROPAGATION_TOKEN expired on 2026-08-04 and stopped
+      # eleven repos receiving engine changes for three and a half weeks with
+      # no signal.
+      #
+      # This step is also the guard: if the App is not installed or the key is
+      # wrong it fails here and loudly, rather than degrading to GITHUB_TOKEN.
+      - name: Mint a willow-ci installation token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.WILLOW_CI_APP_ID }}
+          private-key: ${{ secrets.WILLOW_CI_PRIVATE_KEY }}
+
       # Needed by the changelog step below, which derives entries from
       # `git log <previous tag>..<this release>` rather than trusting the
       # generated text. `fetch-depth: 0` plus tags is load-bearing — a shallow
@@ -77,11 +98,11 @@ jobs:
           # report. Observed on the 2.2.0 release PR, which needed CI started by
           # hand. release-please's own commit on the same branch was not gated,
           # because it pushes with this token.
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - uses: googleapis/release-please-action@v5
         with:
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
@@ -101,7 +122,7 @@ jobs:
       # by that half rather than after.
       - name: Rebuild the changelog section from the commits
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
@@ -162,7 +183,7 @@ jobs:
       # of what it merges). This step and the one above are the fix.
       - name: Make the GitHub Release body match the changelog
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
@@ -224,7 +245,7 @@ jobs:
       # created — silently, which is how the first three attempts failed.
       - name: Arm auto-merge on the release PR
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
