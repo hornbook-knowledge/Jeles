@@ -20,6 +20,14 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.14.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.13.0...v0.14.0) (2026-09-02)
+
+
+### Added
+
+* **commons:** auto-promote core seed nuggets to machine rung ([2fe5f9c](https://github.com/hornbook-knowledge/Jeles/commit/2fe5f9ce2c4e9210dc3c746ebda084999d758c1d))
+* **intake:** add operator corpus load, probe, and gap resolve tooling ([273d262](https://github.com/hornbook-knowledge/Jeles/commit/273d26287ebec47d4a0562288abb721e83fc826e))
+
 ## [0.13.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.12.0...v0.13.0) (2026-08-29)
 
 
