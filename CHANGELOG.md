@@ -27,7 +27,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 * **commons:** auto-promote core seed nuggets to machine rung ([2fe5f9c](https://github.com/hornbook-knowledge/Jeles/commit/2fe5f9ce2c4e9210dc3c746ebda084999d758c1d))
 * **intake:** add operator corpus load, probe, and gap resolve tooling ([273d262](https://github.com/hornbook-knowledge/Jeles/commit/273d26287ebec47d4a0562288abb721e83fc826e))
-* seed corpus intake, commons classification, and operator tooling ([b27236c](https://github.com/hornbook-knowledge/Jeles/commit/b27236c7ded75ffd8617973d6d3c6665f795e479))
 
 ## [0.13.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.12.0...v0.13.0) (2026-08-29)
 
