@@ -132,14 +132,14 @@ def verification_for_intake(
 
 def seed_nugget_id(domain: str, question: str) -> str:
     digest = hashlib.sha256(
-        f"jeles-seed\0{domain}\0{question}".encode("utf-8")
+        f"jeles-seed\0{domain}\0{question}".encode()
     ).hexdigest()
     return f"s{digest[:10]}"
 
 
 def intake_nugget_id(domain: str, question: str) -> str:
     digest = hashlib.sha256(
-        f"jeles-intake\0{domain}\0{question}".encode("utf-8")
+        f"jeles-intake\0{domain}\0{question}".encode()
     ).hexdigest()
     return f"i{digest[:10]}"
 

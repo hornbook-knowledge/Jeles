@@ -42,7 +42,6 @@ from typing import Any
 from jeles import corpus
 
 from .commons import (
-    COMMONS_VERIFIED_BY,
     seed_nugget_id,
     seed_pair_verification,
 )
@@ -194,9 +193,7 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
                 **({"evidence": evidence} if evidence else {}),
             )
             action = result.get("action", "unknown")
-            if action == "created":
-                out[kind if kind in out else "asserted"] += 1
-            elif action == "updated":
+            if action == "created" or action == "updated":
                 out[kind if kind in out else "asserted"] += 1
             else:
                 out["existing"] += 1
