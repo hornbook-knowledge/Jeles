@@ -87,8 +87,11 @@ def load_file(path: Path, *, dry_run: bool, intake_dir: Path) -> dict[str, int]:
 
     data = _load_json(path)
     domain = data.get("domain", path.stem)
-    counts = {"created": 0, "updated": 0, "existing": 0, "errors": 0}
+    counts = {"created": 0, "updated": 0, "existing": 0, "errors": 0,
+              "commons": 0, "novel": 0}
     rel = path.relative_to(intake_dir) if path.is_relative_to(intake_dir) else path.name
+
+    from .commons import intake_nugget_id, verification_for_intake
 
     for pair in data.get("pairs", []):
         question = pair["source_text"].strip()
@@ -101,8 +104,17 @@ def load_file(path: Path, *, dry_run: bool, intake_dir: Path) -> dict[str, int]:
         if pair.get("reason"):
             tags.append("has-reason")
 
+        kind, verified_by, extra_tags = verification_for_intake(
+            domain=domain, pair=pair, data=data, sources=sources,
+        )
+        tags.extend(extra_tags)
+
         if dry_run:
             counts["created"] += 1
+            if kind == "machine":
+                counts["commons"] += 1
+            else:
+                counts["novel"] += 1
             continue
 
         try:
@@ -110,16 +122,19 @@ def load_file(path: Path, *, dry_run: bool, intake_dir: Path) -> dict[str, int]:
                 question=question,
                 answer=answer,
                 sources=sources,
-                verified_by="operator-seat",
-                verification_kind="asserted",
+                verified_by=verified_by,
+                verification_kind=kind,
                 written_by="jeles-intake",
                 tags=tags,
+                nugget_id=intake_nugget_id(domain, question),
             )
             action = result.get("action", "unknown")
-            if action == "created":
+            if action in ("created", "updated"):
                 counts["created"] += 1
-            elif action == "updated":
-                counts["updated"] += 1
+                if kind == "machine":
+                    counts["commons"] += 1
+                else:
+                    counts["novel"] += 1
             else:
                 counts["existing"] += 1
         except Exception as exc:
@@ -135,7 +150,8 @@ def load_all(intake_dir: Path, *, dry_run: bool) -> dict[str, int]:
         print(f"== load {path.name}")
         counts = load_file(path, dry_run=dry_run, intake_dir=intake_dir)
         print(
-            f"  created={counts['created']} updated={counts['updated']} "
+            f"  created={counts['created']} updated={counts.get('updated', 0)} "
+            f"commons={counts.get('commons', 0)} novel={counts.get('novel', 0)} "
             f"existing={counts['existing']} errors={counts['errors']}"
         )
         for k in totals:
