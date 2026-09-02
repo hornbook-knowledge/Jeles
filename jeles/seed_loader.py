@@ -41,6 +41,11 @@ from typing import Any
 
 from jeles import corpus
 
+from .commons import (
+    seed_nugget_id,
+    seed_pair_verification,
+)
+
 __all__ = ["SEED_DIR", "load_all", "load_file", "main", "seed_files"]
 
 #: Where the bundled seed lives inside the installed package.
@@ -97,21 +102,19 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
     # objection as though it were an answer. Skipped, counted, and named, so
     # "not a pair set" never reads as "loaded nothing".
     if not isinstance(data, dict) or "pairs" not in data:
-        return {"domain": path.stem, "human": 0, "asserted": 0, "existing": 0,
-                "errors": 0, "not_pairs": 0, "refusals": {},
+        return {"domain": path.stem, "human": 0, "machine": 0, "asserted": 0,
+                "existing": 0, "errors": 0, "not_pairs": 0, "refusals": {},
                 "skipped": "not a pair set"}
 
     domain = data.get("domain") or path.stem
-    batch_claimant = (data.get("verified_by") or "").strip()
-
     evidence_by_source: dict[str, list[str]] = {}
     for ev in data.get("evidence", []):
         evidence_by_source.setdefault(ev.get("pair_source", ""), []).append(
             ev.get("locator", ""))
 
     out: dict[str, Any] = {"domain": domain, "human": 0, "asserted": 0,
-                           "existing": 0, "errors": 0, "not_pairs": 0,
-                           "refusals": {},
+                           "machine": 0, "existing": 0, "errors": 0,
+                           "not_pairs": 0, "refusals": {},
                            "skipped": ""}
 
     for pair in data.get("pairs", []):
@@ -119,53 +122,79 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
         answer = (pair.get("target_text") or "").strip()
         if not question or not answer:
             # Not malformed — a different artifact under the same key. 36 of
-            # the shipped entries are *steelman* records ({steelman, thesis,
-            # argument, counterweight, attack_argument/defense_argument}):
-            # the adversarial rounds' arguments, which share `pairs` but not
-            # the pair shape. They are reasoning about claims, not claims, and
-            # a steelman filed as a nugget would answer a question with an
-            # argument nobody asked for. Counted apart from `errors`, because
-            # "this row is broken" and "this row is not a Q/A pair" call for
-            # different responses and only the first is a defect.
+            # the shipped entries are the adversarial rounds' *reasoning*,
+            # sharing `pairs` without the pair shape, in four distinct forms:
+            #
+            #   12  category, conventional_frame, direction, figure, steelman,
+            #       what_this_does_NOT_claim
+            #   12  argument, role_in_corpus, steelman_type, target, title
+            #    8  argument, counterweight, source_profile, subject, thesis
+            #    4  attack_argument, attack_thesis, defense_argument,
+            #       defense_thesis, source_profile, subject
+            #
+            # Look at `what_this_does_NOT_claim`. Filed as a nugget, that field
+            # becomes a verified answer stating what is explicitly *not* being
+            # claimed — the corpus asserting the negation of its own
+            # disclaimer, and under a human's signature if the batch is sealed.
+            # These are reasoning about claims, not claims.
+            #
+            # Counted apart from `errors`, because "this row is broken" and
+            # "this row is not a Q/A pair" call for different responses and
+            # only the first is a defect.
             out["not_pairs"] += 1
             continue
 
-        seal_sig = (pair.get("seal_sig") or "").strip()
-        claimant = (pair.get("verified_by") or batch_claimant
-                    or UNSIGNED_CLAIMANT)
+        pair_sources = [
+            u for u in evidence_by_source.get(question, []) if u
+        ]
 
+        seal_sig = (pair.get("seal_sig") or "").strip()
         kind = "asserted"
+        claimant = pair.get("verified_by") or UNSIGNED_CLAIMANT
         evidence: dict[str, Any] | None = None
+
         if seal_sig:
+            claimant = (pair.get("verified_by") or data.get("verified_by")
+                        or UNSIGNED_CLAIMANT).strip()
             ok, reason = _verify(question, answer, claimant, seal_sig)
             if ok:
                 kind = "human"
             else:
+                kind = "asserted"
                 out["refusals"][reason] = out["refusals"].get(reason, 0) + 1
-            # Carried either way. A signature that failed to check is still
-            # worth a reviewer's eyes, and `corpus.py` never interprets
-            # `evidence` itself — same posture `corpus_put` takes.
             evidence = {"scheme": "nestor-seal-v1", "seal_sig": seal_sig}
         else:
-            claimant = pair.get("verified_by") or UNSIGNED_CLAIMANT
+            kind, claimant = seed_pair_verification(
+                domain=domain,
+                pair=pair,
+                data=data,
+                sources=pair_sources,
+                seal_sig="",
+            )
+
+        tags = [domain, "jeles-seed"]
+        if kind == "machine":
+            tags.append("commons")
 
         if dry_run:
-            out["human" if kind == "human" else "asserted"] += 1
+            out[kind if kind in out else "asserted"] += 1
             continue
 
         try:
             result = corpus.put_nugget(
                 question=question,
                 answer=answer,
-                sources=[u for u in evidence_by_source.get(question, []) if u],
+                sources=pair_sources,
                 verified_by=claimant,
                 verification_kind=kind,
                 written_by=WRITTEN_BY,
-                tags=[domain, "jeles-seed"],
+                tags=tags,
+                nugget_id=seed_nugget_id(domain, question),
                 **({"evidence": evidence} if evidence else {}),
             )
-            if result.get("action") == "created":
-                out["human" if kind == "human" else "asserted"] += 1
+            action = result.get("action", "unknown")
+            if action == "created" or action == "updated":
+                out[kind if kind in out else "asserted"] += 1
             else:
                 out["existing"] += 1
         except Exception as exc:  # a bad row must not abandon the rest
@@ -180,13 +209,13 @@ def load_all(paths: list[Path] | None = None, *,
     """Load every bundled seed file (or the ones given). Returns totals."""
     files = paths if paths is not None else seed_files()
     totals: dict[str, Any] = {"files": len(files), "skipped": 0, "not_pairs": 0,
-                              "human": 0, "asserted": 0,
+                              "human": 0, "machine": 0, "asserted": 0,
                               "existing": 0, "errors": 0, "refusals": {}}
     for path in files:
         r = load_file(path, dry_run=dry_run)
         if r.get("skipped"):
             totals["skipped"] += 1
-        for key in ("human", "asserted", "existing", "errors", "not_pairs"):
+        for key in ("human", "machine", "asserted", "existing", "errors", "not_pairs"):
             totals[key] += r[key]
         for reason, n in r["refusals"].items():
             totals["refusals"][reason] = totals["refusals"].get(reason, 0) + n
@@ -214,7 +243,8 @@ def main(argv: list[str] | None = None) -> int:
     totals = load_all(list(files), dry_run=args.dry_run)
     verb = "would load" if args.dry_run else "loaded"
     print(f"{verb} {totals['files']} file(s): "
-          f"{totals['human']} verified, {totals['asserted']} asserted, "
+          f"{totals['human']} verified, {totals['machine']} commons, "
+          f"{totals['asserted']} asserted, "
           f"{totals['existing']} already present, {totals['errors']} error(s)"
           + (f", {totals['not_pairs']} not Q/A pairs" if totals['not_pairs'] else "")
           + (f", {totals['skipped']} file(s) not a pair set" if totals['skipped'] else ""))
@@ -227,10 +257,14 @@ def main(argv: list[str] | None = None) -> int:
               "only\nwhere the signer's key is trusted; without that keyring "
               "the pair is\nstill loaded, at the rung it can prove.")
 
-    if not args.dry_run and totals["human"] == 0 and totals["asserted"]:
+    if not args.dry_run and totals["human"] == 0 and totals["machine"] == 0 and totals["asserted"]:
         print("\nEverything landed as 'asserted', so corpus_ask will answer "
               "from none\nof it — asserted nuggets come back as candidates. "
               "That is the correct\nbehaviour for claims nobody has checked.")
+    elif not args.dry_run and totals["machine"]:
+        print("\nCommons domains (core-*) with sources landed as 'machine' — "
+              "corpus_ask serves them\nwithout a human seal. Novel domains "
+              "remain asserted until verified.")
     return 0
 
 
