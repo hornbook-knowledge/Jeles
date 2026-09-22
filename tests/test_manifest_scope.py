@@ -52,7 +52,12 @@ def _write_manifest(apps_root, app_id, store_scope=None, store_write=None, sign=
 # ── Fail closed: no declared reach at all ───────────────────────────────────
 
 
-def test_refuses_every_collection_with_no_app_id(corpus, monkeypatch):
+def test_refuses_every_collection_with_no_app_id_configured(corpus, monkeypatch):
+    """`JELES_CORPUS_APP_ID` unset no longer means "no app id at all" (F4:
+    that refusal path doesn't exist anymore) — it resolves to the organ's
+    default, `jeles-corpus`, and still refuses because nothing has seeded a
+    manifest for that default yet. The refusal still names
+    `JELES_CORPUS_APP_ID`."""
     monkeypatch.delenv("JELES_CORPUS_APP_ID", raising=False)
     with pytest.raises(PermissionError, match="JELES_CORPUS_APP_ID"):
         corpus.put_nugget("q?", "a.", ["https://x/"], "rita")
@@ -175,6 +180,130 @@ def test_a_trailing_wildcard_matches_a_prefix(corpus, monkeypatch, tmp_path):
     corpus._conn("ask_jeles_corpus_gaps")  # does not raise
     with pytest.raises(PermissionError, match="collection_denied"):
         corpus._conn("shared_soil")
+
+
+# ── Default app id (gap 3cdeb177af78) ────────────────────────────────────────
+
+
+def test_default_app_id_is_jeles_corpus_not_the_retired_seat(corpus, monkeypatch, tmp_path):
+    """`JELES_CORPUS_APP_ID` unset resolves to the organ's own default,
+    `jeles-corpus` — never the retired Ask Jeles specialist seat `jeles`."""
+    monkeypatch.delenv("JELES_CORPUS_APP_ID", raising=False)
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    _write_manifest(apps_root, "jeles-corpus", store_scope=["*"], store_write=["*"])
+    corpus.list_nuggets()  # does not raise: the default resolved to jeles-corpus
+
+
+def test_explicit_jeles_app_id_is_refused(corpus, monkeypatch, tmp_path):
+    """An explicit `JELES_CORPUS_APP_ID=jeles` is refused outright, citing the
+    retirement — a retired seat name cannot be an organ id (ae23d366)."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles")
+    # Even a wide-open, validly-signed manifest at "jeles" must not be reached.
+    _write_manifest(apps_root, "jeles", store_scope=["*"], store_write=["*"])
+    with pytest.raises(PermissionError, match="retired"):
+        corpus.list_nuggets()
+
+
+def test_refusal_names_app_id_source_and_manifest_path_default(corpus, monkeypatch, tmp_path):
+    monkeypatch.delenv("JELES_CORPUS_APP_ID", raising=False)
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    with pytest.raises(PermissionError) as excinfo:
+        corpus.list_nuggets()
+    message = str(excinfo.value)
+    assert "jeles-corpus" in message
+    assert "default" in message
+    assert str(apps_root / "jeles-corpus" / "manifest.json") in message
+
+
+def test_refusal_names_app_id_source_and_manifest_path_env(corpus, monkeypatch, tmp_path):
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "some-other-corpus")
+    with pytest.raises(PermissionError) as excinfo:
+        corpus.list_nuggets()
+    message = str(excinfo.value)
+    assert "some-other-corpus" in message
+    assert "JELES_CORPUS_APP_ID='some-other-corpus'" in message
+    assert str(apps_root / "some-other-corpus" / "manifest.json") in message
+
+
+# ── App id shape, validated before comparison or path join (Loki F1) ────────
+#
+# The retirement check used to be a bare string-equality test on the raw env
+# value, and the value was then joined straight into `_apps_root() / app_id`
+# with no validation at all — a signed-looking manifest ANYWHERE on disk
+# could set the organ's entire reach. Every string below is refused on SHAPE,
+# before `_manifest_scope` ever compares it to `jeles` or builds a path from
+# it, and none of them gets a manifest-path trailer in its refusal (Loki F1:
+# a shape-invalid id must never be joined into a path, not even for display).
+
+
+@pytest.mark.parametrize(
+    "bad_app_id",
+    [
+        "./jeles",
+        "jeles/",
+        "jeles/.",
+        "../mcp_apps/jeles",
+        "../outside/evil",
+        "/etc/passwd",
+    ],
+)
+def test_refuses_a_shape_invalid_app_id_before_any_path_join(
+    corpus, monkeypatch, tmp_path, bad_app_id
+):
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", bad_app_id)
+    # A validly-signed, wide-open manifest sitting at the path traversal's
+    # actual target must never be reached — the refusal has to happen before
+    # any of these strings are ever joined into a filesystem path.
+    outside = tmp_path / "outside"
+    _write_manifest(outside, "evil", store_scope=["*"], store_write=["*"])
+    with pytest.raises(PermissionError, match="invalid app_id") as excinfo:
+        corpus.list_nuggets()
+    message = str(excinfo.value)
+    # No manifest path is ever built from a shape-invalid id.
+    assert "looked at" not in message
+
+
+def test_refuses_a_reserved_container_name_as_app_id(corpus, monkeypatch, tmp_path):
+    """Shape-valid on the character-class regex alone, but reserved — mirrors
+    willow-mcp's own container-directory guard (`paths._CONTAINER_DIR_NAMES`)."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "mcp_apps")
+    with pytest.raises(PermissionError, match="container directory"):
+        corpus.list_nuggets()
+
+
+def test_shape_is_checked_before_the_retirement_compare(corpus, monkeypatch, tmp_path):
+    """A shape-invalid id that also happens to contain the retired seat's
+    name is refused on shape, not on retirement — shape runs first."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "./jeles")
+    with pytest.raises(PermissionError, match="invalid app_id") as excinfo:
+        corpus.list_nuggets()
+    assert "retired" not in str(excinfo.value)
+
+
+def test_retirement_refusal_carries_the_manifest_path_trailer(corpus, monkeypatch, tmp_path):
+    """F3: unlike a shape-invalid id, the retired seat `jeles` IS shape-valid
+    — its refusal carries the same origin trailer (app id, source, manifest
+    path) every other `_manifest_scope` refusal does."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles")
+    with pytest.raises(PermissionError, match="retired") as excinfo:
+        corpus.list_nuggets()
+    message = str(excinfo.value)
+    assert "JELES_CORPUS_APP_ID='jeles'" in message
+    assert str(apps_root / "jeles" / "manifest.json") in message
 
 
 # ── Read vs write are separate lists ─────────────────────────────────────────

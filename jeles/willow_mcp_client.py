@@ -15,19 +15,28 @@ https://github.com/rudi193-cmd/willow-mcp — invoked here as an ordinary
 external MCP server, the same way any generic MCP drawer would talk to any
 other discovered server. This module has no hard dependency on it.
 
-APP_ID / DEFAULT_TOPIC default to Ask Jeles' original values for back-compat
-(the fleet backlog already keys gaps under `ask-jeles-corpus`) and can be
-overridden via env for a differently-scoped host.
+APP_ID resolves through `jeles._app_id.resolve_app_id` — the SAME resolver
+`jeles/corpus.py`'s manifest-scoped store gate uses (Loki F2, rework of gap
+3cdeb177af78 / ae23d366): `JELES_CORPUS_APP_ID` unset or blank resolves to
+the organ's own default, `jeles-corpus`, not the old back-compat
+`ask-jeles` — a forwarder presenting a different app id than the corpus's
+own store gate is exactly the two-identities confusion this shared resolver
+exists to end. `DEFAULT_TOPIC` keeps its own back-compat default,
+`ask-jeles-corpus`, independent of the seat — an existing backlog keys the
+same regardless of which app id forwards into it.
 
 **The app_id has to exist on the other side.** willow-mcp authorizes every
 tool call against `$WILLOW_HOME/mcp_apps/<app_id>/manifest.json`, and the
-default `ask-jeles` is not one of the seats it seeds — so out of the box a
-forward is denied with `no manifest for 'ask-jeles'`. On a fleet whose hub is
-willow-mcp, set `JELES_CORPUS_APP_ID=jeles` to call as the librarian seat it
-does seed (which carries `gap_write` as of willow-mcp 2.4). The topic is
-independent of the seat: gaps still land under `ask-jeles-corpus` unless
-`JELES_CORPUS_TOPIC` says otherwise. `forward_status()` reports which seat is
-in use and why the last forward failed.
+default `jeles-corpus` is not seeded automatically — so out of the box a
+forward is denied with `no manifest for 'jeles-corpus'` until the operator
+seeds and signs one (see jeles/corpus.py's `_manifest_scope`). **Never
+`jeles`** — that is the retired Ask Jeles specialist seat, not this organ's
+identity, and `call_tool` refuses to forward under it outright, the same way
+`jeles.corpus._manifest_scope` refuses it (ae23d366, gap 3cdeb177af78). This
+env var is shared with `jeles/corpus.py`'s own manifest-scoped store gate,
+so whatever app id is set here also decides which manifest the corpus's
+local reads/writes are checked against. `forward_status()` reports which
+seat is in use and why the last forward failed.
 """
 
 from __future__ import annotations
@@ -44,9 +53,11 @@ import threading
 import time
 from typing import Any
 
+from jeles._app_id import resolve_app_id, retirement_error, shape_error
+
 log = logging.getLogger("jeles.willow_mcp")
 
-APP_ID = os.environ.get("JELES_CORPUS_APP_ID", "ask-jeles")
+APP_ID, _APP_ID_SOURCE = resolve_app_id()
 DEFAULT_TOPIC = os.environ.get("JELES_CORPUS_TOPIC", "ask-jeles-corpus")
 RETRY_COOLDOWN = 30.0  # seconds before retrying a failed connection attempt
 
@@ -323,7 +334,18 @@ def _decode_content(result: Any) -> Any:
     return {}
 
 
+def _app_id_refusal() -> str | None:
+    """``None`` if `APP_ID` is usable; else why not — the SAME shape and
+    retirement checks `jeles.corpus._manifest_scope` applies, via the shared
+    resolver in `jeles._app_id` (Loki F2: this forwarder used to have no
+    retirement refusal of its own at all)."""
+    return shape_error(APP_ID) or retirement_error(APP_ID)
+
+
 def call_tool(name: str, inputs: dict[str, Any], timeout: float = 10) -> Any:
+    refusal = _app_id_refusal()
+    if refusal is not None:
+        raise RuntimeError(f"jeles willow-mcp forwarder refuses to call as {APP_ID!r}: {refusal}")
     if not ensure_started():
         raise RuntimeError(_mcp_error or "willow-mcp unavailable")
     # Snapshot both globals together: the session thread clears them the moment
