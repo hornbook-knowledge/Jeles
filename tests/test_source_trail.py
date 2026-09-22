@@ -94,6 +94,7 @@ def test_verify_claim_matched_false_when_nothing_comes_back(monkeypatch):
         "source_rank": 0.0,
         "overlap": 0.0,
         "relevance": "unjudged",
+        "visibility": "internal",
     }
 
 
@@ -451,6 +452,27 @@ def test_verify_claim_overlap_gate_admits_a_real_match(monkeypatch):
     out = verify_claim("Saturn's rings are composed primarily of water ice particles")
     assert out["overlap"] >= _st.MIN_MATCH_OVERLAP
     assert out["matched"] is True
+
+
+def test_verify_claim_carries_visibility_on_a_match_and_a_miss(monkeypatch):
+    """Clause 3 (sealed ae23d366): every hit carries visibility (Jeles#87,
+    Loki J4). A live external result has no stored tier of its own, so this
+    reads "internal" until a caller with better information says otherwise."""
+    monkeypatch.setattr(
+        _st._sources,
+        "search",
+        lambda c, s, limit: {
+            "results": {
+                "crossref": [_hit("Saturn's rings are composed primarily of water ice particles")]
+            }
+        },
+    )
+    matched = verify_claim("Saturn's rings are composed primarily of water ice particles")
+    assert matched["visibility"] == "internal"
+
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {}})
+    missed = verify_claim("nothing indexed anywhere")
+    assert missed["visibility"] == "internal"
 
 
 def test_an_unmatched_claim_reports_both_numbers_as_zero(monkeypatch):

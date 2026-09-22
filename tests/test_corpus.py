@@ -15,6 +15,23 @@ def corpus(tmp_path, monkeypatch):
     return corpus_module
 
 
+# ── reading must not create (Jeles#87, Loki J6) ─────────────────────────────
+
+
+def test_a_read_on_an_unwritten_collection_does_not_create_its_store_db(corpus):
+    assert corpus.get_nugget("does-not-exist") == {"error": "not_found"}
+    assert corpus.list_nuggets() == []
+    assert corpus.search_nuggets("anything") == []
+    assert corpus.list_gaps() == []
+    assert not corpus._db_path(corpus.NUGGETS_COLLECTION).exists()
+    assert not corpus._db_path(corpus.GAPS_COLLECTION).exists()
+
+
+def test_a_write_still_creates_the_store_db(corpus):
+    corpus.log_gap("does it work?")
+    assert corpus._db_path(corpus.GAPS_COLLECTION).exists()
+
+
 def _seed_grove(corpus):
     return corpus.put_nugget(
         question="What's the primary color in Grove?",

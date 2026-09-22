@@ -21,6 +21,23 @@ from nestor import signing as nestor_signing
 
 from jeles import _nestor_seal
 
+# The ring-only gate (sealed ae23d366) needs `nestor.signing.seal_trust`,
+# added in Nestor v0.18.0 (`pyproject.toml`'s `[nestor]` extra pin). An older
+# install lacks the attribute entirely, and every test below that expects a
+# keyring seal to verify would then fail one at a time with `verify_human_write`
+# refusing for the wrong reason ("signature check raised AttributeError: ...",
+# folded into an assertion mismatch) — real, but a name-by-name hunt through a
+# dozen unrelated-looking failures for what is actually one stale dependency.
+# Fail once, by name, here instead (Jeles#87, Loki J1).
+if not hasattr(nestor_signing, "seal_trust"):
+    pytest.fail(
+        "this environment's `nestor` package has no signing.seal_trust — it "
+        "predates Nestor v0.18.0. Bump pyproject.toml's [nestor] extra pin "
+        "(currently pinned past v0.18.0) and reinstall; every test in this "
+        "file depends on it for the ring-only gate.",
+        pytrace=False,
+    )
+
 
 def _norm(question: str) -> str:
     """Sign the source the way Nestor really does.

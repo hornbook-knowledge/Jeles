@@ -37,15 +37,20 @@ def _jeles_corpus_manifest(tmp_path_factory, monkeypatch):
     'ask_jeles_corpus', 'shared_soil', or whatever it names, to just work.
 
     So: every test gets a wide-open manifest (`store_scope`/`store_write` =
-    `["*"]`) under a fresh, isolated `WILLOW_MCP_APPS_ROOT` by default.
-    `tests/test_manifest_scope.py` overrides `JELES_CORPUS_APP_ID` /
-    `WILLOW_MCP_APPS_ROOT` / the manifest contents directly to exercise the
-    gate itself.
+    `["*"]`) plus a sibling `manifest.json.sig` — `_manifest_scope` refuses on
+    shape when that file is absent (Jeles#87, Loki J3) — under a fresh,
+    isolated `WILLOW_MCP_APPS_ROOT` by default. `tests/test_manifest_scope.py`
+    overrides `JELES_CORPUS_APP_ID` / `WILLOW_MCP_APPS_ROOT` / the manifest
+    contents directly to exercise the gate itself, including the sig-absent
+    case.
     """
     apps_root = tmp_path_factory.mktemp("mcp_apps")
     app_dir = apps_root / "test-jeles-corpus"
     app_dir.mkdir(parents=True, exist_ok=True)
     (app_dir / "manifest.json").write_text(json.dumps({"store_scope": ["*"], "store_write": ["*"]}))
+    # Not a real PGP signature — corpus.py only checks that this file exists
+    # (shape, not validity; see `_manifest_scope`'s docstring on why).
+    (app_dir / "manifest.json.sig").write_text("test-fixture-not-a-real-signature")
     monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
     monkeypatch.setenv("JELES_CORPUS_APP_ID", "test-jeles-corpus")
 

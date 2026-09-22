@@ -102,16 +102,42 @@ def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
 
     ``error`` is set, and the other two are ``None``, exactly when the organ
     has no declared reach at all: no ``JELES_CORPUS_APP_ID``, no readable
-    manifest, or a ``store_scope``/``store_write`` that is not a list.
-    ``_validate_collection`` treats that as fail-closed. A manifest that *is*
-    readable but omits one of the two fields gets ``[]`` for it (deny-all),
-    not ``None`` — see the module comment above for why that is not
-    willow-mcp's own reading of the same field name.
+    manifest, no sibling ``manifest.json.sig``, or a ``store_scope``/
+    ``store_write`` that is not a list. ``_validate_collection`` treats that
+    as fail-closed. A manifest that *is* readable but omits one of the two
+    fields gets ``[]`` for it (deny-all), not ``None`` — see the module
+    comment above for why that is not willow-mcp's own reading of the same
+    field name.
+
+    **What the ``.sig`` check is, and is not (Jeles#87, Loki J3).** This
+    refuses on *shape* — a manifest with no detached signature file beside it
+    at all — not on *validity*. `jeles` holds no PGP keyring and verifies
+    nothing about the bytes in `.sig`: doing that for real is willow-mcp's
+    `gate`'s job (the manifest-signing broker), and reaching it from here is
+    exactly the unreachable "through willow-mcp's gate" half named in the
+    module comment above (J2, deliberately left to the operator/broker, not
+    this packet). Absent this check, an unsigned `manifest.json` — writable by
+    anything with filesystem access to `$WILLOW_MCP_APPS_ROOT`, no PGP
+    involved at all — silently set the organ's entire reach; refusing to
+    proceed without at least a `.sig` file present narrows that from "trusted
+    unconditionally" to "trusted unless it never claimed to be signed," which
+    is the most this module can honestly assert without a keyring of its own.
     """
     app_id = os.environ.get("JELES_CORPUS_APP_ID", "").strip()
     if not app_id:
         return None, None, "JELES_CORPUS_APP_ID is not set"
     manifest_path = _apps_root() / app_id / "manifest.json"
+    sig_path = manifest_path.with_name(manifest_path.name + ".sig")
+    if not sig_path.is_file():
+        return (
+            None,
+            None,
+            (
+                f"no manifest signature at {sig_path} — an unsigned manifest.json "
+                "is refused on shape (this module cannot verify a PGP signature "
+                "itself; that is willow-mcp's gate)"
+            ),
+        )
     try:
         raw = manifest_path.read_text()
     except OSError as exc:
@@ -316,7 +342,20 @@ def _put(
     return rid
 
 
+def _db_path(collection: str) -> Path:
+    return _store_root() / collection / "store.db"
+
+
 def _get(collection: str, record_id: str) -> dict[str, Any] | None:
+    # Scope is checked even on the short-circuit below: an undeclared
+    # collection must still refuse, not read as "empty and therefore fine."
+    _validate_collection(collection, mode="read")
+    if not _db_path(collection).exists():
+        # A read must not be what creates the collection's store.db on disk
+        # (Jeles#87, Loki J6) — nothing has ever been written here, so there
+        # is nothing to find, and `_conn`'s CREATE TABLE/mkdir side effects
+        # stay reserved for an actual write.
+        return None
     with _lock:
         row = (
             _conn(collection)
@@ -336,6 +375,9 @@ def _get(collection: str, record_id: str) -> dict[str, Any] | None:
 
 
 def _all(collection: str) -> list[dict[str, Any]]:
+    _validate_collection(collection, mode="read")
+    if not _db_path(collection).exists():
+        return []
     with _lock:
         rows = (
             _conn(collection)
@@ -1033,6 +1075,13 @@ def log_gap(question: str) -> dict[str, Any]:
                 "asked_count": int(existing.get("asked_count", 0)) + 1,
                 "first_asked_at": existing.get("first_asked_at") or now,
                 "last_asked_at": now,
+                # Clause 3 (sealed ae23d366): every hit carries visibility. A
+                # gap is the corpus's own bookkeeping, not something asked
+                # for by a reader — "internal" until something promotes it
+                # (Jeles#87, Loki J4). A legacy row predating this field
+                # keeps whatever it already had, same as `existing.get`
+                # above for every other carried field.
+                "visibility": existing.get("visibility") or "internal",
             }
             # A resolved gap that misses again is open again — the miss is the
             # proof that the settled layer stopped covering it. The resolution
@@ -1127,4 +1176,9 @@ def list_gaps(limit: int = 50, include_resolved: bool = False) -> list[dict[str,
     if not include_resolved:
         gaps = [g for g in gaps if g.get("status") != "resolved"]
     gaps.sort(key=lambda g: g.get("asked_count", 0), reverse=True)
-    return gaps[: max(0, limit)]
+    gaps = gaps[: max(0, limit)]
+    # A gap row written before `visibility` existed carries no such key at
+    # all — honest the same way `to_search_hit` is (Jeles#87, Loki J4).
+    for gap in gaps:
+        gap.setdefault("visibility", "internal")
+    return gaps

@@ -318,6 +318,12 @@ def verify_claim(
                     "source_rank": conf,
                     "overlap": overlap,
                     "relevance": "unjudged",
+                    # Clause 3 (sealed ae23d366): every hit carries visibility.
+                    # A live external search result has no stored tier of its
+                    # own the way a corpus nugget does — "internal" until a
+                    # caller with better information says otherwise (Jeles#87,
+                    # Loki J4).
+                    "visibility": "internal",
                 }
 
     if best:
@@ -343,6 +349,7 @@ def verify_claim(
         "source_rank": 0.0,
         "overlap": 0.0,
         "relevance": "unjudged",
+        "visibility": "internal",
     }
 
 

@@ -56,7 +56,11 @@ mcp = ["mcp>=2.0.0,<3.0.0"]
 # function that needs it), so installing `jeles[mcp]` alone — without this
 # extra — still runs the server; it just always refuses the `human` rung
 # instead of granting it, exactly as if no evidence had verified.
-nestor = ["nestor @ git+https://github.com/Die-Namic-Systems/Nestor@v0.2.0"]
+# v0.18.0 is the first tagged release carrying `nestor.signing.seal_trust`
+# ("keyring"/"shared"/"unsigned" — jeles._nestor_seal's ring-only gate, sealed
+# ae23d366). v0.2.0 predates it; a venv built strictly from this file at that
+# pin raises AttributeError out of every ring-only check (Jeles#87, Loki J1).
+nestor = ["nestor @ git+https://github.com/Die-Namic-Systems/Nestor@v0.18.0"]
 # pyyaml is for tests/test_release_wiring.py, which reads the release
 # workflows. It importorskips, so leaving it out would turn those checks
 # into a silent skip — the exact failure mode they exist to catch. It is a

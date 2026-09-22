@@ -27,7 +27,7 @@ def corpus(tmp_path, monkeypatch):
     return corpus_module
 
 
-def _write_manifest(apps_root, app_id, store_scope=None, store_write=None):
+def _write_manifest(apps_root, app_id, store_scope=None, store_write=None, sign=True):
     app_dir = apps_root / app_id
     app_dir.mkdir(parents=True, exist_ok=True)
     manifest: dict = {}
@@ -36,6 +36,10 @@ def _write_manifest(apps_root, app_id, store_scope=None, store_write=None):
     if store_write is not None:
         manifest["store_write"] = store_write
     (app_dir / "manifest.json").write_text(json.dumps(manifest))
+    if sign:
+        # Shape only — corpus.py holds no PGP keyring and checks nothing about
+        # these bytes (see `_manifest_scope`'s docstring, Loki J3).
+        (app_dir / "manifest.json.sig").write_text("test-fixture-not-a-real-signature")
 
 
 # ── Fail closed: no declared reach at all ───────────────────────────────────
@@ -52,8 +56,38 @@ def test_refuses_every_collection_with_no_manifest_on_disk(corpus, monkeypatch, 
     apps_root.mkdir()
     monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
     monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
+    with pytest.raises(PermissionError, match="no manifest signature"):
+        corpus.log_gap("does it work?")
+
+
+def test_refuses_a_manifest_missing_only_because_its_sig_is_present_but_it_is_not(
+    corpus, monkeypatch, tmp_path
+):
+    """The rarer half of the same shape check: a `.sig` on disk with no
+    `manifest.json` beside it still reads as "no readable manifest", not as
+    a signed-and-trusted empty scope."""
+    apps_root = tmp_path / "apps"
+    app_dir = apps_root / "jeles-corpus"
+    app_dir.mkdir(parents=True)
+    (app_dir / "manifest.json.sig").write_text("test-fixture-not-a-real-signature")
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
     with pytest.raises(PermissionError, match="no readable manifest"):
         corpus.log_gap("does it work?")
+
+
+def test_refuses_an_unsigned_manifest_even_when_store_scope_is_wide_open(
+    corpus, monkeypatch, tmp_path
+):
+    """J3: a manifest.json with no sibling .sig is refused on shape, even
+    when its store_scope/store_write would otherwise allow everything —
+    presence of a signature file is checked before the scope is ever read."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
+    _write_manifest(apps_root, "jeles-corpus", store_scope=["*"], store_write=["*"], sign=False)
+    with pytest.raises(PermissionError, match="no manifest signature"):
+        corpus.list_nuggets()
 
 
 def test_refuses_when_store_scope_is_malformed(corpus, monkeypatch, tmp_path):
