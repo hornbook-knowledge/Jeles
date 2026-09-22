@@ -251,7 +251,7 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `WILLOW_STORE_ROOT` | `~/.willow/store` | Root under which `<collection>/store.db` lives. |
 | `JELES_CORPUS_COLLECTION` | `ask_jeles_corpus` | Nugget collection name (back-compat with Ask Jeles). |
 | `JELES_CORPUS_GAPS_COLLECTION` | `ask_jeles_corpus_gaps` | Local gap-log collection name. |
-| `JELES_CORPUS_APP_ID` | `ask-jeles` | `app_id` used when forwarding gaps to willow-mcp. **Set this to `jeles` on a willow-mcp fleet** — see below. |
+| `JELES_CORPUS_APP_ID` | `ask-jeles` for gap-forwarding; `jeles-corpus` for the manifest-scoped store gate (see `jeles/corpus.py`) | `app_id` used both when forwarding gaps to willow-mcp and when the corpus checks its own manifest-scoped `store_scope`/`store_write`. **Set this to `jeles-corpus` on a willow-mcp fleet — never `jeles`, the retired Ask Jeles specialist seat, which is refused outright** — see below. |
 | `JELES_CORPUS_TOPIC` | `ask-jeles-corpus` | Backlog topic gaps are forwarded under. |
 | `WILLOW_MCP_CMD` | — | Explicit command to launch willow-mcp (else `willow-mcp` on PATH, else `python -m willow_mcp`). |
 | `ASK_JELES_USE_WILLOW_MCP` | `1` | Set to `0`/`false`/`no` to disable fleet gap-forwarding entirely. |
@@ -273,8 +273,13 @@ neither said so when it was wrong:
 - **`JELES_CORPUS_APP_ID`.** willow-mcp authorizes every tool call against
   `$WILLOW_HOME/mcp_apps/<app_id>/manifest.json`, and the back-compat default
   `ask-jeles` is not a seat it seeds — so out of the box a forward is denied
-  with `no manifest for 'ask-jeles'`. Set it to `jeles`, the librarian seat
-  willow-mcp does seed (and which carries `gap_write` as of willow-mcp 2.4).
+  with `no manifest for 'ask-jeles'`. Set it to `jeles-corpus`, the organ's
+  own seat, once the operator has seeded and signed its manifest (and given
+  it `gap_write`). **Never `jeles`** — that is the retired Ask Jeles
+  specialist seat, not this organ's identity, and `jeles/corpus.py`'s own
+  manifest-scoped store gate refuses it outright (ae23d366). This same env
+  var also decides which manifest `jeles/corpus.py` checks its local
+  reads/writes against, so the value has to be one seat for both purposes.
   The *topic* is independent: gaps still land under `ask-jeles-corpus` unless
   `JELES_CORPUS_TOPIC` says otherwise, so an existing backlog keys the same.
 - **`WILLOW_STORE_ROOT`.** Unset, this package writes under `~/.willow/store`

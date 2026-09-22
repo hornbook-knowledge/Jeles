@@ -23,8 +23,14 @@ overridden via env for a differently-scoped host.
 tool call against `$WILLOW_HOME/mcp_apps/<app_id>/manifest.json`, and the
 default `ask-jeles` is not one of the seats it seeds — so out of the box a
 forward is denied with `no manifest for 'ask-jeles'`. On a fleet whose hub is
-willow-mcp, set `JELES_CORPUS_APP_ID=jeles` to call as the librarian seat it
-does seed (which carries `gap_write` as of willow-mcp 2.4). The topic is
+willow-mcp, set `JELES_CORPUS_APP_ID=jeles-corpus` to call as the organ's own
+seat (which carries `gap_write` once the operator seeds and signs its
+manifest — see jeles/corpus.py's `_manifest_scope`). **Never `jeles`** — that
+is the retired Ask Jeles specialist seat, not this organ's identity, and
+`jeles.corpus._manifest_scope` refuses it outright (ae23d366, gap
+3cdeb177af78). This env var is shared with `jeles/corpus.py`'s own
+manifest-scoped store gate, so whatever app id is set here also decides which
+manifest the corpus's local reads/writes are checked against. The topic is
 independent of the seat: gaps still land under `ask-jeles-corpus` unless
 `JELES_CORPUS_TOPIC` says otherwise. `forward_status()` reports which seat is
 in use and why the last forward failed.

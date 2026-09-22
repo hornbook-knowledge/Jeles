@@ -177,6 +177,55 @@ def test_a_trailing_wildcard_matches_a_prefix(corpus, monkeypatch, tmp_path):
         corpus._conn("shared_soil")
 
 
+# ── Default app id (gap 3cdeb177af78) ────────────────────────────────────────
+
+
+def test_default_app_id_is_jeles_corpus_not_the_retired_seat(corpus, monkeypatch, tmp_path):
+    """`JELES_CORPUS_APP_ID` unset resolves to the organ's own default,
+    `jeles-corpus` — never the retired Ask Jeles specialist seat `jeles`."""
+    monkeypatch.delenv("JELES_CORPUS_APP_ID", raising=False)
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    _write_manifest(apps_root, "jeles-corpus", store_scope=["*"], store_write=["*"])
+    corpus.list_nuggets()  # does not raise: the default resolved to jeles-corpus
+
+
+def test_explicit_jeles_app_id_is_refused(corpus, monkeypatch, tmp_path):
+    """An explicit `JELES_CORPUS_APP_ID=jeles` is refused outright, citing the
+    retirement — a retired seat name cannot be an organ id (ae23d366)."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles")
+    # Even a wide-open, validly-signed manifest at "jeles" must not be reached.
+    _write_manifest(apps_root, "jeles", store_scope=["*"], store_write=["*"])
+    with pytest.raises(PermissionError, match="retired"):
+        corpus.list_nuggets()
+
+
+def test_refusal_names_app_id_source_and_manifest_path_default(corpus, monkeypatch, tmp_path):
+    monkeypatch.delenv("JELES_CORPUS_APP_ID", raising=False)
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    with pytest.raises(PermissionError) as excinfo:
+        corpus.list_nuggets()
+    message = str(excinfo.value)
+    assert "jeles-corpus" in message
+    assert "default" in message
+    assert str(apps_root / "jeles-corpus" / "manifest.json") in message
+
+
+def test_refusal_names_app_id_source_and_manifest_path_env(corpus, monkeypatch, tmp_path):
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "some-other-corpus")
+    with pytest.raises(PermissionError) as excinfo:
+        corpus.list_nuggets()
+    message = str(excinfo.value)
+    assert "some-other-corpus" in message
+    assert "JELES_CORPUS_APP_ID='some-other-corpus'" in message or "JELES_CORPUS_APP_ID=" in message
+    assert str(apps_root / "some-other-corpus" / "manifest.json") in message
+
+
 # ── Read vs write are separate lists ─────────────────────────────────────────
 
 

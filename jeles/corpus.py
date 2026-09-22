@@ -107,6 +107,45 @@ def _looks_like_pgp_signature(text: str) -> bool:
     return stripped.startswith(_PGP_SIG_BEGIN) and stripped.endswith(_PGP_SIG_END)
 
 
+#: The retired Ask Jeles specialist seat. Never a valid organ id — ae23d366
+#: ("Jeles is the organ") exists specifically to end the confusion of the
+#: corpus running *as* that seat. See `_resolve_app_id` and `_manifest_scope`.
+_RETIRED_APP_ID = "jeles"
+
+#: The organ's own default seat, used only when `JELES_CORPUS_APP_ID` is
+#: unset or blank. Distinct from `_RETIRED_APP_ID` on purpose: an operator
+#: who never configured an app id gets a manifest lookup that fails closed
+#: (gap 3cdeb177af78) under a name that cannot be mistaken for the retired
+#: seat, not a silent fallback to `jeles`.
+_DEFAULT_APP_ID = "jeles-corpus"
+
+
+def _resolve_app_id() -> tuple[str, str]:
+    """``(app_id, source)`` — ``source`` is ``"env"`` when
+    ``JELES_CORPUS_APP_ID`` is set to a non-blank value, else ``"default"``
+    and ``app_id`` is `_DEFAULT_APP_ID`. Never returns `_RETIRED_APP_ID` as a
+    default; an explicit `jeles` is passed through here and refused later in
+    `_manifest_scope`, not silently substituted.
+    """
+    raw = os.environ.get("JELES_CORPUS_APP_ID", "").strip()
+    if raw:
+        return raw, "env"
+    return _DEFAULT_APP_ID, "default"
+
+
+def _app_id_origin(app_id: str, source: str, manifest_path: Path) -> str:
+    """The trailer every `_manifest_scope` refusal carries: which app id was
+    resolved, whether it came from `JELES_CORPUS_APP_ID` or the organ's own
+    default, and the exact manifest path that was looked at — so a refusal
+    is diagnosable without reading this module's source."""
+    origin = (
+        f"JELES_CORPUS_APP_ID={app_id!r}"
+        if source == "env"
+        else f"JELES_CORPUS_APP_ID unset, defaulted to {app_id!r}"
+    )
+    return f" [{origin}; looked at {manifest_path}]"
+
+
 def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
     """``(store_scope, store_write, error)`` for this organ, read fresh on
     every call — same rule ``_trust_tool_writes`` follows: a test, or an
@@ -114,13 +153,22 @@ def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
     call, not need a reimport.
 
     ``error`` is set, and the other two are ``None``, exactly when the organ
-    has no declared reach at all: no ``JELES_CORPUS_APP_ID``, no readable
-    manifest, no sibling ``manifest.json.sig``, or a ``store_scope``/
-    ``store_write`` that is not a list. ``_validate_collection`` treats that
-    as fail-closed. A manifest that *is* readable but omits one of the two
-    fields gets ``[]`` for it (deny-all), not ``None`` — see the module
-    comment above for why that is not willow-mcp's own reading of the same
-    field name.
+    has no declared reach at all: `JELES_CORPUS_APP_ID` resolves to the
+    retired seat `jeles`, no readable manifest, no sibling
+    ``manifest.json.sig``, or a ``store_scope``/``store_write`` that is not a
+    list. ``_validate_collection`` treats that as fail-closed. A manifest
+    that *is* readable but omits one of the two fields gets ``[]`` for it
+    (deny-all), not ``None`` — see the module comment above for why that is
+    not willow-mcp's own reading of the same field name.
+
+    **The app id is always resolved, never absent.** `JELES_CORPUS_APP_ID`
+    unset or blank resolves to the organ's own default (`jeles-corpus`), not
+    an error and not the retired specialist seat `jeles` — that confusion is
+    exactly what ae23d366 exists to end. An *explicit* `JELES_CORPUS_APP_ID=
+    jeles` is refused outright, before any manifest is looked up, citing the
+    retirement. Every refusal from this function names the app id it
+    resolved, whether that id came from the env var or the default, and the
+    manifest path it looked at (`_app_id_origin`) — gap 3cdeb177af78.
 
     **What the ``.sig`` check is, and is not (Jeles#87, Loki J3/R1).** This
     refuses on *shape*, never on *validity*. `jeles` holds no PGP keyring and
@@ -141,10 +189,19 @@ def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
     `$WILLOW_MCP_APPS_ROOT`, no PGP involved at all — silently set the
     organ's entire reach.
     """
-    app_id = os.environ.get("JELES_CORPUS_APP_ID", "").strip()
-    if not app_id:
-        return None, None, "JELES_CORPUS_APP_ID is not set"
+    app_id, source = _resolve_app_id()
     manifest_path = _apps_root() / app_id / "manifest.json"
+    if app_id == _RETIRED_APP_ID:
+        return (
+            None,
+            None,
+            (
+                f"JELES_CORPUS_APP_ID={app_id!r} is refused: {_RETIRED_APP_ID!r} is "
+                "the retired Ask Jeles specialist seat, not an organ id — ae23d366 "
+                '("Jeles is the organ") exists to end exactly this confusion; pick '
+                f"a distinct app id (the organ's own default is {_DEFAULT_APP_ID!r})"
+            ),
+        )
     sig_path = manifest_path.with_name(manifest_path.name + ".sig")
     try:
         sig_text = sig_path.read_text()
@@ -158,22 +215,43 @@ def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
                 f"manifest signature at {sig_path} is missing, empty, or not an "
                 "ASCII-armored PGP signature — refused on shape (this module "
                 "cannot verify a PGP signature itself; that is willow-mcp's gate)"
+                + _app_id_origin(app_id, source, manifest_path)
             ),
         )
     try:
         raw = manifest_path.read_text()
     except OSError as exc:
-        return None, None, f"no readable manifest at {manifest_path} ({type(exc).__name__})"
+        return (
+            None,
+            None,
+            f"no readable manifest at {manifest_path} ({type(exc).__name__})"
+            + _app_id_origin(app_id, source, manifest_path),
+        )
     try:
         manifest = json.loads(raw)
     except json.JSONDecodeError as exc:
-        return None, None, f"manifest at {manifest_path} is not valid JSON ({exc})"
+        return (
+            None,
+            None,
+            f"manifest at {manifest_path} is not valid JSON ({exc})"
+            + _app_id_origin(app_id, source, manifest_path),
+        )
     scope = manifest.get("store_scope")
     write = manifest.get("store_write")
     if scope is not None and not isinstance(scope, list):
-        return None, None, f"manifest store_scope is not a list: {scope!r}"
+        return (
+            None,
+            None,
+            f"manifest store_scope is not a list: {scope!r}"
+            + _app_id_origin(app_id, source, manifest_path),
+        )
     if write is not None and not isinstance(write, list):
-        return None, None, f"manifest store_write is not a list: {write!r}"
+        return (
+            None,
+            None,
+            f"manifest store_write is not a list: {write!r}"
+            + _app_id_origin(app_id, source, manifest_path),
+        )
     return (scope if scope is not None else []), (write if write is not None else []), None
 
 
@@ -203,10 +281,10 @@ def _validate_collection(collection: str, mode: str = "read") -> None:
     allowed = write if mode == "write" else scope
     if not _collection_allowed(collection, allowed):
         field = "store_write" if mode == "write" else "store_scope"
+        app_id, _source = _resolve_app_id()
         raise PermissionError(
             f"collection_denied: {collection!r} is outside this organ's manifest "
-            f"{field} ({_apps_root() / os.environ.get('JELES_CORPUS_APP_ID', '<app_id>')}"
-            "/manifest.json)"
+            f"{field} ({_apps_root() / app_id}/manifest.json)"
         )
 
 
