@@ -34,6 +34,8 @@ from itertools import pairwise
 from pathlib import Path
 from typing import Any
 
+from jeles import _app_id
+
 NUGGETS_COLLECTION = os.environ.get("JELES_CORPUS_COLLECTION", "ask_jeles_corpus")
 GAPS_COLLECTION = os.environ.get("JELES_CORPUS_GAPS_COLLECTION", "ask_jeles_corpus_gaps")
 
@@ -107,43 +109,16 @@ def _looks_like_pgp_signature(text: str) -> bool:
     return stripped.startswith(_PGP_SIG_BEGIN) and stripped.endswith(_PGP_SIG_END)
 
 
-#: The retired Ask Jeles specialist seat. Never a valid organ id — ae23d366
-#: ("Jeles is the organ") exists specifically to end the confusion of the
-#: corpus running *as* that seat. See `_resolve_app_id` and `_manifest_scope`.
-_RETIRED_APP_ID = "jeles"
-
-#: The organ's own default seat, used only when `JELES_CORPUS_APP_ID` is
-#: unset or blank. Distinct from `_RETIRED_APP_ID` on purpose: an operator
-#: who never configured an app id gets a manifest lookup that fails closed
-#: (gap 3cdeb177af78) under a name that cannot be mistaken for the retired
-#: seat, not a silent fallback to `jeles`.
-_DEFAULT_APP_ID = "jeles-corpus"
-
-
-def _resolve_app_id() -> tuple[str, str]:
-    """``(app_id, source)`` — ``source`` is ``"env"`` when
-    ``JELES_CORPUS_APP_ID`` is set to a non-blank value, else ``"default"``
-    and ``app_id`` is `_DEFAULT_APP_ID`. Never returns `_RETIRED_APP_ID` as a
-    default; an explicit `jeles` is passed through here and refused later in
-    `_manifest_scope`, not silently substituted.
-    """
-    raw = os.environ.get("JELES_CORPUS_APP_ID", "").strip()
-    if raw:
-        return raw, "env"
-    return _DEFAULT_APP_ID, "default"
-
-
-def _app_id_origin(app_id: str, source: str, manifest_path: Path) -> str:
-    """The trailer every `_manifest_scope` refusal carries: which app id was
-    resolved, whether it came from `JELES_CORPUS_APP_ID` or the organ's own
-    default, and the exact manifest path that was looked at — so a refusal
-    is diagnosable without reading this module's source."""
-    origin = (
-        f"JELES_CORPUS_APP_ID={app_id!r}"
-        if source == "env"
-        else f"JELES_CORPUS_APP_ID unset, defaulted to {app_id!r}"
-    )
-    return f" [{origin}; looked at {manifest_path}]"
+#: `_resolve_app_id`/`_app_id_origin` and the `_RETIRED_APP_ID`/
+#: `_DEFAULT_APP_ID` constants live in `jeles/_app_id.py`, shared with
+#: `jeles/willow_mcp_client.py`'s forwarder — one resolver, one default, one
+#: retirement refusal, not two copies that can drift (Loki F2).
+_RETIRED_APP_ID = _app_id.RETIRED_APP_ID
+_DEFAULT_APP_ID = _app_id.DEFAULT_APP_ID
+_resolve_app_id = _app_id.resolve_app_id
+_app_id_origin = _app_id.origin
+_app_id_shape_error = _app_id.shape_error
+_app_id_retirement_error = _app_id.retirement_error
 
 
 def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
@@ -190,18 +165,18 @@ def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
     organ's entire reach.
     """
     app_id, source = _resolve_app_id()
+    # Shape first — before any comparison or path join ever sees the raw
+    # value (Loki F1). A shape-invalid id gets no manifest path in its
+    # refusal: building one from an unvalidated string is exactly the bug.
+    shape_err = _app_id_shape_error(app_id)
+    if shape_err is not None:
+        return None, None, shape_err + _app_id_origin(app_id, source, None)
+    # Only a shape-validated id is ever joined into a path.
     manifest_path = _apps_root() / app_id / "manifest.json"
-    if app_id == _RETIRED_APP_ID:
-        return (
-            None,
-            None,
-            (
-                f"JELES_CORPUS_APP_ID={app_id!r} is refused: {_RETIRED_APP_ID!r} is "
-                "the retired Ask Jeles specialist seat, not an organ id — ae23d366 "
-                '("Jeles is the organ") exists to end exactly this confusion; pick '
-                f"a distinct app id (the organ's own default is {_DEFAULT_APP_ID!r})"
-            ),
-        )
+    # The retirement compare runs on the validated id (Loki F1).
+    retire_err = _app_id_retirement_error(app_id)
+    if retire_err is not None:
+        return None, None, retire_err + _app_id_origin(app_id, source, manifest_path)
     sig_path = manifest_path.with_name(manifest_path.name + ".sig")
     try:
         sig_text = sig_path.read_text()

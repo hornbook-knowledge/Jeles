@@ -507,3 +507,48 @@ def test_a_denied_forward_reaches_forward_status(monkeypatch):
         assert "not permitted" in status["last_error"]
     finally:
         loop.call_soon_threadsafe(loop.stop)
+
+
+# ── Shared app id resolver (Loki F2) ─────────────────────────────────────────
+#
+# Before this, `APP_ID` was its own `os.environ.get("JELES_CORPUS_APP_ID",
+# "ask-jeles")` — a second, independent default that disagreed with
+# `jeles/corpus.py`'s own resolution (`jeles-corpus`), and never refused the
+# retired seat `jeles` at all. Now both modules share one resolver
+# (`jeles._app_id`), one default, and one retirement refusal.
+
+
+def test_app_id_module_attribute_defaults_to_jeles_corpus_not_ask_jeles():
+    """`wmc.APP_ID` is whatever `jeles._app_id.resolve_app_id()` returned at
+    import time — with no `JELES_CORPUS_APP_ID` in the test environment (see
+    `conftest.py`'s autouse fixture, which sets it for other suites but not
+    at interpreter-import time for this module), that resolves to the
+    organ's shared default, not the old back-compat `ask-jeles`."""
+    from jeles import _app_id as shared
+
+    assert wmc.APP_ID != "ask-jeles"
+    assert wmc.APP_ID == shared.DEFAULT_APP_ID
+
+
+def test_call_tool_refuses_to_forward_as_the_retired_seat(monkeypatch, fake_willow):
+    """`call_tool` refuses outright when `APP_ID` is the retired seat —
+    before this fix, the forwarder had no such refusal and would have
+    happily called willow-mcp as `jeles`."""
+    monkeypatch.setattr(wmc, "APP_ID", "jeles")
+    with pytest.raises(RuntimeError, match="retired"):
+        wmc.call_tool("gap_log", {"topic": "t", "question": "q"})
+
+
+def test_call_tool_refuses_a_shape_invalid_app_id(monkeypatch, fake_willow):
+    monkeypatch.setattr(wmc, "APP_ID", "../outside/evil")
+    with pytest.raises(RuntimeError, match="invalid app_id"):
+        wmc.call_tool("gap_log", {"topic": "t", "question": "q"})
+
+
+def test_forward_gap_records_the_retirement_refusal_rather_than_raising(monkeypatch, fake_willow):
+    """The refusal must reach `forward_status()` the same way any other
+    forwarding failure does — `forward_gap()` still never raises out."""
+    monkeypatch.setattr(wmc, "APP_ID", "jeles")
+    wmc.forward_gap("what does the fleet not know?")
+    assert _wait_until(lambda: wmc.last_forward_error() is not None)
+    assert "retired" in wmc.last_forward_error()
