@@ -337,6 +337,10 @@ def _web_hit(hit: dict, idx: int) -> dict:
         # comment above `_KIND_RANK` in corpus.py. A page from the open web
         # never carries evidence of this kind, so it is always empty here.
         "evidence": {},
+        # Same merge contract as `evidence`: `corpus.to_search_hit` carries
+        # `visibility` on every hit, and the open web has nothing to hide it
+        # from — it is already public by construction.
+        "visibility": "public",
         "n": idx,
     }
 

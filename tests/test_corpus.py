@@ -150,6 +150,56 @@ def test_evidence_must_be_a_dict(corpus):
     assert "error" in result and "evidence" in result["error"]
 
 
+# ── visibility (sealed ae23d366, "Jeles is the organ", clause 3) ───────────
+
+
+def test_visibility_defaults_to_internal(corpus):
+    result = _seed_grove(corpus)
+    nugget = corpus.get_nugget(result["id"])
+    assert nugget["visibility"] == "internal"
+    assert corpus.to_search_hit(nugget)["visibility"] == "internal"
+
+
+def test_visibility_is_stored_when_given(corpus):
+    result = corpus.put_nugget("Is X true?", "Yes.", ["s"], "rita", visibility="public")
+    nugget = corpus.get_nugget(result["id"])
+    assert nugget["visibility"] == "public"
+    assert corpus.to_search_hit(nugget)["visibility"] == "public"
+
+
+def test_visibility_must_be_a_recognised_level(corpus):
+    result = corpus.put_nugget("Is X true?", "Yes.", ["s"], "rita", visibility="everyone")
+    assert "error" in result and "visibility" in result["error"]
+
+
+def test_a_legacy_nugget_with_no_visibility_field_reads_as_internal(corpus):
+    """A nugget written before this field existed carries no `visibility` key
+    at all — `to_search_hit` must still show one, honestly the least a reader
+    is entitled to assume."""
+    result = _seed_grove(corpus)
+    nugget = corpus.get_nugget(result["id"])
+    del nugget["visibility"]  # simulate a pre-existing row
+    assert corpus.to_search_hit(nugget)["visibility"] == "internal"
+
+
+# ── the miss register (sealed ae23d366, clause 4) ───────────────────────────
+
+
+def test_ask_corpus_miss_carries_a_detail_naming_where_and_what(corpus):
+    result = corpus.ask_corpus("What is the accent color in Tokyo Night?")
+    assert result["found"] is False
+    assert "detail" in result
+    assert corpus.NUGGETS_COLLECTION in result["detail"]
+    assert "message" not in result
+
+
+def test_ask_corpus_miss_detail_reflects_candidates_considered(corpus):
+    _seed_grove(corpus)
+    result = corpus.ask_corpus("What is the accent color in Tokyo Night?")
+    assert result["found"] is False
+    assert "candidate" in result["detail"]
+
+
 def test_list_nuggets_most_recent_first(corpus):
     first = _seed_grove(corpus)
     second = corpus.put_nugget(

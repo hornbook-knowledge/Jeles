@@ -78,20 +78,26 @@ def test_refuses_when_nothing_is_configured_to_verify_against(monkeypatch):
         assert nestor_signing.seal_is_valid("q?", "a.", "rita", "anything") is True
 
 
-def test_refuses_a_forged_signature_under_a_shared_key(monkeypatch):
-    """A tool caller that TYPES verified_by='rita' and a made-up hex string
-    is refused — the exact forgery this give-back exists to close."""
+def test_a_shared_key_refuses_a_forged_signature(monkeypatch):
+    """Ring only (sealed ae23d366): a deployment-wide NESTOR_SEAL_KEY with no
+    keyring refuses before it ever reaches a signature check — "cannot verify
+    who signed" and "refuse" are the same outcome for a shared key."""
     monkeypatch.setenv("NESTOR_SEAL_KEY", "the-deployment-secret")
     ok, reason = _nestor_seal.verify_human_write("q?", "a.", "rita", _seal_evidence("0" * 64))
     assert ok is False
-    assert "does not verify" in reason
+    assert "keyring" in reason.lower()
 
 
-def test_a_real_seal_verifies_under_a_shared_key(monkeypatch):
+def test_a_shared_key_refuses_even_a_genuine_signature(monkeypatch):
+    """The stronger case than a forged signature: a seal that WOULD verify
+    under the shared key is still refused, because a key that could also
+    forge is not a verifier — the `human` rung needs a per-verifier keyring,
+    not merely a signature that checks out."""
     monkeypatch.setenv("NESTOR_SEAL_KEY", "the-deployment-secret")
     sig = nestor_signing.sign_seal(_norm("q?"), "a.", "rita")
     ok, reason = _nestor_seal.verify_human_write("q?", "a.", "rita", _seal_evidence(sig))
-    assert (ok, reason) == (True, "ok")
+    assert ok is False
+    assert "keyring" in reason.lower()
 
 
 # ── Per-verifier keyring — a signature is evidence about a *person* ────────

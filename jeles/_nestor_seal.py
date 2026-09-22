@@ -98,15 +98,43 @@ def _import_nestor():
     return signing
 
 
+#: The only trust posture that mints the `human` rung — see the comment on
+#: :func:`verify_human_write` point 3. `nestor.signing.seal_trust()` reports
+#: three: `"keyring"` (per-verifier keys — a seal verifies only under the key
+#: belonging to the name on it), `"shared"` (one deployment-wide
+#: `NESTOR_SEAL_KEY`, so a signature is evidence the writer holds *a* key, not
+#: evidence about *who*), and `"unsigned"` (nothing configured). Only the
+#: first is a verifier in the sense this module needs: a key that could also
+#: sign as anyone is not a check on anyone in particular.
+_RING_TRUST = "keyring"
+
+
+def _trust_reason(trust: str) -> str:
+    """The refusal `describe()` and `verify_human_write` share for a given
+    `seal_trust()` reading — kept in one place so the two can never disagree
+    about why the `human` rung is out of reach for the same configuration."""
+    if trust == "shared":
+        return (
+            "only a shared NESTOR_SEAL_KEY is configured on this instance; the "
+            "human rung verifies against a per-verifier NESTOR_KEYRING only — a "
+            "key that could also forge is not a verifier"
+        )
+    return "no NESTOR_KEYRING configured on this instance"
+
+
 def describe() -> dict[str, Any]:
     """Whether this instance could verify a seal at all — asking nothing of a
     caller and verifying nothing.
 
-    Returns ``{scheme, installed, signing_enabled, ready, reason}``. ``ready``
-    is True only when a real seal *could* be checked here; ``reason`` is
-    ``"ok"`` then, and otherwise repeats — verbatim — the refusal
-    :func:`verify_human_write` would give for the same condition, so the two
-    can never disagree about why the `human` rung is out of reach.
+    Returns ``{scheme, installed, trust, ready, reason}``. ``trust`` is
+    whatever :func:`nestor.signing.seal_trust` reports — ``"keyring"``,
+    ``"shared"``, or ``"unsigned"`` — and ``ready`` is True only for
+    ``"keyring"``: a shared HMAC is configuration, but it is not a *verifier*,
+    because the same key that checks a signature could have minted it (ring
+    only, sealed `ae23d366`). ``reason`` is ``"ok"`` when ready, and otherwise
+    repeats — verbatim — the refusal :func:`verify_human_write` would give for
+    the same condition, so the two can never disagree about why the `human`
+    rung is out of reach.
 
     This exists because the only way to discover a missing extra or an
     unconfigured keyring used to be to *attempt a write* and read the rung it
@@ -114,22 +142,22 @@ def describe() -> dict[str, Any]:
     a nugget it did not want has been told the truth by the most expensive
     route available.
 
-    Never raises, and never names a key, a path, or any key material — the same
-    rule :func:`verify_human_write` follows. ``signing_enabled`` is a boolean
-    about configuration, not a hint about what the configuration is.
+    Never raises, and never names a key, a path, or any key material — the
+    same rule :func:`verify_human_write` follows. ``trust`` is a word about
+    *posture*, not a hint about what is configured.
     """
     signing = _import_nestor()
     if signing is None:
         return {
             "scheme": EVIDENCE_SCHEME,
             "installed": False,
-            "signing_enabled": False,
+            "trust": "unsigned",
             "ready": False,
             "reason": 'nestor extra not installed (pip install "jeles[nestor]")',
         }
 
     try:
-        enabled = bool(signing.signing_enabled())
+        trust = str(signing.seal_trust())
     except Exception as exc:
         # Mirrors verify_human_write's own posture: an error asking whether we
         # can verify is a "no", reported, not an exception thrown at a caller
@@ -137,17 +165,18 @@ def describe() -> dict[str, Any]:
         return {
             "scheme": EVIDENCE_SCHEME,
             "installed": True,
-            "signing_enabled": False,
+            "trust": "unsigned",
             "ready": False,
             "reason": f"signature check raised {type(exc).__name__}: {exc}",
         }
 
+    ready = trust == _RING_TRUST
     return {
         "scheme": EVIDENCE_SCHEME,
         "installed": True,
-        "signing_enabled": enabled,
-        "ready": enabled,
-        "reason": "ok" if enabled else "no NESTOR_SEAL_KEY or keyring configured on this instance",
+        "trust": trust,
+        "ready": ready,
+        "reason": "ok" if ready else _trust_reason(trust),
     }
 
 
@@ -172,20 +201,25 @@ def verify_human_write(
        whether `nestor` happens to be installed, so a missing/malformed
        evidence dict is refused the same way in every environment.
     2. The `nestor` package is importable (the `[nestor]` extra is installed).
-    3. **This instance actually has something configured to verify against**
-       — a keyring (`NESTOR_KEYRING`) or a shared secret (`NESTOR_SEAL_KEY`).
-       This is the one place this module deliberately does NOT delegate to
-       `nestor.signing.seal_is_valid` for the answer, because that function's
-       own "nothing configured" default is to warn once and then *accept*
-       every signature (`nestor.signing.seal_is_valid`'s documented legacy
+    3. **This instance is configured with a per-verifier keyring — ring only.**
+       `nestor.signing.seal_trust()` reports one of `"keyring"`, `"shared"`
+       (a deployment-wide `NESTOR_SEAL_KEY` and no keyring), or `"unsigned"`
+       (nothing configured). Only `"keyring"` passes. A shared HMAC signs and
+       verifies with the *same* key, so a caller holding it can mint a seal
+       for any `verified_by` it likes — checking a signature under a key that
+       could also have forged it proves nothing about who wrote it, which is
+       the entire point of the `human` rung. This is also the one place this
+       module deliberately does NOT delegate to `nestor.signing.seal_is_valid`
+       for the answer: that function's own "nothing configured" default is to
+       warn once and then *accept* every signature (documented legacy
        behavior, there so an existing unsigned Nestor deployment does not
-       break). That default exists for NESTOR'S OWN store, which was already
-       trusting every `status="sealed"` row before HMAC seals existed — a
-       backward-compatibility seam, not a security posture. A claim arriving
-       at Jeles over a tool call has no such history to preserve; for it,
-       "cannot verify" and "refuse" must be the same outcome, so this checks
-       `signing_enabled()` first and refuses outright if it is False, never
-       reaching the code path that would accept an unconfigured instance.
+       break), and its `"shared"` posture is a real signature check, just not
+       one this module can call a verifier. Both exist for NESTOR'S OWN
+       store's backward compatibility, not as a security posture Jeles
+       inherits: a claim arriving here over a tool call has no unsigned- or
+       shared-deployment history to preserve, so "cannot verify who signed"
+       and "refuse" must be the same outcome — checked before reaching the
+       code path that would accept either.
     4. ``nestor.signing.seal_is_valid(source_norm, answer, verified_by,
        seal_sig)`` returns True — an HMAC or ed25519 signature over exactly
        ``(source_norm, answer, verified_by)``, checked under the key
@@ -217,11 +251,12 @@ def verify_human_write(
         return False, 'nestor extra not installed (pip install "jeles[nestor]")'
 
     try:
-        if not signing.signing_enabled():
-            # See point 3 above: refuse here rather than letting
-            # seal_is_valid's own unconfigured-instance default (accept,
-            # with a warning) decide for us.
-            return False, "no NESTOR_SEAL_KEY or keyring configured on this instance"
+        trust = str(signing.seal_trust())
+        if trust != _RING_TRUST:
+            # See point 3 above: refuse here — ring only — rather than
+            # letting seal_is_valid's own unconfigured/shared-key defaults
+            # decide for us.
+            return False, _trust_reason(trust)
         source_norm = _normalize_source(question)
         if source_norm is None:
             return False, "nestor.matcher unavailable; cannot normalize the source"

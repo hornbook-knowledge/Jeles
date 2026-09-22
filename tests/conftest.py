@@ -17,12 +17,37 @@ handful of tests that need to introspect the genuine handler chain.
 
 from __future__ import annotations
 
+import json
+
 import pytest
 
 from jeles import _egress
 
 #: The unpatched builder, for tests that assert on the real handler chain.
 real_opener = _egress.opener
+
+
+@pytest.fixture(autouse=True)
+def _jeles_corpus_manifest(tmp_path_factory, monkeypatch):
+    """Manifest-scoped collections (sealed `ae23d366`) are fail-closed by
+    default: `jeles.corpus._validate_collection` refuses every store-backed
+    call unless `JELES_CORPUS_APP_ID` names a manifest with a `store_scope`/
+    `store_write` that covers the collection being touched. Almost every test
+    in this suite predates that and has no reason to know about it — it wants
+    'ask_jeles_corpus', 'shared_soil', or whatever it names, to just work.
+
+    So: every test gets a wide-open manifest (`store_scope`/`store_write` =
+    `["*"]`) under a fresh, isolated `WILLOW_MCP_APPS_ROOT` by default.
+    `tests/test_manifest_scope.py` overrides `JELES_CORPUS_APP_ID` /
+    `WILLOW_MCP_APPS_ROOT` / the manifest contents directly to exercise the
+    gate itself.
+    """
+    apps_root = tmp_path_factory.mktemp("mcp_apps")
+    app_dir = apps_root / "test-jeles-corpus"
+    app_dir.mkdir(parents=True, exist_ok=True)
+    (app_dir / "manifest.json").write_text(json.dumps({"store_scope": ["*"], "store_write": ["*"]}))
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "test-jeles-corpus")
 
 
 @pytest.fixture(autouse=True)

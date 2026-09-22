@@ -175,6 +175,10 @@ def to_hit(raw: dict[str, Any], idx: int = 0) -> dict[str, Any]:
         # comment above `_KIND_RANK` in corpus.py. An institutional record
         # never carries evidence of this kind, so it is always empty here.
         "evidence": {},
+        # Same merge contract as `evidence`: `corpus.to_search_hit` carries
+        # `visibility` on every hit. An institutional collection is public by
+        # construction, same as the open web hop.
+        "visibility": "public",
         "n": idx,
     }
 

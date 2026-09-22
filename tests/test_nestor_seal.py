@@ -134,28 +134,47 @@ def test_describe_reports_a_missing_extra_exactly_as_a_write_would(no_nestor):
 def test_describe_reports_an_unconfigured_instance_exactly_as_a_write_would(monkeypatch):
     _fake_nestor(
         monkeypatch,
-        signing_enabled=lambda: False,
+        seal_trust=lambda: "unsigned",
         seal_is_valid=lambda *a, **k: pytest.fail(
             "an unconfigured instance must be refused before seal_is_valid"
         ),
     )
     described = _nestor_seal.describe()
     assert described["installed"] is True
-    assert described["signing_enabled"] is False
+    assert described["trust"] == "unsigned"
     assert described["ready"] is False
     assert described["reason"] == _reason_a_write_would_give()
 
 
-def test_describe_is_ready_only_when_something_could_be_checked(monkeypatch):
+def test_describe_reports_a_shared_key_as_not_ready(monkeypatch):
+    """Ring only (sealed ae23d366): a deployment-wide NESTOR_SEAL_KEY is
+    configuration, but it is not a *verifier* — the same key that checks a
+    signature could have minted it, so `ready` stays False."""
     _fake_nestor(
         monkeypatch,
-        signing_enabled=lambda: True,
+        seal_trust=lambda: "shared",
+        seal_is_valid=lambda *a, **k: pytest.fail(
+            "a shared-key-only instance must be refused before seal_is_valid"
+        ),
+    )
+    described = _nestor_seal.describe()
+    assert described["installed"] is True
+    assert described["trust"] == "shared"
+    assert described["ready"] is False
+    assert described["reason"] == _reason_a_write_would_give()
+    assert "keyring" in described["reason"].lower()
+
+
+def test_describe_is_ready_only_when_a_keyring_is_configured(monkeypatch):
+    _fake_nestor(
+        monkeypatch,
+        seal_trust=lambda: "keyring",
         seal_is_valid=lambda *a, **k: pytest.fail("describe() must verify nothing"),
     )
     assert _nestor_seal.describe() == {
         "scheme": _nestor_seal.EVIDENCE_SCHEME,
         "installed": True,
-        "signing_enabled": True,
+        "trust": "keyring",
         "ready": True,
         "reason": "ok",
     }
@@ -167,7 +186,7 @@ def test_describe_reports_a_failing_check_rather_than_raising(monkeypatch):
     def _boom():
         raise RuntimeError("keyring unreadable")
 
-    _fake_nestor(monkeypatch, signing_enabled=_boom)
+    _fake_nestor(monkeypatch, seal_trust=_boom)
     described = _nestor_seal.describe()
     assert described["ready"] is False
     assert "RuntimeError" in described["reason"]
@@ -179,7 +198,7 @@ def test_describe_names_no_key_material(monkeypatch):
 
     monkeypatch.setenv("NESTOR_SEAL_KEY", "s3cr3t-must-not-leak")
     monkeypatch.setenv("NESTOR_KEYRING", "/home/someone/.nestor/keyring.json")
-    _fake_nestor(monkeypatch, signing_enabled=lambda: True)
+    _fake_nestor(monkeypatch, seal_trust=lambda: "keyring")
 
     rendered = json.dumps(_nestor_seal.describe())
     assert "s3cr3t-must-not-leak" not in rendered
