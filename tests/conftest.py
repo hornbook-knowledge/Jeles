@@ -48,9 +48,13 @@ def _jeles_corpus_manifest(tmp_path_factory, monkeypatch):
     app_dir = apps_root / "test-jeles-corpus"
     app_dir.mkdir(parents=True, exist_ok=True)
     (app_dir / "manifest.json").write_text(json.dumps({"store_scope": ["*"], "store_write": ["*"]}))
-    # Not a real PGP signature — corpus.py only checks that this file exists
-    # (shape, not validity; see `_manifest_scope`'s docstring on why).
-    (app_dir / "manifest.json.sig").write_text("test-fixture-not-a-real-signature")
+    # Not a real PGP signature — corpus.py only checks the ASCII-armor shape
+    # (non-empty, bracketed by the standard markers), never validity; see
+    # `_manifest_scope`'s docstring on why.
+    (app_dir / "manifest.json.sig").write_text(
+        "-----BEGIN PGP SIGNATURE-----\n\ntest-fixture-not-a-real-signature\n"
+        "-----END PGP SIGNATURE-----\n"
+    )
     monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
     monkeypatch.setenv("JELES_CORPUS_APP_ID", "test-jeles-corpus")
 

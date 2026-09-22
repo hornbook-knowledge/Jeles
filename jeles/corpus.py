@@ -94,6 +94,19 @@ def _apps_root() -> Path:
     return Path(os.environ.get("WILLOW_MCP_APPS_ROOT", default)).expanduser()
 
 
+#: Shape only (Loki R1) — never a claim that the bytes between the markers
+#: verify against anything. See `_manifest_scope`'s docstring.
+_PGP_SIG_BEGIN = "-----BEGIN PGP SIGNATURE-----"
+_PGP_SIG_END = "-----END PGP SIGNATURE-----"
+
+
+def _looks_like_pgp_signature(text: str) -> bool:
+    stripped = (text or "").strip()
+    if not stripped:
+        return False
+    return stripped.startswith(_PGP_SIG_BEGIN) and stripped.endswith(_PGP_SIG_END)
+
+
 def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
     """``(store_scope, store_write, error)`` for this organ, read fresh on
     every call — same rule ``_trust_tool_writes`` follows: a test, or an
@@ -109,33 +122,42 @@ def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
     comment above for why that is not willow-mcp's own reading of the same
     field name.
 
-    **What the ``.sig`` check is, and is not (Jeles#87, Loki J3).** This
-    refuses on *shape* — a manifest with no detached signature file beside it
-    at all — not on *validity*. `jeles` holds no PGP keyring and verifies
-    nothing about the bytes in `.sig`: doing that for real is willow-mcp's
-    `gate`'s job (the manifest-signing broker), and reaching it from here is
-    exactly the unreachable "through willow-mcp's gate" half named in the
-    module comment above (J2, deliberately left to the operator/broker, not
-    this packet). Absent this check, an unsigned `manifest.json` — writable by
-    anything with filesystem access to `$WILLOW_MCP_APPS_ROOT`, no PGP
-    involved at all — silently set the organ's entire reach; refusing to
-    proceed without at least a `.sig` file present narrows that from "trusted
-    unconditionally" to "trusted unless it never claimed to be signed," which
-    is the most this module can honestly assert without a keyring of its own.
+    **What the ``.sig`` check is, and is not (Jeles#87, Loki J3/R1).** This
+    refuses on *shape*, never on *validity*. `jeles` holds no PGP keyring and
+    verifies nothing cryptographic about `.sig`: doing that for real is
+    willow-mcp's `gate`'s job (the manifest-signing broker), and reaching it
+    from here is exactly the unreachable "through willow-mcp's gate" half
+    named in the module comment above (J2, deliberately left to the
+    operator/broker, not this packet). Two shape failures are refused, not
+    one: no `.sig` file at all (J3), and a `.sig` file that is empty or
+    garbage (Loki R1 — `is_file()` alone let a zero-byte or nonsense file
+    pass). "Looks like an ASCII-armored detached PGP signature" —
+    non-empty, brackets between the standard `-----BEGIN/END PGP
+    SIGNATURE-----` markers — is checked instead; it is still not
+    verification (a byte-for-byte copy of someone *else's* signature "looks
+    like" one too), only the least this module can honestly assert without a
+    keyring of its own. Absent any of this, an unsigned or fake
+    `manifest.json.sig` — writable by anything with filesystem access to
+    `$WILLOW_MCP_APPS_ROOT`, no PGP involved at all — silently set the
+    organ's entire reach.
     """
     app_id = os.environ.get("JELES_CORPUS_APP_ID", "").strip()
     if not app_id:
         return None, None, "JELES_CORPUS_APP_ID is not set"
     manifest_path = _apps_root() / app_id / "manifest.json"
     sig_path = manifest_path.with_name(manifest_path.name + ".sig")
-    if not sig_path.is_file():
+    try:
+        sig_text = sig_path.read_text()
+    except OSError:
+        sig_text = ""
+    if not _looks_like_pgp_signature(sig_text):
         return (
             None,
             None,
             (
-                f"no manifest signature at {sig_path} — an unsigned manifest.json "
-                "is refused on shape (this module cannot verify a PGP signature "
-                "itself; that is willow-mcp's gate)"
+                f"manifest signature at {sig_path} is missing, empty, or not an "
+                "ASCII-armored PGP signature — refused on shape (this module "
+                "cannot verify a PGP signature itself; that is willow-mcp's gate)"
             ),
         )
     try:

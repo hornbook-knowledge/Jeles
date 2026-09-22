@@ -18,8 +18,10 @@ Deliberately its own module, not folded into `corpus.py`. `corpus.py` is
 Jeles' pure core — stdlib only, no MCP, no network, and `tests/test_import_purity.py`
 enforces it (design principle 2 in `README.md`). Nestor is a peer organ, not a
 hard dependency: base `jeles` keeps zero runtime dependencies, and `nestor`
-lives behind its own extra (`pip install "jeles[nestor]"`,
-`nestor @ git+https://github.com/Die-Namic-Systems/Nestor@v0.2.0`, pinned to a tag
+lives behind its own extra (`pip install "jeles[nestor]"`, which resolves
+`nestor-meaning @ git+https://github.com/Die-Namic-Systems/Nestor@v0.18.0` —
+that repo's own distribution name, not `nestor`; the importable package is
+still `nestor`, see `pyproject.toml`'s `[nestor]` extra), pinned to a tag
 rather than a branch for the same reason every git dependency here is —
 see README's "Prefer a released version" note). Every import of `nestor` in
 this module is therefore lazy, inside the one function that needs it: `import
@@ -122,6 +124,32 @@ def _trust_reason(trust: str) -> str:
     return "no NESTOR_KEYRING configured on this instance"
 
 
+#: The Nestor release that first shipped `signing.seal_trust` — see
+#: `pyproject.toml`'s `[nestor]` extra, which pins to it.
+_SEAL_TRUST_FLOOR = "v0.18.0"
+
+
+class _NestorTooOld(Exception):
+    """Raised by `_seal_trust` when the installed `nestor` predates
+    `signing.seal_trust` — caught separately from a generic signing failure
+    so the two describe/refuse with different, specific messages (Loki R2)."""
+
+
+def _seal_trust(signing: Any) -> str:
+    """`signing.seal_trust()`, or `_NestorTooOld` naming the floor by version
+    rather than letting a bare `AttributeError` — "module 'nestor.signing'
+    has no attribute 'seal_trust'" — stand in for it. That message is
+    correct but says nothing a caller can act on; this one names the exact
+    release and the fix (bump the `[nestor]` extra's pin)."""
+    if not hasattr(signing, "seal_trust"):
+        raise _NestorTooOld(
+            f"this nestor install lacks signing.seal_trust (added in Nestor "
+            f"{_SEAL_TRUST_FLOOR}) — the [nestor] extra's pin needs bumping to "
+            f"{_SEAL_TRUST_FLOOR} or later"
+        )
+    return str(signing.seal_trust())
+
+
 def describe() -> dict[str, Any]:
     """Whether this instance could verify a seal at all — asking nothing of a
     caller and verifying nothing.
@@ -157,7 +185,15 @@ def describe() -> dict[str, Any]:
         }
 
     try:
-        trust = str(signing.seal_trust())
+        trust = _seal_trust(signing)
+    except _NestorTooOld as exc:
+        return {
+            "scheme": EVIDENCE_SCHEME,
+            "installed": True,
+            "trust": "unsigned",
+            "ready": False,
+            "reason": str(exc),
+        }
     except Exception as exc:
         # Mirrors verify_human_write's own posture: an error asking whether we
         # can verify is a "no", reported, not an exception thrown at a caller
@@ -251,7 +287,7 @@ def verify_human_write(
         return False, 'nestor extra not installed (pip install "jeles[nestor]")'
 
     try:
-        trust = str(signing.seal_trust())
+        trust = _seal_trust(signing)
         if trust != _RING_TRUST:
             # See point 3 above: refuse here — ring only — rather than
             # letting seal_is_valid's own unconfigured/shared-key defaults
@@ -262,6 +298,8 @@ def verify_human_write(
             return False, "nestor.matcher unavailable; cannot normalize the source"
         # The normalized source, never the raw question — see `_normalize_source`.
         ok = signing.seal_is_valid(source_norm, answer, verified_by, seal_sig)
+    except _NestorTooOld as exc:
+        return False, str(exc)
     except Exception as exc:  # keyring/key errors are refusals, not crashes
         return False, f"signature check raised {type(exc).__name__}: {exc}"
 

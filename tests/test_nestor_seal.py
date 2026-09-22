@@ -192,6 +192,38 @@ def test_describe_reports_a_failing_check_rather_than_raising(monkeypatch):
     assert "RuntimeError" in described["reason"]
 
 
+def test_describe_names_the_version_floor_for_a_too_old_nestor(monkeypatch):
+    """Loki R2: a Nestor predating `signing.seal_trust` must be named by
+    version in the refusal, not left as a bare AttributeError."""
+    _fake_nestor(
+        monkeypatch,
+        seal_is_valid=lambda *a, **k: pytest.fail(
+            "a too-old instance must be refused before seal_is_valid"
+        ),
+        # No seal_trust attr at all — the too-old shape.
+    )
+    described = _nestor_seal.describe()
+    assert described["ready"] is False
+    assert "AttributeError" not in described["reason"]
+    assert "v0.18.0" in described["reason"]
+    assert described["reason"] == _reason_a_write_would_give()
+
+
+def test_verify_human_write_names_the_version_floor_for_a_too_old_nestor(monkeypatch):
+    _fake_nestor(
+        monkeypatch,
+        seal_is_valid=lambda *a, **k: pytest.fail(
+            "a too-old instance must be refused before seal_is_valid"
+        ),
+    )
+    ok, reason = _nestor_seal.verify_human_write(
+        "q?", "a.", "rita", {"scheme": _nestor_seal.EVIDENCE_SCHEME, "seal_sig": "deadbeef"}
+    )
+    assert ok is False
+    assert "AttributeError" not in reason
+    assert "v0.18.0" in reason
+
+
 def test_describe_names_no_key_material(monkeypatch):
     """Every field is about *configuration*, never about what it contains."""
     import json

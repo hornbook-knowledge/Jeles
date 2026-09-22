@@ -60,7 +60,18 @@ mcp = ["mcp>=2.0.0,<3.0.0"]
 # ("keyring"/"shared"/"unsigned" — jeles._nestor_seal's ring-only gate, sealed
 # ae23d366). v0.2.0 predates it; a venv built strictly from this file at that
 # pin raises AttributeError out of every ring-only check (Jeles#87, Loki J1).
-nestor = ["nestor @ git+https://github.com/Die-Namic-Systems/Nestor@v0.18.0"]
+#
+# The PyPI/pip *distribution* at every tag from v0.18.0 through the current
+# v0.27.0 (checked all nine) is named `nestor-meaning`, not `nestor` — its own
+# `[project] name` says so, and pip refuses to install a requirement under a
+# name the built metadata does not match ("has inconsistent name"). The
+# *importable package* is unaffected: `tool.hatch.build.targets.wheel.packages
+# = ["nestor"]` in that repo's own pyproject.toml means the wheel still ships
+# a top-level `nestor/` directory, so `_nestor_seal._import_nestor()`'s
+# `from nestor import signing` needs no change — only the name pip resolves
+# this dependency spec under. No later tag renamed the distribution back
+# (Jeles#87, CI run 35681721123).
+nestor = ["nestor-meaning @ git+https://github.com/Die-Namic-Systems/Nestor@v0.18.0"]
 # pyyaml is for tests/test_release_wiring.py, which reads the release
 # workflows. It importorskips, so leaving it out would turn those checks
 # into a silent skip — the exact failure mode they exist to catch. It is a

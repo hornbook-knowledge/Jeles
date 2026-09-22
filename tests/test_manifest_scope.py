@@ -27,6 +27,15 @@ def corpus(tmp_path, monkeypatch):
     return corpus_module
 
 
+#: Shape only — corpus.py holds no PGP keyring and checks nothing about these
+#: bytes beyond the ASCII-armor markers (see `_manifest_scope`'s docstring,
+#: Loki J3/R1).
+_FAKE_SIG = (
+    "-----BEGIN PGP SIGNATURE-----\n\ntest-fixture-not-a-real-signature\n"
+    "-----END PGP SIGNATURE-----\n"
+)
+
+
 def _write_manifest(apps_root, app_id, store_scope=None, store_write=None, sign=True):
     app_dir = apps_root / app_id
     app_dir.mkdir(parents=True, exist_ok=True)
@@ -37,9 +46,7 @@ def _write_manifest(apps_root, app_id, store_scope=None, store_write=None, sign=
         manifest["store_write"] = store_write
     (app_dir / "manifest.json").write_text(json.dumps(manifest))
     if sign:
-        # Shape only — corpus.py holds no PGP keyring and checks nothing about
-        # these bytes (see `_manifest_scope`'s docstring, Loki J3).
-        (app_dir / "manifest.json.sig").write_text("test-fixture-not-a-real-signature")
+        (app_dir / "manifest.json.sig").write_text(_FAKE_SIG)
 
 
 # ── Fail closed: no declared reach at all ───────────────────────────────────
@@ -56,7 +63,7 @@ def test_refuses_every_collection_with_no_manifest_on_disk(corpus, monkeypatch, 
     apps_root.mkdir()
     monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
     monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
-    with pytest.raises(PermissionError, match="no manifest signature"):
+    with pytest.raises(PermissionError, match="missing, empty, or not an ASCII-armored"):
         corpus.log_gap("does it work?")
 
 
@@ -69,7 +76,7 @@ def test_refuses_a_manifest_missing_only_because_its_sig_is_present_but_it_is_no
     apps_root = tmp_path / "apps"
     app_dir = apps_root / "jeles-corpus"
     app_dir.mkdir(parents=True)
-    (app_dir / "manifest.json.sig").write_text("test-fixture-not-a-real-signature")
+    (app_dir / "manifest.json.sig").write_text(_FAKE_SIG)
     monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
     monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
     with pytest.raises(PermissionError, match="no readable manifest"):
@@ -86,8 +93,47 @@ def test_refuses_an_unsigned_manifest_even_when_store_scope_is_wide_open(
     monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
     monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
     _write_manifest(apps_root, "jeles-corpus", store_scope=["*"], store_write=["*"], sign=False)
-    with pytest.raises(PermissionError, match="no manifest signature"):
+    with pytest.raises(PermissionError, match="missing, empty, or not an ASCII-armored"):
         corpus.list_nuggets()
+
+
+def test_refuses_an_empty_sig_file(corpus, monkeypatch, tmp_path):
+    """Loki R1: `.sig` present but zero-byte must refuse the same as absent —
+    `is_file()` alone let this through."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
+    app_dir = apps_root / "jeles-corpus"
+    app_dir.mkdir(parents=True)
+    (app_dir / "manifest.json").write_text(json.dumps({"store_scope": ["*"], "store_write": ["*"]}))
+    (app_dir / "manifest.json.sig").write_text("")
+    with pytest.raises(PermissionError, match="missing, empty, or not an ASCII-armored"):
+        corpus.list_nuggets()
+
+
+def test_refuses_a_garbage_sig_file(corpus, monkeypatch, tmp_path):
+    """Loki R1: `.sig` present and non-empty but not an ASCII-armored PGP
+    signature block must still refuse — a non-empty file is not the same as
+    a signed one."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
+    app_dir = apps_root / "jeles-corpus"
+    app_dir.mkdir(parents=True)
+    (app_dir / "manifest.json").write_text(json.dumps({"store_scope": ["*"], "store_write": ["*"]}))
+    (app_dir / "manifest.json.sig").write_text("not a signature, just some bytes")
+    with pytest.raises(PermissionError, match="missing, empty, or not an ASCII-armored"):
+        corpus.list_nuggets()
+
+
+def test_admits_a_well_shaped_sig_file(corpus, monkeypatch, tmp_path):
+    """The positive case: a `.sig` that brackets the standard ASCII-armor
+    markers is admitted on shape — still not cryptographically verified."""
+    apps_root = tmp_path / "apps"
+    monkeypatch.setenv("WILLOW_MCP_APPS_ROOT", str(apps_root))
+    monkeypatch.setenv("JELES_CORPUS_APP_ID", "jeles-corpus")
+    _write_manifest(apps_root, "jeles-corpus", store_scope=["*"], store_write=["*"])
+    corpus.list_nuggets()  # does not raise
 
 
 def test_refuses_when_store_scope_is_malformed(corpus, monkeypatch, tmp_path):
