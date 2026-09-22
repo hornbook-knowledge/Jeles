@@ -205,6 +205,16 @@ def _overlap(claim: str, hit: dict[str, Any]) -> float:
     return round(len(asked & set(_corpus._ask_tokens(doc))) / len(asked), 2)
 
 
+#: Below this, a match carries no information (gap `02dcd8e7ebc9`, bench
+#: 2026-09-03). One arXiv row (1411.4413) turned up for unrelated claims at an
+#: overlap of 0.07-0.12 — a near-universal attractor, not a match — and the
+#: measured false positive ("Gemma 4 ships with native function calling"
+#: against an Elsevier paper) scored 0.38 against a real hit's 0.57. `matched`
+#: requires this; `overlap` is still reported unconditionally so a caller can
+#: see why a `matched: false` result still carries a title and a url.
+MIN_MATCH_OVERLAP = 0.4
+
+
 def verify_claim(
     claim: str,
     sources: Sequence[str] | None = None,
@@ -238,19 +248,31 @@ def verify_claim(
     field is consumed by things that decide what to believe.
 
     `overlap` is reported beside it as the missing half — how much of the
-    claim the document actually says (see `_overlap`). It is **reported, not
-    enforced**: no threshold on it has been earned. Counting shared words was
-    not enough to separate the measured false positive from a true one (0.50
-    against 0.57 on a live run), because a paper about function calling and a
-    claim about a named product that does nothing else share real vocabulary.
+    claim the document actually says (see `_overlap`), and is what candidates
+    are now ranked by, **before** `source_rank` (gap `02dcd8e7ebc9`; bench
+    2026-09-03): the highest-*overlap* hit wins, and `source_rank` only breaks
+    a tie between two hits with identical overlap. Ranking by publisher alone
+    is what let a claim built from common academic vocabulary match something
+    in a high-ranked journal every time, regardless of whether that journal's
+    hit had anything to do with the claim.
 
-    `judge` is the answer to that, and it is optional. Pass a callable with
-    `extract_claims`' signature — ``judge(system, history, text) -> str`` —
-    and the single winning hit is put to it as "is this document about this
-    claim". The verdict lands in `relevance` as ``supports``, ``unrelated``,
-    or ``unjudged``. Omit it and nothing changes: no model, no network, and
-    `relevance` stays ``unjudged``, so the base install keeps its promise of
-    zero runtime dependencies and this function stays as pure as it was.
+    **`matched` requires `overlap >= MIN_MATCH_OVERLAP` (0.4).** Below that
+    bar a match carries no information — bench 2026-09-03 measured one arXiv
+    row (1411.4413) turning up for unrelated claims at 0.07-0.12, a
+    near-universal attractor rather than a real match, well clear of a real
+    hit's 0.57. A hit below the bar still comes back — title, url, source,
+    `overlap` and all — with `matched: false`, so "nothing backs this" and
+    "something backs this but too thinly to trust" stay different answers.
+
+    `judge` is the answer to what the overlap bar does not catch, and it is
+    optional. Pass a callable with `extract_claims`' signature —
+    ``judge(system, history, text) -> str`` — and the single winning hit,
+    whether or not it cleared the overlap bar, is put to it as "is this
+    document about this claim". The verdict lands in `relevance` as ``supports``,
+    ``unrelated``, or ``unjudged``. Omit it and nothing changes: no model, no
+    network, and `relevance` stays ``unjudged``, so the base install keeps its
+    promise of zero runtime dependencies and this function stays as pure as it
+    was.
 
     **The judge may only demote.** ``unrelated`` flips `matched` to False;
     nothing it can say will flip a False to True. That asymmetry is the whole
@@ -273,16 +295,20 @@ def verify_claim(
     hits = raw.get("results", {})
 
     best: dict[str, Any] | None = None
-    best_conf = 0.0
+    # (overlap, source_rank): overlap decides the winner, source_rank only
+    # breaks a tie between two hits that overlap the claim equally.
+    best_key: tuple[float, float] = (-1.0, -1.0)
 
     for source_id, source_hits in hits.items():
         conf = _sources._SOURCE_CONFIDENCE.get(source_id, 0.70)
         for hit in source_hits:
-            if conf > best_conf:
-                best_conf = conf
+            overlap = _overlap(claim, hit)
+            key = (overlap, conf)
+            if key > best_key:
+                best_key = key
                 best = {
                     "claim": claim,
-                    "matched": True,
+                    "matched": overlap >= MIN_MATCH_OVERLAP,
                     "title": (hit.get("title") or "").strip(),
                     "url": hit.get("url", ""),
                     "date": hit.get("date", ""),
@@ -290,8 +316,14 @@ def verify_claim(
                     "institution": hit.get("institution", source_id),
                     "tier": "press" if source_id in PRESS_SOURCES else "academic",
                     "source_rank": conf,
-                    "overlap": _overlap(claim, hit),
+                    "overlap": overlap,
                     "relevance": "unjudged",
+                    # Clause 3 (sealed ae23d366): every hit carries visibility.
+                    # A live external search result has no stored tier of its
+                    # own the way a corpus nugget does — "internal" until a
+                    # caller with better information says otherwise (Jeles#87,
+                    # Loki J4).
+                    "visibility": "internal",
                 }
 
     if best:
@@ -317,6 +349,7 @@ def verify_claim(
         "source_rank": 0.0,
         "overlap": 0.0,
         "relevance": "unjudged",
+        "visibility": "internal",
     }
 
 

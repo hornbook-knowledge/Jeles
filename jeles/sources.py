@@ -571,7 +571,30 @@ def search_pubmed(query: str, limit: int = 5) -> list[dict]:
 
 
 def search_arxiv(query: str, limit: int = 5) -> list[dict]:
-    """arXiv preprints — STEM, CS, Math, Physics. No key required."""
+    """arXiv preprints — STEM, CS, Math, Physics. No key required.
+
+    Returns ``[]`` without making a request when `query` carries no
+    tokenizable content (gap `02dcd8e7ebc9`, bench 2026-09-03). arXiv's own
+    ``sortBy=relevance`` has nothing to rank against a query with no content
+    words, and what comes back in that case is not "the closest match" but
+    whatever sits near the front of arXiv's index regardless of the
+    question — measured as one paper (1411.4413) turning up for claims it had
+    nothing to do with, at an overlap of roughly 0.07-0.12: a near-universal
+    attractor, not a real hit. `source_trail.verify_claim`'s overlap gate
+    (``>= MIN_MATCH_OVERLAP``) already screens a hit like that out downstream;
+    this stops the request — and the attractor being counted as a candidate
+    at all — at the source.
+
+    Imported locally rather than at module level: `jeles.sources` is meant to
+    stay a leaf module with no sibling-package coupling at import time (see
+    the module docstring's "stdlib only" promise), and this is the one place
+    it needs `corpus`'s tokenizer rather than reimplementing "what counts as
+    a content word" a third time.
+    """
+    from jeles.corpus import _tokens as _content_tokens
+
+    if not _content_tokens(query):
+        return []
     url = (
         "https://export.arxiv.org/api/query?search_query="
         + urllib.parse.quote(f"all:{query}")

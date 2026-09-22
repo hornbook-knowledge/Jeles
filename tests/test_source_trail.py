@@ -94,13 +94,16 @@ def test_verify_claim_matched_false_when_nothing_comes_back(monkeypatch):
         "source_rank": 0.0,
         "overlap": 0.0,
         "relevance": "unjudged",
+        "visibility": "internal",
     }
 
 
 def test_verify_claim_picks_the_highest_ranked_hit_not_the_first(monkeypatch):
     """`zenodo` (0.65) is listed before `pubmed` (0.90) in the fan-out here —
     if this picked the first source with a hit rather than ranking by
-    confidence, the low-confidence deposit would win."""
+    confidence, the low-confidence deposit would win. Both hits share the
+    same vocabulary with the claim (equal overlap), so `source_rank` is what
+    breaks the tie — the case `source_rank` is *for*."""
     monkeypatch.setattr(source_trail._sources, "route_sources", lambda q: ["zenodo", "pubmed"])
 
     def _fake_search(query, s, limit):
@@ -108,14 +111,14 @@ def test_verify_claim_picks_the_highest_ranked_hit_not_the_first(monkeypatch):
             "results": {
                 "zenodo": [
                     {
-                        "title": "A preprint",
+                        "title": "Widget deployment via containers, a preprint",
                         "url": "https://zenodo.org/x",
                         "institution": "Zenodo / CERN",
                     }
                 ],
                 "pubmed": [
                     {
-                        "title": "A peer-reviewed paper",
+                        "title": "Widget deployment via containers, a peer-reviewed paper",
                         "url": "https://pubmed/y",
                         "institution": "PubMed / NLM",
                     }
@@ -124,7 +127,7 @@ def test_verify_claim_picks_the_highest_ranked_hit_not_the_first(monkeypatch):
         }
 
     monkeypatch.setattr(source_trail._sources, "search", _fake_search)
-    out = verify_claim("some claim")
+    out = verify_claim("the widget deploys via containers")
     assert out["matched"] is True
     assert out["source"] == "pubmed"
     assert out["source_rank"] == pytest.approx(0.90)
@@ -218,7 +221,13 @@ def test_verify_text_verifies_each_extracted_claim_and_counts_matches(monkeypatc
 
     def _fake_search(query, s, limit):
         if "first" in query:
-            return {"results": {"pubmed": [{"title": "t", "url": "u", "institution": "i"}]}}
+            return {
+                "results": {
+                    "pubmed": [
+                        {"title": "A paper about the first claim", "url": "u", "institution": "i"}
+                    ]
+                }
+            }
         return {"results": {}}
 
     monkeypatch.setattr(source_trail._sources, "search", _fake_search)
@@ -326,10 +335,13 @@ def _hit(title, snippet=""):
     }
 
 
-def test_a_document_that_shares_only_vocabulary_scores_low(monkeypatch):
-    """The measured false positive. The paper is genuinely about function
-    calling; the claim is about Gemma 4. The tokens that make the claim
-    specific are exactly the ones missing."""
+def test_a_document_that_shares_only_vocabulary_is_not_matched(monkeypatch):
+    """The measured false positive (2026-08-28), and the case gap
+    `02dcd8e7ebc9`'s overlap gate exists to catch. The paper is genuinely
+    about function calling; the claim is about Gemma 4. The tokens that make
+    the claim specific are exactly the ones missing, overlap lands at 0.38 —
+    below `MIN_MATCH_OVERLAP` (0.4) — so this is no longer reported as a
+    match, though the hit that was found still comes back."""
     monkeypatch.setattr(
         _st._sources,
         "search",
@@ -342,8 +354,10 @@ def test_a_document_that_shares_only_vocabulary_scores_low(monkeypatch):
         },
     )
     out = verify_claim("Gemma 4 ships with native function calling trained into the model")
-    assert out["matched"] is True, "matched still means only that a search returned"
-    assert out["overlap"] < 0.5, "but the overlap says the document is not about it"
+    assert out["overlap"] == pytest.approx(0.38, abs=0.01)
+    assert out["overlap"] < _st.MIN_MATCH_OVERLAP
+    assert out["matched"] is False, "overlap this low carries no information"
+    assert out["title"], "what was found stays visible even though it is not endorsed"
 
 
 def test_a_document_that_names_the_claim_scores_higher(monkeypatch):
@@ -385,6 +399,80 @@ def test_source_rank_is_about_the_publisher_not_the_match(monkeypatch):
     b = verify_claim("Qwen 3 models have the most stable tool calling")
     assert a["source_rank"] == b["source_rank"], "rank cannot tell them apart"
     assert a["overlap"] < b["overlap"], "overlap can"
+
+
+#: Five claims and one broad-vocabulary document that shares none of their
+#: distinguishing tokens — a synthetic stand-in for the measured bench (gap
+#: `02dcd8e7ebc9`, 2026-09-03), where one real arXiv row (1411.4413) turned
+#: up for unrelated claims at an overlap of roughly 0.07-0.12, well under the
+#: 0.4 floor this gate enforces. No network: `_sources.search` is
+#: monkeypatched per case.
+_UNIVERSAL_ATTRACTOR_TITLE = (
+    "A broad survey of methods, results, applications, and open problems "
+    "across contemporary computational research, with extensive references "
+    "to related work, data, models, systems, and future directions"
+)
+
+_BENCH_UNRELATED_CLAIMS = [
+    "Gemma 4 ships with native function calling trained into the model",
+    "The bridge in Genoa collapsed due to a corroded support cable",
+    "Saturn's rings are composed primarily of water ice particles",
+    "The 2026 municipal election was decided by fewer than 400 votes",
+    "A new species of deep-sea anglerfish was documented off Iceland",
+]
+
+
+def test_verify_claim_overlap_gate_refuses_five_unrelated_bench_claims(monkeypatch):
+    """None of these five claims is about the attractor document; each must
+    land under MIN_MATCH_OVERLAP and come back `matched: false`."""
+    monkeypatch.setattr(
+        _st._sources,
+        "search",
+        lambda c, s, limit: {"results": {"crossref": [_hit(_UNIVERSAL_ATTRACTOR_TITLE)]}},
+    )
+    for claim in _BENCH_UNRELATED_CLAIMS:
+        out = verify_claim(claim)
+        assert out["overlap"] < _st.MIN_MATCH_OVERLAP, (claim, out["overlap"])
+        assert out["matched"] is False, claim
+        assert out["title"] == _UNIVERSAL_ATTRACTOR_TITLE, "still reported, just not endorsed"
+
+
+def test_verify_claim_overlap_gate_admits_a_real_match(monkeypatch):
+    """The counterpart to the refusal above: a document that genuinely
+    shares the claim's vocabulary clears the bar and is matched."""
+    monkeypatch.setattr(
+        _st._sources,
+        "search",
+        lambda c, s, limit: {
+            "results": {
+                "crossref": [_hit("Saturn's rings are composed primarily of water ice particles")]
+            }
+        },
+    )
+    out = verify_claim("Saturn's rings are composed primarily of water ice particles")
+    assert out["overlap"] >= _st.MIN_MATCH_OVERLAP
+    assert out["matched"] is True
+
+
+def test_verify_claim_carries_visibility_on_a_match_and_a_miss(monkeypatch):
+    """Clause 3 (sealed ae23d366): every hit carries visibility (Jeles#87,
+    Loki J4). A live external result has no stored tier of its own, so this
+    reads "internal" until a caller with better information says otherwise."""
+    monkeypatch.setattr(
+        _st._sources,
+        "search",
+        lambda c, s, limit: {
+            "results": {
+                "crossref": [_hit("Saturn's rings are composed primarily of water ice particles")]
+            }
+        },
+    )
+    matched = verify_claim("Saturn's rings are composed primarily of water ice particles")
+    assert matched["visibility"] == "internal"
+
+    monkeypatch.setattr(_st._sources, "search", lambda c, s, limit: {"results": {}})
+    missed = verify_claim("nothing indexed anywhere")
+    assert missed["visibility"] == "internal"
 
 
 def test_an_unmatched_claim_reports_both_numbers_as_zero(monkeypatch):
@@ -464,11 +552,19 @@ def test_a_supporting_verdict_leaves_the_match_alone(monkeypatch):
     assert out["relevance"] == "supports" and out["matched"] is True
 
 
+#: A claim/title pair engineered to clear the overlap bar comfortably, for
+#: tests below whose point is the judge plumbing (or its absence), not
+#: overlap — using a near-zero-overlap pair would make `matched` False before
+#: any judge involvement, for reasons unrelated to what each test checks.
+_HIGH_OVERLAP_CLAIM = "the widget deploys automatically"
+_HIGH_OVERLAP_TITLE = "The widget deploys automatically across every region"
+
+
 def test_no_judge_means_no_model_and_no_change(monkeypatch):
     """The base install has zero runtime dependencies and this function stays
     as pure as it was. Omitting the judge must change nothing."""
-    _returns(monkeypatch, "Something tangentially related")
-    out = verify_claim("a claim", judge=None)
+    _returns(monkeypatch, _HIGH_OVERLAP_TITLE)
+    out = verify_claim(_HIGH_OVERLAP_CLAIM, judge=None)
     assert out["matched"] is True and out["relevance"] == "unjudged"
 
 
@@ -478,16 +574,16 @@ def test_a_broken_judge_changes_nothing(monkeypatch):
     def explode(system, history, text):
         raise RuntimeError("ollama is down")
 
-    _returns(monkeypatch, "Something")
-    out = verify_claim("a claim", judge=explode)
+    _returns(monkeypatch, _HIGH_OVERLAP_TITLE)
+    out = verify_claim(_HIGH_OVERLAP_CLAIM, judge=explode)
     assert out["relevance"] == "unjudged"
     assert out["matched"] is True, "an absent judge demotes nothing"
 
 
 def test_an_unreadable_verdict_is_unjudged_not_a_refusal(monkeypatch):
     """'The judge said no' and 'the judge never answered' are different facts."""
-    _returns(monkeypatch, "Something")
-    out = verify_claim("a claim", judge=_judge("Well, it depends on context..."))
+    _returns(monkeypatch, _HIGH_OVERLAP_TITLE)
+    out = verify_claim(_HIGH_OVERLAP_CLAIM, judge=_judge("Well, it depends on context..."))
     assert out["relevance"] == "unjudged" and out["matched"] is True
 
 

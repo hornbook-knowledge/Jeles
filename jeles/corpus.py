@@ -44,10 +44,169 @@ GAPS_COLLECTION = os.environ.get("JELES_CORPUS_GAPS_COLLECTION", "ask_jeles_corp
 _COLLECTION_RE = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
 
 
-def _validate_collection(collection: str) -> None:
+# ── Manifest-scoped collections (sealed ae23d366, "Jeles is the organ") ────
+#
+# Before this, `_conn` opened *any* syntactically-valid collection under
+# WILLOW_STORE_ROOT read-write — the corpus process had no notion of its own
+# reach, and the corpus-first hook (#497) routing every seat's recall through
+# it turned that into "the organ's reach is every seat's reach." The organ's
+# reach is meant to be a *declared* list, read from its own signed manifest —
+# `$WILLOW_MCP_APPS_ROOT/<JELES_CORPUS_APP_ID>/manifest.json`'s `store_scope`
+# (read) and `store_write` (write; nuggets and gaps) — and fail closed: no
+# `JELES_CORPUS_APP_ID`, no readable manifest, or a malformed scope field all
+# refuse every store-backed call rather than falling back to "everything," the
+# way an unset allowlist quietly does elsewhere.
+#
+# This mirrors willow-mcp's own `gate.store_scope` in one respect (exact names
+# and/or trailing `prefix*` wildcards) and deliberately differs in another:
+# `willow_mcp.gate.store_scope` reads a *missing* `store_scope` field as
+# "unrestricted" (an app that never opted into isolation keeps its prior
+# reach). Here a manifest that forgot to declare `store_scope`/`store_write`
+# gets nothing, not everything — this organ's whole reach is supposed to be a
+# declared list, so "forgot to declare it" and "declared no reach" read the
+# same, on purpose.
+#
+# **"Through willow-mcp's gate, never by opening SQLite directly" — the half
+# that is NOT implemented here, and why.** The seal asks whether a spawned
+# stdio child can reach its parent's store verbs at all. It cannot, and the
+# reason is the transport, not a missing wire-up: `corpus_server.py` runs as
+# a standalone MCP *server* speaking stdio to whatever *client* started it
+# (Claude Code, Claude Desktop, willow-mcp itself, a bare script — see its
+# module docstring). MCP stdio is one session, one direction of tool
+# discovery: the process that spawned the child is the client and the child
+# is the server, so the child has no session, and no tool surface, to call
+# *back into* on its parent — there is no reverse channel for corpus_server to
+# open a session against willow-mcp's own gated `store_*` tools even if it
+# wanted to. So "route every read and write through willow-mcp's gate" is not
+# reachable from inside this process as it is architected today; the only
+# enforcement point this organ has over its own reach is the manifest read
+# below. Actually gating storage *through* willow-mcp would mean rearchitecting
+# this server to run as an MCP *client* of willow-mcp (issuing `store_get`/
+# `store_put` calls over that connection) instead of opening
+# `WILLOW_STORE_ROOT/<collection>/store.db` itself — a real change, not a
+# missing flag, and it is named as the follow-on in this packet's handoff
+# rather than faked here.
+_VISIBILITY_LEVELS = frozenset({"internal", "serve", "public"})
+
+
+def _apps_root() -> Path:
+    default = str(Path.home() / ".willow" / "mcp_apps")
+    return Path(os.environ.get("WILLOW_MCP_APPS_ROOT", default)).expanduser()
+
+
+#: Shape only (Loki R1) — never a claim that the bytes between the markers
+#: verify against anything. See `_manifest_scope`'s docstring.
+_PGP_SIG_BEGIN = "-----BEGIN PGP SIGNATURE-----"
+_PGP_SIG_END = "-----END PGP SIGNATURE-----"
+
+
+def _looks_like_pgp_signature(text: str) -> bool:
+    stripped = (text or "").strip()
+    if not stripped:
+        return False
+    return stripped.startswith(_PGP_SIG_BEGIN) and stripped.endswith(_PGP_SIG_END)
+
+
+def _manifest_scope() -> tuple[list[str] | None, list[str] | None, str | None]:
+    """``(store_scope, store_write, error)`` for this organ, read fresh on
+    every call — same rule ``_trust_tool_writes`` follows: a test, or an
+    operator granting/revoking the manifest, must see the change on the next
+    call, not need a reimport.
+
+    ``error`` is set, and the other two are ``None``, exactly when the organ
+    has no declared reach at all: no ``JELES_CORPUS_APP_ID``, no readable
+    manifest, no sibling ``manifest.json.sig``, or a ``store_scope``/
+    ``store_write`` that is not a list. ``_validate_collection`` treats that
+    as fail-closed. A manifest that *is* readable but omits one of the two
+    fields gets ``[]`` for it (deny-all), not ``None`` — see the module
+    comment above for why that is not willow-mcp's own reading of the same
+    field name.
+
+    **What the ``.sig`` check is, and is not (Jeles#87, Loki J3/R1).** This
+    refuses on *shape*, never on *validity*. `jeles` holds no PGP keyring and
+    verifies nothing cryptographic about `.sig`: doing that for real is
+    willow-mcp's `gate`'s job (the manifest-signing broker), and reaching it
+    from here is exactly the unreachable "through willow-mcp's gate" half
+    named in the module comment above (J2, deliberately left to the
+    operator/broker, not this packet). Two shape failures are refused, not
+    one: no `.sig` file at all (J3), and a `.sig` file that is empty or
+    garbage (Loki R1 — `is_file()` alone let a zero-byte or nonsense file
+    pass). "Looks like an ASCII-armored detached PGP signature" —
+    non-empty, brackets between the standard `-----BEGIN/END PGP
+    SIGNATURE-----` markers — is checked instead; it is still not
+    verification (a byte-for-byte copy of someone *else's* signature "looks
+    like" one too), only the least this module can honestly assert without a
+    keyring of its own. Absent any of this, an unsigned or fake
+    `manifest.json.sig` — writable by anything with filesystem access to
+    `$WILLOW_MCP_APPS_ROOT`, no PGP involved at all — silently set the
+    organ's entire reach.
+    """
+    app_id = os.environ.get("JELES_CORPUS_APP_ID", "").strip()
+    if not app_id:
+        return None, None, "JELES_CORPUS_APP_ID is not set"
+    manifest_path = _apps_root() / app_id / "manifest.json"
+    sig_path = manifest_path.with_name(manifest_path.name + ".sig")
+    try:
+        sig_text = sig_path.read_text()
+    except OSError:
+        sig_text = ""
+    if not _looks_like_pgp_signature(sig_text):
+        return (
+            None,
+            None,
+            (
+                f"manifest signature at {sig_path} is missing, empty, or not an "
+                "ASCII-armored PGP signature — refused on shape (this module "
+                "cannot verify a PGP signature itself; that is willow-mcp's gate)"
+            ),
+        )
+    try:
+        raw = manifest_path.read_text()
+    except OSError as exc:
+        return None, None, f"no readable manifest at {manifest_path} ({type(exc).__name__})"
+    try:
+        manifest = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        return None, None, f"manifest at {manifest_path} is not valid JSON ({exc})"
+    scope = manifest.get("store_scope")
+    write = manifest.get("store_write")
+    if scope is not None and not isinstance(scope, list):
+        return None, None, f"manifest store_scope is not a list: {scope!r}"
+    if write is not None and not isinstance(write, list):
+        return None, None, f"manifest store_write is not a list: {write!r}"
+    return (scope if scope is not None else []), (write if write is not None else []), None
+
+
+def _collection_allowed(name: str, patterns: list[str]) -> bool:
+    """Exact names and/or trailing ``prefix*`` wildcards — the same shape
+    willow-mcp's own ``store_scope`` matching uses."""
+    for pattern in patterns:
+        if pattern == "*" or pattern == name:
+            return True
+        if pattern.endswith("*") and name.startswith(pattern[:-1]):
+            return True
+    return False
+
+
+def _validate_collection(collection: str, mode: str = "read") -> None:
     if not _COLLECTION_RE.match(collection or ""):
         raise ValueError(
             f"invalid collection name (must match {_COLLECTION_RE.pattern}): {collection!r}"
+        )
+    scope, write, error = _manifest_scope()
+    if error is not None:
+        raise PermissionError(
+            "jeles corpus refuses to serve any store-backed tool: "
+            f"{error} — the organ's reach is a declared manifest "
+            "store_scope/store_write, fail closed, never a silent empty scope"
+        )
+    allowed = write if mode == "write" else scope
+    if not _collection_allowed(collection, allowed):
+        field = "store_write" if mode == "write" else "store_scope"
+        raise PermissionError(
+            f"collection_denied: {collection!r} is outside this organ's manifest "
+            f"{field} ({_apps_root() / os.environ.get('JELES_CORPUS_APP_ID', '<app_id>')}"
+            "/manifest.json)"
         )
 
 
@@ -89,8 +248,8 @@ def _store_root() -> Path:
     return Path(os.environ.get("WILLOW_STORE_ROOT", default)).expanduser()
 
 
-def _conn(collection: str) -> sqlite3.Connection:
-    _validate_collection(collection)
+def _conn(collection: str, mode: str = "read") -> sqlite3.Connection:
+    _validate_collection(collection, mode)
     db_path = _store_root() / collection / "store.db"
     key = str(db_path)
     with _lock:
@@ -178,7 +337,7 @@ def _put(
     now = _now()
     record = _clean(record)  # one chokepoint — covers nuggets and gaps alike
     with _lock:
-        conn = _conn(collection)
+        conn = _conn(collection, mode="write")
         with _write(conn):
             if guard is not None:
                 row = conn.execute(
@@ -205,7 +364,20 @@ def _put(
     return rid
 
 
+def _db_path(collection: str) -> Path:
+    return _store_root() / collection / "store.db"
+
+
 def _get(collection: str, record_id: str) -> dict[str, Any] | None:
+    # Scope is checked even on the short-circuit below: an undeclared
+    # collection must still refuse, not read as "empty and therefore fine."
+    _validate_collection(collection, mode="read")
+    if not _db_path(collection).exists():
+        # A read must not be what creates the collection's store.db on disk
+        # (Jeles#87, Loki J6) — nothing has ever been written here, so there
+        # is nothing to find, and `_conn`'s CREATE TABLE/mkdir side effects
+        # stay reserved for an actual write.
+        return None
     with _lock:
         row = (
             _conn(collection)
@@ -225,6 +397,9 @@ def _get(collection: str, record_id: str) -> dict[str, Any] | None:
 
 
 def _all(collection: str) -> list[dict[str, Any]]:
+    _validate_collection(collection, mode="read")
+    if not _db_path(collection).exists():
+        return []
     with _lock:
         rows = (
             _conn(collection)
@@ -479,6 +654,7 @@ def put_nugget(
     verification_kind: str = "human",
     written_by: str | None = None,
     evidence: dict[str, Any] | None = None,
+    visibility: str | None = None,
 ) -> dict[str, Any]:
     """Add or update a nugget. Returns {id, action, verification_kind} or {error}.
 
@@ -507,6 +683,14 @@ def put_nugget(
     check it. Omit it and a nugget behaves exactly as it did before this
     parameter existed — nothing is written, and :func:`to_search_hit` shows
     an empty ``evidence``.
+
+    ``visibility`` is ``"internal"`` (the default), ``"serve"``, or
+    ``"public"``. Filtering by a caller's exposure tier happens on the
+    willow-mcp side (a sibling packet) — here the field only needs to exist
+    on every stored row and be honest about what was actually asked for. A
+    legacy nugget written before this parameter existed, or a write that
+    omits it, is stored and read back as ``"internal"`` — the least a reader
+    is entitled to assume about something nobody marked otherwise.
     """
     question = (question or "").strip()
     answer = (answer or "").strip()
@@ -521,6 +705,12 @@ def put_nugget(
         }
     if evidence is not None and not isinstance(evidence, dict):
         return {"error": f"evidence must be a dict (got {type(evidence).__name__})"}
+    vis = str(visibility or "internal").lower()
+    if vis not in _VISIBILITY_LEVELS:
+        return {
+            "error": f"visibility must be one of "
+            f"{', '.join(sorted(_VISIBILITY_LEVELS))} (got {visibility!r})"
+        }
     record = {
         "question": question,
         "answer": answer,
@@ -530,6 +720,7 @@ def put_nugget(
         "tags": [str(t) for t in (tags or [])],
         "status": _KIND_STATUS[kind],
         "verification_kind": kind,
+        "visibility": vis,
     }
     if written_by:
         record["written_by"] = str(written_by)
@@ -716,7 +907,26 @@ def ask_corpus(question: str, include_asserted: bool = False) -> dict[str, Any]:
         # The candidates still come back: "I don't know yet, but these are
         # close" is more useful than a bare miss, and it is the caller's cue to
         # look at the second hop rather than to trust one of these.
-        return {"found": False, "nugget": None, "candidates": [n for n, _ in ranked]}
+        #
+        # `detail` says where was searched and what was not there — quiet,
+        # exact, the absence precise — as *data*, not as prose stuffed into a
+        # `message` field a caller has to parse.
+        if ranked:
+            detail = (
+                f"searched {NUGGETS_COLLECTION}: {len(ranked)} candidate(s) shared "
+                f"vocabulary with the question, none reached confidence >= {MIN_ASK_SCORE}"
+            )
+        else:
+            detail = (
+                f"searched {NUGGETS_COLLECTION}: no candidate shared any vocabulary "
+                "with the question"
+            )
+        return {
+            "found": False,
+            "nugget": None,
+            "candidates": [n for n, _ in ranked],
+            "detail": detail,
+        }
 
     confident.sort(key=lambda pair: pair[1], reverse=True)
     top = confident[0][0]
@@ -763,6 +973,11 @@ def to_search_hit(nugget: dict[str, Any], idx: int = 0) -> dict[str, Any]:
         # nugget written before this field existed, or with none supplied,
         # renders {} here: identical to today's shape for every existing hit.
         "evidence": nugget.get("evidence") or {},
+        # Honest, never inferred: a nugget written before this field existed,
+        # or with none supplied, is `"internal"` — the least a reader is
+        # entitled to assume. Filtering by a caller's exposure tier is the
+        # willow-mcp side's job (a sibling packet); this only has to be true.
+        "visibility": nugget.get("visibility") or "internal",
         "n": idx,
     }
 
@@ -866,7 +1081,7 @@ def log_gap(question: str) -> dict[str, Any]:
     # corpus's growth queue was ordered by a number that quietly undercounted
     # exactly the questions being asked most.
     with _lock:
-        conn = _conn(GAPS_COLLECTION)
+        conn = _conn(GAPS_COLLECTION, mode="write")
         with _write(conn):
             row = conn.execute(
                 "SELECT data FROM records WHERE id = ? AND deleted = 0", (gap_id,)
@@ -882,6 +1097,13 @@ def log_gap(question: str) -> dict[str, Any]:
                 "asked_count": int(existing.get("asked_count", 0)) + 1,
                 "first_asked_at": existing.get("first_asked_at") or now,
                 "last_asked_at": now,
+                # Clause 3 (sealed ae23d366): every hit carries visibility. A
+                # gap is the corpus's own bookkeeping, not something asked
+                # for by a reader — "internal" until something promotes it
+                # (Jeles#87, Loki J4). A legacy row predating this field
+                # keeps whatever it already had, same as `existing.get`
+                # above for every other carried field.
+                "visibility": existing.get("visibility") or "internal",
             }
             # A resolved gap that misses again is open again — the miss is the
             # proof that the settled layer stopped covering it. The resolution
@@ -933,7 +1155,7 @@ def resolve_gap(
         return {"error": "gap_id required"}
     now = _now()
     with _lock:
-        conn = _conn(GAPS_COLLECTION)
+        conn = _conn(GAPS_COLLECTION, mode="write")
         with _write(conn):
             row = conn.execute(
                 "SELECT data FROM records WHERE id = ? AND deleted = 0", (gap_id,)
@@ -976,4 +1198,9 @@ def list_gaps(limit: int = 50, include_resolved: bool = False) -> list[dict[str,
     if not include_resolved:
         gaps = [g for g in gaps if g.get("status") != "resolved"]
     gaps.sort(key=lambda g: g.get("asked_count", 0), reverse=True)
-    return gaps[: max(0, limit)]
+    gaps = gaps[: max(0, limit)]
+    # A gap row written before `visibility` existed carries no such key at
+    # all — honest the same way `to_search_hit` is (Jeles#87, Loki J4).
+    for gap in gaps:
+        gap.setdefault("visibility", "internal")
+    return gaps

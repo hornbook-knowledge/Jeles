@@ -532,6 +532,26 @@ def test_arxiv_parses_xml_into_the_contract(monkeypatch):
     assert urlparse(hits[0]["url"]).netloc == "arxiv.org"
 
 
+def test_arxiv_refuses_a_query_with_no_content_words_without_a_request(monkeypatch):
+    """Gap `02dcd8e7ebc9`: arXiv's own `sortBy=relevance` has nothing to rank
+    against a query with no tokenizable content, and what came back for one
+    measured on the bench was a near-universal attractor, not a real match.
+    No request is made at all — proven by making any attempt raise."""
+
+    def _must_not_be_called(req, timeout=None):
+        raise AssertionError("search_arxiv must not reach the network for an empty-signal query")
+
+    class _RefusingOpener:
+        open = staticmethod(_must_not_be_called)
+
+    monkeypatch.setattr(sources, "_opener", lambda: _RefusingOpener)
+    assert sources.search_arxiv("", limit=1) == []
+    assert sources.search_arxiv("   ", limit=1) == []
+    assert sources.search_arxiv("is it", limit=1) == [], (
+        "every word here is a stopword — no content to rank by"
+    )
+
+
 def test_a_keyed_source_is_skipped_without_its_key(monkeypatch):
     """Missing key means the source is absent, never an exception — that is
     what lets the default fan-out run unconfigured.
