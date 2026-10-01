@@ -70,6 +70,7 @@ import os
 
 try:
     from mcp.server.mcpserver import MCPServer
+    from mcp.server.mcpserver.exceptions import ToolError
 except ImportError as exc:  # pragma: no cover - exercised by install shape, not tests
     # The MCP SDK is an optional extra: base `jeles` has zero runtime
     # dependencies so a host can depend on it without inheriting a version
@@ -129,6 +130,23 @@ mcp = MCPServer(
 )
 
 
+def _store_call(fn, *args, **kwargs):
+    """Run a store-backed corpus call; re-raise anticipated failures as ToolError.
+
+    MCP SDK 2 treats anything other than ToolError/ResourceError/MCPError as a
+    *crash* and returns only ``Error executing tool <name>`` to the client
+    (UnexpectedToolError). PermissionError from the manifest gate and ValueError
+    from collection validation are anticipated — the desk must see the reason,
+    or federation_call looks like a dead organ (gap 2be112f19b9b).
+    """
+    try:
+        return fn(*args, **kwargs)
+    except ToolError:
+        raise
+    except (PermissionError, ValueError, FileNotFoundError, OSError) as exc:
+        raise ToolError(str(exc)) from exc
+
+
 @mcp.tool()
 def corpus_ask(app_id: AppId, question: str) -> dict:
     """Answer from the verified corpus if a nugget matches; returns
@@ -140,28 +158,32 @@ def corpus_ask(app_id: AppId, question: str) -> dict:
     written through `corpus_put` is an unchecked assertion and comes back
     under `candidates` instead — `found: true` here means the settled layer
     is speaking."""
-    result = corpus.ask_corpus(question)
-    if not result.get("found"):
-        willow_mcp_client.forward_gap(question)
-    return result
+
+    def _ask():
+        result = corpus.ask_corpus(question)
+        if not result.get("found"):
+            willow_mcp_client.forward_gap(question)
+        return result
+
+    return _store_call(_ask)
 
 
 @mcp.tool()
 def corpus_search(app_id: AppId, query: str, limit: int = 8) -> list:
     """Ranked nugget search across the corpus. Never logs a gap."""
-    return corpus.search_nuggets(query, limit=limit)
+    return _store_call(corpus.search_nuggets, query, limit=limit)
 
 
 @mcp.tool()
 def corpus_get(app_id: AppId, nugget_id: str) -> dict:
     """Fetch a single nugget by id."""
-    return corpus.get_nugget(nugget_id)
+    return _store_call(corpus.get_nugget, nugget_id)
 
 
 @mcp.tool()
 def corpus_list(app_id: AppId, limit: int = 50) -> list:
     """List nuggets, most recently updated first."""
-    return corpus.list_nuggets(limit=limit)
+    return _store_call(corpus.list_nuggets, limit=limit)
 
 
 #: Set to 1/true/yes to let ``corpus_put`` mint human-verified nuggets again.
@@ -245,7 +267,7 @@ def corpus_put(
         # `corpus.py` never interprets `evidence` itself either way (see its
         # comment above `_KIND_RANK`).
         kwargs["evidence"] = evidence
-    return corpus.put_nugget(question, answer, sources, verified_by, **kwargs)
+    return _store_call(corpus.put_nugget, question, answer, sources, verified_by, **kwargs)
 
 
 @mcp.tool()
@@ -258,7 +280,7 @@ def corpus_gaps(app_id: AppId, limit: int = 50, include_resolved: bool = False) 
     the nugget and stops logging), so keeping them in a list sorted by that
     count would park long-answered questions above every newer open one.
     Pass ``include_resolved=True`` to read the history rather than the queue."""
-    return corpus.list_gaps(limit=limit, include_resolved=include_resolved)
+    return _store_call(corpus.list_gaps, limit=limit, include_resolved=include_resolved)
 
 
 @mcp.tool()
@@ -287,7 +309,9 @@ def corpus_resolve_gap(
     calling ``app_id`` so the record always says who closed it; pass a person's
     name when a person decided it.
     """
-    return corpus.resolve_gap(gap_id, resolved_by=resolved_by or app_id, nugget_id=nugget_id)
+    return _store_call(
+        corpus.resolve_gap, gap_id, resolved_by=resolved_by or app_id, nugget_id=nugget_id
+    )
 
 
 # ── The second hop: the open web ────────────────────────────────────────────

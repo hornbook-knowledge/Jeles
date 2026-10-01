@@ -92,8 +92,19 @@ _VISIBILITY_LEVELS = frozenset({"internal", "serve", "public"})
 
 
 def _apps_root() -> Path:
-    default = str(Path.home() / ".willow" / "mcp_apps")
-    return Path(os.environ.get("WILLOW_MCP_APPS_ROOT", default)).expanduser()
+    # Prefer an explicit apps root, then $WILLOW_HOME/mcp_apps (the box layout
+    # willow-mcp actually uses), and only then ~/.willow/mcp_apps. Without the
+    # WILLOW_HOME step, a federated spawn that receives WILLOW_HOME but not
+    # WILLOW_MCP_APPS_ROOT looks at a different tree than the desk and every
+    # store-backed tool fails closed on the manifest — while corpus_sources
+    # (no store) still answers. Gap 2be112f19b9b.
+    explicit = os.environ.get("WILLOW_MCP_APPS_ROOT", "").strip()
+    if explicit:
+        return Path(explicit).expanduser()
+    home = os.environ.get("WILLOW_HOME", "").strip()
+    if home:
+        return Path(home).expanduser() / "mcp_apps"
+    return Path.home() / ".willow" / "mcp_apps"
 
 
 #: Shape only (Loki R1) — never a claim that the bytes between the markers
