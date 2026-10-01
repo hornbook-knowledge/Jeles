@@ -91,6 +91,13 @@ signs, and `nestor.keyring` refuses to produce a seal from a public-key entry:
 *"Signing happens where the private key lives."* So the `verified` rung is
 reachable only where a person, out of process, has already earned it.
 
+**Seal ≠ sole evidence of human verification.** A missing seal (asserted seed,
+unsealed intake, draft/pending in a sibling organ) means this corpus cannot
+*prove or serve* a human receipt yet — not that no human ever checked the
+claim. Sealing catches the ledger up to human work already done. Agents must
+still refuse to present asserted/unsealed material as settled: that is what
+the ladder authorizes, not a verdict about offline human review.
+
 Or as a host dependency, straight from git — the default branch is `master`,
 and `@main` resolves to nothing here:
 
