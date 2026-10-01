@@ -36,7 +36,9 @@ default result here can appear in an academic bibliography.
 
 Stdlib only (urllib, json, xml.etree, concurrent.futures) so the package keeps
 its zero-runtime-dependency promise, and **no network at import**: the thread
-pool is built by `search`, per call, not on load.
+pool is built by `search`, per call, not on load. Optional maintained clients
+live under ``jeles.connectors`` (``pip install "jeles[connectors]"``); each
+``search_*`` below asks there first and keeps its urllib twin as fallback.
 
 Sources needing an API key read a plain environment variable and abstain when
 it is absent — an unkeyed source is missing, never a failure. `search` reports
@@ -343,11 +345,42 @@ def _result(
     }
 
 
+def _via_connector(name: str, query: str, limit: int) -> list[dict] | None:
+    """Prefer an optional maintained client; ``None`` means use the urllib twin.
+
+    An empty list from the client is a real answer (no hits), not a miss — only
+    ImportError / exception / non-list shapes fall through to urllib.
+    """
+    try:
+        from jeles.connectors import get_search
+    except ImportError:
+        return None
+    fn = get_search(name)
+    if fn is None:
+        return None
+    try:
+        out = fn(query, limit)
+    except Exception as e:
+        log.warning("connector %s failed (%s); falling back to urllib", name, e)
+        return None
+    if not isinstance(out, list):
+        log.warning(
+            "connector %s returned %s; falling back to urllib",
+            name,
+            type(out).__name__,
+        )
+        return None
+    return out
+
+
 # ── ACADEMIC ──────────────────────────────────────────────────────────────────
 
 
 def search_openalex(query: str, limit: int = 5) -> list[dict]:
     """OpenAlex — 200M+ scholarly works. No key required."""
+    via = _via_connector("openalex", query, limit)
+    if via is not None:
+        return via
     url = (
         "https://api.openalex.org/works?search="
         + urllib.parse.quote(query)
@@ -461,6 +494,7 @@ def search_europepmc(query: str, limit: int = 5) -> list[dict]:
 
 def search_semantic_scholar(query: str, limit: int = 5) -> list[dict]:
     """Semantic Scholar — AI-powered academic search. Free key recommended (SEMANTIC_SCHOLAR_API_KEY)."""
+    # Not in slice 0 connectors; urllib only until a client lands in a later wave.
     key = os.environ.get("SEMANTIC_SCHOLAR_API_KEY", "")
     headers = {"x-api-key": key} if key else {}
     url = (
@@ -491,6 +525,9 @@ def search_semantic_scholar(query: str, limit: int = 5) -> list[dict]:
 
 def search_crossref(query: str, limit: int = 5) -> list[dict]:
     """Crossref DOI registry — journals, books, conference papers. No key required."""
+    via = _via_connector("crossref", query, limit)
+    if via is not None:
+        return via
     url = (
         "https://api.crossref.org/works?rows="
         + str(limit)
@@ -526,6 +563,9 @@ def search_crossref(query: str, limit: int = 5) -> list[dict]:
 
 def search_pubmed(query: str, limit: int = 5) -> list[dict]:
     """PubMed biomedical literature. No key required."""
+    via = _via_connector("pubmed", query, limit)
+    if via is not None:
+        return via
     search_url = (
         "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
         "?db=pubmed&retmode=json&retmax="
@@ -595,6 +635,9 @@ def search_arxiv(query: str, limit: int = 5) -> list[dict]:
 
     if not _content_tokens(query):
         return []
+    via = _via_connector("arxiv", query, limit)
+    if via is not None:
+        return via
     url = (
         "https://export.arxiv.org/api/query?search_query="
         + urllib.parse.quote(f"all:{query}")
@@ -1214,6 +1257,9 @@ def search_dpla(query: str, limit: int = 5) -> list[dict]:
 
 def search_internet_archive(query: str, limit: int = 5) -> list[dict]:
     """Internet Archive — books, films, audio, web. No key required."""
+    via = _via_connector("internet_archive", query, limit)
+    if via is not None:
+        return via
     url = (
         "https://archive.org/advancedsearch.php?q="
         + urllib.parse.quote(query)
@@ -1584,6 +1630,9 @@ def search_eol(query: str, limit: int = 5) -> list[dict]:
 
 def search_gbif(query: str, limit: int = 5) -> list[dict]:
     """GBIF (Global Biodiversity Information Facility) — occurrence records. No key required."""
+    via = _via_connector("gbif", query, limit)
+    if via is not None:
+        return via
     url = (
         "https://api.gbif.org/v1/species/search?q=" + urllib.parse.quote(query) + f"&limit={limit}"
     )
@@ -1694,6 +1743,9 @@ def search_openaire(query: str, limit: int = 5) -> list[dict]:
 
 def search_inaturalist(query: str, limit: int = 5) -> list[dict]:
     """iNaturalist — citizen science species observations. No key required for search."""
+    via = _via_connector("inaturalist", query, limit)
+    if via is not None:
+        return via
     url = (
         "https://api.inaturalist.org/v1/taxa?q="
         + urllib.parse.quote(query)
@@ -1849,6 +1901,9 @@ def search_eu_data(query: str, limit: int = 5) -> list[dict]:
 def search_musicbrainz(query: str, limit: int = 5) -> list[dict]:
     """MusicBrainz — open music encyclopedia. Artists, recordings, albums. No key required.
     Searches release-groups (albums/singles) first; falls back to recordings for track queries."""
+    via = _via_connector("musicbrainz", query, limit)
+    if via is not None:
+        return via
     q_lower = query.lower()
     use_releases = any(
         w in q_lower for w in ["album", "release", "discography", "ep", "lp", "record"]

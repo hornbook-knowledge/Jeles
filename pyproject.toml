@@ -72,6 +72,22 @@ mcp = ["mcp>=2.0.0,<3.0.0"]
 # this dependency spec under. No later tag renamed the distribution back
 # (Jeles#87, CI run 35681721123).
 nestor = ["nestor-meaning @ git+https://github.com/Die-Namic-Systems/Nestor@v0.18.0"]
+# Optional maintained HTTP clients for ``jeles.sources`` — the LiteLLM-shaped
+# adoption map (store ``jeles-adopt-clients-2026-09-30``). Base install stays
+# stdlib-only; ``search_*`` keeps its urllib twin and prefers these when present.
+# Slice 0: openalex/crossref/arxiv/pubmed/internet_archive/musicbrainz/gbif/
+# inaturalist. Scrapers and the rest of the registry stay hand-rolled until a
+# real client exists.
+connectors = [
+    "pyalex>=0.15",
+    "habanero>=1.2",
+    "arxiv>=2.1.0",
+    "biopython>=1.83",
+    "internetarchive>=4.0",
+    "musicbrainzngs>=0.7.1",
+    "pygbif>=0.6.0",
+    "pyinaturalist>=0.19.0",
+]
 # pyyaml is for tests/test_release_wiring.py, which reads the release
 # workflows. It importorskips, so leaving it out would turn those checks
 # into a silent skip — the exact failure mode they exist to catch. It is a

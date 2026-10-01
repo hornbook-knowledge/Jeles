@@ -17,7 +17,8 @@ couldn't answer.
 | `jeles.corpus` | Pure storage + ranked lookup of verified nuggets and gap logging. **Stdlib-only, no MCP, no network at import.** Reuses willow-mcp's SOIL `Store` SQLite schema at `$WILLOW_STORE_ROOT/<collection>/store.db` — writes are upserts that touch only jeles' own columns, in WAL mode with `BEGIN IMMEDIATE`, so the store really is shared rather than shared-until-one-side-writes. |
 | `jeles.reactions` | Pure `(event) -> [proposed actions]` handlers. `conflict_scan` searches for what *supersedes or refutes* a design claim rather than what resembles it, and proposes a nugget only when two **independent, relevant, non-excluded** domains corroborate it — otherwise a contested gap. `search_adapter` is its web edge. |
 | `jeles.corpus_server` | Standalone `MCPServer` (MCP SDK 2.x) over the corpus (`python -m jeles.corpus_server`). Mirrors willow-mcp's shape (`app_id` on every tool) **without depending on willow-mcp**. Writes through it are *assertions*, not verifications — see [below](#as-a-standalone-mcp-server). |
-| `jeles.sources` | **The institutional collections themselves** — 65 registered source functions, 61 of them in the default fan-out (arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian), plus the concurrent fan-out across them. **Stdlib-only.** |
+| `jeles.sources` | **The institutional collections themselves** — 65 registered source functions, 61 of them in the default fan-out (arXiv, PubMed, Crossref, OpenAlex, Library of Congress, Europeana, CourtListener, the Smithsonian), plus the concurrent fan-out across them. **Stdlib-only** at import; optional `jeles[connectors]` prefers maintained clients for a first slice and keeps urllib fallbacks. |
+| `jeles.connectors` | Optional façades over pyalex / habanero / arxiv / Bio.Entrez / internetarchive / musicbrainzngs / pygbif / pyinaturalist. Not imported until a `search_*` call asks. |
 | `jeles.institutional` | The third hop: fans a query across `jeles.sources` in-process, and shapes results like every other hit. Optionally delegates to a hosted [`jeles-remote`](https://github.com/rudi193-cmd/jeles-remote) instead. |
 | `jeles.willow_mcp_client` | Best-effort, fire-and-forget forwarding of gaps into willow-mcp's fleet-wide backlog. Never blocks, never raises; 30s retry cooldown so a single failed connect doesn't permanently disable forwarding. |
 | `jeles.load_persona()` | Loads the canonical Jeles persona JSON (this package is its canonical home). |
@@ -43,8 +44,17 @@ needs the SDK, and it lives behind an extra.
 pip install jeles           # corpus + persona + reactions. No dependencies.
 pip install "jeles[mcp]"    # adds the MCP SDK, for the standalone server
 pip install "jeles[nestor]" # adds Nestor, to check human-rung seals (below)
+pip install "jeles[connectors]"  # maintained clients for institutional sources (optional)
 pip install -e ".[dev]"     # editable, with pytest and the SDK
 ```
+
+`jeles.sources` stays stdlib-only at import. With `[connectors]`, eight
+scholarly/biodiversity façades (OpenAlex, Crossref, arXiv, PubMed, Internet
+Archive, MusicBrainz, GBIF, iNaturalist) prefer the maintained client and keep
+their urllib twins as fallback. Scrapers and the rest of the registry are
+unchanged. Connector HTTP uses the client's own stack and therefore bypasses
+`jeles._egress` / `_urlopen` guards; the urllib twin path keeps those caps
+(Loki F3 — accepted adoption trade).
 
 ### The seed corpus
 
