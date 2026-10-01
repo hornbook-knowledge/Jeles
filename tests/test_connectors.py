@@ -118,23 +118,41 @@ def test_arxiv_empty_tokens_skips_connector_and_network(monkeypatch):
     assert called == []
 
 
-def test_slice0_names_are_wired():
-    """Every slice-0 source must consult `_via_connector` (AST / source text)."""
-    import pathlib
+_SLICE0_CONNECTOR_NAMES = (
+    "openalex",
+    "crossref",
+    "arxiv",
+    "pubmed",
+    "internet_archive",
+    "musicbrainz",
+    "gbif",
+    "inaturalist",
+)
 
-    text = pathlib.Path(sources.__file__).read_text(encoding="utf-8")
-    for name in (
-        "openalex",
-        "crossref",
-        "arxiv",
-        "pubmed",
-        "internet_archive",
-        "musicbrainz",
-        "gbif",
-        "inaturalist",
-    ):
-        needle = f'_via_connector("{name}"'
-        assert needle in text, f"search_{name} missing connector hook"
+
+def _slice0_names_missing_via_connector(text: str) -> list[str]:
+    """Names whose search_* never call `_via_connector("<name>"` in sources.py."""
+    return [name for name in _SLICE0_CONNECTOR_NAMES if f'_via_connector("{name}"' not in text]
+
+
+def test_slice0_names_are_wired():
+    """Every slice-0 source must consult `_via_connector`."""
+    from pathlib import Path
+
+    missing = _slice0_names_missing_via_connector(
+        Path(sources.__file__).read_text(encoding="utf-8")
+    )
+    assert missing == [], f"search_* missing connector hook: {missing}"
+
+
+def test_a_missing_via_connector_hook_is_caught():
+    """Plant: strip one hook and prove the scan fires."""
+    from pathlib import Path
+
+    real = Path(sources.__file__).read_text(encoding="utf-8")
+    planted = real.replace('_via_connector("openalex"', '_via_connector_GONE("openalex"', 1)
+    assert planted != real
+    assert _slice0_names_missing_via_connector(planted) == ["openalex"]
 
 
 def test_connectors_extra_declared():
