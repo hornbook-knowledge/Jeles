@@ -267,7 +267,7 @@ def corpus_put(
         # `corpus.py` never interprets `evidence` itself either way (see its
         # comment above `_KIND_RANK`).
         kwargs["evidence"] = evidence
-    return corpus.put_nugget(question, answer, sources, verified_by, **kwargs)
+    return _store_call(corpus.put_nugget, question, answer, sources, verified_by, **kwargs)
 
 
 @mcp.tool()
@@ -309,7 +309,9 @@ def corpus_resolve_gap(
     calling ``app_id`` so the record always says who closed it; pass a person's
     name when a person decided it.
     """
-    return corpus.resolve_gap(gap_id, resolved_by=resolved_by or app_id, nugget_id=nugget_id)
+    return _store_call(
+        corpus.resolve_gap, gap_id, resolved_by=resolved_by or app_id, nugget_id=nugget_id
+    )
 
 
 # ── The second hop: the open web ────────────────────────────────────────────
