@@ -19,6 +19,7 @@ the guard now rather than after.
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -312,3 +313,55 @@ def test_the_cli_treats_a_missing_changelog_as_nothing_to_do(tmp_path, monkeypat
 
     monkeypatch.setattr(sys, "argv", ["changelog_dedup.py", "--print-section", "0.1.0"])
     assert changelog_dedup.main() == 2
+
+
+# ── git output is UTF-8, whatever the locale says ─────────────────────────────
+#
+# `git()` read `git log` with `text=True` alone, which decodes with the locale's
+# encoding: cp1252 on the Windows legs. Two 0.15.0 entries carry an em dash, so
+# `test_the_repo_changelog_is_already_correct` saw them garbled and failed both
+# Windows legs of the 0.15.0 release PR (#94); Linux decodes UTF-8 by default and
+# never showed it. A local override of Forge's body (`tests/test_vendor_pins.py`).
+
+
+def test_git_output_is_decoded_as_utf8_whatever_the_locale(tmp_path):
+    """Reproduces the Windows legs on any OS: `git()` runs in a child interpreter
+    whose locale encoding is not UTF-8 (ASCII under the C locale with coercion
+    and UTF-8 mode off; cp1252 on Windows), against a repo whose only commit
+    subject carries an em dash."""
+    subject = "fix: a — b"
+    who = {
+        "GIT_AUTHOR_NAME": "t",
+        "GIT_AUTHOR_EMAIL": "t@t",
+        "GIT_COMMITTER_NAME": "t",
+        "GIT_COMMITTER_EMAIL": "t@t",
+    }
+    repo = tmp_path / "repo"
+    for args in (
+        ["init", "-q", str(repo)],
+        ["-C", str(repo), "commit", "-q", "--allow-empty", "-m", subject],
+    ):
+        subprocess.run(["git", *args], env={**os.environ, **who}, check=True)
+
+    child = (
+        "import locale, sys\n"
+        "from pathlib import Path\n"
+        "sys.path.insert(0, sys.argv[1])\n"
+        "import changelog_dedup\n"
+        "changelog_dedup.REPO = Path(sys.argv[2])\n"
+        "print(locale.getpreferredencoding(False))\n"
+        "print(ascii(changelog_dedup.git('log', '-1', '--format=%s').strip()))\n"
+    )
+    env = {**os.environ, "LC_ALL": "C", "LANG": "C", "PYTHONCOERCECLOCALE": "0", "PYTHONUTF8": "0"}
+    out = subprocess.run(
+        [sys.executable, "-X", "utf8=0", "-c", child, str(_REPO / "tools"), str(repo)],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        env=env,
+    )
+    assert out.returncode == 0, out.stderr
+    encoding, got = out.stdout.splitlines()
+    if encoding.lower().replace("-", "") == "utf8":
+        pytest.skip("this platform's C locale is UTF-8, so the bug cannot show here")
+    assert got == ascii(subject), f"decoded under {encoding} as {got}"
