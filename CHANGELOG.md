@@ -20,6 +20,24 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.15.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.14.1...v0.15.0) (2026-10-07)
+
+
+### Added
+
+* **sources:** optional connectors extra over maintained scholarly clients ([9496f08](https://github.com/hornbook-knowledge/Jeles/commit/9496f088816b1321dcc78f46e1980903ad197a9f))
+* **corpus:** Jeles is the organ — manifest scope, ring-only seals, visibility, overlap gate ([d52f6b5](https://github.com/hornbook-knowledge/Jeles/commit/d52f6b52a88113c00a22a4f38d1fe494914c02f5))
+
+
+### Fixed
+
+* **corpus:** wrap put/resolve in ToolError and pin apps_root tests ([166c176](https://github.com/hornbook-knowledge/Jeles/commit/166c1763839fdd8b0624c40cd81b785a136a1da7))
+* **corpus:** surface store-tool errors and honor WILLOW_HOME for apps root ([4381af2](https://github.com/hornbook-knowledge/Jeles/commit/4381af26ddda7dacc04c498f1cceb5adfb2cac45))
+* **corpus:** validate app id shape before compare/join; share resolver ([d32ec80](https://github.com/hornbook-knowledge/Jeles/commit/d32ec80dbfb85560360e90b7477b322ed858d26b))
+* **corpus:** default app id is jeles-corpus, jeles refused outright ([b1223ee](https://github.com/hornbook-knowledge/Jeles/commit/b1223ee562cbf529df8e461411d8eaeab6d1bae6))
+* **deps:** nestor's distribution is nestor-meaning, not nestor; harden .sig shape, name too-old Nestor ([17f2055](https://github.com/hornbook-knowledge/Jeles/commit/17f2055109aada499add20b43c47e600e3b097c5))
+* **corpus:** rework per Loki audit — nestor pin, manifest sig shape, visibility, no-create reads ([49e2813](https://github.com/hornbook-knowledge/Jeles/commit/49e2813a3358c958e1eb0b0e3c756a9563100efd))
+
 ## [0.14.1](https://github.com/hornbook-knowledge/Jeles/compare/v0.14.0...v0.14.1) (2026-09-12)
 
 
