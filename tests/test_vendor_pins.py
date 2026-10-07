@@ -32,15 +32,29 @@ _BODY_STARTS_AT = "from __future__ import annotations"
 #: forge-play/Forge `tools/changelog_dedup.py`, body from `from __future__` to
 #: EOF, measured 2026-09-12. Update this constant *only* alongside a body
 #: re-synced from Forge, or record a named local override below.
+#:
+#: Overridden 2026-10-06: this is Forge's body plus the override below. Forge's
+#: own body is still `e3f31ef11105ae37…` (re-measured the same day); when Forge
+#: takes the same fix, re-sync, empty the overrides, and pin Forge's new hash.
 FORGE_CHANGELOG_DEDUP_BODY_SHA256 = (
-    "e3f31ef11105ae37c495c1745a94c6992ceb587c549cd016f24e83c778fd1320"
+    "6ceabc199810f789feed5eae24e30e55638da701265df5ecce1adb67027e29dd"
 )
 
-#: Deliberate, named divergences from Forge's body. Empty today: the body is
-#: Forge's exactly. An entry here is `(what differs, why)` and comes with a
-#: matching change to the constant above; that is what distinguishes an
-#: override from a fork.
-LOCAL_OVERRIDES: tuple[tuple[str, str], ...] = ()
+#: Deliberate, named divergences from Forge's body. An entry here is
+#: `(what differs, why)` and comes with a matching change to the constant above;
+#: that is what distinguishes an override from a fork.
+LOCAL_OVERRIDES: tuple[tuple[str, str], ...] = (
+    (
+        "every text read and write is explicitly UTF-8: `git()`'s subprocess "
+        "decode, CONFIG and CHANGELOG read_text, CHANGELOG write_text",
+        "`text=True` alone decodes git output with the locale's codepage, cp1252 "
+        "on Windows, so em dashes in commit subjects came back garbled and both "
+        "Windows legs of the 0.15.0 release PR (#94) failed. Forge is frozen until "
+        "the Kaggle benchmark closes (2026-10-11); the fix goes there next, and "
+        "the same defect sits in willow-mcp, kartikeya, corpus-lens, homestead and "
+        "homestead-law.",
+    ),
+)
 
 
 def _body(source: str) -> str:

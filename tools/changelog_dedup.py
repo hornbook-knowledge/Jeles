@@ -24,9 +24,12 @@ gets the same guard rather than waiting to be bitten by the worse half.
 
 **The code body is vendored, and pinned.** Everything from `from __future__
 import annotations` to the end of this file is forge-play/Forge's
-`tools/changelog_dedup.py` body, byte for byte, as of 2026-09-12 (sha256
-`e3f31ef11105ae37c495c1745a94c6992ceb587c549cd016f24e83c778fd1320`, held by
-`tests/test_vendor_pins.py`). This docstring is the only local part. The body
+`tools/changelog_dedup.py` body as of 2026-09-12 (sha256
+`e3f31ef11105ae37c495c1745a94c6992ceb587c549cd016f24e83c778fd1320`) plus one
+named local override: every text read and write passes `encoding="utf-8"`
+(2026-10-06). `tests/test_vendor_pins.py` pins the overridden body and names
+the override; when Forge takes the same fix, re-sync and the override goes.
+Apart from that override, this docstring is the only local part. The body
 was first carried here from willow-mcp and then fell 45 lines behind Forge, and
 the gap was not cosmetic: it was two latent defects — a section boundary that
 ended only at `## [`, so a hand-written `## 0.x — date` heading below a
@@ -104,7 +107,7 @@ class Bail(Exception):
 
 def git(*args: str) -> str:
     out = subprocess.run(["git", "-C", str(REPO), *args],
-                         capture_output=True, text=True)
+                         capture_output=True, text=True, encoding="utf-8")
     if out.returncode != 0:
         raise Bail(f"git {' '.join(args)} failed: {out.stderr.strip()}")
     return out.stdout
@@ -112,7 +115,7 @@ def git(*args: str) -> str:
 
 def sections_from_config() -> tuple[dict[str, str], list[str]]:
     """(type -> section name) for un-hidden types, plus section order."""
-    entries = json.loads(CONFIG.read_text())["packages"]["."]["changelog-sections"]
+    entries = json.loads(CONFIG.read_text(encoding="utf-8"))["packages"]["."]["changelog-sections"]
     visible = {e["type"]: e["section"] for e in entries if not e.get("hidden")}
     order: list[str] = []
     for e in entries:
@@ -301,7 +304,7 @@ def main() -> int:
         print(f"no {CHANGELOG.name} yet — nothing to rebuild")
         return 0
 
-    text = CHANGELOG.read_text()
+    text = CHANGELOG.read_text(encoding="utf-8")
 
     # A changelog with no release-please-generated section at all. Here that is
     # a real, temporary state rather than a malformed file: CHANGELOG.md was
@@ -345,7 +348,7 @@ def main() -> int:
     if args.check:
         print("::error::run `python tools/changelog_dedup.py` and commit the result")
         return 1
-    CHANGELOG.write_text(new_text)
+    CHANGELOG.write_text(new_text, encoding="utf-8")
     print("rewrote the newest section from the commits")
     return 0
 
