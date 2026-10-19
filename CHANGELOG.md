@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Fixed
 
-* **seed:** store answering entries at the serve tier so sessions can read them ([062840c](https://github.com/hornbook-knowledge/Jeles/commit/062840c487504e76974edbd996c8a7fbfa3cf488))
 * **seed:** store answering entries at the serve tier so sessions can read them ([40456f1](https://github.com/hornbook-knowledge/Jeles/commit/40456f1c43207e8e5eeefc3fe2139b593ebd83a1))
 
 ## [0.16.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.15.0...v0.16.0) (2026-10-19)
