@@ -33,6 +33,37 @@ couldn't answer.
 6. **The collections live here, not behind a service.** `sources.py` is the same relationship `corpus.py` has with `corpus_server.py`: a pure core that something thin wraps. A hosted deployment is a convenience — never a prerequisite, never a secret you must hold, never a second repository in the test loop. Stated precisely, because the short version was wrong: `jeles-remote`'s `main.py` is a 74-line FastAPI shim, but it wraps its **own vendored copy** of `sources.py` (`import sources`, a file in that repo), not this module. That copy was forked from the same origin and has drifted — 833 differing lines, ~200 fewer, six fewer source functions, and *zero* references to `_egress`, so the SSRF/key-leak fix that landed here is simply absent from it. Treat jeles-remote as a downstream fork due a re-vendor, not as a thin wrapper that inherits this package's fixes.
 7. **Local is the source of truth; the fleet backlog is additive.** `corpus.log_gap()` (synchronous, local SQLite) always runs first and makes the host fully functional offline. `willow_mcp_client.forward_gap()` is a *best-effort* copy into willow-mcp's shared backlog.
 
+## Quick start: on your own, no fleet
+
+Jeles was built as an organ inside a willow-mcp fleet, where the fleet signs
+each app's manifest and that manifest bounds what the corpus may touch. It
+refuses to open its store without one, signed. On your own machine, make one
+and sign it with your own GPG key:
+
+```bash
+pip install jeles
+jeles-seed --init-local     # writes ~/.jeles, signs the manifest with your default GPG key
+# then export the three variables it prints, e.g.:
+export WILLOW_MCP_APPS_ROOT=~/.jeles/mcp_apps
+export WILLOW_STORE_ROOT=~/.jeles/store
+export JELES_CORPUS_APP_ID=jeles-corpus
+jeles-seed                  # load the bundled seed
+python -c "from jeles import corpus; print(corpus.ask_corpus('What is a black hole?'))"
+```
+
+`--init-local` keeps to its own `~/.jeles` tree (or `--home DIR`), never
+willow-mcp's `~/.willow/mcp_apps`. The manifest it writes grants only the
+corpus's own two collections, and it never overwrites an existing one. If
+`gpg` isn't installed or you have no key yet (`gpg --quick-gen-key "Your
+Name <you@example.org>"` makes one), the manifest is left unsigned and the
+command prints the one `gpg --detach-sign` line to run. Jeles itself never
+writes or imitates a signature.
+
+Then set the two things only you can supply: `JELES_SOURCES_CONTACT_EMAIL`
+(your address for the scholarly APIs' polite pools) and, if you'll review
+intake material yourself, `JELES_VERIFIER` (your name). Both are in
+[Configuration](#configuration).
+
 ## Install
 
 **Base `jeles` has zero runtime dependencies.** The corpus, the persona, and the
@@ -72,8 +103,8 @@ jeles-seed              # load it into $WILLOW_STORE_ROOT
 rounds against themselves — challenge, factcheck, steelman — and the rounds'
 own artifacts ship alongside the answers, so the reasoning is auditable rather
 than summarised. That is real work, and it is still a machine's. So every pair
-loads at `asserted` unless a signature says otherwise, and an `asserted` nugget
-**cannot answer a question**: `corpus_ask` returns it under `candidates` with
+loads at `asserted` unless a signature or the commons rule below says
+otherwise, and an `asserted` nugget **cannot answer a question**: `corpus_ask` returns it under `candidates` with
 `found: false`. An unsigned seed makes the corpus *searchable*, not *settled*.
 
 **What a signature changes.** A pair carrying a Nestor seal

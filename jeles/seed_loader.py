@@ -46,6 +46,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -267,6 +269,11 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
                 out[kind if kind in out else "asserted"] += 1
             else:
                 out["existing"] += 1
+        except PermissionError:
+            # The store refused this process outright (no manifest, or one it
+            # will not accept). That is true of every row, so it ends the load
+            # rather than being repeated once per pair.
+            raise
         except Exception as exc:  # a bad row must not abandon the rest
             print(f"  WARN {domain}: {exc}", file=sys.stderr)
             out["errors"] += 1
@@ -299,6 +306,68 @@ def load_all(paths: list[Path] | None = None, *, dry_run: bool = False) -> dict[
     return totals
 
 
+#: Where `--init-local` sets up a standalone corpus — its own tree, never
+#: willow-mcp's `~/.willow/mcp_apps`, so a local setup cannot shadow or be
+#: mistaken for a fleet manifest.
+LOCAL_HOME = Path.home() / ".jeles"
+
+
+def init_local(home: Path | None = None, *, sign: bool = True) -> dict[str, Any]:
+    """Set up a standalone corpus under ``home`` (default ``~/.jeles``).
+
+    Writes ``mcp_apps/<app id>/manifest.json`` granting only the corpus's own
+    nugget and gap collections, creates ``store/``, and — when ``sign`` and
+    ``gpg`` is on PATH — signs the manifest with the operator's own default GPG
+    key (``gpg --armor --detach-sign``). That is a real signature by the
+    person running it; nothing here writes or imitates one. Without ``gpg``
+    the manifest is left unsigned and the store gate keeps refusing until the
+    operator signs it, which the returned ``next`` steps say.
+
+    Refuses to overwrite an existing manifest. Returns ``{home, manifest,
+    signed, env, next}``; ``env`` is what to export before ``jeles-seed``.
+    """
+    from jeles import _app_id
+
+    root = (home or LOCAL_HOME).expanduser()
+    app_id = _app_id.DEFAULT_APP_ID
+    app_dir = root / "mcp_apps" / app_id
+    manifest = app_dir / "manifest.json"
+    sig = manifest.with_name(manifest.name + ".sig")
+    if manifest.exists():
+        raise FileExistsError(f"{manifest} already exists; not overwriting it")
+    app_dir.mkdir(parents=True, exist_ok=True)
+    (root / "store").mkdir(parents=True, exist_ok=True)
+    collections = [corpus.NUGGETS_COLLECTION, corpus.GAPS_COLLECTION]
+    manifest.write_text(
+        json.dumps({"store_scope": collections, "store_write": collections}, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    signed = False
+    gpg = shutil.which("gpg") if sign else None
+    if gpg:
+        done = subprocess.run(
+            [gpg, "--armor", "--detach-sign", "--output", str(sig), str(manifest)],
+            check=False,
+        )
+        signed = done.returncode == 0 and sig.is_file()
+
+    env = {
+        "WILLOW_MCP_APPS_ROOT": str(root / "mcp_apps"),
+        "WILLOW_STORE_ROOT": str(root / "store"),
+        "JELES_CORPUS_APP_ID": app_id,
+    }
+    steps = [] if signed else [f"gpg --armor --detach-sign --output {sig} {manifest}"]
+    steps.append("jeles-seed")
+    return {
+        "home": str(root),
+        "manifest": str(manifest),
+        "signed": signed,
+        "env": env,
+        "next": steps,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="jeles-seed",
@@ -311,16 +380,58 @@ def main(argv: list[str] | None = None) -> int:
         "--dry-run", action="store_true", help="report what would be written, write nothing"
     )
     parser.add_argument(
+        "--init-local",
+        action="store_true",
+        help="set up a standalone corpus (no willow-mcp fleet) under --home, "
+        "signing its manifest with your own GPG key, then exit",
+    )
+    parser.add_argument(
+        "--home",
+        type=Path,
+        default=None,
+        help=f"where --init-local puts the manifest and store (default: {LOCAL_HOME})",
+    )
+    parser.add_argument(
         "files", nargs="*", type=Path, help="seed files to load (default: the bundled set)"
     )
     args = parser.parse_args(argv)
+
+    if args.init_local:
+        try:
+            done = init_local(args.home)
+        except FileExistsError as exc:
+            print(exc, file=sys.stderr)
+            return 1
+        print(f"standalone corpus set up in {done['home']}")
+        print(f"  manifest: {done['manifest']}" + (" (signed)" if done["signed"] else ""))
+        if not done["signed"]:
+            print(
+                "  not signed: gpg was not found or signing failed, and the store "
+                "refuses an unsigned manifest"
+            )
+        print("\nexport these (add them to your shell profile to keep them):")
+        for key, value in done["env"].items():
+            print(f"  export {key}={value}")
+        print("\nthen:")
+        for step in done["next"]:
+            print(f"  {step}")
+        return 0
 
     files = args.files or seed_files()
     if not files:
         print(f"No seed files found in {SEED_DIR}.", file=sys.stderr)
         return 1
 
-    totals = load_all(list(files), dry_run=args.dry_run)
+    try:
+        totals = load_all(list(files), dry_run=args.dry_run)
+    except PermissionError as exc:
+        print(f"jeles-seed: the store refused to open: {exc}", file=sys.stderr)
+        print(
+            "\nNot running inside a willow-mcp fleet? Set up a standalone corpus "
+            "with:\n  jeles-seed --init-local",
+            file=sys.stderr,
+        )
+        return 1
     verb = "would load" if args.dry_run else "loaded"
     print(
         f"{verb} {totals['files']} file(s): "
