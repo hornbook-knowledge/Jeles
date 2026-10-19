@@ -1,0 +1,294 @@
+{
+  "domain": "core-libraries-literature",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What is the Dewey Decimal System?",
+      "source_lang": "en",
+      "target_text": "The Dewey Decimal Classification arranges library books by subject using numbers. Melvil Dewey devised it in 1873 and published it in 1876. It has ten main classes, from 000 (computer science, information and general works) to 900 (history and geography), each split into ten divisions and then ten sections. OCLC maintains it; the last printed full edition, the 23rd, appeared in 2011.",
+      "target_lang": "en",
+      "reason": "The most widely known library shelving scheme."
+    },
+    {
+      "source_text": "What is the Library of Congress Classification?",
+      "source_lang": "en",
+      "target_text": "The Library of Congress Classification sorts books by subject using letters and numbers. It has 21 main classes, each a single letter, such as A for general works, K for law, M for music and Z for bibliography and library science; the letters I, O, W, X and Y are not used as main classes. Most classes split into two- or three-letter subclasses, such as ND for painting.",
+      "target_lang": "en",
+      "reason": "The classification scheme behind call numbers in many large libraries."
+    },
+    {
+      "source_text": "What is an ISBN?",
+      "source_lang": "en",
+      "target_text": "An ISBN (International Standard Book Number) is a unique number identifying a specific edition and format of a book from a specific publisher. It has had 13 digits since 1 January 2007: a 978 or 979 prefix, a registration group, a publisher code, a publication code and a check digit. The International ISBN Agency coordinates it worldwide through national agencies.",
+      "target_lang": "en",
+      "reason": "Explains the identifier printed on nearly every book."
+    },
+    {
+      "source_text": "Why does a book's ISBN match its barcode?",
+      "source_lang": "en",
+      "target_text": "Under an agreement with GS1, the ISBN is encoded as an EAN-13 barcode, so the barcode and the 13-digit ISBN are the same number. That is part of why ISBNs moved from 10 to 13 digits in 2007, with the 979 prefix added as 978 numbers ran low. The final check digit lets scanners detect mistyped or misread numbers.",
+      "target_lang": "en",
+      "reason": "Connects the book identifier to the barcode used in retail and libraries."
+    },
+    {
+      "source_text": "What is a call number?",
+      "source_lang": "en",
+      "target_text": "A call number is the code on a library item's spine that gives its place on the shelf. It is built from a classification number, such as Dewey or Library of Congress, so books on the same subject sit together, plus further codes for author and often year. It works like an address: look it up in the catalog, then find it on the shelves.",
+      "target_lang": "en",
+      "reason": "Teaches how to locate a physical item in a library."
+    },
+    {
+      "source_text": "What is a library card catalog?",
+      "source_lang": "en",
+      "target_text": "A card catalog was a cabinet of paper cards, one or more for each item, filed by author, title and subject, with the call number shown on each card. Readers used it to find what the library held and where it was shelved. Most libraries have replaced card catalogs with online catalogs that list the same information.",
+      "target_lang": "en",
+      "reason": "Explains the classic finding tool and its online successor."
+    },
+    {
+      "source_text": "What is the difference between primary, secondary and tertiary sources?",
+      "source_lang": "en",
+      "target_text": "A primary source is original material from the time or event studied, such as a letter, diary, photograph or data set. A secondary source analyzes or interprets primary sources, such as a history book or review article. A tertiary source summarizes other sources, such as an encyclopedia or textbook. Whether a source is primary depends on the question being asked.",
+      "target_lang": "en",
+      "reason": "A basic distinction for evaluating evidence in research."
+    },
+    {
+      "source_text": "How do I cite a source?",
+      "source_lang": "en",
+      "target_text": "A citation gives enough detail for a reader to find your source: usually author, title, publisher or container, date, and for online items the URL and access date. Fields use set styles: APA is common in the social sciences, MLA in the humanities, and Chicago in history and related fields. If details are missing, include as much other information as you can.",
+      "target_lang": "en",
+      "reason": "Citing sources is the basic practice that makes research verifiable."
+    },
+    {
+      "source_text": "How long does copyright last in the United States?",
+      "source_lang": "en",
+      "target_text": "For works created on or after January 1, 1978, US copyright generally lasts for the author's life plus 70 years; for joint works, 70 years after the last surviving author dies. Anonymous, pseudonymous and work-for-hire works last 95 years from publication or 120 years from creation, whichever ends first. Older works follow different rules. This is the rule as of 2026.",
+      "target_lang": "en",
+      "reason": "Copyright term decides what a library or reader may freely copy."
+    },
+    {
+      "source_text": "What does public domain mean?",
+      "source_lang": "en",
+      "target_text": "A work is in the public domain when no copyright protects it, usually because its term has expired, so anyone may copy and reuse it. In the United States, as of 2026, all works published before January 1, 1931 are in the public domain, and each January another year of works enters it. Rules differ in other countries.",
+      "target_lang": "en",
+      "reason": "Public domain works form the freely shareable core of any library."
+    },
+    {
+      "source_text": "What is peer review?",
+      "source_lang": "en",
+      "target_text": "Peer review is the process in which experts in the same field, usually anonymously, assess a researcher's methods and findings before publication. Editors use the reviews to accept a work, request revisions or reject it. It is used for journal articles, academic books and conference papers, though standards vary between journals and fields and it does not catch every error.",
+      "target_lang": "en",
+      "reason": "Explains the quality check behind scholarly sources."
+    },
+    {
+      "source_text": "What was the Library of Alexandria?",
+      "source_lang": "en",
+      "target_text": "The Library of Alexandria in Egypt was the greatest library of the ancient Greek world, part of a research institution called the Museum. It was founded in the early 3rd century BCE under the Ptolemaic kings, with Ptolemy I and Ptolemy II both credited. Scholars there collected and edited texts; its head Aristophanes of Byzantium devised an early system of punctuation.",
+      "target_lang": "en",
+      "reason": "The model ancient library, often cited as the origin of the research library."
+    },
+    {
+      "source_text": "How was the Library of Alexandria destroyed?",
+      "source_lang": "en",
+      "target_text": "There was no single destruction. Part of the collection may have burned when Julius Caesar fought in Alexandria in 48 BCE, the library declined under Roman rule from lack of funding, and fighting in the 270s CE probably destroyed what remained. Its daughter library in the Serapeum was demolished in 391 CE. Scholars agree both were gone long before the Arab conquest.",
+      "target_lang": "en",
+      "reason": "Corrects the popular myth of a single fire destroying ancient learning."
+    },
+    {
+      "source_text": "What is the Epic of Gilgamesh?",
+      "source_lang": "en",
+      "target_text": "The Epic of Gilgamesh is a Mesopotamian poem about Gilgamesh, king of Uruk, and is usually called the earliest surviving major work of literature. It grew from Sumerian poems, some perhaps from about 2100 BCE; the first combined Akkadian version dates to the 18th century BCE. The fullest text survives on 12 tablets from the library of Assyrian king Ashurbanipal at Nineveh.",
+      "target_lang": "en",
+      "reason": "The oldest major literary work, a cornerstone of the literature shelf."
+    },
+    {
+      "source_text": "What is the oldest known literature?",
+      "source_lang": "en",
+      "target_text": "The oldest known body of literature is from ancient Sumer in Mesopotamia, written in cuneiform. Short works such as the Kesh Temple Hymn and the Instructions of Shuruppak are older than the Epic of Gilgamesh, which is the earliest surviving long narrative. Which single text counts as the first depends on how literature is defined.",
+      "target_lang": "en",
+      "reason": "Answers a perennial question about the start of written literature."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What is the Dewey Decimal System?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Dewey_Decimal_Classification",
+      "reason": "History, structure and current maintenance of the DDC."
+    },
+    {
+      "pair_source": "What is the Dewey Decimal System?",
+      "kind": "url",
+      "locator": "https://www.oclc.org/content/dam/oclc/dewey/resources/summaries/deweysummaries.pdf",
+      "reason": "OCLC's official summaries of the DDC main classes."
+    },
+    {
+      "pair_source": "What is the Library of Congress Classification?",
+      "kind": "url",
+      "locator": "https://www.loc.gov/catdir/cpso/lcc.html",
+      "reason": "The Library of Congress's own page on its classification."
+    },
+    {
+      "pair_source": "What is the Library of Congress Classification?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Library_of_Congress_Classification",
+      "reason": "Table of the 21 main classes and their subclasses."
+    },
+    {
+      "pair_source": "What is an ISBN?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/ISBN",
+      "reason": "ISBN structure, 13-digit format and history."
+    },
+    {
+      "pair_source": "What is an ISBN?",
+      "kind": "url",
+      "locator": "https://www.isbn-international.org/content/standard-book-numbering-turns-50",
+      "reason": "International ISBN Agency on the history of standard book numbering."
+    },
+    {
+      "pair_source": "Why does a book's ISBN match its barcode?",
+      "kind": "url",
+      "locator": "https://www.isbn-international.org/content/isbn-bar-coding",
+      "reason": "International ISBN Agency on encoding ISBNs as EAN-13 barcodes."
+    },
+    {
+      "pair_source": "Why does a book's ISBN match its barcode?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/ISBN",
+      "reason": "Check digit calculation and the 978/979 prefixes."
+    },
+    {
+      "pair_source": "What is a call number?",
+      "kind": "url",
+      "locator": "https://ask.loc.gov/faq/396298",
+      "reason": "Library of Congress Ask a Librarian: what a call number is and how to use it."
+    },
+    {
+      "pair_source": "What is a call number?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Library_catalog",
+      "reason": "Call numbers as classification codes for identification and shelving."
+    },
+    {
+      "pair_source": "What is a library card catalog?",
+      "kind": "url",
+      "locator": "https://www.loc.gov/rr//main/inforeas/card.html",
+      "reason": "Library of Congress on its Main Card Catalog and what each card shows."
+    },
+    {
+      "pair_source": "What is a library card catalog?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/kids/article/library/353384",
+      "reason": "Britannica on card catalogs and their replacement by electronic catalogs."
+    },
+    {
+      "pair_source": "What is the difference between primary, secondary and tertiary sources?",
+      "kind": "url",
+      "locator": "https://www.loc.gov/programs/teachers/getting-started-with-primary-sources/",
+      "reason": "Library of Congress definition of primary versus secondary sources."
+    },
+    {
+      "pair_source": "What is the difference between primary, secondary and tertiary sources?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Wikipedia:Primary_Secondary_and_Tertiary_Sources",
+      "reason": "Definitions of primary, secondary and tertiary sources with examples."
+    },
+    {
+      "pair_source": "How do I cite a source?",
+      "kind": "url",
+      "locator": "https://guides.loc.gov/student-resources/citations",
+      "reason": "Library of Congress guide to MLA, APA and Chicago citations."
+    },
+    {
+      "pair_source": "How do I cite a source?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Citing_sources",
+      "reason": "Overview of citation and citation styles."
+    },
+    {
+      "pair_source": "How long does copyright last in the United States?",
+      "kind": "url",
+      "locator": "https://www.copyright.gov/help/faq/faq-duration.html",
+      "reason": "US Copyright Office FAQ on how long copyright lasts."
+    },
+    {
+      "pair_source": "How long does copyright last in the United States?",
+      "kind": "url",
+      "locator": "https://www.copyright.gov/title17/92chap3.html",
+      "reason": "Chapter 3 of Title 17, the statutory duration rules."
+    },
+    {
+      "pair_source": "What does public domain mean?",
+      "kind": "url",
+      "locator": "https://www.copyright.gov/help/faq/faq-duration.html",
+      "reason": "US Copyright Office on copyright terms and works published before 1931."
+    },
+    {
+      "pair_source": "What does public domain mean?",
+      "kind": "url",
+      "locator": "https://www.copyright.gov/history/copyright-exhibit/lifecycle/",
+      "reason": "US Copyright Office on the lifecycle of copyright ending in the public domain."
+    },
+    {
+      "pair_source": "What is peer review?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Scholarly_peer_review",
+      "reason": "Process, outcomes and known limits of scholarly peer review."
+    },
+    {
+      "pair_source": "What is peer review?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/dictionary/peer%20review",
+      "reason": "Britannica definition of peer review."
+    },
+    {
+      "pair_source": "What was the Library of Alexandria?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
+      "reason": "Founding, purpose and scholars of the Library of Alexandria."
+    },
+    {
+      "pair_source": "What was the Library of Alexandria?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/summary/Library-of-Alexandria",
+      "reason": "Britannica summary of the library's history."
+    },
+    {
+      "pair_source": "How was the Library of Alexandria destroyed?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
+      "reason": "The library's gradual decline and the events often blamed."
+    },
+    {
+      "pair_source": "How was the Library of Alexandria destroyed?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Library-of-Alexandria/The-fate-of-the-Library-of-Alexandria",
+      "reason": "Britannica on the fate of the library and its daughter library."
+    },
+    {
+      "pair_source": "What is the Epic of Gilgamesh?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Epic-of-Gilgamesh",
+      "reason": "Britannica on the epic's sources, dating and Nineveh tablets."
+    },
+    {
+      "pair_source": "What is the Epic of Gilgamesh?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh",
+      "reason": "History of the epic from Sumerian poems to the Old Babylonian version."
+    },
+    {
+      "pair_source": "What is the oldest known literature?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/story/what-was-the-first-book-ever-written",
+      "reason": "Britannica on what counts as the first book ever written."
+    },
+    {
+      "pair_source": "What is the oldest known literature?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/Mesopotamian-literature",
+      "reason": "Britannica on Mesopotamian literature."
+    }
+  ]
+}

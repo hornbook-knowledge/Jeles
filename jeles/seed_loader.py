@@ -1,8 +1,8 @@
 """seed_loader — install the bundled seed corpus, one rung per signature.
 
-`pip install jeles` ships a starting corpus: 74 files of adversarially
-reviewed question/answer pairs, in `jeles/seed/`, alongside the 84 host cards.
-This loads them into a store.
+`pip install jeles` ships a starting corpus: 87 files of reference cards and
+adversarially reviewed question/answer pairs, in `jeles/seed/`, alongside the
+84 host cards. This loads them into a store.
 
 **A seed pair is `asserted` unless a signature or the commons rule says
 otherwise.** The pairs were
@@ -144,7 +144,7 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
     """
     data = json.loads(path.read_text(encoding="utf-8"))
 
-    # Not every file in the batch is a pair set. Two of the shipped 74 are
+    # Not every file in the batch is a pair set. Two of the shipped 87 are
     # lists of adversarial *challenge* records — {id, severity, source_claim,
     # challenge, evidence} — which are evidence ABOUT the corpus rounds, not
     # entries in the corpus. Turning a challenge into a nugget would file an

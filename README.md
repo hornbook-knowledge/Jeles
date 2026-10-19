@@ -58,7 +58,7 @@ unchanged. Connector HTTP uses the client's own stack and therefore bypasses
 
 ### The seed corpus
 
-The wheel ships a starting corpus: **74 files, 968 question/answer pairs**, in
+The wheel ships a starting corpus: **87 files, 1163 question/answer pairs**, in
 `jeles/seed/`, beside the 84 host cards. It is not loaded on install and not on
 first use — seeding writes to *your* store, and an unrequested write is the
 thing `corpus_put`'s gate exists to refuse. It is a command you type:

@@ -1,0 +1,294 @@
+{
+  "domain": "core-human-body",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What are the organ systems of the human body?",
+      "source_lang": "en",
+      "target_text": "The body's organs work together in organ systems, usually counted as about 11: integumentary (skin), skeletal, muscular, nervous, endocrine, cardiovascular, lymphatic, respiratory, digestive, urinary and reproductive. Some lists also name the immune system separately, so counts range from about 10 to 12 depending on the source.",
+      "target_lang": "en",
+      "reason": "Organ systems are the standard map of human anatomy."
+    },
+    {
+      "source_text": "How does the heart move blood around the body?",
+      "source_lang": "en",
+      "target_text": "The heart is a muscular pump that pushes blood through a closed network of blood vessels. Arteries carry blood away from the heart, branching into tiny capillaries where oxygen and nutrients pass into tissues and carbon dioxide and wastes pass back; veins then return the blood to the heart. Blood also loops through the lungs to pick up oxygen.",
+      "target_lang": "en",
+      "reason": "Circulation is one of the core functions of the body."
+    },
+    {
+      "source_text": "What is the difference between arteries, veins and capillaries?",
+      "source_lang": "en",
+      "target_text": "Arteries carry blood away from the heart under high pressure; veins carry it back to the heart; capillaries are the tiny vessels in between, with walls one cell thick, where substances are exchanged with the tissues. Usually arteries carry oxygen-rich blood and veins oxygen-poor blood, but the pulmonary arteries and veins, which link the heart and lungs, are the reverse.",
+      "target_lang": "en",
+      "reason": "The three vessel types are basic anatomy vocabulary."
+    },
+    {
+      "source_text": "How do the lungs get oxygen into the blood?",
+      "source_lang": "en",
+      "target_text": "Air travels down the windpipe into branching tubes (bronchi and bronchioles) that end in clusters of tiny air sacs called alveoli. Each alveolus is wrapped in capillaries; oxygen passes across the thin walls into the blood, where it binds to hemoglobin in red blood cells, while carbon dioxide passes out of the blood to be breathed out. This swap is called gas exchange.",
+      "target_lang": "en",
+      "reason": "Gas exchange is the basic job of the respiratory system."
+    },
+    {
+      "source_text": "What makes us breathe in and out?",
+      "source_lang": "en",
+      "target_text": "Breathing is driven mainly by the diaphragm, a dome-shaped muscle under the lungs. When it contracts and moves down, the chest cavity enlarges and air is drawn into the lungs; when it relaxes and moves back up, the chest space shrinks and air is pushed out. Muscles between the ribs also help.",
+      "target_lang": "en",
+      "reason": "Explains the basic mechanics of breathing."
+    },
+    {
+      "source_text": "What are the brain and the nervous system?",
+      "source_lang": "en",
+      "target_text": "The nervous system is the body's communication network. Its central part is the brain and spinal cord, which process information and control movement, automatic functions like breathing, thought and emotion. The peripheral nervous system is the nerves that branch out to the rest of the body. It is built from nerve cells (neurons), which signal each other electrically and chemically.",
+      "target_lang": "en",
+      "reason": "The nervous system is the body's control and signaling system."
+    },
+    {
+      "source_text": "How many bones are in the human body?",
+      "source_lang": "en",
+      "target_text": "An adult human skeleton is usually counted as having 206 bones. The exact number can vary slightly from person to person, for example because of an extra rib. Bones support the body, protect organs, anchor muscles, store minerals and make blood cells in the bone marrow.",
+      "target_lang": "en",
+      "reason": "A classic, frequently asked anatomy fact."
+    },
+    {
+      "source_text": "Do babies have more bones than adults?",
+      "source_lang": "en",
+      "target_text": "Yes. A newborn has roughly 270 to 300 bones and bony parts, many of them partly made of cartilage. As a child grows, many of these fuse together until the adult total of about 206 is reached. Fusion continues through childhood until around or shortly after puberty.",
+      "target_lang": "en",
+      "reason": "A common question that explains how the skeleton develops."
+    },
+    {
+      "source_text": "What are the types of muscle in the body?",
+      "source_lang": "en",
+      "target_text": "The body has three types of muscle. Skeletal muscle attaches to bones and moves the body under voluntary control. Smooth muscle lines hollow organs such as the stomach, intestines, bladder and blood vessels and works involuntarily. Cardiac muscle is found only in the heart and contracts rhythmically on its own, paced by the heart's sinoatrial node.",
+      "target_lang": "en",
+      "reason": "Muscle types are basic physiology vocabulary."
+    },
+    {
+      "source_text": "How many muscles does the human body have?",
+      "source_lang": "en",
+      "target_text": "The human body has more than 600 muscles, according to common medical references; the total depends on how muscles are counted. Most of them are skeletal muscles that move the bones, and anatomists list well over 400 distinct skeletal muscles.",
+      "target_lang": "en",
+      "reason": "A frequently asked anatomy fact with a known counting caveat."
+    },
+    {
+      "source_text": "What is the largest organ of the human body?",
+      "source_lang": "en",
+      "target_text": "The skin is the body's largest organ. In an adult it covers about 1.5 to 2 square meters and makes up roughly 15 percent of body weight. It has three main layers, the epidermis, dermis and hypodermis, and it protects against germs and injury, helps control body temperature and lets us feel touch.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What are the blood types?",
+      "source_lang": "en",
+      "target_text": "Blood types are set by markers (antigens) on red blood cells. The ABO system gives types A, B, AB and O, and the Rh factor makes each positive or negative, for eight common types. O negative red cells can be given to almost anyone in an emergency, and AB plasma can be given to anyone, but matching types is still preferred.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What do the kidneys do?",
+      "source_lang": "en",
+      "target_text": "The two kidneys filter the blood, removing waste and extra water as urine while keeping the body's fluids, salts and acid balance steady. Each kidney has about a million tiny filtering units called nephrons. Together they filter about 150 quarts of blood a day but make only 1 to 2 quarts of urine, and they also make hormones that help control blood pressure.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What is the endocrine system?",
+      "source_lang": "en",
+      "target_text": "The endocrine system is a set of glands that release hormones, chemical messengers, directly into the bloodstream. The hormones travel to distant organs and act on cells that have matching receptors, controlling growth, metabolism, reproduction, mood and more. Major glands include the pituitary, thyroid, adrenal glands, pancreas, ovaries and testes.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What are the five senses, and are there more?",
+      "source_lang": "en",
+      "target_text": "The traditional five senses are sight, hearing, smell, taste and touch. Scientists recognize more than five, including balance (sensed by the inner ear's vestibular system), proprioception (knowing where your body parts are), temperature, pain and sensing internal states. There is no single agreed total.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What are the organ systems of the human body?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/List_of_systems_of_the_human_body",
+      "reason": "Reference list of human body systems."
+    },
+    {
+      "pair_source": "What are the organ systems of the human body?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/human-body-anatomy",
+      "reason": "Cleveland Clinic overview of body systems and how the count varies."
+    },
+    {
+      "pair_source": "How does the heart move blood around the body?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/circulatory-system",
+      "reason": "Britannica on the human circulatory system."
+    },
+    {
+      "pair_source": "How does the heart move blood around the body?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/circulatory-and-cardiovascular-system",
+      "reason": "Cleveland Clinic overview of the circulatory system."
+    },
+    {
+      "pair_source": "What is the difference between arteries, veins and capillaries?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/blood-vessel",
+      "reason": "Britannica on blood vessels, including the pulmonary exception."
+    },
+    {
+      "pair_source": "What is the difference between arteries, veins and capillaries?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/21988-capillaries",
+      "reason": "Cleveland Clinic on capillary structure and function."
+    },
+    {
+      "pair_source": "How do the lungs get oxygen into the blood?",
+      "kind": "url",
+      "locator": "https://www.nhlbi.nih.gov/health/lungs/respiratory-system",
+      "reason": "NIH NHLBI on how the lungs and respiratory system work."
+    },
+    {
+      "pair_source": "How do the lungs get oxygen into the blood?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/8960-lungs",
+      "reason": "Cleveland Clinic on the lungs and how they work."
+    },
+    {
+      "pair_source": "What makes us breathe in and out?",
+      "kind": "url",
+      "locator": "https://www.nhlbi.nih.gov/health/lungs/respiratory-system",
+      "reason": "NIH NHLBI on breathing and the role of the diaphragm."
+    },
+    {
+      "pair_source": "What makes us breathe in and out?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/21205-respiratory-system",
+      "reason": "Cleveland Clinic overview of respiratory system anatomy and function."
+    },
+    {
+      "pair_source": "What are the brain and the nervous system?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/nervous-system",
+      "reason": "Britannica on the nervous system."
+    },
+    {
+      "pair_source": "What are the brain and the nervous system?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/books/NBK542179/",
+      "reason": "NCBI StatPearls on the anatomy of the central nervous system."
+    },
+    {
+      "pair_source": "How many bones are in the human body?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/25176-bones",
+      "reason": "Cleveland Clinic on how many bones humans have and their functions."
+    },
+    {
+      "pair_source": "How many bones are in the human body?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Human_skeleton",
+      "reason": "Reference article on the human skeleton."
+    },
+    {
+      "pair_source": "Do babies have more bones than adults?",
+      "kind": "url",
+      "locator": "https://health.clevelandclinic.org/how-many-bones-does-a-baby-have",
+      "reason": "Cleveland Clinic on how many bones babies have and why they fuse."
+    },
+    {
+      "pair_source": "Do babies have more bones than adults?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Human_skeleton",
+      "reason": "Reference article giving bone counts at birth and in adulthood."
+    },
+    {
+      "pair_source": "What are the types of muscle in the body?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/21887-muscle",
+      "reason": "Cleveland Clinic on muscle types and functions."
+    },
+    {
+      "pair_source": "What are the types of muscle in the body?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/muscle",
+      "reason": "Britannica on muscle, including smooth and cardiac muscle."
+    },
+    {
+      "pair_source": "How many muscles does the human body have?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/21887-muscle",
+      "reason": "Cleveland Clinic, stating the body has more than 600 muscles."
+    },
+    {
+      "pair_source": "How many muscles does the human body have?",
+      "kind": "url",
+      "locator": "https://www.ncbi.nlm.nih.gov/sites/books/NBK537236/",
+      "reason": "NCBI StatPearls on skeletal muscle anatomy."
+    },
+    {
+      "pair_source": "What is the largest organ of the human body?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/10978-skin",
+      "reason": "Cleveland Clinic overview of the skin's layers and functions."
+    },
+    {
+      "pair_source": "What is the largest organ of the human body?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Human_skin",
+      "reason": "Reference article on human skin, including its area and share of body weight."
+    },
+    {
+      "pair_source": "What are the blood types?",
+      "kind": "url",
+      "locator": "https://www.redcrossblood.org/donate-blood/blood-types.html",
+      "reason": "American Red Cross explanation of ABO and Rh blood types and donor compatibility."
+    },
+    {
+      "pair_source": "What are the blood types?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/treatments/21213-blood-types",
+      "reason": "Cleveland Clinic overview of the eight ABO/Rh blood types."
+    },
+    {
+      "pair_source": "What do the kidneys do?",
+      "kind": "url",
+      "locator": "https://www.niddk.nih.gov/health-information/kidney-disease/kidneys-how-they-work",
+      "reason": "NIDDK (NIH) explanation of how the kidneys and nephrons filter blood."
+    },
+    {
+      "pair_source": "What do the kidneys do?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/21824-kidney",
+      "reason": "Cleveland Clinic overview of kidney anatomy and functions."
+    },
+    {
+      "pair_source": "What is the endocrine system?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/body/21201-endocrine-system",
+      "reason": "Cleveland Clinic overview of the endocrine system, its glands and hormones."
+    },
+    {
+      "pair_source": "What is the endocrine system?",
+      "kind": "url",
+      "locator": "https://medlineplus.gov/ency/article/002351.htm",
+      "reason": "MedlinePlus encyclopedia entry on the endocrine glands."
+    },
+    {
+      "pair_source": "What are the five senses, and are there more?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/senses",
+      "reason": "Britannica article on the senses, noting humans have more than five."
+    },
+    {
+      "pair_source": "What are the five senses, and are there more?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/articles/sensory-organs",
+      "reason": "Cleveland Clinic article on sensing organs beyond the basic five senses."
+    }
+  ]
+}

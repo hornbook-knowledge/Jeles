@@ -5,19 +5,19 @@ computing from anything, and wrong by exactly 401. The top-level `README.md`'s
 "74 files, 968 question/answer pairs" turned out to be the correct composed
 count, but nothing checked *that* either; it was correct by luck, not by test.
 
-This file computes both numbers straight from `corpus/seed/` (74 JSON files,
+This file computes both numbers straight from `corpus/seed/` (87 JSON files,
 byte-identical to `jeles/seed/` — see `tests/test_seed_dirs_in_step.py`) and
 asserts each README's claim against the computation, rather than against each
 other or against a second hand-typed literal here.
 
   raw entries    every record shipped in the tree, whether it lives in a
                  file's `pairs` list or (for the two adversarial-challenge
-                 files) *is* the file's top-level list. 1028.
+                 files) *is* the file's top-level list. 1223.
 
   composed count human + machine + asserted nuggets `jeles-seed --dry-run`
                  would actually write — i.e. real question/answer pairs, with
                  the 36 non-Q/A "reasoning" records and the 2 non-pair-set
-                 files' contents excluded. 968 (640 developer-attested commons + 328 asserted).
+                 files' contents excluded. 1163 (835 developer-attested commons + 328 asserted).
 
 A scan that has never fired has not been shown to check anything: each helper
 below that reads the tree or parses a README's claim has a test that plants a
@@ -75,16 +75,16 @@ def _top_readme_claim(text: str) -> tuple[int, int]:
     return int(files), int(pairs)
 
 
-def test_the_tree_has_74_files():
-    assert len(list(_SEED_DIR.glob("*.json"))) == 74
+def test_the_tree_has_87_files():
+    assert len(list(_SEED_DIR.glob("*.json"))) == 87
 
 
 def test_corpus_readme_counts_match_the_tree():
     raw_claimed, composed_claimed = _corpus_readme_claims(
         _CORPUS_README.read_text(encoding="utf-8")
     )
-    assert raw_claimed == _count_raw_entries(_SEED_DIR) == 1028
-    assert composed_claimed == _composed_count(_SEED_DIR) == 968
+    assert raw_claimed == _count_raw_entries(_SEED_DIR) == 1223
+    assert composed_claimed == _composed_count(_SEED_DIR) == 1163
 
 
 def test_top_level_readme_count_matches_the_tree():

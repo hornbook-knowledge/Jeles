@@ -6,15 +6,23 @@ and edges (cross-domain relationships).
 
 ## Scale
 
-- 74 source files across ~30 domains
-- **1028** raw pair-shaped entries in the JSON (72 files carry a `pairs` list;
+- 87 source files across ~40 domains
+- **1223** raw pair-shaped entries in the JSON (85 files carry a `pairs` list;
   2 are plain lists of adversarial *challenge* records, not pair sets),
-  composing to **968** question/answer nuggets — 640 commons (verified on the developer's attestation, unsealed) + 328 asserted.
+  composing to **1163** question/answer nuggets — 835 commons (verified on the developer's attestation, unsealed) + 328 asserted.
   The remaining 36 entries share the `pairs` key without the question/answer
   shape (reasoning about the corpus rounds, not claims in it) and compose to
   nothing. Measured 2026-10-19 with `jeles-seed --dry-run`; see
   `tests/test_corpus_counts.py`.
 - 2105 evidence entries with real source URLs
+- The `core_*` files are the reference shelf: general knowledge written as
+  library cards, each a short settled answer plus one or two pointers to
+  where the full account lives (Britannica, Wikipedia, NASA, NIH, USGS, the
+  Library of Congress and similar). Ten cover how everyday things work; the
+  rest cover mathematics, astronomy, life science, the human body, world
+  geography, ecology and earth systems, world history, government and civics,
+  language and writing, libraries and literature, the arts and music, beliefs
+  and philosophy, and a general reference shelf.
 - 3 rounds of adversarial verification (fact-check, steel-man, contradiction challenge)
 
 ## Load into a jeles store

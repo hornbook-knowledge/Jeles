@@ -1,0 +1,294 @@
+{
+  "domain": "core-space-astronomy",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What are the planets in our solar system?",
+      "source_lang": "en",
+      "target_text": "The solar system has eight planets. In order from the Sun they are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. The four inner planets are small and rocky; Jupiter and Saturn are gas giants, and Uranus and Neptune are ice giants.",
+      "target_lang": "en",
+      "reason": "The planet list is basic astronomy literacy."
+    },
+    {
+      "source_text": "Why is Pluto no longer considered a planet?",
+      "source_lang": "en",
+      "target_text": "In August 2006 the International Astronomical Union defined a planet as a body that orbits the Sun, is massive enough to be nearly round, and has cleared its orbital neighborhood. Pluto shares its region of the Kuiper Belt with many other objects, so it was reclassified as a dwarf planet. The IAU recognizes five dwarf planets: Ceres, Pluto, Haumea, Makemake, and Eris.",
+      "target_lang": "en",
+      "reason": "A frequently asked question with a clear, dated answer."
+    },
+    {
+      "source_text": "Is the Sun a star?",
+      "source_lang": "en",
+      "target_text": "Yes. The Sun is a G-type main-sequence star (class G2V) that formed about 4.6 billion years ago from a collapsing cloud of gas and dust. It shines by nuclear fusion in its core, turning hydrogen into helium. It holds about 99.8% of the solar system's mass.",
+      "target_lang": "en",
+      "reason": "The Sun is the star everything in the solar system depends on."
+    },
+    {
+      "source_text": "What is a light-year?",
+      "source_lang": "en",
+      "target_text": "A light-year is a unit of distance, not time: the distance light travels in one year. Light moves at 299,792,458 meters per second, so a light-year is about 9.46 trillion kilometers (5.88 trillion miles). Astronomers use it to describe distances to stars and galaxies.",
+      "target_lang": "en",
+      "reason": "A common unit that is often misunderstood as a measure of time."
+    },
+    {
+      "source_text": "Why does the Moon have phases?",
+      "source_lang": "en",
+      "target_text": "The Moon shines by reflected sunlight, and the Sun always lights half of it. As the Moon orbits Earth, we see different portions of that lit half, from new moon (lit side facing away) to full moon (lit side facing us). The full cycle takes about 29.5 days. Earth's shadow does not cause the phases; it only falls on the Moon during a lunar eclipse.",
+      "target_lang": "en",
+      "reason": "Explains an everyday observation and corrects a common misconception."
+    },
+    {
+      "source_text": "What is the difference between a solar and a lunar eclipse?",
+      "source_lang": "en",
+      "target_text": "A solar eclipse happens when the Moon passes between Earth and the Sun, casting its shadow on Earth; it can occur only at new moon. A lunar eclipse happens when Earth passes between the Sun and the Moon, so Earth's shadow falls on the Moon; it occurs only at full moon. Eclipses do not happen every month because the Moon's orbit is tilted about 5 degrees to Earth's.",
+      "target_lang": "en",
+      "reason": "Eclipses are widely watched events with a simple, settled explanation."
+    },
+    {
+      "source_text": "What is the Milky Way?",
+      "source_lang": "en",
+      "target_text": "The Milky Way is the galaxy that contains our solar system: a large barred spiral galaxy usually given as about 100,000 light-years across (some estimates are larger). The Sun lies roughly 26,000 light-years from the galactic center. The Milky Way belongs to the Local Group of galaxies, whose nearest large member, Andromeda, is about 2.5 million light-years away.",
+      "target_lang": "en",
+      "reason": "Our home galaxy is a basic fact of our place in the universe."
+    },
+    {
+      "source_text": "What happens to a star like the Sun over its life?",
+      "source_lang": "en",
+      "target_text": "A Sun-like star forms from a collapsing cloud of gas and dust, then spends about 10 billion years fusing hydrogen on the main sequence. The Sun is about halfway through that stage. Afterward it will swell into a red giant, shed its outer layers, and leave behind a dense, slowly cooling white dwarf.",
+      "target_lang": "en",
+      "reason": "Stellar life cycles explain where stars, and the Sun's future, come from."
+    },
+    {
+      "source_text": "What was the Big Bang, and how old is the universe?",
+      "source_lang": "en",
+      "target_text": "The Big Bang is the scientific model in which the universe began in an extremely hot, dense state and has been expanding and cooling ever since. Measurements of the cosmic microwave background, especially by ESA's Planck mission (2009-2013), put the universe's age at about 13.8 billion years. Small differences between measurement methods are still being studied.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What is a black hole?",
+      "source_lang": "en",
+      "target_text": "A black hole is a region of space where gravity is so strong that nothing, not even light, can escape once it crosses the boundary called the event horizon. Many form when the core of a very massive star collapses at the end of its life. Because they give off no light, astronomers find them by their effects on nearby gas and stars.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "How does gravity keep planets in orbit?",
+      "source_lang": "en",
+      "target_text": "Johannes Kepler found (1609-1618) that planets move in ellipses with the Sun at one focus, sweep equal areas in equal times so they move faster near the Sun, and have orbital periods whose square is proportional to the cube of their average distance. Isaac Newton later explained these laws with his law of universal gravitation: every mass attracts every other with a force that weakens with the square of distance.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What is the difference between constellations, planets, comets, asteroids and meteors?",
+      "source_lang": "en",
+      "target_text": "Constellations are patterns of distant stars; the International Astronomical Union recognizes 88. Planets are much closer worlds orbiting the Sun that slowly shift against those stars. Asteroids are small rocky bodies, mostly in the belt between Mars and Jupiter; comets are icy bodies that grow fuzzy tails near the Sun. A small piece burning up in the air is a meteor, and one that lands is a meteorite.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "When did humans first land on the Moon?",
+      "source_lang": "en",
+      "target_text": "NASA's Apollo 11 landed on the Moon on July 20, 1969. Neil Armstrong and Buzz Aldrin set the lunar module Eagle down in the Sea of Tranquility while Michael Collins stayed in orbit aboard Columbia. Armstrong became the first person to walk on the Moon, and the crew splashed down safely in the Pacific on July 24, 1969.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What are exoplanets, and how many have been found?",
+      "source_lang": "en",
+      "target_text": "Exoplanets are planets that orbit stars other than the Sun. The first one found around a Sun-like star, 51 Pegasi b, was announced in 1995. On September 17, 2025, NASA announced that its count of confirmed exoplanets had passed 6,000, with thousands more candidates awaiting confirmation; the number keeps rising.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    },
+    {
+      "source_text": "What are the Hubble and James Webb space telescopes?",
+      "source_lang": "en",
+      "target_text": "The Hubble Space Telescope, a NASA-ESA observatory, was launched on April 24, 1990, aboard the space shuttle Discovery and orbits Earth, mainly observing visible and ultraviolet light. The James Webb Space Telescope, its larger infrared successor built by NASA with ESA and the Canadian Space Agency, launched on December 25, 2021, on an Ariane 5 rocket and works about 1.5 million km from Earth.",
+      "target_lang": "en",
+      "reason": "Settled general-knowledge reference card."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What are the planets in our solar system?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/solar-system/planets/?Display=Saturn",
+      "reason": "NASA overview of the solar system's eight planets."
+    },
+    {
+      "pair_source": "What are the planets in our solar system?",
+      "kind": "url",
+      "locator": "https://apod.nasa.gov/apod/ap060828.html",
+      "reason": "NASA APOD on the 2006 eight-planet designation."
+    },
+    {
+      "pair_source": "Why is Pluto no longer considered a planet?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/story/why-is-pluto-no-longer-a-planet",
+      "reason": "Britannica explanation of the 2006 IAU decision."
+    },
+    {
+      "pair_source": "Why is Pluto no longer considered a planet?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/dwarf-planets/",
+      "reason": "NASA page on Pluto and the recognized dwarf planets."
+    },
+    {
+      "pair_source": "Is the Sun a star?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/sun/facts/",
+      "reason": "NASA facts on the Sun's age, type, and mass."
+    },
+    {
+      "pair_source": "Is the Sun a star?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Sun",
+      "reason": "Britannica article on the Sun."
+    },
+    {
+      "pair_source": "What is a light-year?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/exoplanets/what-is-a-light-year/",
+      "reason": "NASA definition and value of a light-year."
+    },
+    {
+      "pair_source": "What is a light-year?",
+      "kind": "url",
+      "locator": "https://spaceplace.nasa.gov/light-year/en/",
+      "reason": "NASA Space Place explanation of light-years."
+    },
+    {
+      "pair_source": "Why does the Moon have phases?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/moon/moon-phases/",
+      "reason": "NASA explanation of lunar phases."
+    },
+    {
+      "pair_source": "Why does the Moon have phases?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/lunar-phases",
+      "reason": "Britannica article on lunar phases."
+    },
+    {
+      "pair_source": "What is the difference between a solar and a lunar eclipse?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/moon/eclipses/",
+      "reason": "NASA page on solar and lunar eclipses."
+    },
+    {
+      "pair_source": "What is the difference between a solar and a lunar eclipse?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/eclipse",
+      "reason": "Britannica article on eclipses."
+    },
+    {
+      "pair_source": "What is the Milky Way?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Milky-Way-Galaxy",
+      "reason": "Britannica article on the Milky Way Galaxy."
+    },
+    {
+      "pair_source": "What is the Milky Way?",
+      "kind": "url",
+      "locator": "https://imagine.gsfc.nasa.gov/science/objects/milkyway1.html",
+      "reason": "NASA overview of the Milky Way's structure and size."
+    },
+    {
+      "pair_source": "What happens to a star like the Sun over its life?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/resource/the-life-cycle-of-a-sun-like-star-annotated/",
+      "reason": "NASA illustration of the life cycle of a Sun-like star."
+    },
+    {
+      "pair_source": "What happens to a star like the Sun over its life?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/exoplanets/stars/",
+      "reason": "NASA on stars, including the Sun's roughly 10-billion-year main-sequence lifetime."
+    },
+    {
+      "pair_source": "What was the Big Bang, and how old is the universe?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Age_of_the_universe",
+      "reason": "Reference article on the age of the universe and the Planck-based estimate of about 13.8 billion years."
+    },
+    {
+      "pair_source": "What was the Big Bang, and how old is the universe?",
+      "kind": "url",
+      "locator": "https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_science_highlights",
+      "reason": "ESA summary of Planck mission results on the early universe."
+    },
+    {
+      "pair_source": "What is a black hole?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/universe/black-holes/",
+      "reason": "NASA Science overview of black holes, how they form and how they are detected."
+    },
+    {
+      "pair_source": "What is a black hole?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/black-hole",
+      "reason": "Britannica article defining black holes and the event horizon."
+    },
+    {
+      "pair_source": "How does gravity keep planets in orbit?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/Keplers-laws-of-planetary-motion",
+      "reason": "Britannica statement of Kepler's three laws and their role in Newton's law of gravitation."
+    },
+    {
+      "pair_source": "How does gravity keep planets in orbit?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/learn/basics-of-space-flight/chapter3-3/",
+      "reason": "NASA Basics of Space Flight chapter on gravity, mechanics and Kepler's laws."
+    },
+    {
+      "pair_source": "What is the difference between constellations, planets, comets, asteroids and meteors?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/IAU_designated_constellations",
+      "reason": "Reference list of the 88 constellations recognized by the IAU."
+    },
+    {
+      "pair_source": "What is the difference between constellations, planets, comets, asteroids and meteors?",
+      "kind": "url",
+      "locator": "https://www.nasa.gov/science-research/planetary-science/whats-the-difference-between-asteroids-comets-and-meteors-we-asked-a-nasa-scientist-episode-16",
+      "reason": "NASA explainer on asteroids, comets, meteoroids, meteors and meteorites."
+    },
+    {
+      "pair_source": "When did humans first land on the Moon?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Apollo_11",
+      "reason": "Reference article on the Apollo 11 mission, crew and dates."
+    },
+    {
+      "pair_source": "When did humans first land on the Moon?",
+      "kind": "url",
+      "locator": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo11.html",
+      "reason": "NASA NSSDCA page on Apollo 11 with landing and moonwalk times."
+    },
+    {
+      "pair_source": "What are exoplanets, and how many have been found?",
+      "kind": "url",
+      "locator": "https://www.nasa.gov/universe/exoplanets/nasas-tally-of-planets-outside-our-solar-system-reaches-6000/",
+      "reason": "NASA announcement (September 2025) that confirmed exoplanets reached 6,000, 30 years after the 1995 discovery."
+    },
+    {
+      "pair_source": "What are exoplanets, and how many have been found?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/exoplanets/",
+      "reason": "NASA Science exoplanet overview with the current confirmed count."
+    },
+    {
+      "pair_source": "What are the Hubble and James Webb space telescopes?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/mission/hubble/overview/the-history-of-hubble/",
+      "reason": "NASA history of Hubble, including its April 1990 launch on Discovery."
+    },
+    {
+      "pair_source": "What are the Hubble and James Webb space telescopes?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/mission/webb/launch/",
+      "reason": "NASA page on Webb's December 25, 2021 launch on an Ariane 5."
+    }
+  ]
+}

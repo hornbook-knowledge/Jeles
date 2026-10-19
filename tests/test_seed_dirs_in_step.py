@@ -1,4 +1,4 @@
-"""`corpus/seed/` and `jeles/seed/` are two copies of the same 74 files, and
+"""`corpus/seed/` and `jeles/seed/` are two copies of the same 87 files, and
 nothing before this test pinned them together.
 
 `jeles/seed/` is the one that ships: `pyproject.toml`'s
@@ -39,8 +39,8 @@ def _diverging_files(a: Path, b: Path) -> list[str]:
     return sorted(name for name in common if (a / name).read_bytes() != (b / name).read_bytes())
 
 
-def test_both_seed_dirs_have_the_same_74_files():
-    assert len(_seed_names(_CORPUS_SEED)) == 74
+def test_both_seed_dirs_have_the_same_87_files():
+    assert len(_seed_names(_CORPUS_SEED)) == 87
     assert _seed_names(_CORPUS_SEED) == _seed_names(_JELES_SEED)
 
 

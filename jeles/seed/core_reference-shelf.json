@@ -1,0 +1,288 @@
+{
+  "domain": "core-reference-shelf",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What are the Iliad and the Odyssey?",
+      "source_lang": "en",
+      "target_text": "The Iliad and the Odyssey are ancient Greek epic poems traditionally credited to Homer and generally dated to the late 8th or early 7th century BCE. The Iliad tells of a quarrel between Agamemnon and Achilles in the last year of the Trojan War; the Odyssey follows Odysseus's ten-year journey home to Ithaca. Whether Homer was one real poet is debated, and the poems grew out of an oral tradition.",
+      "target_lang": "en",
+      "reason": "Foundational epics of Western literature; dating and authorship given with scholarly hedging."
+    },
+    {
+      "source_text": "What are the Mahabharata and the Ramayana?",
+      "source_lang": "en",
+      "target_text": "The Mahabharata and the Ramayana are the two great Sanskrit epics of ancient India. The Mahabharata, traditionally attributed to Vyasa, centres on the Kurukshetra War between the Kauravas and Pandavas, includes the Bhagavad Gita, and was mostly compiled c. 3rd century BCE to 3rd century CE. The Ramayana, credited to Valmiki, tells of Prince Rama and the rescue of Sita and has about 24,000 verses in seven books.",
+      "target_lang": "en",
+      "reason": "Core epics of South Asian literature; dates given as scholarly ranges."
+    },
+    {
+      "source_text": "What is a literary genre?",
+      "source_lang": "en",
+      "target_text": "A literary genre is a category of literature defined by shared features such as form, style, subject matter, purpose or audience. Broad genres include poetry, drama, fiction and nonfiction, and these divide into subgenres, such as the detective novel within the novel. Classifying literature this way goes back at least to Aristotle, who discussed forms such as epic and tragedy.",
+      "target_lang": "en",
+      "reason": "Basic literary concept used for shelving and describing books."
+    },
+    {
+      "source_text": "What are some of the earliest novels?",
+      "source_lang": "en",
+      "target_text": "The Tale of Genji, written by Murasaki Shikibu at the Japanese Heian court in the early 11th century (completed c. 1010), is often called the world's first novel, though that label is debated. Don Quixote by Miguel de Cervantes, published in two parts in 1605 and 1615, began as a parody of chivalric romances and is regarded as a prototype of the modern European novel.",
+      "target_lang": "en",
+      "reason": "Landmarks in the history of the novel; 'first novel' framed as a contested label."
+    },
+    {
+      "source_text": "What is the Gutenberg Bible?",
+      "source_lang": "en",
+      "target_text": "The Gutenberg Bible, also called the 42-line Bible, is the earliest major book printed in Europe with metal movable type. Johannes Gutenberg completed it in Mainz around 1454-1455. Its Latin Vulgate text is set in two columns of 42 lines, and roughly 40 to 49 copies survive in whole or part, including a complete vellum copy at the Library of Congress.",
+      "target_lang": "en",
+      "reason": "Landmark of printing history; date given as an approximate range."
+    },
+    {
+      "source_text": "What is an encyclopedia, and how did encyclopedias develop?",
+      "source_lang": "en",
+      "target_text": "An encyclopedia is a reference work that summarizes knowledge, either general or in one field. Pliny the Elder's Natural History (c. 77-79 CE) is the earliest surviving encyclopedic work. Diderot and d'Alembert's Encyclopédie appeared in France from 1751 to 1772, the Encyclopaedia Britannica began in Edinburgh in 1768, and Wikipedia, a free online encyclopedia, launched on January 15, 2001.",
+      "target_lang": "en",
+      "reason": "History of the reference library's central genre."
+    },
+    {
+      "source_text": "What is the scientific method?",
+      "source_lang": "en",
+      "target_text": "The scientific method is the general approach science uses to build and test knowledge. A researcher makes observations, proposes a hypothesis that could be shown false, tests it by experiment or further observation, and revises or rejects it based on the results. In practice the steps are rarely so tidy, and scientists debate whether one fixed sequence exists.",
+      "target_lang": "en",
+      "reason": "Core concept of how scientific knowledge is produced."
+    },
+    {
+      "source_text": "What was the Enlightenment?",
+      "source_lang": "en",
+      "target_text": "The Enlightenment was a European intellectual movement of the late 17th and 18th centuries that stressed reason, liberty, toleration and scientific inquiry. Historians often date it from about 1715 to 1789, though ranges vary. Key figures include John Locke, Voltaire, Diderot and Immanuel Kant, whose essay 'What is Enlightenment?' took the motto 'dare to know'.",
+      "target_lang": "en",
+      "reason": "Major period in intellectual history; dates given as a conventional range."
+    },
+    {
+      "source_text": "What is logic, and what is a syllogism?",
+      "source_lang": "en",
+      "target_text": "Logic is the study of correct reasoning, especially how to tell whether a conclusion actually follows from its premises. A syllogism, first studied systematically by Aristotle, is an argument with two premises and a conclusion, such as: every Greek is human; every human is mortal; so every Greek is mortal. A syllogism can be valid even if its premises are false, since validity concerns only the form of the reasoning.",
+      "target_lang": "en",
+      "reason": "Foundational concept in philosophy and reasoning."
+    },
+    {
+      "source_text": "What is the Golden Rule?",
+      "source_lang": "en",
+      "target_text": "The Golden Rule is the principle of treating others as one would want to be treated. Versions appear in many religious and ethical traditions, including the Analects of Confucius, the Mahabharata, Buddhist teaching, Leviticus, the Gospel of Matthew and Islamic hadith, as well as in secular ethics. Some forms are negative ('do not do to others what you would not want done to you') and others positive.",
+      "target_lang": "en",
+      "reason": "Descriptive survey of a widely shared ethical maxim; no theological claims."
+    },
+    {
+      "source_text": "What is the Magna Carta?",
+      "source_lang": "en",
+      "target_text": "The Magna Carta is a charter of rights that King John of England agreed to at Runnymede on 15 June 1215 under pressure from rebel barons. It limited royal power and promised that free men would not be punished except by lawful judgment of their peers or the law of the land. The Pope annulled it within months, but it was reissued from 1216 and later became a symbol of the rule of law.",
+      "target_lang": "en",
+      "reason": "Landmark document in constitutional history."
+    },
+    {
+      "source_text": "How was the right to vote expanded in the United States?",
+      "source_lang": "en",
+      "target_text": "The 15th Amendment (1870) barred denying the vote on account of race or color, the 19th (1920) on account of sex, and the 26th (1971) set the voting age at 18. Because states used literacy tests and other devices to block Black voters, Congress passed the Voting Rights Act of 1965, which banned racial discrimination in voting and suspended literacy tests.",
+      "target_lang": "en",
+      "reason": "Key milestones in US voting rights."
+    },
+    {
+      "source_text": "What is the periodic table?",
+      "source_lang": "en",
+      "target_text": "The periodic table arranges the chemical elements in order of atomic number, the number of protons in an atom, so that elements with similar properties fall in the same columns. Dmitri Mendeleev published the first widely accepted version in 1869 and left gaps for elements he predicted. Today it holds 118 confirmed elements, from hydrogen (1) to oganesson (118).",
+      "target_lang": "en",
+      "reason": "General-shelf science reference not covered by other domains."
+    },
+    {
+      "source_text": "Where did the metric system come from?",
+      "source_lang": "en",
+      "target_text": "The metric system was created in France during the French Revolution to replace a confusing mix of local units. In 1791 the meter was defined as one ten-millionth of the distance from the equator to the North Pole, and France adopted the system in 1795. The 1875 Metre Convention placed it under international oversight, and its modern form, the International System of Units (SI), was set up in 1960.",
+      "target_lang": "en",
+      "reason": "Origin of the measurement system used worldwide."
+    },
+    {
+      "source_text": "What are the SI base units?",
+      "source_lang": "en",
+      "target_text": "The International System of Units (SI) has seven base units: the second (time), metre (length), kilogram (mass), ampere (electric current), kelvin (temperature), mole (amount of substance) and candela (luminous intensity). Since 2019 each is defined by fixing the value of a physical constant, for example the metre by the speed of light, 299,792,458 metres per second.",
+      "target_lang": "en",
+      "reason": "Standard measurement reference."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What are the Iliad and the Odyssey?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Homer-Greek-poet",
+      "reason": "Britannica biography of Homer and the two epics attributed to him."
+    },
+    {
+      "pair_source": "What are the Iliad and the Odyssey?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Homeric_Question",
+      "reason": "Overview of the debate over Homer's identity, authorship and the oral origins of the poems."
+    },
+    {
+      "pair_source": "What are the Mahabharata and the Ramayana?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Mahabharata",
+      "reason": "Article on the Mahabharata: content, traditional authorship, length and dating."
+    },
+    {
+      "pair_source": "What are the Mahabharata and the Ramayana?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Ramayana",
+      "reason": "Article on the Valmiki Ramayana: story, structure, authorship and date range."
+    },
+    {
+      "pair_source": "What is a literary genre?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Literary_genre",
+      "reason": "Article defining literary genre, its subgenres and its origins in Aristotle."
+    },
+    {
+      "pair_source": "What are some of the earliest novels?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/The-Tale-of-Genji",
+      "reason": "Britannica entry on The Tale of Genji and its author Murasaki Shikibu."
+    },
+    {
+      "pair_source": "What are some of the earliest novels?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Don_Quixote",
+      "reason": "Article on Don Quixote: publication in 1605 and 1615, parody origins and influence."
+    },
+    {
+      "pair_source": "What is the Gutenberg Bible?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
+      "reason": "Article on the Gutenberg Bible: dating, printing and surviving copies."
+    },
+    {
+      "pair_source": "What is the Gutenberg Bible?",
+      "kind": "url",
+      "locator": "https://www.loc.gov/exhibits/bibles/the-gutenberg-bible.html",
+      "reason": "Library of Congress page on its vellum copy of the Gutenberg Bible."
+    },
+    {
+      "pair_source": "What is an encyclopedia, and how did encyclopedias develop?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/History_of_encyclopedias",
+      "reason": "History of encyclopedias from Pliny to the present."
+    },
+    {
+      "pair_source": "What is an encyclopedia, and how did encyclopedias develop?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Encyclopedie",
+      "reason": "Britannica entry on Diderot's Encyclopédie, its dates and its influence on Britannica (1768)."
+    },
+    {
+      "pair_source": "What is the scientific method?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/print/article/528929",
+      "reason": "Britannica entry describing hypothesis development, testing and revision."
+    },
+    {
+      "pair_source": "What is the scientific method?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Scientific_method",
+      "reason": "Article on the scientific method: observation, falsifiable hypotheses and experiment."
+    },
+    {
+      "pair_source": "What was the Enlightenment?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/event/Enlightenment-European-history",
+      "reason": "Britannica entry on the Enlightenment, its dates and key thinkers."
+    },
+    {
+      "pair_source": "What was the Enlightenment?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
+      "reason": "Article on the Age of Enlightenment, its periodization and major figures."
+    },
+    {
+      "pair_source": "What is logic, and what is a syllogism?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/logic",
+      "reason": "Britannica entry defining logic as the study of valid inference."
+    },
+    {
+      "pair_source": "What is logic, and what is a syllogism?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Syllogism",
+      "reason": "Article on the syllogism, its structure and Aristotle's role."
+    },
+    {
+      "pair_source": "What is the Golden Rule?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Golden_Rule",
+      "reason": "Article surveying forms of the Golden Rule across religious and secular traditions."
+    },
+    {
+      "pair_source": "What is the Golden Rule?",
+      "kind": "url",
+      "locator": "https://iep.utm.edu/goldrule/",
+      "reason": "Internet Encyclopedia of Philosophy entry on the Golden Rule and its variants."
+    },
+    {
+      "pair_source": "What is the Magna Carta?",
+      "kind": "url",
+      "locator": "https://www.archives.gov/exhibits/featured-documents/magna-carta",
+      "reason": "US National Archives page on Magna Carta and its history."
+    },
+    {
+      "pair_source": "What is the Magna Carta?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Magna_Carta",
+      "reason": "Article on Magna Carta: 1215 sealing, annulment, reissues and legacy."
+    },
+    {
+      "pair_source": "How was the right to vote expanded in the United States?",
+      "kind": "url",
+      "locator": "https://www.archives.gov/founding-docs/amendments-11-27",
+      "reason": "National Archives text of Amendments 11-27, including the 15th, 19th and 26th."
+    },
+    {
+      "pair_source": "How was the right to vote expanded in the United States?",
+      "kind": "url",
+      "locator": "https://www.archives.gov/legislative/features/voting-rights-1965",
+      "reason": "National Archives feature on Congress and the Voting Rights Act of 1965."
+    },
+    {
+      "pair_source": "What is the periodic table?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/periodic-table",
+      "reason": "Britannica entry on the periodic table and Mendeleev's 1869 table."
+    },
+    {
+      "pair_source": "What is the periodic table?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Periodic_table",
+      "reason": "Article on the periodic table, its organization and its 118 elements."
+    },
+    {
+      "pair_source": "Where did the metric system come from?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/metric-system-measurement",
+      "reason": "Britannica entry on the metric system's French origin and 1795 adoption."
+    },
+    {
+      "pair_source": "Where did the metric system come from?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Meter",
+      "reason": "Article on the metre, including its 1791 definition."
+    },
+    {
+      "pair_source": "What are the SI base units?",
+      "kind": "url",
+      "locator": "https://www.nist.gov/pml/owm/metric-si/si-units",
+      "reason": "NIST page listing the seven SI base units."
+    },
+    {
+      "pair_source": "What are the SI base units?",
+      "kind": "url",
+      "locator": "https://www.bipm.org/en/measurement-units",
+      "reason": "BIPM page on the SI and its defining constants."
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "domain": "core-mathematics",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What are natural numbers, integers, rational numbers, and real numbers?",
+      "source_lang": "en",
+      "target_text": "These number sets nest inside one another. Natural numbers are the counting numbers (1, 2, 3, ...; some definitions include 0). Integers add zero and the negatives. Rational numbers are fractions p/q of integers with q not zero. Real numbers include the rationals plus irrational numbers such as the square root of 2 and pi, and can be written as infinite decimals.",
+      "target_lang": "en",
+      "reason": "The basic number systems are foundational vocabulary for all of mathematics."
+    },
+    {
+      "source_text": "Where did the number zero and place value come from?",
+      "source_lang": "en",
+      "target_text": "Babylonian scribes used a place-value system with a placeholder for an empty position but no true zero; the Maya independently had a zero symbol. In India, Brahmagupta's text of 628 CE gave rules for calculating with zero as a number. The Hindu-Arabic decimal system with zero spread to the Islamic world and reached Europe through Fibonacci's Liber abaci (1202).",
+      "target_lang": "en",
+      "reason": "Zero and positional notation underlie all modern arithmetic."
+    },
+    {
+      "source_text": "What is a prime number?",
+      "source_lang": "en",
+      "target_text": "A prime is a whole number greater than 1 whose only positive divisors are 1 and itself; 2, 3, 5, 7, and 11 are examples. The number 1 is not prime, and 2 is the only even prime. Every whole number greater than 1 factors into primes in exactly one way, apart from order. Euclid's Elements (c. 300 BCE) contains the proof that there is no largest prime.",
+      "target_lang": "en",
+      "reason": "Primes are the building blocks of the integers and a core topic of number theory."
+    },
+    {
+      "source_text": "What is pi?",
+      "source_lang": "en",
+      "target_text": "Pi (written as the Greek letter π) is the ratio of any circle's circumference to its diameter, approximately 3.14159. It is irrational, so it cannot be written as a fraction of two whole numbers and its decimal digits never end or repeat; Johann Lambert proved this in 1761. In 1882 Ferdinand von Lindemann proved pi is also transcendental.",
+      "target_lang": "en",
+      "reason": "Pi is the best-known mathematical constant and appears throughout geometry and science."
+    },
+    {
+      "source_text": "What does the Pythagorean theorem say?",
+      "source_lang": "en",
+      "target_text": "In a right triangle, the square of the hypotenuse (the side opposite the right angle) equals the sum of the squares of the other two sides: a² + b² = c². Whole-number solutions such as 3, 4, 5 are called Pythagorean triples. The theorem is named after the Greek thinker Pythagoras, though the relationship was known to earlier civilizations.",
+      "target_lang": "en",
+      "reason": "One of the most widely used results in geometry, measurement, and engineering."
+    },
+    {
+      "source_text": "What is algebra and where does the word come from?",
+      "source_lang": "en",
+      "target_text": "Algebra is the branch of mathematics that uses symbols for unknown quantities and studies the rules for solving equations. The word comes from al-jabr in the title of a treatise by the Persian mathematician al-Khwarizmi (9th century, around 820-830 CE), which gave systematic methods for solving linear and quadratic equations. He wrote his problems in words; letter symbols for unknowns came centuries later.",
+      "target_lang": "en",
+      "reason": "Algebra is the gateway to nearly all higher mathematics."
+    },
+    {
+      "source_text": "How is probability measured?",
+      "source_lang": "en",
+      "target_text": "Probability measures how likely an event is on a scale from 0 to 1, where 0 means impossible, 1 means certain, and 0.5 means an even chance. When all outcomes are equally likely, the probability of an event is the number of favorable outcomes divided by the total number of outcomes. For example, a fair coin lands heads with probability 1/2.",
+      "target_lang": "en",
+      "reason": "Probability is the basis for reasoning about chance, risk, and statistics."
+    },
+    {
+      "source_text": "What does percent mean?",
+      "source_lang": "en",
+      "target_text": "Percent means 'per hundred,' from the Latin per centum. A percentage expresses a number as a fraction of 100, so 45% equals 45/100 or 0.45. To turn a fraction or ratio into a percentage, multiply it by 100; 100% is the whole amount and 200% is twice it.",
+      "target_lang": "en",
+      "reason": "Percentages are the everyday language of rates, discounts, and statistics."
+    },
+    {
+      "source_text": "What is the difference between the mean, median, and mode?",
+      "source_lang": "en",
+      "target_text": "All three describe the center of a data set. The mean (the usual 'average') is the sum of the values divided by how many there are. The median is the middle value once the data are sorted (the average of the two middle values if there is an even count). The mode is the value that occurs most often. The median is less affected by extreme values than the mean.",
+      "target_lang": "en",
+      "reason": "These are the basic summary statistics everyone encounters."
+    },
+    {
+      "source_text": "How many degrees are in the angles of a triangle and other polygons?",
+      "source_lang": "en",
+      "target_text": "In ordinary (Euclidean) geometry the three interior angles of any triangle add up to 180 degrees. A right angle is 90 degrees, so the other two angles of a right triangle add up to 90. For any simple polygon with n sides, the interior angles total (n - 2) × 180 degrees; a quadrilateral's angles sum to 360 degrees.",
+      "target_lang": "en",
+      "reason": "Angle sums are basic facts of school geometry."
+    },
+    {
+      "source_text": "What is calculus and who invented it?",
+      "source_lang": "en",
+      "target_text": "Calculus is the mathematics of change: differential calculus finds rates of change (derivatives), and integral calculus finds accumulated totals such as areas (integrals). The fundamental theorem of calculus shows these are inverse operations. Isaac Newton (work around 1665-1666) and Gottfried Wilhelm Leibniz (published 1684) developed it independently; much of today's notation is Leibniz's.",
+      "target_lang": "en",
+      "reason": "Calculus is the foundation of physics, engineering, and modern science."
+    },
+    {
+      "source_text": "Is infinity a number?",
+      "source_lang": "en",
+      "target_text": "In everyday mathematics infinity is not a number but a concept of something without end, as in a limit where x grows without bound (x → ∞). In the late 1800s Georg Cantor showed that infinite sets come in different sizes: the real numbers are a larger infinity than the whole numbers. The ∞ symbol was introduced by John Wallis in 1655.",
+      "target_lang": "en",
+      "reason": "Infinity is a frequently asked-about idea with a settled mathematical treatment."
+    },
+    {
+      "source_text": "What is Euclid's Elements?",
+      "source_lang": "en",
+      "target_text": "Elements is a mathematics textbook in 13 books written by the Greek mathematician Euclid of Alexandria around 300 BCE. Starting from definitions and postulates, it proves theorems in plane geometry, number theory, and solid geometry. It set the standard for deductive proof and was used to teach geometry for more than 2,000 years.",
+      "target_lang": "en",
+      "reason": "The most influential mathematics textbook in history."
+    },
+    {
+      "source_text": "What is the Fibonacci sequence?",
+      "source_lang": "en",
+      "target_text": "The Fibonacci sequence is 0, 1, 1, 2, 3, 5, 8, 13, ..., where each number is the sum of the two before it. Leonardo of Pisa (Fibonacci) introduced it to Europe in Liber Abaci (1202) through a rabbit-breeding puzzle; it had been described earlier in Indian mathematics. Ratios of consecutive terms approach the golden ratio, about 1.618.",
+      "target_lang": "en",
+      "reason": "A famous sequence that appears in mathematics, computing, and nature."
+    },
+    {
+      "source_text": "What is a logarithm?",
+      "source_lang": "en",
+      "target_text": "A logarithm is the inverse of exponentiation: the base-b logarithm of x is the power to which b must be raised to get x, so log10(1000) = 3 because 10³ = 1000. John Napier published the first logarithm tables in 1614 to speed up calculation. Common logarithms use base 10, and natural logarithms use base e (about 2.718).",
+      "target_lang": "en",
+      "reason": "Logarithms are essential to science, scales like pH and decibels, and calculation history."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What are natural numbers, integers, rational numbers, and real numbers?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Rational_number",
+      "reason": "Defines rational numbers and states the chain natural numbers within integers within rationals within reals."
+    },
+    {
+      "pair_source": "What are natural numbers, integers, rational numbers, and real numbers?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/real-number",
+      "reason": "Defines real numbers as quantities expressible as infinite decimal expansions."
+    },
+    {
+      "pair_source": "Where did the number zero and place value come from?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/zero-mathematics",
+      "reason": "Britannica article on the history of zero."
+    },
+    {
+      "pair_source": "Where did the number zero and place value come from?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/0",
+      "reason": "Covers Babylonian, Maya, and Indian zero and its transmission to Europe."
+    },
+    {
+      "pair_source": "What is a prime number?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/prime-number",
+      "reason": "Britannica definition of primes, unique factorization, and Euclid's proof."
+    },
+    {
+      "pair_source": "What is a prime number?",
+      "kind": "url",
+      "locator": "https://mathworld.wolfram.com/PrimeNumber.html",
+      "reason": "MathWorld definition of a prime number."
+    },
+    {
+      "pair_source": "What is pi?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/pi-mathematics",
+      "reason": "Britannica article on pi and its irrationality."
+    },
+    {
+      "pair_source": "What is pi?",
+      "kind": "url",
+      "locator": "https://mathworld.wolfram.com/Pi.html",
+      "reason": "MathWorld entry on pi, including its transcendence."
+    },
+    {
+      "pair_source": "What does the Pythagorean theorem say?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Pythagorean_theorem",
+      "reason": "Encyclopedia article stating the theorem and its history."
+    },
+    {
+      "pair_source": "What does the Pythagorean theorem say?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/summary/Pythagorean-theorem",
+      "reason": "Britannica summary giving a² + b² = c² and Pythagorean triples."
+    },
+    {
+      "pair_source": "What is algebra and where does the word come from?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/algebra/Islamic-contributions",
+      "reason": "Britannica on al-Khwarizmi and the Islamic origins of algebra."
+    },
+    {
+      "pair_source": "What is algebra and where does the word come from?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/History_of_algebra",
+      "reason": "History of algebra from ancient to modern symbolic forms."
+    },
+    {
+      "pair_source": "How is probability measured?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Probability",
+      "reason": "Defines probability as a number between 0 and 1."
+    },
+    {
+      "pair_source": "How is probability measured?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/probability",
+      "reason": "Britannica overview of probability and statistics."
+    },
+    {
+      "pair_source": "What does percent mean?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Percentage",
+      "reason": "Defines percentage and its calculation."
+    },
+    {
+      "pair_source": "What does percent mean?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/percentage",
+      "reason": "Britannica definition of percentage as hundredth parts."
+    },
+    {
+      "pair_source": "What is the difference between the mean, median, and mode?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/mean-median-and-mode",
+      "reason": "Britannica entry on mean, median, and mode."
+    },
+    {
+      "pair_source": "What is the difference between the mean, median, and mode?",
+      "kind": "url",
+      "locator": "https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/a/mean-median-and-mode-review",
+      "reason": "Khan Academy review of how to compute each measure."
+    },
+    {
+      "pair_source": "How many degrees are in the angles of a triangle and other polygons?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Triangle",
+      "reason": "Triangle angle sum in Euclidean and non-Euclidean geometry."
+    },
+    {
+      "pair_source": "How many degrees are in the angles of a triangle and other polygons?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Internal_and_external_angles",
+      "reason": "Interior angle sum formula for polygons."
+    },
+    {
+      "pair_source": "What is calculus and who invented it?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/calculus-mathematics",
+      "reason": "Britannica article on calculus."
+    },
+    {
+      "pair_source": "What is calculus and who invented it?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/History_of_calculus",
+      "reason": "History of calculus, Newton and Leibniz, and the priority dispute."
+    },
+    {
+      "pair_source": "Is infinity a number?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/infinity-mathematics",
+      "reason": "Britannica article on infinity in mathematics."
+    },
+    {
+      "pair_source": "Is infinity a number?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Infinity",
+      "reason": "Covers Cantor's sizes of infinity and Wallis's symbol."
+    },
+    {
+      "pair_source": "What is Euclid's Elements?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Elements-by-Euclid",
+      "reason": "Britannica article on Euclid's Elements."
+    },
+    {
+      "pair_source": "What is Euclid's Elements?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+      "reason": "Contents, structure, and dating of the Elements."
+    },
+    {
+      "pair_source": "What is the Fibonacci sequence?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Fibonacci_sequence",
+      "reason": "Definition, history, and golden-ratio limit."
+    },
+    {
+      "pair_source": "What is the Fibonacci sequence?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/Fibonacci-number",
+      "reason": "Britannica entry on the Fibonacci sequence."
+    },
+    {
+      "pair_source": "What is a logarithm?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/History_of_logarithms",
+      "reason": "History of logarithms, Napier's 1614 publication."
+    },
+    {
+      "pair_source": "What is a logarithm?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Description-of-the-Marvelous-Canon-of-Logarithms",
+      "reason": "Britannica on Napier's 1614 work introducing logarithms."
+    }
+  ]
+}
