@@ -317,3 +317,59 @@ def test_promote_recredits_commons_that_named_the_developer(store):
     assert nugget["verification_kind"] == "human"
     assert nugget["verified_by"] == "public record: NASA"
     assert nugget["evidence"]["scheme"] == commons.COMMONS_EVIDENCE_SCHEME
+
+
+def test_answering_entries_load_at_serve_and_asserted_stays_internal(store, tmp_path):
+    """willow-mcp caps a serve/OAuth caller at the `serve` tier, so an entry
+    that can answer must land there or no served session ever sees it."""
+    p = _write(
+        tmp_path,
+        "mixed.json",
+        {
+            "domain": "core-forces-motion",
+            "pairs": [
+                {"source_text": "Why do ships float?", "target_text": "Buoyancy."},
+                {
+                    "source_text": "An argument about ships",
+                    "target_text": "An opinion.",
+                    "classification": "novel",
+                },
+            ],
+            "evidence": [
+                {
+                    "pair_source": "Why do ships float?",
+                    "locator": "https://en.wikipedia.org/wiki/Buoyancy",
+                },
+                {"pair_source": "An argument about ships", "locator": "https://example.org/op-ed"},
+            ],
+        },
+    )
+    seed_loader.load_file(p)
+    rows = {n["question"]: n for n in store.list_nuggets()}
+    assert rows["Why do ships float?"]["verification_kind"] == "human"
+    assert rows["Why do ships float?"]["visibility"] == "serve"
+    assert rows["An argument about ships"]["verification_kind"] == "asserted"
+    assert rows["An argument about ships"]["visibility"] == "internal"
+
+
+def test_promote_retiers_commons_loaded_before_they_were_served(store):
+    store.put_nugget(
+        question="What is a light-year?",
+        answer="The distance light travels in one year.",
+        sources=["https://science.nasa.gov/"],
+        verified_by="public record: NASA",
+        tags=["core-space-astronomy", "jeles-seed", "commons"],
+        verification_kind="human",
+        written_by="jeles-seed",
+        evidence={"scheme": commons.COMMONS_EVIDENCE_SCHEME, "credited_to": ["NASA"]},
+    )
+    assert store.list_nuggets()[0]["visibility"] == "internal"
+    counts = commons.promote_commons_in_store(commons_domains=set(), commons_ids=set())
+    assert counts["promoted"] == 1
+    nugget = store.list_nuggets()[0]
+    assert nugget["visibility"] == "serve"
+    assert nugget["verification_kind"] == "human"
+    # Idempotent: a second pass finds nothing left to move.
+    assert (
+        commons.promote_commons_in_store(commons_domains=set(), commons_ids=set())["promoted"] == 0
+    )
