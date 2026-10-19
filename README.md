@@ -130,7 +130,10 @@ claims. They land at `verified`, credited to the record they rest on and not
 to whoever loaded them: `verified_by: "public record: NASA, Encyclopaedia
 Britannica"` and `evidence: {"scheme": "public-record-v1", "credited_to":
 [...], "sealed": false}`. The people behind each discovery are named in the
-card itself. That is a citation, not a signature. It never carries a `seal_sig`, so a
+card itself. That is a citation, not a signature. Every entry that can answer
+(`verified` or `corroborated`) is stored at `visibility: "serve"`, so a
+session reading the shared SOIL store through willow-mcp's serve mode, which
+caps callers at `serve`, can use it; asserted research stays `internal`. It never carries a `seal_sig`, so a
 reader can still tell it apart from a sealed pair, and Nestor reconciliation
 can find what is still left to seal.
 

@@ -60,6 +60,7 @@ from .commons import (
     pair_classification,
     seed_nugget_id,
     seed_pair_verification,
+    visibility_for,
 )
 
 __all__ = [
@@ -259,6 +260,7 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
                 sources=pair_sources,
                 verified_by=claimant,
                 verification_kind=kind,
+                visibility=visibility_for(kind),
                 written_by=WRITTEN_BY,
                 tags=tags,
                 nugget_id=seed_nugget_id(domain, question),

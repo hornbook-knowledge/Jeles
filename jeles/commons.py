@@ -62,6 +62,11 @@ _PUBLISHERS = {
     "nobelprize.org": "Nobel Prize",
     "nature.com": "Nature",
 }
+#: The visibility tier an entry that can answer lands at. willow-mcp's
+#: federation filter caps a serve/OAuth caller at "serve" (public < serve <
+#: internal), so an answering entry left "internal" never reaches a served
+#: session. Asserted research stays "internal": it cannot answer anyway.
+SERVE_VISIBILITY = "serve"
 INTAKE_VERIFIED_BY = "operator-seat"
 NOVEL_VERIFIED_BY = "research-agent"
 
@@ -69,6 +74,7 @@ __all__ = [
     "COMMONS_DOMAIN_PREFIXES",
     "COMMONS_EVIDENCE_SCHEME",
     "COMMONS_VERIFIED_BY",
+    "SERVE_VISIBILITY",
     "classification_for_pair",
     "commons_credit",
     "commons_evidence",
@@ -82,6 +88,7 @@ __all__ = [
     "seed_nugget_id",
     "seed_pair_verification",
     "verification_for_intake",
+    "visibility_for",
 ]
 
 
@@ -167,6 +174,12 @@ def seed_pair_verification(
     if bucket == "commons":
         return "human", commons_credit(sources)
     return "asserted", pair.get("verified_by") or NOVEL_VERIFIED_BY
+
+
+def visibility_for(kind: str) -> str:
+    """``"serve"`` for an entry that can answer (``human`` or ``machine``),
+    ``"internal"`` for an ``asserted`` one."""
+    return SERVE_VISIBILITY if kind in ("human", "machine") else "internal"
 
 
 def _publisher(source: str) -> str:
@@ -270,8 +283,14 @@ def promote_commons_in_store(
     counts = {"promoted": 0, "skipped": 0, "errors": 0}
     for nugget in corpus.list_nuggets(limit=20000):
         kind = nugget.get("verification_kind") or "human"
-        legacy = (nugget.get("evidence") or {}).get("scheme") in LEGACY_COMMONS_SCHEMES
-        if kind not in ("asserted", "machine") and not legacy:
+        scheme = (nugget.get("evidence") or {}).get("scheme")
+        legacy = scheme in LEGACY_COMMONS_SCHEMES
+        # A commons nugget already at `human` but loaded before it was given a
+        # serving tier: re-tier it in place.
+        unserved = (
+            scheme == COMMONS_EVIDENCE_SCHEME and nugget.get("visibility") != SERVE_VISIBILITY
+        )
+        if kind not in ("asserted", "machine") and not legacy and not unserved:
             counts["skipped"] += 1
             continue
         tags = list(nugget.get("tags") or [])
@@ -305,6 +324,7 @@ def promote_commons_in_store(
             tags=tags,
             nugget_id=nugget.get("_id", ""),
             verification_kind="human",
+            visibility=SERVE_VISIBILITY,
             written_by=nugget.get("written_by") or "jeles-seed",
             evidence={
                 **dict(nugget.get("evidence") or {}),

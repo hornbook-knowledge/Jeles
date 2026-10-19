@@ -98,7 +98,7 @@ def load_file(path: Path, *, dry_run: bool, intake_dir: Path) -> dict[str, int]:
     counts = {"created": 0, "updated": 0, "existing": 0, "errors": 0, "commons": 0, "novel": 0}
     rel = path.relative_to(intake_dir) if path.is_relative_to(intake_dir) else path.name
 
-    from .commons import intake_nugget_id, verification_for_intake
+    from .commons import intake_nugget_id, verification_for_intake, visibility_for
 
     for pair in data.get("pairs", []):
         question = pair["source_text"].strip()
@@ -131,6 +131,7 @@ def load_file(path: Path, *, dry_run: bool, intake_dir: Path) -> dict[str, int]:
                 sources=sources,
                 verified_by=verified_by,
                 verification_kind=kind,
+                visibility=visibility_for(kind),
                 written_by="jeles-intake",
                 tags=tags,
                 nugget_id=intake_nugget_id(domain, question),
