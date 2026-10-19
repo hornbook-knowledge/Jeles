@@ -124,7 +124,9 @@ def seed_pair_verification(
         data=data,
         sources=sources,
     )
-    if bucket == "commons" and domain_is_commons(domain, data):
+    # `classification_for_pair` already demands a citation, and a commons
+    # domain or file unless the pair itself is classified commons.
+    if bucket == "commons":
         return "human", COMMONS_ATTESTED_BY
     return "asserted", pair.get("verified_by") or NOVEL_VERIFIED_BY
 
@@ -174,15 +176,20 @@ def intake_nugget_id(domain: str, question: str) -> str:
 
 
 def promote_commons_in_store(
-    *, dry_run: bool = False, commons_domains: set[str] | None = None
+    *,
+    dry_run: bool = False,
+    commons_domains: set[str] | None = None,
+    commons_ids: set[str] | None = None,
 ) -> dict[str, int]:
     """Upgrade asserted or machine nuggets in commons domains to the
     developer-attested `human` rung when sourced.
 
     A domain is commons by its ``core-`` prefix or by a file-level
-    ``"classification": "commons"`` in the bundled seed. The nugget only keeps
-    its domain (as its first tag), not that file flag, so the seed-classified
-    domains are read from the seed itself unless ``commons_domains`` is given.
+    ``"classification": "commons"`` in the bundled seed; a single nugget is
+    commons when its seed pair is classified ``"commons"``. The nugget keeps
+    neither flag, only its domain (as its first tag) and its seed id, so both
+    are read from the seed itself unless ``commons_domains`` / ``commons_ids``
+    are given.
     """
     from jeles import corpus
 
@@ -190,6 +197,10 @@ def promote_commons_in_store(
         from jeles.seed_loader import seed_commons_domains
 
         commons_domains = seed_commons_domains()
+    if commons_ids is None:
+        from jeles.seed_loader import seed_commons_nugget_ids
+
+        commons_ids = seed_commons_nugget_ids()
     counts = {"promoted": 0, "skipped": 0, "errors": 0}
     for nugget in corpus.list_nuggets(limit=20000):
         kind = nugget.get("verification_kind") or "human"
@@ -198,7 +209,11 @@ def promote_commons_in_store(
             continue
         tags = list(nugget.get("tags") or [])
         domain = tags[0] if tags else ""
-        if not is_commons_domain(domain) and domain not in commons_domains:
+        if (
+            not is_commons_domain(domain)
+            and domain not in commons_domains
+            and nugget.get("_id") not in commons_ids
+        ):
             counts["skipped"] += 1
             continue
         sources = [str(s) for s in (nugget.get("sources") or [])]

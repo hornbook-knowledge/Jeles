@@ -53,11 +53,20 @@ from jeles import corpus
 from .commons import (
     commons_attestation,
     file_classification,
+    pair_classification,
     seed_nugget_id,
     seed_pair_verification,
 )
 
-__all__ = ["SEED_DIR", "load_all", "load_file", "main", "seed_commons_domains", "seed_files"]
+__all__ = [
+    "SEED_DIR",
+    "load_all",
+    "load_file",
+    "main",
+    "seed_commons_domains",
+    "seed_commons_nugget_ids",
+    "seed_files",
+]
 
 #: Where the bundled seed lives inside the installed package.
 SEED_DIR = Path(__file__).resolve().parent / "seed"
@@ -90,6 +99,22 @@ def seed_commons_domains(seed_dir: Path | None = None) -> set[str]:
         if isinstance(data, dict) and file_classification(data) == "commons":
             domains.add(data.get("domain") or path.stem)
     return domains
+
+
+def seed_commons_nugget_ids(seed_dir: Path | None = None) -> set[str]:
+    """Seed ids of the single pairs classified ``commons`` — agreed facts
+    inside an otherwise novel file, such as a fact-check's verdict."""
+    ids: set[str] = set()
+    for path in seed_files(seed_dir):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(data, dict) or "pairs" not in data:
+            continue
+        domain = data.get("domain") or path.stem
+        for pair in data["pairs"]:
+            question = (pair.get("source_text") or "").strip()
+            if question and pair_classification(pair, "novel") == "commons":
+                ids.add(seed_nugget_id(domain, question))
+    return ids
 
 
 def _verify(question: str, answer: str, verified_by: str, seal_sig: str) -> tuple[bool, str]:
@@ -183,6 +208,10 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
             continue
 
         pair_sources = [u for u in evidence_by_source.get(question, []) if u]
+        # Some files carry a pair's citations on the pair itself.
+        for url in pair.get("evidence_urls") or []:
+            if url and url not in pair_sources:
+                pair_sources.append(str(url))
 
         seal_sig = (pair.get("seal_sig") or "").strip()
         kind = "asserted"

@@ -223,3 +223,60 @@ def test_bundled_reference_seed_is_commons():
     assert "modern-world-energy" in domains
     # Synthesis and adversarial rounds are argument, not knowns.
     assert not any(d.startswith(("crossdomain-", "adversarial-")) for d in domains)
+
+
+def test_pair_classified_commons_in_novel_file_lands_as_attested_human(store, tmp_path):
+    """An agreed fact inside an otherwise novel file — a fact-check verdict —
+    is verified on its own, with its citation carried on the pair."""
+    p = _write(
+        tmp_path,
+        "factcheck.json",
+        {
+            "domain": "adversarial-factcheck-tech",
+            "pairs": [
+                {
+                    "source_text": "FACTCHECK REFUTED: Holmes was sentenced in January 2023",
+                    "target_text": "Holmes was sentenced on November 18, 2022.",
+                    "classification": "commons",
+                    "evidence_urls": ["https://www.justice.gov/usao-ndca/pr/holmes"],
+                },
+                {
+                    "source_text": "Steelman: Holmes was punished for Silicon Valley culture",
+                    "target_text": "An argument, not a fact.",
+                    "evidence_urls": ["https://example.org/op-ed"],
+                },
+            ],
+        },
+    )
+    out = seed_loader.load_file(p)
+    assert out["human"] == 1
+    assert out["asserted"] == 1
+    hit = store.search_nuggets("Holmes sentenced January 2023", limit=1)[0]
+    assert hit["verification_kind"] == "human"
+    assert hit["sources"] == ["https://www.justice.gov/usao-ndca/pr/holmes"]
+
+    ids = seed_loader.seed_commons_nugget_ids(tmp_path)
+    assert ids == {
+        commons.seed_nugget_id(
+            "adversarial-factcheck-tech",
+            "FACTCHECK REFUTED: Holmes was sentenced in January 2023",
+        )
+    }
+
+
+def test_promote_upgrades_single_commons_pair_by_seed_id(store):
+    question = "FACTCHECK CONFIRMED: Murthy v. Missouri was decided 6-3"
+    nid = commons.seed_nugget_id("adversarial-factcheck-modern", question)
+    store.put_nugget(
+        question=question,
+        answer="Confirmed. The Court ruled 6-3 on June 26, 2024.",
+        sources=["https://www.supremecourt.gov/opinions/23pdf/23-411_3dq3.pdf"],
+        verified_by=commons.NOVEL_VERIFIED_BY,
+        tags=["adversarial-factcheck-modern", "jeles-seed"],
+        nugget_id=nid,
+        verification_kind="asserted",
+        written_by="jeles-seed",
+    )
+    counts = commons.promote_commons_in_store(commons_domains=set(), commons_ids={nid})
+    assert counts["promoted"] == 1
+    assert store.search_nuggets("Murthy Missouri", limit=1)[0]["verification_kind"] == "human"

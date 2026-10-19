@@ -92,8 +92,10 @@ signs, and `nestor.keyring` refuses to produce a seal from a public-key entry:
 reachable only where a person, out of process, has already earned it.
 
 **Commons are the exception: verified on the developer's word.** Seed pairs
-in `core-*` domains, or in files classified `"commons"`, with citations, are
-knowns, not claims. They land at `verified` with
+in `core-*` domains, in files classified `"commons"`, or classified
+`"commons"` one pair at a time (an agreed fact inside a file that is otherwise
+argument, such as a fact-check verdict), with citations, are knowns, not
+claims. They land at `verified` with
 `verified_by: "Sean Campbell"` and
 `evidence: {"scheme": "developer-attestation-v1", "sealed": false, ...}`.
 That is an attestation, not a signature. It never carries a `seal_sig`, so a
