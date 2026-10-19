@@ -1,7 +1,13 @@
 """Commons vs novel knowledge — classification for intake and seed loading.
 
-Commons (π, Newton's laws, core "way things work" domains) land at the
-``machine`` rung when citable sources exist — no human seal required.
+Commons (π, Newton's laws, core "way things work" domains) in the bundled
+seed land at the ``human`` rung when citable sources exist, on the
+developer's attestation rather than a Nestor seal: these are knowns, and the
+developer has declared them verified for the base store. The attestation is
+recorded in ``evidence`` (:func:`commons_attestation`), never dressed up as a
+``seal_sig``, so a reader can tell it from a signature and Nestor
+reconciliation can find what is still unsealed. Commons arriving through
+intake stay at ``machine``.
 Novel synthesis (operator research, institutional genealogy) stays ``asserted``
 until a human verifies or conflict_scan corroborates.
 """
@@ -13,13 +19,21 @@ from typing import Any
 
 COMMONS_DOMAIN_PREFIXES = ("core-",)
 COMMONS_VERIFIED_BY = "commons:bootstrap"
+#: Who stands behind the seed's commons at the `human` rung.
+COMMONS_ATTESTED_BY = "Sean Campbell"
+#: `evidence["scheme"]` for that attestation — deliberately not
+#: `nestor-seal-v1`, because nothing here is signed.
+COMMONS_ATTESTATION_SCHEME = "developer-attestation-v1"
 INTAKE_VERIFIED_BY = "operator-seat"
 NOVEL_VERIFIED_BY = "research-agent"
 
 __all__ = [
+    "COMMONS_ATTESTATION_SCHEME",
+    "COMMONS_ATTESTED_BY",
     "COMMONS_DOMAIN_PREFIXES",
     "COMMONS_VERIFIED_BY",
     "classification_for_pair",
+    "commons_attestation",
     "domain_is_commons",
     "file_classification",
     "has_citable_source",
@@ -111,8 +125,20 @@ def seed_pair_verification(
         sources=sources,
     )
     if bucket == "commons" and domain_is_commons(domain, data):
-        return "machine", COMMONS_VERIFIED_BY
+        return "human", COMMONS_ATTESTED_BY
     return "asserted", pair.get("verified_by") or NOVEL_VERIFIED_BY
+
+
+def commons_attestation(domain: str) -> dict[str, Any]:
+    """The evidence a seed commons nugget carries at the `human` rung: the
+    developer's word, unsealed, with Nestor reconciliation still to come."""
+    return {
+        "scheme": COMMONS_ATTESTATION_SCHEME,
+        "attested_by": COMMONS_ATTESTED_BY,
+        "basis": "commons",
+        "domain": domain,
+        "sealed": False,
+    }
 
 
 def verification_for_intake(
@@ -150,7 +176,8 @@ def intake_nugget_id(domain: str, question: str) -> str:
 def promote_commons_in_store(
     *, dry_run: bool = False, commons_domains: set[str] | None = None
 ) -> dict[str, int]:
-    """Upgrade asserted nuggets in commons domains to machine when sourced.
+    """Upgrade asserted or machine nuggets in commons domains to the
+    developer-attested `human` rung when sourced.
 
     A domain is commons by its ``core-`` prefix or by a file-level
     ``"classification": "commons"`` in the bundled seed. The nugget only keeps
@@ -166,7 +193,7 @@ def promote_commons_in_store(
     counts = {"promoted": 0, "skipped": 0, "errors": 0}
     for nugget in corpus.list_nuggets(limit=20000):
         kind = nugget.get("verification_kind") or "human"
-        if kind != "asserted":
+        if kind not in ("asserted", "machine"):
             counts["skipped"] += 1
             continue
         tags = list(nugget.get("tags") or [])
@@ -192,13 +219,14 @@ def promote_commons_in_store(
             question=question,
             answer=answer,
             sources=sources,
-            verified_by=COMMONS_VERIFIED_BY,
+            verified_by=COMMONS_ATTESTED_BY,
             tags=tags,
             nugget_id=nugget.get("_id", ""),
-            verification_kind="machine",
+            verification_kind="human",
             written_by=nugget.get("written_by") or "jeles-seed",
             evidence={
                 **dict(nugget.get("evidence") or {}),
+                **commons_attestation(domain),
                 "commons_promote": {"method": "promote_commons_in_store"},
             },
         )

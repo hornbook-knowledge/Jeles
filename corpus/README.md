@@ -9,7 +9,7 @@ and edges (cross-domain relationships).
 - 74 source files across ~30 domains
 - **1028** raw pair-shaped entries in the JSON (72 files carry a `pairs` list;
   2 are plain lists of adversarial *challenge* records, not pair sets),
-  composing to **968** question/answer nuggets — 432 commons + 536 asserted.
+  composing to **968** question/answer nuggets — 432 commons (verified on the developer's attestation, unsealed) + 536 asserted.
   The remaining 36 entries share the `pairs` key without the question/answer
   shape (reasoning about the corpus rounds, not claims in it) and compose to
   nothing. Measured 2026-10-19 with `jeles-seed --dry-run`; see

@@ -23,7 +23,7 @@ def _write(tmp_path, name, payload):
     return p
 
 
-def test_core_domain_with_evidence_lands_as_machine(store, tmp_path):
+def test_core_domain_with_evidence_lands_as_attested_human(store, tmp_path):
     p = _write(
         tmp_path,
         "core.json",
@@ -44,11 +44,16 @@ def test_core_domain_with_evidence_lands_as_machine(store, tmp_path):
         },
     )
     out = seed_loader.load_file(p)
-    assert out["machine"] == 1
+    assert out["human"] == 1
     assert out["asserted"] == 0
     nugget = store.search_nuggets("feather bowling ball", limit=1)[0]
-    assert nugget["verification_kind"] == "machine"
-    assert nugget["verified_by"] == commons.COMMONS_VERIFIED_BY
+    assert nugget["verification_kind"] == "human"
+    assert nugget["status"] == "verified"
+    assert nugget["verified_by"] == commons.COMMONS_ATTESTED_BY
+    # The developer's word, recorded as such — never a fabricated seal.
+    assert nugget["evidence"]["scheme"] == commons.COMMONS_ATTESTATION_SCHEME
+    assert nugget["evidence"]["sealed"] is False
+    assert "seal_sig" not in nugget["evidence"]
     assert store.ask_corpus("Why does a feather fall slower than a bowling ball?")["found"] is True
 
 
@@ -142,7 +147,7 @@ def test_intake_novel_default_stays_asserted(store, tmp_path, monkeypatch):
     assert store.ask_corpus("What is the federation rule?")["found"] is False
 
 
-def test_seed_file_classified_commons_lands_as_machine(store, tmp_path):
+def test_seed_file_classified_commons_lands_as_attested_human(store, tmp_path):
     p = _write(
         tmp_path,
         "hist.json",
@@ -164,7 +169,7 @@ def test_seed_file_classified_commons_lands_as_machine(store, tmp_path):
         },
     )
     out = seed_loader.load_file(p)
-    assert out["machine"] == 1
+    assert out["human"] == 1
     assert out["asserted"] == 0
     assert store.ask_corpus("Isaac Newton and the Principia")["found"] is True
 
@@ -192,7 +197,24 @@ def test_promote_upgrades_asserted_nugget_in_seed_commons_domain(store, tmp_path
     counts = commons.promote_commons_in_store(commons_domains=domains)
     assert counts["promoted"] == 1
     nugget = store.search_nuggets("Newton Principia", limit=1)[0]
-    assert nugget["verification_kind"] == "machine"
+    assert nugget["verification_kind"] == "human"
+    assert nugget["evidence"]["scheme"] == commons.COMMONS_ATTESTATION_SCHEME
+
+
+def test_promote_upgrades_machine_commons_to_attested_human(store):
+    store.put_nugget(
+        question="Why does a feather fall slower than a bowling ball?",
+        answer="Air resistance.",
+        sources=["https://en.wikipedia.org/wiki/Terminal_velocity"],
+        verified_by=commons.COMMONS_VERIFIED_BY,
+        tags=["core-forces-motion", "jeles-seed", "commons"],
+        verification_kind="machine",
+        written_by="jeles-seed",
+    )
+    counts = commons.promote_commons_in_store(commons_domains=set())
+    assert counts["promoted"] == 1
+    nugget = store.search_nuggets("feather bowling ball", limit=1)[0]
+    assert nugget["verification_kind"] == "human"
 
 
 def test_bundled_reference_seed_is_commons():

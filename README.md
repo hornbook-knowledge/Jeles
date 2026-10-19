@@ -91,6 +91,15 @@ signs, and `nestor.keyring` refuses to produce a seal from a public-key entry:
 *"Signing happens where the private key lives."* So the `verified` rung is
 reachable only where a person, out of process, has already earned it.
 
+**Commons are the exception: verified on the developer's word.** Seed pairs
+in `core-*` domains, or in files classified `"commons"`, with citations, are
+knowns, not claims. They land at `verified` with
+`verified_by: "Sean Campbell"` and
+`evidence: {"scheme": "developer-attestation-v1", "sealed": false, ...}`.
+That is an attestation, not a signature. It never carries a `seal_sig`, so a
+reader can still tell it apart from a sealed pair, and Nestor reconciliation
+can find what is still left to seal.
+
 **Seal ≠ sole evidence of human verification.** A missing seal (asserted seed,
 unsealed intake, draft/pending in a sibling organ) means this corpus cannot
 *prove or serve* a human receipt yet — not that no human ever checked the

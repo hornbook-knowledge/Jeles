@@ -4,12 +4,20 @@
 reviewed question/answer pairs, in `jeles/seed/`, alongside the 84 host cards.
 This loads them into a store.
 
-**A seed pair is `asserted` unless a signature says otherwise.** The pairs were
+**A seed pair is `asserted` unless a signature or the commons rule says
+otherwise.** The pairs were
 produced by research agents running challenge / factcheck / steelman rounds —
 real work, and still a machine's claim. That is the bottom rung, and shipping
 them there is not a hedge: `ask_corpus` will not answer from an asserted
 nugget, so an unsigned seed installs as *candidates* and a reader is told
 plainly that nobody has checked them.
+
+Commons pairs (`core-*` domains, and files classified `"commons"`) with
+citations land at `human` on the developer's attestation — knowns the
+developer has declared verified for the base store. They carry
+`evidence.scheme == "developer-attestation-v1"` and `sealed: False`, never a
+`seal_sig`, so they stay distinguishable from signed pairs until Nestor
+reconciliation seals them.
 
 A pair carrying a valid Nestor seal lands at `human`. The seal is checked here,
 on the installing machine, against a keyring that machine trusts — so "verified"
@@ -43,6 +51,7 @@ from typing import Any
 from jeles import corpus
 
 from .commons import (
+    commons_attestation,
     file_classification,
     seed_nugget_id,
     seed_pair_verification,
@@ -74,7 +83,7 @@ def seed_files(seed_dir: Path | None = None) -> list[Path]:
 
 def seed_commons_domains(seed_dir: Path | None = None) -> set[str]:
     """Domains whose seed file is classified ``commons`` — knowns that land at
-    ``machine`` on their citations, no seal required."""
+    ``human`` on their citations and the developer's attestation, no seal."""
     domains: set[str] = set()
     for path in seed_files(seed_dir):
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -199,9 +208,11 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
                 sources=pair_sources,
                 seal_sig="",
             )
+            if kind == "human":
+                evidence = commons_attestation(domain)
 
         tags = [domain, "jeles-seed"]
-        if kind == "machine":
+        if not seal_sig and kind == "human":
             tags.append("commons")
 
         if dry_run:
@@ -305,11 +316,11 @@ def main(argv: list[str] | None = None) -> int:
             "from none\nof it — asserted nuggets come back as candidates. "
             "That is the correct\nbehaviour for claims nobody has checked."
         )
-    elif not args.dry_run and totals["machine"]:
+    elif not args.dry_run and totals["human"]:
         print(
             "\nCommons domains (core-*, and seed files classified commons) "
-            "with sources landed as\n'machine' — corpus_ask serves them "
-            "without a human seal. Novel domains "
+            "with sources landed as\n'verified' on the developer's "
+            "attestation (unsealed). Novel domains "
             "remain asserted until verified."
         )
     return 0
