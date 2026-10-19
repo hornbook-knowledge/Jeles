@@ -25,11 +25,10 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Added
 
-* **seed:** add a 13-shelf reference library to the core commons ([ff3c757](https://github.com/hornbook-knowledge/Jeles/commit/ff3c7575b2e9928991d168557062600c2a1c323b))
-* **seed:** commons verified on the public record, a 13-shelf reference library, and a standalone quick start ([9f4db7f](https://github.com/hornbook-knowledge/Jeles/commit/9f4db7fdda9def945c56ab4a96b9d7e5feb2ce9f))
 * **seed:** jeles-seed --init-local and a standalone quick start ([54fa249](https://github.com/hornbook-knowledge/Jeles/commit/54fa24997d2303b8586f2e5394f8bc1e4f959a27))
-* **seed:** seed commons land verified on the developer's attestation ([ca22915](https://github.com/hornbook-knowledge/Jeles/commit/ca229153e3a9acf90f465167e3ea3eae2d04e52a))
+* **seed:** add a 13-shelf reference library to the core commons ([ff3c757](https://github.com/hornbook-knowledge/Jeles/commit/ff3c7575b2e9928991d168557062600c2a1c323b))
 * **seed:** verify agreed facts pair by pair: fact-checks and systems record ([3633072](https://github.com/hornbook-knowledge/Jeles/commit/3633072dae2af5ebef84134bdb3f278894435236))
+* **seed:** seed commons land verified on the developer's attestation ([ca22915](https://github.com/hornbook-knowledge/Jeles/commit/ca229153e3a9acf90f465167e3ea3eae2d04e52a))
 
 
 ### Fixed
