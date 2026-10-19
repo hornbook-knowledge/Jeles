@@ -10,7 +10,8 @@ From the Jeles checkout (works with system python3 or .venv):
 Or explicitly:  .venv/bin/python3 scripts/jeles-intake.py
 
 Override intake directory: JELES_INTAKE_DIR=/path/to/intake
-Override store: source ~/github/willow-memory/.willow/fleet.env
+Override store: export WILLOW_STORE_ROOT=/path/to/store
+  (or point JELES_FLEET_ENV at a fleet.env that sets it)
 """
 from __future__ import annotations
 

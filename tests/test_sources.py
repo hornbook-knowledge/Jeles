@@ -578,6 +578,16 @@ def test_polite_pool_identity_is_overridable(monkeypatch):
     assert urls and "ops%40example.org" in urls[0]
 
 
+def test_no_contact_address_is_sent_unless_one_is_configured(monkeypatch):
+    """There is no shipped default address: without one configured, the
+    polite-pool parameter is omitted rather than filled with someone's email."""
+    urls = []
+    monkeypatch.setattr(sources, "_CONTACT_EMAIL", "")
+    _stub_json(monkeypatch, {"results": []}, capture=urls)
+    sources.search_openalex("q", limit=1)
+    assert urls and "mailto=" not in urls[0] and "%40" not in urls[0]
+
+
 # ── The egress path (added when vendoring; not inherited) ───────────────────
 
 

@@ -1,0 +1,282 @@
+{
+  "domain": "core-world-geography",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What are the seven continents?",
+      "source_lang": "en",
+      "target_text": "In the most common English-language convention there are seven continents, from largest to smallest: Asia, Africa, North America, South America, Antarctica, Europe, and Australia. Other conventions count fewer, for example treating Europe and Asia as one landmass (Eurasia) or the Americas as one continent.",
+      "target_lang": "en",
+      "reason": "Foundational geography fact with a known convention difference worth stating plainly."
+    },
+    {
+      "source_text": "What are the five oceans?",
+      "source_lang": "en",
+      "target_text": "The five named oceans, from largest to smallest, are the Pacific, Atlantic, Indian, Southern, and Arctic. The Southern Ocean, surrounding Antarctica out to 60 degrees south, is the newest to be named; the U.S. Board on Geographic Names adopted it in 1999. All five are connected parts of one global ocean.",
+      "target_lang": "en",
+      "reason": "Standard reference answer; the Southern Ocean's recent recognition is a common point of confusion."
+    },
+    {
+      "source_text": "What are latitude and longitude?",
+      "source_lang": "en",
+      "target_text": "Latitude and longitude form a grid for locating any point on Earth. Latitude measures distance north or south of the equator (0 degrees) up to 90 degrees at each pole; longitude measures distance east or west of the prime meridian (0 degrees), up to 180 degrees. The prime meridian through Greenwich, England, was chosen as the international standard at the 1884 International Meridian Conference.",
+      "target_lang": "en",
+      "reason": "Core map-reading concept used across geography, navigation, and science."
+    },
+    {
+      "source_text": "What is the longest river in the world?",
+      "source_lang": "en",
+      "target_text": "The Nile in Africa is usually listed as the longest river, at about 6,650 km (4,130 miles), with the Amazon in South America second at roughly 6,400 km. The ranking depends on where each river's most distant source is placed, and some measurements put the Amazon slightly longer, so the question is partly a matter of definition.",
+      "target_lang": "en",
+      "reason": "Frequently asked superlative where the measurement debate should be stated neutrally."
+    },
+    {
+      "source_text": "What is the highest mountain on Earth?",
+      "source_lang": "en",
+      "target_text": "Mount Everest, on the border of Nepal and the Tibet Autonomous Region of China in the Himalayas, has the highest summit above sea level. A joint China-Nepal survey announced in December 2020 gave its height as 8,848.86 meters (29,031.7 feet); earlier surveys gave slightly different figures because of snow depth and measurement methods.",
+      "target_lang": "en",
+      "reason": "Classic geography superlative; the official height was revised in 2020."
+    },
+    {
+      "source_text": "What is the deepest point in the ocean?",
+      "source_lang": "en",
+      "target_text": "The deepest known point is the Challenger Deep, at the southern end of the Mariana Trench in the western Pacific, southwest of Guam. NOAA gives its depth as about 10,935 meters (35,876 feet), based on a 2021 study; individual sonar measurements differ by tens of meters because of how sound travels through water.",
+      "target_lang": "en",
+      "reason": "Standard ocean superlative with an authoritative agency figure."
+    },
+    {
+      "source_text": "What is the largest desert in the world?",
+      "source_lang": "en",
+      "target_text": "A desert is defined by very low precipitation, not heat, so Antarctica, a polar desert of about 14 million square km, is the largest desert. The Sahara in northern Africa, about 9 million square km, is the largest hot desert. Most deserts are not sandy; many are rocky, gravelly, or icy.",
+      "target_lang": "en",
+      "reason": "Common trick question whose answer turns on the definition of desert."
+    },
+    {
+      "source_text": "What is the largest country by area?",
+      "source_lang": "en",
+      "target_text": "Russia is the largest country by area, at about 17.1 million square km (6.6 million square miles), spanning eastern Europe and northern Asia. Canada is second at roughly 10 million square km. Exact totals differ slightly between sources depending on how water areas and disputed territory are counted.",
+      "target_lang": "en",
+      "reason": "Basic country fact; ranking is stable even though exact figures vary by source."
+    },
+    {
+      "source_text": "How many countries are there in the world?",
+      "source_lang": "en",
+      "target_text": "There is no single official count, but the United Nations has 193 member states and two non-member observer states, the Holy See and the State of Palestine, for a commonly cited total of 195 (as of 2026). A few other territories claim statehood but have limited international recognition.",
+      "target_lang": "en",
+      "reason": "Very common question; the UN membership figure is the standard authoritative anchor."
+    },
+    {
+      "source_text": "What are the main climate zones?",
+      "source_lang": "en",
+      "target_text": "The most widely used system, the Koppen climate classification, divides climates into five main groups: A (tropical), B (dry), C (temperate), D (continental), and E (polar). Groups are defined by temperature and precipitation and broadly match natural vegetation; letters for subtypes, such as Af for tropical rainforest, add seasonal detail. Some versions add an H group for highlands.",
+      "target_lang": "en",
+      "reason": "Standard framework that geography and ecology texts build on."
+    },
+    {
+      "source_text": "What is the Ring of Fire?",
+      "source_lang": "en",
+      "target_text": "The Ring of Fire is a horseshoe-shaped belt of volcanoes, volcanic arcs, and deep ocean trenches around the edges of the Pacific Ocean, running from South America up through North America, across to Japan, and down to New Zealand. Most of it marks subduction zones, where one tectonic plate sinks beneath another. It hosts most of the world's earthquakes and about three-quarters of its volcanoes.",
+      "target_lang": "en",
+      "reason": "Widely referenced geologic feature linking geography to plate tectonics."
+    },
+    {
+      "source_text": "What are tectonic plates and what was Pangaea?",
+      "source_lang": "en",
+      "target_text": "Earth's rigid outer shell is broken into about a dozen large plates and many smaller ones that move slowly over the hotter mantle beneath. Over hundreds of millions of years this motion has joined and split continents. Pangaea was a supercontinent that included nearly all land by about 300 million years ago and began breaking apart roughly 200 to 175 million years ago, eventually forming today's continents.",
+      "target_lang": "en",
+      "reason": "Core earth-science framework behind continents, mountains, earthquakes, and volcanoes."
+    },
+    {
+      "source_text": "What is the International Date Line?",
+      "source_lang": "en",
+      "target_text": "The International Date Line is an imaginary line in the Pacific Ocean, roughly following the 180 degree meridian opposite Greenwich, where the calendar date changes. Crossing it westward moves the date forward one day; crossing eastward moves it back one day. The line zigzags around island groups and borders so that a single country or territory keeps one date.",
+      "target_lang": "en",
+      "reason": "Common source of confusion about time zones and travel."
+    },
+    {
+      "source_text": "What is a rainforest and where are the largest ones?",
+      "source_lang": "en",
+      "target_text": "Rainforests are dense forests with very high annual rainfall. Tropical rainforests lie near the equator and are the most species-rich land ecosystems; temperate rainforests occur in cool, wet coastal regions. The Amazon in South America is the largest tropical rainforest, covering more than half of the world's remaining rainforest area; about 60 percent of it lies in Brazil.",
+      "target_lang": "en",
+      "reason": "Frequently asked ecosystem and geography topic."
+    },
+    {
+      "source_text": "What and where are the North and South Poles?",
+      "source_lang": "en",
+      "target_text": "The geographic North and South Poles are the two points where Earth's rotation axis meets the surface, at 90 degrees north and 90 degrees south latitude. The North Pole lies on drifting sea ice in the Arctic Ocean; the South Pole is on the Antarctic ice sheet. The magnetic poles that compasses point toward are at different locations and slowly move over time.",
+      "target_lang": "en",
+      "reason": "Basic reference fact; separating geographic and magnetic poles prevents a common confusion."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What are the seven continents?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/continent",
+      "reason": "Britannica entry listing the seven continents by size and noting Eurasia as an alternative grouping."
+    },
+    {
+      "pair_source": "What are the seven continents?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Continent",
+      "reason": "Overview of continent definitions and how the count varies between four and seven by convention."
+    },
+    {
+      "pair_source": "What are the five oceans?",
+      "kind": "url",
+      "locator": "https://oceanservice.noaa.gov/facts/howmanyoceans.html",
+      "reason": "NOAA explanation of the five oceans and the Southern Ocean's recognition and 60 degrees south boundary."
+    },
+    {
+      "pair_source": "What are latitude and longitude?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/mapmaker-latitude-longitude/",
+      "reason": "National Geographic Education resource on the latitude-longitude grid, equator, and Greenwich prime meridian."
+    },
+    {
+      "pair_source": "What are latitude and longitude?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/latitude",
+      "reason": "Britannica entry on latitude and longitude."
+    },
+    {
+      "pair_source": "What is the longest river in the world?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/worlds-longest-rivers-2225894",
+      "reason": "Britannica table of the world's longest rivers with notes on measurement differences."
+    },
+    {
+      "pair_source": "What is the longest river in the world?",
+      "kind": "url",
+      "locator": "https://theeastafrican.co.ke/tea/magazine/which-is-longer-amazon-or-nile-4285316",
+      "reason": "AFP report on the unresolved Nile-versus-Amazon length question and the disputed Amazon source."
+    },
+    {
+      "pair_source": "What is the highest mountain on Earth?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Mount-Everest/The-height-of-Everest",
+      "reason": "Britannica history of Everest height measurements including the 2020 China-Nepal figure."
+    },
+    {
+      "pair_source": "What is the highest mountain on Earth?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Mount-Everest",
+      "reason": "Britannica main entry on Mount Everest."
+    },
+    {
+      "pair_source": "What is the deepest point in the ocean?",
+      "kind": "url",
+      "locator": "https://oceanservice.noaa.gov/facts/oceandepth.html",
+      "reason": "NOAA fact page giving the Challenger Deep depth and location."
+    },
+    {
+      "pair_source": "What is the largest desert in the world?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/desert/",
+      "reason": "National Geographic Education entry defining deserts by precipitation and covering polar deserts."
+    },
+    {
+      "pair_source": "What is the largest desert in the world?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/List_of_deserts_by_area",
+      "reason": "List of deserts by area ranking Antarctica first and the Sahara as the largest hot desert."
+    },
+    {
+      "pair_source": "What is the largest country by area?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/list-of-the-total-areas-of-the-worlds-countries-dependencies-and-territories-2130540",
+      "reason": "Britannica list of countries and dependencies by total area."
+    },
+    {
+      "pair_source": "What is the largest country by area?",
+      "kind": "url",
+      "locator": "https://www.cia.gov/the-world-factbook/about/archives/2022/countries/russia",
+      "reason": "CIA World Factbook (2022 archive) entry for Russia giving total area and world rank 1."
+    },
+    {
+      "pair_source": "How many countries are there in the world?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations",
+      "reason": "List and history of the 193 UN member states."
+    },
+    {
+      "pair_source": "How many countries are there in the world?",
+      "kind": "url",
+      "locator": "https://research.un.org/en/unmembers/observers",
+      "reason": "UN Dag Hammarskjold Library guide to the non-member observer states."
+    },
+    {
+      "pair_source": "What are the main climate zones?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/question/What-are-Koppens-five-main-climate-types",
+      "reason": "Britannica answer listing Koppen's five main climate types."
+    },
+    {
+      "pair_source": "What are the main climate zones?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification",
+      "reason": "Detailed article on the Koppen system, its groups, and subtype codes."
+    },
+    {
+      "pair_source": "What is the Ring of Fire?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Ring-of-Fire",
+      "reason": "Britannica entry on the Ring of Fire, its extent, and share of world earthquakes and volcanoes."
+    },
+    {
+      "pair_source": "What is the Ring of Fire?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/plate-tectonics-ring-fire/",
+      "reason": "National Geographic Education resource on subduction and the Ring of Fire."
+    },
+    {
+      "pair_source": "What are tectonic plates and what was Pangaea?",
+      "kind": "url",
+      "locator": "https://pubs.usgs.gov/gip/dynamic/understanding.html",
+      "reason": "USGS This Dynamic Earth chapter on plates and plate motions."
+    },
+    {
+      "pair_source": "What are tectonic plates and what was Pangaea?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Pangea",
+      "reason": "Britannica entry on the formation and breakup of Pangaea."
+    },
+    {
+      "pair_source": "What is the International Date Line?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/International-Date-Line",
+      "reason": "Britannica entry on the International Date Line."
+    },
+    {
+      "pair_source": "What is the International Date Line?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/International_Date_Line",
+      "reason": "Article on the date line's path, deviations, and date change when crossing."
+    },
+    {
+      "pair_source": "What is a rainforest and where are the largest ones?",
+      "kind": "url",
+      "locator": "https://www.nationalgeographic.org/encyclopedia/rain-forest/",
+      "reason": "National Geographic encyclopedia entry on tropical and temperate rainforests."
+    },
+    {
+      "pair_source": "What is a rainforest and where are the largest ones?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Amazon_rainforest",
+      "reason": "Article on the Amazon rainforest's size and share of remaining rainforest."
+    },
+    {
+      "pair_source": "What and where are the North and South Poles?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/North-Magnetic-Pole",
+      "reason": "Britannica entry distinguishing the North Magnetic Pole from the geographic pole."
+    },
+    {
+      "pair_source": "What and where are the North and South Poles?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/North_magnetic_pole",
+      "reason": "Article on the north magnetic pole's location and drift relative to the geographic pole."
+    }
+  ]
+}

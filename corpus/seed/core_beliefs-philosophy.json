@@ -1,0 +1,252 @@
+{
+  "domain": "core-beliefs-philosophy",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What is philosophy and what are its main branches?",
+      "source_lang": "en",
+      "target_text": "Philosophy is the systematic study of basic questions about reality, knowledge, value, and reasoning. Its main branches are metaphysics (the nature of reality), epistemology (the nature, origin, and limits of knowledge), logic (correct reasoning), ethics (right conduct and morality), and aesthetics (beauty and art).",
+      "target_lang": "en",
+      "reason": "A basic map of the discipline and its standard divisions."
+    },
+    {
+      "source_text": "Who was Socrates?",
+      "source_lang": "en",
+      "target_text": "Socrates (c. 470-399 BCE) was an Athenian philosopher who wrote nothing himself; he is known through the writings of Plato, Xenophon, and Aristotle. He is known for questioning people to test their beliefs, now called the Socratic method. In 399 BCE he was tried in Athens for impiety and corrupting the youth, condemned, and executed.",
+      "target_lang": "en",
+      "reason": "Socrates is a founding figure of Western philosophy."
+    },
+    {
+      "source_text": "What is the Socratic method?",
+      "source_lang": "en",
+      "target_text": "The Socratic method is a form of argument by question and answer, associated with Socrates as portrayed in Plato's dialogues. The questioner asks a series of questions that test someone's answers and expose gaps or contradictions in them. The term is also used today for teaching by cross-examining students.",
+      "target_lang": "en",
+      "reason": "A widely referenced method of inquiry and teaching."
+    },
+    {
+      "source_text": "Who was Plato?",
+      "source_lang": "en",
+      "target_text": "Plato (c. 428/427-348/347 BCE) was an Athenian philosopher and student of Socrates who wrote philosophical dialogues, including the Republic. Around 387 BCE he founded a school in Athens, the Academy. He is known for the theory of Forms, which holds that the world known through the senses imitates an unchanging realm of ideal Forms.",
+      "target_lang": "en",
+      "reason": "Plato's works are foundational texts of Western philosophy."
+    },
+    {
+      "source_text": "Who was Aristotle?",
+      "source_lang": "en",
+      "target_text": "Aristotle (384-322 BCE) was a Greek philosopher born in Stagira who studied at Plato's Academy in Athens from about age 18. He tutored the young Alexander the Great from 343 BCE and later founded his own school in Athens, the Lyceum, c. 335 BCE. His writings cover logic, ethics, politics, and the natural sciences.",
+      "target_lang": "en",
+      "reason": "Aristotle is a founding figure of Western logic, science, and philosophy."
+    },
+    {
+      "source_text": "Who was Confucius?",
+      "source_lang": "en",
+      "target_text": "Confucius (551-479 BCE) was a Chinese teacher and thinker. His sayings and conversations were collected by his followers after his death in the Analects. Its central ideas include ren (benevolence), li (proper conduct and ritual), and the junzi (the exemplary person), and his teachings became the basis of Confucianism.",
+      "target_lang": "en",
+      "reason": "Confucius is among the most influential thinkers in East Asian history."
+    },
+    {
+      "source_text": "Who was Laozi and what is the Daodejing?",
+      "source_lang": "en",
+      "target_text": "Laozi is traditionally regarded as the founder of Daoism and is placed by tradition in the 6th century BCE, though some scholars consider him legendary. The Daodejing ('Classic of the Way and Virtue') is the text attributed to him; it centers on the Dao (the Way), naturalness (ziran), and non-action (wuwei). Daoism exists both as a philosophy and as a religious tradition.",
+      "target_lang": "en",
+      "reason": "Laozi and the Daodejing are foundational to Chinese thought."
+    },
+    {
+      "source_text": "Who was the Buddha?",
+      "source_lang": "en",
+      "target_text": "The Buddha, Siddhartha Gautama, was a teacher in ancient India whose life is dated to roughly the 6th to 4th century BCE. Buddhists hold that he attained awakening (enlightenment) and taught the Four Noble Truths: suffering, its origin, its cessation, and the path to its cessation, the Noble Eightfold Path. Buddhism grew from his teachings.",
+      "target_lang": "en",
+      "reason": "Describes the founder of Buddhism as the tradition presents him."
+    },
+    {
+      "source_text": "What is Christianity?",
+      "source_lang": "en",
+      "target_text": "Christianity emerged in the 1st century CE in Roman-ruled Judea, centered on the life and teachings of Jesus of Nazareth. Christians believe Jesus is the Son of God, and most understand God as a Trinity: Father, Son, and Holy Spirit. Its scripture is the Bible, made up of the Old and New Testaments. Central practices include baptism, the Eucharist (Holy Communion), and prayer.",
+      "target_lang": "en",
+      "reason": "Neutral description of the world's largest religion as adherents describe it."
+    },
+    {
+      "source_text": "What is Islam?",
+      "source_lang": "en",
+      "target_text": "Islam is a monotheistic religion that began in Arabia in the early 7th century CE with the Prophet Muhammad, whom Muslims regard as the final prophet. Its scripture is the Quran, which Muslims believe was revealed to Muhammad by God. Practice centers on the Five Pillars: the declaration of faith (shahada), prayer (salat), almsgiving (zakat), fasting in Ramadan (sawm), and pilgrimage to Mecca (hajj).",
+      "target_lang": "en",
+      "reason": "Neutral description of the world's second-largest religion as adherents describe it."
+    },
+    {
+      "source_text": "What is Hinduism?",
+      "source_lang": "en",
+      "target_text": "Hinduism is a religious tradition of South Asia with no single founder; it developed over thousands of years from ancient roots. Its sacred texts include the Vedas, the Upanishads, and the Bhagavad Gita, part of the epic Mahabharata. Pew Research estimated about 1.2 billion Hindus in 2020, about 15% of the world's people, the large majority living in India.",
+      "target_lang": "en",
+      "reason": "Neutral description of the world's third-largest religion."
+    },
+    {
+      "source_text": "What is Judaism?",
+      "source_lang": "en",
+      "target_text": "Judaism is the monotheistic religion of the Jewish people, tracing its origins to the covenant between God and Abraham and to the teachings given through Moses. Its scripture is the Tanakh (Hebrew Bible), named for its three parts: Torah (the five books of Moses), Nevi'im (Prophets), and Ketuvim (Writings). The Sabbath (Shabbat), from Friday sunset to Saturday nightfall, is a weekly day of rest.",
+      "target_lang": "en",
+      "reason": "Neutral description of one of the oldest monotheistic religions as adherents describe it."
+    },
+    {
+      "source_text": "What is Sikhism?",
+      "source_lang": "en",
+      "target_text": "Sikhism was founded in the Punjab region of the Indian subcontinent in the late 15th century by Guru Nanak (1469-1539), followed by nine successor Gurus. Its scripture, the Guru Granth Sahib (also called the Adi Granth), was first compiled by the fifth Guru, Arjan, in 1604, and Sikhs regard it as their eternal Guru. Britannica estimates nearly 25 million Sikhs worldwide in the early 21st century.",
+      "target_lang": "en",
+      "reason": "Neutral description of a major world religion as adherents describe it."
+    },
+    {
+      "source_text": "What are the largest religious groups in the world?",
+      "source_lang": "en",
+      "target_text": "Pew Research Center estimated that in 2020 there were about 2.3 billion Christians (28.8% of the world population), about 2 billion Muslims (25.6%), about 1.2 billion Hindus (14.9%), and about 324 million Buddhists. The religiously unaffiliated made up 24.2%. The study covered 201 countries and more than 2,700 data sources.",
+      "target_lang": "en",
+      "reason": "Gives sourced, dated adherent counts for the major religions."
+    },
+    {
+      "source_text": "How did the world's religious composition change from 2010 to 2020?",
+      "source_lang": "en",
+      "target_text": "According to Pew Research Center, Muslims were the fastest-growing major religious group from 2010 to 2020, rising by more than 300 million. Christians remained the largest group, though their share of the world population fell from 30.6% to 28.8%. Buddhists were the only major group to decline in number, and the religiously unaffiliated grew as a share of the world population.",
+      "target_lang": "en",
+      "reason": "Records sourced, dated demographic trends without ranking beliefs."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What is philosophy and what are its main branches?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/students/article/philosophy/276400",
+      "reason": "Britannica student encyclopedia listing the five branches of philosophy."
+    },
+    {
+      "pair_source": "Who was Socrates?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/summary/Socrates",
+      "reason": "Britannica summary of Socrates' life and influence."
+    },
+    {
+      "pair_source": "Who was Socrates?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/print/article/551971",
+      "reason": "Britannica on the Socratic method and Socrates' dates."
+    },
+    {
+      "pair_source": "What is the Socratic method?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/print/article/551971",
+      "reason": "Britannica article defining the Socratic method."
+    },
+    {
+      "pair_source": "Who was Plato?",
+      "kind": "url",
+      "locator": "https://iep.utm.edu/plato/",
+      "reason": "Internet Encyclopedia of Philosophy entry on Plato, his dates, and the theory of Forms."
+    },
+    {
+      "pair_source": "Who was Aristotle?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Aristotle",
+      "reason": "Britannica biography: born Stagira 384 BCE, tutor to Alexander, Lyceum"
+    },
+    {
+      "pair_source": "Who was Aristotle?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Lyceum-Greek-philosophical-school",
+      "reason": "Britannica: the Lyceum, founded by Aristotle in Athens in 335 BCE"
+    },
+    {
+      "pair_source": "Who was Confucius?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/students/article/Analects/316266",
+      "reason": "Britannica student entry on the Analects, Confucius' dates, and core concepts."
+    },
+    {
+      "pair_source": "Who was Confucius?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Analects",
+      "reason": "Encyclopedia entry on the Analects and how it was compiled."
+    },
+    {
+      "pair_source": "Who was Laozi and what is the Daodejing?",
+      "kind": "url",
+      "locator": "https://plato.stanford.edu/archives/win2005/entries/laozi/",
+      "reason": "Stanford Encyclopedia of Philosophy entry on Laozi and the Daodejing."
+    },
+    {
+      "pair_source": "Who was the Buddha?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/students/article/Buddha/273389",
+      "reason": "Britannica student entry on the Buddha and his dates."
+    },
+    {
+      "pair_source": "Who was the Buddha?",
+      "kind": "url",
+      "locator": "https://southasia.ucla.edu/religions/gurus-saints/buddha",
+      "reason": "UCLA South Asia overview of the Buddha and the Four Noble Truths."
+    },
+    {
+      "pair_source": "What is Christianity?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Christianity",
+      "reason": "Britannica: Christianity, rooted in the life and teachings of Jesus; the Trinity; the Bible"
+    },
+    {
+      "pair_source": "What is Christianity?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Christianity/The-sacraments",
+      "reason": "Britannica: the sacraments, including baptism and the Eucharist"
+    },
+    {
+      "pair_source": "What is Islam?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Islam",
+      "reason": "Britannica: Islam, Muhammad, and the Quran"
+    },
+    {
+      "pair_source": "What is Islam?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Pillars-of-Islam",
+      "reason": "Britannica: the Five Pillars of Islam"
+    },
+    {
+      "pair_source": "What is Hinduism?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/students/article/Hinduism/274887",
+      "reason": "Britannica Students: no single founder, several holy books"
+    },
+    {
+      "pair_source": "What is Hinduism?",
+      "kind": "url",
+      "locator": "https://www.pewresearch.org/religion/2025/06/09/hindu-population-change/",
+      "reason": "Pew Research Center: about 1.2 billion Hindus in 2020, 14.9% of the world"
+    },
+    {
+      "pair_source": "What is Judaism?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Judaism",
+      "reason": "Britannica: Judaism, the Torah and the covenant with Abraham"
+    },
+    {
+      "pair_source": "What is Judaism?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Sabbath-Judaism",
+      "reason": "Britannica: the Sabbath, from Friday sunset to Saturday nightfall"
+    },
+    {
+      "pair_source": "What is Sikhism?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Sikhism",
+      "reason": "Britannica on Sikhism's founding, Gurus, scripture, and number of adherents."
+    },
+    {
+      "pair_source": "What are the largest religious groups in the world?",
+      "kind": "url",
+      "locator": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/",
+      "reason": "Pew Research report on the global religious landscape, 2010-2020."
+    },
+    {
+      "pair_source": "How did the world's religious composition change from 2010 to 2020?",
+      "kind": "url",
+      "locator": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/",
+      "reason": "Pew Research Center: how the global religious landscape changed from 2010 to 2020"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "domain": "modern-world-healthcare",
+  "classification": "commons",
   "pairs": [
     {
       "source_text": "How does emergency room triage decide who gets seen first?",

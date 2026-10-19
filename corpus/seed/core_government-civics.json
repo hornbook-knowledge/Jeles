@@ -1,0 +1,294 @@
+{
+  "domain": "core-government-civics",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What is democracy, and what is the difference between direct and representative democracy?",
+      "source_lang": "en",
+      "target_text": "Democracy is government in which power rests with the people. In a direct democracy, citizens vote on laws and policies themselves, as in ancient Athens' assembly. In a representative democracy, citizens elect officials who make decisions for them and answer to voters at elections. Nearly all modern democracies are representative, and some add direct tools such as referendums, initiatives and recalls.",
+      "target_lang": "en",
+      "reason": "Basic definition underlying most civics questions."
+    },
+    {
+      "source_text": "What is a constitution?",
+      "source_lang": "en",
+      "target_text": "A constitution is the fundamental law of a state. It sets up the main institutions of government, defines and limits their powers, and often lists citizens' rights. Other laws must conform to it, and it is usually harder to amend than ordinary law. It may be a single written document, as in the United States, or a body of statutes, court rulings and conventions, as in the United Kingdom.",
+      "target_lang": "en",
+      "reason": "Core concept for understanding how any government is organized."
+    },
+    {
+      "source_text": "What is the separation of powers?",
+      "source_lang": "en",
+      "target_text": "Separation of powers divides government into separate branches, usually legislative (makes laws), executive (carries out laws) and judicial (interprets laws), so that no single body holds all power. Its first modern formulation is credited to the French thinker Montesquieu in The Spirit of Laws (1748). It strongly influenced the US Constitution.",
+      "target_lang": "en",
+      "reason": "Foundational principle of constitutional government."
+    },
+    {
+      "source_text": "What are the three branches of the US government?",
+      "source_lang": "en",
+      "target_text": "The US Constitution creates three branches. The legislative branch is Congress (the Senate and House of Representatives), which makes laws (Article I). The executive branch, headed by the President, carries out laws (Article II). The judicial branch, the Supreme Court and lower federal courts, interprets laws and decides cases (Article III).",
+      "target_lang": "en",
+      "reason": "Most-asked structural fact about US government."
+    },
+    {
+      "source_text": "What are checks and balances in the US government?",
+      "source_lang": "en",
+      "target_text": "Checks and balances are the ways each branch of the US government can limit the others. The President can veto a bill, and Congress can override a veto with a two-thirds vote in both chambers. The Senate confirms major appointments, and Congress can impeach and remove officials. Courts can strike down laws or actions that violate the Constitution, a power called judicial review, established in Marbury v. Madison (1803).",
+      "target_lang": "en",
+      "reason": "Explains how the separated branches interact in practice."
+    },
+    {
+      "source_text": "How does a bill become a law in the United States?",
+      "source_lang": "en",
+      "target_text": "A member of Congress introduces a bill, which goes to a committee for study, hearings and a vote. If approved, it is debated and voted on by the full chamber, and the House and Senate must pass identical versions. The bill then goes to the President, who can sign it or veto it. Congress can override a veto by a two-thirds vote in each chamber.",
+      "target_lang": "en",
+      "reason": "Standard civics process question."
+    },
+    {
+      "source_text": "What is the Bill of Rights?",
+      "source_lang": "en",
+      "target_text": "The Bill of Rights is the first ten amendments to the US Constitution. Congress proposed twelve amendments on September 25, 1789, and ten of them were ratified on December 15, 1791. They guarantee individual rights such as freedom of religion, speech, press and assembly, and protections for people accused of crimes, and they limit the powers of government.",
+      "target_lang": "en",
+      "reason": "Core US founding document."
+    },
+    {
+      "source_text": "What is the Universal Declaration of Human Rights?",
+      "source_lang": "en",
+      "target_text": "The Universal Declaration of Human Rights (UDHR) is a statement of basic rights and freedoms for all people. The UN General Assembly adopted it in Paris on December 10, 1948, with 48 votes in favor, none against and 8 abstentions. Its 30 articles cover civil, political, economic, social and cultural rights. It is not a treaty, and December 10 is observed as Human Rights Day.",
+      "target_lang": "en",
+      "reason": "Foundational international human-rights text."
+    },
+    {
+      "source_text": "What does the United Nations do?",
+      "source_lang": "en",
+      "target_text": "The United Nations is an international organization of 193 member states. Under its 1945 Charter, it works to maintain international peace and security, develop friendly relations among nations, promote human rights and support economic and social progress. Its six principal organs are the General Assembly, Security Council, Economic and Social Council, Trusteeship Council, International Court of Justice and Secretariat.",
+      "target_lang": "en",
+      "reason": "Explains the main international body and its structure."
+    },
+    {
+      "source_text": "What is the difference between a monarchy and a republic?",
+      "source_lang": "en",
+      "target_text": "In a monarchy, the head of state is a monarch, such as a king or queen, who usually inherits the position and serves for life. In an absolute monarchy the monarch holds full power, while in a constitutional monarchy the monarch's role is limited by a constitution and is often largely ceremonial. In a republic, the head of state is not a monarch, and offices are filled by election or appointment rather than inheritance.",
+      "target_lang": "en",
+      "reason": "Basic classification of forms of government."
+    },
+    {
+      "source_text": "What is the difference between a parliamentary and a presidential system?",
+      "source_lang": "en",
+      "target_text": "In a presidential system, such as the United States, the president is usually both head of state and head of government, is chosen separately from the legislature, and serves a fixed term. In a parliamentary system, such as the United Kingdom, the head of government (usually a prime minister) holds office only while backed by a majority in parliament. Semi-presidential systems, such as France's, combine features of both.",
+      "target_lang": "en",
+      "reason": "Explains the two main ways democracies organize the executive."
+    },
+    {
+      "source_text": "What is federalism?",
+      "source_lang": "en",
+      "target_text": "Federalism is a system in which power is divided between a national government and regional governments, such as states or provinces, usually by a written constitution that neither level can change alone. In the United States, the national government holds the powers delegated to it by the Constitution, and the Tenth Amendment reserves other powers to the states or the people. Unitary states instead concentrate authority centrally.",
+      "target_lang": "en",
+      "reason": "Key structural concept for the US and many other countries."
+    },
+    {
+      "source_text": "What do courts do, and what is the rule of law?",
+      "source_lang": "en",
+      "target_text": "Courts settle legal disputes and decide criminal cases by interpreting the law and applying it to the facts of each case. In many countries, including the US, courts can also review whether laws are constitutional. The rule of law is the principle that laws are clear and public, apply equally to everyone including the government, and are enforced through fair and independent courts.",
+      "target_lang": "en",
+      "reason": "Explains the judiciary's role and a core governing principle."
+    },
+    {
+      "source_text": "How do taxes fund public services?",
+      "source_lang": "en",
+      "target_text": "Taxes are compulsory payments that people and businesses make to governments, and in modern economies they are the main source of government revenue. Common types include income, sales and property taxes. Governments use the revenue to pay for public goods and services such as defense, education, roads, health care and social security. Unlike a fee, a tax is not payment for a specific service to the person paying.",
+      "target_lang": "en",
+      "reason": "Explains the basic link between taxation and government services."
+    },
+    {
+      "source_text": "What is citizenship?",
+      "source_lang": "en",
+      "target_text": "Citizenship is legal membership in a country. Citizens owe allegiance to the state and are entitled to its protection. Citizenship usually brings rights such as voting and holding public office, and duties such as obeying the law, paying taxes and, in some countries, jury or military service. It can be gained by birth in the country, descent from a citizen parent, or naturalization.",
+      "target_lang": "en",
+      "reason": "Defines the relationship between individuals and the state."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What is democracy, and what is the difference between direct and representative democracy?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Direct_democracy",
+      "reason": "Direct democracy: citizens decide policy without representatives; semi-direct tools"
+    },
+    {
+      "pair_source": "What is democracy, and what is the difference between direct and representative democracy?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/representative-democracy",
+      "reason": "Representative democracy: elected officials accountable to voters"
+    },
+    {
+      "pair_source": "What is a constitution?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/constitution-politics-and-law",
+      "reason": "Constitution as the fundamental organizing principle of a state, written or unwritten"
+    },
+    {
+      "pair_source": "What is a constitution?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Constitution",
+      "reason": "Constitution as supreme law; codified and uncodified forms"
+    },
+    {
+      "pair_source": "What is the separation of powers?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/separation-of-powers",
+      "reason": "Definition and Montesquieu's formulation"
+    },
+    {
+      "pair_source": "What is the separation of powers?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/The-Spirit-of-Laws",
+      "reason": "Montesquieu's The Spirit of Laws (1748)"
+    },
+    {
+      "pair_source": "What are the three branches of the US government?",
+      "kind": "url",
+      "locator": "https://www.usa.gov/branches-of-government",
+      "reason": "Official description of the legislative, executive and judicial branches"
+    },
+    {
+      "pair_source": "What are the three branches of the US government?",
+      "kind": "url",
+      "locator": "https://www.archives.gov/founding-docs/constitution/what-does-it-say",
+      "reason": "National Archives summary of the Constitution's articles"
+    },
+    {
+      "pair_source": "What are checks and balances in the US government?",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/checks-and-balances",
+      "reason": "Examples of checks: veto, veto override, judicial review"
+    },
+    {
+      "pair_source": "What are checks and balances in the US government?",
+      "kind": "url",
+      "locator": "https://constitution.congress.gov/browse/essay/intro.7-2/ALDE_00000031/",
+      "reason": "Constitution Annotated essay on separation of powers under the Constitution"
+    },
+    {
+      "pair_source": "How does a bill become a law in the United States?",
+      "kind": "url",
+      "locator": "https://www.usa.gov/how-laws-are-made",
+      "reason": "Official overview of how federal laws are made"
+    },
+    {
+      "pair_source": "How does a bill become a law in the United States?",
+      "kind": "url",
+      "locator": "https://www.house.gov/the-house-explained/the-legislative-process",
+      "reason": "House description of committee, floor and presidential stages"
+    },
+    {
+      "pair_source": "What is the Bill of Rights?",
+      "kind": "url",
+      "locator": "https://www.archives.gov/milestone-documents/bill-of-rights",
+      "reason": "National Archives record of the Bill of Rights (1791)"
+    },
+    {
+      "pair_source": "What is the Bill of Rights?",
+      "kind": "url",
+      "locator": "https://www.loc.gov/item/today-in-history/december-15/",
+      "reason": "Ratification on December 15, 1791, of articles three through twelve as the first ten amendments"
+    },
+    {
+      "pair_source": "What is the Universal Declaration of Human Rights?",
+      "kind": "url",
+      "locator": "https://www.un.org/en/about-us/universal-declaration-of-human-rights",
+      "reason": "UN text and adoption of the UDHR on 10 December 1948"
+    },
+    {
+      "pair_source": "What is the Universal Declaration of Human Rights?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/human-rights/The-Universal-Declaration-of-Human-Rights",
+      "reason": "Adoption without dissent, abstentions and non-treaty status"
+    },
+    {
+      "pair_source": "What does the United Nations do?",
+      "kind": "url",
+      "locator": "https://www.un.org/en/about-us/main-bodies",
+      "reason": "The six principal organs and their roles"
+    },
+    {
+      "pair_source": "What does the United Nations do?",
+      "kind": "url",
+      "locator": "https://www.un.org/en/about-us/un-charter",
+      "reason": "UN Charter and its purposes"
+    },
+    {
+      "pair_source": "What is the difference between a monarchy and a republic?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/monarchy",
+      "reason": "Definition and types of monarchy"
+    },
+    {
+      "pair_source": "What is the difference between a monarchy and a republic?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/republic-government",
+      "reason": "Definition of a republic"
+    },
+    {
+      "pair_source": "What is the difference between a parliamentary and a presidential system?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Presidential_system",
+      "reason": "Features of presidential systems"
+    },
+    {
+      "pair_source": "What is the difference between a parliamentary and a presidential system?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Parliamentary_system",
+      "reason": "Features of parliamentary systems"
+    },
+    {
+      "pair_source": "What is federalism?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/federalism",
+      "reason": "Definition of federalism and its constitutional division of powers"
+    },
+    {
+      "pair_source": "What is federalism?",
+      "kind": "url",
+      "locator": "https://constitution.congress.gov/browse/essay/intro.7-3/ALDE_00000032/",
+      "reason": "Constitution Annotated essay on federalism and the Constitution"
+    },
+    {
+      "pair_source": "What do courts do, and what is the rule of law?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Rule_of_law",
+      "reason": "Definition of the rule of law"
+    },
+    {
+      "pair_source": "What do courts do, and what is the rule of law?",
+      "kind": "url",
+      "locator": "https://www.uscourts.gov/educational-resources/educational-activities/overview-rule-law",
+      "reason": "US federal courts' overview of the rule of law"
+    },
+    {
+      "pair_source": "How do taxes fund public services?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/government-revenue",
+      "reason": "Taxes as the main source of government revenue"
+    },
+    {
+      "pair_source": "How do taxes fund public services?",
+      "kind": "url",
+      "locator": "https://www.oecd.org/en/topics/taxation.html",
+      "reason": "Taxes as compulsory, unrequited payments that fund public goods and services"
+    },
+    {
+      "pair_source": "What is citizenship?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/citizenship",
+      "reason": "Definition of citizenship, rights and obligations"
+    },
+    {
+      "pair_source": "What is citizenship?",
+      "kind": "url",
+      "locator": "https://www.uscis.gov/citizenship-resource-center/learn-about-citizenship/citizenship-and-naturalization/citizenship-rights-and-responsibilities",
+      "reason": "US citizenship rights and responsibilities"
+    }
+  ]
+}

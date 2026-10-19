@@ -6,7 +6,8 @@
       "source_lang": "en",
       "target_text": "POPULAR MYTH -- MISLEADING. The claim that Van Gogh sold only one painting (The Red Vineyard, sold in 1890) has been debunked by art historian Martin Bailey and others. Van Gogh Museum research and Theo van Gogh's correspondence document several additional sales and exchanges during Vincent's lifetime, including sales to art dealers such as Julien 'Pere' Tanguy and the London dealer Thomas Sulley. A 2019 Van Gogh Museum exhibition explicitly addressed this myth. The 'only one painting' narrative became popular in the early 20th century as part of the tortured-genius mythology but is not supported by the documentary record. Van Gogh was indeed commercially unsuccessful and financially dependent on his brother Theo, but 'sold only one' is a factual overstatement that the corpus presents as established fact.",
       "target_lang": "en",
-      "reason": "The 'sold only one painting' claim is one of the most persistent myths in art history. While Van Gogh was commercially unsuccessful, the documentary record shows multiple sales. The corpus repeats this myth without qualification in the section on posthumous reputation shifts."
+      "reason": "The 'sold only one painting' claim is one of the most persistent myths in art history. While Van Gogh was commercially unsuccessful, the documentary record shows multiple sales. The corpus repeats this myth without qualification in the section on posthumous reputation shifts.",
+      "classification": "commons"
     },
     {
       "source_text": "Corpus claim: Shakespeare 'inventing or popularizing roughly 1,700 English words including assassinate, lonely, and eyeball'",
@@ -55,7 +56,8 @@
       "source_lang": "en",
       "target_text": "CALENDAR AMBIGUITY UNACKNOWLEDGED. Newton was born on December 25, 1642 under the Julian (Old Style) calendar then in use in England, but under the Gregorian (New Style) calendar -- adopted by most of continental Europe since 1582 but not by England until 1752 -- his birth date is January 4, 1643. The corpus uses 1642 without noting this ambiguity. While using the Old Style date is not incorrect per se (it was the operative calendar in England at the time), the corpus's treatment of other figures uses standardized modern dating. For a knowledge corpus that spans multiple national contexts, the Julian/Gregorian discrepancy is worth noting, particularly since it affects whether Newton and Galileo (who died January 8, 1642 Gregorian) overlapped in life -- a coincidence often cited but which depends entirely on which calendar is used.",
       "target_lang": "en",
-      "reason": "The Newton-Galileo birth/death year coincidence (both '1642') depends on mixing Julian and Gregorian calendars. A rigorous knowledge corpus should note this ambiguity rather than presenting the Julian date without qualification."
+      "reason": "The Newton-Galileo birth/death year coincidence (both '1642') depends on mixing Julian and Gregorian calendars. A rigorous knowledge corpus should note this ambiguity rather than presenting the Julian date without qualification.",
+      "classification": "commons"
     },
     {
       "source_text": "Corpus claim: Haiti's indemnity debt with 'final payments extended to 1947'",
@@ -76,7 +78,8 @@
       "source_lang": "en",
       "target_text": "TECHNICALLY CORRECT BUT IMPRECISE. The Supreme Court's decision in Clay v. United States (1971) was 8-0, not 9-0. Justice Thurgood Marshall recused himself because he had been Solicitor General when the case was initially prosecuted. While 8-0 among participating justices is indeed 'unanimous' in legal terminology, the omission of Marshall's recusal -- itself historically significant as Marshall was the first Black Supreme Court justice -- strips important context from the story. The case was also decided on narrow grounds (the government's failure to specify which of three statutory bases justified denying Ali's conscientious objector claim) rather than on the broader religious freedom principle Ali's defense had argued.",
       "target_lang": "en",
-      "reason": "The corpus says 'unanimously' without noting Marshall's recusal or the narrow legal basis of the decision. Both details are historically significant and their omission flattens a complex legal story."
+      "reason": "The corpus says 'unanimously' without noting Marshall's recusal or the narrow legal basis of the decision. Both details are historically significant and their omission flattens a complex legal story.",
+      "classification": "commons"
     },
     {
       "source_text": "Corpus claim: FDR's internment caused '1,862' deaths in camps",
@@ -90,7 +93,8 @@
       "source_lang": "en",
       "target_text": "DATE AND PRICE IMPRECISE. The sale of Cezanne's The Card Players to the Royal Family of Qatar was completed in 2011, not 2012. News of the sale was first reported by Vanity Fair in February 2012, which may explain the corpus's dating. The price has never been officially confirmed; estimates range from $250 million to over $300 million. The corpus says 'in 2012' and 'approximately $250 million' -- the former is incorrect (the transaction predates the reporting), and the latter is the low end of credible estimates. This matters because the corpus uses the sale as evidence about posthumous reputation, and getting the basic facts right is essential for that argument's credibility.",
       "target_lang": "en",
-      "reason": "The corpus conflates the date of reporting (2012) with the date of the transaction (2011) and presents the conservative end of the price range without noting the uncertainty. Both errors are minor but undermine the precision the corpus projects."
+      "reason": "The corpus conflates the date of reporting (2012) with the date of the transaction (2011) and presents the conservative end of the price range without noting the uncertainty. Both errors are minor but undermine the precision the corpus projects.",
+      "classification": "commons"
     }
   ],
   "edges": [

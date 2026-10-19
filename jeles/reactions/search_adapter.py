@@ -54,7 +54,7 @@ log = logging.getLogger("jeles.search")
 
 Searcher = Callable[[str], list[dict[str, Any]]]
 
-_UA = "jeles-conflict-scan/1.0 (+local-first; https://github.com/rudi193-cmd/Jeles)"
+_UA = "jeles-conflict-scan/1.0 (+local-first; https://github.com/hornbook-knowledge/Jeles)"
 _TIMEOUT = float(os.environ.get("JELES_SEARCH_TIMEOUT", "12"))
 _MAX = int(os.environ.get("JELES_SEARCH_MAX", "8"))
 # Cap the response body: a misbehaving/redirected endpoint could otherwise

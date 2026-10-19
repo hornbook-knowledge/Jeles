@@ -1,0 +1,282 @@
+{
+  "domain": "core-language-writing",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "How many languages are spoken in the world?",
+      "source_lang": "en",
+      "target_text": "About 7,000. Ethnologue, the language catalog published by SIL International, listed 7,164 living languages on its \"How many languages\" page as of October 2026; its May 2025 edition counted 7,159. The figure shifts as languages are documented, reclassified, or lose their last speakers.",
+      "target_lang": "en",
+      "reason": "The baseline count of human languages is a standard reference question, and the figure needs a named, dated source."
+    },
+    {
+      "source_text": "What is a language family?",
+      "source_lang": "en",
+      "target_text": "A language family is a group of languages descended from a common ancestor language. Indo-European, which includes English, Spanish, Hindi, Russian and Persian, is the largest by number of speakers and traces back to a reconstructed Proto-Indo-European. Other major families include Sino-Tibetan (400+ languages) and Austronesian (about 1,200 languages).",
+      "target_lang": "en",
+      "reason": "Language families are the basic organizing scheme for the world's languages."
+    },
+    {
+      "source_text": "What are the most spoken languages in the world?",
+      "source_lang": "en",
+      "target_text": "By Ethnologue's figures, English has the most total speakers when second-language users are counted, while Mandarin Chinese has the most native speakers. A 2026 table based on Ethnologue gives roughly 1.49 billion total speakers for English, 1.18 billion for Mandarin, 611 million for Hindi and 561 million for Spanish. Rankings depend on whether native-only or total speakers are counted.",
+      "target_lang": "en",
+      "reason": "A frequently asked comparison whose answer depends on a dated source and a stated counting method."
+    },
+    {
+      "source_text": "Where did the alphabet come from?",
+      "source_lang": "en",
+      "target_text": "The Latin alphabet descends from the Phoenician script of about 1050 BCE, which wrote only consonants. The Greeks adopted the Phoenician letters, names and order around the 8th century BCE and added vowel letters; alpha and beta come from Phoenician aleph and beth. The Etruscans adapted a Greek alphabet, which in turn gave rise to the Latin alphabet.",
+      "target_lang": "en",
+      "reason": "The lineage of the alphabet used for English and most European languages."
+    },
+    {
+      "source_text": "What are the main types of writing systems?",
+      "source_lang": "en",
+      "target_text": "An alphabet has letters for both consonants and vowels (Latin, Greek). An abjad writes mainly consonants and leaves vowels to the reader (Arabic, Hebrew). A syllabary uses one symbol per syllable (Japanese kana), and a logography uses symbols for words or units of meaning (Chinese characters). Many real scripts mix these types.",
+      "target_lang": "en",
+      "reason": "The standard classification of scripts used in linguistics references."
+    },
+    {
+      "source_text": "What are the parts of speech?",
+      "source_lang": "en",
+      "target_text": "Parts of speech are the categories words fall into by their role in a sentence. Traditional English grammar lists eight: nouns, pronouns, verbs, adjectives, adverbs, conjunctions, prepositions and interjections; many linguists also treat determiners as a separate class. The same word can change class with use, as \"singing\" is a verb in \"they were singing\" and a noun in \"singing is fun.\"",
+      "target_lang": "en",
+      "reason": "A foundational grammar concept taught in every language course."
+    },
+    {
+      "source_text": "How did the English language form?",
+      "source_lang": "en",
+      "target_text": "English began as Old English, the Germanic speech of Anglo-Saxon settlers who reached Britain from the mid-5th century. After the Norman Conquest of 1066, Anglo-Norman French became the language of the court, law and church, and thousands of French words entered English. This contact marks the shift from Old English to Middle English.",
+      "target_lang": "en",
+      "reason": "The basic history of English, the language of much of the corpus."
+    },
+    {
+      "source_text": "What is a dialect?",
+      "source_lang": "en",
+      "target_text": "A dialect is a regional or social variety of a language with its own pronunciation, grammar and vocabulary. It differs from an accent, which covers pronunciation only. Where the line falls between a dialect and a separate language is often decided by social or political factors rather than purely linguistic ones.",
+      "target_lang": "en",
+      "reason": "Clarifies a term that is often confused with accent or misused as a judgment of correctness."
+    },
+    {
+      "source_text": "Are sign languages real languages?",
+      "source_lang": "en",
+      "target_text": "Yes. Sign languages are complete natural languages with their own grammar, not gestures or signed versions of spoken languages. American Sign Language, for example, developed from French Sign Language after 1816 and has grammar unrelated to English. Sign languages are not universal: American and British Sign Language are mutually unintelligible.",
+      "target_lang": "en",
+      "reason": "Corrects a common misconception about deaf communities' languages."
+    },
+    {
+      "source_text": "What is the Rosetta Stone?",
+      "source_lang": "en",
+      "target_text": "The Rosetta Stone is a granite slab from 196 BCE carrying the same decree in three scripts: Egyptian hieroglyphs, Demotic and Greek. French soldiers found it near Rosetta (Rashid), Egypt, in 1799. Using the Greek text as a key, and building on work by Thomas Young, Jean-Francois Champollion deciphered hieroglyphs in 1822. It is held in the British Museum.",
+      "target_lang": "en",
+      "reason": "The best-known key to deciphering a lost writing system."
+    },
+    {
+      "source_text": "How is a dictionary like the Oxford English Dictionary made?",
+      "source_lang": "en",
+      "target_text": "The OED was built on historical principles: each sense of a word is illustrated by dated quotations in chronological order, gathered largely from volunteer readers on paper slips. Editor James Murray led the work from 1879; the first edition was finished in 1928 with over 250,000 main entries and nearly 2 million quotations. It continues to be revised today.",
+      "target_lang": "en",
+      "reason": "Explains how evidence-based lexicography works, using the best-documented example."
+    },
+    {
+      "source_text": "What is etymology?",
+      "source_lang": "en",
+      "target_text": "Etymology is the study of the origin of words and how their forms and meanings have changed over time. Etymologists use written records and, for earlier periods, the comparative method, which reconstructs shared ancestors by comparing related languages. The word itself comes from Greek etymon, \"true sense,\" plus -logia, \"study of.\"",
+      "target_lang": "en",
+      "reason": "Defines the discipline behind every word-origin question."
+    },
+    {
+      "source_text": "What is Unicode?",
+      "source_lang": "en",
+      "target_text": "Unicode is the international standard that gives every character in the world's writing systems a unique number, called a code point, written like U+0061 for \"a.\" Its codespace runs from 0 to 10FFFF hexadecimal, room for 1,114,112 code points. Encodings such as UTF-8, UTF-16 and UTF-32 define how those numbers are stored as bytes.",
+      "target_lang": "en",
+      "reason": "The standard that lets text in any script be stored and exchanged digitally."
+    },
+    {
+      "source_text": "Where does punctuation come from?",
+      "source_lang": "en",
+      "target_text": "Punctuation began as aids for reading aloud. Around 200 BCE, Aristophanes of Byzantium, head of the Library of Alexandria, proposed dots at three heights to mark pauses of different lengths; the Greek word komma, a short clause, gave the comma its name. Medieval scribes and later printers developed the marks used today, which mainly show sentence structure.",
+      "target_lang": "en",
+      "reason": "The basic history and purpose of punctuation marks."
+    },
+    {
+      "source_text": "What is an endangered language?",
+      "source_lang": "en",
+      "target_text": "An endangered language is one at risk of falling out of use, usually because children are no longer learning it. Ethnologue estimates that roughly 40% of living languages are endangered. UNESCO grades languages from vulnerable to critically endangered and extinct, first in its Atlas of the World's Languages in Danger (online since 2009) and now in its World Atlas of Languages.",
+      "target_lang": "en",
+      "reason": "Language loss is a core topic for anyone studying the world's languages."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "How many languages are spoken in the world?",
+      "kind": "url",
+      "locator": "https://ethnologue.com/insights/how-many-languages",
+      "reason": "Ethnologue's own current count of living languages (7,164) and note that the figure is constantly in flux."
+    },
+    {
+      "pair_source": "What is a language family?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/Indo-European-languages",
+      "reason": "Britannica on the Indo-European family, its branches and its reconstructed ancestor."
+    },
+    {
+      "pair_source": "What is a language family?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Sino-Tibetan_languages",
+      "reason": "Overview of the Sino-Tibetan family, more than 400 languages."
+    },
+    {
+      "pair_source": "What are the most spoken languages in the world?",
+      "kind": "url",
+      "locator": "https://www.ethnologue.com/insights/most-spoken-language/",
+      "reason": "Ethnologue: Mandarin largest by native speakers, English largest counting second-language speakers."
+    },
+    {
+      "pair_source": "What are the most spoken languages in the world?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/List_of_languages_by_total_number_of_speakers",
+      "reason": "Table of total speaker counts based on Ethnologue's 2026 data."
+    },
+    {
+      "pair_source": "Where did the alphabet come from?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/History_of_the_alphabet",
+      "reason": "History of the alphabet from Phoenician through Greek, Etruscan and Latin."
+    },
+    {
+      "pair_source": "Where did the alphabet come from?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/students/article/alphabet/272820",
+      "reason": "Britannica's student article on the Phoenician origin of the alphabet."
+    },
+    {
+      "pair_source": "What are the main types of writing systems?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/writing/Types-of-writing-systems",
+      "reason": "Britannica on alphabets, logograms and syllabaries."
+    },
+    {
+      "pair_source": "What are the main types of writing systems?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Writing_system",
+      "reason": "Overview of writing-system types with examples."
+    },
+    {
+      "pair_source": "What are the parts of speech?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/part-of-speech",
+      "reason": "Britannica entry on parts of speech."
+    },
+    {
+      "pair_source": "What are the parts of speech?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Part_of_speech",
+      "reason": "The traditional eight English parts of speech and the modern treatment of determiners."
+    },
+    {
+      "pair_source": "How did the English language form?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Old_English",
+      "reason": "Old English as the speech of 5th-century Anglo-Saxon settlers."
+    },
+    {
+      "pair_source": "How did the English language form?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Influence_of_French_on_English",
+      "reason": "French influence on English after the Norman Conquest of 1066."
+    },
+    {
+      "pair_source": "What is a dialect?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/dialect",
+      "reason": "Britannica's entry on dialect."
+    },
+    {
+      "pair_source": "What is a dialect?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Dialect",
+      "reason": "Definition of dialect, its contrast with accent, and the dialect-language boundary."
+    },
+    {
+      "pair_source": "Are sign languages real languages?",
+      "kind": "url",
+      "locator": "https://www.nidcd.nih.gov/glossary/american-sign-language-asl",
+      "reason": "US NIDCD: ASL is a complete, natural language with grammar that differs from English."
+    },
+    {
+      "pair_source": "Are sign languages real languages?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/American-Sign-Language",
+      "reason": "Britannica on ASL's independent development and French Sign Language origin."
+    },
+    {
+      "pair_source": "What is the Rosetta Stone?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+      "reason": "History, date, scripts and discovery of the Rosetta Stone."
+    },
+    {
+      "pair_source": "What is the Rosetta Stone?",
+      "kind": "url",
+      "locator": "https://www.britishmuseum.org/blog/eureka-finding-key-ancient-egypt",
+      "reason": "British Museum account of how the stone helped decipher hieroglyphs."
+    },
+    {
+      "pair_source": "How is a dictionary like the Oxford English Dictionary made?",
+      "kind": "url",
+      "locator": "https://www.oed.com/information/about-the-oed/history-of-the-oed/",
+      "reason": "The OED's own history of its making."
+    },
+    {
+      "pair_source": "How is a dictionary like the Oxford English Dictionary made?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/The-Oxford-English-Dictionary",
+      "reason": "Britannica on the OED's method, editors and 1928 completion."
+    },
+    {
+      "pair_source": "What is etymology?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Etymology",
+      "reason": "Definition, methods and Greek origin of the term etymology."
+    },
+    {
+      "pair_source": "What is Unicode?",
+      "kind": "url",
+      "locator": "https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-2/",
+      "reason": "Unicode Standard core specification: codespace, code points and encoding forms."
+    },
+    {
+      "pair_source": "What is Unicode?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Code_point",
+      "reason": "Explanation of code points and U+ notation."
+    },
+    {
+      "pair_source": "Where does punctuation come from?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/topic/punctuation",
+      "reason": "Britannica on punctuation and Aristophanes of Byzantium's dot system."
+    },
+    {
+      "pair_source": "Where does punctuation come from?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Punctuation",
+      "reason": "History of punctuation through medieval scribes."
+    },
+    {
+      "pair_source": "What is an endangered language?",
+      "kind": "url",
+      "locator": "https://ethnologue.com/insights/how-many-languages",
+      "reason": "Ethnologue's estimate that roughly 40% of languages are endangered."
+    },
+    {
+      "pair_source": "What is an endangered language?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Atlas_of_the_World's_Languages_in_Danger",
+      "reason": "UNESCO's endangerment atlas, its categories and its online editions."
+    }
+  ]
+}

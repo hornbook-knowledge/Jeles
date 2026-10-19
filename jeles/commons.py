@@ -1,7 +1,15 @@
 """Commons vs novel knowledge — classification for intake and seed loading.
 
-Commons (π, Newton's laws, core "way things work" domains) land at the
-``machine`` rung when citable sources exist — no human seal required.
+Commons (π, Newton's laws, core "way things work" domains) in the bundled
+seed land at the ``human`` rung when citable sources exist, without a Nestor
+seal: these are knowns, established by the people who discovered them and
+kept by the reference works that record them, and the developer has ruled
+that they need no seal in the base store. Credit goes to that public record,
+not to whoever loaded it: ``verified_by`` names the cited publishers
+(:func:`commons_credit`) and ``evidence`` (:func:`commons_evidence`) lists
+them, never a ``seal_sig``, so a reader can tell it from a signature and
+Nestor reconciliation can find what is still unsealed. Commons arriving
+through intake stay at ``machine``.
 Novel synthesis (operator research, institutional genealogy) stays ``asserted``
 until a human verifies or conflict_scan corroborates.
 """
@@ -10,16 +18,60 @@ from __future__ import annotations
 
 import hashlib
 from typing import Any
+from urllib.parse import urlparse
 
 COMMONS_DOMAIN_PREFIXES = ("core-",)
 COMMONS_VERIFIED_BY = "commons:bootstrap"
+#: `evidence["scheme"]` for a seed commons nugget — deliberately not
+#: `nestor-seal-v1`, because nothing here is signed.
+COMMONS_EVIDENCE_SCHEME = "public-record-v1"
+#: The scheme commons carried before credit moved to the public record.
+#: `promote_commons_in_store` re-credits nuggets still carrying it.
+LEGACY_COMMONS_SCHEMES = ("developer-attestation-v1",)
+#: Display names for the publishers the seed cites most; any other host is
+#: credited by its own name.
+_PUBLISHERS = {
+    "wikipedia.org": "Wikipedia",
+    "britannica.com": "Encyclopaedia Britannica",
+    "nasa.gov": "NASA",
+    "esa.int": "ESA",
+    "nih.gov": "NIH",
+    "medlineplus.gov": "MedlinePlus (NIH)",
+    "cdc.gov": "CDC",
+    "who.int": "WHO",
+    "noaa.gov": "NOAA",
+    "usgs.gov": "USGS",
+    "nist.gov": "NIST",
+    "bipm.org": "BIPM",
+    "loc.gov": "Library of Congress",
+    "archives.gov": "US National Archives",
+    "congress.gov": "US Congress",
+    "un.org": "United Nations",
+    "nationalgeographic.org": "National Geographic",
+    "nationalgeographic.com": "National Geographic",
+    "pewresearch.org": "Pew Research Center",
+    "plato.stanford.edu": "Stanford Encyclopedia of Philosophy",
+    "iep.utm.edu": "Internet Encyclopedia of Philosophy",
+    "my.clevelandclinic.org": "Cleveland Clinic",
+    "history.com": "History.com",
+    "khanacademy.org": "Khan Academy",
+    "smithsonianmag.com": "Smithsonian",
+    "si.edu": "Smithsonian",
+    "britishmuseum.org": "British Museum",
+    "metmuseum.org": "The Met",
+    "nobelprize.org": "Nobel Prize",
+    "nature.com": "Nature",
+}
 INTAKE_VERIFIED_BY = "operator-seat"
 NOVEL_VERIFIED_BY = "research-agent"
 
 __all__ = [
     "COMMONS_DOMAIN_PREFIXES",
+    "COMMONS_EVIDENCE_SCHEME",
     "COMMONS_VERIFIED_BY",
     "classification_for_pair",
+    "commons_credit",
+    "commons_evidence",
     "domain_is_commons",
     "file_classification",
     "has_citable_source",
@@ -110,9 +162,50 @@ def seed_pair_verification(
         data=data,
         sources=sources,
     )
-    if bucket == "commons" and domain_is_commons(domain, data):
-        return "machine", COMMONS_VERIFIED_BY
+    # `classification_for_pair` already demands a citation, and a commons
+    # domain or file unless the pair itself is classified commons.
+    if bucket == "commons":
+        return "human", commons_credit(sources)
     return "asserted", pair.get("verified_by") or NOVEL_VERIFIED_BY
+
+
+def _publisher(source: str) -> str:
+    host = urlparse(str(source).strip()).netloc.lower().split("@")[-1].split(":")[0]
+    host = host.removeprefix("www.")
+    if not host:
+        return ""
+    for suffix, name in _PUBLISHERS.items():
+        if host == suffix or host.endswith("." + suffix):
+            return name
+    return host
+
+
+def _publishers(sources: list[str]) -> list[str]:
+    names: list[str] = []
+    for source in sources:
+        name = _publisher(source)
+        if name and name not in names:
+            names.append(name)
+    return names
+
+
+def commons_credit(sources: list[str]) -> str:
+    """`verified_by` for a seed commons nugget: the public record it rests on,
+    named by its cited publishers — not whoever loaded the seed."""
+    names = _publishers(sources)
+    return f"public record: {', '.join(names)}" if names else "public record"
+
+
+def commons_evidence(domain: str, sources: list[str]) -> dict[str, Any]:
+    """The evidence a seed commons nugget carries at the `human` rung: the
+    publishers credited for it, unsealed, with Nestor reconciliation to come."""
+    return {
+        "scheme": COMMONS_EVIDENCE_SCHEME,
+        "basis": "commons",
+        "credited_to": _publishers(sources),
+        "domain": domain,
+        "sealed": False,
+    }
 
 
 def verification_for_intake(
@@ -147,19 +240,47 @@ def intake_nugget_id(domain: str, question: str) -> str:
     return f"i{digest[:10]}"
 
 
-def promote_commons_in_store(*, dry_run: bool = False) -> dict[str, int]:
-    """Upgrade asserted nuggets in commons domains to machine when sourced."""
+def promote_commons_in_store(
+    *,
+    dry_run: bool = False,
+    commons_domains: set[str] | None = None,
+    commons_ids: set[str] | None = None,
+) -> dict[str, int]:
+    """Upgrade asserted or machine nuggets in commons domains to the `human`
+    rung when sourced, credited to the public record — and re-credit commons
+    still carrying a legacy scheme that named the developer instead.
+
+    A domain is commons by its ``core-`` prefix or by a file-level
+    ``"classification": "commons"`` in the bundled seed; a single nugget is
+    commons when its seed pair is classified ``"commons"``. The nugget keeps
+    neither flag, only its domain (as its first tag) and its seed id, so both
+    are read from the seed itself unless ``commons_domains`` / ``commons_ids``
+    are given.
+    """
     from jeles import corpus
 
+    if commons_domains is None:
+        from jeles.seed_loader import seed_commons_domains
+
+        commons_domains = seed_commons_domains()
+    if commons_ids is None:
+        from jeles.seed_loader import seed_commons_nugget_ids
+
+        commons_ids = seed_commons_nugget_ids()
     counts = {"promoted": 0, "skipped": 0, "errors": 0}
     for nugget in corpus.list_nuggets(limit=20000):
         kind = nugget.get("verification_kind") or "human"
-        if kind != "asserted":
+        legacy = (nugget.get("evidence") or {}).get("scheme") in LEGACY_COMMONS_SCHEMES
+        if kind not in ("asserted", "machine") and not legacy:
             counts["skipped"] += 1
             continue
         tags = list(nugget.get("tags") or [])
         domain = tags[0] if tags else ""
-        if not is_commons_domain(domain):
+        if (
+            not is_commons_domain(domain)
+            and domain not in commons_domains
+            and nugget.get("_id") not in commons_ids
+        ):
             counts["skipped"] += 1
             continue
         sources = [str(s) for s in (nugget.get("sources") or [])]
@@ -180,13 +301,14 @@ def promote_commons_in_store(*, dry_run: bool = False) -> dict[str, int]:
             question=question,
             answer=answer,
             sources=sources,
-            verified_by=COMMONS_VERIFIED_BY,
+            verified_by=commons_credit(sources),
             tags=tags,
             nugget_id=nugget.get("_id", ""),
-            verification_kind="machine",
+            verification_kind="human",
             written_by=nugget.get("written_by") or "jeles-seed",
             evidence={
                 **dict(nugget.get("evidence") or {}),
+                **commons_evidence(domain, sources),
                 "commons_promote": {"method": "promote_commons_in_store"},
             },
         )

@@ -1,0 +1,294 @@
+{
+  "domain": "core-world-history",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What was the Neolithic (Agricultural) Revolution?",
+      "source_lang": "en",
+      "target_text": "The Neolithic Revolution was the shift from hunting and gathering to farming and settled village life. It began c. 10,000 BCE (about 11,700 years ago) in the Fertile Crescent of southwestern Asia, where people domesticated wheat, barley, sheep and goats. Farming also arose independently elsewhere, with rice in Asia, maize in Mesoamerica and sorghum in Africa. Stored food surpluses supported larger populations and, later, towns.",
+      "target_lang": "en",
+      "reason": "Foundational turning point that every later civilization builds on."
+    },
+    {
+      "source_text": "When and where was writing first invented?",
+      "source_lang": "en",
+      "target_text": "The earliest known writing is cuneiform, developed by the Sumerians of southern Mesopotamia (modern Iraq). By c. 3200 BCE, scribes in the city of Uruk were replacing early picture-signs with signs for sounds. Cuneiform was made of wedge-shaped marks pressed into clay tablets, and the earliest tablets are administrative records of goods and rations.",
+      "target_lang": "en",
+      "reason": "Start of recorded history; a standard reference date."
+    },
+    {
+      "source_text": "When were the Egyptian pyramids at Giza built?",
+      "source_lang": "en",
+      "target_text": "The Great Pyramid of Giza was built for Khufu (Cheops), second king of Egypt's 4th dynasty, during the Old Kingdom. It was completed in the mid-3rd millennium BCE; sources date Khufu's reign to roughly the 26th-25th centuries BCE, and exact years vary. It is the largest of the pyramids at Giza.",
+      "target_lang": "en",
+      "reason": "Iconic monument of one of the earliest states; frequently asked date."
+    },
+    {
+      "source_text": "What was the Indus Valley Civilization?",
+      "source_lang": "en",
+      "target_text": "The Indus Valley (Harappan) Civilization was a Bronze Age urban culture along the Indus River system in present-day Pakistan and northwestern India. Its mature phase dates to roughly 2500-1700 BCE. Its largest cities were Harappa and Mohenjo-daro, which archaeologists identified in 1921 and 1922.",
+      "target_lang": "en",
+      "reason": "One of the three earliest civilizations alongside Mesopotamia and Egypt; global coverage."
+    },
+    {
+      "source_text": "When was China first unified, and when was the Great Wall built?",
+      "source_lang": "en",
+      "target_text": "China was first unified in 221 BCE, when the state of Qin conquered its rivals and its ruler became Qin Shi Huang, the first emperor. The Qin dynasty lasted until 206 BCE. Qin linked earlier border walls into a northern defensive line. The Great Wall is many walls built over about two millennia, and most of what stands today was built by the Ming dynasty (1368-1644).",
+      "target_lang": "en",
+      "reason": "Anchors the start of imperial China and dates its best-known monument."
+    },
+    {
+      "source_text": "What was classical Greece?",
+      "source_lang": "en",
+      "target_text": "Classical Greece is the period of ancient Greek history from c. 480 to 323 BCE, between the Archaic and Hellenistic periods. In Athens, the reforms of Cleisthenes (c. 508 BCE) set up a direct democracy in which male citizens voted in person. The period is commonly dated as ending with the death of Alexander the Great in 323 BCE.",
+      "target_lang": "en",
+      "reason": "Standard periodization of ancient Greece and origin point of the word democracy."
+    },
+    {
+      "source_text": "When did the Western Roman Empire fall?",
+      "source_lang": "en",
+      "target_text": "The Western Roman Empire is traditionally dated as ending in 476 CE, when the Germanic commander Odoacer deposed the young emperor Romulus Augustulus and named no successor in the West. Odoacer ruled Italy as king and sent the imperial regalia to the emperor in Constantinople. The Eastern Roman (Byzantine) Empire continued until 1453.",
+      "target_lang": "en",
+      "reason": "Conventional dividing line between antiquity and the Middle Ages in Europe."
+    },
+    {
+      "source_text": "When did the major world religions begin?",
+      "source_lang": "en",
+      "target_text": "Buddhism traces to the teaching of Siddhartha Gautama, the Buddha, in northern India c. 6th-5th century BCE. Christianity emerged in the 1st century CE among followers of Jesus in Judea. Islam traces to the Prophet Muhammad, who by tradition began receiving the revelations of the Qur'an in Mecca in 610 CE.",
+      "target_lang": "en",
+      "reason": "Dates-only orientation for faiths followed by billions of people."
+    },
+    {
+      "source_text": "What was the Islamic Golden Age?",
+      "source_lang": "en",
+      "target_text": "The Islamic Golden Age was a period of scientific, philosophical and cultural flourishing in the Islamic world, usually dated from the reign of the Abbasid caliph Harun al-Rashid (786-809). In Baghdad, the House of Wisdom became a center where scholars translated Greek and other works on mathematics, astronomy, medicine and philosophy. It grew further under the caliph al-Ma'mun (813-833).",
+      "target_lang": "en",
+      "reason": "Major non-Western chapter in the history of science and learning."
+    },
+    {
+      "source_text": "What was the Mongol Empire?",
+      "source_lang": "en",
+      "target_text": "The Mongol Empire was founded in 1206, when Temujin was proclaimed Genghis Khan, ruler of the united Mongol tribes. At its peak it covered about 23 million square km (9 million square miles) across Asia and into Europe, making it the largest contiguous land empire in history. From the 1260s it split into several separate khanates.",
+      "target_lang": "en",
+      "reason": "Largest land empire ever; linked East and West across Eurasia."
+    },
+    {
+      "source_text": "Who invented the printing press, and when?",
+      "source_lang": "en",
+      "target_text": "Johannes Gutenberg developed a movable-type printing press in Germany c. 1440. He combined metal type cast from a lead-tin-antimony alloy, oil-based ink and an adapted screw press. His 42-line Bible was completed c. 1455, in about 180 copies. Metal movable type existed earlier in Korea, where the book Jikji was printed in 1377.",
+      "target_lang": "en",
+      "reason": "Key technology in the spread of books and literacy; standard date question."
+    },
+    {
+      "source_text": "What happened in 1492, and what was the Columbian Exchange?",
+      "source_lang": "en",
+      "target_text": "Christopher Columbus sailed from Spain on August 3, 1492, with three ships and reached an island in the Bahamas on October 12, 1492. He named it San Salvador; its Taino inhabitants called it Guanahani. The resulting transfer of plants, animals, diseases, people and ideas between the Americas and Afro-Eurasia is called the Columbian Exchange, a term coined by historian Alfred W. Crosby in 1972.",
+      "target_lang": "en",
+      "reason": "Marks lasting contact between the Eastern and Western hemispheres."
+    },
+    {
+      "source_text": "What was the Industrial Revolution?",
+      "source_lang": "en",
+      "target_text": "The Industrial Revolution was the shift from farming and handicraft economies to industry and machine manufacturing. It began in Britain in the 18th century. Its first phase ran from the mid-1700s to about 1830, driven by steam power (Newcomen's engine in 1712, later improved by James Watt) and the factory system. A second phase, from the mid-1800s to the early 1900s, spread across Europe, North America and Japan.",
+      "target_lang": "en",
+      "reason": "Defines the transition to the modern industrial economy."
+    },
+    {
+      "source_text": "What was World War I?",
+      "source_lang": "en",
+      "target_text": "World War I was a global war fought from 1914 to 1918 between the Allies (including Britain, France, Russia and, from 1917, the United States) and the Central Powers (including Germany, Austria-Hungary and the Ottoman Empire). It began after Archduke Franz Ferdinand was assassinated in Sarajevo on June 28, 1914. Fighting ended with the armistice of November 11, 1918, and the Treaty of Versailles followed in 1919.",
+      "target_lang": "en",
+      "reason": "Core 20th-century event with fixed dates."
+    },
+    {
+      "source_text": "What was World War II, and when was the United Nations founded?",
+      "source_lang": "en",
+      "target_text": "World War II was a global war, conventionally dated from Germany's invasion of Poland on September 1, 1939, to Japan's formal surrender on September 2, 1945. The Allies (including Britain, the Soviet Union, the United States and China) fought the Axis (Germany, Italy and Japan). Germany surrendered on May 8, 1945. Afterward, 50 nations signed the UN Charter on June 26, 1945, and the United Nations came into existence on October 24, 1945.",
+      "target_lang": "en",
+      "reason": "Core 20th-century event with fixed dates, plus the founding of the postwar international order."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What was the Neolithic (Agricultural) Revolution?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
+      "reason": "Definition, dating after the last Ice Age, and independent origins of farming in several regions"
+    },
+    {
+      "pair_source": "What was the Neolithic (Agricultural) Revolution?",
+      "kind": "url",
+      "locator": "https://www.history.com/topics/pre-history/neolithic-revolution",
+      "reason": "Transition from nomadic hunter-gatherer bands to agricultural settlements, c. 10,000 BCE in the Fertile Crescent"
+    },
+    {
+      "pair_source": "When and where was writing first invented?",
+      "kind": "url",
+      "locator": "https://www.worldhistory.org/Cuneiform/",
+      "reason": "Sumerian origin of cuneiform and its development in Uruk c. 3200 BCE"
+    },
+    {
+      "pair_source": "When and where was writing first invented?",
+      "kind": "url",
+      "locator": "https://smarthistory.org/cuneiform",
+      "reason": "Earliest tablets as administrative records of rations and goods"
+    },
+    {
+      "pair_source": "When were the Egyptian pyramids at Giza built?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Great-Pyramid",
+      "reason": "Great Pyramid built for Khufu of the 4th dynasty; completion date"
+    },
+    {
+      "pair_source": "When were the Egyptian pyramids at Giza built?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Khufu",
+      "reason": "Khufu's dynasty and approximate reign dates"
+    },
+    {
+      "pair_source": "What was the Indus Valley Civilization?",
+      "kind": "url",
+      "locator": "https://britannica.com/topic/Indus-civilization/Introduction",
+      "reason": "Dates of c. 2500-1700 BCE and identification of Harappa (1921) and Mohenjo-daro (1922)"
+    },
+    {
+      "pair_source": "What was the Indus Valley Civilization?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/kids/article/Indus-Valley-civilization/353289",
+      "reason": "Harappa and Mohenjo-daro as the largest cities, in present-day Pakistan"
+    },
+    {
+      "pair_source": "When was China first unified, and when was the Great Wall built?",
+      "kind": "url",
+      "locator": "https://britannica.com/topic/Great-Wall-of-China/Introduction",
+      "reason": "Great Wall as many walls built over about two millennia; extent of the Ming-era wall"
+    },
+    {
+      "pair_source": "When was China first unified, and when was the Great Wall built?",
+      "kind": "url",
+      "locator": "https://human.libretexts.org/Bookshelves/Art/Art_History_and_Theory/Asian_Art_History_(Gustlin_and_Gustlin)/05%3A_The_Maritime_and_Overland_Silk_Road_(400_BCE__50_BCE)/5.4%3A_Qin_Dynasty_(221_BCE__206_BCE)",
+      "reason": "Qin dynasty dates 221-206 BCE and Qin unification"
+    },
+    {
+      "pair_source": "What was classical Greece?",
+      "kind": "url",
+      "locator": "https://www.metmuseum.org/zh/essays/the-art-of-classical-greece-ca-480-323-b-c",
+      "reason": "Met Heilbrunn Timeline essay dating the Classical period ca. 480-323 B.C."
+    },
+    {
+      "pair_source": "What was classical Greece?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Athens_(polis)",
+      "reason": "Athenian democracy established 508 BC under Cleisthenes as a direct democracy"
+    },
+    {
+      "pair_source": "When did the Western Roman Empire fall?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Odoacer",
+      "reason": "Odoacer's deposition of Romulus Augustulus in 476"
+    },
+    {
+      "pair_source": "When did the Western Roman Empire fall?",
+      "kind": "url",
+      "locator": "https://history.com/this-day-in-history/year/476",
+      "reason": "Western Roman Empire falls in 476"
+    },
+    {
+      "pair_source": "When did the major world religions begin?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Timeline_of_religion",
+      "reason": "Chronology of the founding of major religions"
+    },
+    {
+      "pair_source": "When did the major world religions begin?",
+      "kind": "url",
+      "locator": "https://beyond.britannica.com/can-you-provide-a-timeline-chronology-of-the-origins-beginnings-of-the-top-10-living-surviving-religions-of-the-world",
+      "reason": "Britannica's origin dates: Buddhism c. 6th century BCE, Christianity 1st century CE, Islam 7th century CE"
+    },
+    {
+      "pair_source": "What was the Islamic Golden Age?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Islamic_Golden_Age",
+      "reason": "Dating from Harun al-Rashid and the House of Wisdom in Baghdad"
+    },
+    {
+      "pair_source": "What was the Islamic Golden Age?",
+      "kind": "url",
+      "locator": "https://gulfnews.com/amp/story/uae%2Feducation%2Fhouse-of-wisdom-since-the-era-of-abbasid-empire-1.208251",
+      "reason": "Al-Ma'mun's expansion of the House of Wisdom and its translation work"
+    },
+    {
+      "pair_source": "What was the Mongol Empire?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/place/Mongol-empire",
+      "reason": "Founding in 1206 and peak extent of about 23 million square km"
+    },
+    {
+      "pair_source": "What was the Mongol Empire?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Mongol_Empire",
+      "reason": "Overview of the empire's extent and later division"
+    },
+    {
+      "pair_source": "Who invented the printing press, and when?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Johannes-Gutenberg",
+      "reason": "Gutenberg's press, type alloy, ink and the Gutenberg Bible"
+    },
+    {
+      "pair_source": "Who invented the printing press, and when?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Printing_press",
+      "reason": "Gutenberg press c. 1440, the 1455 Bible of about 180 copies, and Korea's Jikji (1377)"
+    },
+    {
+      "pair_source": "What happened in 1492, and what was the Columbian Exchange?",
+      "kind": "url",
+      "locator": "https://www.history.com/this-day-in-history/october-12/columbus-reaches-the-new-world",
+      "reason": "Columbus's landfall in the Bahamas on October 12, 1492"
+    },
+    {
+      "pair_source": "What happened in 1492, and what was the Columbian Exchange?",
+      "kind": "url",
+      "locator": "https://britannica.com/topic/The-Columbian-Exchange",
+      "reason": "Definition of the Columbian Exchange as the transfer of plants, animals, diseases, people and ideas"
+    },
+    {
+      "pair_source": "What was the Industrial Revolution?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/event/Industrial-Revolution",
+      "reason": "Definition, British origin and the two phases with their dates"
+    },
+    {
+      "pair_source": "What was the Industrial Revolution?",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/industrial-revolution",
+      "reason": "Key inventions including the Newcomen and Watt steam engines"
+    },
+    {
+      "pair_source": "What was World War I?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/event/World-War-I",
+      "reason": "Overview of the war, the belligerents and its outcome"
+    },
+    {
+      "pair_source": "What was World War I?",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/world-war-i-history",
+      "reason": "The assassination of Franz Ferdinand, Austria-Hungary's war declaration and US entry in 1917"
+    },
+    {
+      "pair_source": "What was World War II, and when was the United Nations founded?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/World_War_II",
+      "reason": "Dates of 1 September 1939 to 2 September 1945; Germany's surrender on 8 May 1945"
+    },
+    {
+      "pair_source": "What was World War II, and when was the United Nations founded?",
+      "kind": "url",
+      "locator": "https://www.un.org/en/about-us/history-of-the-un",
+      "reason": "Charter signed 26 June 1945 at San Francisco; UN came into existence 24 October 1945"
+    }
+  ]
+}

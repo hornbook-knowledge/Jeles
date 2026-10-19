@@ -55,7 +55,7 @@ _TIMEOUT = float(os.environ.get("JELES_REMOTE_TIMEOUT", "30"))
 # The remote lane returns a fan-out across dozens of sources and can legitimately
 # be large; cap it anyway, since it is untrusted input like any other response.
 _MAX_BYTES = int(os.environ.get("JELES_REMOTE_MAX_BYTES", str(8 * 1024 * 1024)))
-_UA = "jeles/institutional (+https://github.com/rudi193-cmd/Jeles)"
+_UA = "jeles/institutional (+https://github.com/hornbook-knowledge/Jeles)"
 
 
 def _remote_base() -> str:

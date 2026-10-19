@@ -1,0 +1,288 @@
+{
+  "domain": "core-ecology-earth-systems",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What is the water cycle?",
+      "source_lang": "en",
+      "target_text": "The water cycle is the continuous movement of water between the oceans, the air, and the land. Heat from the Sun evaporates water, and plants release vapor by transpiration; the vapor cools and condenses into clouds, falls as precipitation, and returns to the sea through rivers, runoff, and groundwater. Globally, evaporation and precipitation are roughly in balance.",
+      "target_lang": "en",
+      "reason": "Foundational Earth-system process taught in every science curriculum."
+    },
+    {
+      "source_text": "What is the carbon cycle?",
+      "source_lang": "en",
+      "target_text": "The carbon cycle is the movement of carbon among the atmosphere, oceans, living things, soils, and rocks. Plants and algae take in carbon dioxide through photosynthesis; respiration, decomposition, and burning return it to the air. Most of Earth's carbon is stored in rocks and sediments, and the ocean holds far more than the atmosphere; exchanges with rock take millions of years, while those with living things are fast.",
+      "target_lang": "en",
+      "reason": "Core biogeochemical cycle underpinning ecology and climate science."
+    },
+    {
+      "source_text": "What is the nitrogen cycle?",
+      "source_lang": "en",
+      "target_text": "Nitrogen makes up most of the air, but most organisms cannot use it as N2 gas. In the nitrogen cycle, bacteria (some living in legume root nodules) and, to a lesser extent, lightning fix nitrogen into ammonia; other bacteria convert it to nitrites and nitrates that plants absorb (nitrification). Decomposers return nitrogen to the soil, and denitrifying bacteria release it back to the air as gas.",
+      "target_lang": "en",
+      "reason": "Key nutrient cycle explaining soil fertility and the role of microbes."
+    },
+    {
+      "source_text": "What is the greenhouse effect?",
+      "source_lang": "en",
+      "target_text": "Sunlight passes through the atmosphere and warms Earth's surface, which then gives off heat as infrared radiation. Greenhouse gases such as water vapor, carbon dioxide, and methane absorb much of that infrared energy and re-emit it in all directions, including back toward the surface. This natural effect keeps Earth about 33 degrees C warmer than it would otherwise be; nitrogen and oxygen, the main gases in air, contribute almost nothing.",
+      "target_lang": "en",
+      "reason": "Basic atmospheric physics; card limited to the mechanism, not policy."
+    },
+    {
+      "source_text": "What is a biome?",
+      "source_lang": "en",
+      "target_text": "A biome is a large region of Earth defined by its climate and the plants and animals adapted to it, such as tundra, taiga (boreal forest), temperate forest, tropical rainforest, grassland and savanna, and desert. Aquatic biomes include freshwater and marine systems. The same biome type can occur on different continents wherever conditions are similar, and schemes differ in how many biomes they count.",
+      "target_lang": "en",
+      "reason": "Organizing concept for describing life zones on Earth."
+    },
+    {
+      "source_text": "What are food webs and trophic levels?",
+      "source_lang": "en",
+      "target_text": "A food web shows who eats whom in an ecosystem. Organisms are grouped into trophic levels: producers such as plants make their own food, herbivores eat producers, and carnivores and omnivores eat other consumers. Only a small share of energy, on average about 10 percent, passes from one level to the next, mostly lost as heat, which is why food chains rarely exceed four or five levels.",
+      "target_lang": "en",
+      "reason": "Foundational ecology concept about energy flow."
+    },
+    {
+      "source_text": "What is a keystone species?",
+      "source_lang": "en",
+      "target_text": "A keystone species has an effect on its ecosystem far larger than its numbers would suggest, so removing it changes the whole community. Ecologist Robert Paine introduced the idea in 1969 after experiments showed that removing the ochre sea star from rocky shores in Washington State let mussels take over and sharply reduced the number of species there.",
+      "target_lang": "en",
+      "reason": "Widely used ecology term with a clear origin."
+    },
+    {
+      "source_text": "What is the ozone layer and what was the Montreal Protocol?",
+      "source_lang": "en",
+      "target_text": "The ozone layer is a region of the stratosphere with a high concentration of ozone, which absorbs much of the Sun's harmful ultraviolet radiation. Chemicals such as chlorofluorocarbons (CFCs) were found to destroy ozone, and the discovery of the Antarctic ozone hole spurred action. The Montreal Protocol, agreed on 16 September 1987, set controls on these chemicals; by 2010 production of CFCs and halons had essentially ended.",
+      "target_lang": "en",
+      "reason": "Landmark environmental science and treaty fact."
+    },
+    {
+      "source_text": "What are the layers of the atmosphere?",
+      "source_lang": "en",
+      "target_text": "From the ground up, the main layers are the troposphere (to about 12 km on average, where weather happens), the stratosphere (containing the ozone layer), the mesosphere (the coldest layer, where most meteors burn up), the thermosphere, and the exosphere, which fades into space. The ionosphere is an electrically charged region overlapping the upper layers rather than a separate layer.",
+      "target_lang": "en",
+      "reason": "Standard atmospheric structure used in weather, aviation, and space science."
+    },
+    {
+      "source_text": "What are the layers of the Earth?",
+      "source_lang": "en",
+      "target_text": "Earth has four main layers. The rocky crust is thin, about 5 km under oceans and around 30 km under continents; the mantle beneath is about 2,900 km thick, mostly solid rock that flows very slowly. The outer core is liquid iron and nickel whose motion generates Earth's magnetic field, and the inner core is a solid iron-nickel ball about 1,220 km in radius.",
+      "target_lang": "en",
+      "reason": "Basic structure of the planet referenced across earth science."
+    },
+    {
+      "source_text": "What is the rock cycle?",
+      "source_lang": "en",
+      "target_text": "The rock cycle describes how the three main rock types change into one another over geologic time. Igneous rock forms when magma or lava cools; sedimentary rock forms when weathered fragments or organic remains are deposited, compacted, and cemented; metamorphic rock forms when existing rock is changed by heat and pressure without melting. Any type can become any other, and the cycle has no fixed starting point.",
+      "target_lang": "en",
+      "reason": "Core geology concept connecting rock types and processes."
+    },
+    {
+      "source_text": "What drives ocean currents?",
+      "source_lang": "en",
+      "target_text": "Surface currents are driven mainly by wind and are steered by Earth's rotation into large circular systems called gyres. Deep currents are driven by differences in water density, set by temperature and salinity, in a slow global circulation called thermohaline circulation or the global conveyor belt. Cold, salty water sinks near the poles, and a full circuit is estimated to take about 1,000 years.",
+      "target_lang": "en",
+      "reason": "Key Earth-system process that moves heat and nutrients around the planet."
+    },
+    {
+      "source_text": "What is pollination?",
+      "source_lang": "en",
+      "target_text": "Pollination is the transfer of pollen from the male part of a flower (the stamen) to the female part, allowing fertilization and seed production. Some plants are pollinated by wind or water, but most flowering plants rely on animals such as bees, butterflies, moths, flies, beetles, birds, and bats. Bees are generally considered the most important pollinators.",
+      "target_lang": "en",
+      "reason": "Fundamental plant reproduction and ecology concept."
+    },
+    {
+      "source_text": "What is decomposition in nature?",
+      "source_lang": "en",
+      "target_text": "Decomposition is the breakdown of dead plants, animals, and wastes into simpler substances. Fungi and bacteria do most of the chemical work by releasing enzymes, while detritivores such as earthworms, termites, and millipedes break material into smaller pieces. The process returns carbon dioxide, water, and nutrients such as nitrogen and phosphorus to the soil and air, where plants can use them again.",
+      "target_lang": "en",
+      "reason": "Essential link in nutrient cycles and food webs."
+    },
+    {
+      "source_text": "What are coral reefs?",
+      "source_lang": "en",
+      "target_text": "Coral reefs are underwater structures built by colonies of tiny animals called coral polyps, which secrete calcium carbonate skeletons. Most reef-building corals host algae called zooxanthellae in their tissues that provide much of their food through photosynthesis. Reefs cover less than 1 percent of the ocean floor but support about a quarter of all marine species. When water is too warm, corals can expel their algae and bleach.",
+      "target_lang": "en",
+      "reason": "Major marine ecosystem frequently asked about."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What is the water cycle?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/water-science-school/water-cycle",
+      "reason": "USGS Water Science School overview of the water cycle."
+    },
+    {
+      "pair_source": "What is the water cycle?",
+      "kind": "url",
+      "locator": "https://www.usgs.gov/water-science-school/science/evaporation-and-water-cycle",
+      "reason": "USGS page on evaporation and the global evaporation-precipitation balance."
+    },
+    {
+      "pair_source": "What is the carbon cycle?",
+      "kind": "url",
+      "locator": "https://www.noaa.gov/education/resource-collections/climate/carbon-cycle",
+      "reason": "NOAA education resource on carbon reservoirs and exchanges."
+    },
+    {
+      "pair_source": "What is the carbon cycle?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/carbon-cycle",
+      "reason": "Britannica entry on the carbon cycle."
+    },
+    {
+      "pair_source": "What is the nitrogen cycle?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/nitrogen-cycle",
+      "reason": "Britannica entry on nitrogen fixation, nitrification, and denitrification."
+    },
+    {
+      "pair_source": "What is the nitrogen cycle?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Nitrogen_cycle",
+      "reason": "Article detailing the microbial steps of the nitrogen cycle."
+    },
+    {
+      "pair_source": "What is the greenhouse effect?",
+      "kind": "url",
+      "locator": "https://www.noaa.gov/basics-of-carbon-cycle-and-greenhouse-effect",
+      "reason": "NOAA explainer on the greenhouse effect and the roughly 33 degree C warming it provides."
+    },
+    {
+      "pair_source": "What is the greenhouse effect?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/greenhouse-effect",
+      "reason": "Britannica entry on the greenhouse effect."
+    },
+    {
+      "pair_source": "What is a biome?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/five-major-types-biomes/",
+      "reason": "National Geographic Education resource on the major biome types."
+    },
+    {
+      "pair_source": "What is a biome?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/students/article/biome/317523",
+      "reason": "Britannica Students entry defining biomes and listing the main types."
+    },
+    {
+      "pair_source": "What are food webs and trophic levels?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/trophic-pyramid",
+      "reason": "Britannica entry on trophic levels and pyramids."
+    },
+    {
+      "pair_source": "What are food webs and trophic levels?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/energy-flow-and-10-percent-rule/5th-grade/",
+      "reason": "National Geographic Education resource on energy flow and the 10 percent rule."
+    },
+    {
+      "pair_source": "What is a keystone species?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Keystone_species",
+      "reason": "Article on the keystone species concept and Paine's sea star experiments."
+    },
+    {
+      "pair_source": "What is a keystone species?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/role-keystone-species-ecosystem/",
+      "reason": "National Geographic Education resource on the role of keystone species."
+    },
+    {
+      "pair_source": "What is the ozone layer and what was the Montreal Protocol?",
+      "kind": "url",
+      "locator": "https://ozone.unep.org/20-questions-and-answers",
+      "reason": "UNEP Ozone Secretariat questions and answers on the ozone layer and the Montreal Protocol."
+    },
+    {
+      "pair_source": "What is the ozone layer and what was the Montreal Protocol?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/ozone-depletion/Ozone-layer-recovery",
+      "reason": "Britannica section on CFCs, the Montreal Protocol, and ozone layer recovery."
+    },
+    {
+      "pair_source": "What are the layers of the atmosphere?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/earth/earth-atmosphere/earths-atmosphere-a-multi-layered-cake/",
+      "reason": "NASA Science article describing the five main layers of the atmosphere."
+    },
+    {
+      "pair_source": "What are the layers of the atmosphere?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/atmosphere",
+      "reason": "Britannica entry on the atmosphere and its layers."
+    },
+    {
+      "pair_source": "What are the layers of the Earth?",
+      "kind": "url",
+      "locator": "https://science.nasa.gov/earth/facts/",
+      "reason": "NASA Earth facts page giving the thickness and composition of the crust, mantle, and core."
+    },
+    {
+      "pair_source": "What are the layers of the Earth?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/Earths-core",
+      "reason": "Britannica entry on Earth's core and the geodynamo."
+    },
+    {
+      "pair_source": "What is the rock cycle?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/rock-cycle/",
+      "reason": "National Geographic Education resource on the rock cycle and the three rock types."
+    },
+    {
+      "pair_source": "What drives ocean currents?",
+      "kind": "url",
+      "locator": "https://oceanservice.noaa.gov/facts/conveyor.html",
+      "reason": "NOAA fact page on the global ocean conveyor belt."
+    },
+    {
+      "pair_source": "What drives ocean currents?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/ocean-gyre/",
+      "reason": "National Geographic Education resource on wind-driven ocean gyres."
+    },
+    {
+      "pair_source": "What is pollination?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/pollination",
+      "reason": "Britannica entry on pollination and its agents."
+    },
+    {
+      "pair_source": "What is pollination?",
+      "kind": "url",
+      "locator": "https://www.fs.usda.gov/wildflowers/pollinators/animals/bees.shtml",
+      "reason": "USDA Forest Service page on bees as pollinators."
+    },
+    {
+      "pair_source": "What is decomposition in nature?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/decomposer",
+      "reason": "Britannica entry on decomposers and their role in nutrient recycling."
+    },
+    {
+      "pair_source": "What is decomposition in nature?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/decomposers/",
+      "reason": "National Geographic Education resource on decomposers and detritivores."
+    },
+    {
+      "pair_source": "What are coral reefs?",
+      "kind": "url",
+      "locator": "https://www.fisheries.noaa.gov/national/habitat-conservation/shallow-coral-reef-habitat",
+      "reason": "NOAA Fisheries page on coral reef habitat, area, and share of marine species."
+    },
+    {
+      "pair_source": "What are coral reefs?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/coral/",
+      "reason": "National Geographic Education resource on coral polyps and zooxanthellae."
+    }
+  ]
+}

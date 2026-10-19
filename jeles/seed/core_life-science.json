@@ -1,0 +1,276 @@
+{
+  "domain": "core-life-science",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What is a cell?",
+      "source_lang": "en",
+      "target_text": "A cell is the basic membrane-bound unit of life, and all living things are made of cells. Some organisms, such as bacteria and yeast, are a single cell; others are built from many cells with specialized jobs. Cells come in two broad kinds: prokaryotic cells, which have no nucleus, and eukaryotic cells, which keep their DNA inside a membrane-bound nucleus.",
+      "target_lang": "en",
+      "reason": "The cell is the foundational concept of all biology."
+    },
+    {
+      "source_text": "What are DNA and genes?",
+      "source_lang": "en",
+      "target_text": "DNA (deoxyribonucleic acid) is the molecule that carries the instructions for building and running nearly all living things. It is made of two twisted strands built from four bases (A, T, G, C), with A pairing with T and G with C. A gene is a segment of DNA that acts as a basic unit of heredity, usually holding the instructions for making a protein. Most DNA sits in the cell nucleus.",
+      "target_lang": "en",
+      "reason": "DNA and genes are the basis of heredity and modern biology."
+    },
+    {
+      "source_text": "What is evolution by natural selection?",
+      "source_lang": "en",
+      "target_text": "Natural selection is the process in which individuals with traits better suited to their environment tend to survive and reproduce more, so those inherited traits become more common over generations. Charles Darwin and Alfred Russel Wallace presented the idea jointly at the Linnean Society of London in 1858, and Darwin set it out in full in On the Origin of Species, published on 24 November 1859.",
+      "target_lang": "en",
+      "reason": "Natural selection is the central explanatory theory of biology."
+    },
+    {
+      "source_text": "How do scientists classify living things?",
+      "source_lang": "en",
+      "target_text": "Living things are sorted into a nested hierarchy of ranks; from broadest to narrowest the classic ranks are kingdom, phylum, class, order, family, genus and species. This ranked system is credited to the Swedish naturalist Carl Linnaeus, who set out his scheme in Systema Naturae (first edition 1735). Modern biologists usually add a still broader rank, the domain, above kingdom.",
+      "target_lang": "en",
+      "reason": "Taxonomic ranks are the standard framework for naming and grouping organisms."
+    },
+    {
+      "source_text": "Why do living things have two-part Latin scientific names?",
+      "source_lang": "en",
+      "target_text": "Each species gets a two-part scientific name under the system called binomial nomenclature: the first word is the genus and the second identifies the species, as in Homo sapiens for humans. The genus is capitalized, the species part is lowercase, and the whole name is written in italics. Carl Linnaeus used this system consistently from 1758, which is the starting point for formal animal names.",
+      "target_lang": "en",
+      "reason": "The naming convention is used in every biological reference work."
+    },
+    {
+      "source_text": "What is photosynthesis?",
+      "source_lang": "en",
+      "target_text": "Photosynthesis is the process by which plants, algae and some bacteria use light energy to turn carbon dioxide and water into sugar (glucose), releasing oxygen as a by-product. The light is captured by the green pigment chlorophyll, which in plants sits inside chloroplasts. The overall reaction is often written 6CO2 + 6H2O + light energy -> C6H12O6 + 6O2.",
+      "target_lang": "en",
+      "reason": "Photosynthesis underpins nearly all food chains and Earth's oxygen."
+    },
+    {
+      "source_text": "What is cellular respiration?",
+      "source_lang": "en",
+      "target_text": "Cellular respiration is how cells break down food molecules such as glucose to release usable energy, stored in the molecule ATP. In aerobic respiration, glucose and oxygen are used and carbon dioxide and water are given off. In eukaryotic cells most of this happens in the mitochondria; without oxygen, some cells fall back on fermentation, which yields far less energy.",
+      "target_lang": "en",
+      "reason": "Respiration is how almost all organisms power their cells."
+    },
+    {
+      "source_text": "What is the difference between bacteria and viruses?",
+      "source_lang": "en",
+      "target_text": "Bacteria are living single-celled organisms that can reproduce on their own, usually by dividing in two. Viruses are much smaller particles of genetic material (DNA or RNA) inside a protein coat; they can only multiply by taking over a living cell, so most scientists do not consider them alive. Many bacteria are harmless or helpful, and antibiotics act on bacteria, not viruses.",
+      "target_lang": "en",
+      "reason": "A basic distinction people need to understand germs and disease."
+    },
+    {
+      "source_text": "What is the difference between mitosis and meiosis?",
+      "source_lang": "en",
+      "target_text": "Mitosis is the cell division used for growth and repair: one cell divides into two daughter cells with the same chromosomes as the parent. Meiosis makes egg and sperm cells: it involves two rounds of division and produces cells with half the usual number of chromosomes, each genetically different. Halving the count keeps the chromosome number stable when egg and sperm join.",
+      "target_lang": "en",
+      "reason": "The two modes of cell division are core school and reference biology."
+    },
+    {
+      "source_text": "When and why did the dinosaurs go extinct?",
+      "source_lang": "en",
+      "target_text": "The non-avian dinosaurs died out about 66 million years ago, at the end of the Cretaceous Period. The leading explanation is the impact of an asteroid roughly 10 to 15 km wide that made the Chicxulub crater in Mexico's Yucatan Peninsula, blocking sunlight and collapsing ecosystems; volcanic eruptions in India's Deccan Traps may also have contributed. Birds are descendants of dinosaurs that survived.",
+      "target_lang": "en",
+      "reason": "One of the best-known events in the history of life."
+    },
+    {
+      "source_text": "How old is life on Earth?",
+      "source_lang": "en",
+      "target_text": "Life on Earth is at least about 3.5 billion years old. The oldest widely accepted evidence includes stromatolites, layered structures built by microbial mats, in Western Australia's Dresser Formation dated to about 3.48 billion years ago, along with microfossils of similar age. Older claims, from Greenland and Canada, exist but are still debated.",
+      "target_lang": "en",
+      "reason": "The age of life frames the whole history of evolution."
+    },
+    {
+      "source_text": "What is a species?",
+      "source_lang": "en",
+      "target_text": "A species is the basic unit of biological classification. The most widely used definition, the biological species concept associated with Ernst Mayr, treats a species as a group of populations that can interbreed in nature and produce fertile offspring, and that are reproductively isolated from other groups. Horses and donkeys are separate species because their offspring, mules, are usually sterile.",
+      "target_lang": "en",
+      "reason": "Species is the most-used unit in biology and conservation."
+    },
+    {
+      "source_text": "Who discovered how traits are inherited?",
+      "source_lang": "en",
+      "target_text": "Gregor Mendel, a 19th-century monk in Moravia (now part of the Czech Republic), worked out the basic rules of heredity by breeding pea plants between 1856 and 1863. He showed that traits are passed on in discrete units (now called genes), leading to the principles of dominance, segregation and independent assortment. He presented his work in 1865; it was rediscovered and confirmed in 1900.",
+      "target_lang": "en",
+      "reason": "Mendel's work is the founding of genetics."
+    },
+    {
+      "source_text": "What is an ecosystem and a food chain?",
+      "source_lang": "en",
+      "target_text": "An ecosystem is a community of living things interacting with each other and with their physical environment. A food chain traces how energy passes from producers (plants, algae) to consumers (herbivores, then carnivores), with decomposers such as fungi and bacteria recycling nutrients from dead matter. Interlinked food chains form a food web, and much of the energy is lost as heat at each step up.",
+      "target_lang": "en",
+      "reason": "Ecosystems and food chains are the basic vocabulary of ecology."
+    },
+    {
+      "source_text": "What is biodiversity?",
+      "source_lang": "en",
+      "target_text": "Biodiversity, short for biological diversity, is the variety of life in a place or on Earth as a whole. It covers three levels: the variety of species, the genetic variety within each species, and the variety of ecosystems. The simplest common measure is species richness, the number of species in an area.",
+      "target_lang": "en",
+      "reason": "Biodiversity is a central concept in ecology and conservation."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What is a cell?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Cell_(biology)",
+      "reason": "General reference article on the cell as the basic unit of life."
+    },
+    {
+      "pair_source": "What is a cell?",
+      "kind": "url",
+      "locator": "https://www.khanacademy.org/science/ap-biology/cell-structure-and-function/cell-compartmentalization-and-its-origins/a/prokaryotic-and-eukaryotic-cells",
+      "reason": "Explains the difference between prokaryotic and eukaryotic cells."
+    },
+    {
+      "pair_source": "What are DNA and genes?",
+      "kind": "url",
+      "locator": "https://medlineplus.gov/genetics/understanding/basics/dna/",
+      "reason": "NIH MedlinePlus explainer on what DNA is and where it is found."
+    },
+    {
+      "pair_source": "What are DNA and genes?",
+      "kind": "url",
+      "locator": "https://www.genome.gov/genetics-glossary/Gene",
+      "reason": "NHGRI glossary entry defining a gene."
+    },
+    {
+      "pair_source": "What is evolution by natural selection?",
+      "kind": "url",
+      "locator": "https://britannica.com/science/selection",
+      "reason": "Britannica on natural selection as proposed by Darwin and Wallace in 1858."
+    },
+    {
+      "pair_source": "What is evolution by natural selection?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Natural_selection",
+      "reason": "Reference article on the mechanism and history of natural selection."
+    },
+    {
+      "pair_source": "How do scientists classify living things?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Linnaean_taxonomy",
+      "reason": "Reference article on Linnaeus's ranked classification and Systema Naturae."
+    },
+    {
+      "pair_source": "Why do living things have two-part Latin scientific names?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Binomial_nomenclature",
+      "reason": "Reference article on two-part scientific names and Linnaeus's role."
+    },
+    {
+      "pair_source": "What is photosynthesis?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/photosynthesis/General-characteristics",
+      "reason": "Britannica on the general characteristics of photosynthesis."
+    },
+    {
+      "pair_source": "What is photosynthesis?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/photosynthesis/",
+      "reason": "National Geographic Education explainer on photosynthesis and chlorophyll."
+    },
+    {
+      "pair_source": "What is cellular respiration?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Cellular_respiration",
+      "reason": "Reference article on cellular respiration and ATP."
+    },
+    {
+      "pair_source": "What is cellular respiration?",
+      "kind": "url",
+      "locator": "https://kids.britannica.com/students/article/cellular-respiration/603291",
+      "reason": "Britannica student article on aerobic respiration, mitochondria and fermentation."
+    },
+    {
+      "pair_source": "What is the difference between bacteria and viruses?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/video/What-is-the-difference-between-bacteria-and-viruses/-302395",
+      "reason": "Britannica explainer on how bacteria and viruses differ."
+    },
+    {
+      "pair_source": "What is the difference between bacteria and viruses?",
+      "kind": "url",
+      "locator": "https://my.clevelandclinic.org/health/articles/24494-bacteria",
+      "reason": "Cleveland Clinic overview of bacteria, including size and comparison with viruses."
+    },
+    {
+      "pair_source": "What is the difference between mitosis and meiosis?",
+      "kind": "url",
+      "locator": "https://medlineplus.gov/genetics/understanding/howgeneswork/cellsdivide",
+      "reason": "NIH MedlinePlus explainer on how cells divide by mitosis and meiosis."
+    },
+    {
+      "pair_source": "When and why did the dinosaurs go extinct?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/K-T-extinction",
+      "reason": "Britannica on the end-Cretaceous (K-T) mass extinction."
+    },
+    {
+      "pair_source": "When and why did the dinosaurs go extinct?",
+      "kind": "url",
+      "locator": "https://www.nhm.ac.uk/discover/how-an-asteroid-caused-extinction-of-dinosaurs.html",
+      "reason": "Natural History Museum, London, on how the asteroid ended the age of dinosaurs."
+    },
+    {
+      "pair_source": "How old is life on Earth?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Earliest_known_life_forms",
+      "reason": "Reference article on the earliest known evidence of life."
+    },
+    {
+      "pair_source": "How old is life on Earth?",
+      "kind": "url",
+      "locator": "https://www.si.edu/exhibitions/early-life-earliest-traces-life:event-exhib-145",
+      "reason": "Smithsonian exhibition page on the earliest traces of life."
+    },
+    {
+      "pair_source": "What is a species?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/species-taxon",
+      "reason": "Britannica on species as a taxonomic unit."
+    },
+    {
+      "pair_source": "What is a species?",
+      "kind": "url",
+      "locator": "https://evolution.berkeley.edu/biological-species-concept/",
+      "reason": "UC Berkeley Understanding Evolution on the biological species concept."
+    },
+    {
+      "pair_source": "Who discovered how traits are inherited?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/biography/Gregor-Mendel",
+      "reason": "Britannica biography of Gregor Mendel and his pea experiments."
+    },
+    {
+      "pair_source": "Who discovered how traits are inherited?",
+      "kind": "url",
+      "locator": "https://www.genome.gov/25520230/online-education-kit-1865-mendels-peas",
+      "reason": "NHGRI education kit page on Mendel's 1865 pea work."
+    },
+    {
+      "pair_source": "What is an ecosystem and a food chain?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/ecosystem/Trophic-levels",
+      "reason": "Britannica on trophic levels and food chains in ecosystems."
+    },
+    {
+      "pair_source": "What is an ecosystem and a food chain?",
+      "kind": "url",
+      "locator": "https://education.nationalgeographic.org/resource/food-web/",
+      "reason": "National Geographic Education on food webs, producers and consumers."
+    },
+    {
+      "pair_source": "What is biodiversity?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/science/biodiversity",
+      "reason": "Britannica on biodiversity and its levels."
+    },
+    {
+      "pair_source": "What is biodiversity?",
+      "kind": "url",
+      "locator": "https://www.nhm.ac.uk/discover/what-is-biodiversity.html",
+      "reason": "Natural History Museum, London, on what biodiversity is."
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "domain": "core-arts-music",
+  "classification": "commons",
+  "pairs": [
+    {
+      "source_text": "What are pitch and an octave, and how many notes are in the Western scale?",
+      "source_lang": "en",
+      "target_text": "Pitch is how high or low a sound is, set by its frequency of vibration. An octave is the interval between two notes where the higher has twice the frequency of the lower: the A above middle C is 440 Hz, the A an octave up is 880 Hz. Western music divides the octave into 12 semitones, the chromatic scale. Other traditions divide it differently; classical Indian theory, for example, names 22 śrutis per octave.",
+      "target_lang": "en",
+      "reason": "Pitch, the octave, and the 12-note chromatic scale are the starting vocabulary of music theory."
+    },
+    {
+      "source_text": "What are rhythm, tempo, and a time signature in music?",
+      "source_lang": "en",
+      "target_text": "Rhythm is the pattern of sounds and silences in time, organized around a steady beat. Tempo is the speed of that beat, often marked in beats per minute (60 BPM is one beat per second). A time signature, written at the start of a piece, gives the meter: in simple time the top number is beats per measure and the bottom number is the note value that gets one beat, so 4/4 means four quarter-note beats.",
+      "target_lang": "en",
+      "reason": "Basic definitions of musical time that every reader of notation needs."
+    },
+    {
+      "source_text": "What are the main families of musical instruments?",
+      "source_lang": "en",
+      "target_text": "Western classification usually groups instruments by how they make sound: strings (violin, viola, cello, double bass), woodwinds (flute, oboe, clarinet, bassoon), brass (trumpet, French horn, trombone, tuba, sounded by the player's lips buzzing in a mouthpiece), and percussion (drums, xylophone). Keyboard instruments such as the piano, harpsichord, and organ are grouped by how they are played, from a row of keys.",
+      "target_lang": "en",
+      "reason": "The standard instrument families are a basic map for understanding ensembles and orchestration."
+    },
+    {
+      "source_text": "What is an orchestra?",
+      "source_lang": "en",
+      "target_text": "An orchestra is a large instrumental ensemble, usually led by a conductor, that plays classical music. The modern symphony orchestra took shape in the 18th century and is organized into four sections: strings, woodwinds, brass, and percussion. A symphony is a type of composition; the orchestra is the group that performs it.",
+      "target_lang": "en",
+      "reason": "Clarifies a common term and the orchestra's basic structure."
+    },
+    {
+      "source_text": "How does Western music notation work?",
+      "source_lang": "en",
+      "target_text": "Notes are written on a staff of five horizontal lines; a note's vertical position shows its pitch and its shape shows its duration. A clef at the start fixes the pitch of one line, anchoring the rest; the treble, bass, and C clefs are stylized letters G, F, and C. The staff is traditionally credited to Guido d'Arezzo c. 1000, and the five-line staff became standard c. 1200.",
+      "target_lang": "en",
+      "reason": "Explains how written music encodes pitch and time, with its medieval origins."
+    },
+    {
+      "source_text": "What are the oldest known musical instruments?",
+      "source_lang": "en",
+      "target_text": "The oldest widely accepted instruments are bone and ivory flutes from caves in southwestern Germany. A five-hole flute made from a griffon vulture wing bone, found at Hohle Fels and reported in 2009, is at least c. 35,000 years old and possibly c. 40,000. The finds date to the period when modern humans first settled Europe.",
+      "target_lang": "en",
+      "reason": "Points to the archaeological evidence for the deep antiquity of music."
+    },
+    {
+      "source_text": "How old is the oldest known cave art?",
+      "source_lang": "en",
+      "target_text": "The oldest dated cave art is in Indonesia. A study published in Nature in January 2026 dated a hand stencil in Liang Metanduno cave on Muna Island, off Sulawesi, to at least 67,800 years ago, by uranium-series dating of the mineral crust over it, so the true age may be older. Europe's famous painted caves, such as Chauvet and Lascaux in France, are Upper Paleolithic and younger.",
+      "target_lang": "en",
+      "reason": "Gives the settled outline of prehistoric art and how it is dated."
+    },
+    {
+      "source_text": "How did Renaissance painters create the illusion of depth?",
+      "source_lang": "en",
+      "target_text": "They used linear perspective: parallel lines receding from the viewer (orthogonals) converge at a single vanishing point on a horizon line. Filippo Brunelleschi devised the system in Florence c. 1415, and Leon Battista Alberti described it in writing in 1435. Masaccio's Holy Trinity (1425-27) is an early example in painting.",
+      "target_lang": "en",
+      "reason": "Linear perspective is a defining technical advance of Renaissance art."
+    },
+    {
+      "source_text": "When were the Renaissance and Baroque periods in art?",
+      "source_lang": "en",
+      "target_text": "Renaissance art emerged as a distinct style in Italy c. 1400, drawing on the art of ancient Greece and Rome, and flourished through the 16th century with artists such as Leonardo, Michelangelo, and Raphael. Baroque art roughly coincides with the 17th century; it began in Italy in the late 16th century and in some regions extended into the 18th.",
+      "target_lang": "en",
+      "reason": "Anchors two major Western art periods in time."
+    },
+    {
+      "source_text": "When were Romanticism, Impressionism, and Modernism in art?",
+      "source_lang": "en",
+      "target_text": "Romanticism ran from c. 1790 to c. 1850. Impressionism took its name from Claude Monet's Impression, Sunrise, shown at an independent exhibition in Paris in 1874. Modernism, a break with past traditions and a search for new forms, spans the late 19th to the mid-20th century and includes Cubism, Expressionism, and Surrealism.",
+      "target_lang": "en",
+      "reason": "Continues the standard sequence of Western art periods with dates."
+    },
+    {
+      "source_text": "How are sculptures made?",
+      "source_lang": "en",
+      "target_text": "Sculptors use three basic methods: carving, which cuts away material such as stone or wood; modeling, which shapes soft materials such as clay or wax; and casting, which pours molten metal or another liquid into a mold. Bronze is often cast by the lost-wax method, in which a wax model is encased in a heat-resistant mold, melted out, and replaced with molten bronze.",
+      "target_lang": "en",
+      "reason": "Covers the core techniques and materials behind three-dimensional art."
+    },
+    {
+      "source_text": "What is the Mona Lisa?",
+      "source_lang": "en",
+      "target_text": "The Mona Lisa is a portrait painted in oil on a poplar panel by Leonardo da Vinci, begun c. 1503 and possibly worked on until c. 1517. The sitter is traditionally identified as Lisa del Giocondo, a Florentine. It has been in the Louvre in Paris since 1797 and belongs to the French Republic.",
+      "target_lang": "en",
+      "reason": "Basic facts about one of the most widely known paintings."
+    },
+    {
+      "source_text": "What are the classical orders of architecture?",
+      "source_lang": "en",
+      "target_text": "An order is a style defined by its type of column, base, capital, and entablature. The Greeks developed the Doric (plain capital, sturdy), Ionic (scroll-shaped volutes), and Corinthian (carved acanthus leaves); the Romans added the Tuscan, a simplified Doric, and the Composite, a blend of Ionic and Corinthian. The orders have been used in Western architecture ever since.",
+      "target_lang": "en",
+      "reason": "The column orders are the basic vocabulary of classical architecture."
+    },
+    {
+      "source_text": "Who invented photography?",
+      "source_lang": "en",
+      "target_text": "Joseph Nicéphore Niépce made the earliest surviving photograph, View from the Window at Le Gras, c. 1826-27, with an exposure of several hours on a bitumen-coated pewter plate. He partnered with Louis Daguerre in 1829, and after Niépce died in 1833 Daguerre developed the daguerreotype, announced in 1839, which cut exposures to minutes. William Henry Fox Talbot announced his own process in 1839 too.",
+      "target_lang": "en",
+      "reason": "Settles the standard account of photography's invention in the 1820s-1830s."
+    },
+    {
+      "source_text": "When did motion pictures begin?",
+      "source_lang": "en",
+      "target_text": "In the early 1890s Thomas Edison's team built the Kinetograph camera and the Kinetoscope, a peephole viewer for one person. In 1895 Auguste and Louis Lumière introduced the Cinématographe, a camera and projector, and on 28 December 1895 held a paid public screening at the Grand Café in Paris, often cited as the start of cinema. Others, such as the Skladanowsky brothers, also projected films in 1895.",
+      "target_lang": "en",
+      "reason": "Gives the settled outline of film's beginnings in the 1890s."
+    }
+  ],
+  "edges": [],
+  "evidence": [
+    {
+      "pair_source": "What are pitch and an octave, and how many notes are in the Western scale?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/octave-music",
+      "reason": "Defines the octave as a 2:1 frequency ratio, with the 440/880/220 Hz example."
+    },
+    {
+      "pair_source": "What are pitch and an octave, and how many notes are in the Western scale?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/sruti",
+      "reason": "Documents the Indian division of the octave into 22 śrutis."
+    },
+    {
+      "pair_source": "What are rhythm, tempo, and a time signature in music?",
+      "kind": "url",
+      "locator": "https://britannica.com/art/time-signature",
+      "reason": "Defines the time signature and how its two numbers indicate meter."
+    },
+    {
+      "pair_source": "What are rhythm, tempo, and a time signature in music?",
+      "kind": "url",
+      "locator": "https://people.carleton.edu/~jellinge/m101s12/Pages/03/03bSimpleMeter.html",
+      "reason": "Explains tempo as beat speed indicated by a metronome marking in beats per minute."
+    },
+    {
+      "pair_source": "What are the main families of musical instruments?",
+      "kind": "url",
+      "locator": "https://human.libretexts.org/Courses/Prince_Georges_Community_College/Music_Appreciation%3A_A_Topical_Approach_to_Music_Genre_and_Style/02%3A_Elements_of_Music/2.02%3A_Instruments",
+      "reason": "Music appreciation text describing the string, woodwind, brass, and percussion families."
+    },
+    {
+      "pair_source": "What are the main families of musical instruments?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Keyboard_instrument",
+      "reason": "Describes keyboard instruments, classified by how they are played, including piano and organ."
+    },
+    {
+      "pair_source": "What is an orchestra?",
+      "kind": "url",
+      "locator": "https://britannica.com/art/Whats-the-Difference-Between-a-Symphony-and-an-Orchestra",
+      "reason": "Britannica explainer on the orchestra, its four sections, and its 18th-century development."
+    },
+    {
+      "pair_source": "What is an orchestra?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/dictionary/orchestra",
+      "reason": "Dictionary definition of an orchestra as a conductor-led ensemble."
+    },
+    {
+      "pair_source": "How does Western music notation work?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/staff",
+      "reason": "Britannica on the staff, Guido d'Arezzo, and the five-line staff c. 1200."
+    },
+    {
+      "pair_source": "How does Western music notation work?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Staff_(music)",
+      "reason": "Overview of the musical staff, clefs, and note placement."
+    },
+    {
+      "pair_source": "What are the oldest known musical instruments?",
+      "kind": "url",
+      "locator": "https://www.nationalgeographic.com/culture/article/bone-flute-is-oldest-instrument--study-says",
+      "reason": "Reports the 2009 Hohle Fels vulture-bone flute find and its c. 35,000-40,000-year age."
+    },
+    {
+      "pair_source": "What are the oldest known musical instruments?",
+      "kind": "url",
+      "locator": "https://www.sciencenews.org/article/evidence-ancient-roots",
+      "reason": "Coverage of the Hohle Fels and related early flute finds."
+    },
+    {
+      "pair_source": "How did Renaissance painters create the illusion of depth?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/linear-perspective",
+      "reason": "Britannica on linear perspective, Brunelleschi c. 1415, Alberti 1435, and early examples."
+    },
+    {
+      "pair_source": "When were the Renaissance and Baroque periods in art?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/Renaissance-art",
+      "reason": "Britannica on Renaissance art emerging in Italy c. 1400."
+    },
+    {
+      "pair_source": "When were the Renaissance and Baroque periods in art?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/print/article/53809",
+      "reason": "Britannica on Baroque art roughly coinciding with the 17th century."
+    },
+    {
+      "pair_source": "When were Romanticism, Impressionism, and Modernism in art?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/romanticism",
+      "reason": "Britannica dates Romanticism c. 1790-c. 1850."
+    },
+    {
+      "pair_source": "When were Romanticism, Impressionism, and Modernism in art?",
+      "kind": "url",
+      "locator": "https://www.britannica.com/art/modern-art",
+      "reason": "Britannica on modern art and Modernism from the late 19th century."
+    },
+    {
+      "pair_source": "How are sculptures made?",
+      "kind": "url",
+      "locator": "https://www.vam.ac.uk/articles/sculpture-techniques",
+      "reason": "Victoria and Albert Museum overview of sculpture techniques, including sand and lost-wax casting."
+    },
+    {
+      "pair_source": "What is the Mona Lisa?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Mona_Lisa",
+      "reason": "Encyclopedia entry on the Mona Lisa's artist, dating, sitter, and Louvre ownership."
+    },
+    {
+      "pair_source": "What are the classical orders of architecture?",
+      "kind": "url",
+      "locator": "https://britannica.com/summary/order-architecture",
+      "reason": "Britannica summary of the five classical orders and their features."
+    },
+    {
+      "pair_source": "What are the classical orders of architecture?",
+      "kind": "url",
+      "locator": "https://en.wikipedia.org/wiki/Classical_order",
+      "reason": "Encyclopedia entry on the classical orders."
+    },
+    {
+      "pair_source": "Who invented photography?",
+      "kind": "url",
+      "locator": "https://blog.scienceandmediamuseum.org.uk/a-z-of-photography-joseph-nicephore-niepce-first-photograph/",
+      "reason": "Science and Media Museum on Niépce and the first surviving photograph."
+    },
+    {
+      "pair_source": "Who invented photography?",
+      "kind": "url",
+      "locator": "https://ebsco.com/research-starters/history/daguerre-and-niepce-invent-daguerreotype-photography",
+      "reason": "Reference overview of the Niépce-Daguerre partnership and the 1839 daguerreotype."
+    },
+    {
+      "pair_source": "When did motion pictures begin?",
+      "kind": "url",
+      "locator": "https://www.history.com/articles/the-lumiere-brothers-pioneers-of-cinema",
+      "reason": "History.com on Edison's Kinetoscope and the Lumières' Cinématographe."
+    },
+    {
+      "pair_source": "When did motion pictures begin?",
+      "kind": "url",
+      "locator": "https://www.ebsco.com/research-starters/history/first-commercial-projection-motion-pictures",
+      "reason": "Reference overview of the first commercial film projections in 1895."
+    },
+    {
+      "pair_source": "How old is the oldest known cave art?",
+      "kind": "url",
+      "locator": "https://www.scu.edu.au/news/2026/tc-humanitys-oldest-known-cave-art-has-been-discovered-in-sulawesi/",
+      "reason": "Southern Cross University (study authors): hand stencil on Muna Island dated to at least 67,800 years"
+    },
+    {
+      "pair_source": "How old is the oldest known cave art?",
+      "kind": "url",
+      "locator": "https://www.nbcnews.com/world/asia/indonesia-cave-art-oldest-world-hand-stencils-australia-rcna255351",
+      "reason": "NBC News report on the January 2026 Nature study"
+    }
+  ]
+}

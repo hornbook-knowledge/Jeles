@@ -10,7 +10,8 @@
         "https://www.findagrave.com/memorial/73599028/clara-haber",
         "https://www.encyclopedia.com/women/encyclopedias-almanacs-transcripts-and-maps/immerwahr-clara-1870-1915",
         "https://en.wikipedia.org/wiki/Clara_Immerwahr"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK REFUTED: The Sackler family agreed to a '$7.4 billion settlement in 2024' after the Supreme Court overturned a prior deal",
@@ -19,7 +20,8 @@
         "https://ag.ny.gov/press-release/2025/attorney-general-james-secures-74-billion-purdue-pharma-and-sackler-family",
         "https://www.tn.gov/attorneygeneral/news/2025/1/23/pr25-5.html",
         "https://www.cbsnews.com/news/sackler-family-purdue-pharma-reach-7-4-billion-with-15-states-over-opioid-crisis/"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CORRECTED: The opioid epidemic 'has killed over 500,000 Americans from opioid overdoses since 1999'",
@@ -28,7 +30,8 @@
         "https://www.cdc.gov/overdose-prevention/about/understanding-the-opioid-overdose-epidemic.html",
         "https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates",
         "https://drugabusestatistics.org/drug-overdose-deaths/"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK REFUTED: Frances Haugen's 'disclosures are widely cited as a catalyst for the FTC's antitrust case against Meta, which went to trial in 2025'",
@@ -38,7 +41,8 @@
         "https://en.wikipedia.org/wiki/FTC_v._Meta",
         "https://www.democracynow.org/2025/4/16/frances_haugen_facebook_meta_antitrust",
         "https://www.npr.org/2025/11/18/nx-s1-5612785/meta-beats-ftc-case-wont-have-to-spin-off-whatsapp-instagram"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CORRECTED: Reality Winner 'received a five-year, three-month sentence -- the longest ever imposed for an unauthorized disclosure to the media at that time'",
@@ -47,7 +51,8 @@
         "https://www.abajournal.com/news/article/reality_winner_given_record_federal_sentence_for_media_leak",
         "https://www.npr.org/2018/08/23/641229886/reality-winner-sentenced-to-5-years-3-months-for-leaking-classified-info",
         "https://www.cbsnews.com/news/reality-winner-sentenced-pleaded-guilty-to-leaking-secret-u-s-report-today-2018-08-23"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CORRECTED: California's High-Speed Rail 'costs balloon to $128 billion with only 170 miles under construction in the Central Valley and no completion date in sight; $15.7 billion has been spent with the federal government moving to terminate $4 billion in grants'",
@@ -56,7 +61,8 @@
         "https://ktla.com/news/california/california-high-speed-rail-rising-costs/",
         "https://www.foxla.com/news/california-high-speed-rail-cost-soars-231-billion",
         "https://www.thecentersquare.com/california/article_52c74aa0-0555-4eba-84ee-4d9bf3528279.html"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CONFIRMED: Alexei Navalny died February 16, 2024, and 'an investigation by five European countries identified the poison dart frog toxin epibatidine as the cause of death, concluding the Russian government was responsible'",
@@ -65,7 +71,8 @@
         "https://time.com/7378735/navalny-poison-frog-toxin-russia/",
         "https://www.nbcnews.com/world/russia/russian-opposition-leader-alexei-navalny-poisoned-deadly-dart-frog-rcna259064",
         "https://www.france24.com/en/europe/20260217-why-russia-may-have-turned-dart%E2%80%91frog-toxin-epibatidine-poison-navalny"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CONFIRMED: Tucker Carlson's 'abrupt departure on April 24, 2023, days after Fox's $787.5 million Dominion settlement'",
@@ -73,7 +80,8 @@
       "evidence_urls": [
         "https://www.cnn.com/2023/04/24/media/tucker-carlson-fox-news/",
         "https://www.npr.org/2023/04/24/1171641969/fox-news-fires-tucker-carlson-in-stunning-move-a-week-after-787-million-settleme"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CONFIRMED: Ai Weiwei 'returned to Beijing for the first time in ten years' in December 2025, 'spending three weeks in China after being questioned for two hours at the airport'",
@@ -82,7 +90,8 @@
         "https://www.cnn.com/2026/01/22/style/ai-weiwei-beijing-visit-hnk-intl-dst",
         "https://www.artasiapacific.com/news/ai-weiwei-returns-to-china-after-10-years/",
         "https://news.artnet.com/art-world/ai-weiwei-returns-to-china-10-years-2740171"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CONFIRMED: X's '2024 transparency report showed that compliance with government takedown requests surged to 71 percent under Musk, up from 40 percent pre-acquisition'",
@@ -91,7 +100,8 @@
         "https://www.washingtontimes.com/news/2024/sep/26/transparency-report-shines-light-on-xs-compliance-/",
         "https://siliconangle.com/2024/09/25/x-releases-first-transparency-report-since-elon-musk-took-platform/",
         "https://thehill.com/policy/technology/4898799-x-transparency-report-elon-musk/"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CONFIRMED: Washington Post 'in February 2026 it laid off a third of its newsroom, after which CEO Will Lewis departed'",
@@ -100,7 +110,8 @@
         "https://www.npr.org/2026/02/07/nx-s1-5705413/washington-post-ceo-resigns-will-lewis",
         "https://www.cnn.com/2026/02/07/media/washington-post-will-lewis-publisher-resigns",
         "https://www.nbcnews.com/news/us-news/will-lewis-steps-down-publisher-chief-executive-washington-post-rcna158854"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CONFIRMED: CFTC 'issued its first-ever enforcement action for impeding whistleblowers, fining a commodities trader $55 million' in 2024",
@@ -109,7 +120,8 @@
         "https://ogletree.com/insights-resources/blog-posts/cftc-fines-commodities-trader-55-million-in-first-ever-whistleblower-rule-enforcement-action/",
         "https://www.cftc.gov/PressRoom/PressReleases/8921-24",
         "https://natlawreview.com/article/cftc-fines-commodities-trader-55-million-first-ever-whistleblower-rule-enforcement"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CONFIRMED: Murthy v. Missouri reached the Supreme Court in 2024 and 'the Court ruled 6-3 that the plaintiffs lacked standing'",
@@ -118,7 +130,8 @@
         "https://www.msba.org/site/site/content/News-and-Publications/News/General-News/Murthy_v._Missouri_A_Case_of_Standing.aspx",
         "https://www.scotusblog.com/cases/murthy-v-missouri-3/",
         "https://en.wikipedia.org/wiki/Murthy_v._Missouri"
-      ]
+      ],
+      "classification": "commons"
     },
     {
       "source_text": "FACTCHECK CORRECTED: The claim describes the Sackler family marketing OxyContin with 'misleading claims that OxyContin had less than a 1% addiction risk' without context on the source of that claim",
@@ -126,7 +139,8 @@
       "evidence_urls": [
         "https://www.cdc.gov/overdose-prevention/about/understanding-the-opioid-overdose-epidemic.html",
         "https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates"
-      ]
+      ],
+      "classification": "commons"
     }
   ]
 }

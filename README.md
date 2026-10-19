@@ -33,6 +33,37 @@ couldn't answer.
 6. **The collections live here, not behind a service.** `sources.py` is the same relationship `corpus.py` has with `corpus_server.py`: a pure core that something thin wraps. A hosted deployment is a convenience — never a prerequisite, never a secret you must hold, never a second repository in the test loop. Stated precisely, because the short version was wrong: `jeles-remote`'s `main.py` is a 74-line FastAPI shim, but it wraps its **own vendored copy** of `sources.py` (`import sources`, a file in that repo), not this module. That copy was forked from the same origin and has drifted — 833 differing lines, ~200 fewer, six fewer source functions, and *zero* references to `_egress`, so the SSRF/key-leak fix that landed here is simply absent from it. Treat jeles-remote as a downstream fork due a re-vendor, not as a thin wrapper that inherits this package's fixes.
 7. **Local is the source of truth; the fleet backlog is additive.** `corpus.log_gap()` (synchronous, local SQLite) always runs first and makes the host fully functional offline. `willow_mcp_client.forward_gap()` is a *best-effort* copy into willow-mcp's shared backlog.
 
+## Quick start: on your own, no fleet
+
+Jeles was built as an organ inside a willow-mcp fleet, where the fleet signs
+each app's manifest and that manifest bounds what the corpus may touch. It
+refuses to open its store without one, signed. On your own machine, make one
+and sign it with your own GPG key:
+
+```bash
+pip install jeles
+jeles-seed --init-local     # writes ~/.jeles, signs the manifest with your default GPG key
+# then export the three variables it prints, e.g.:
+export WILLOW_MCP_APPS_ROOT=~/.jeles/mcp_apps
+export WILLOW_STORE_ROOT=~/.jeles/store
+export JELES_CORPUS_APP_ID=jeles-corpus
+jeles-seed                  # load the bundled seed
+python -c "from jeles import corpus; print(corpus.ask_corpus('What is a black hole?'))"
+```
+
+`--init-local` keeps to its own `~/.jeles` tree (or `--home DIR`), never
+willow-mcp's `~/.willow/mcp_apps`. The manifest it writes grants only the
+corpus's own two collections, and it never overwrites an existing one. If
+`gpg` isn't installed or you have no key yet (`gpg --quick-gen-key "Your
+Name <you@example.org>"` makes one), the manifest is left unsigned and the
+command prints the one `gpg --detach-sign` line to run. Jeles itself never
+writes or imitates a signature.
+
+Then set the two things only you can supply: `JELES_SOURCES_CONTACT_EMAIL`
+(your address for the scholarly APIs' polite pools) and, if you'll review
+intake material yourself, `JELES_VERIFIER` (your name). Both are in
+[Configuration](#configuration).
+
 ## Install
 
 **Base `jeles` has zero runtime dependencies.** The corpus, the persona, and the
@@ -58,7 +89,7 @@ unchanged. Connector HTTP uses the client's own stack and therefore bypasses
 
 ### The seed corpus
 
-The wheel ships a starting corpus: **74 files, 968 question/answer pairs**, in
+The wheel ships a starting corpus: **87 files, 1163 question/answer pairs**, in
 `jeles/seed/`, beside the 84 host cards. It is not loaded on install and not on
 first use — seeding writes to *your* store, and an unrequested write is the
 thing `corpus_put`'s gate exists to refuse. It is a command you type:
@@ -72,8 +103,8 @@ jeles-seed              # load it into $WILLOW_STORE_ROOT
 rounds against themselves — challenge, factcheck, steelman — and the rounds'
 own artifacts ship alongside the answers, so the reasoning is auditable rather
 than summarised. That is real work, and it is still a machine's. So every pair
-loads at `asserted` unless a signature says otherwise, and an `asserted` nugget
-**cannot answer a question**: `corpus_ask` returns it under `candidates` with
+loads at `asserted` unless a signature or the commons rule below says
+otherwise, and an `asserted` nugget **cannot answer a question**: `corpus_ask` returns it under `candidates` with
 `found: false`. An unsigned seed makes the corpus *searchable*, not *settled*.
 
 **What a signature changes.** A pair carrying a Nestor seal
@@ -91,6 +122,18 @@ signs, and `nestor.keyring` refuses to produce a seal from a public-key entry:
 *"Signing happens where the private key lives."* So the `verified` rung is
 reachable only where a person, out of process, has already earned it.
 
+**Commons are the exception: verified by the public record, no seal needed.** Seed pairs
+in `core-*` domains, in files classified `"commons"`, or classified
+`"commons"` one pair at a time (an agreed fact inside a file that is otherwise
+argument, such as a fact-check verdict), with citations, are knowns, not
+claims. They land at `verified`, credited to the record they rest on and not
+to whoever loaded them: `verified_by: "public record: NASA, Encyclopaedia
+Britannica"` and `evidence: {"scheme": "public-record-v1", "credited_to":
+[...], "sealed": false}`. The people behind each discovery are named in the
+card itself. That is a citation, not a signature. It never carries a `seal_sig`, so a
+reader can still tell it apart from a sealed pair, and Nestor reconciliation
+can find what is still left to seal.
+
 **Seal ≠ sole evidence of human verification.** A missing seal (asserted seed,
 unsealed intake, draft/pending in a sibling organ) means this corpus cannot
 *prove or serve* a human receipt yet — not that no human ever checked the
@@ -102,7 +145,7 @@ Or as a host dependency, straight from git — the default branch is `master`,
 and `@main` resolves to nothing here:
 
 ```
-jeles @ git+https://github.com/rudi193-cmd/Jeles@master
+jeles @ git+https://github.com/hornbook-knowledge/Jeles@master
 ```
 
 Prefer a released version over a branch for anything you deploy: a branch ref
@@ -225,7 +268,7 @@ correct only where the tool caller really is the operator, and it re-opens the
 path above for anything the model reads while it is set.
 
 **The trust switch alone is no longer enough.** Even with it set, `corpus_put`
-also requires `evidence` carrying a real [Nestor](https://github.com/rudi193-cmd/Nestor)
+also requires `evidence` carrying a real [Nestor](https://github.com/Die-Namic-Systems/Nestor)
 seal — a cryptographic signature over `(question, answer, verified_by)`,
 checked against a keyring, not a string anyone can type:
 
@@ -279,6 +322,11 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `JELES_REMOTE_SECRET` | unset | Shared secret sent as `X-Jeles-Secret`. Dropped if a redirect changes host — see `_egress.SchemeGuardedRedirects`. |
 | `JELES_REMOTE_TIMEOUT` | `20` | Seconds before the remote delegate is given up on. |
 | `JELES_SEARCH_BACKEND` | `ddg` | Open-web backend: `searxng`, `brave`, `tavily` or `ddg`. Only `searxng` may reach a private address, because only it is an address the operator chose. |
+| `JELES_SOURCES_CONTACT_EMAIL` | unset | Your contact address for the OpenAlex/Crossref "polite pool" and NCBI's `email` parameter, which buy better rate limits. **No default** — it identifies whoever runs the deployment, so unset means the parameter is omitted and the calls go anonymous. |
+| `JELES_SOURCES_UA` | `Jeles/1.0 (academic librarian; +<repo URL>)` | User-Agent for the source APIs. Set it to identify your own deployment. |
+| `JELES_INTAKE_DIR` | `./jeles-intake`, else a sibling `willow-memory/jeles-intake` | Where the intake scripts read local Q/A JSON from. |
+| `JELES_FLEET_ENV` | unset | A `fleet.env` the scripts read `WILLOW_STORE_ROOT` and friends from when they are not exported. Without it they look in `$WILLOW_HOME`, a sibling `willow-memory` checkout, then `~/.willow`. |
+| `JELES_VERIFIER` | unset | The reviewer's name for `scripts/jeles-verify-intake.py`. **No default** — the script refuses to promote anything until a person is named, by this or `--verified-by`. |
 The Ask Jeles-flavored defaults are preserved so an existing store and its
 already-forwarded fleet backlog keep resolving after the extraction.
 
