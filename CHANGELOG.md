@@ -20,6 +20,23 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.16.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.15.0...v0.16.0) (2026-10-19)
+
+
+### Added
+
+* **seed:** add a 13-shelf reference library to the core commons ([ff3c757](https://github.com/hornbook-knowledge/Jeles/commit/ff3c7575b2e9928991d168557062600c2a1c323b))
+* **seed:** commons verified on the public record, a 13-shelf reference library, and a standalone quick start ([9f4db7f](https://github.com/hornbook-knowledge/Jeles/commit/9f4db7fdda9def945c56ab4a96b9d7e5feb2ce9f))
+* **seed:** jeles-seed --init-local and a standalone quick start ([54fa249](https://github.com/hornbook-knowledge/Jeles/commit/54fa24997d2303b8586f2e5394f8bc1e4f959a27))
+* **seed:** seed commons land verified on the developer's attestation ([ca22915](https://github.com/hornbook-knowledge/Jeles/commit/ca229153e3a9acf90f465167e3ea3eae2d04e52a))
+* **seed:** verify agreed facts pair by pair: fact-checks and systems record ([3633072](https://github.com/hornbook-knowledge/Jeles/commit/3633072dae2af5ebef84134bdb3f278894435236))
+
+
+### Fixed
+
+* **commons:** credit the public record, not the developer ([d23195d](https://github.com/hornbook-knowledge/Jeles/commit/d23195dba8d0e9617263464d24943b689c8865d0))
+* **seed:** classify reference-knowledge seed as commons, promote it in stores ([d93c872](https://github.com/hornbook-knowledge/Jeles/commit/d93c872fbdf269d6573e17f8f3693d599e2fc5ac))
+
 ## [0.15.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.14.1...v0.15.0) (2026-10-07)
 
 
