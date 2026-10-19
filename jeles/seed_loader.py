@@ -43,11 +43,12 @@ from typing import Any
 from jeles import corpus
 
 from .commons import (
+    file_classification,
     seed_nugget_id,
     seed_pair_verification,
 )
 
-__all__ = ["SEED_DIR", "load_all", "load_file", "main", "seed_files"]
+__all__ = ["SEED_DIR", "load_all", "load_file", "main", "seed_commons_domains", "seed_files"]
 
 #: Where the bundled seed lives inside the installed package.
 SEED_DIR = Path(__file__).resolve().parent / "seed"
@@ -69,6 +70,17 @@ def seed_files(seed_dir: Path | None = None) -> list[Path]:
     if not directory.is_dir():
         return []
     return sorted(directory.glob("*.json"))
+
+
+def seed_commons_domains(seed_dir: Path | None = None) -> set[str]:
+    """Domains whose seed file is classified ``commons`` — knowns that land at
+    ``machine`` on their citations, no seal required."""
+    domains: set[str] = set()
+    for path in seed_files(seed_dir):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, dict) and file_classification(data) == "commons":
+            domains.add(data.get("domain") or path.stem)
+    return domains
 
 
 def _verify(question: str, answer: str, verified_by: str, seal_sig: str) -> tuple[bool, str]:
@@ -295,8 +307,9 @@ def main(argv: list[str] | None = None) -> int:
         )
     elif not args.dry_run and totals["machine"]:
         print(
-            "\nCommons domains (core-*) with sources landed as 'machine' — "
-            "corpus_ask serves them\nwithout a human seal. Novel domains "
+            "\nCommons domains (core-*, and seed files classified commons) "
+            "with sources landed as\n'machine' — corpus_ask serves them "
+            "without a human seal. Novel domains "
             "remain asserted until verified."
         )
     return 0

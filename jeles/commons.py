@@ -147,10 +147,22 @@ def intake_nugget_id(domain: str, question: str) -> str:
     return f"i{digest[:10]}"
 
 
-def promote_commons_in_store(*, dry_run: bool = False) -> dict[str, int]:
-    """Upgrade asserted nuggets in commons domains to machine when sourced."""
+def promote_commons_in_store(
+    *, dry_run: bool = False, commons_domains: set[str] | None = None
+) -> dict[str, int]:
+    """Upgrade asserted nuggets in commons domains to machine when sourced.
+
+    A domain is commons by its ``core-`` prefix or by a file-level
+    ``"classification": "commons"`` in the bundled seed. The nugget only keeps
+    its domain (as its first tag), not that file flag, so the seed-classified
+    domains are read from the seed itself unless ``commons_domains`` is given.
+    """
     from jeles import corpus
 
+    if commons_domains is None:
+        from jeles.seed_loader import seed_commons_domains
+
+        commons_domains = seed_commons_domains()
     counts = {"promoted": 0, "skipped": 0, "errors": 0}
     for nugget in corpus.list_nuggets(limit=20000):
         kind = nugget.get("verification_kind") or "human"
@@ -159,7 +171,7 @@ def promote_commons_in_store(*, dry_run: bool = False) -> dict[str, int]:
             continue
         tags = list(nugget.get("tags") or [])
         domain = tags[0] if tags else ""
-        if not is_commons_domain(domain):
+        if not is_commons_domain(domain) and domain not in commons_domains:
             counts["skipped"] += 1
             continue
         sources = [str(s) for s in (nugget.get("sources") or [])]

@@ -1,5 +1,6 @@
 {
   "domain": "modern-world-food",
+  "classification": "commons",
   "pairs": [
     {
       "source_text": "How does precision agriculture use GPS and sensors to run a modern farm?",

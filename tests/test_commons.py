@@ -140,3 +140,64 @@ def test_intake_novel_default_stays_asserted(store, tmp_path, monkeypatch):
         intake_dir=intake_dir,
     )
     assert store.ask_corpus("What is the federation rule?")["found"] is False
+
+
+def test_seed_file_classified_commons_lands_as_machine(store, tmp_path):
+    p = _write(
+        tmp_path,
+        "hist.json",
+        {
+            "domain": "people-historical-scientists",
+            "classification": "commons",
+            "pairs": [
+                {
+                    "source_text": "Isaac Newton and the Principia",
+                    "target_text": "Newton published the Principia in 1687.",
+                }
+            ],
+            "evidence": [
+                {
+                    "pair_source": "Isaac Newton and the Principia",
+                    "locator": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
+                }
+            ],
+        },
+    )
+    out = seed_loader.load_file(p)
+    assert out["machine"] == 1
+    assert out["asserted"] == 0
+    assert store.ask_corpus("Isaac Newton and the Principia")["found"] is True
+
+
+def test_promote_upgrades_asserted_nugget_in_seed_commons_domain(store, tmp_path):
+    store.put_nugget(
+        question="Isaac Newton and the Principia",
+        answer="Newton published the Principia in 1687.",
+        sources=["https://en.wikipedia.org/wiki/Isaac_Newton"],
+        verified_by=commons.NOVEL_VERIFIED_BY,
+        tags=["people-historical-scientists", "jeles-seed"],
+        verification_kind="asserted",
+        written_by="jeles-seed",
+    )
+    seed_dir = tmp_path / "seed"
+    seed_dir.mkdir()
+    _write(
+        seed_dir,
+        "hist.json",
+        {"domain": "people-historical-scientists", "classification": "commons", "pairs": []},
+    )
+    domains = seed_loader.seed_commons_domains(seed_dir)
+    assert domains == {"people-historical-scientists"}
+
+    counts = commons.promote_commons_in_store(commons_domains=domains)
+    assert counts["promoted"] == 1
+    nugget = store.search_nuggets("Newton Principia", limit=1)[0]
+    assert nugget["verification_kind"] == "machine"
+
+
+def test_bundled_reference_seed_is_commons():
+    domains = seed_loader.seed_commons_domains()
+    assert "people-historical-scientists" in domains
+    assert "modern-world-energy" in domains
+    # Synthesis and adversarial rounds are argument, not knowns.
+    assert not any(d.startswith(("crossdomain-", "adversarial-")) for d in domains)
