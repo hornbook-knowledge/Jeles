@@ -81,16 +81,24 @@ _TIMEOUT = 15
 # User-Agent and rate-limit anonymous traffic harder. Override with
 # JELES_SOURCES_UA to identify your own deployment.
 # NCBI (PubMed) asks callers to identify themselves with tool + email and
-# throttles anonymous traffic. Same idea as the User-Agent: overridable, and
-# sent rather than omitted.
+# throttles anonymous traffic. Same idea as the User-Agent: overridable.
 _NCBI_TOOL = os.environ.get("JELES_SOURCES_NCBI_TOOL", "jeles")
 # Also used for OpenAlex/Crossref "polite pool" mailto, which buys better
-# rate limits from both.
-_CONTACT_EMAIL = os.environ.get("JELES_SOURCES_CONTACT_EMAIL", "rudi193@gmail.com")
+# rate limits from both. There is no default: the address identifies whoever
+# runs this deployment, and a shipped default would send every install's
+# traffic under one person's name. Unset, the parameter is omitted and the
+# APIs treat the calls as anonymous.
+_CONTACT_EMAIL = os.environ.get("JELES_SOURCES_CONTACT_EMAIL", "").strip()
+
+
+def _contact(param: str) -> str:
+    """``&<param>=<address>`` when a contact address is configured, else ``""``."""
+    return f"&{param}={urllib.parse.quote(_CONTACT_EMAIL)}" if _CONTACT_EMAIL else ""
+
 
 _UA = os.environ.get(
     "JELES_SOURCES_UA",
-    "Jeles/1.0 (academic librarian; +https://github.com/rudi193-cmd/Jeles)",
+    "Jeles/1.0 (academic librarian; +https://github.com/hornbook-knowledge/Jeles)",
 )
 
 # Confidence by source tier — primary institutions > peer-reviewed > aggregators
@@ -384,7 +392,8 @@ def search_openalex(query: str, limit: int = 5) -> list[dict]:
     url = (
         "https://api.openalex.org/works?search="
         + urllib.parse.quote(query)
-        + f"&per-page={limit}&mailto={urllib.parse.quote(_CONTACT_EMAIL)}"
+        + f"&per-page={limit}"
+        + _contact("mailto")
     )
     data = _get(url)
     if not data:
@@ -533,7 +542,7 @@ def search_crossref(query: str, limit: int = 5) -> list[dict]:
         + str(limit)
         + "&query="
         + urllib.parse.quote(query)
-        + f"&mailto={urllib.parse.quote(_CONTACT_EMAIL)}"
+        + _contact("mailto")
     )
     data = _get(url)
     if not data:
@@ -573,7 +582,7 @@ def search_pubmed(query: str, limit: int = 5) -> list[dict]:
         + "&term="
         + urllib.parse.quote(query)
         + f"&tool={urllib.parse.quote(_NCBI_TOOL)}"
-        + f"&email={urllib.parse.quote(_CONTACT_EMAIL)}"
+        + _contact("email")
     )
     search = _get(search_url)
     if not search:
@@ -586,7 +595,7 @@ def search_pubmed(query: str, limit: int = 5) -> list[dict]:
         "?db=pubmed&retmode=json&id="
         + ",".join(ids)
         + f"&tool={urllib.parse.quote(_NCBI_TOOL)}"
-        + f"&email={urllib.parse.quote(_CONTACT_EMAIL)}"
+        + _contact("email")
     )
     summary = _get(summary_url)
     if not summary:

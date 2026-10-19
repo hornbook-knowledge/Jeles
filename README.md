@@ -114,7 +114,7 @@ Or as a host dependency, straight from git — the default branch is `master`,
 and `@main` resolves to nothing here:
 
 ```
-jeles @ git+https://github.com/rudi193-cmd/Jeles@master
+jeles @ git+https://github.com/hornbook-knowledge/Jeles@master
 ```
 
 Prefer a released version over a branch for anything you deploy: a branch ref
@@ -237,7 +237,7 @@ correct only where the tool caller really is the operator, and it re-opens the
 path above for anything the model reads while it is set.
 
 **The trust switch alone is no longer enough.** Even with it set, `corpus_put`
-also requires `evidence` carrying a real [Nestor](https://github.com/rudi193-cmd/Nestor)
+also requires `evidence` carrying a real [Nestor](https://github.com/Die-Namic-Systems/Nestor)
 seal — a cryptographic signature over `(question, answer, verified_by)`,
 checked against a keyring, not a string anyone can type:
 
@@ -291,6 +291,11 @@ persona = jeles.load_persona()   # dict; canonical Jeles persona
 | `JELES_REMOTE_SECRET` | unset | Shared secret sent as `X-Jeles-Secret`. Dropped if a redirect changes host — see `_egress.SchemeGuardedRedirects`. |
 | `JELES_REMOTE_TIMEOUT` | `20` | Seconds before the remote delegate is given up on. |
 | `JELES_SEARCH_BACKEND` | `ddg` | Open-web backend: `searxng`, `brave`, `tavily` or `ddg`. Only `searxng` may reach a private address, because only it is an address the operator chose. |
+| `JELES_SOURCES_CONTACT_EMAIL` | unset | Your contact address for the OpenAlex/Crossref "polite pool" and NCBI's `email` parameter, which buy better rate limits. **No default** — it identifies whoever runs the deployment, so unset means the parameter is omitted and the calls go anonymous. |
+| `JELES_SOURCES_UA` | `Jeles/1.0 (academic librarian; +<repo URL>)` | User-Agent for the source APIs. Set it to identify your own deployment. |
+| `JELES_INTAKE_DIR` | `./jeles-intake`, else a sibling `willow-memory/jeles-intake` | Where the intake scripts read local Q/A JSON from. |
+| `JELES_FLEET_ENV` | unset | A `fleet.env` the scripts read `WILLOW_STORE_ROOT` and friends from when they are not exported. Without it they look in `$WILLOW_HOME`, a sibling `willow-memory` checkout, then `~/.willow`. |
+| `JELES_VERIFIER` | unset | The reviewer's name for `scripts/jeles-verify-intake.py`. **No default** — the script refuses to promote anything until a person is named, by this or `--verified-by`. |
 The Ask Jeles-flavored defaults are preserved so an existing store and its
 already-forwarded fleet backlog keep resolving after the extraction.
 

@@ -37,18 +37,26 @@ def find_intake_dir() -> Path:
 
 
 def bootstrap_fleet_env() -> None:
-    """Set WILLOW_STORE_ROOT et al. from fleet.env when not already exported."""
+    """Set WILLOW_STORE_ROOT et al. from fleet.env when not already exported.
+
+    Looked for at ``$JELES_FLEET_ENV``, then ``$WILLOW_HOME/fleet.env``, then a
+    sibling ``willow-memory`` checkout, then ``~/.willow/fleet.env``. None of
+    them is required: export ``WILLOW_STORE_ROOT`` and this does nothing.
+    """
     if os.environ.get("WILLOW_STORE_ROOT"):
         return
     root = _jeles_repo_root()
     candidates = []
+    explicit = os.environ.get("JELES_FLEET_ENV", "").strip()
+    if explicit:
+        candidates.append(Path(explicit).expanduser())
     wh = os.environ.get("WILLOW_HOME", "").strip()
     if wh:
         candidates.append(Path(wh) / "fleet.env")
     candidates.extend(
         [
             root.parent.parent / "willow-memory" / ".willow" / "fleet.env",
-            Path.home() / "github" / "willow-memory" / ".willow" / "fleet.env",
+            Path.home() / ".willow" / "fleet.env",
         ]
     )
     for path in candidates:

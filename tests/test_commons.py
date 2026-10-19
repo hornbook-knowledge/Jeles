@@ -305,11 +305,11 @@ def test_promote_recredits_commons_that_named_the_developer(store):
         question="What is a black hole?",
         answer="A region of space where gravity is so strong light cannot escape.",
         sources=["https://science.nasa.gov/universe/black-holes/"],
-        verified_by="Sean Campbell",
+        verified_by="A. Developer",
         tags=["core-space-astronomy", "jeles-seed", "commons"],
         verification_kind="human",
         written_by="jeles-seed",
-        evidence={"scheme": "developer-attestation-v1", "attested_by": "Sean Campbell"},
+        evidence={"scheme": "developer-attestation-v1", "attested_by": "A. Developer"},
     )
     counts = commons.promote_commons_in_store(commons_domains=set(), commons_ids=set())
     assert counts["promoted"] == 1

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Promote asserted commons-domain nuggets to machine (re-seed without full reload).
 
-    source ~/github/willow-memory/.willow/fleet.env
+    export WILLOW_STORE_ROOT=/path/to/store   # or JELES_FLEET_ENV=/path/to/fleet.env
     .venv/bin/python3 scripts/jeles-commons-promote.py
     .venv/bin/python3 scripts/jeles-commons-promote.py --dry-run
 """

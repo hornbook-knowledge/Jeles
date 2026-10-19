@@ -4,15 +4,21 @@
 Human verification is deliberately not reachable via corpus_put MCP — only
 operator scripts like this one may set verification_kind=human.
 
-    source ~/github/willow-memory/.willow/fleet.env
+    export WILLOW_STORE_ROOT=/path/to/store   # or JELES_FLEET_ENV=/path/to/fleet.env
+    export JELES_VERIFIER="Your Name"          # or pass --verified-by
     .venv/bin/python3 scripts/jeles-verify-intake.py paperclip-genealogy.json
     .venv/bin/python3 scripts/jeles-verify-intake.py --tag institutional-genealogy
     .venv/bin/python3 scripts/jeles-verify-intake.py paperclip-genealogy.json --dry-run
+
+The verifier is the person who actually reviewed the material, so there is no
+default name: it comes from --verified-by or $JELES_VERIFIER, and the script
+refuses to run without one.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -169,11 +175,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--tag", help="Promote all asserted nuggets with this tag")
     parser.add_argument(
         "--verified-by",
-        default="Sean Campbell",
-        help="Human verifier name (default: Sean Campbell)",
+        default=os.environ.get("JELES_VERIFIER", "").strip(),
+        help="Name of the person who reviewed this material (default: $JELES_VERIFIER)",
     )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args(argv)
+
+    if not args.verified_by.strip():
+        parser.error("name the reviewer: pass --verified-by or set JELES_VERIFIER")
 
     if not args.file and not args.tag:
         parser.error("provide intake file name or --tag")

@@ -11,7 +11,7 @@ into it — a stalled or missing willow-mcp should be invisible to a user
 asking Jeles a question.
 
 willow-mcp is a separate, standalone, agent-neutral package — see
-https://github.com/rudi193-cmd/willow-mcp — invoked here as an ordinary
+https://github.com/willow-memory/willow-mcp — invoked here as an ordinary
 external MCP server, the same way any generic MCP drawer would talk to any
 other discovered server. This module has no hard dependency on it.
 
