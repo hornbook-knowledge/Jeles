@@ -12,10 +12,12 @@ them there is not a hedge: `ask_corpus` will not answer from an asserted
 nugget, so an unsigned seed installs as *candidates* and a reader is told
 plainly that nobody has checked them.
 
-Commons pairs (`core-*` domains, and files classified `"commons"`) with
-citations land at `human` on the developer's attestation — knowns the
-developer has declared verified for the base store. They carry
-`evidence.scheme == "developer-attestation-v1"` and `sealed: False`, never a
+Commons pairs (`core-*` domains, and files or pairs classified `"commons"`)
+with citations land at `human` without a seal: knowns, which the developer
+has ruled need none in the base store. They are credited to the public
+record they rest on, not to whoever loaded them — `verified_by` reads
+"public record: <cited publishers>" — and carry
+`evidence.scheme == "public-record-v1"` and `sealed: False`, never a
 `seal_sig`, so they stay distinguishable from signed pairs until Nestor
 reconciliation seals them.
 
@@ -51,7 +53,7 @@ from typing import Any
 from jeles import corpus
 
 from .commons import (
-    commons_attestation,
+    commons_evidence,
     file_classification,
     pair_classification,
     seed_nugget_id,
@@ -238,7 +240,7 @@ def load_file(path: Path, *, dry_run: bool = False) -> dict[str, Any]:
                 seal_sig="",
             )
             if kind == "human":
-                evidence = commons_attestation(domain)
+                evidence = commons_evidence(domain, pair_sources)
 
         tags = [domain, "jeles-seed"]
         if not seal_sig and kind == "human":
@@ -348,8 +350,8 @@ def main(argv: list[str] | None = None) -> int:
     elif not args.dry_run and totals["human"]:
         print(
             "\nCommons domains (core-*, and seed files classified commons) "
-            "with sources landed as\n'verified' on the developer's "
-            "attestation (unsealed). Novel domains "
+            "with sources landed as\n'verified', credited to the public "
+            "record they cite (unsealed). Novel domains "
             "remain asserted until verified."
         )
     return 0

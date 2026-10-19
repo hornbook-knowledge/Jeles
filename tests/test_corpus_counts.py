@@ -17,7 +17,7 @@ other or against a second hand-typed literal here.
   composed count human + machine + asserted nuggets `jeles-seed --dry-run`
                  would actually write — i.e. real question/answer pairs, with
                  the 36 non-Q/A "reasoning" records and the 2 non-pair-set
-                 files' contents excluded. 1163 (835 developer-attested commons + 328 asserted).
+                 files' contents excluded. 1163 (835 public-record commons + 328 asserted).
 
 A scan that has never fired has not been shown to check anything: each helper
 below that reads the tree or parses a README's claim has a test that plants a

@@ -49,9 +49,11 @@ def test_core_domain_with_evidence_lands_as_attested_human(store, tmp_path):
     nugget = store.search_nuggets("feather bowling ball", limit=1)[0]
     assert nugget["verification_kind"] == "human"
     assert nugget["status"] == "verified"
-    assert nugget["verified_by"] == commons.COMMONS_ATTESTED_BY
-    # The developer's word, recorded as such — never a fabricated seal.
-    assert nugget["evidence"]["scheme"] == commons.COMMONS_ATTESTATION_SCHEME
+    # Credited to the record it rests on, not to whoever loaded the seed —
+    # and never a fabricated seal.
+    assert nugget["verified_by"] == "public record: Wikipedia"
+    assert nugget["evidence"]["scheme"] == commons.COMMONS_EVIDENCE_SCHEME
+    assert nugget["evidence"]["credited_to"] == ["Wikipedia"]
     assert nugget["evidence"]["sealed"] is False
     assert "seal_sig" not in nugget["evidence"]
     assert store.ask_corpus("Why does a feather fall slower than a bowling ball?")["found"] is True
@@ -198,7 +200,7 @@ def test_promote_upgrades_asserted_nugget_in_seed_commons_domain(store, tmp_path
     assert counts["promoted"] == 1
     nugget = store.search_nuggets("Newton Principia", limit=1)[0]
     assert nugget["verification_kind"] == "human"
-    assert nugget["evidence"]["scheme"] == commons.COMMONS_ATTESTATION_SCHEME
+    assert nugget["evidence"]["scheme"] == commons.COMMONS_EVIDENCE_SCHEME
 
 
 def test_promote_upgrades_machine_commons_to_attested_human(store):
@@ -280,3 +282,38 @@ def test_promote_upgrades_single_commons_pair_by_seed_id(store):
     counts = commons.promote_commons_in_store(commons_domains=set(), commons_ids={nid})
     assert counts["promoted"] == 1
     assert store.search_nuggets("Murthy Missouri", limit=1)[0]["verification_kind"] == "human"
+
+
+def test_commons_credit_names_publishers_not_the_loader():
+    sources = [
+        "https://science.nasa.gov/universe/black-holes/",
+        "https://www.britannica.com/science/black-hole",
+        "https://en.wikipedia.org/wiki/Black_hole",
+        "https://www.britannica.com/summary/black-hole",
+        "https://www.jstor.org/stable/123",
+    ]
+    assert commons.commons_credit(sources) == (
+        "public record: NASA, Encyclopaedia Britannica, Wikipedia, jstor.org"
+    )
+    assert commons.commons_credit([]) == "public record"
+
+
+def test_promote_recredits_commons_that_named_the_developer(store):
+    """Commons loaded before credit moved to the public record carried the
+    developer's name. Promotion rewrites them at the same rung."""
+    store.put_nugget(
+        question="What is a black hole?",
+        answer="A region of space where gravity is so strong light cannot escape.",
+        sources=["https://science.nasa.gov/universe/black-holes/"],
+        verified_by="Sean Campbell",
+        tags=["core-space-astronomy", "jeles-seed", "commons"],
+        verification_kind="human",
+        written_by="jeles-seed",
+        evidence={"scheme": "developer-attestation-v1", "attested_by": "Sean Campbell"},
+    )
+    counts = commons.promote_commons_in_store(commons_domains=set(), commons_ids=set())
+    assert counts["promoted"] == 1
+    nugget = store.search_nuggets("black hole", limit=1)[0]
+    assert nugget["verification_kind"] == "human"
+    assert nugget["verified_by"] == "public record: NASA"
+    assert nugget["evidence"]["scheme"] == commons.COMMONS_EVIDENCE_SCHEME

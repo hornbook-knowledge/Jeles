@@ -91,14 +91,15 @@ signs, and `nestor.keyring` refuses to produce a seal from a public-key entry:
 *"Signing happens where the private key lives."* So the `verified` rung is
 reachable only where a person, out of process, has already earned it.
 
-**Commons are the exception: verified on the developer's word.** Seed pairs
+**Commons are the exception: verified by the public record, no seal needed.** Seed pairs
 in `core-*` domains, in files classified `"commons"`, or classified
 `"commons"` one pair at a time (an agreed fact inside a file that is otherwise
 argument, such as a fact-check verdict), with citations, are knowns, not
-claims. They land at `verified` with
-`verified_by: "Sean Campbell"` and
-`evidence: {"scheme": "developer-attestation-v1", "sealed": false, ...}`.
-That is an attestation, not a signature. It never carries a `seal_sig`, so a
+claims. They land at `verified`, credited to the record they rest on and not
+to whoever loaded them: `verified_by: "public record: NASA, Encyclopaedia
+Britannica"` and `evidence: {"scheme": "public-record-v1", "credited_to":
+[...], "sealed": false}`. The people behind each discovery are named in the
+card itself. That is a citation, not a signature. It never carries a `seal_sig`, so a
 reader can still tell it apart from a sealed pair, and Nestor reconciliation
 can find what is still left to seal.
 
