@@ -1,8 +1,8 @@
 """sources — the institutional and academic collections themselves.
 
 The third hop of the persona's mandate ("local KB → open web → special
-collections"), and it lives *here* rather than behind a service. 65 registered
-sources, 61 of them in the default fan-out — arXiv, PubMed, Crossref, OpenAlex,
+collections"), and it lives *here* rather than behind a service. 66 registered
+sources, 62 of them in the default fan-out — arXiv, PubMed, Crossref, OpenAlex,
 Library of Congress, Europeana, CourtListener, the Smithsonian — each a small
 function that queries one public API and returns citable results. (Read the
 count off `SOURCES`; four files said "~65" and none of them was right.)
@@ -24,7 +24,7 @@ Each source function returns list[dict] with standard citation fields:
 Each registry entry also declares `hosts` — the hostnames that source contacts —
 reachable in aggregate via `registered_hosts()` and checked against the code by
 `tests/test_source_hosts.py`, so it is data rather than a second list to keep in
-step. Note what it is not: 46 of the 65 sources build their citation URL out of
+step. Note what it is not: 47 of the 66 sources build their citation URL out of
 the API response, so where a *result* points is not knowable from here at all.
 OpenAlex or Crossref can legitimately hand back a link to any publisher on
 earth. `hosts` answers "which institutions does jeles query", never "should this
@@ -1907,6 +1907,150 @@ def search_eu_data(query: str, limit: int = 5) -> list[dict]:
     return results
 
 
+# The Almanac (github.com/almanac-data) is a set of catalog-not-host verticals,
+# each a git repository of human-reviewed entries pointing at authoritative
+# public datasets. Each vertical publishes a generated `catalog.json` on its
+# `main` branch; there is no search API, so this source reads those files and
+# matches locally. Same list as `VERTICALS` in almanac-data's
+# `scripts/propagate-engine.sh` — a vertical added there and not here is simply
+# not searched.
+ALMANAC_VERTICALS: tuple[str, ...] = (
+    "agriculture-almanac",
+    "civic-almanac",
+    "climate-almanac",
+    "economy-almanac",
+    "education-almanac",
+    "energy-almanac",
+    "environment-almanac",
+    "health-almanac",
+    "justice-almanac",
+    "science-almanac",
+    "transportation-almanac",
+)
+
+# A catalog changes when a PR merges, not between two queries, so eleven fetches
+# per fan-out would be waste. Successful reads are held for this long; a failed
+# read is never cached, so an outage is retried on the next call.
+_ALMANAC_TTL_SECONDS = 6 * 3600
+_ALMANAC_CACHE: dict[str, tuple[float, list[dict]]] = {}
+_ALMANAC_LOCK = _threading.Lock()
+
+# Words that carry no signal against a dataset catalog. Matching is on content
+# words only, so "data on school enrollment in Peru" asks about
+# school/enrollment/peru, not about every entry that says "data".
+_ALMANAC_STOPWORDS = frozenset(
+    {
+        "the", "and", "for", "with", "from", "into", "about", "what", "which",
+        "where", "when", "how", "does", "are", "is", "of", "in", "on", "to",
+        "data", "dataset", "datasets", "database", "statistics", "stats",
+        "public", "open", "official", "find", "show", "list", "any", "there",
+    }
+)  # fmt: skip
+
+
+def _almanac_terms(query: str) -> list[str]:
+    words = re.findall(r"\w+", query.casefold())
+    return [w for w in words if len(w) > 2 and w not in _ALMANAC_STOPWORDS]
+
+
+def _almanac_entries(vertical: str, url: str) -> tuple[list[dict] | None, str | None]:
+    """One vertical's entries, from cache or the network, and the failure if any.
+
+    Runs on a worker of `search_almanac`'s own pool, so the transport breadcrumb
+    `_get` leaves is on *this* thread. It is taken here and returned, for the
+    caller to re-note on the fan-out's thread — otherwise a wholly blocked
+    egress reads as "reached the almanac, nothing matched".
+    """
+    now = datetime.now(timezone.utc).timestamp()
+    with _ALMANAC_LOCK:
+        cached = _ALMANAC_CACHE.get(vertical)
+    if cached and now - cached[0] < _ALMANAC_TTL_SECONDS:
+        return cached[1], None
+    _take_transport_failure()
+    data = _get(url)
+    err = _take_transport_failure()
+    if not isinstance(data, dict) or not isinstance(data.get("entries"), list):
+        return None, err or f"{vertical}: catalog.json has no entries list"
+    entries = [e for e in data["entries"] if isinstance(e, dict)]
+    with _ALMANAC_LOCK:
+        _ALMANAC_CACHE[vertical] = (now, entries)
+    return entries, None
+
+
+def search_almanac(query: str, limit: int = 5) -> list[dict]:
+    """The Almanac — curated catalogs of authoritative public datasets. No key required.
+
+    Each hit is a catalog entry, and its URL is the *publisher's* canonical
+    home (`source.canonical_url`), not the almanac's YAML: the almanac maps
+    where data lives and hosts none of it. `institution` is the entry's
+    publisher. Entries the almanac has marked `dark` (unreachable) are left out
+    rather than cited.
+
+    A hit needs at least half of the query's content words to appear in the
+    entry's title, topics, publisher, or description; title and topic matches
+    weigh more. Catalogs that fail to load are skipped, so one unreachable
+    vertical narrows the search instead of failing it.
+    """
+    terms = _almanac_terms(query)
+    if not terms:
+        return []
+    urls = {
+        v: f"https://raw.githubusercontent.com/almanac-data/{v}/main/catalog.json"
+        for v in ALMANAC_VERTICALS
+    }
+    with _cf.ThreadPoolExecutor(max_workers=6, thread_name_prefix="jeles-almanac") as pool:
+        outcomes = dict(
+            zip(urls, pool.map(lambda v: _almanac_entries(v, urls[v]), urls), strict=True)
+        )
+    loaded = {v: entries for v, (entries, _) in outcomes.items() if entries is not None}
+    if not loaded:
+        # Nothing reached: say so on this thread, where `search` looks for it.
+        errors = sorted({err for _, err in outcomes.values() if err})
+        _note_transport_failure(OSError("; ".join(errors) or "no almanac catalog loaded"))
+        return []
+
+    need = max(1, (len(terms) + 1) // 2)
+    scored: list[tuple[int, str, str, dict]] = []
+    for vertical, entries in loaded.items():
+        for entry in entries:
+            if entry.get("status") == "dark":
+                continue
+            title = _text(entry.get("title")).casefold()
+            title_w = set(re.findall(r"\w+", title))
+            topics_w = set(
+                re.findall(r"\w+", " ".join(map(_text, entry.get("topics") or ())).casefold())
+            )
+            rest_w = set(
+                re.findall(
+                    r"\w+",
+                    f"{_text(entry.get('publisher'))} {_text(entry.get('description'))}".casefold(),
+                )
+            )
+            hit = [t for t in terms if t in title_w or t in topics_w or t in rest_w]
+            if len(hit) < need:
+                continue
+            score = sum(3 * (t in title_w) + 2 * (t in topics_w) + (t in rest_w) for t in hit)
+            scored.append((score, title, vertical, entry))
+    scored.sort(key=lambda s: (-s[0], s[1]))
+
+    results = []
+    for _, _, vertical, entry in scored[:limit]:
+        status = _text(entry.get("status"))
+        license_ = _text(entry.get("license"))
+        results.append(
+            _result(
+                title=entry.get("title", ""),
+                url=(entry.get("source") or {}).get("canonical_url", ""),
+                source="almanac",
+                institution=entry.get("publisher", ""),
+                snippet=f"{vertical} · {status} · {license_} — {_text(entry.get('description'))}",
+                date=_text((entry.get("observed") or {}).get("checked")),
+                rid=f"{vertical}/{_text(entry.get('id'))}",
+            )
+        )
+    return results
+
+
 def search_musicbrainz(query: str, limit: int = 5) -> list[dict]:
     """MusicBrainz — open music encyclopedia. Artists, recordings, albums. No key required.
     Searches release-groups (albums/singles) first; falls back to recordings for track queries."""
@@ -3173,6 +3317,12 @@ SOURCES: dict[str, dict] = {
         "key_required": False,
         "hosts": ["data.europa.eu"],
     },
+    "almanac": {
+        "name": "The Almanac (almanac-data)",
+        "domain": ["government", "data", "statistics"],
+        "key_required": False,
+        "hosts": ["raw.githubusercontent.com"],
+    },
     # Clinical trade press
     "psychiatric_times": {
         "name": "Psychiatric Times",
@@ -3416,7 +3566,7 @@ _DOMAIN_ROUTES: list[tuple[list[str], list[str]]] = [
             "government data",
             "open data",
         ],
-        ["federal_register", "datagov", "uk_legislation", "eu_data"],
+        ["federal_register", "datagov", "uk_legislation", "eu_data", "almanac"],
     ),
     (
         [
@@ -3952,7 +4102,7 @@ def registered_hosts(*, include_opt_in: bool = True) -> set[str]:
     second list to maintain.
 
     This is what the sources *query*, which is not the same as where their
-    results *point*: 46 of the 61 build the citation URL out of the API
+    results *point*: 47 of the 62 build the citation URL out of the API
     response, so OpenAlex or Crossref can legitimately return a link to any
     publisher on earth. A consumer wanting "is this hostname an institution
     this fleet queries?" is answered here; "should I believe this arbitrary
