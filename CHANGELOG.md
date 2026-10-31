@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Added
 
-* **sources:** search the tech almanac ([766439d](https://github.com/hornbook-knowledge/Jeles/commit/766439db2f50d20a82915923c1e14b52e3422f75))
 * **sources:** search the tech almanac ([355998f](https://github.com/hornbook-knowledge/Jeles/commit/355998ff8890262d028f76ebeea19e760c2b790f))
 
 ## [0.18.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.17.1...v0.18.0) (2026-10-31)
