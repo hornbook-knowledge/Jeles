@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Added
 
-* **sources:** add the Almanac's dataset catalogs as a source ([addde80](https://github.com/hornbook-knowledge/Jeles/commit/addde80428b5c9e13ab4ba2056a59e43eb68fd83))
 * **sources:** add the Almanac's dataset catalogs as a source ([4d1a812](https://github.com/hornbook-knowledge/Jeles/commit/4d1a812cd6b51501df98da693feb0d94946a8f6e))
 
 ## [0.16.1](https://github.com/hornbook-knowledge/Jeles/compare/v0.16.0...v0.16.1) (2026-10-19)
