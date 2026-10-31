@@ -1923,13 +1923,16 @@ ALMANAC_VERTICALS: tuple[str, ...] = (
     "energy-almanac",
     "environment-almanac",
     "health-almanac",
+    "housing-almanac",
     "justice-almanac",
+    "labor-almanac",
+    "population-almanac",
     "science-almanac",
     "transportation-almanac",
 )
 
-# A catalog changes when a PR merges, not between two queries, so eleven fetches
-# per fan-out would be waste. Successful reads are held for this long; a failed
+# A catalog changes when a PR merges, not between two queries, so a fetch per
+# vertical on every fan-out would be waste. Successful reads are held for this long; a failed
 # read is never cached, so an outage is retried on the next call.
 _ALMANAC_TTL_SECONDS = 6 * 3600
 _ALMANAC_CACHE: dict[str, tuple[float, list[dict]]] = {}
