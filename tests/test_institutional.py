@@ -505,12 +505,13 @@ def test_the_documented_source_count_matches_the_registry():
     registry. This is the only place the number is checked, so if it changes,
     this test is what tells you which prose to update — and the module
     docstring is checked here too, because it was the one that drifted: it
-    still said 60 after the default set had moved twice."""
+    still said 60 after the default set had moved twice. `almanac` (the
+    almanac-data dataset catalogs) made it 66 and 62."""
     from pathlib import Path
 
     registered = len(inst.sources.SOURCES)
     default = sum(1 for c in inst.sources.SOURCES.values() if not c.get("opt_in"))
-    assert (registered, default) == (65, 61)
+    assert (registered, default) == (66, 62)
 
     readme = (Path(__file__).parent.parent / "README.md").read_text(encoding="utf-8")
     assert f"{registered} registered source functions" in readme

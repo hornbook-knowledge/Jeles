@@ -1,0 +1,10 @@
+{
+  "host": "raw.githubusercontent.com",
+  "roles": [
+    "query"
+  ],
+  "publisher": "The Almanac (almanac-data), served by GitHub",
+  "custody": "community",
+  "status": "live",
+  "notes": "Queried only for the Almanac's generated catalog.json files (one per vertical). Entries are human-reviewed by vertical stewards; each hit cites the dataset publisher's own canonical URL, never this host."
+}
