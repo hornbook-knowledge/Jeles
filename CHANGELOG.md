@@ -25,7 +25,6 @@ in a `docs:` commit, which is hidden and cuts no release of its own.
 
 ### Fixed
 
-* **packaging:** pin nestor-meaning by version so PyPI accepts the upload ([e828507](https://github.com/hornbook-knowledge/Jeles/commit/e828507934156d967e4520eb7e6ac7e0a553c6d7))
 * **packaging:** pin nestor-meaning by version so PyPI accepts the upload ([b8ca604](https://github.com/hornbook-knowledge/Jeles/commit/b8ca60477ee04b33726969b5a679cd91f4016b45))
 
 ## [0.17.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.16.1...v0.17.0) (2026-10-31)
