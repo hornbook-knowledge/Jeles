@@ -71,7 +71,14 @@ mcp = ["mcp>=2.0.0,<3.0.0"]
 # `from nestor import signing` needs no change — only the name pip resolves
 # this dependency spec under. No later tag renamed the distribution back
 # (Jeles#87, CI run 35681721123).
-nestor = ["nestor-meaning @ git+https://github.com/Die-Namic-Systems/Nestor@v0.18.0"]
+#
+# Pinned by name and exact version, not by `@ git+...@v0.18.0`: PyPI refuses to
+# accept any distribution whose metadata carries a direct reference, *in an
+# extra too*, so that spelling failed every publish from 0.10.0 through 0.17.0
+# with "400 Can't have direct dependency: nestor-meaning @ git+..." — tagged and
+# released on GitHub, never on PyPI. nestor-meaning 0.18.0 is on PyPI, so `==`
+# pins the same code and keeps the reproducibility the tag pin was for.
+nestor = ["nestor-meaning==0.18.0"]
 # Optional maintained HTTP clients for ``jeles.sources`` — the LiteLLM-shaped
 # adoption map (store ``jeles-adopt-clients-2026-09-30``). Base install stays
 # stdlib-only; ``search_*`` keeps its urllib twin and prefers these when present.
@@ -118,14 +125,6 @@ Issues = "https://github.com/hornbook-knowledge/Jeles/issues"
 # `release-type: simple`) — let it pick the number from the commits rather than
 # tagging by hand.
 source = "vcs"
-
-[tool.hatch.metadata]
-# hatchling refuses a direct reference (`name @ url`) in optional-dependencies
-# unless this is set — PyPI itself never accepts one, so the guard is right;
-# this package's `[nestor]` extra is exactly that kind of reference (a tag
-# pin, not a PyPI release — see the extra's own comment on why), and the
-# extra is a dev/give-back seam, not something meant to publish standalone.
-allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["jeles"]
