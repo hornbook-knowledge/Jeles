@@ -1922,6 +1922,7 @@ ALMANAC_VERTICALS: tuple[str, ...] = (
     "education-almanac",
     "energy-almanac",
     "environment-almanac",
+    "geography-almanac",
     "health-almanac",
     "housing-almanac",
     "justice-almanac",
