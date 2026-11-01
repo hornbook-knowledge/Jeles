@@ -20,6 +20,14 @@ the merge commit that swallowed it, so a shipped fix went undocumented. The
 tags and version numbers are unaffected either way — only the prose. Fixes go
 in a `docs:` commit, which is hidden and cuts no release of its own.
 
+## [0.21.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.20.0...v0.21.0) (2026-11-01)
+
+
+### Added
+
+* **sources:** search the geography almanac ([b3f9262](https://github.com/hornbook-knowledge/Jeles/commit/b3f9262836b51d84c6aec38eb4f3054bf5af36d5))
+* **sources:** search the geography almanac ([1331d2a](https://github.com/hornbook-knowledge/Jeles/commit/1331d2ac1f56096f7b0f96a32244d673df627cd1))
+
 ## [0.20.0](https://github.com/hornbook-knowledge/Jeles/compare/v0.19.0...v0.20.0) (2026-10-31)
 
 
