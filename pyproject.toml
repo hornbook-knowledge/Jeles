@@ -78,7 +78,7 @@ mcp = ["mcp>=2.0.0,<3.0.0"]
 # with "400 Can't have direct dependency: nestor-meaning @ git+..." — tagged and
 # released on GitHub, never on PyPI. nestor-meaning 0.18.0 is on PyPI, so `==`
 # pins the same code and keeps the reproducibility the tag pin was for.
-nestor = ["nestor-meaning==0.18.0"]
+nestor = ["nestor-meaning==0.28.0"]
 # Optional maintained HTTP clients for ``jeles.sources`` — the LiteLLM-shaped
 # adoption map (store ``jeles-adopt-clients-2026-09-30``). Base install stays
 # stdlib-only; ``search_*`` keeps its urllib twin and prefers these when present.
